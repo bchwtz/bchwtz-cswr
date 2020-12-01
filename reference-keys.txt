@@ -1,7 +1,11 @@
 fig:nice-fig
 tab:nice-tab
+fig:unnamed-chunk-4
 intro
 literature
+slides-html
+slides-pdf
+lecture
 methods
 applications
 example-one
