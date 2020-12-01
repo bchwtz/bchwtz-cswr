@@ -29,10 +29,6 @@ install.packages("bookdown")
 ```
 
 
-```{r}
-knitr::include_url('https://timmastny.rbind.io/slides/first_presentation#1')
-```
-
 
 Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
 

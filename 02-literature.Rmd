@@ -1,5 +1,20 @@
 # Literature
 
+## Slides (HTML)
+
+```{r}
+knitr::include_url('https://timmastny.rbind.io/slides/first_presentation#1')
+```
+
+## Slides (PDF)
+
+```{r, out.width = "85%", fig.cap = "caption"}
+knitr::include_graphics("http://bchwtz.de/0-intro.pdf")
+```
+
+
+## Lecture
+
 Here is a review of existing methods.
 
 Oh wow such many text!
