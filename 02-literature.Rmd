@@ -9,7 +9,7 @@ knitr::include_url('https://timmastny.rbind.io/slides/first_presentation#1')
 ## Slides (PDF)
 
 ```{r, out.width = "85%", fig.cap = "caption"}
-knitr::include_graphics("./slides/intro.pdf")
+knitr::include_graphics("slides/intro.pdf")
 ```
 
 ## Video
