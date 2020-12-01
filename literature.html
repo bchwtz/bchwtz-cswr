@@ -182,19 +182,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="slides-pdf" class="section level2">
 <h2><span class="header-section-number">2.2</span> Slides (PDF)</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="literature.html#cb5-1"></a>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;slides/intro.pdf&quot;</span>)</span></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-4"></span>
-<img src="slides/intro.pdf" alt="caption" width="85%" />
-<p class="caption">
-Figure 2.1: caption
-</p>
-</div>
+<p><embed src="slides/intro.pdf" /><!-- --></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="literature.html#cb6-1"></a>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;./slides/intro.pdf&quot;</span>)</span></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-5"></span>
-<img src="slides/intro.pdf" alt="caption" width="85%" />
-<p class="caption">
-Figure 2.2: caption
-</p>
-</div>
+<p><embed src="./slides/intro.pdf" /><!-- --></p>
 </div>
 <div id="video" class="section level2">
 <h2><span class="header-section-number">2.3</span> Video</h2>
@@ -213,7 +203,7 @@ Figure 2.2: caption
 <p>Here is a review of existing methods.</p>
 <p>Oh wow such many text!</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="literature.html#cb8-1"></a><span class="kw">paste</span>(<span class="st">&quot;File written on&quot;</span>, <span class="kw">Sys.time</span>())</span></code></pre></div>
-<pre><code>## [1] &quot;File written on 2020-12-01 13:34:42&quot;</code></pre>
+<pre><code>## [1] &quot;File written on 2020-12-01 13:41:45&quot;</code></pre>
 
 </div>
 </div>
