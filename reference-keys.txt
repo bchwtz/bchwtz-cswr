@@ -2,7 +2,6 @@ fig:nice-fig
 tab:nice-tab
 intro
 literature
-slides-html
 slides-pdf
 video
 lecture
