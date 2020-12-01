@@ -15,11 +15,14 @@ knitr::include_graphics("./slides/intro.pdf")
 ## Video
 
 ```{r}
-library("vembedr")
-embed_url("https://www.youtube.com/watch?v=uV4UpCq2azs")
+#library("vembedr")
+#embed_url("https://www.youtube.com/watch?v=uV4UpCq2azs")
 ```
 
-Video using library
+Video lalla
+
+[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)
+
 
 ## Lecture
 
