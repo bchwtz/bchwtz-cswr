@@ -5,6 +5,7 @@ intro
 literature
 slides-html
 slides-pdf
+video
 lecture
 methods
 applications
