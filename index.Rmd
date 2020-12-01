@@ -14,7 +14,7 @@ description: "Computational Statistics with R Course Notes"
 
 # Prerequisites {-}
 
-
+This is now a private REPO!
 
 
  

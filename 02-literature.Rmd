@@ -2,19 +2,19 @@
 
 ## Slides (PDF)
 
-```{r}
+```{r, fig.align='center', fig.height=4}
 knitr::include_graphics("slides/intro.pdf")
 ```
 
-![](slides/intro.pdf){width=100%}
+![](slides/intro.pdf){width=100%, height=400}
 
 Text under the slides.
 
 ## Video
 
-```{r}
+```{r, eval=F}
 library(vembedr)
-vembedr::embed_url("https://www.youtube.com/watch?v=uV4UpCq2azs") %>%
+vembedr::embed_youtube("uV4UpCq2azs", height = 400, ratio = "16by9") %>%
   use_start_time("1m32") %>%
   use_align("center")
 ```

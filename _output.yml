@@ -1,7 +1,7 @@
 bookdown::gitbook:
   css: style.css
+  split_by: section
   config:
-    split_by: section
     toc:
       before: |
         <li><a href="./"><b>Computational Statistics</b></a></li>
