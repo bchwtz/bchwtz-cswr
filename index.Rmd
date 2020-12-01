@@ -12,7 +12,9 @@ github-repo: bchwtz/bchwtz-smod
 description: "Computational Statistics with R Course Notes"
 ---
 
-# Prerequisites
+# Prerequisites {-}
+
+TEST 
 
 This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
 
