@@ -19,6 +19,7 @@ jobs:
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd","bookdown::gitbook")'
+      - name: Move Slide Directory
         run: [ -d "slides" ] && echo mv slides _book/.
       - uses: actions/upload-artifact@v1
         with:
