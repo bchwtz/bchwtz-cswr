@@ -1,46 +1,25 @@
 # Literature
 
-## Slides (HTML)
-
-```{r}
-knitr::include_url('https://timmastny.rbind.io/slides/first_presentation#1')
-```
-
 ## Slides (PDF)
 
 ```{r}
 knitr::include_graphics("slides/intro.pdf")
 ```
 
+![](slides/intro.pdf){width=100%}
 
-```{r}
-knitr::include_graphics("./slides/intro.pdf")
-```
+Text under the slides.
 
 ## Video
 
 ```{r}
-#library("vembedr")
-#embed_url("https://www.youtube.com/watch?v=uV4UpCq2azs")
+library(vembedr)
+vembedr::embed_url("https://www.youtube.com/watch?v=uV4UpCq2azs") %>%
+  use_start_time("1m32") %>%
+  use_align("center")
 ```
 
-Tricked Image
-
-[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)
-
-Normal
-
-![Watch the video](https://youtu.be/T-D1KVIuvjA)
-
-
-![](https://youtu.be/zNzZ1PfUDNk)
-
-![](https://www.youtube.com/watch?v=zNzZ1PfUDNk)
-
-![](https://vimeo.com/142172484)
-
-![](https://player.vimeo.com/video/142172484)
-
+Text under the Video.
 
 ## Lecture
 
