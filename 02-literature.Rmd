@@ -12,6 +12,11 @@ knitr::include_url('https://timmastny.rbind.io/slides/first_presentation#1')
 knitr::include_graphics("http://bchwtz.de/0-intro.pdf")
 ```
 
+## Video
+
+![](https://youtu.be/zNzZ1PfUDNk)
+
+This is text under a video
 
 ## Lecture
 
