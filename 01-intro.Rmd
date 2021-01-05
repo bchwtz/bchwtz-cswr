@@ -23,15 +23,6 @@ You can write citations, too. For example, we are using the **bookdown** package
 
 This is my test:
 
-# A collapsible section with markdown
-<details>
-  <summary>Click to expand!</summary>
-  
-  ## Heading
-  1. A numbered
-  2. list
-     * With some
-     * Sub bullets
-</details>
+
 
 
