@@ -1,6 +1,3 @@
-
-# (PART\*) Applied Programming {-} 
-
 # Word Puzzle
 
 ```{r, echo=FALSE, fig.cap=NULL, fig.align="center",out.width="60%"}
