@@ -40,7 +40,7 @@ Notice that the funciton call to `apply` takes three arguments, where `X` is the
 Remember that in R everything is a vector. Therefore, a matrix can be seen as a collection of line vectors when you cross the matrix from top to bottom (along `MARGIN=1`), or as a list of column vectors, spanning the matrix left to right (along `MARGIN=2`). The code in the above R chunk therefore translates directo to the instruction to: "apply the function sum to the matrix `mat` along the rows". Ursuprisingly this leads to  a vector containing the sums of the values of each row. Mathematically speaking we would expect a column vector here, while R outputs a line vector. As R does not differentiate here while outputting these on the console this makes no difference for this case. The following picture illustrates the process.
 
 ```{r, echo=FALSE, fig.cap=NULL, out.width="70%"}
-knitr::include_graphics("gfx/CH06-ApplyExample.png")
+#knitr::include_graphics("gfx/CH06-ApplyExample.png")
 ```
 
 ### lapply {-}
@@ -62,7 +62,7 @@ lapply(X=lst, FUN=sum)
 The following image shows the proces and illustrates how `lapply` works. As seen above the results are identical to the ones delivered by `apply` and the returned data structure is (as expected) a list.
 
 ```{r, echo=FALSE, fig.cap=NULL, out.width="50%"}
-knitr::include_graphics("gfx/CH06-LapplyExample.png")
+#knitr::include_graphics("gfx/CH06-LapplyExample.png")
 ```
 
 ### sapply {-}
@@ -132,7 +132,7 @@ tapply(X=df$value, INDEX = df$row, FUN = sum)
 The following figure illustrates the process of the previous function call.
 
 ```{r, echo=FALSE, fig.cap=NULL, out.width="50%"}
-knitr::include_graphics("gfx/CH06-TapplyExample.png")
+#knitr::include_graphics("gfx/CH06-TapplyExample.png")
 ```
 
 ### mapply {-}
