@@ -317,81 +317,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="if-and-else" class="section level3 unnumbered">
 <h3>If and Else</h3>
 <p>The most basic conditional expression is an <code>if</code>-statement. It is used to make expressions contingent on a certain condition and in R it has the following syntax.</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="conditional-expressions.html#cb439-1"></a><span class="cf">if</span> ( condition ) {</span>
-<span id="cb439-2"><a href="conditional-expressions.html#cb439-2"></a>  code  <span class="co"># Only executed if &#39;condition&#39; is TRUE</span></span>
-<span id="cb439-3"><a href="conditional-expressions.html#cb439-3"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="conditional-expressions.html#cb440-1"></a><span class="co"># A simple example</span></span>
-<span id="cb440-2"><a href="conditional-expressions.html#cb440-2"></a>x &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb440-3"><a href="conditional-expressions.html#cb440-3"></a><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
-<span id="cb440-4"><a href="conditional-expressions.html#cb440-4"></a>  <span class="kw">cat</span>(<span class="st">&quot;Hello World!&quot;</span>)</span>
-<span id="cb440-5"><a href="conditional-expressions.html#cb440-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="conditional-expressions.html#cb440-1"></a><span class="cf">if</span> ( condition ) {</span>
+<span id="cb440-2"><a href="conditional-expressions.html#cb440-2"></a>  code  <span class="co"># Only executed if &#39;condition&#39; is TRUE</span></span>
+<span id="cb440-3"><a href="conditional-expressions.html#cb440-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="conditional-expressions.html#cb441-1"></a><span class="co"># A simple example</span></span>
+<span id="cb441-2"><a href="conditional-expressions.html#cb441-2"></a>x &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb441-3"><a href="conditional-expressions.html#cb441-3"></a><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb441-4"><a href="conditional-expressions.html#cb441-4"></a>  <span class="kw">cat</span>(<span class="st">&quot;Hello World!&quot;</span>)</span>
+<span id="cb441-5"><a href="conditional-expressions.html#cb441-5"></a>}</span></code></pre></div>
 <pre><code>#R&gt; Hello World!</code></pre>
 <p>The condition is a set of commands that produce a single logical value namely <code>TRUE</code> or <code>FALSE</code> and the code in the body encapsulated by <code>{ }</code> is only executed if the condition is <code>TRUE</code>. If the first condition is not true it is possible to include an <code>else</code> statement which should be evaluated if the first condition cannot be fulfilled.</p>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="conditional-expressions.html#cb442-1"></a><span class="cf">if</span> ( condition ) {</span>
-<span id="cb442-2"><a href="conditional-expressions.html#cb442-2"></a>  code                    <span class="co"># Only executed if &#39;condition&#39; is TRUE</span></span>
-<span id="cb442-3"><a href="conditional-expressions.html#cb442-3"></a>} <span class="cf">else</span> {</span>
-<span id="cb442-4"><a href="conditional-expressions.html#cb442-4"></a>  alternate code          <span class="co"># Evaluated if &#39;condition&#39; is FALSE</span></span>
-<span id="cb442-5"><a href="conditional-expressions.html#cb442-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="conditional-expressions.html#cb443-1"></a><span class="cf">if</span> ( condition ) {</span>
+<span id="cb443-2"><a href="conditional-expressions.html#cb443-2"></a>  code                    <span class="co"># Only executed if &#39;condition&#39; is TRUE</span></span>
+<span id="cb443-3"><a href="conditional-expressions.html#cb443-3"></a>} <span class="cf">else</span> {</span>
+<span id="cb443-4"><a href="conditional-expressions.html#cb443-4"></a>  alternate code          <span class="co"># Evaluated if &#39;condition&#39; is FALSE</span></span>
+<span id="cb443-5"><a href="conditional-expressions.html#cb443-5"></a>}</span></code></pre></div>
 <p>There may be cases where two logical values are not enough to implement what you want. In this case, you can combine as many <code>if</code> clauses as you want with the statement <code>else if</code> and catch the rest of the cases (if none of your conditions is fulfilled) with a single <code>else</code> clause.</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="conditional-expressions.html#cb443-1"></a>x &lt;-<span class="st"> </span><span class="dv">314</span></span>
-<span id="cb443-2"><a href="conditional-expressions.html#cb443-2"></a></span>
-<span id="cb443-3"><a href="conditional-expressions.html#cb443-3"></a><span class="cf">if</span> ( x <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span> ) {</span>
-<span id="cb443-4"><a href="conditional-expressions.html#cb443-4"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a small number!&quot;</span>)</span>
-<span id="cb443-5"><a href="conditional-expressions.html#cb443-5"></a>} <span class="cf">else</span> <span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span> ) {</span>
-<span id="cb443-6"><a href="conditional-expressions.html#cb443-6"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a big number!&quot;</span>)  </span>
-<span id="cb443-7"><a href="conditional-expressions.html#cb443-7"></a>} <span class="cf">else</span> {</span>
-<span id="cb443-8"><a href="conditional-expressions.html#cb443-8"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is neither a big nor a small number!&quot;</span>)  </span>
-<span id="cb443-9"><a href="conditional-expressions.html#cb443-9"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="conditional-expressions.html#cb444-1"></a>x &lt;-<span class="st"> </span><span class="dv">314</span></span>
+<span id="cb444-2"><a href="conditional-expressions.html#cb444-2"></a></span>
+<span id="cb444-3"><a href="conditional-expressions.html#cb444-3"></a><span class="cf">if</span> ( x <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span> ) {</span>
+<span id="cb444-4"><a href="conditional-expressions.html#cb444-4"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a small number!&quot;</span>)</span>
+<span id="cb444-5"><a href="conditional-expressions.html#cb444-5"></a>} <span class="cf">else</span> <span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span> ) {</span>
+<span id="cb444-6"><a href="conditional-expressions.html#cb444-6"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a big number!&quot;</span>)  </span>
+<span id="cb444-7"><a href="conditional-expressions.html#cb444-7"></a>} <span class="cf">else</span> {</span>
+<span id="cb444-8"><a href="conditional-expressions.html#cb444-8"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is neither a big nor a small number!&quot;</span>)  </span>
+<span id="cb444-9"><a href="conditional-expressions.html#cb444-9"></a>}</span></code></pre></div>
 <pre><code>#R&gt; X is a big number!</code></pre>
 <p>When using logical operators it may be better to use double symbol notation <code>&amp;&amp;</code> rather than single symbol notation <code>&amp;</code> (same with logical OR). The reason for this is because the double symbol notation evaluates the condition step by step from left to right and aborts and returns a value if a <code>FALSE</code> is found. This makes the execution of the code much more efficient, faster and so the way to go. However one should carefully check the evaluated expressions in order to avoid errors which can easily sneak in here.</p>
 <p>There is a good reason that conditional expressions heavily rely on the usage of the word <code>else</code>. It seems that everything can be solved using <code>if</code>s only. While this is (sometimes) possible it is not advisable. Normally conditional expressions are mutually exclusive choices so that code can easily get confusing or erroneous. Let us consider the following example which would work perfectly fine and make much more sense with added <code>else</code>s.</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="conditional-expressions.html#cb445-1"></a><span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span> ){</span>
-<span id="cb445-2"><a href="conditional-expressions.html#cb445-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a big number!&quot;</span>)</span>
-<span id="cb445-3"><a href="conditional-expressions.html#cb445-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="conditional-expressions.html#cb446-1"></a><span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span> ){</span>
+<span id="cb446-2"><a href="conditional-expressions.html#cb446-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a big number!&quot;</span>)</span>
+<span id="cb446-3"><a href="conditional-expressions.html#cb446-3"></a>}</span></code></pre></div>
 <pre><code>#R&gt; X is a big number!</code></pre>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="conditional-expressions.html#cb447-1"></a><span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span> ){</span>
-<span id="cb447-2"><a href="conditional-expressions.html#cb447-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a moderate number!&quot;</span>)</span>
-<span id="cb447-3"><a href="conditional-expressions.html#cb447-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="conditional-expressions.html#cb448-1"></a><span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span> ){</span>
+<span id="cb448-2"><a href="conditional-expressions.html#cb448-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a moderate number!&quot;</span>)</span>
+<span id="cb448-3"><a href="conditional-expressions.html#cb448-3"></a>}</span></code></pre></div>
 <pre><code>#R&gt; X is a moderate number!</code></pre>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="conditional-expressions.html#cb449-1"></a><span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> ){</span>
-<span id="cb449-2"><a href="conditional-expressions.html#cb449-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a small number&quot;</span>)</span>
-<span id="cb449-3"><a href="conditional-expressions.html#cb449-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="conditional-expressions.html#cb450-1"></a><span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> ){</span>
+<span id="cb450-2"><a href="conditional-expressions.html#cb450-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a small number&quot;</span>)</span>
+<span id="cb450-3"><a href="conditional-expressions.html#cb450-3"></a>}</span></code></pre></div>
 <pre><code>#R&gt; X is a small number</code></pre>
 <p>Another point to discuss is accuracy. When comparing objects in a setting such as the one discussed here, it is often better to use the functions <code>isTRUE()</code> or <code>!isTRUE()</code> rather than the combination of a logical operator and a logical value like <code>T ==</code> and <code>T !=</code> to evaluate a condition. This is due to the fact that conditional expressions, as well as conditional clauses, only work if there is a single (!!!) logical value provided, which can be enforced using functions that always return only a single value. One of the pitfalls are problems related to the precision of the calculations. Precision problems as the following one can also be solved using the function <code>all.equal()</code> which allows to set a <code>tolerance</code> argument and evens out the small precision problems in floating point calculations.</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="conditional-expressions.html#cb451-1"></a>num1 &lt;-<span class="st"> </span><span class="fl">0.2</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.1</span></span>
-<span id="cb451-2"><a href="conditional-expressions.html#cb451-2"></a>num2 &lt;-<span class="st"> </span><span class="fl">0.3</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.2</span></span>
-<span id="cb451-3"><a href="conditional-expressions.html#cb451-3"></a></span>
-<span id="cb451-4"><a href="conditional-expressions.html#cb451-4"></a>num1 <span class="op">==</span><span class="st"> </span>num2</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="conditional-expressions.html#cb452-1"></a>num1 &lt;-<span class="st"> </span><span class="fl">0.2</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.1</span></span>
+<span id="cb452-2"><a href="conditional-expressions.html#cb452-2"></a>num2 &lt;-<span class="st"> </span><span class="fl">0.3</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.2</span></span>
+<span id="cb452-3"><a href="conditional-expressions.html#cb452-3"></a></span>
+<span id="cb452-4"><a href="conditional-expressions.html#cb452-4"></a>num1 <span class="op">==</span><span class="st"> </span>num2</span></code></pre></div>
 <pre><code>#R&gt; [1] FALSE</code></pre>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="conditional-expressions.html#cb453-1"></a><span class="kw">all.equal</span>(num1 , num2 , <span class="dt">tolerance=</span><span class="dv">10</span><span class="op">^-</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="conditional-expressions.html#cb454-1"></a><span class="kw">all.equal</span>(num1 , num2 , <span class="dt">tolerance=</span><span class="dv">10</span><span class="op">^-</span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>#R&gt; [1] TRUE</code></pre>
 <p>As speed is one of the most important things about programming and vectorized commands are pretty fast, there is also a vectorized <code>if/else</code> version in R.</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="conditional-expressions.html#cb455-1"></a><span class="kw">ifelse</span>( condition , ifTRUE , ifFALSE)        <span class="co"># This is really fast!</span></span></code></pre></div>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="conditional-expressions.html#cb456-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
-<span id="cb456-2"><a href="conditional-expressions.html#cb456-2"></a><span class="kw">ifelse</span>( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> , x<span class="op">^</span><span class="dv">2</span> , <span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="conditional-expressions.html#cb456-1"></a><span class="kw">ifelse</span>( condition , ifTRUE , ifFALSE)        <span class="co"># This is really fast!</span></span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="conditional-expressions.html#cb457-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
+<span id="cb457-2"><a href="conditional-expressions.html#cb457-2"></a><span class="kw">ifelse</span>( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> , x<span class="op">^</span><span class="dv">2</span> , <span class="ot">FALSE</span>)</span></code></pre></div>
 <pre><code>#R&gt; [1] 0 4 9</code></pre>
 </div>
 <div id="switch" class="section level3 unnumbered">
 <h3>Switch</h3>
 <p>If you are using a lot of <code>if/else</code> constructs in your code this may get a little bit crowded and probably messy. R provides also a statement called <code>switch()</code> to return values contingent on a certain expression. This is also faster than combining lots of <code>if</code>-statements in your code but usually not as fast as the vectorized <code>ifelse()</code>.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="conditional-expressions.html#cb458-1"></a><span class="cf">switch</span>( statement , case1 , case2 , ... )    <span class="co"># Basic syntax</span></span></code></pre></div>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="conditional-expressions.html#cb459-1"></a><span class="co"># Example if &#39;statement&#39; is numeric</span></span>
-<span id="cb459-2"><a href="conditional-expressions.html#cb459-2"></a>x &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb459-3"><a href="conditional-expressions.html#cb459-3"></a><span class="cf">switch</span>(x,<span class="st">&quot;one&quot;</span>,<span class="st">&quot;two&quot;</span>,<span class="st">&quot;three&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="conditional-expressions.html#cb459-1"></a><span class="cf">switch</span>( statement , case1 , case2 , ... )    <span class="co"># Basic syntax</span></span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="conditional-expressions.html#cb460-1"></a><span class="co"># Example if &#39;statement&#39; is numeric</span></span>
+<span id="cb460-2"><a href="conditional-expressions.html#cb460-2"></a>x &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb460-3"><a href="conditional-expressions.html#cb460-3"></a><span class="cf">switch</span>(x,<span class="st">&quot;one&quot;</span>,<span class="st">&quot;two&quot;</span>,<span class="st">&quot;three&quot;</span>)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;two&quot;</code></pre>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="conditional-expressions.html#cb461-1"></a><span class="co"># Example if &#39;statement&#39; is a string</span></span>
-<span id="cb461-2"><a href="conditional-expressions.html#cb461-2"></a>x &lt;-<span class="st"> &quot;mean&quot;</span></span>
-<span id="cb461-3"><a href="conditional-expressions.html#cb461-3"></a>data &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> , <span class="dv">5</span> , <span class="fl">7.5</span>)</span>
-<span id="cb461-4"><a href="conditional-expressions.html#cb461-4"></a><span class="cf">switch</span>(x,<span class="st">&quot;sd&quot;</span>=<span class="kw">sd</span>(data),<span class="st">&quot;median&quot;</span>=<span class="kw">median</span>(data),<span class="st">&quot;mean&quot;</span>=<span class="kw">mean</span>(data))</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="conditional-expressions.html#cb462-1"></a><span class="co"># Example if &#39;statement&#39; is a string</span></span>
+<span id="cb462-2"><a href="conditional-expressions.html#cb462-2"></a>x &lt;-<span class="st"> &quot;mean&quot;</span></span>
+<span id="cb462-3"><a href="conditional-expressions.html#cb462-3"></a>data &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> , <span class="dv">5</span> , <span class="fl">7.5</span>)</span>
+<span id="cb462-4"><a href="conditional-expressions.html#cb462-4"></a><span class="cf">switch</span>(x,<span class="st">&quot;sd&quot;</span>=<span class="kw">sd</span>(data),<span class="st">&quot;median&quot;</span>=<span class="kw">median</span>(data),<span class="st">&quot;mean&quot;</span>=<span class="kw">mean</span>(data))</span></code></pre></div>
 <pre><code>#R&gt; [1] 4.5</code></pre>
 <p>If the provided <code>statement</code> is a number then R returns the <code>case</code> with the matching index. If the <code>statement</code> is of type string, then R tries to match the statements and executes the code listed there. Using strings as a statement and formatting your code in a structured way you can receive the same appearance and feeling like you would with <code>switch-case</code>-statements in other programming languages.</p>
 <p>The following code block shows alternative formatting (just some additional curly braces, spaces, and newlines) that create a look similar to other programming languages such as C or Java. However, one should be careful with switch as the behavior is not always totally intuitive as the following example shows.</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="conditional-expressions.html#cb463-1"></a>usertype &lt;-<span class="st"> &quot;caseXX&quot;</span></span>
-<span id="cb463-2"><a href="conditional-expressions.html#cb463-2"></a><span class="cf">switch</span>(usertype, </span>
-<span id="cb463-3"><a href="conditional-expressions.html#cb463-3"></a>       <span class="dt">case1 =</span> { <span class="dv">1</span> }, </span>
-<span id="cb463-4"><a href="conditional-expressions.html#cb463-4"></a>       <span class="dt">case2 =</span> , </span>
-<span id="cb463-5"><a href="conditional-expressions.html#cb463-5"></a>       <span class="dt">case3 =</span> {<span class="fl">2.5</span>},</span>
-<span id="cb463-6"><a href="conditional-expressions.html#cb463-6"></a>       <span class="dv">99</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="conditional-expressions.html#cb464-1"></a>usertype &lt;-<span class="st"> &quot;caseXX&quot;</span></span>
+<span id="cb464-2"><a href="conditional-expressions.html#cb464-2"></a><span class="cf">switch</span>(usertype, </span>
+<span id="cb464-3"><a href="conditional-expressions.html#cb464-3"></a>       <span class="dt">case1 =</span> { <span class="dv">1</span> }, </span>
+<span id="cb464-4"><a href="conditional-expressions.html#cb464-4"></a>       <span class="dt">case2 =</span> , </span>
+<span id="cb464-5"><a href="conditional-expressions.html#cb464-5"></a>       <span class="dt">case3 =</span> {<span class="fl">2.5</span>},</span>
+<span id="cb464-6"><a href="conditional-expressions.html#cb464-6"></a>       <span class="dv">99</span>)</span></code></pre></div>
 <pre><code>#R&gt; [1] 99</code></pre>
 <p>This maps <code>case2</code> to the value defined in <code>case3</code> and additionally supplies and unnamed default value <code>99</code> for cases that are not defined or cannot be matched. If there is more than one match, the first matching element is used. For more information, try <code>?switch</code>. Despite being special in some cases <code>switch</code> is usually faster than a lot of <code>if</code> and <code>else</code> statements and keeps your code more organized.</p>
 </div>

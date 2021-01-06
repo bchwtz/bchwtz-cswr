@@ -317,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="coercion" class="section level3">
 <h3><span class="header-section-number">2.8.1</span> Coercion</h3>
 <p>We have already seen that R coerces data types sometimes automatically. That makes it possible to calculate the sum of a vector consisting of logical values, which basically tells you how many elements with value <code>TRUE</code> are present. R has strict rules on how it behaves when coercing data types. If a string is present in a vector everything will be converted to strings. When there are only logicals and numbers in a vector R converts the logicals to their numeric value, so that every <code>TRUE</code> becomes 1 and every <code>FALSE</code> becomes a 0. The main corresponding goal here is to not lose information but conserve it at the cost of memory requirements and compatibility. A graphical representation is shown in the following figure.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-77"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-78"></span>
 <img src="gfx/CH02-Coercion.png" alt="Coercion Cycle and Coercion Rules" width="100%" />
 <p class="caption">
 Figure 2.1: Coercion Cycle and Coercion Rules
@@ -328,37 +328,37 @@ Figure 2.1: Coercion Cycle and Coercion Rules
 <div id="attributes-and-names" class="section level3">
 <h3><span class="header-section-number">2.8.2</span> Attributes and Names</h3>
 <p>Attributes are R’s interpretation of metadata. They can be attached to any type of object but won’t affect your calculation or other operations and they won’t be displayed when you display the object. That makes it very convenient to store a description or any additional information you want to handover with your object. Of course, you can access the attributes within functions which allows you to perform special tasks if a data has given attributes. Here is how you assign and display attributes.</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="coercion-attributes-and-class.html#cb285-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></span>
-<span id="cb285-2"><a href="coercion-attributes-and-class.html#cb285-2"></a><span class="kw">attributes</span>(x)            <span class="co"># A simple numeric vector has no attributes</span></span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="coercion-attributes-and-class.html#cb286-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></span>
+<span id="cb286-2"><a href="coercion-attributes-and-class.html#cb286-2"></a><span class="kw">attributes</span>(x)            <span class="co"># A simple numeric vector has no attributes</span></span></code></pre></div>
 <pre><code>#R&gt; NULL</code></pre>
 <p>As you can see above, the result that is being returned is <code>NULL</code>, which is neither equivalent to 0 nor <code>NA</code>. <code>NULL</code> is short for the <code>NULL</code>-Pointer which is a computer scientists term for an empty set <span class="math inline">\(\{\varnothing\}\)</span>. Every time <code>R</code> returns <code>NULL</code> it just wants to express that there is nothing there.</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="coercion-attributes-and-class.html#cb287-1"></a>description  &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Description =</span> <span class="st">&quot;Simple numerical vector&quot;</span>)</span>
-<span id="cb287-2"><a href="coercion-attributes-and-class.html#cb287-2"></a><span class="kw">attributes</span>(x) &lt;-<span class="st"> </span>description</span>
-<span id="cb287-3"><a href="coercion-attributes-and-class.html#cb287-3"></a></span>
-<span id="cb287-4"><a href="coercion-attributes-and-class.html#cb287-4"></a><span class="kw">attributes</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="coercion-attributes-and-class.html#cb288-1"></a>description  &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Description =</span> <span class="st">&quot;Simple numerical vector&quot;</span>)</span>
+<span id="cb288-2"><a href="coercion-attributes-and-class.html#cb288-2"></a><span class="kw">attributes</span>(x) &lt;-<span class="st"> </span>description</span>
+<span id="cb288-3"><a href="coercion-attributes-and-class.html#cb288-3"></a></span>
+<span id="cb288-4"><a href="coercion-attributes-and-class.html#cb288-4"></a><span class="kw">attributes</span>(x)</span></code></pre></div>
 <pre><code>#R&gt; $Description
 #R&gt; [1] &quot;Simple numerical vector&quot;</code></pre>
 <p>Another form of adding descriptive information to your data is by using the <code>names()</code> function. This is useful for datasets and you can imagine this as a header for your data. This is by far the most common way to enrich data in R. With names it is the same as with other attributes. They won’t affect the behavior of the vector meaning you can still perform all calculations</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="coercion-attributes-and-class.html#cb289-1"></a><span class="kw">names</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="coercion-attributes-and-class.html#cb290-1"></a><span class="kw">names</span>(x)</span></code></pre></div>
 <pre><code>#R&gt; NULL</code></pre>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="coercion-attributes-and-class.html#cb291-1"></a><span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;one&quot;</span>,<span class="st">&quot;two&quot;</span>,<span class="st">&quot;three&quot;</span>,<span class="st">&quot;four&quot;</span>,<span class="st">&quot;five&quot;</span>)</span>
-<span id="cb291-2"><a href="coercion-attributes-and-class.html#cb291-2"></a></span>
-<span id="cb291-3"><a href="coercion-attributes-and-class.html#cb291-3"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="coercion-attributes-and-class.html#cb292-1"></a><span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;one&quot;</span>,<span class="st">&quot;two&quot;</span>,<span class="st">&quot;three&quot;</span>,<span class="st">&quot;four&quot;</span>,<span class="st">&quot;five&quot;</span>)</span>
+<span id="cb292-2"><a href="coercion-attributes-and-class.html#cb292-2"></a></span>
+<span id="cb292-3"><a href="coercion-attributes-and-class.html#cb292-3"></a>x</span></code></pre></div>
 <pre><code>#R&gt;   one   two three  four  five 
 #R&gt;     1     2     3     4     5 
 #R&gt; attr(,&quot;Description&quot;)
 #R&gt; [1] &quot;Simple numerical vector&quot;</code></pre>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="coercion-attributes-and-class.html#cb293-1"></a>x &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb293-2"><a href="coercion-attributes-and-class.html#cb293-2"></a></span>
-<span id="cb293-3"><a href="coercion-attributes-and-class.html#cb293-3"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="coercion-attributes-and-class.html#cb294-1"></a>x &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb294-2"><a href="coercion-attributes-and-class.html#cb294-2"></a></span>
+<span id="cb294-3"><a href="coercion-attributes-and-class.html#cb294-3"></a>x</span></code></pre></div>
 <pre><code>#R&gt;   one   two three  four  five 
 #R&gt;     1     4     9    16    25 
 #R&gt; attr(,&quot;Description&quot;)
 #R&gt; [1] &quot;Simple numerical vector&quot;</code></pre>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="coercion-attributes-and-class.html#cb295-1"></a><span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="ot">NULL</span>         <span class="co"># To delete names set them to NULL</span></span>
-<span id="cb295-2"><a href="coercion-attributes-and-class.html#cb295-2"></a>x &lt;-<span class="st"> </span><span class="kw">unname</span>(x)           <span class="co"># Alternative way to remove the names</span></span>
-<span id="cb295-3"><a href="coercion-attributes-and-class.html#cb295-3"></a></span>
-<span id="cb295-4"><a href="coercion-attributes-and-class.html#cb295-4"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="coercion-attributes-and-class.html#cb296-1"></a><span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="ot">NULL</span>         <span class="co"># To delete names set them to NULL</span></span>
+<span id="cb296-2"><a href="coercion-attributes-and-class.html#cb296-2"></a>x &lt;-<span class="st"> </span><span class="kw">unname</span>(x)           <span class="co"># Alternative way to remove the names</span></span>
+<span id="cb296-3"><a href="coercion-attributes-and-class.html#cb296-3"></a></span>
+<span id="cb296-4"><a href="coercion-attributes-and-class.html#cb296-4"></a>x</span></code></pre></div>
 <pre><code>#R&gt; [1]  1  4  9 16 25
 #R&gt; attr(,&quot;Description&quot;)
 #R&gt; [1] &quot;Simple numerical vector&quot;</code></pre>
@@ -366,19 +366,19 @@ Figure 2.1: Coercion Cycle and Coercion Rules
 <div id="class" class="section level3">
 <h3><span class="header-section-number">2.8.3</span> Class</h3>
 <p>A class in R is a property assigned to an object that describes the type of stored data in some way. Classes are used to control how generic functions like <code>summary()</code> behave. It is not a mutually exclusive classification. If an object has no specific class assigned to it, such as a simple numeric vector, its class is usually the same as its mode. If you transform data e.g. from a vector to a matrix, R will automatically change the class attribute.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="coercion-attributes-and-class.html#cb297-1"></a>num &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
-<span id="cb297-2"><a href="coercion-attributes-and-class.html#cb297-2"></a><span class="kw">class</span>(num)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="coercion-attributes-and-class.html#cb298-1"></a>num &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb298-2"><a href="coercion-attributes-and-class.html#cb298-2"></a><span class="kw">class</span>(num)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="coercion-attributes-and-class.html#cb299-1"></a><span class="kw">typeof</span>(num) <span class="op">==</span><span class="st"> </span><span class="kw">class</span>(num)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="coercion-attributes-and-class.html#cb300-1"></a><span class="kw">typeof</span>(num) <span class="op">==</span><span class="st"> </span><span class="kw">class</span>(num)</span></code></pre></div>
 <pre><code>#R&gt; [1] TRUE</code></pre>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="coercion-attributes-and-class.html#cb301-1"></a>mod &lt;-<span class="st"> </span><span class="kw">lm</span>(wage <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>education)  <span class="co"># Regression from previous chapter</span></span>
-<span id="cb301-2"><a href="coercion-attributes-and-class.html#cb301-2"></a><span class="kw">class</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="coercion-attributes-and-class.html#cb302-1"></a>mod &lt;-<span class="st"> </span><span class="kw">lm</span>(wage <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>education)  <span class="co"># Regression from previous chapter</span></span>
+<span id="cb302-2"><a href="coercion-attributes-and-class.html#cb302-2"></a><span class="kw">class</span>(mod)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;lm&quot;</code></pre>
 <p>When summarizing the objects <code>mod</code> with the linear model inside and the numeric vector <code>num</code> one can easily see that different outputs, dependent on the class of the objects, are produced. The same mechanism can also be used to define own generic functions and dynamically and conveniently control their behavior.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="coercion-attributes-and-class.html#cb303-1"></a><span class="kw">summary</span>(num)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="coercion-attributes-and-class.html#cb304-1"></a><span class="kw">summary</span>(num)</span></code></pre></div>
 <pre><code>#R&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 #R&gt;    1.00    3.25    5.50    5.50    7.75   10.00</code></pre>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="coercion-attributes-and-class.html#cb305-1"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="coercion-attributes-and-class.html#cb306-1"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
 <pre><code>#R&gt; 
 #R&gt; Call:
 #R&gt; lm(formula = wage ~ 1 + education)

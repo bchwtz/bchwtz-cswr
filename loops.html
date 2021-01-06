@@ -319,42 +319,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3>For-Loop</h3>
 <p><img src="gfx/gif/forLoop.gif" width="70%" style="display: block; margin: auto;" /></p>
 <p>A <code>for</code> loop runs specified code a fixed number of times. Therefore, you have to know in advance how often the code in the body of the loop should be executed. The <code>for</code> loop has the following general form.</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="loops.html#cb465-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> vector){           <span class="co"># Basic syntax</span></span>
-<span id="cb465-2"><a href="loops.html#cb465-2"></a>  code</span>
-<span id="cb465-3"><a href="loops.html#cb465-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="loops.html#cb466-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> vector){           <span class="co"># Basic syntax</span></span>
+<span id="cb466-2"><a href="loops.html#cb466-2"></a>  code</span>
+<span id="cb466-3"><a href="loops.html#cb466-3"></a>}</span></code></pre></div>
 <p>The typical iterator variable <code>i</code> that is commonly used in other programming languages should be avoided in R because it is already a reserved word for the imaginary unit when working with complex numbers. Common workarounds are using <code>it</code> (short for iterator), <code>ii</code> (just doubled to avoid using the reserved word) or <code>idx</code> (abbreviation for iteration index).</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="loops.html#cb466-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
-<span id="cb466-2"><a href="loops.html#cb466-2"></a><span class="cf">for</span> ( idx <span class="cf">in</span> x) {</span>
-<span id="cb466-3"><a href="loops.html#cb466-3"></a>  <span class="kw">print</span>(idx)</span>
-<span id="cb466-4"><a href="loops.html#cb466-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="loops.html#cb467-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
+<span id="cb467-2"><a href="loops.html#cb467-2"></a><span class="cf">for</span> ( idx <span class="cf">in</span> x) {</span>
+<span id="cb467-3"><a href="loops.html#cb467-3"></a>  <span class="kw">print</span>(idx)</span>
+<span id="cb467-4"><a href="loops.html#cb467-4"></a>}</span></code></pre></div>
 </div>
 <div id="while-loop" class="section level3 unnumbered">
 <h3>While-Loop</h3>
 <p><img src="gfx/gif/whileLoop.gif" width="70%" style="display: block; margin: auto;" /></p>
 <p>The <code>while</code> loop loops until the specified condition is false. It is often used when you do not know and can not calculate in advance how often the instructions will be executed. It has the following general form.</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="loops.html#cb467-1"></a><span class="cf">while</span> ( condition ){          <span class="co"># Basic syntax</span></span>
-<span id="cb467-2"><a href="loops.html#cb467-2"></a>  code</span>
-<span id="cb467-3"><a href="loops.html#cb467-3"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="loops.html#cb468-1"></a>idx &lt;-<span class="st"> </span><span class="dv">6</span></span>
-<span id="cb468-2"><a href="loops.html#cb468-2"></a><span class="cf">while</span> ( idx <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span> ){</span>
-<span id="cb468-3"><a href="loops.html#cb468-3"></a>  <span class="kw">print</span>(idx)</span>
-<span id="cb468-4"><a href="loops.html#cb468-4"></a>  idx &lt;-<span class="st"> </span>idx <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span>
-<span id="cb468-5"><a href="loops.html#cb468-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="loops.html#cb468-1"></a><span class="cf">while</span> ( condition ){          <span class="co"># Basic syntax</span></span>
+<span id="cb468-2"><a href="loops.html#cb468-2"></a>  code</span>
+<span id="cb468-3"><a href="loops.html#cb468-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="loops.html#cb469-1"></a>idx &lt;-<span class="st"> </span><span class="dv">6</span></span>
+<span id="cb469-2"><a href="loops.html#cb469-2"></a><span class="cf">while</span> ( idx <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span> ){</span>
+<span id="cb469-3"><a href="loops.html#cb469-3"></a>  <span class="kw">print</span>(idx)</span>
+<span id="cb469-4"><a href="loops.html#cb469-4"></a>  idx &lt;-<span class="st"> </span>idx <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb469-5"><a href="loops.html#cb469-5"></a>}</span></code></pre></div>
 </div>
 <div id="repeat" class="section level3 unnumbered">
 <h3>Repeat</h3>
 <p>The <code>repeat</code> loop is somehow similar to the while loop. The <code>while</code> loop starts a new run every time the condition is evaluated as <code>TRUE</code> while the <code>repeat</code> loop will always begin a new run and will only stop if it is told to do so with the <code>break</code> command. This means you can explicitly control which part of the loop should be executed and when the execution should be stopped.</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="loops.html#cb469-1"></a>counter &lt;-<span class="st"> </span><span class="dv">0</span>                  <span class="co"># Counter variable to count loops</span></span>
-<span id="cb469-2"><a href="loops.html#cb469-2"></a></span>
-<span id="cb469-3"><a href="loops.html#cb469-3"></a><span class="cf">repeat</span>{                       <span class="co"># Repeat does not need a condition</span></span>
-<span id="cb469-4"><a href="loops.html#cb469-4"></a>  x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>)</span>
-<span id="cb469-5"><a href="loops.html#cb469-5"></a>  counter &lt;-<span class="st"> </span>counter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb469-6"><a href="loops.html#cb469-6"></a>  <span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>) {</span>
-<span id="cb469-7"><a href="loops.html#cb469-7"></a>    <span class="kw">print</span>(counter)</span>
-<span id="cb469-8"><a href="loops.html#cb469-8"></a>    <span class="kw">print</span>(x)</span>
-<span id="cb469-9"><a href="loops.html#cb469-9"></a>    <span class="cf">break</span> </span>
-<span id="cb469-10"><a href="loops.html#cb469-10"></a>  }</span>
-<span id="cb469-11"><a href="loops.html#cb469-11"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="loops.html#cb470-1"></a>counter &lt;-<span class="st"> </span><span class="dv">0</span>                  <span class="co"># Counter variable to count loops</span></span>
+<span id="cb470-2"><a href="loops.html#cb470-2"></a></span>
+<span id="cb470-3"><a href="loops.html#cb470-3"></a><span class="cf">repeat</span>{                       <span class="co"># Repeat does not need a condition</span></span>
+<span id="cb470-4"><a href="loops.html#cb470-4"></a>  x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb470-5"><a href="loops.html#cb470-5"></a>  counter &lt;-<span class="st"> </span>counter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb470-6"><a href="loops.html#cb470-6"></a>  <span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>) {</span>
+<span id="cb470-7"><a href="loops.html#cb470-7"></a>    <span class="kw">print</span>(counter)</span>
+<span id="cb470-8"><a href="loops.html#cb470-8"></a>    <span class="kw">print</span>(x)</span>
+<span id="cb470-9"><a href="loops.html#cb470-9"></a>    <span class="cf">break</span> </span>
+<span id="cb470-10"><a href="loops.html#cb470-10"></a>  }</span>
+<span id="cb470-11"><a href="loops.html#cb470-11"></a>}</span></code></pre></div>
 </div>
 <div id="break-and-next" class="section level3 unnumbered">
 <h3>Break and Next</h3>
@@ -362,46 +362,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We have already seen that <code>break</code> is able to abort the <code>repeat</code>-loop, but it is much more powerful and can break any of the discussed loops directly. Even if you can use <code>break</code> to abort loops on certain conditions this is a bad habit. It is always better to know when and how a loop should end and do this via the condition or by predefining the number of loops using the <code>for</code> loop.</p>
 <p><img src="gfx/gif/nextLoop.gif" width="70%" style="display: block; margin: auto;" /></p>
 <p>The <code>next</code> command is used to skip the following statements and if used in a loop it will increment the loop variable (<code>idx</code> in the <code>for</code> loop example). Here is a simple example to illustrate how both are working.</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="loops.html#cb470-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</span>
-<span id="cb470-2"><a href="loops.html#cb470-2"></a>  x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>)</span>
-<span id="cb470-3"><a href="loops.html#cb470-3"></a>  <span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) <span class="cf">next</span></span>
-<span id="cb470-4"><a href="loops.html#cb470-4"></a>  <span class="kw">print</span>(x)</span>
-<span id="cb470-5"><a href="loops.html#cb470-5"></a>  <span class="cf">if</span> ( <span class="kw">abs</span>(x) <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>) <span class="cf">break</span>    <span class="co"># Break should normally be avoided</span></span>
-<span id="cb470-6"><a href="loops.html#cb470-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="loops.html#cb471-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</span>
+<span id="cb471-2"><a href="loops.html#cb471-2"></a>  x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb471-3"><a href="loops.html#cb471-3"></a>  <span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) <span class="cf">next</span></span>
+<span id="cb471-4"><a href="loops.html#cb471-4"></a>  <span class="kw">print</span>(x)</span>
+<span id="cb471-5"><a href="loops.html#cb471-5"></a>  <span class="cf">if</span> ( <span class="kw">abs</span>(x) <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>) <span class="cf">break</span>    <span class="co"># Break should normally be avoided</span></span>
+<span id="cb471-6"><a href="loops.html#cb471-6"></a>}</span></code></pre></div>
 <p>Generally one can say that loops in R are pretty slow and in most of the cases drastically slow down your code. Therefore, where possible <em>loops should be avoided</em>! In most of the cases it is much better (and faster!) to use vectorized functions like <code>apply()</code>, <code>sapply()</code> or <code>tapply()</code>.</p>
 </div>
 <div id="special-looping-over-non-numerical-data" class="section level3 unnumbered">
 <h3>Special: Looping over non-numerical data</h3>
 <p>R does not exactly support looping over non-numerical data, but it may be useful sometimes and of course, there are a few ways to accomplish this. The first one is using a function of R’s mighty <code>apply()</code>-family. In this case <code>lapply()</code> is the way to go if the performed and desired loops are independent of each other and it is allowed to process them in any order.</p>
 <p>Another option is using the function <code>get()</code>. In fact, the purpose is straight forward and sounds very simple. It takes a character string as an argument and returns the object of that name. Here is a short example of how to calculate the mean of three vectors.</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="loops.html#cb471-1"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb471-2"><a href="loops.html#cb471-2"></a>y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)</span>
-<span id="cb471-3"><a href="loops.html#cb471-3"></a>z &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000000</span>)</span>
-<span id="cb471-4"><a href="loops.html#cb471-4"></a></span>
-<span id="cb471-5"><a href="loops.html#cb471-5"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>,<span class="st">&quot;z&quot;</span>)) {</span>
-<span id="cb471-6"><a href="loops.html#cb471-6"></a>  vec &lt;-<span class="st"> </span><span class="kw">get</span>(idx)</span>
-<span id="cb471-7"><a href="loops.html#cb471-7"></a>  <span class="kw">print</span>(<span class="kw">mean</span>(vec))</span>
-<span id="cb471-8"><a href="loops.html#cb471-8"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="loops.html#cb472-1"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb472-2"><a href="loops.html#cb472-2"></a>y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb472-3"><a href="loops.html#cb472-3"></a>z &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000000</span>)</span>
+<span id="cb472-4"><a href="loops.html#cb472-4"></a></span>
+<span id="cb472-5"><a href="loops.html#cb472-5"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>,<span class="st">&quot;z&quot;</span>)) {</span>
+<span id="cb472-6"><a href="loops.html#cb472-6"></a>  vec &lt;-<span class="st"> </span><span class="kw">get</span>(idx)</span>
+<span id="cb472-7"><a href="loops.html#cb472-7"></a>  <span class="kw">print</span>(<span class="kw">mean</span>(vec))</span>
+<span id="cb472-8"><a href="loops.html#cb472-8"></a>}</span></code></pre></div>
 <pre><code>#R&gt; [1] -0.452227
 #R&gt; [1] -0.02234161
 #R&gt; [1] -0.001333537</code></pre>
 <p>This simple example may give you an idea of how powerful the <code>get()</code>-function is. Try to imagine how flexible and powerful a routine written with the combination of <code>get()</code> and <code>paste()</code> can be. This does, however, not cover all possible cases, for example, if you want to loop over the elements of a list by name, the above example using <code>get()</code> won’t work.</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="loops.html#cb473-1"></a>list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x=</span>x,</span>
-<span id="cb473-2"><a href="loops.html#cb473-2"></a>             <span class="dt">y=</span>y,</span>
-<span id="cb473-3"><a href="loops.html#cb473-3"></a>             <span class="dt">z=</span>z)</span>
-<span id="cb473-4"><a href="loops.html#cb473-4"></a></span>
-<span id="cb473-5"><a href="loops.html#cb473-5"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">names</span>(list)){</span>
-<span id="cb473-6"><a href="loops.html#cb473-6"></a>  <span class="kw">print</span>(list<span class="op">$</span>idx)               </span>
-<span id="cb473-7"><a href="loops.html#cb473-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="loops.html#cb474-1"></a>list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x=</span>x,</span>
+<span id="cb474-2"><a href="loops.html#cb474-2"></a>             <span class="dt">y=</span>y,</span>
+<span id="cb474-3"><a href="loops.html#cb474-3"></a>             <span class="dt">z=</span>z)</span>
+<span id="cb474-4"><a href="loops.html#cb474-4"></a></span>
+<span id="cb474-5"><a href="loops.html#cb474-5"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">names</span>(list)){</span>
+<span id="cb474-6"><a href="loops.html#cb474-6"></a>  <span class="kw">print</span>(list<span class="op">$</span>idx)               </span>
+<span id="cb474-7"><a href="loops.html#cb474-7"></a>}</span></code></pre></div>
 <pre><code>#R&gt; NULL
 #R&gt; NULL
 #R&gt; NULL</code></pre>
 <p>Of course there is a way to force R looping over the names and fetch the data. To achieve this you have to construct a string and then make R evaluate this string using the command <code>eval()</code>.</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="loops.html#cb475-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">names</span>(list)){</span>
-<span id="cb475-2"><a href="loops.html#cb475-2"></a>  string &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;list$&quot;</span>,idx,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)  <span class="co"># Constructing command</span></span>
-<span id="cb475-3"><a href="loops.html#cb475-3"></a>  data &lt;-<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text=</span>string))     <span class="co"># Evaluating command</span></span>
-<span id="cb475-4"><a href="loops.html#cb475-4"></a>  <span class="kw">print</span>(<span class="kw">mean</span>(data))                    <span class="co"># Working with fetched data</span></span>
-<span id="cb475-5"><a href="loops.html#cb475-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="loops.html#cb476-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">names</span>(list)){</span>
+<span id="cb476-2"><a href="loops.html#cb476-2"></a>  string &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;list$&quot;</span>,idx,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)  <span class="co"># Constructing command</span></span>
+<span id="cb476-3"><a href="loops.html#cb476-3"></a>  data &lt;-<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text=</span>string))     <span class="co"># Evaluating command</span></span>
+<span id="cb476-4"><a href="loops.html#cb476-4"></a>  <span class="kw">print</span>(<span class="kw">mean</span>(data))                    <span class="co"># Working with fetched data</span></span>
+<span id="cb476-5"><a href="loops.html#cb476-5"></a>}</span></code></pre></div>
 <pre><code>#R&gt; [1] -0.452227
 #R&gt; [1] -0.02234161
 #R&gt; [1] -0.001333537</code></pre>

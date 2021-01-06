@@ -315,17 +315,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="complex" class="section level2">
 <h2><span class="header-section-number">2.3</span> Complex</h2>
 <p>R can handle complex numbers. It is doubtful that you will come across them when doing simple data analysis, but likely if you are performing more advanced calculations for e.g. in time series analysis. You can simply create a complex vector by adding an imaginary term to a real number.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="complex.html#cb195-1"></a>num &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">as.complex</span>(<span class="op">-</span><span class="dv">64</span>))</span>
-<span id="cb195-2"><a href="complex.html#cb195-2"></a><span class="kw">typeof</span>(num)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="complex.html#cb196-1"></a>num &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">as.complex</span>(<span class="op">-</span><span class="dv">64</span>))</span>
+<span id="cb196-2"><a href="complex.html#cb196-2"></a><span class="kw">typeof</span>(num)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;complex&quot;</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="complex.html#cb197-1"></a>num &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>2i</span>
-<span id="cb197-2"><a href="complex.html#cb197-2"></a><span class="kw">typeof</span>(num)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="complex.html#cb198-1"></a>num &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>2i</span>
+<span id="cb198-2"><a href="complex.html#cb198-2"></a><span class="kw">typeof</span>(num)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;complex&quot;</code></pre>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="complex.html#cb199-1"></a><span class="kw">is.complex</span>(num)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="complex.html#cb200-1"></a><span class="kw">is.complex</span>(num)</span></code></pre></div>
 <pre><code>#R&gt; [1] TRUE</code></pre>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="complex.html#cb201-1"></a><span class="kw">Re</span>(num)                 <span class="co"># Returns real part of a complex number</span></span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="complex.html#cb202-1"></a><span class="kw">Re</span>(num)                 <span class="co"># Returns real part of a complex number</span></span></code></pre></div>
 <pre><code>#R&gt; [1] 1</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="complex.html#cb203-1"></a><span class="kw">Im</span>(num)                 <span class="co"># Returns imaginary part of a complex number</span></span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="complex.html#cb204-1"></a><span class="kw">Im</span>(num)                 <span class="co"># Returns imaginary part of a complex number</span></span></code></pre></div>
 <pre><code>#R&gt; [1] 2</code></pre>
 <p>To perform more calculations or obtain more information when dealing with complex numbers you can also use <code>Mod()</code> for the modulus and <code>Arg()</code> for the argument of a given complex number.</p>
 </div>

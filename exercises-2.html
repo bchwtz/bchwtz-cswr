@@ -338,9 +338,9 @@ What is the idea behind the additional three dot argument ´…´ (dotdotdot) th
 Please explain the following three lines of code (line by line):
 </div>
 
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="exercises-2.html#cb434-1"></a>x &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">x1 =</span> <span class="dv">3</span>, <span class="dt">x2 =</span> <span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>))</span>
-<span id="cb434-2"><a href="exercises-2.html#cb434-2"></a><span class="kw">dimnames</span>(x)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>]</span>
-<span id="cb434-3"><a href="exercises-2.html#cb434-3"></a><span class="kw">apply</span>(x, <span class="dv">2</span>, mean, <span class="dt">trim =</span> <span class="fl">.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="exercises-2.html#cb435-1"></a>x &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">x1 =</span> <span class="dv">3</span>, <span class="dt">x2 =</span> <span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>))</span>
+<span id="cb435-2"><a href="exercises-2.html#cb435-2"></a><span class="kw">dimnames</span>(x)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>]</span>
+<span id="cb435-3"><a href="exercises-2.html#cb435-3"></a><span class="kw">apply</span>(x, <span class="dv">2</span>, mean, <span class="dt">trim =</span> <span class="fl">.2</span>)</span></code></pre></div>
 </div>
 <div id="ex-4-2" class="section level3 unnumbered">
 <h3>EX 4</h3>
@@ -349,8 +349,8 @@ Please explain the following three lines of code (line by line):
 Explain the difference between the two function calls without executing them.
 </div>
 
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="exercises-2.html#cb435-1"></a><span class="kw">paste</span>(<span class="st">&quot;variable&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb435-2"><a href="exercises-2.html#cb435-2"></a><span class="kw">paste</span>(<span class="st">&quot;variable&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">collapse=</span><span class="st">&quot;&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="exercises-2.html#cb436-1"></a><span class="kw">paste</span>(<span class="st">&quot;variable&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb436-2"><a href="exercises-2.html#cb436-2"></a><span class="kw">paste</span>(<span class="st">&quot;variable&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">collapse=</span><span class="st">&quot;&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 </div>
 <div id="ex-5-1" class="section level3 unnumbered">
 <h3>EX 5</h3>
@@ -359,9 +359,9 @@ Explain the difference between the two function calls without executing them.
 What does the following code produce? Please derive the output and explain what happens before executing the code.
 </div>
 
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="exercises-2.html#cb436-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow=</span><span class="dv">2</span>)</span>
-<span id="cb436-2"><a href="exercises-2.html#cb436-2"></a>mat2 &lt;-<span class="st"> </span>mat <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></span>
-<span id="cb436-3"><a href="exercises-2.html#cb436-3"></a><span class="kw">apply</span>(mat2, <span class="dv">2</span>, <span class="cf">function</span>(x){x[<span class="dv">1</span>]<span class="op">|</span>x[<span class="dv">2</span>]})</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="exercises-2.html#cb437-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb437-2"><a href="exercises-2.html#cb437-2"></a>mat2 &lt;-<span class="st"> </span>mat <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb437-3"><a href="exercises-2.html#cb437-3"></a><span class="kw">apply</span>(mat2, <span class="dv">2</span>, <span class="cf">function</span>(x){x[<span class="dv">1</span>]<span class="op">|</span>x[<span class="dv">2</span>]})</span></code></pre></div>
 </div>
 <div id="ex-6" class="section level3 unnumbered">
 <h3>EX 6</h3>
@@ -370,8 +370,8 @@ What does the following code produce? Please derive the output and explain what 
 Calculate the average value of each column in the following matrix ´m´ after removing lines 10, 24 and 30-37.
 </div>
 
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="exercises-2.html#cb437-1"></a><span class="kw">set.seed</span>(<span class="dv">5</span>)</span>
-<span id="cb437-2"><a href="exercises-2.html#cb437-2"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span><span class="op">^</span><span class="dv">7</span>), <span class="dt">ncol=</span><span class="dv">10</span>, <span class="dt">byrow=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="exercises-2.html#cb438-1"></a><span class="kw">set.seed</span>(<span class="dv">5</span>)</span>
+<span id="cb438-2"><a href="exercises-2.html#cb438-2"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span><span class="op">^</span><span class="dv">7</span>), <span class="dt">ncol=</span><span class="dv">10</span>, <span class="dt">byrow=</span>T)</span></code></pre></div>
 </div>
 <div id="ex-7" class="section level3 unnumbered">
 <h3>EX 7</h3>
@@ -380,7 +380,7 @@ Calculate the average value of each column in the following matrix ´m´ after r
 Try to come up with an explanation of what the following code does and why it works.
 </div>
 
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="exercises-2.html#cb438-1"></a><span class="st">&#39;[&#39;</span>(mat, <span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="exercises-2.html#cb439-1"></a><span class="st">&#39;[&#39;</span>(mat, <span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
 
 </div>
 </div>

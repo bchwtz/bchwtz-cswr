@@ -315,12 +315,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="character" class="section level2">
 <h2><span class="header-section-number">2.5</span> Character</h2>
 <p>Character vectors store pieces of text from a single character to whole sentences. You can easily create a character vector by putting text in quotes and R will handle the rest for you.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="character.html#cb242-1"></a>char &lt;-<span class="st"> &quot;TRUE&quot;</span></span>
-<span id="cb242-2"><a href="character.html#cb242-2"></a><span class="kw">typeof</span>(char)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="character.html#cb243-1"></a>char &lt;-<span class="st"> &quot;TRUE&quot;</span></span>
+<span id="cb243-2"><a href="character.html#cb243-2"></a><span class="kw">typeof</span>(char)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="character.html#cb244-1"></a>num &lt;-<span class="st"> &quot;3.14&quot;</span></span>
-<span id="cb244-2"><a href="character.html#cb244-2"></a><span class="co"># num * 3      # This produces an error</span></span>
-<span id="cb244-3"><a href="character.html#cb244-3"></a><span class="kw">as.numeric</span>(num) <span class="op">*</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="character.html#cb245-1"></a>num &lt;-<span class="st"> &quot;3.14&quot;</span></span>
+<span id="cb245-2"><a href="character.html#cb245-2"></a><span class="co"># num * 3      # This produces an error</span></span>
+<span id="cb245-3"><a href="character.html#cb245-3"></a><span class="kw">as.numeric</span>(num) <span class="op">*</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
 <pre><code>#R&gt; [1] 9.42</code></pre>
 <p>An often occurring mistake is confusing numbers imported as characters with numerics. The conversion comes in handy when handling data and it is good advice to check datatypes if your calculations with important data look suspicious or won’t work at all.</p>
 </div>
