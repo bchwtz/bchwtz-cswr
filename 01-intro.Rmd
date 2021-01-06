@@ -545,6 +545,17 @@ Write a function that outputs your name on the command line and generates an out
 Maximiliane Mustermann
 ```
 
+# A collapsible section with markdown
+<details>
+  <summary>Solution - Click to expand!</summary>
+  
+```{r}
+myname <- function(x){
+  print("Maximilian Mustermann")
+}
+```
+</details>
+
 ### EX 2 {-}
 
 ```{block2, type='rmdexercise'}
