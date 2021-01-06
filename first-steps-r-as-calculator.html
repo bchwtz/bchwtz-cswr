@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Computational Statistics</title>
-  <meta name="description" content="Computational Statistics with R Course Notes" />
+  <title>1.3 First Steps: R as Calculator | Computational Statistics</title>
+  <meta name="description" content="1.3 First Steps: R as Calculator | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Computational Statistics" />
+  <meta property="og:title" content="1.3 First Steps: R as Calculator | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="1.3 First Steps: R as Calculator | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Computational Statistics" />
+  <meta name="twitter:title" content="1.3 First Steps: R as Calculator | Computational Statistics" />
   
-  <meta name="twitter:description" content="Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="1.3 First Steps: R as Calculator | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="r-system-and-rstudio.html"/>
+<link rel="next" href="objects-and-data-structures.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -266,30 +266,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Computational Statistics</h1>
-<p class="author"><em>Benjamin Buchwitz</em></p>
-<p class="date"><em>2021-01-06</em></p>
-</div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>This is now a private REPO!</p>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co">#install.packages(&quot;bookdown&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
-
+<div id="first-steps-r-as-calculator" class="section level2">
+<h2><span class="header-section-number">1.3</span> First Steps: R as Calculator</h2>
+<p>R is a powerful programming language for statistical algorithms and therefore you can also use it as a (very powerful) calculator for nearly every case you can imagine including calculations on arrays and complex matrix operations. Let us start with some basic examples:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="first-steps-r-as-calculator.html#cb8-1"></a><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 13</code></pre>
+<p>R handles the sharp (hash) <strong>#</strong> symbol as an indicator for comments and in fact does not interpret it. You can and should (!) use it to comment on your code to express your thoughts and what you were trying to do while programming because it is necessary to understand your code. But let’s stay focused:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="first-steps-r-as-calculator.html#cb10-1"></a><span class="dv">4</span> <span class="op">*</span><span class="st"> </span><span class="op">-</span>(<span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span>,<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## Error: &lt;text&gt;:1:12: unexpected &#39;,&#39;
+## 1: 4 * -(5 - 1,
+##                ^</code></pre>
+<p>Errors occur while programming. One of the major sources of errors is the syntax of a language. Syntax simply describes the required structure for commands. Every command has to follow certain structural rules in order to make R understand what you want it to do. In this case, R is designed to accept the point as decimal separator, otherwise, it will only prompt an error message while providing a short hint to the problem. You can then just retype the command or you can use the arrow-up key <span class="math inline">\(\uparrow\)</span> on your keyboard to access your last command and change it accordingly:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="first-steps-r-as-calculator.html#cb12-1"></a><span class="dv">4</span> <span class="op">*</span><span class="st"> </span><span class="op">-</span>(<span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="fl">1.5</span>)   <span class="co"># The changed command works.</span></span></code></pre></div>
+<pre><code>## [1] -14</code></pre>
+<p>As stated before, with R you can do everything your calculator can do, from simple mathematical operations to more complex tasks. Some well known and often used functions are:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="first-steps-r-as-calculator.html#cb14-1"></a><span class="dv">10</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>                <span class="co"># Simple division</span></span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="first-steps-r-as-calculator.html#cb16-1"></a><span class="dv">5</span><span class="op">^</span><span class="dv">2</span>                   <span class="co"># Exponentiation</span></span></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="first-steps-r-as-calculator.html#cb18-1"></a>pi                    <span class="co"># Mathematical constant Pi</span></span></code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="first-steps-r-as-calculator.html#cb20-1"></a><span class="kw">sin</span>(pi <span class="op">/</span><span class="st"> </span><span class="dv">6</span>)           <span class="co"># Trigonometry</span></span></code></pre></div>
+<pre><code>## [1] 0.5</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="first-steps-r-as-calculator.html#cb22-1"></a><span class="kw">sqrt</span>(<span class="dv">64</span>)              <span class="co"># Square root</span></span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="first-steps-r-as-calculator.html#cb24-1"></a><span class="kw">sqrt</span>(<span class="kw">as.complex</span>(<span class="op">-</span><span class="dv">64</span>)) <span class="co"># Complex square root</span></span></code></pre></div>
+<pre><code>## [1] 0+8i</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="first-steps-r-as-calculator.html#cb26-1"></a><span class="kw">log</span>(<span class="dv">1</span>)                <span class="co"># Natural logarithm (base e)</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="first-steps-r-as-calculator.html#cb28-1"></a><span class="kw">sum</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)              <span class="co"># Sum of numbers from 1 to 6</span></span></code></pre></div>
+<pre><code>## [1] 21</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="first-steps-r-as-calculator.html#cb30-1"></a><span class="dv">1</span><span class="op">:</span><span class="dv">6</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>             <span class="co"># Element-wise addition</span></span></code></pre></div>
+<pre><code>## [1]  2  4  6  8 10 12</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="first-steps-r-as-calculator.html#cb32-1"></a><span class="kw">prod</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)             <span class="co"># Product of multiple elements</span></span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>Trying to calculate something that is not defined, leads to a warning. If you try dividing by zero, R reminds you that it has no answer to this question as well as any other calculator.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="first-steps-r-as-calculator.html#cb34-1"></a><span class="dv">0</span> <span class="op">/</span><span class="st"> </span><span class="dv">0</span>                <span class="co"># Not defined, NaN = Not a Number</span></span></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-system-and-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="objects-and-data-structures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +341,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
 "text": "Edit"
 },
 "history": {

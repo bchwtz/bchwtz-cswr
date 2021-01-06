@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Computational Statistics</title>
-  <meta name="description" content="Computational Statistics with R Course Notes" />
+  <title>2.4 Logical | Computational Statistics</title>
+  <meta name="description" content="2.4 Logical | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Computational Statistics" />
+  <meta property="og:title" content="2.4 Logical | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="2.4 Logical | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Computational Statistics" />
+  <meta name="twitter:title" content="2.4 Logical | Computational Statistics" />
   
-  <meta name="twitter:description" content="Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="2.4 Logical | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="complex.html"/>
+<link rel="next" href="character.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -266,30 +266,155 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Computational Statistics</h1>
-<p class="author"><em>Benjamin Buchwitz</em></p>
-<p class="date"><em>2021-01-06</em></p>
-</div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>This is now a private REPO!</p>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co">#install.packages(&quot;bookdown&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
-
+<div id="logical" class="section level2">
+<h2><span class="header-section-number">2.4</span> Logical</h2>
+<p>Logicals can hold the value <code>TRUE</code> or <code>FALSE</code> and are often the output of comparisons. To fulfill your need for typing efficiency when programming R allows you to abbreviate <code>TRUE</code> and <code>FALSE</code> by <code>T</code> respectively <code>F</code>.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="logical.html#cb206-1"></a>x &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb206-2"><a href="logical.html#cb206-2"></a>x</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="logical.html#cb208-1"></a><span class="dv">1</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="logical.html#cb210-1"></a>bool &lt;-<span class="st"> </span><span class="kw">c</span>(T, F, T, F, T)</span>
+<span id="cb210-2"><a href="logical.html#cb210-2"></a>bool</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="logical.html#cb212-1"></a><span class="kw">sum</span>(bool)               <span class="co"># </span><span class="al">ATTENTION</span><span class="co">: Automatic conversion to 1 (T) and 0 (F)</span></span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>When using <code>TRUE</code> and <code>FALSE</code> in calculations they are automatically converted into their underlying numerical representation. We are going to talk about this phenomenon called coercion in detail in the respective chapter.</p>
+<p>When it comes to logical values R provides a lot of operators to compare and evaluate objects - these are called logical operators.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Code</th>
+<th align="left">Description</th>
+<th align="left">Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>&gt;</code></td>
+<td align="left">Greater than</td>
+<td align="left"><code>a &gt; b</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>&gt;=</code></td>
+<td align="left">Greater than or equal to</td>
+<td align="left"><code>a &gt;= b</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>&lt;</code></td>
+<td align="left">Less than</td>
+<td align="left"><code>a &lt; b</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>&lt;=</code></td>
+<td align="left">Less than or equal to</td>
+<td align="left"><code>a &lt;= b</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>==</code></td>
+<td align="left">Exactly equal to</td>
+<td align="left"><code>a == b</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>!=</code></td>
+<td align="left">Not equal to</td>
+<td align="left"><code>a != b</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>!</code></td>
+<td align="left">Logical negotiation (NOT)</td>
+<td align="left"><code>!a</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>|</code></td>
+<td align="left">OR (elementwise)</td>
+<td align="left"><code>a | b</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>||</code></td>
+<td align="left">OR (stepwise)</td>
+<td align="left"><code>a || b</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>&amp;</code></td>
+<td align="left">AND (elementwise)</td>
+<td align="left"><code>a &amp; b</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>&amp;&amp;</code></td>
+<td align="left">AND (stepwise)</td>
+<td align="left"><code>a &amp;&amp; b</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>%in%</code></td>
+<td align="left">Is element in group of elements</td>
+<td align="left"><code>a %in% c(a,b,c)</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>xor()</code></td>
+<td align="left">Exclusive or (XOR)</td>
+<td align="left"><code>xor(a,b)</code></td>
+</tr>
+</tbody>
+</table>
+<p>A lot of these logical operators can come in handy when structuring your code and using conditional statements to handle different events or cases in your program. If you don’t know how they are working you can just try them out while giving <code>a</code> and <code>b</code> different <code>TRUE</code> or <code>FALSE</code> values or you can construct a truth table in the following way.</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="logical.html#cb214-1"></a>values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb214-2"><a href="logical.html#cb214-2"></a><span class="kw">names</span>(values) &lt;-<span class="st"> </span><span class="kw">as.character</span>(values)</span>
+<span id="cb214-3"><a href="logical.html#cb214-3"></a></span>
+<span id="cb214-4"><a href="logical.html#cb214-4"></a><span class="kw">outer</span>(values, values, <span class="st">&quot;&amp;&quot;</span>)     <span class="co"># Truth table for AND</span></span></code></pre></div>
+<pre><code>##        &lt;NA&gt; FALSE  TRUE
+## &lt;NA&gt;     NA FALSE    NA
+## FALSE FALSE FALSE FALSE
+## TRUE     NA FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="logical.html#cb216-1"></a><span class="kw">outer</span>(values, values, <span class="st">&quot;|&quot;</span>)     <span class="co"># Truth table for OR</span></span></code></pre></div>
+<pre><code>##       &lt;NA&gt; FALSE TRUE
+## &lt;NA&gt;    NA    NA TRUE
+## FALSE   NA FALSE TRUE
+## TRUE  TRUE  TRUE TRUE</code></pre>
+<p>Operations using logicals can sometimes be tricky and seem to be wrong or trying to fool you. So pay attention when dealing with them and try to get a sense of how they are evaluated. Here is an example of a tricky evaluation. To understand the following lines you should know what the exclusive or (<code>xor</code>) does and what differentiates it from the normal or. Trying to come up with a line of code to construct a truth table for this in R may help to understand the following:</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="logical.html#cb218-1"></a><span class="kw">xor</span>(T, T) <span class="op">==</span><span class="st"> </span>T <span class="op">|</span><span class="st"> </span>T       </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="logical.html#cb220-1"></a><span class="kw">xor</span>(T,T)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="logical.html#cb222-1"></a>T <span class="op">|</span><span class="st"> </span>T</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="logical.html#cb224-1"></a><span class="ot">FALSE</span> <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>                      <span class="co"># This is obviously wrong</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Although it seems as R is making an error here, it does not. It evaluates our line of code in a strictly logical order and this differs from the appearance of the equation. Here is how R evaluates the parts of our expression:</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="logical.html#cb226-1"></a><span class="co"># Due to the definition of XOR the expression has to be FALSE</span></span>
+<span id="cb226-2"><a href="logical.html#cb226-2"></a><span class="kw">xor</span>(T,T) <span class="op">==</span><span class="st"> </span>T<span class="op">|</span>T       </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="logical.html#cb228-1"></a><span class="kw">xor</span>(T,T)            <span class="co"># 1. Step</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="logical.html#cb230-1"></a><span class="kw">xor</span>(T,T) <span class="op">==</span><span class="st"> </span>T       <span class="co"># 2. Step</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="logical.html#cb232-1"></a><span class="kw">xor</span>(T,T) <span class="op">==</span><span class="st"> </span>T<span class="op">|</span>T     <span class="co"># 3. Step  </span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="logical.html#cb234-1"></a>F<span class="op">|</span>T                 <span class="co"># Aggregation (same as 3. step)</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="logical.html#cb236-1"></a><span class="co"># If you want R to behave as it seems on first look you have</span></span>
+<span id="cb236-2"><a href="logical.html#cb236-2"></a><span class="co"># to use parentheses:</span></span>
+<span id="cb236-3"><a href="logical.html#cb236-3"></a></span>
+<span id="cb236-4"><a href="logical.html#cb236-4"></a><span class="kw">xor</span>(T,T) <span class="op">==</span><span class="st"> </span>(T<span class="op">|</span>T)   <span class="co"># Evaluates each side individually, then compares</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>The following code illustrates the difference between | and || and shows why using || as operator for the logical OR can come in handy sometimes. Remember that the logical OR returns TRUE if at least one element is TRUE. When
+the first element is TRUE, the result is independent of the second element.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="logical.html#cb238-1"></a><span class="kw">rm</span>(x)   <span class="co"># Make sure variable x does not exist</span></span>
+<span id="cb238-2"><a href="logical.html#cb238-2"></a></span>
+<span id="cb238-3"><a href="logical.html#cb238-3"></a><span class="ot">TRUE</span> <span class="op">|</span><span class="st"> </span>x      <span class="co"># Element x does not exist, so R returns an Error!</span></span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;x&#39; not found</code></pre>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="logical.html#cb240-1"></a><span class="ot">TRUE</span> <span class="op">||</span><span class="st"> </span>x     <span class="co"># Element x does not exist, but the result can be determined </span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="logical.html#cb242-1"></a>              <span class="co"># without actually touching the object and || ensures that</span></span>
+<span id="cb242-2"><a href="logical.html#cb242-2"></a>              <span class="co"># the execution is aborted as soon as possible.</span></span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="complex.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="character.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +445,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-datatypes.Rmd",
 "text": "Edit"
 },
 "history": {

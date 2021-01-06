@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Computational Statistics</title>
-  <meta name="description" content="Computational Statistics with R Course Notes" />
+  <title>3.5 Strings | Computational Statistics</title>
+  <meta name="description" content="3.5 Strings | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Computational Statistics" />
+  <meta property="og:title" content="3.5 Strings | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="3.5 Strings | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Computational Statistics" />
+  <meta name="twitter:title" content="3.5 Strings | Computational Statistics" />
   
-  <meta name="twitter:description" content="Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="3.5 Strings | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="dataframes.html"/>
+<link rel="next" href="dates-and-times.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -266,30 +266,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Computational Statistics</h1>
-<p class="author"><em>Benjamin Buchwitz</em></p>
-<p class="date"><em>2021-01-06</em></p>
-</div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>This is now a private REPO!</p>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co">#install.packages(&quot;bookdown&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
-
+<div id="strings" class="section level2">
+<h2><span class="header-section-number">3.5</span> Strings</h2>
+<p>Strings are not only used to provide a description of your data. When dealing with more complex programs they become more and more useful. An often used case is creating variables while a program is running and using the created variables in the same instance to perform calculations without knowing the exact scheme of the variable names. This programming technique is called dynamic variable naming and we are going to explore this later in the course. But to be able to handle strings we need a couple of useful functions to deal with them.</p>
+<p>When creating functions that output calculations on the command line like the <code>lm()</code>-function does when calculating linear models, it is useful to manipulate the appearance in the output to create a better readable experience for the user.</p>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="strings.html#cb391-1"></a>string &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Statistics&quot;</span>,<span class="st">&quot;and&quot;</span>,<span class="st">&quot;calculus&quot;</span>,<span class="st">&quot;are&quot;</span>,<span class="st">&quot;wonderful!&quot;</span>)</span>
+<span id="cb391-2"><a href="strings.html#cb391-2"></a>string</span></code></pre></div>
+<pre><code>## [1] &quot;Statistics&quot; &quot;and&quot;        &quot;calculus&quot;   &quot;are&quot;        &quot;wonderful!&quot;</code></pre>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="strings.html#cb393-1"></a><span class="kw">noquote</span>(string)</span></code></pre></div>
+<pre><code>## [1] Statistics and        calculus   are        wonderful!</code></pre>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="strings.html#cb395-1"></a><span class="kw">cat</span>(string)</span></code></pre></div>
+<pre><code>## Statistics and calculus are wonderful!</code></pre>
+<p>Additional useful functions to manipulate the appearance of output are <code>print()</code>, <code>format()</code> and <code>sprintf()</code>. To concatenate strings into a single variable we commonly use the <code>c()</code>-function, if we really want to combine multiple strings into a single one we can use <code>paste()</code>.</p>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="strings.html#cb397-1"></a>letters                 <span class="co"># Reserved word for all 26 small letters</span></span></code></pre></div>
+<pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot;
+## [20] &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="strings.html#cb399-1"></a>LETTERS                 <span class="co"># Reserved word for all 26 capitalized letters</span></span></code></pre></div>
+<pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot;
+## [20] &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot; &quot;Y&quot; &quot;Z&quot;</code></pre>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="strings.html#cb401-1"></a><span class="kw">paste</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],<span class="dt">sep=</span><span class="st">&quot;+&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;a+A&quot; &quot;b+B&quot; &quot;c+C&quot; &quot;d+D&quot; &quot;e+E&quot;</code></pre>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="strings.html#cb403-1"></a><span class="kw">paste</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],<span class="dt">collapse=</span><span class="st">&quot;&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;aAbBcCdDeE&quot;</code></pre>
+<p>If you want to create a bunch of variable or column names consisting of the same string, but different numbers you can simply pass that string and a vector of numbers to <code>paste()</code> and it will return the desired combinations, which then can be used to name the columns of a dataframe for example.</p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="strings.html#cb405-1"></a><span class="kw">paste</span>(<span class="st">&quot;name&quot;</span> , <span class="dv">1</span><span class="op">:</span><span class="dv">3</span> , <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)       <span class="co"># Easy name or variable generation       </span></span></code></pre></div>
+<pre><code>## [1] &quot;name1&quot; &quot;name2&quot; &quot;name3&quot;</code></pre>
+<p>To extract substrings or to split a string to a certain scheme R provides the functions <code>substring()</code> and <code>strsplit()</code>. If you want to search through a string you can use <code>grep()</code> to find the respective index of the searched string in a bigger string or vector of strings. To replace parts of a string R provides the commands <code>gsub()</code> to replace all occurrences and <code>sub()</code> to replace the first occurrence in the target string.</p>
+<p>If you are familiar with Linux or the world of Unix-based operating systems you may already be familiar with a lot of these string manipulating functions. In fact, most of these functions found in R can also be found in your favorite Linux shell as they originated from there.</p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="strings.html#cb407-1"></a><span class="co"># To convert a String to upper or lower cases one can use the </span></span>
+<span id="cb407-2"><a href="strings.html#cb407-2"></a><span class="co"># functions toupper() and tolower().</span></span>
+<span id="cb407-3"><a href="strings.html#cb407-3"></a></span>
+<span id="cb407-4"><a href="strings.html#cb407-4"></a><span class="kw">identical</span>(<span class="kw">toupper</span>(letters),LETTERS)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="strings.html#cb409-1"></a><span class="kw">grep</span>(<span class="st">&quot;K&quot;</span>, LETTERS)            <span class="co"># Returns index of searched string</span></span></code></pre></div>
+<pre><code>## [1] 11</code></pre>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="strings.html#cb411-1"></a>string &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="kw">rep</span>(letters,<span class="dv">2</span>),<span class="dt">collapse=</span><span class="st">&quot;&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb411-2"><a href="strings.html#cb411-2"></a>string</span></code></pre></div>
+<pre><code>## [1] &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz&quot;</code></pre>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="strings.html#cb413-1"></a><span class="kw">gsub</span>(<span class="st">&quot;o&quot;</span>,<span class="st">&quot;X&quot;</span>,string)</span></code></pre></div>
+<pre><code>## [1] &quot;abcdefghijklmnXpqrstuvwxyzabcdefghijklmnXpqrstuvwxyz&quot;</code></pre>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="strings.html#cb415-1"></a><span class="kw">sub</span>(<span class="st">&quot;o&quot;</span>,<span class="st">&quot;X&quot;</span>,string)</span></code></pre></div>
+<pre><code>## [1] &quot;abcdefghijklmnXpqrstuvwxyzabcdefghijklmnopqrstuvwxyz&quot;</code></pre>
+<p>If you have a more complex task like finding generic patterns in strings or simply want to find more than just simple predefined letters or words you may want to make yourself familiar with regular expressions. Regular expressions (regex) allow you to come up with a generic description of what should be searched and returned in textual data and they often come in handy when you want to extract specific parts of a textual dataset for further processing. As the syntax of regex is quite confusing when seen for the first time and textual data isn’t our main focus here we skip this part. Nevertheless, if you are interested in using them the built-in help system provides an excellent starting point when asked for <code>?regex</code>.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dataframes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dates-and-times.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +346,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-datastructures.Rmd",
 "text": "Edit"
 },
 "history": {

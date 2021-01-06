@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Computational Statistics</title>
-  <meta name="description" content="Computational Statistics with R Course Notes" />
+  <title>Exercises | Computational Statistics</title>
+  <meta name="description" content="Exercises | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Computational Statistics" />
+  <meta property="og:title" content="Exercises | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="Exercises | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Computational Statistics" />
+  <meta name="twitter:title" content="Exercises | Computational Statistics" />
   
-  <meta name="twitter:description" content="Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="Exercises | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="getting-help.html"/>
+<link rel="next" href="data-types.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -266,30 +266,126 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Computational Statistics</h1>
-<p class="author"><em>Benjamin Buchwitz</em></p>
-<p class="date"><em>2021-01-06</em></p>
+<div id="exercises" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<p><img src="gfx/CH00-ExercisesHeader.png" width="100%" /></p>
+<div id="ex-1" class="section level3 unnumbered">
+<h3>EX 1</h3>
+
+<div class="rmdexercise">
+Write a function that outputs your name on the command line and generates an output similar to the one shown below.
 </div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>This is now a private REPO!</p>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co">#install.packages(&quot;bookdown&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
+
+<pre class="text"><code>Maximiliane Mustermann</code></pre>
+</div>
+<div id="ex-2" class="section level3 unnumbered">
+<h3>EX 2</h3>
+
+<div class="rmdexercise">
+Install the <code>forecast</code> package, load it and use one arbitrary function from the package.
+</div>
 
 </div>
+<div id="ex-3" class="section level3 unnumbered">
+<h3>EX 3</h3>
+
+<div class="rmdexercise">
+Write a function that generates an output similar to the one shown below.
+</div>
+
+<pre class="text"><code>Hello world!
+(And all the people of the world)</code></pre>
+</div>
+<div id="ex-4" class="section level3 unnumbered">
+<h3>EX 4</h3>
+
+<div class="rmdexercise">
+Write a function that generates an output similar to the one shown below.
+</div>
+
+<pre class="text"><code>    *
+   ***
+  *****
+ *******
+*********
+    *</code></pre>
+</div>
+<div id="ex-5" class="section level3 unnumbered">
+<h3>EX 5</h3>
+
+<div class="rmdexercise">
+Write a function that takes two numbers as arguments and outputs their respective sum.
+</div>
+
+<!--
+
+## Example Content
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+
+Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+
+
+```r
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+<div class="figure" style="text-align: center">
+<img src="bchwtz-cswr_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
+<p class="caption">(\#fig:nice-fig)Here is a nice figure!</p>
+</div>
+
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+
+
+```r
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+
+
+Table: (\#tab:nice-tab)Here is a nice table!
+
+| Sepal.Length| Sepal.Width| Petal.Length| Petal.Width|Species |
+|------------:|-----------:|------------:|-----------:|:-------|
+|          5.1|         3.5|          1.4|         0.2|setosa  |
+|          4.9|         3.0|          1.4|         0.2|setosa  |
+|          4.7|         3.2|          1.3|         0.2|setosa  |
+|          4.6|         3.1|          1.5|         0.2|setosa  |
+|          5.0|         3.6|          1.4|         0.2|setosa  |
+|          5.4|         3.9|          1.7|         0.4|setosa  |
+|          4.6|         3.4|          1.4|         0.3|setosa  |
+|          5.0|         3.4|          1.5|         0.2|setosa  |
+|          4.4|         2.9|          1.4|         0.2|setosa  |
+|          4.9|         3.1|          1.5|         0.1|setosa  |
+|          5.4|         3.7|          1.5|         0.2|setosa  |
+|          4.8|         3.4|          1.6|         0.2|setosa  |
+|          4.8|         3.0|          1.4|         0.1|setosa  |
+|          4.3|         3.0|          1.1|         0.1|setosa  |
+|          5.8|         4.0|          1.2|         0.2|setosa  |
+|          5.7|         4.4|          1.5|         0.4|setosa  |
+|          5.4|         3.9|          1.3|         0.4|setosa  |
+|          5.1|         3.5|          1.4|         0.3|setosa  |
+|          5.7|         3.8|          1.7|         0.3|setosa  |
+|          5.1|         3.8|          1.5|         0.3|setosa  |
+
+You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+-->
+
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="getting-help.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-types.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +416,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
 "text": "Edit"
 },
 "history": {

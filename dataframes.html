@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Computational Statistics</title>
-  <meta name="description" content="Computational Statistics with R Course Notes" />
+  <title>3.4 Dataframes | Computational Statistics</title>
+  <meta name="description" content="3.4 Dataframes | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Computational Statistics" />
+  <meta property="og:title" content="3.4 Dataframes | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="3.4 Dataframes | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Computational Statistics" />
+  <meta name="twitter:title" content="3.4 Dataframes | Computational Statistics" />
   
-  <meta name="twitter:description" content="Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="3.4 Dataframes | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="lists.html"/>
+<link rel="next" href="strings.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -266,30 +266,136 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Computational Statistics</h1>
-<p class="author"><em>Benjamin Buchwitz</em></p>
-<p class="date"><em>2021-01-06</em></p>
+<div id="dataframes" class="section level2">
+<h2><span class="header-section-number">3.4</span> Dataframes</h2>
+<p>Dataframes are only lists consisting of vectors of equal length, so all the list specifics also do apply for dataframes. Nevertheless, if we are operating in special matrix-like structures R supports us with a bunch of specialized functions that allow us to perform very fast manipulations. Some of the useful functions provided by R are <code>merge()</code>, <code>apply()</code>, <code>sweep()</code>, <code>stack()</code>, <code>aggregate()</code> and <code>transform()</code>.</p>
+<div id="merging-rows-and-columns" class="section level3 unnumbered">
+<h3>Merging rows and columns</h3>
+<p>We already discussed the functions <code>rbind()</code> and <code>cbind()</code> to merge data, especially matrices by row or by column. But if handling more complex datasets this won’t get rid of duplicates, contained in each table, manually. Exactly for these cases the <code>merge()</code>-function was created.</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="dataframes.html#cb367-1"></a>d &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID=</span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="kw">list</span>(</span>
+<span id="cb367-2"><a href="dataframes.html#cb367-2"></a>  <span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&quot;Homer&quot;</span>,<span class="st">&quot;Marge&quot;</span>,<span class="st">&quot;Bart&quot;</span>,<span class="st">&quot;Lisa&quot;</span>),</span>
+<span id="cb367-3"><a href="dataframes.html#cb367-3"></a>  <span class="dt">Age=</span><span class="kw">c</span>(<span class="dv">38</span> , <span class="dv">34</span> , <span class="dv">10</span> , <span class="dv">8</span>),</span>
+<span id="cb367-4"><a href="dataframes.html#cb367-4"></a>  <span class="dt">Sex=</span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>,<span class="st">&quot;f&quot;</span>,<span class="st">&quot;m&quot;</span>,<span class="st">&quot;f&quot;</span>)</span>
+<span id="cb367-5"><a href="dataframes.html#cb367-5"></a>))</span>
+<span id="cb367-6"><a href="dataframes.html#cb367-6"></a></span>
+<span id="cb367-7"><a href="dataframes.html#cb367-7"></a>e &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ID=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>),<span class="kw">list</span>(</span>
+<span id="cb367-8"><a href="dataframes.html#cb367-8"></a>  <span class="dt">Name=</span><span class="kw">c</span>(<span class="st">&quot;Homer&quot;</span>,<span class="st">&quot;Lisa&quot;</span>,<span class="st">&quot;Bart&quot;</span>,<span class="st">&quot;Marge&quot;</span>),</span>
+<span id="cb367-9"><a href="dataframes.html#cb367-9"></a>  <span class="dt">Height=</span><span class="kw">c</span>(<span class="dv">182</span> , <span class="dv">120</span> , <span class="dv">122</span> , <span class="dv">223</span>),</span>
+<span id="cb367-10"><a href="dataframes.html#cb367-10"></a>  <span class="dt">Weight=</span><span class="kw">c</span>(<span class="dv">108</span> , <span class="dv">33</span> , <span class="dv">35</span> , <span class="dv">58</span>)</span>
+<span id="cb367-11"><a href="dataframes.html#cb367-11"></a>))</span>
+<span id="cb367-12"><a href="dataframes.html#cb367-12"></a></span>
+<span id="cb367-13"><a href="dataframes.html#cb367-13"></a><span class="co"># Merge even works with unsorted dataframes and matches the datasets</span></span>
+<span id="cb367-14"><a href="dataframes.html#cb367-14"></a><span class="co"># fully automatically using common columns.</span></span>
+<span id="cb367-15"><a href="dataframes.html#cb367-15"></a></span>
+<span id="cb367-16"><a href="dataframes.html#cb367-16"></a><span class="kw">merge</span>(d,e)</span></code></pre></div>
+<pre><code>##   ID  Name Age Sex Height Weight
+## 1  1 Homer  38   m    182    108
+## 2  2 Marge  34   f    223     58
+## 3  3  Bart  10   m    122     35
+## 4  4  Lisa   8   f    120     33</code></pre>
+<p>To add rows in a similar and clever way there are packages available to take care of cases that can’t be solved with <code>rbind()</code>. One of these functions is called <code>smartbind()</code> from the package <code>gtools</code>.</p>
 </div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>This is now a private REPO!</p>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co">#install.packages(&quot;bookdown&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
-
+<div id="apply-functions-to-rows-and-columns" class="section level3 unnumbered">
+<h3>Apply functions to rows and columns</h3>
+<p>A common, very fast and unbelievable useful helper is the function <code>apply()</code> which allows us to apply any function to every row or column of a dataframe. The function works in this way: <code>apply(data, MARGIN=\#, FUN=function() )</code>. <code>MARGIN</code> indicates if the function defined in <code>FUN</code> should be applied to rows <code>MARGIN=1</code> or columns <code>MARGIN=2</code>. <code>FUN</code> can be equal to any function, including self-written ones.</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="dataframes.html#cb369-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="dt">byrow=</span>T,<span class="dt">ncol=</span><span class="dv">5</span>)</span>
+<span id="cb369-2"><a href="dataframes.html#cb369-2"></a>mat</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    2    3    4    5
+## [2,]    6    7    8    9   10</code></pre>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="dataframes.html#cb371-1"></a><span class="kw">apply</span>(mat,<span class="dt">MARGIN=</span><span class="dv">1</span>,<span class="dt">FUN=</span>mean)  <span class="co"># Equivalent to rowMeans()</span></span></code></pre></div>
+<pre><code>## [1] 3 8</code></pre>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="dataframes.html#cb373-1"></a><span class="kw">apply</span>(mat,<span class="dt">MARGIN=</span><span class="dv">2</span>,<span class="dt">FUN=</span>sum)   <span class="co"># Equivalent to colSums()</span></span></code></pre></div>
+<pre><code>## [1]  7  9 11 13 15</code></pre>
+<p>This case is only to illustrate how <code>apply()</code> works. For the cases shown are specific functions like <code>rowMeans()</code> or <code>colSums()</code> available which are faster and should be used.</p>
+<p>In addition to <code>apply()</code> there are two more functions which can be used to apply the desired function on a list: <code>lapply()</code> and <code>sapply()</code>. They differ only in their output. The function <code>lapply()</code> outputs a list, while <code>sapply()</code> outputs a vector if that’s possible. They follow the exact same syntax as <code>apply()</code>.</p>
+</div>
+<div id="sweep-out-statistics-in-a-matrix" class="section level3 unnumbered">
+<h3>Sweep out Statistics in a Matrix</h3>
+<p>The function <code>sweep()</code> sweeps out a summary statistics in a way defined by the argument <code>FUN</code> with subtraction as default operation. In addition to <code>apply()</code> this allows for very fast and completely vectorized manipulations.</p>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="dataframes.html#cb375-1"></a><span class="kw">sweep</span>(mat , <span class="dt">MARGIN =</span> <span class="dv">1</span> , <span class="dt">STATS =</span> <span class="kw">c</span>(<span class="dv">1</span> , <span class="dv">10</span>))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    0    1    2    3    4
+## [2,]   -4   -3   -2   -1    0</code></pre>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="dataframes.html#cb377-1"></a><span class="kw">sweep</span>(mat , <span class="dv">1</span> , <span class="kw">apply</span>(mat , <span class="dv">1</span> , mean))</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]   -2   -1    0    1    2
+## [2,]   -2   -1    0    1    2</code></pre>
+<p>But <code>sweep()</code> is much more powerful than it seems on first sight. Dividing a column by its mean can also easily done with sweep by passing the argument <code>FUN</code> to it.</p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="dataframes.html#cb379-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span> , <span class="dv">2</span>) , <span class="dt">byrow =</span> T , <span class="dt">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb379-2"><a href="dataframes.html#cb379-2"></a>mat</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    2    3    4    5
+## [2,]    1    2    3    4    5</code></pre>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="dataframes.html#cb381-1"></a><span class="kw">sweep</span>(mat , <span class="dv">2</span> , <span class="kw">colMeans</span>(mat) , <span class="dt">FUN =</span> <span class="st">&quot;/&quot;</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    1    1    1    1
+## [2,]    1    1    1    1    1</code></pre>
+<p>If you have problems using the sweep function you may want to convert your (sub-) dataframe to a numeric matrix, this can be done with <code>data.matrix()</code>.</p>
+</div>
+<div id="concatenate-all-values-from-a-dataframe" class="section level3 unnumbered">
+<h3>Concatenate all values from a dataframe</h3>
+<p>To concatenate all values from multiple columns of a dataframe one can use the function <code>stack()</code> which outputs a dataframe with the stacked values while ignoring character columns.</p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="dataframes.html#cb383-1"></a>d.stacked &lt;-<span class="st"> </span><span class="kw">stack</span>(d)        <span class="co"># Stacks all numeric values of dataframe d</span></span>
+<span id="cb383-2"><a href="dataframes.html#cb383-2"></a>d.stacked                    <span class="co"># Display the stacked data</span></span></code></pre></div>
+<pre><code>##    values  ind
+## 1       1   ID
+## 2       2   ID
+## 3       3   ID
+## 4       4   ID
+## 5   Homer Name
+## 6   Marge Name
+## 7    Bart Name
+## 8    Lisa Name
+## 9      38  Age
+## 10     34  Age
+## 11     10  Age
+## 12      8  Age
+## 13      m  Sex
+## 14      f  Sex
+## 15      m  Sex
+## 16      f  Sex</code></pre>
+<p>You may have noticed the column <code>ind</code> in the resulting output. This shows the origin of the data and makes the stacking fully reversible with the command <code>unstack()</code>, except for eventually lost string containing columns of the dataframe.</p>
+</div>
+<div id="splitting-dataframes-while-applying-functions" class="section level3 unnumbered">
+<h3>Splitting dataframes while applying functions</h3>
+<p>The function <code>aggregate()</code> allows us to split dataframes into subpopulations according to a provided measure and apply the desired function to each population.</p>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="dataframes.html#cb385-1"></a><span class="kw">aggregate</span>(d<span class="op">$</span>Age,<span class="dt">by=</span><span class="kw">list</span>(<span class="dt">Sex=</span>d<span class="op">$</span>Sex),<span class="dt">FUN=</span>mean)</span></code></pre></div>
+<pre><code>##   Sex  x
+## 1   f 21
+## 2   m 24</code></pre>
+</div>
+<div id="transformations-without-recreating-dataframes" class="section level3 unnumbered">
+<h3>Transformations without recreating dataframes</h3>
+<p>The function <code>transform()</code> can easily be used to manipulate columns in a dataframe without the need to recreate the entire dataframe.</p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="dataframes.html#cb387-1"></a><span class="co"># Adding two new lines to the dataframe d</span></span>
+<span id="cb387-2"><a href="dataframes.html#cb387-2"></a>d &lt;-<span class="st"> </span><span class="kw">data.frame</span>(d,<span class="kw">list</span>(</span>
+<span id="cb387-3"><a href="dataframes.html#cb387-3"></a>  <span class="dt">Height=</span><span class="kw">c</span>(<span class="dv">182</span> , <span class="dv">223</span> , <span class="dv">122</span> , <span class="dv">120</span>),</span>
+<span id="cb387-4"><a href="dataframes.html#cb387-4"></a>  <span class="dt">Weight=</span><span class="kw">c</span>(<span class="dv">108</span> , <span class="dv">58</span> , <span class="dv">35</span> , <span class="dv">33</span>)</span>
+<span id="cb387-5"><a href="dataframes.html#cb387-5"></a>))</span>
+<span id="cb387-6"><a href="dataframes.html#cb387-6"></a></span>
+<span id="cb387-7"><a href="dataframes.html#cb387-7"></a>d    <span class="co"># Display the extended dataframe</span></span></code></pre></div>
+<pre><code>##   ID  Name Age Sex Height Weight
+## 1  1 Homer  38   m    182    108
+## 2  2 Marge  34   f    223     58
+## 3  3  Bart  10   m    122     35
+## 4  4  Lisa   8   f    120     33</code></pre>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="dataframes.html#cb389-1"></a><span class="kw">transform</span>(d,<span class="dt">Height=</span>Height<span class="op">/</span><span class="dv">100</span>,</span>
+<span id="cb389-2"><a href="dataframes.html#cb389-2"></a>            <span class="dt">BMI=</span>Weight<span class="op">/</span>(Height<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##   ID  Name Age Sex Height Weight      BMI
+## 1  1 Homer  38   m   1.82    108 32.60476
+## 2  2 Marge  34   f   2.23     58 11.66321
+## 3  3  Bart  10   m   1.22     35 23.51518
+## 4  4  Lisa   8   f   1.20     33 22.91667</code></pre>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lists.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="strings.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +426,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-datastructures.Rmd",
 "text": "Edit"
 },
 "history": {

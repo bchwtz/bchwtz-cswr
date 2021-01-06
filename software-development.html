@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Computational Statistics</title>
-  <meta name="description" content="Computational Statistics with R Course Notes" />
+  <title>Chapter 5 Software Development | Computational Statistics</title>
+  <meta name="description" content="Chapter 5 Software Development | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Computational Statistics" />
+  <meta property="og:title" content="Chapter 5 Software Development | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="Chapter 5 Software Development | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Computational Statistics" />
+  <meta name="twitter:title" content="Chapter 5 Software Development | Computational Statistics" />
   
-  <meta name="twitter:description" content="Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="Chapter 5 Software Development | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="exercises-3.html"/>
+<link rel="next" href="planning.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -266,30 +266,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Computational Statistics</h1>
-<p class="author"><em>Benjamin Buchwitz</em></p>
-<p class="date"><em>2021-01-06</em></p>
+<div id="software-development" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Software Development</h1>
+<blockquote>
+<p>First, solve the problem. Then, write the code.<br />
+– John Johnson</p>
+</blockquote>
+<p>Most programming projects start small and are not intended to grow. However, this is exactly what happens and after some time you are confronted with a large, complex and diffuse code base where nobody - including yourself - understands how the programs really work. Good coding style is like correct punctuation when using natural language. You can live without it, but it makes things a lot easier to understand and better to read. The reasons to advocate a good programming style are manifold:</p>
+<ul>
+<li><p><strong>Errors:</strong> Good programming style helps to avoid errors, saves time when searching and correcting mistakes and reduces embarrassment that normally occurs if errors cannot be found.</p></li>
+<li><p><strong>Collaboration:</strong> It occasionally occurs that problems are solved in teams rather than alone, a good programming style eases the handover and reduces introduction efforts when joining projects. It may also happen that someone (researcher, colleague) has to maintain or use your program. Good programming style eases the process of understanding dramatically.</p></li>
+<li><p><strong>Publications:</strong> Supervisors for thesis or seminar papers as well as scientific journals usually want to know (implementations details) about data and estimation procedures to support transparency and reproducibility of scientific work. From an academic point of view, the quality of the provided code is often considered when grading assignments, theses or homework.</p></li>
+<li><p><strong>Memories:</strong> Humans usually overestimate how much they remember and usually underestimate the necessity for future changes. Months after finishing or suspending a project, most people have forgotten the details and difficulties as well as dependencies when modifying the code. Your future ‘you’ will have the same problems as any colleague that has to use your code if you haven’t looked at it for a couple of months.</p></li>
+</ul>
+<p>Developing software is an intensive field of research, it has a lot in common with organization and project management, but usually is a lot more formalized. Many of the more popular Software Development Frameworks (SDF), like Rapid Application Development (RAD), Scrum, Extreme Programming (XP) or the Agile Unified Process (AUP) achieved attention and are actively adopted by other industries.</p>
+<p>All these frameworks, processes or however you want to refer to them have one thing in common and this is to ensure that a high-quality output (usually in terms of software) is being produced by one or more developers. While modern (agile) SDFs are usually used to manage teams and do not have distinct phases, more traditional approaches emphasize the idea of software development life cycle, where phases like planning, coding, documenting or testing occur sequentially rather than simultaneously. One of these process models is the software development waterfall, which clarifies the essential steps when writing software.</p>
+<div class="figure"><span id="fig:unnamed-chunk-152"></span>
+<img src="gfx/CH05-SoftwareDevelopmentProcess.png" alt="Waterfall Software Development Process" width="100%" />
+<p class="caption">
+Figure 5.1: Waterfall Software Development Process
+</p>
 </div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>This is now a private REPO!</p>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co">#install.packages(&quot;bookdown&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
-
+<p>The basic idea of the process is to divide the whole development project into sequential phases, where overlap and ‘splashbacks’ are tried to be avoided. As in traditional project management, the emphasis is on planning time schedules, target dates, and budgets, while the implementation of an entire system is done at once. The transition to the next phase usually requires the approval of a customer or user and written project documentation is an explicit deliverable of each phase.</p>
+<p>The sequential nature and the resulting “inflexibility” in a pure waterfall model have been a source of constant criticism. In practice, the waterfall model has been superseded by more flexible and dynamic approaches and when working in teams a more agile SDF, e.g. Scrum, should be chosen as these eradicate many pitfalls found in the waterfall SDF. However, all of the following stages are always present and must be considered when developing software, regardless of the specific management approach.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exercises-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="planning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +327,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-softwaredevelopment.Rmd",
 "text": "Edit"
 },
 "history": {

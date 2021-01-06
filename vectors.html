@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Computational Statistics</title>
-  <meta name="description" content="Computational Statistics with R Course Notes" />
+  <title>3.1 Vectors | Computational Statistics</title>
+  <meta name="description" content="3.1 Vectors | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Computational Statistics" />
+  <meta property="og:title" content="3.1 Vectors | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="3.1 Vectors | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Computational Statistics" />
+  <meta name="twitter:title" content="3.1 Vectors | Computational Statistics" />
   
-  <meta name="twitter:description" content="Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="3.1 Vectors | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="data-manipulation.html"/>
+<link rel="next" href="matrices-and-arrays.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -266,30 +266,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Computational Statistics</h1>
-<p class="author"><em>Benjamin Buchwitz</em></p>
-<p class="date"><em>2021-01-06</em></p>
-</div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>This is now a private REPO!</p>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co">#install.packages(&quot;bookdown&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
-
+<div id="vectors" class="section level2">
+<h2><span class="header-section-number">3.1</span> Vectors</h2>
+<p>We have already seen that we can access a subset of a vector using brackets. This option is far more powerful than shown before when combining the brackets with other operators.</p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="vectors.html#cb309-1"></a>vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb309-2"><a href="vectors.html#cb309-2"></a></span>
+<span id="cb309-3"><a href="vectors.html#cb309-3"></a>vec[<span class="dv">5</span>]                <span class="co"># Show fifth element</span></span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="vectors.html#cb311-1"></a>vec[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]              <span class="co"># Show first to third element</span></span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="vectors.html#cb313-1"></a>vec[<span class="op">-</span><span class="dv">1</span>]               <span class="co"># Exclude first element</span></span></code></pre></div>
+<pre><code>## [1]  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="vectors.html#cb315-1"></a>vec[<span class="op">-</span><span class="kw">length</span>(vec)]     <span class="co"># Exclude last element</span></span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5 6 7 8 9</code></pre>
+<p>R provides handy commands like <code>any()</code> and <code>all()</code> to manipulate data and perform fast logic tests.</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="vectors.html#cb317-1"></a><span class="kw">any</span>(vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="vectors.html#cb319-1"></a><span class="kw">all</span>(vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="vectors.html#cb321-1"></a><span class="kw">all</span>(vec[<span class="op">-</span><span class="kw">length</span>(vec)] <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>You can also use brackets to filter data and advise R to only return specific values which match your filter criteria.</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="vectors.html#cb323-1"></a>vec[vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>]          <span class="co"># Brackets can hold expressions to filter data</span></span></code></pre></div>
+<pre><code>## [1]  6  7  8  9 10</code></pre>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="vectors.html#cb325-1"></a>vec[vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>] &lt;-<span class="st"> </span><span class="dv">0</span>     <span class="co"># Setting all observations &gt; 7 to zero</span></span>
+<span id="cb325-2"><a href="vectors.html#cb325-2"></a>vec</span></code></pre></div>
+<pre><code>##  [1] 1 2 3 4 5 6 7 0 0 0</code></pre>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="vectors.html#cb327-1"></a><span class="kw">subset</span>(vec, vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>)  <span class="co"># subset() can also be used to filter data</span></span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 0 0 0</code></pre>
+<p>Using <code>which()</code> it is possible to perform actions on indices which can be used to remove values from a vector for example.</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="vectors.html#cb329-1"></a><span class="kw">which</span>(vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)                         <span class="co"># Get indices of zeros in vec</span></span></code></pre></div>
+<pre><code>## [1]  8  9 10</code></pre>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="vectors.html#cb331-1"></a>vec[<span class="kw">which</span>(vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)]</span></code></pre></div>
+<pre><code>## [1] 0 0 0</code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="vectors.html#cb333-1"></a>vec.positive &lt;-<span class="st"> </span>vec[<span class="op">-</span><span class="kw">which</span>(vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)]   <span class="co"># Remove zeros from vec</span></span>
+<span id="cb333-2"><a href="vectors.html#cb333-2"></a>vec.positive</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5 6 7</code></pre>
+<p>As in the real world, there are always multiple solutions to a problem. If you want to remove the zeros from the shown vector <code>vec</code> there are additional ways to receive the same result as for <code>vec.positive</code> in a more efficient, but not always more clear way. Make sure to understand the following solutions in addition to the one shown using <code>which()</code>.</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="vectors.html#cb335-1"></a>vec[vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]                      <span class="co"># Nice, clean and efficient</span></span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5 6 7</code></pre>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="vectors.html#cb337-1"></a><span class="kw">subset</span>(vec,vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)               <span class="co"># Same result using a function</span></span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5 6 7</code></pre>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="vectors.html#cb339-1"></a>vec[<span class="op">-</span>vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>]                     <span class="co"># Also right, but not clear or fast</span></span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5 6 7</code></pre>
+<p>Let us have a detailed look at how the third and maybe confusing solution is derived. You should not use it as the others shown are more clear and way nicer, but it illustrates nicely how weird a solution can be achieved.</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="vectors.html#cb341-1"></a><span class="op">-</span>vec</span></code></pre></div>
+<pre><code>##  [1] -1 -2 -3 -4 -5 -6 -7  0  0  0</code></pre>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="vectors.html#cb343-1"></a><span class="op">-</span>vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span></span></code></pre></div>
+<pre><code>##  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="vectors.html#cb345-1"></a>vec[<span class="op">-</span>vec <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>]  </span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5 6 7</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-manipulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="matrices-and-arrays.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +354,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-datastructures.Rmd",
 "text": "Edit"
 },
 "history": {

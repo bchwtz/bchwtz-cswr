@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Computational Statistics</title>
-  <meta name="description" content="Computational Statistics with R Course Notes" />
+  <title>2.7 Missing and Raw Data | Computational Statistics</title>
+  <meta name="description" content="2.7 Missing and Raw Data | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Computational Statistics" />
+  <meta property="og:title" content="2.7 Missing and Raw Data | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="2.7 Missing and Raw Data | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Computational Statistics" />
+  <meta name="twitter:title" content="2.7 Missing and Raw Data | Computational Statistics" />
   
-  <meta name="twitter:description" content="Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="2.7 Missing and Raw Data | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="factors.html"/>
+<link rel="next" href="coercion-attributes-and-class.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -266,30 +266,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Computational Statistics</h1>
-<p class="author"><em>Benjamin Buchwitz</em></p>
-<p class="date"><em>2021-01-06</em></p>
-</div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>This is now a private REPO!</p>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co">#install.packages(&quot;bookdown&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
-
+<div id="missing-and-raw-data" class="section level2">
+<h2><span class="header-section-number">2.7</span> Missing and Raw Data</h2>
+<p>Besides the atomic data types, R supports two more types. A missing or undefined value is indicated by <code>NA</code> which stands for non-available. This is in fact not a real data type, R considers this type a logical value. A lot of functions support handling data with <code>NA</code>s in the set and provide different options to use the respective dataset anyway. Watch out to not mistake <code>NA</code> for the reserved term <code>NaN</code>, which indicates erroneous calculations.</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="missing-and-raw-data.html#cb268-1"></a>num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> , <span class="dv">2</span> , <span class="ot">NA</span> , <span class="dv">4</span> , <span class="dv">5</span>)</span>
+<span id="cb268-2"><a href="missing-and-raw-data.html#cb268-2"></a>num <span class="op">+</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1]  4  5 NA  7  8</code></pre>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="missing-and-raw-data.html#cb270-1"></a><span class="kw">is.na</span>(num)</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="missing-and-raw-data.html#cb272-1"></a><span class="kw">sum</span>(<span class="kw">is.na</span>(num))               <span class="co"># Number of NAs in dataset</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="missing-and-raw-data.html#cb274-1"></a><span class="kw">which</span>(<span class="kw">is.na</span>(num))             <span class="co"># Location/Index of the NA</span></span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="missing-and-raw-data.html#cb276-1"></a><span class="kw">mean</span>(num)                     <span class="co"># Mean of the data can not be calculated</span></span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="missing-and-raw-data.html#cb278-1"></a><span class="kw">mean</span>(num , <span class="dt">na.rm=</span>T)           <span class="co"># Omitting the NA for caluclating mean</span></span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>R also supports RAW vectors meaning data stored in hexadecimal notation. The hexadecimal system is a companion from our well-known decimal system and the binary system we talked about at the beginning of this chapter. Hexadecimal numbers are numbers with base <span class="math inline">\(b = 16\)</span>. This may get handy when reading in files in binary formats. To find additional information about how to work with the type RAW see the corresponding help pages with <code>?raw</code>.</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="missing-and-raw-data.html#cb280-1"></a><span class="kw">raw</span>(<span class="dv">3</span>)                        <span class="co"># Create empty raw vector of length 3</span></span></code></pre></div>
+<pre><code>## [1] 00 00 00</code></pre>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="missing-and-raw-data.html#cb282-1"></a>x &lt;-<span class="st"> </span><span class="kw">as.raw</span>(<span class="dv">15</span>)               <span class="co"># Convert number to raw</span></span>
+<span id="cb282-2"><a href="missing-and-raw-data.html#cb282-2"></a>x</span></code></pre></div>
+<pre><code>## [1] 0f</code></pre>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="missing-and-raw-data.html#cb284-1"></a><span class="kw">typeof</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;raw&quot;</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="factors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="coercion-attributes-and-class.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +328,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-datatypes.Rmd",
 "text": "Edit"
 },
 "history": {

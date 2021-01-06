@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Computational Statistics</title>
-  <meta name="description" content="Computational Statistics with R Course Notes" />
+  <title>Exercises | Computational Statistics</title>
+  <meta name="description" content="Exercises | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Computational Statistics" />
+  <meta property="og:title" content="Exercises | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="Exercises | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Computational Statistics" />
+  <meta name="twitter:title" content="Exercises | Computational Statistics" />
   
-  <meta name="twitter:description" content="Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="Exercises | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="loops.html"/>
+<link rel="next" href="software-development.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -266,30 +266,148 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Computational Statistics</h1>
-<p class="author"><em>Benjamin Buchwitz</em></p>
-<p class="date"><em>2021-01-06</em></p>
+<div id="exercises-3" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<p><img src="gfx/CH00-ExercisesHeader.png" width="100%" /></p>
+<!--
+### Clever BMI Calculator {-}
+
+\BeginKnitrBlock{rmdexercise}<div class="rmdexercise">Expand your function `BMI()` in a way that it outputs an evaluation of the calculated BMI aside of the pure result. Make also sure that it outputs a useful warning if meaningless numbers are entered by a user.
+  </div>\EndKnitrBlock{rmdexercise}
+-->
+<div id="bottles-of-beer" class="section level3 unnumbered">
+<h3>99 Bottles of Beer</h3>
+<p>In early 1994, when the internet was only used by a fraction of the people that are using it today, someone posted the full lyrics of the song 99 Bottles of Beer to a humor mailing list, which was also heavily used by programmers. This was seen as an enormous waste of bandwidth because the lyrics could have been easily posted using six lines of BASIC code.</p>
+<p>This small event was the occasion for Tim Robinson to develop and post his version of the song in C++ which inspired other programmers to post their version of the song which since then has been ported to nearly every programming language available and is one of the many classic yet funny stories from the early ages of the internet. The song has the following lyrics:</p>
+<blockquote>
+<p>99 bottles of beer on the wall, 99 bottles of beer.<br />
+Take one down and pass it around, 98 bottles of beer on the wall.</p>
+<p><span class="math display">\[ \vdots \]</span></p>
+<p>2 bottles of beer on the wall, 2 bottles of beer.<br />
+Take one down and pass it around, 1 bottle of beer on the wall.</p>
+<p>1 bottle of beer on the wall, 1 bottle of beer.<br />
+Take one down and pass it around, no more bottles of beer on the wall.</p>
+<p>No more bottles of beer on the wall, no more bottles of beer.<br />
+Go to the store and buy some more, 99 bottles of beer on the wall.</p>
+<p>[END]</p>
+</blockquote>
+
+<div class="rmdexercise">
+Write a function called <code>bottlesong()</code> that outputs the famous and complete lyrics of the song 99 Bottles of Beer.
 </div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>This is now a private REPO!</p>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co">#install.packages(&quot;bookdown&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
 
 </div>
+<div id="multiplication-table" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Multiplication Table</h3>
+
+<div class="rmdexercise">
+Write a function <code>mulitplicationtable()</code> that outputs the multiplication table including results from <span class="math inline">\(1 \cdot 1 = 1\)</span> up to <span class="math inline">\(10 \cdot 10 = 100\)</span> to the console. The function should rely on loops, results should be calculated at runtine and the time delay between the output of two consecutive lines to the command line should be user-definable.
+</div>
+
+<p>The following block shows an abbreviated example output.</p>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="exercises-3.html#cb478-1"></a><span class="dv">1</span> x <span class="dv">1</span> =<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb478-2"><a href="exercises-3.html#cb478-2"></a><span class="dv">1</span> x <span class="dv">2</span> =<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb478-3"><a href="exercises-3.html#cb478-3"></a><span class="dv">1</span> x <span class="dv">3</span> =<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb478-4"><a href="exercises-3.html#cb478-4"></a></span>
+<span id="cb478-5"><a href="exercises-3.html#cb478-5"></a>...</span>
+<span id="cb478-6"><a href="exercises-3.html#cb478-6"></a></span>
+<span id="cb478-7"><a href="exercises-3.html#cb478-7"></a><span class="dv">10</span> x <span class="dv">9</span> =<span class="st"> </span><span class="dv">90</span></span>
+<span id="cb478-8"><a href="exercises-3.html#cb478-8"></a><span class="dv">10</span> x <span class="dv">10</span> =<span class="st"> </span><span class="dv">100</span></span></code></pre></div>
+</div>
+<div id="diagonal-matrix" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Diagonal Matrix</h3>
+<p>Write a function that creates a symmetric matrix with dimension <span class="math inline">\(n x n\)</span>, that contains a value x on every element, except for the elements on the main diagonal which should contain value y. Wrap your code in a function <code>diagmat()</code> and make all mentioned values user-definable.</p>
+<p>The following block contains an example output:</p>
+<!--
+
+### Solution 1
+
+
+```r
+#' 99 bottles of beer song lyrics
+#' Writes the complete "bottlesong" lyrics to the console.
+#' @param b equals the number of bought bottles = bb
+#' @param bb bought bottles with default = 99
+#' @return Outputs text to the console, returns nothing explicitly.
+bottlesong <- function(b = 99, bb = b){
+  if (bb <= 1){
+    cat("Come on, you have to buy at least two bottles of beer!!!")
+  } else {
+    while (b > 2){
+      cat(b,"bottles of beer on the wall,",b,"bottles of beer. \n",
+          "Take one down and pass it around,",b-1,"bottles of beer on the wall.\n\n")
+      b <- (b-1)
+      Sys.sleep(0.1)
+    } 
+    if (b == 2) {
+      cat(b,"bottles of beer on the wall,",b,"bottles of beer.\n",
+          "Take one down and pass it around,",b-1,"bottle of beer on the wall.\n\n")
+    }
+    cat(b-1,"bottle of beer on the wall,",b-1,"bottle of beer. \n",
+        "Take one down and pass it around, no more bottles of beer on the wall.\n\n",
+        "No more bottles of beer on the wall, no more bottles of beer. \n",
+        "Go to the store and buy some more,",bb,"bottles of beer on the wall.")
+  }
+}
+
+
+# Some Tests
+bottlesong()          # Default
+bottlesong(b=9)       # Only 9 bottles
+bottlesong(bb=25)     # Rebuy 25 bottles
+bottlesong(bb=1)      # Rebuy only 1 bottle
+```
+
+
+### Solution 2
+
+```r
+bottlesong<-function(nb=99){
+  for(b in nb:0){
+    b1 <- ifelse(b  >1,paste(b  ,"bottles"),ifelse(b  ==0,"No more bottles", paste(b  ,"bottle")))
+    b2 <- ifelse(b-1>1,paste(b-1,"bottles"),ifelse(b-1==0,"No more bottles", paste(b-1,"bottle")))
+    cat(b1, "of beer on the wall,", tolower(b1),"of beer.\n")
+    if( b<1){
+      cat("Go to the store and buy some more,", nb, "bottles of beer on the wall.")
+    } else {
+      cat("Take one down and pass it around,", tolower(b2), "of beer on the wall.\n\n")
+    }
+  }
+}
+
+#bottlesong()
+```
+
+
+### Solution 3
+
+```r
+bottlesong<-function(nbottles=99){
+  x<-nbottles:3
+  for(idx in x){
+    cat(paste(idx, "bottles of beer on the wall,", idx, "bottles of beer.\n",
+              "Take one down and pass it around,", idx-1, "bottles of beer on the wall.\n\n"))}
+  cat(paste("2 bottles of beer on the wall, 2 bottles of beer. \n",
+            "Take one down and pass it around, 1 bottle of beer on the wall.\n\n"))
+  cat(paste("No more bottles of beer on the wall, no more bottles of beer.\n",
+            "Go to the store and buy some more,", nbottles, "bottles of beer on the wall."))
+}
+
+#bottlesong()
+```
+
+-->
+
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="loops.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="software-development.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +438,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-structure.Rmd",
 "text": "Edit"
 },
 "history": {

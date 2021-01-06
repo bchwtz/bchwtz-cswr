@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Computational Statistics</title>
-  <meta name="description" content="Computational Statistics with R Course Notes" />
+  <title>2.2 Numeric | Computational Statistics</title>
+  <meta name="description" content="2.2 Numeric | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Computational Statistics" />
+  <meta property="og:title" content="2.2 Numeric | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="2.2 Numeric | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Computational Statistics" />
+  <meta name="twitter:title" content="2.2 Numeric | Computational Statistics" />
   
-  <meta name="twitter:description" content="Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="2.2 Numeric | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="fixed-and-floating-point-number-representation.html"/>
+<link rel="next" href="complex.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -266,30 +266,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Computational Statistics</h1>
-<p class="author"><em>Benjamin Buchwitz</em></p>
-<p class="date"><em>2021-01-06</em></p>
-</div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>This is now a private REPO!</p>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co">#install.packages(&quot;bookdown&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
-
+<div id="numeric" class="section level2">
+<h2><span class="header-section-number">2.2</span> Numeric</h2>
+<p>Atomic vectors, which are the base element of all higher order data structures can be of different types or modes. The mode is a mutually exclusive classification of objects according to their basic structure. The atomic modes are numeric, complex, logical, factors and character. A single object, even if not atomic, can only have a single mode. You can look up the mode using the command <code>mode()</code>.</p>
+<p>The atomic mode <code>numeric</code> can be divided into two types, one for natural numbers, called <code>integer</code> and one for floating point numbers called <code>double</code>. As of now the reasons why these two cases were separated should be obvious - it is quite easy and memory efficient to store a natural number as we do not need an exponent and the whole set of conventions we discussed earlier. Contrary to this, it is quite complex to store a floating point number, which consumes - dependent on our desired precision - more bits and therefore more memory. Let’s have a quick look at what R has to offer here:</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="numeric.html#cb188-1"></a>vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></span>
+<span id="cb188-2"><a href="numeric.html#cb188-2"></a><span class="kw">mode</span>(vec)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="numeric.html#cb190-1"></a><span class="kw">typeof</span>(vec)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="numeric.html#cb192-1"></a>sequence &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span> , <span class="dv">5</span> , <span class="dt">by=</span>.<span class="dv">5</span>)</span>
+<span id="cb192-2"><a href="numeric.html#cb192-2"></a><span class="kw">typeof</span>(sequence)</span></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="numeric.html#cb194-1"></a><span class="co"># Mixing integers and doubles will produce a vector of type double</span></span>
+<span id="cb194-2"><a href="numeric.html#cb194-2"></a>mixed &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span> , <span class="kw">seq</span>(<span class="dv">1</span> , <span class="dv">5</span> , <span class="dt">by=</span>.<span class="dv">5</span>))</span>
+<span id="cb194-3"><a href="numeric.html#cb194-3"></a><span class="kw">typeof</span>(mixed)         </span></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<p>Generally, R stores numbers as <code>double</code> and will use integers only when easily applicable or if you specifically force R to treat a number as an integer using the <code>as.integer()</code> command. A vector of type integer uses less memory than a vector of type double with the same length. The reason for this is the internal representation of numbers we discussed at the beginning of this chapter.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="fixed-and-floating-point-number-representation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="complex.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +321,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-datatypes.Rmd",
 "text": "Edit"
 },
 "history": {

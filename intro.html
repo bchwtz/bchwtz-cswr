@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Introduction | Computational Statistics</title>
-  <meta name="description" content="Chapter 1 Introduction | Computational Statistics with R Course Notes" />
+  <title>Chapter 1 The Basics | Computational Statistics</title>
+  <meta name="description" content="Chapter 1 The Basics | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Introduction | Computational Statistics" />
+  <meta property="og:title" content="Chapter 1 The Basics | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Chapter 1 Introduction | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="Chapter 1 The Basics | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Introduction | Computational Statistics" />
+  <meta name="twitter:title" content="Chapter 1 The Basics | Computational Statistics" />
   
-  <meta name="twitter:description" content="Chapter 1 Introduction | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="Chapter 1 The Basics | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="literature.html"/>
+<link rel="next" href="r-and-the-r-project.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -135,19 +135,117 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a><ul>
-<li class="chapter" data-level="2.1" data-path="slides-pdf.html"><a href="slides-pdf.html"><i class="fa fa-check"></i><b>2.1</b> Slides (PDF)</a></li>
-<li class="chapter" data-level="2.2" data-path="video.html"><a href="video.html"><i class="fa fa-check"></i><b>2.2</b> Video</a></li>
-<li class="chapter" data-level="2.3" data-path="lecture.html"><a href="lecture.html"><i class="fa fa-check"></i><b>2.3</b> Lecture</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> The Basics</a><ul>
+<li class="chapter" data-level="1.1" data-path="r-and-the-r-project.html"><a href="r-and-the-r-project.html"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
+<li class="chapter" data-level="1.2" data-path="r-system-and-rstudio.html"><a href="r-system-and-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="first-steps-r-as-calculator.html"><a href="first-steps-r-as-calculator.html"><i class="fa fa-check"></i><b>1.3</b> First Steps: R as Calculator</a></li>
+<li class="chapter" data-level="1.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html"><i class="fa fa-check"></i><b>1.4</b> Objects and Data Structures</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-vectors"><i class="fa fa-check"></i><b>1.4.1</b> Data Structure: Vectors</a></li>
+<li class="chapter" data-level="1.4.2" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-matrices"><i class="fa fa-check"></i><b>1.4.2</b> Data Structure: Matrices</a></li>
+<li class="chapter" data-level="1.4.3" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-strings"><i class="fa fa-check"></i><b>1.4.3</b> Data Structure: Strings</a></li>
+<li class="chapter" data-level="1.4.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-lists-and-data-frames"><i class="fa fa-check"></i><b>1.4.4</b> Data Structure: Lists and Data Frames</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
-<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a><ul>
-<li class="chapter" data-level="4.1" data-path="example-one.html"><a href="example-one.html"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
-<li class="chapter" data-level="4.2" data-path="example-two.html"><a href="example-two.html"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+<li class="chapter" data-level="1.5" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>1.5</b> Functions</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="functions.html"><a href="functions.html#using-functions"><i class="fa fa-check"></i><b>1.5.1</b> Using Functions</a></li>
+<li class="chapter" data-level="1.5.2" data-path="functions.html"><a href="functions.html#writing-functions"><i class="fa fa-check"></i><b>1.5.2</b> Writing Functions</a></li>
+<li class="chapter" data-level="1.5.3" data-path="functions.html"><a href="functions.html#solving-problems"><i class="fa fa-check"></i><b>1.5.3</b> Solving Problems</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="1.6" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>1.6</b> Packages</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="packages.html"><a href="packages.html#packages-with-data"><i class="fa fa-check"></i><b>1.6.1</b> Packages with Data</a></li>
+<li class="chapter" data-level="1.6.2" data-path="packages.html"><a href="packages.html#packages-with-functions"><i class="fa fa-check"></i><b>1.6.2</b> Packages with Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="getting-help.html"><a href="getting-help.html"><i class="fa fa-check"></i><b>1.7</b> Getting Help</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="getting-help.html"><a href="getting-help.html#integrated-help-system"><i class="fa fa-check"></i><b>1.7.1</b> Integrated Help System</a></li>
+<li class="chapter" data-level="1.7.2" data-path="getting-help.html"><a href="getting-help.html#help-on-the-internet"><i class="fa fa-check"></i><b>1.7.2</b> Help on the Internet</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-3"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-4"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-5"><i class="fa fa-check"></i>EX 5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2</b> Data Types</a><ul>
+<li class="chapter" data-level="2.1" data-path="fixed-and-floating-point-number-representation.html"><a href="fixed-and-floating-point-number-representation.html"><i class="fa fa-check"></i><b>2.1</b> Fixed and Floating Point Number Representation</a></li>
+<li class="chapter" data-level="2.2" data-path="numeric.html"><a href="numeric.html"><i class="fa fa-check"></i><b>2.2</b> Numeric</a></li>
+<li class="chapter" data-level="2.3" data-path="complex.html"><a href="complex.html"><i class="fa fa-check"></i><b>2.3</b> Complex</a></li>
+<li class="chapter" data-level="2.4" data-path="logical.html"><a href="logical.html"><i class="fa fa-check"></i><b>2.4</b> Logical</a></li>
+<li class="chapter" data-level="2.5" data-path="character.html"><a href="character.html"><i class="fa fa-check"></i><b>2.5</b> Character</a></li>
+<li class="chapter" data-level="2.6" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>2.6</b> Factors</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="factors.html"><a href="factors.html#unordered-factors"><i class="fa fa-check"></i><b>2.6.1</b> Unordered Factors</a></li>
+<li class="chapter" data-level="2.6.2" data-path="factors.html"><a href="factors.html#ordered-factors"><i class="fa fa-check"></i><b>2.6.2</b> Ordered Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="missing-and-raw-data.html"><a href="missing-and-raw-data.html"><i class="fa fa-check"></i><b>2.7</b> Missing and Raw Data</a></li>
+<li class="chapter" data-level="2.8" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html"><i class="fa fa-check"></i><b>2.8</b> Coercion, Attributes, and Class</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#coercion"><i class="fa fa-check"></i><b>2.8.1</b> Coercion</a></li>
+<li class="chapter" data-level="2.8.2" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#attributes-and-names"><i class="fa fa-check"></i><b>2.8.2</b> Attributes and Names</a></li>
+<li class="chapter" data-level="2.8.3" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#class"><i class="fa fa-check"></i><b>2.8.3</b> Class</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-1-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-2-1"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-3-1"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-4-1"><i class="fa fa-check"></i>EX 4</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation</a><ul>
+<li class="chapter" data-level="3.1" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="matrices-and-arrays.html"><a href="matrices-and-arrays.html"><i class="fa fa-check"></i><b>3.2</b> Matrices and Arrays</a></li>
+<li class="chapter" data-level="3.3" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a><ul>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#merging-rows-and-columns"><i class="fa fa-check"></i>Merging rows and columns</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#apply-functions-to-rows-and-columns"><i class="fa fa-check"></i>Apply functions to rows and columns</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#sweep-out-statistics-in-a-matrix"><i class="fa fa-check"></i>Sweep out Statistics in a Matrix</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#concatenate-all-values-from-a-dataframe"><i class="fa fa-check"></i>Concatenate all values from a dataframe</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#splitting-dataframes-while-applying-functions"><i class="fa fa-check"></i>Splitting dataframes while applying functions</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#transformations-without-recreating-dataframes"><i class="fa fa-check"></i>Transformations without recreating dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>3.5</b> Strings</a></li>
+<li class="chapter" data-level="3.6" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>3.6</b> Dates and Times</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-1-2"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-2-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-3-2"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-4-2"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-5-1"><i class="fa fa-check"></i>EX 5</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-6"><i class="fa fa-check"></i>EX 6</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-7"><i class="fa fa-check"></i>EX 7</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>4</b> Code Structure</a><ul>
+<li class="chapter" data-level="4.1" data-path="conditional-expressions.html"><a href="conditional-expressions.html"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a><ul>
+<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#if-and-else"><i class="fa fa-check"></i>If and Else</a></li>
+<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#switch"><i class="fa fa-check"></i>Switch</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>4.2</b> Loops</a><ul>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#for-loop"><i class="fa fa-check"></i>For-Loop</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#while-loop"><i class="fa fa-check"></i>While-Loop</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#repeat"><i class="fa fa-check"></i>Repeat</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#break-and-next"><i class="fa fa-check"></i>Break and Next</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#special-looping-over-non-numerical-data"><i class="fa fa-check"></i>Special: Looping over non-numerical data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html#bottles-of-beer"><i class="fa fa-check"></i>99 Bottles of Beer</a></li>
+<li class="chapter" data-level="4.2.1" data-path="exercises-3.html"><a href="exercises-3.html#multiplication-table"><i class="fa fa-check"></i><b>4.2.1</b> Multiplication Table</a></li>
+<li class="chapter" data-level="4.2.2" data-path="exercises-3.html"><a href="exercises-3.html#diagonal-matrix"><i class="fa fa-check"></i><b>4.2.2</b> Diagonal Matrix</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="software-development.html"><a href="software-development.html"><i class="fa fa-check"></i><b>5</b> Software Development</a><ul>
+<li class="chapter" data-level="5.1" data-path="planning.html"><a href="planning.html"><i class="fa fa-check"></i><b>5.1</b> Planning</a></li>
+<li class="chapter" data-level="5.2" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>5.2</b> Coding</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="coding.html"><a href="coding.html#standard-program-structure"><i class="fa fa-check"></i><b>5.2.1</b> Standard Program Structure</a></li>
+<li class="chapter" data-level="5.2.2" data-path="coding.html"><a href="coding.html#standard-function-structure"><i class="fa fa-check"></i><b>5.2.2</b> Standard Function Structure</a></li>
+<li class="chapter" data-level="5.2.3" data-path="coding.html"><a href="coding.html#naming-convention"><i class="fa fa-check"></i><b>5.2.3</b> Naming Convention</a></li>
+<li class="chapter" data-level="5.2.4" data-path="coding.html"><a href="coding.html#rules-best-practices"><i class="fa fa-check"></i><b>5.2.4</b> Rules &amp; Best Practices</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="documenting.html"><a href="documenting.html"><i class="fa fa-check"></i><b>5.3</b> Documenting</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="documenting.html"><a href="documenting.html#code-documentation-short-form-documentation"><i class="fa fa-check"></i><b>5.3.1</b> Code Documentation (Short-form Documentation)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="documenting.html"><a href="documenting.html#user-documentation-long-form-documentation"><i class="fa fa-check"></i><b>5.3.2</b> User documentation (Long-form Documentation)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>5.4</b> Testing</a></li>
+<li class="chapter" data-level="5.5" data-path="maintaining.html"><a href="maintaining.html"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="http://www.bchwtz.de" target="blank"><center>www.<b>BCHWTZ</b>.de</center></a></li>
 
@@ -169,188 +267,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="intro" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>You can label chapter and section titles using <code>{#label}</code> after them, e.g., we can reference Chapter <a href="intro.html#intro">1</a>. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter <a href="methods.html#methods">3</a>.</p>
-<p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro.html#cb2-1"></a><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span>))</span>
-<span id="cb2-2"><a href="intro.html#cb2-2"></a><span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
-<img src="bchwtz-cswr_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
-<p class="caption">
-Figure 1.1: Here is a nice figure!
-</p>
-</div>
-<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="intro.html#fig:nice-fig">1.1</a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="intro.html#tab:nice-tab">1.1</a>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
-<span id="cb3-2"><a href="intro.html#cb3-2"></a>  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
-<span id="cb3-3"><a href="intro.html#cb3-3"></a>  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></span>
-<span id="cb3-4"><a href="intro.html#cb3-4"></a>)</span></code></pre></div>
-<table>
-<caption><span id="tab:nice-tab">Table 1.1: </span>Here is a nice table!</caption>
-<thead>
-<tr class="header">
-<th align="right">Sepal.Length</th>
-<th align="right">Sepal.Width</th>
-<th align="right">Petal.Length</th>
-<th align="right">Petal.Width</th>
-<th align="left">Species</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.7</td>
-<td align="right">3.2</td>
-<td align="right">1.3</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.6</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.0</td>
-<td align="right">3.6</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.7</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.6</td>
-<td align="right">3.4</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.0</td>
-<td align="right">3.4</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.4</td>
-<td align="right">2.9</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.8</td>
-<td align="right">3.4</td>
-<td align="right">1.6</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.8</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.3</td>
-<td align="right">3.0</td>
-<td align="right">1.1</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.8</td>
-<td align="right">4.0</td>
-<td align="right">1.2</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.7</td>
-<td align="right">4.4</td>
-<td align="right">1.5</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.3</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.7</td>
-<td align="right">3.8</td>
-<td align="right">1.7</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.8</td>
-<td align="right">1.5</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-</tbody>
-</table>
-<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span>.</p>
-<p>Needs update</p>
-
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.</p>
-</div>
-<div id="ref-R-bookdown">
-<p>Xie, Yihui. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.</p>
-</div>
+<h1><span class="header-section-number">Chapter 1</span> The Basics</h1>
+<blockquote>
+<p>All of my friends who have younger siblings who are going to college or high school - my number one piece of advice is: You should learn how to program.
+– Mark Zuckerberg</p>
+</blockquote>
 </div>
             </section>
 
@@ -358,7 +279,7 @@ Figure 1.1: Here is a nice figure!
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-and-the-r-project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

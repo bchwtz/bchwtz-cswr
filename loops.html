@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Computational Statistics</title>
-  <meta name="description" content="Computational Statistics with R Course Notes" />
+  <title>4.2 Loops | Computational Statistics</title>
+  <meta name="description" content="4.2 Loops | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Computational Statistics" />
+  <meta property="og:title" content="4.2 Loops | Computational Statistics" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="4.2 Loops | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Computational Statistics" />
+  <meta name="twitter:title" content="4.2 Loops | Computational Statistics" />
   
-  <meta name="twitter:description" content="Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="4.2 Loops | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="conditional-expressions.html"/>
+<link rel="next" href="exercises-3.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -266,30 +266,109 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Computational Statistics</h1>
-<p class="author"><em>Benjamin Buchwitz</em></p>
-<p class="date"><em>2021-01-06</em></p>
+<div id="loops" class="section level2">
+<h2><span class="header-section-number">4.2</span> Loops</h2>
+<p>Loops are one of the most used and most important constructs while programming - they are somehow like the universal workhorse. Generally, a loop is a control structure which allows running specific lines of code over and over again until an exit condition is fulfilled or until a specified number of repetitions has been performed. While executing the same code several times the provided data can, of course, be alternated which makes loops very useful when performing a huge number of actions of the same type.</p>
+<div id="for-loop" class="section level3 unnumbered">
+<h3>For-Loop</h3>
+<p><img src="gfx/gif/forLoop.gif" width="70%" /></p>
+<p>A <code>for</code> loop runs specified code a fixed number of times. Therefore, you have to know in advance how often the code in the body of the loop should be executed. The <code>for</code> loop has the following general form.</p>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="loops.html#cb466-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> vector){           <span class="co"># Basic syntax</span></span>
+<span id="cb466-2"><a href="loops.html#cb466-2"></a>  code</span>
+<span id="cb466-3"><a href="loops.html#cb466-3"></a>}</span></code></pre></div>
+<p>The typical iterator variable <code>i</code> that is commonly used in other programming languages should be avoided in R because it is already a reserved word for the imaginary unit when working with complex numbers. Common workarounds are using <code>it</code> (short for iterator), <code>ii</code> (just doubled to avoid using the reserved word) or <code>idx</code> (abbreviation for iteration index).</p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="loops.html#cb467-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
+<span id="cb467-2"><a href="loops.html#cb467-2"></a><span class="cf">for</span> ( idx <span class="cf">in</span> x) {</span>
+<span id="cb467-3"><a href="loops.html#cb467-3"></a>  <span class="kw">print</span>(idx)</span>
+<span id="cb467-4"><a href="loops.html#cb467-4"></a>}</span></code></pre></div>
 </div>
-<div id="prerequisites" class="section level1 unnumbered">
-<h1>Prerequisites</h1>
-<p>This is now a private REPO!</p>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co">#install.packages(&quot;bookdown&quot;)</span></span>
-<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co"># or the development version</span></span>
-<span id="cb1-3"><a href="index.html#cb1-3"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
-
+<div id="while-loop" class="section level3 unnumbered">
+<h3>While-Loop</h3>
+<p><img src="gfx/gif/whileLoop.gif" width="70%" /></p>
+<p>The <code>while</code> loop loops until the specified condition is false. It is often used when you do not know and can not calculate in advance how often the instructions will be executed. It has the following general form.</p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="loops.html#cb468-1"></a><span class="cf">while</span> ( condition ){          <span class="co"># Basic syntax</span></span>
+<span id="cb468-2"><a href="loops.html#cb468-2"></a>  code</span>
+<span id="cb468-3"><a href="loops.html#cb468-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="loops.html#cb469-1"></a>idx &lt;-<span class="st"> </span><span class="dv">6</span></span>
+<span id="cb469-2"><a href="loops.html#cb469-2"></a><span class="cf">while</span> ( idx <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span> ){</span>
+<span id="cb469-3"><a href="loops.html#cb469-3"></a>  <span class="kw">print</span>(idx)</span>
+<span id="cb469-4"><a href="loops.html#cb469-4"></a>  idx &lt;-<span class="st"> </span>idx <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb469-5"><a href="loops.html#cb469-5"></a>}</span></code></pre></div>
+</div>
+<div id="repeat" class="section level3 unnumbered">
+<h3>Repeat</h3>
+<p>The <code>repeat</code> loop is somehow similar to the while loop. The <code>while</code> loop starts a new run every time the condition is evaluated as <code>TRUE</code> while the <code>repeat</code> loop will always begin a new run and will only stop if it is told to do so with the <code>break</code> command. This means you can explicitly control which part of the loop should be executed and when the execution should be stopped.</p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="loops.html#cb470-1"></a>counter &lt;-<span class="st"> </span><span class="dv">0</span>                  <span class="co"># Counter variable to count loops</span></span>
+<span id="cb470-2"><a href="loops.html#cb470-2"></a></span>
+<span id="cb470-3"><a href="loops.html#cb470-3"></a><span class="cf">repeat</span>{                       <span class="co"># Repeat does not need a condition</span></span>
+<span id="cb470-4"><a href="loops.html#cb470-4"></a>  x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb470-5"><a href="loops.html#cb470-5"></a>  counter &lt;-<span class="st"> </span>counter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb470-6"><a href="loops.html#cb470-6"></a>  <span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>) {</span>
+<span id="cb470-7"><a href="loops.html#cb470-7"></a>    <span class="kw">print</span>(counter)</span>
+<span id="cb470-8"><a href="loops.html#cb470-8"></a>    <span class="kw">print</span>(x)</span>
+<span id="cb470-9"><a href="loops.html#cb470-9"></a>    <span class="cf">break</span> </span>
+<span id="cb470-10"><a href="loops.html#cb470-10"></a>  }</span>
+<span id="cb470-11"><a href="loops.html#cb470-11"></a>}</span></code></pre></div>
+</div>
+<div id="break-and-next" class="section level3 unnumbered">
+<h3>Break and Next</h3>
+<p><img src="gfx/gif/breakLoop.gif" width="70%" /></p>
+<p>We have already seen that <code>break</code> is able to abort the <code>repeat</code>-loop, but it is much more powerful and can break any of the discussed loops directly. Even if you can use <code>break</code> to abort loops on certain conditions this is a bad habit. It is always better to know when and how a loop should end and do this via the condition or by predefining the number of loops using the <code>for</code> loop.</p>
+<p><img src="gfx/gif/nextLoop.gif" width="70%" /></p>
+<p>The <code>next</code> command is used to skip the following statements and if used in a loop it will increment the loop variable (<code>idx</code> in the <code>for</code> loop example). Here is a simple example to illustrate how both are working.</p>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="loops.html#cb471-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</span>
+<span id="cb471-2"><a href="loops.html#cb471-2"></a>  x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb471-3"><a href="loops.html#cb471-3"></a>  <span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) <span class="cf">next</span></span>
+<span id="cb471-4"><a href="loops.html#cb471-4"></a>  <span class="kw">print</span>(x)</span>
+<span id="cb471-5"><a href="loops.html#cb471-5"></a>  <span class="cf">if</span> ( <span class="kw">abs</span>(x) <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>) <span class="cf">break</span>    <span class="co"># Break should normally be avoided</span></span>
+<span id="cb471-6"><a href="loops.html#cb471-6"></a>}</span></code></pre></div>
+<p>Generally one can say that loops in R are pretty slow and in most of the cases drastically slow down your code. Therefore, where possible <em>loops should be avoided</em>! In most of the cases it is much better (and faster!) to use vectorized functions like <code>apply()</code>, <code>sapply()</code> or <code>tapply()</code>.</p>
+</div>
+<div id="special-looping-over-non-numerical-data" class="section level3 unnumbered">
+<h3>Special: Looping over non-numerical data</h3>
+<p>R does not exactly support looping over non-numerical data, but it may be useful sometimes and of course, there are a few ways to accomplish this. The first one is using a function of R’s mighty <code>apply()</code>-family. In this case <code>lapply()</code> is the way to go if the performed and desired loops are independent of each other and it is allowed to process them in any order.</p>
+<p>Another option is using the function <code>get()</code>. In fact, the purpose is straight forward and sounds very simple. It takes a character string as an argument and returns the object of that name. Here is a short example of how to calculate the mean of three vectors.</p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="loops.html#cb472-1"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb472-2"><a href="loops.html#cb472-2"></a>y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb472-3"><a href="loops.html#cb472-3"></a>z &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000000</span>)</span>
+<span id="cb472-4"><a href="loops.html#cb472-4"></a></span>
+<span id="cb472-5"><a href="loops.html#cb472-5"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>,<span class="st">&quot;z&quot;</span>)) {</span>
+<span id="cb472-6"><a href="loops.html#cb472-6"></a>  vec &lt;-<span class="st"> </span><span class="kw">get</span>(idx)</span>
+<span id="cb472-7"><a href="loops.html#cb472-7"></a>  <span class="kw">print</span>(<span class="kw">mean</span>(vec))</span>
+<span id="cb472-8"><a href="loops.html#cb472-8"></a>}</span></code></pre></div>
+<pre><code>## [1] -0.452227
+## [1] -0.02234161
+## [1] -0.001333537</code></pre>
+<p>This simple example may give you an idea of how powerful the <code>get()</code>-function is. Try to imagine how flexible and powerful a routine written with the combination of <code>get()</code> and <code>paste()</code> can be. This does, however, not cover all possible cases, for example, if you want to loop over the elements of a list by name, the above example using <code>get()</code> won’t work.</p>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="loops.html#cb474-1"></a>list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x=</span>x,</span>
+<span id="cb474-2"><a href="loops.html#cb474-2"></a>             <span class="dt">y=</span>y,</span>
+<span id="cb474-3"><a href="loops.html#cb474-3"></a>             <span class="dt">z=</span>z)</span>
+<span id="cb474-4"><a href="loops.html#cb474-4"></a></span>
+<span id="cb474-5"><a href="loops.html#cb474-5"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">names</span>(list)){</span>
+<span id="cb474-6"><a href="loops.html#cb474-6"></a>  <span class="kw">print</span>(list<span class="op">$</span>idx)               </span>
+<span id="cb474-7"><a href="loops.html#cb474-7"></a>}</span></code></pre></div>
+<pre><code>## NULL
+## NULL
+## NULL</code></pre>
+<p>Of course there is a way to force R looping over the names and fetch the data. To achieve this you have to construct a string and then make R evaluate this string using the command <code>eval()</code>.</p>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="loops.html#cb476-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">names</span>(list)){</span>
+<span id="cb476-2"><a href="loops.html#cb476-2"></a>  string &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;list$&quot;</span>,idx,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)  <span class="co"># Constructing command</span></span>
+<span id="cb476-3"><a href="loops.html#cb476-3"></a>  data &lt;-<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text=</span>string))     <span class="co"># Evaluating command</span></span>
+<span id="cb476-4"><a href="loops.html#cb476-4"></a>  <span class="kw">print</span>(<span class="kw">mean</span>(data))                    <span class="co"># Working with fetched data</span></span>
+<span id="cb476-5"><a href="loops.html#cb476-5"></a>}</span></code></pre></div>
+<pre><code>## [1] -0.452227
+## [1] -0.02234161
+## [1] -0.001333537</code></pre>
+<p>The shown example is, of course, arbitrary and the result could have been achieved easier using numeric values for <code>idx</code> and double brackets to address the i-th element in the <code>list</code>. Nevertheless, it shows Rs capabilities to loop over non-numeric content and gets really useful if you are dealing with more complex ways of addressing data. If you want to read R code from a file or are looking for another option to evaluate a concatenated string you can also use the <code>source()</code>-command.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="conditional-expressions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -320,7 +399,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-structure.Rmd",
 "text": "Edit"
 },
 "history": {
