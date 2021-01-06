@@ -126,8 +126,8 @@ To find the folder to which these files were saved (if you have not specifically
 
 ```{r, include=FALSE}
 # Read in the files
-tseries.subs <- readRDS("/Users/benjamin/ownCloud/packages/cswr/data/tseries.subs.rds")
-bibi.subs <-   readRDS("/Users/benjamin/ownCloud/packages/cswr/data/bibi.subs.rds")
+tseries.subs <- readRDS("data/tseries.subs.rds")
+bibi.subs <-   readRDS("data/bibi.subs.rds")
 ```
 
 If the download does not work for some reason you can obtain the files manually from the course notes and use the function `readRDS` to load them into R.
