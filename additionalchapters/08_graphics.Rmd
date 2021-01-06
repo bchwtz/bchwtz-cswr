@@ -1,0 +1,25 @@
+# Graphics
+
+> In God we trust; all others must bring data.  
+> -- W. Edwards Deming
+
+Graphics surprise you
+reveal hidden meaning
+
+```{r, include=F, eval=F}
+library(datasauRus)
+library(tidyverse)
+df <- filter(datasaurus_dozen, dataset == "dino")
+df <- as.data.frame(df[,-1])
+# plot(df$x, df$y, pch=19)
+```
+
+
+```{r, echo=FALSE, out.width="50%"}
+if (knitr::is_html_output()){
+  knitr::include_graphics("gfx/gif/datasaurus.gif")
+}
+```
+
+
+

@@ -1,0 +1,40 @@
+# Advanced R
+
+## Environments + Scoping
+
+## Lazy Evaluation
+
+## Debugging Software
+> Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.  
+> -- Brian W. Kernighan
+
+
+Debugging != Testing
+## Functions are Objects
+
+## Object Orientation in R: S3 and S4 Classes
+
+## Recursion
+
+> In order to understand recursion, one must first understand recursion.
+> -- Anonymous
+
+```{r, echo=FALSE, fig.cap=NULL, out.width="70%"}
+knitr::include_graphics("gfx/CHAP-RecursiveRedundantClock.jpg")
+```
+
+
+**Tower of Hanoi**
+A more advanced example that can be solved using a recursive algorithm is the childrens game "Tower of Hanoi".
+
+```{r, echo=FALSE, fig.cap=NULL, out.width="70%"}
+if (knitr::is_html_output()){
+  knitr::include_graphics("gfx/gif/towerOfHanoi.gif")
+}
+```
+
+The R Code for this puzzle game can be found in the repository at [github.com/yihui](https://github.com/yihui/fun/blob/master/R/tower_of_hanoi.R).
+
+
+## Speed and Vectorized Code
+apply tabelle ligges s.104

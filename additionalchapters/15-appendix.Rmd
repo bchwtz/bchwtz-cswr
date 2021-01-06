@@ -1,0 +1,106 @@
+
+# What to do today?
+
+```{asis}
+<div align="center">
+<iframe width="640px" height= "480px" src= "https://forms.office.com/Pages/ResponsePage.aspx?id=vNB__X-aCkOl5U0InZAeRzMd1SAn-9VBmH-Y_mExnWlUMVlDM1lGVURVNUVWV0JMWDhWTkdPNUxCUy4u&embed=true" frameborder= "0" marginwidth= "0" marginheight= "0" style= "border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+</div>
+```
+
+
+<!--
+## Microsoft
+
+```{asis}
+<p align="center">
+<iframe width="640px" height= "650px" src= "https://forms.office.com/Pages/ResponsePage.aspx?id=vNB__X-aCkOl5U0InZAeRzMd1SAn-9VBmH-Y_mExnWlURjFCS0NTT01aQURLU0xGUDBDM01QUDdUTy4u&embed=true" frameborder= "0" marginwidth= "0" marginheight= "0" style= "border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+</p>
+```
+
+
+
+## Test code
+
+```{r, include=FALSE}
+
+# widgetframe supports 3 custom knitr chunk options...
+
+# For all practicle purposes this should always be FALSE 
+knitr::opts_chunk$set(widgetframe_self_contained = FALSE) # default = FALSE
+
+# For all practicle purposes this should always be TRUE 
+knitr::opts_chunk$set(widgetframe_isolate_widgets = TRUE) # default = TRUE
+
+# Only needed in bookdown format/s such as bookdown::gitbook. Otherwise don't set.
+knitr::opts_chunk$set(widgetframe_widgets_dir = 'widgets' ) 
+
+library(widgetframe)
+```
+
+```{r leaflet-01}
+library(leaflet)
+library(widgetframe)
+l <- leaflet() %>% addTiles() %>% setView(0,0,1)
+frameWidget(l, width='90%')
+```
+
+## Noch ein Test
+
+```{r, echo=FALSE}
+if (knitr::is_html_output()){
+library(dygraphs)
+library(widgetframe)
+ts <- dygraph(nhtemp, main = "New Haven Temperatures")
+frameWidget(ts, height = 550, width = '95%')
+}
+```
+
+
+## Test weiter
+
+```{r}
+library(DT)
+library(widgetframe)
+dt <-  datatable(
+  head(iris, 20), 
+  options = list(
+     columnDefs = list(list(className = 'dt-center', targets = 5)),
+     pageLength = 5, lengthMenu = c(5, 10, 15, 20)),
+  fillContainer = T)
+
+frameWidget(dt, height = 350, width = '95%')
+```
+
+
+```{r}
+library(dygraphs)
+dg <- dygraph(nhtemp, main = "New Haven Temperatures") %>% 
+  dyRangeSelector(dateWindow = c("1920-01-01", "1960-01-01"))
+frameWidget(dg, height = 550, width = '95%')
+```
+
+
+```{r}
+library(magrittr)
+library(highcharter)
+hc <- highchart() %>% 
+  hc_title(text = "Scatter chart with size and color") %>% 
+  hc_add_series_scatter(mtcars$wt, mtcars$mpg,
+                        mtcars$drat, mtcars$hp)
+
+frameWidget(hc, height = 550, width = '95%')
+```
+
+
+
+### This is a forecast
+
+http://jkunst.com/highcharter/
+
+```{r}
+library("forecast")
+airforecast <- forecast(auto.arima(AirPassengers), level = 95)
+hc <- hchart(airforecast)
+frameWidget(hc, height = 550, width = '95%')
+```
+-->

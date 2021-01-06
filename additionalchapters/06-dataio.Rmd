@@ -1,0 +1,19 @@
+# Data I/O
+
+> Everything not saved will be lost.  
+> -- Nintendo "Quit Screen" Message
+
+
+## User Input
+
+## Handling Files
+Now that we know how to manipulate data its time to add some real world data to our functions.
+
+### Loading Data
+Importing Methods: read.table(),read.ftable(), scan()
+Learn how to access ASCII Files, CSV, and Excel
+
+###Saving Data 
+Exporting to Ascii and Excel, write.table() and package xlsreadwrite(windows)
+
+## Accessing Databases

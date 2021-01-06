@@ -1,0 +1,545 @@
+# Code Structure {#structure}
+
+> "Begin at the beginning," the King, said gravely, "and go on till you come to the end; then stop."  
+> -- Lewis Carroll, Alice in Wonderland
+
+
+Like every other real programming language R provides tools to structure your code based on conditional expressions meaning executing a part of code in dependence of a condition and loops to describe and perform similar tasks in a compact way. If you have no prior programming experience this may seem to be the hardest thing in the world, because you have to think of all the possible cases which occur in your situation to differentiate between them in your program. Additionally you have to think in iterations, which means you have to find the common parts of your problems and put them into loops. But lets start at the beginning and look at conditional expressions.
+
+## Conditional Expressions
+
+###If and Else {-}
+The most basic conditional expression is and `if`-statement. It is used to make expressions contingent on a certain condition and in R it has the following syntax.
+
+```{r, eval=FALSE}
+if ( condition ) {
+  code  # Only executed if 'condition' is TRUE
+}
+```
+
+```{r}
+# A simple example
+x <- 1
+if (x > 0) {
+  cat("Hello World!")
+}
+```
+
+The conditon is a set of commands that produce a single logical value namely `TRUE` or `FALSE` and the code in the body encapsulated by `{ }` is only executed if the condition is `TRUE`. If the first condition is not true it is possible to include an `else` statement which should be evaluated if the first condition can not be fulfilled.
+
+
+```{r, eval=FALSE}
+if ( condition ) {
+  code                    # Only executed if 'condition' is TRUE
+} else {
+  alternate code          # Evaluated if 'condition' is FALSE
+}
+```
+
+There may be cases where two logical values are not enough to impelment what you want. In this case you can combine as many `if` clauses as you want with the statement `else if` and catch the rest of the cases (if none of your conditions is fulfilled) with a single `else` clause.
+
+```{r}
+x <- 314
+
+if ( x < 10 ) {
+  cat("X is a small number!")
+} else if ( x > 100 ) {
+  cat("X is a big number!")  
+} else {
+  cat("X is neither a big nor a small number!")  
+}
+```
+
+When using logical operators it may be better to use double symbol notation `&&` rather than single symbol notation `&` (same with logical OR). The reason for this is because the double symbol notation evaulates the condition step by step from left to right and aborts and returns a value if a `FALSE` is found. This makes the execution of the code much more efficient, therefore faster and so the way to go. However one should carefully check the evaluated expressions in order to avoid errors which can easily sneak in here.
+
+There is a good reason that conditional expression heavily rely on the usage of the word `else`. It seems that everything can be solved using `if`s only. While this is (sometimes) possible it is not advisiable. Normally conditional expressions are mutually exclusive choices so that code can easily get confusing or errorneous. Lets consider the following example which would work perfectly fine and make much more sense with added `else`s.
+
+```{r}
+if ( x > 100 ){
+  cat("X is a big number!")
+}
+if ( x > 10 ){
+  cat("X is a moderate number!")
+}
+if ( x > 1 ){
+  cat("X is a small number")
+}
+```
+
+Another point to discuss is accuracy. When comparing objects in a setting such as the one discussed here, it is often better to use the functions `isTRUE()` or `!isTRUE()` to evaluate a condition rather than the logicla operators `==` and `!=`. This is due to the fact that conditional expressions as well as conditional clauses only work if there is a single (!!!) logical value provided, which can be enfored using functions that always return only a single value. One of the pitfalls are problems related to the precision of the calculations. Precision problems as the following one can also be solved using the function `all.equal()` which allows to set a `tolerance` argument and therefore evens out the small precision problems in floating point calculations.
+
+```{r}
+num1 <- 0.2 - 0.1
+num2 <- 0.3 - 0.2
+
+num1 == num2
+
+all.equal(num1 , num2 , tolerance=10^-5)
+```
+
+As speed is one of the most important things about programming and vectorized commands are pretty fast, there is also a vectorized `if/else` version in R.
+
+```{r, eval=FALSE}
+ifelse( condition , ifTRUE , ifFALSE)        # This is really fast!
+```
+
+```{r}
+x <- 1:3
+ifelse( x > 1 , x^2 , FALSE)
+```
+
+
+### Switch {-}
+If you are using a lot of `if/else` constructs in your code this may get a little bit crowded and probably messy. R provides also a statement called `switch()` to return values contingent on a certain expression. This is also faster than combining lots of `if`-statements in your code but usually not as fast as the vectorized  `ifelse()`.
+
+```{r, eval=FALSE}
+switch( statement , case1 , case2 , ... )    # Basic syntax
+```
+
+```{r}
+# Example if 'statement' is numeric
+x <- 2
+switch(x,"one","two","three")
+
+
+# Example if 'statement' is a string
+x <- "mean"
+data <- c(1 , 5 , 7.5)
+switch(x,"sd"=sd(data),"median"=median(data),"mean"=mean(data))
+```
+
+If the provided `statement` is a number then R returns the `case` with the matching index. If the `statement` is of type string, then R tries to match the statements and executes the code listed there. Using strings as statement and formatting your code in a structured way you can receive the same appearance and felling like you would with `switch-case`-statements in other programming languages.
+
+The following code block shows an alternative formatting (just some additional curly braces, spaces and new lines) that create a look similar to other programming languags such as C or Java. However, one should be careful with switch as the behaviour is not always totally intuitive as the following example shows.
+
+```{r}
+usertype <- "caseXX"
+switch(usertype, 
+       case1 = { 1 }, 
+       case2 = , 
+       case3 = {2.5},
+       99)
+```
+
+This maps `case2` to the value defined in `case3` and additionally supplies and unnamed default value `99` for cases that are not defined or can not be matched. If there is more than one match, the first matching element is used. For more information, try `?switch`. Despite beeing special in some cases `switch` is usually faster than a lot of `if` and `else` statements and keeps your code more organized.
+
+## Loops
+Loops are one of the most used and most important constructs while programming - they are somehow like the universal workhorse. Generally a loop is a control structure which allows to run specific lines of code over and over again until an exit condition is fulfilled or until a specified numbers of repetitions have been performed. While executing the same code several times the provided data can of course be alternated which makes loops very useful when performing a huge number of actions of the same type.
+
+### For-Loop {-}
+
+```{r, echo=FALSE, fig.cap=NULL, out.width="70%"}
+if (knitr::is_html_output()){
+  knitr::include_graphics("gfx/gif/forLoop.gif")
+}
+```
+
+A `for` loop runs specified code a fixed number of times. Therefore you have to know in advance how often the code in the body of the loop should be executed. The `for` loop has the following general form. 
+
+```{r,eval=FALSE}
+for ( idx in vector){           # Basic syntax
+  code
+}
+```
+
+The typical iterator variable `i` that is commonly used in other programming languages should be avoided in R because it is already a reserved word for the imaginary unit when working with complex numbers. Common workarounds are using `it` (short for iterator), `ii` (just doubled to avoid using the reserved word) or `idx` (abbrevitation for iteration index). 
+
+```{r,eval=FALSE}
+x <- 1:3
+for ( idx in x) {
+  print(idx)
+}
+```
+
+### While-Loop {-}
+
+```{r, echo=FALSE, fig.cap=NULL, out.width="70%"}
+if (knitr::is_html_output()){
+  knitr::include_graphics("gfx/gif/whileLoop.gif")
+}
+```
+
+The `while` loop loops until the specified condition is false. It is often used when you do not know and can not calculate in advance how often the instructions will be executed. It has the following general form.
+
+
+```{r,eval=FALSE}
+while ( condition ){          # Basic syntax
+  code
+}
+```
+
+```{r,eval=FALSE}
+idx <- 6
+while ( idx < 10 ){
+  print(idx)
+  idx <- idx + 2
+}
+```
+
+### Repeat {-}
+The `repeat` loop is somehow similar to the while loop. The `while` loop starts a new run every time the condition is evaluated as `TRUE` while the `repeat` loop will always begin a new run and will only stop if it is told to do so with the `break` command. This means you can explicitly control which part of the loop should be executed and when the execution should be stopped.
+
+```{r,eval=FALSE}
+counter <- 0                  # Counter variable to count loops
+
+repeat{                       # Repeat does not need a condition
+  x <- rnorm(1)
+  counter <- counter + 1
+  if (x > 2) {
+    print(counter)
+    print(x)
+    break 
+  }
+}
+```
+
+
+### Break and Next {-}
+
+```{r, echo=FALSE, fig.cap=NULL, out.width="70%"}
+if (knitr::is_html_output()){
+  knitr::include_graphics("gfx/gif/breakLoop.gif")
+}
+```
+
+We have already seen that `break` is able to abort the `repeat`-loop, but it is much more powerful and can break any of the discussed loops directly. Even if you can use `break` to abort loops on certain conditions this is a bad habit. It is always better to know when and how a loop should end and do this via the condition or by predefining the number of loops using the `for` loop.
+
+```{r, echo=FALSE, fig.cap=NULL, out.width="70%"}
+if (knitr::is_html_output()){
+  knitr::include_graphics("gfx/gif/nextLoop.gif")
+}
+```
+
+The `next` command is used to skip the following statemens and if used in a loop it will increment the loop variable (`i` in the `for` loop example). Here is a simple example to illustrate how both are working.
+
+```{r,eval=FALSE}
+for ( idx in 1:100) {
+  x <- rnorm(1)
+  if (x < 0) next
+  print(x)
+  if ( abs(x) > 3) break    # Break should normally be avoided
+}
+```
+
+
+Generally one can say that loops in R are pretty slow and in most of the cases drastically slow down your code. Therefore where possible *loops should be avoided*! In most of the cases it is much better (and faster!) to use vectorized functions like `apply()`, `sapply()` or `tapply()`.
+
+### Special: Looping over non numerical data {-}
+R does not exactly support looping over non numerical data, but it may be useful sometimes and of course there are a few ways to accomplish this. The first one is using a function of Rs mighty `apply()`-family in this case `lapply()` is the way to go if the performend and desired loops are independent of each other and it is allowed to process them in any order.
+
+Another option is using the function `get()`. In fact the purpose is straight forward and sounds very simple. It takes a character string as an argument and returns the object of that name. Here is a short example of how to calculate the mean of three vectors.
+
+```{r}
+x <- rnorm(10)
+y <- rnorm(1000)
+z <- rnorm(1000000)
+
+for ( idx in c("x","y","z")) {
+  vec <- get(idx)
+  print(mean(vec))
+}
+```
+
+
+This simple example may give you an idea how powerfull the `get()`-function is. Try to imagine how flexible and powerful a routine written with the combination of `get()` and `paste()` can be. This does, however, not cover all possible cases, for example if you want to loop over the elements of a list by name the above example using get won't work. 
+
+```{r}
+list <- list(x=x,
+             y=y,
+             z=z)
+
+for ( idx in names(list)){
+  print(list$idx)               
+}
+```
+
+
+Of course there is a way to force R looping over the names and fetch the data. To achieve this you have to construct a string and then make R evaluate this string using the command `eval()`.
+
+```{r}
+for ( idx in names(list)){
+  string <- paste("list$",idx,sep="")  # Constructing command
+  data <- eval(parse(text=string))     # Evaluating command
+  print(mean(data))                    # Working with fetched data
+}
+```
+
+
+The shown example is of course arbitrary and the result could have been archieved easier using numeric values for `i` and double brackets to adress the i-th element in the `list`. Nevertheless it shows Rs capabilities to loop over non-numeric content and gets really useful if you are dealing with more complex ways of adressing data. If you want to read R code from a file or are looking for another option to evaluate a concatenated string you can also use the `source()`-command.
+
+## Excercises {-}
+```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
+knitr::include_graphics("gfx/CH00-ExcercisesHeader.png")
+```
+
+### Clever BMI Calculator {-}
+
+```{block2, type='rmdexcercise'}
+Expand your function `BMI()` in a way that it outputs an evaluation of the calculated BMI aside of the pure result. Make also sure that it outputs a useful warning if meaningless numbers are enterd by a user.
+  
+```
+
+### 99 Bottles of Beer {-}
+
+In early 1994 , when the internet was only used by a fraction of the people that  are using it today, someone posted the full lyrics of the song 99 Bottles of Beer to a humor mailinglist, which was also heaviliy used by programmers. This was seen as an enourmous waste of bandwidth, because the lyrics could have been eaisly posted using six lines of BASIC code.
+
+This small event was the ocassion for Tim Robinson to develop and post his version of the song in C++ which inspired other programmers to post their version of the song which since then has been ported to nearly every programming language available and is one of the many classic yet funny stories from the early ages of the internet. The song has the following lyrics:
+
+> 99 bottles of beer on the wall, 99 bottles of beer.  
+> Take one down and pass it around, 98 bottles of beer on the wall.  
+>   
+> \[ \vdots \] 
+>   
+> 2 bottles of beer on the wall, 2 bottles of beer.  
+> Take one down and pass it around, 1 bottle of beer on the wall.  
+>   
+> 1 bottle of beer on the wall, 1 bottle of beer.  
+> Take one down and pass it around, no more bottles of beer on the wall.   
+>   
+> No more bottles of beer on the wall, no more bottles of beer.  
+> Go to the store and buy some more, 99 bottles of beer on the wall.  
+>  
+> [END] 
+
+```{block2, type='rmdexcercise'}
+Write a function called `bottlesong()` that outputs the famous and complete lyrics of the song 99 Bottles of Beer.
+  
+```
+
+
+### Evil Word Puzzle {-}
+
+```{r, echo=FALSE, fig.cap=NULL, fig.align="center",out.width="60%"}
+knitr::include_graphics("gfx/CH04-EvilWordPuzzle.png")
+```
+
+An evil word puzzle is a puzzle game where you have to find a special word. The whole puzzle consists solely of letters from within the word itself and does sometimes not even include the word you are looking for.
+
+```{block2, type='rmdexcercise'}
+Write a program `evilpuzzle()` that generates an evil word puzzle (optionally with or without the word) and make sure that every word with at least 3 letters can be used to generate a puzzle with desired but meaningful dimensions.
+  
+```
+
+### Solution {-}
+
+Lets start to solve the Excercise with generating a matrix full of letters from the desired word. We can easiliy do this using the `sample()`-command. If we want to fill the matrix one by one we can do this easily with two nested `for`-loops we just discussed in this chapter, but the `matrix()`-command is much faster and the better option here.
+
+```{r}
+word <- c("K","A","Y","A","K")
+
+cols <- 15
+rows <- 10
+
+# Generate word matrix with loops (very inefficient and slow!)
+mat <- matrix(NA,nrow=rows,ncol=cols)
+for ( idx in 1:rows) {
+  for (jdx in 1:cols) {
+    mat[idx,jdx] <- sample(word,size=1) 
+  }
+}
+
+# Generate word matrix vectorized (the way to go!)
+mat <- matrix(sample(word,replace=T,size=rows*cols),
+              nrow = rows,
+              ncol = cols)
+```
+
+We now have the matrix `mat` that conains letters from our word **KAYAK** in a totally random order. The bigger the matrix gets via the `cols` and `rows` arguments the more likely is it that it contains the word itself up to a few times. Therefore we have to check for that and correct this when necessary.
+
+Logically there are a couple of approaches to solve the task of controlling if `mat` contains our word more often and of course it is possible to directly check for this while generating the matrix. Another option is to decompose the matrix by rows and columns and check if the resulting and/or the reversed string contains our word. A more loop based solution is going through the letters one by one and check if starting with the actual position the word can be found either horitonally, horzontally reversed, vertically or vertically reversed. Every time the word is found, corresponding part is replaced with new random letters drawn from the word. As we can not be sure that we have not accidentially created the word by replacing the letters in earlier position we have to go once again through the matrix after finishing our first iteration so that we can be sure that the word is not included anymore. So our first step towards the solution is to create a compeltely word free matrix. Using loops this can be translated in two nested `for`-loops runnig through rows and columns of `mat` and a `while`-loop that capsulates the nested loops und takes care of starting over when we have replaced the occuring word in the matrix. In this case our skeleton looks like this:
+
+```{r}
+check <- TRUE    # Make sure the while loop is entered
+
+while ( check == TRUE ){
+  
+  check <- FALSE # Assuming one iteration is enough we can leave the
+                 # loop after the current iteration. 
+  
+  for ( row in 1:nrow(mat)){    # Loop running through rows
+    for (col in 1:ncol(mat)){   # Loop running through columns
+      
+      # Code to solve the actual problem!
+      
+    } # End for (columns)
+  } #End for (rows)
+} #End while
+```
+
+With that basic setup we run through the entire matrix one element at a time. We can easily adress the element using the running variables `row` and `col` from the `for`-loops using them as indices in brackets. Depending on the word length we can now calculate which submatrix of `mat` has to be checked for our word. Namely these areas are the following ones:
+
+```{r,eval=FALSE}
+# Obtain ranges to check for the word
+mat[row,col:(col+length(word)-1)] # Horizontal (left to right)
+mat[row,(col-length(word)+1):col] # Horizontal reverse (right to left)
+mat[row:(row+length(word)-1),col] # Vertical (top to bottom)
+mat[(row-length(word)+1):row,col] # Vertical reverse (bottom to top)
+```
+
+As it makes sense not to wrap everything in `if-else`-clauses we can simply put the indices which we have to check in lists and use them out of another loop to compare them with the acutal word. Wrapping them in a list so that we can dynamically  adress them is easily done like so:
+
+```{r,eval=FALSE}
+rows <- list(row,                      # List for row indices
+             row,
+             row:(row+length(word)-1),
+             (row-length(word)+1):row)
+
+
+cols <- list(col:(col+length(word)-1), # List for column indices
+             (col-length(word)+1):col,
+             col,
+             col)
+```
+
+Now we can loop through the list entries and perform our comparison and then act accordingly, which can easily be done by using an `if`-clause and checking if the submatrix we are looking at is identical with our word. Sadly this is not enough. As we dynamically calculate the indices for the submatrix when using our lists `rows` and `columns` we have not yet checked if the indices exists. For example when looking at the top left element in the matrix (`mat[1,1]`) we can not check if the indices from bottom to top and from right to left correspond to our word, because these indices do not exist and are negative numbers in our list. In this case R resonds with an error:
+
+```{r,error=TRUE}
+mat[1,(1:-5)]
+```
+
+The same happens when we look at the bottom right element of the matrix and try to examine the cases horizontally and vertically as these do not exist. That means before overwriting an occurence we have to check for 5 things.
+
+1. Are all calculated row indices bigger than zero and therefore really in the matrix?
+2. Are all calculated column indices bigger than zero so that they can really be adressed?
+3. Are all calculated row indices smaller than the maximum row-dimension of the matrix and therefore not out of `mat`s boundaries?
+4. Are all calculated column indices smaller than the maximum column-dimension of the matrix so that they are really present in the matrix?
+5. Does the submatrix equal the word we are looking for?
+
+Due to the properties of the `&&`-Operator we can perform all these comparisons in one if clause including the check if the submatrix equals the word. Even though the indices in the matrix do not exist in the matrix (be sure to understand why this does not work with the single `AND` operator (`&`) which leads to the following code including the overwriting with a fresh randomly selected set of letters from our word:
+
+```{r}
+for ( idx in 1:length(rows)){ # Could have used length(cols) instead
+  
+  # If all rows and cols are in matrix and not out of bound and
+  # the range equals the word resample this section of the matrix.
+  
+  if ( all(rows[[idx]] > 0) &&                           # Check 1
+       all(cols[[idx]] > 0) &&                           # Check 2
+       all(rows[[idx]] <= nrow(mat)) &&                  # Check 3
+       all(cols[[idx]] <= ncol(mat)) &&                  # Check 4
+       identical(mat[rows[[idx]], cols[[idx]]],word)) {  # Check 5
+    
+    # Overwrite the submatrix with fresh sampled letters
+    mat[rows[[idx]],cols[[idx]]] <- sample(word,
+                                       replace=T,
+                                       size=length(word))
+    
+    # After replacing we have to check the whole matrix again,
+    # there we make sure to reenter the while loop!
+    check <- TRUE
+    
+    # Feature to count how many occurences have been replaced
+    wordcounter <- wordcounter + 1
+    
+  } #End if
+} #End for
+```
+
+
+When the `while`-loop has terminated we are left with a clean matrix that surely does not contain our word in the checked dimensions. If you want to be rally evil you can printout the puzzle, give it to some friends and let them search for the word. If you only want to create a hard puzzle you can choose a random location to overwrite the letters there with the word.
+
+All thats left to do is wrapping the existing code in a function with the requested name `evilpuzzle()`. If you want to improve the routine a little bit and make it more flexible you can implement some switches using `if-else`-clauses to control if the puzzle should be evil or super evil, meaning containing the searchword or not and after placing the word within `mat` crosscheck if that only leads to a single occurence and can not be assembled into multiple hits when trying to solve the puzzle. If that is not enough you can also implement checkign for diagonal occurences of the word. The function corresponding to the excercise after assembling the discussed bits may  look like this:
+
+```{r}
+evilpuzzle <- function(word = c("T","E","S","T"),
+                       cols = 15,
+                       rows = 10,
+                       inclword=TRUE) {
+
+# Check if provided word is longer than 3 characters
+if ( sum(nchar(word)) < 3 ) {
+  stop("The provided word has to be longer than 3 characters!")
+}
+
+# Initialize
+wordcounter <- 0
+
+# Generate word matrix vectorized
+mat <- matrix(sample(word,replace=T,size=rows*cols),
+              nrow = rows,
+              ncol = cols)
+
+check <- TRUE    # Make sure the while loop is entered
+
+while ( check == TRUE ){
+  
+  check <- FALSE # Assuming one iteration is enough we can leave the
+                 # loop after the current iteration. 
+  
+  for ( row in 1:nrow(mat)){    # Loop running through rows
+    for (col in 1:ncol(mat)){   # Loop running through columns
+      
+      rows <- list(row,                      # List for row indices
+                   row,
+                   row:(row+length(word)-1),
+                   (row-length(word)+1):row)
+      
+      
+      cols <- list(col:(col+length(word)-1), # List for column indices
+                   (col-length(word)+1):col,
+                   col,
+                   col)
+      
+# <-- Indent removed for better overview outside of IDE!
+            
+for ( idx in 1:length(rows)){ # Could have used length(cols) instead
+  
+  
+  # If all rows and cols are in matrix and not out of bound and
+  # the range equals the word resample this section of the matrix.
+  
+  if ( all(rows[[idx]] > 0) &&                           # Check 1
+       all(cols[[idx]] > 0) &&                           # Check 2
+       all(rows[[idx]] <= ncol(mat)) &&                  # Check 3
+       all(cols[[idx]] <= nrow(mat)) &&                  # Check 4
+       identical(mat[rows[[idx]],cols[[idx]]],word)) {   # Check 5
+    
+    # Overwrite the submatrix with fresh sampled letters
+    mat[rows[[idx]],cols[[idx]]] <- sample(word,
+                                       replace=T,
+                                       size=length(word))
+    
+    # After replacing we have to check the whole matrix again,
+    # therefore we make sure to reenter the while loop!
+    check <- TRUE
+    
+    # Feature to count how many occurences have been replaced
+    wordcounter <- wordcounter + 1
+    
+  } #End if
+} #End for
+
+# <-- Indent removed for better overview outside of IDE!    
+
+    } # End for (columns)
+  } #End for (rows)
+} #End while
+
+# Message to the user how often the word has been replaced
+cat("The word", paste(word,sep="", collapse=""), 
+    "was replaced", wordcounter, "times! \n" )
+
+# Add word to clean matrix if desired (only horizontally)
+if ( inclword == TRUE) {
+  row <- sample(1:nrow(mat),size=1)
+  col <- sample(1:(ncol(mat)-length(word)),size=1)
+  mat[row,col:(col+length(word)-1)] <- word
+}
+
+# Return the finished matrix to the user
+return(mat)
+
+} #End function
+```
+
+The function `evilpuzzle()` now suits the desired needs and is a promising candidate to fulfill the needs described in the excercise. However there is much room for improvement as the program only supports inserting the word horizontally and as it does not support inserting it differently the user is not able to select in which way it should be represented in the matrix. As stated before the chosen approach is not very efficient as the word is compared with the submatrix for all four orientations and for every element in the matrix. Further following improvements are left to the user:
+
+- The performed comparison of the submatrices with the word is not necessary for every element of the matrix. If the element we are looking at in a certain iteration does not equal the first letter of `word` there is no need to compare the whole submatrices. Therefore we can implement such a simple test to improve the efficiency of our program.
+- One major flaw of the program is that the word, if inserted in the matrix, is only inserted horizontally. The optimal solution would allow the user to select between inserting it at a ramdom or desired orientation either horizontally, horizontally reversed, vertically or vertically reversed. A bonus would be to make the selection of the words orientatin also random to allow a user to generate a puzzle for themselves.
+- Right now the program only supports searching vertically or horizontally word occurences and ignores the option of diagonal combinations. Therfore more checks can be implemented to make the puzzle even harder. The four diagonal cases should also be considered in the options for inserting the word in the matrix.
+- Inserting the word in the matrix can lead to multiple possible combinations. Therefore a control mode should be programmed that counts the occurences in the matrix corrects multiple occurences in a suitable way so that the word can only be found once in the final puzzle.
+- There are many other and much more efficient ways to solve this excercise - we just have thrown together what we learnt so far. If you can not get enough you can try generating the word puzzle in a totally different way, the string section can solve as source as inspiration.
+
+After this little excercise you should have a good feeling of how loops and conditional expression can be used to acutally do something (more or less) productive and you should have beaten the concepts we just discussed.
+
+This has been a more programming intensive task and focussed a lot on the needed procedures for our program. As we want to get a foot in the data science domain we should add in some numbers and combine some concepts from our statistics lessons with our newly earned skills. Before we to this we quickly talk about style and what good programming acutally means.
