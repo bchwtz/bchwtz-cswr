@@ -361,7 +361,6 @@ Use the defined functions and generate forecasts for either the `bibi.subs` or t
 ```
 
 
-<!--
 ## Practical Application
 We already looked at some real data and talked about the forecast objective and the respective problem definition (Step 1). By Scraping the data from the web we also completed the information gathering phase (Step 2) and conducted a short explanatory analysis by plotting the data (Step 3), discussing potential trends and looking at day-to-day subscriber changes. This leaves two remaining steps of the forecasting process for the practical application, namely Configure and Estimate Models (Step 4) and Generate and Evaluate Forecasts (Step 5).
 
@@ -439,7 +438,7 @@ studentfc$date <- as.Date(studentfc$date)
 ```
 
 ```{r, include=FALSE}
-file <- "~/ownCloud/packages/cswr/data/fc2019.csv"
+file <- "data/fc2019.csv"
 studentfc <- read.csv2(file, stringsAsFactors = F)
 studentfc$date <- as.Date(studentfc$date)
 ```
@@ -474,4 +473,4 @@ knitr::kable(cbind(RANK=seq_along(mse.all),
                    MSE=sort(format(mse.all,scientific=F))),
              align=c("l","r"))
 ```
--->
+
