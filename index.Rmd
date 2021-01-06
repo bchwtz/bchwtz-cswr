@@ -3,42 +3,130 @@ title: "Computational Statistics"
 author: "Benjamin Buchwitz"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: bookdown::gitbook:
+  config:
+    toc:
+      collapse: section
+      
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: bchwtz/bchwtz-cswr
 description: "Computational Statistics with R Course Notes"
+url: 'https\://bchwtz.de/cswr'
 ---
 
-# Prerequisites {-}
 
-This is now a private REPO!
-
-
- 
-
-
-
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
-
-
-
-
-The **bookdown** package can be installed from CRAN or Github:
-
-```{r eval=FALSE}
-#install.packages("bookdown")
-# or the development version
-# devtools::install_github("rstudio/bookdown")
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(comment="#R>")
+knitr::opts_chunk$set(fig.align="center")
+#library(tutorial)
+#tutorial::go_interactive(greedy=FALSE)
 ```
 
 
+# Hello World! {-}
 
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
+knitr::include_graphics("gfx/CH00-CourseLogo.png")
+```
 
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.name/tinytex/>.
+These are the course notes for an introductory course in the statistical programming environnement R. The course is called "Computational Statistics with R" and focusses on programming first and then introduces more statistical examples step by step. 
+
+Prior programming knowledge is not required to sucessfully complete the course as every concept is being introduced along the way. However it is recommended that you attended at least one course in undergraduate statistics. To provide a hands on experience and to keep the learning pace high, we concentrate on applying statistical methods and do not in depth introduce the theoretical concepts again.
+
+## Installation {-}
+
+To get the most out of this course it is strongly suggested that you install R and RStudio. Programming as well as statistical analysis is learned by doing, rather than just by reading the provided examples. To actively run the provided code on your personal computer you can follow the installation steps below. Both, R and RStudio are available for Windows, Mac OS and Linux and should work on almost every computer.
+
+### R Language (Base System) {-}
+
+https://www.r-project.org/
+
+### R-Studio (IDE) {-}
+
+https://www.rstudio.com/
+
+<!--
+## Schedule {-}
+
+| Date        | Description                                                    |
+|:-----------:|:---------------------------------------------------------------|
+| 10.04.2018  | Chapter 1 - Installation and Basic Introduction    				     |
+| 17.04.2018  | Chapter 2 - Elementary Data Types    				                   |
+| 24.04.2018  | Chapter 3 - Data Manipulation        				                   |
+| 08.05.2018  | Chapter 4 - Code Structure      				                       |
+| 15.05.2018  | Assignment I Solution    				                               |
+| 29.05.2018  | Chapter 5 - Coding Style      				                         |
+| 05.06.2018  | Chapter 5 - Coding Style      				                         |
+| 12.06.2018  | Extended Exercise     				                                 |
+| 19.06.2018  | Chapter 6 - Vectorization      				                         |
+| 26.06.2018  | Exam Preparation      	                                       |
+| 10 Dates    |                                     			   	                 |
+
+
+# Grading {-}
+
+The grading on this course will be based on two Assignments (together 50%) and a 60 minute exam (50%). 
+
+| Assessment     | Date / Due Date            |
+|:---------------|:---------------------------|
+| Assignment I   | 08.05.2018 (14:00)         |
+| Assignment II  | 09.07.2018 (23:59)         |
+| Final Exam     | 03.07.2018 (14:00 - 16:00) |
+
+-->
+
+
+<!--
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+```{r test, tut=TRUE}
+a <- 1+3
+```
+-->
+
+
+<!--
+```{block2, type='rmdcaution'}
+Caution!  
+This is a Caution!
+  
+```
+
+```{block2, type='rmdimportant'}
+Important!  
+This is a Important!
+  
+```
+
+```{block2, type='rmdnote'}
+Note!  
+This is a Note!
+  
+```
+
+```{block2, type='rmdtip'}
+Tip!  
+This is a Tip!
+  
+```
+
+```{block2, type='rmdwarning'}
+Warning!  
+This is a Warning!
+  
+```
+
+```{block2, type='rmdexercise'}
+Exercise!  
+This is a Exercise!
+  
+```
+-->
+
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
