@@ -3,7 +3,7 @@
 > All of my friends who have younger siblings who are going to college or high school - my number one piece of advice is: You should learn how to program. 
 > -- Mark Zuckerberg
 
-## R and the R-Project
+## R and the R-Project 
 R is a language and an environment for statistical computing and graphics. It is a GNU project that is similar to the S language and environment, which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and his colleagues. R can be considered a different implementation of S. There are some important differences, but much code written for S runs unaltered under R. 
 
 R provides a wide variety of statistical (linear and nonlinear modeling, classical statistical tests, time-series analysis, classification, clustering, …) and graphical techniques, and is highly extensible. The S language is often the vehicle of choice for research in statistical methodology and R provides an Open Source way to participate in that activity.
