@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>1.2 R System and RStudio | Computational Statistics</title>
+  <meta name="description" content="1.2 R System and RStudio | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="1.2 R System and RStudio | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="1.2 R System and RStudio | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="1.2 R System and RStudio | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="1.2 R System and RStudio | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="r-and-the-r-project.html"/>
+<link rel="next" href="first-steps-r-as-calculator.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
-
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
+<div id="r-system-and-rstudio" class="section level2">
+<h2><span class="header-section-number">1.2</span> R System and RStudio</h2>
+<p>RStudio is an integrated development environment (IDE) as well as a graphical user interface (GUI) for R. It includes a console, a syntax-highlighting editor that supports direct code execution as well as tools for plotting, debugging and workspace management. When you start RStudio for the first time it should look like this:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<img src="gfx/CH01-RStudio.png" alt="RStudio" width="100%" />
+<p class="caption">
+Figure 1.1: RStudio
+</p>
 </div>
-
+<p>The shown version of RStudio is <strong>1.1.x</strong>, which was the latest one available when this script was written and revised. If you have not changed any of the default settings, your RStudio should look almost the same. The most important section is the big one on the left (1). This is the R console that connects your development environment with the R core.</p>
+<p>RStudio makes it simple, interactive and very convenient to use R. You just type your command into the bottom line of the console tab (1), hit Enter and your computer will execute it. Commands are your way to talk to the computer and that is why the console is often also called the command line interface (CLI). The <strong>&gt;</strong> is called the prompt and indicates that R is ready and waiting for your commands. If you type <strong>1 + 2</strong> into the command line, you should see the following after hitting Enter:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="r-system-and-rstudio.html#cb1-1"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 3</code></pre>
+<p>As we want reproducible results we need a more convenient and supporting place to work with our code. Scripts allow us to be an efficient programmer. Therefore you should bundle and work with your code in the Script Pane (2) and stop typing in the console. You can easily start a new script by clicking <strong>File <span class="math inline">\(\to\)</span> New File <span class="math inline">\(\to\)</span> R Script</strong> in the main menu bar. Or you hit <strong>Control + Shift + N</strong> (Windows) on the keyboard to open one automatically.</p>
+<p>As you can see R responds to your request with more than just the result. The <code>[1]</code> on the left side indicates that the line in which the response is written starts with the first value. This becomes quite useful when your commands become more complex so that R returns multiple values. The colon operator (<code>:</code>) creates a sequence between two given numbers by incrementing the first number by 1 (or -1 respectively if the bigger number is provided as the first argument) until the second number is reached. If we want R to give back the integers between 1 and 100 we simply type<code>1:100</code> and get exactly what we have asked for:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="r-system-and-rstudio.html#cb3-1"></a><span class="dv">1</span><span class="op">:</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>#R&gt;   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+#R&gt;  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+#R&gt;  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+#R&gt;  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+#R&gt;  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+#R&gt;  [91]  91  92  93  94  95  96  97  98  99 100</code></pre>
+<p>The numbers in brackets now indicate that the first line starts with the first value of R’s answer to your command and the second line starts with a higher value (depending on the size of your RStudio window). When handling matrices and bigger vectors in your programs you will greatly appreciate this small feature, but for now, we can ignore it. To make the next lines of R code more readable this formatting is only referred to when I want you to notice them. The same applies for the <strong>&gt;</strong> at the beginning of each line. Therefore the following Code excerpts will not contain these signs, which will make it also much easier for you to copy them into your own console. To clearly differentiate between commands and responses I will indicate R’s output with <strong>R&gt;</strong> and color them differently so that our first example will look like this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-system-and-rstudio.html#cb5-1"></a><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 3</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-and-the-r-project.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="first-steps-r-as-calculator.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +375,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>5.4 Testing | Computational Statistics</title>
+  <meta name="description" content="5.4 Testing | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="5.4 Testing | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="5.4 Testing | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="5.4 Testing | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="5.4 Testing | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="documenting.html"/>
+<link rel="next" href="maintaining.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
-
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
-</div>
-
+<div id="testing" class="section level2">
+<h2><span class="header-section-number">5.4</span> Testing</h2>
+<p>Software testing is an investigation conducted to provide stakeholders with information about the quality of the tested code. Its goal is to generate an independent view of the software that allows understanding of how the developed product can affect its (business) environment. In professional environments, this allows finding bugs and verifies that the software product is fit for production purposes.</p>
+<p>Software testing involves the execution of a software component (e.g. a small function) or system component (e.g. a large function or a whole package) and evaluates at least one property of interest. This can, for example, be the requirements that have been noted when planning the program. Testing usually checks the behavior of the software under all kinds of inputs, evaluates the response time and efficiency and simulates conditions in practical uses.</p>
+<p>As the number of possible tests is almost infinite, professional developers employ test strategies that intend to find errors, unexpected results or general misbehavior. As all discussed steps in this chapter, testing is an iterative process. Fixing one error can lead to previously hidden deeper bugs or can even create new ones. As this is not a course on software engineering, we limit our testing framework to the following rules of thumb that can serve as a guideline after writing our first programs.</p>
+<ul>
+<li>Test in an organized and modular way, ideally by making a plan.</li>
+<li>Check every function separately.</li>
+<li>Test every scenario at least twice, especially when you have modified your function or fixed an error.</li>
+<li>Find and test boundary values.</li>
+<li>Test for different and deliberately false input.</li>
+<li>Do not only look for errors, often warnings reveal much more subtle problems, that need to be resolved.</li>
+<li>Document what you test.</li>
+</ul>
+<p>A more comprehensive way of testing in an automated fashion is provided by the <code>testthat</code> package, which is the most popular unit testing solution in R. However, as this is an introductory course we do not cover automated testing in more detail.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="documenting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="maintaining.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +365,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-softwaredevelopment.Rmd",
 "text": "Edit"
 },
 "history": {

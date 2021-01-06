@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>2.1 Fixed and Floating Point Number Representation | Computational Statistics</title>
+  <meta name="description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="data-types.html"/>
+<link rel="next" href="numeric.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="fixed-and-floating-point-number-representation" class="section level2">
+<h2><span class="header-section-number">2.1</span> Fixed and Floating Point Number Representation</h2>
+<p>Before we look at the actual data types lets get a bit technical and explore how computers deal with numbers. The numbers we normally use are called decimal numbers, which are basically numbers with a base of <span class="math inline">\(b = 10\)</span>. Thus, we can deconstruct any real number <span class="math inline">\(x \in \mathbb{R}\)</span> into an (infinite) sum of powers to our base <span class="math inline">\(b\)</span>. Let’s look at an example:</p>
+<p><span class="math display">\[ 42.125 = x = 4 \cdot 10^{1} + 2 \cdot 10^{0} + 1 \cdot 10^{-1} + 2 \cdot 10^{-2} + 5 \cdot 10^{-3}\]</span></p>
+<p>While numbers in the decimal system can be conveniently processed by humans, computers work differently. In order to store them in memory, we have to perform a base switch with our chosen number <span class="math inline">\(x\)</span> and rewrite it in binary notation, where <span class="math inline">\(b = 2\)</span> and therefore only the digits 0 (absence of electrical current) and 1 (presence of electrical current) exist. We know that <span class="math inline">\(42.125 = 32 + 8 + 2 + 0.125\)</span>, which leads to the following:</p>
+<p><span class="math display">\[ 42.125 = x = 1 \cdot 2^{5} + 0 \cdot 2^{4} + 1 \cdot 2^{3} + 0 \cdot 2^{2} + 1 \cdot 2^{1} + 0 \cdot 2^{0} + 0 \cdot 2^{-1} + 0 \cdot 2^{-2} + 1 \cdot 2^{-3} \]</span></p>
+<p>When we write the digits down it becomes clear that <span class="math inline">\(42.125_{b = 10}\)</span> equals <span class="math inline">\(101010.001_{b =2}\)</span>. The representation we just discussed is called fixed point representation. Computers use a very similar version to handle real numbers called floating point representation. This is a combination of storing the algebraic sign, numbers in the binary system and moving the ‘decimal’ point while storing how many digits it has been moved and storing the algebraic sign. After this deconstruction our chosen number <span class="math inline">\(x\)</span> in the decimal system looks like this:</p>
+<p><span class="math display">\[ 42.125 = x = (-1)^{0} \cdot 4.2125 \cdot 10^{1}\]</span></p>
+<p>All we have to do now is convert everything in binary again. For compatibility purposes we also need to come up with a standard, meaning how many binary digits (bits) we want to use for the sign, the actual number, and the exponent. The usual convention is 32 bit for single precision numbers divided into 1 bit for the sign, 8 bits for the exponent and 23 bits for the actual number (called mantissa) the convention for double precision numbers 64 bit with 1 bit for the sign, 11 bits for the exponent and 52 bits for the mantissa.</p>
+<!--
+The floating point representation can also be used to store very small numbers, which requires a negative exponent while we can only model positive ones, we also need to come up with a convention to solve this issue. This is usually achieved by dividing the range of the exponent into two equal parts by subtracting half of the representable value domain. As in our case the maximum value for the exponent equals $2^{11} - 1 = 2047$ we simply subtract $1023$. If we consider all this, we end up with a standard called IEEE 754, which codes a decimal number in binary exactly like discussed. Formalized and with $b=2$ this looks like this:
 
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
-</div>
+\[ x = (-1)^s \cdot (1+f) \cdot 2^{(e - 1023)} \]
 
+Whereby $e$ stands for the exponent, $s$ for the sign and $f$ for the floating point number. We now only have two special cases left for which we need a convention, this is the case when our number has the value $0$ or is greater than the biggest value we can model with this binary notation. When our number equals zero the exponent $e=1023$ so that a final exponent of $0$ results and when the number is bigger than what we can model with this standard the exponent is set to $e = 2047$ which stands for infinity. In combination with the sign bit, we are pretty much done and can store what we need for our calculations.
+-->
+<p>By only having a fixed amount of bits to form a number it should be obvious that using such a coding comes at a cost. This cost is usually precision. The value domain covers only a specific area and quickly comes to its limits when it comes to irrational numbers. Having a basic idea of how a computer codes decimal numbers it should be clear that there is the need for different data types in R, which means we can now start to look at the elementary data types our software environment provides. If you want a deep dive on pitfalls when it comes to floating point arithmetic you should have a look at the article called <a href="http://www.itu.dk/~sestoft/bachelor/IEEE754_article.pdf">What every Computer Scientist should know about floating-point Arithmetic</a> which is freely available.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="numeric.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +367,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-datatypes.Rmd",
 "text": "Edit"
 },
 "history": {

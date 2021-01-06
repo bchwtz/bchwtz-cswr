@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>2.4 Logical | Computational Statistics</title>
+  <meta name="description" content="2.4 Logical | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="2.4 Logical | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="2.4 Logical | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="2.4 Logical | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="2.4 Logical | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="complex.html"/>
+<link rel="next" href="character.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,155 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
-
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
-</div>
-
+<div id="logical" class="section level2">
+<h2><span class="header-section-number">2.4</span> Logical</h2>
+<p>Logicals can hold the value <code>TRUE</code> or <code>FALSE</code> and are often the output of comparisons. To fulfill your need for typing efficiency when programming R allows you to abbreviate <code>TRUE</code> and <code>FALSE</code> by <code>T</code> respectively <code>F</code>.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="logical.html#cb205-1"></a>x &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb205-2"><a href="logical.html#cb205-2"></a>x</span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="logical.html#cb207-1"></a><span class="dv">1</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="logical.html#cb209-1"></a>bool &lt;-<span class="st"> </span><span class="kw">c</span>(T, F, T, F, T)</span>
+<span id="cb209-2"><a href="logical.html#cb209-2"></a>bool</span></code></pre></div>
+<pre><code>#R&gt; [1]  TRUE FALSE  TRUE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="logical.html#cb211-1"></a><span class="kw">sum</span>(bool)               <span class="co"># </span><span class="al">ATTENTION</span><span class="co">: Automatic conversion to 1 (T) and 0 (F)</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 3</code></pre>
+<p>When using <code>TRUE</code> and <code>FALSE</code> in calculations they are automatically converted into their underlying numerical representation. We are going to talk about this phenomenon called coercion in detail in the respective chapter.</p>
+<p>When it comes to logical values R provides a lot of operators to compare and evaluate objects - these are called logical operators.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Code</th>
+<th align="left">Description</th>
+<th align="left">Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>&gt;</code></td>
+<td align="left">Greater than</td>
+<td align="left"><code>a &gt; b</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>&gt;=</code></td>
+<td align="left">Greater than or equal to</td>
+<td align="left"><code>a &gt;= b</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>&lt;</code></td>
+<td align="left">Less than</td>
+<td align="left"><code>a &lt; b</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>&lt;=</code></td>
+<td align="left">Less than or equal to</td>
+<td align="left"><code>a &lt;= b</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>==</code></td>
+<td align="left">Exactly equal to</td>
+<td align="left"><code>a == b</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>!=</code></td>
+<td align="left">Not equal to</td>
+<td align="left"><code>a != b</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>!</code></td>
+<td align="left">Logical negotiation (NOT)</td>
+<td align="left"><code>!a</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>|</code></td>
+<td align="left">OR (elementwise)</td>
+<td align="left"><code>a | b</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>||</code></td>
+<td align="left">OR (stepwise)</td>
+<td align="left"><code>a || b</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>&amp;</code></td>
+<td align="left">AND (elementwise)</td>
+<td align="left"><code>a &amp; b</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>&amp;&amp;</code></td>
+<td align="left">AND (stepwise)</td>
+<td align="left"><code>a &amp;&amp; b</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>%in%</code></td>
+<td align="left">Is element in group of elements</td>
+<td align="left"><code>a %in% c(a,b,c)</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>xor()</code></td>
+<td align="left">Exclusive or (XOR)</td>
+<td align="left"><code>xor(a,b)</code></td>
+</tr>
+</tbody>
+</table>
+<p>A lot of these logical operators can come in handy when structuring your code and using conditional statements to handle different events or cases in your program. If you don’t know how they are working you can just try them out while giving <code>a</code> and <code>b</code> different <code>TRUE</code> or <code>FALSE</code> values or you can construct a truth table in the following way.</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="logical.html#cb213-1"></a>values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">NA</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb213-2"><a href="logical.html#cb213-2"></a><span class="kw">names</span>(values) &lt;-<span class="st"> </span><span class="kw">as.character</span>(values)</span>
+<span id="cb213-3"><a href="logical.html#cb213-3"></a></span>
+<span id="cb213-4"><a href="logical.html#cb213-4"></a><span class="kw">outer</span>(values, values, <span class="st">&quot;&amp;&quot;</span>)     <span class="co"># Truth table for AND</span></span></code></pre></div>
+<pre><code>#R&gt;        &lt;NA&gt; FALSE  TRUE
+#R&gt; &lt;NA&gt;     NA FALSE    NA
+#R&gt; FALSE FALSE FALSE FALSE
+#R&gt; TRUE     NA FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="logical.html#cb215-1"></a><span class="kw">outer</span>(values, values, <span class="st">&quot;|&quot;</span>)     <span class="co"># Truth table for OR</span></span></code></pre></div>
+<pre><code>#R&gt;       &lt;NA&gt; FALSE TRUE
+#R&gt; &lt;NA&gt;    NA    NA TRUE
+#R&gt; FALSE   NA FALSE TRUE
+#R&gt; TRUE  TRUE  TRUE TRUE</code></pre>
+<p>Operations using logicals can sometimes be tricky and seem to be wrong or trying to fool you. So pay attention when dealing with them and try to get a sense of how they are evaluated. Here is an example of a tricky evaluation. To understand the following lines you should know what the exclusive or (<code>xor</code>) does and what differentiates it from the normal or. Trying to come up with a line of code to construct a truth table for this in R may help to understand the following:</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="logical.html#cb217-1"></a><span class="kw">xor</span>(T, T) <span class="op">==</span><span class="st"> </span>T <span class="op">|</span><span class="st"> </span>T       </span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="logical.html#cb219-1"></a><span class="kw">xor</span>(T,T)</span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="logical.html#cb221-1"></a>T <span class="op">|</span><span class="st"> </span>T</span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="logical.html#cb223-1"></a><span class="ot">FALSE</span> <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>                      <span class="co"># This is obviously wrong</span></span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<p>Although it seems as R is making an error here, it does not. It evaluates our line of code in a strictly logical order and this differs from the appearance of the equation. Here is how R evaluates the parts of our expression:</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="logical.html#cb225-1"></a><span class="co"># Due to the definition of XOR the expression has to be FALSE</span></span>
+<span id="cb225-2"><a href="logical.html#cb225-2"></a><span class="kw">xor</span>(T,T) <span class="op">==</span><span class="st"> </span>T<span class="op">|</span>T       </span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="logical.html#cb227-1"></a><span class="kw">xor</span>(T,T)            <span class="co"># 1. Step</span></span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="logical.html#cb229-1"></a><span class="kw">xor</span>(T,T) <span class="op">==</span><span class="st"> </span>T       <span class="co"># 2. Step</span></span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="logical.html#cb231-1"></a><span class="kw">xor</span>(T,T) <span class="op">==</span><span class="st"> </span>T<span class="op">|</span>T     <span class="co"># 3. Step  </span></span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="logical.html#cb233-1"></a>F<span class="op">|</span>T                 <span class="co"># Aggregation (same as 3. step)</span></span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="logical.html#cb235-1"></a><span class="co"># If you want R to behave as it seems on first look you have</span></span>
+<span id="cb235-2"><a href="logical.html#cb235-2"></a><span class="co"># to use parentheses:</span></span>
+<span id="cb235-3"><a href="logical.html#cb235-3"></a></span>
+<span id="cb235-4"><a href="logical.html#cb235-4"></a><span class="kw">xor</span>(T,T) <span class="op">==</span><span class="st"> </span>(T<span class="op">|</span>T)   <span class="co"># Evaluates each side individually, then compares</span></span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<p>The following code illustrates the difference between | and || and shows why using || as operator for the logical OR can come in handy sometimes. Remember that the logical OR returns TRUE if at least one element is TRUE. When
+the first element is TRUE, the result is independent of the second element.</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="logical.html#cb237-1"></a><span class="kw">rm</span>(x)   <span class="co"># Make sure variable x does not exist</span></span>
+<span id="cb237-2"><a href="logical.html#cb237-2"></a></span>
+<span id="cb237-3"><a href="logical.html#cb237-3"></a><span class="ot">TRUE</span> <span class="op">|</span><span class="st"> </span>x      <span class="co"># Element x does not exist, so R returns an Error!</span></span></code></pre></div>
+<pre><code>#R&gt; Error in eval(expr, envir, enclos): object &#39;x&#39; not found</code></pre>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="logical.html#cb239-1"></a><span class="ot">TRUE</span> <span class="op">||</span><span class="st"> </span>x     <span class="co"># Element x does not exist, but the result can be determined </span></span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="logical.html#cb241-1"></a>              <span class="co"># without actually touching the object and || ensures that</span></span>
+<span id="cb241-2"><a href="logical.html#cb241-2"></a>              <span class="co"># the execution is aborted as soon as possible.</span></span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="complex.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="character.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +491,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-datatypes.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>3.6 Dates and Times | Computational Statistics</title>
+  <meta name="description" content="3.6 Dates and Times | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="3.6 Dates and Times | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="3.6 Dates and Times | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="3.6 Dates and Times | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="3.6 Dates and Times | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="strings.html"/>
+<link rel="next" href="exercises-2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
-
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
-</div>
-
+<div id="dates-and-times" class="section level2">
+<h2><span class="header-section-number">3.6</span> Dates and Times</h2>
+<p>Dates and times in computer science can easily fill a bunch of books. There are different time formats, different data types and there are countless routines to handle, measure and manipulate time objects. So let us focus on the basics to implement basic features in your programs when it comes to times. In R we have two simple methods to obtain the current time.</p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="dates-and-times.html#cb416-1"></a><span class="kw">date</span>()</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;Wed Jan  6 11:17:30 2021&quot;</code></pre>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="dates-and-times.html#cb418-1"></a><span class="kw">Sys.time</span>()</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;2021-01-06 11:17:30 UTC&quot;</code></pre>
+<p>Once we have a date we can encode and convert it to a POSIXlt-Object with the function <code>strptime()</code>. POSIX-Objects store the number of elapsed seconds since the 1. January 1970 - 00:00. Once we have a POSIXlt-Object it is easy to extract things like the month using the function <code>months()</code> or the day of the week using <code>weekdays()</code>.</p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="dates-and-times.html#cb420-1"></a><span class="kw">Sys.setlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>,<span class="st">&quot;C&quot;</span>)           <span class="co"># Set regional parameters once</span></span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;C&quot;</code></pre>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="dates-and-times.html#cb422-1"></a><span class="kw">strptime</span>(<span class="st">&quot;15/mar/88&quot;</span>,<span class="dt">format=</span><span class="st">&quot;%d/%b/%y&quot;</span>)</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;1988-03-15 UTC&quot;</code></pre>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="dates-and-times.html#cb424-1"></a>date &lt;-<span class="st"> </span><span class="kw">strptime</span>(<span class="st">&quot;15/mar/88&quot;</span>,<span class="dt">format=</span><span class="st">&quot;%d/%b/%y&quot;</span>)</span>
+<span id="cb424-2"><a href="dates-and-times.html#cb424-2"></a></span>
+<span id="cb424-3"><a href="dates-and-times.html#cb424-3"></a><span class="kw">weekdays</span>(date)</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;Tuesday&quot;</code></pre>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="dates-and-times.html#cb426-1"></a><span class="kw">months</span>(date)</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;March&quot;</code></pre>
+<p>As you can see in the code snippet above you need to pass a proper <code>format</code> argument to the function <code>strptime()</code> in order to decode or encode the given time accordingly. This may look like hieroglyphs at first sight but is indeed quite easy to learn. The following table provides an overview of the most useful codes. A more extensive reference can be found in the help system (<code>?strptime</code>) or in the Linux man pages, as the POSIX standard also originated from the Unix-universe.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Code</th>
+<th align="left">Input / Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>%a</code> and <code>%A</code></td>
+<td align="left">Abbreviated and full weekday name in the current locale.</td>
+</tr>
+<tr class="even">
+<td align="center"><code>%b</code> and <code>%B</code></td>
+<td align="left">Abbreviated and full month name in the current locale.</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>%d</code></td>
+<td align="left">Day of the month as decimal number (01-31).</td>
+</tr>
+<tr class="even">
+<td align="center"><code>%e</code></td>
+<td align="left">Day of the month with leading space for single decimal numbers (1-31).</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>%H</code></td>
+<td align="left">Hour as decimal number (00-23).</td>
+</tr>
+<tr class="even">
+<td align="center"><code>%m</code></td>
+<td align="left">Month as decimal number (01-12).</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>%M</code></td>
+<td align="left">Minute as decimal number (00-59).</td>
+</tr>
+<tr class="even">
+<td align="center"><code>%S</code></td>
+<td align="left">Seconds as decimal number including 2 leap seconds (00-61).</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>%T</code></td>
+<td align="left">Equivalent to <code>%H:%M:%S</code>.</td>
+</tr>
+<tr class="even">
+<td align="center"><code>%U</code></td>
+<td align="left">Week of the year as decimal number (00-53).</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>%V</code></td>
+<td align="left">Week of the year as decimal number as defined in ISO 8601 (01-53).</td>
+</tr>
+<tr class="even">
+<td align="center"><code>%W</code></td>
+<td align="left">Week of the year as decimal number (00-53, UK convention).</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>%y</code></td>
+<td align="left">Year without century (00-99).</td>
+</tr>
+<tr class="even">
+<td align="center"><code>%Y</code></td>
+<td align="left">Year with century (ISO 8601:2004).</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>%F</code></td>
+<td align="left">Equivalent to <code>%Y-%m-%d</code> (ISO 8601 date format).</td>
+</tr>
+<tr class="even">
+<td align="center"><code>%D</code></td>
+<td align="left">Date format such as <code>%m/%d/%y</code> (ISO C99 date format).</td>
+</tr>
+</tbody>
+</table>
+<p>When operating with POSIX-Objects we can perform lots of useful tasks which make handling time objects really convenient like comparing them and calculating the elapsed time between two events.</p>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="dates-and-times.html#cb428-1"></a>Event1 &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="st">&quot;1989-11-09&quot;</span>) <span class="co"># Fall of Berlin wall</span></span>
+<span id="cb428-2"><a href="dates-and-times.html#cb428-2"></a>Event2 &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="st">&quot;1949-05-23&quot;</span>) <span class="co"># Founding date of BRD</span></span>
+<span id="cb428-3"><a href="dates-and-times.html#cb428-3"></a></span>
+<span id="cb428-4"><a href="dates-and-times.html#cb428-4"></a>Event1 <span class="op">-</span><span class="st"> </span>Event2</span></code></pre></div>
+<pre><code>#R&gt; Time difference of 14780 days</code></pre>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="dates-and-times.html#cb430-1"></a><span class="kw">difftime</span>(Event1, Event2, <span class="dt">units=</span><span class="st">&quot;hours&quot;</span>)</span></code></pre></div>
+<pre><code>#R&gt; Time difference of 354720 hours</code></pre>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="dates-and-times.html#cb432-1"></a>Event1 <span class="op">&gt;</span><span class="st"> </span>Event2 </span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<p>At this point, we are quite well equipped with knowledge to handle and manipulate all common appearances of data, but programming is much more. Data is important but we can leverage its ability only when we have more powerful tools to automatize dealing with it.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="strings.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +454,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-datastructures.Rmd",
 "text": "Edit"
 },
 "history": {

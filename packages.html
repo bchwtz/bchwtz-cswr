@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>1.6 Packages | Computational Statistics</title>
+  <meta name="description" content="1.6 Packages | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="1.6 Packages | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="1.6 Packages | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="1.6 Packages | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="1.6 Packages | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="functions.html"/>
+<link rel="next" href="getting-help.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="packages" class="section level2">
+<h2><span class="header-section-number">1.6</span> Packages</h2>
+<div id="packages-with-data" class="section level3">
+<h3><span class="header-section-number">1.6.1</span> Packages with Data</h3>
+<p>Of course, we don’t need to invent everything ourselves. R comes with tons of great functions we can use for our analysis. One of the most important tasks in statistics is to perform a linear regression with one dependent and one or more independent variables.</p>
 
 <div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
+Load the dataset <code>wage1</code> into R and use the <code>lm()</code>-function to fit a linear model to the data and calculate the effect of education on wage in the simple bivariate case. Summarize and interpret your findings considering that the data was recorded back in the 1970s in the USA.
 </div>
 
+<p>Naturally, the first step is to load the required data set into R. Luckily the data is simply available as a package that can be installed with <code>install.packages("wooldridge")</code>. After installation and loading the package with <code>library(wooldridge)</code> we can see the whole documentation including variable descriptions by typing <code>?wage1</code>.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="packages.html#cb164-1"></a><span class="kw">library</span>(wooldridge)              <span class="co"># Load the dataset</span></span>
+<span id="cb164-2"><a href="packages.html#cb164-2"></a></span>
+<span id="cb164-3"><a href="packages.html#cb164-3"></a><span class="kw">dim</span>(wage1)                       <span class="co"># Dimensions of the table</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 526  24</code></pre>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="packages.html#cb166-1"></a><span class="kw">names</span>(wage1)                     <span class="co"># Variable names in the dataset</span></span></code></pre></div>
+<pre><code>#R&gt;  [1] &quot;wage&quot;     &quot;educ&quot;     &quot;exper&quot;    &quot;tenure&quot;   &quot;nonwhite&quot; &quot;female&quot;  
+#R&gt;  [7] &quot;married&quot;  &quot;numdep&quot;   &quot;smsa&quot;     &quot;northcen&quot; &quot;south&quot;    &quot;west&quot;    
+#R&gt; [13] &quot;construc&quot; &quot;ndurman&quot;  &quot;trcommpu&quot; &quot;trade&quot;    &quot;services&quot; &quot;profserv&quot;
+#R&gt; [19] &quot;profocc&quot;  &quot;clerocc&quot;  &quot;servocc&quot;  &quot;lwage&quot;    &quot;expersq&quot;  &quot;tenursq&quot;</code></pre>
+<p>As we can see the whole data set includes 526 observations and 24 variables. To get a first impression of the data we can type <code>View(wooldridge::wage1)</code>. This will produce a viewer tab which can be used to view and inspect the data. Although it looks like an editable spreadsheet, the data can only be viewed and not changed. If you want to modify data you have to go back to the script view or command line and use commands to do this. If you are familiar with tools to handle spreadsheets like Excel you may think of quickly editing the data set over there and return to R afterward. If this came to your mind, just stop thinking about it now! R is much more powerful and way quicker than Excel and its lookalikes, so there is really no reason to chop up your workflow.</p>
+<p>As we will only calculate a simple bivariate model we don’t need all the data, so we extract what we need from the big set. In our simple case, these are the columns <strong>wage</strong> containing the hourly average wages in USD of the interviewed individuals and <strong>educ</strong> their respective years of education. So we basically have to extract the first two columns from the data set.</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="packages.html#cb168-1"></a>wage      &lt;-<span class="st"> </span>wooldridge<span class="op">::</span>wage1<span class="op">$</span>wage <span class="co"># Extract wage data (hourly wage in $)</span></span>
+<span id="cb168-2"><a href="packages.html#cb168-2"></a>education &lt;-<span class="st"> </span>wooldridge<span class="op">::</span>wage1<span class="op">$</span>educ <span class="co"># Extract education data (education in years)</span></span>
+<span id="cb168-3"><a href="packages.html#cb168-3"></a></span>
+<span id="cb168-4"><a href="packages.html#cb168-4"></a><span class="co"># Initial data inspection</span></span>
+<span id="cb168-5"><a href="packages.html#cb168-5"></a><span class="kw">summary</span>(wage)                      <span class="co"># Summarize the variable wage</span></span></code></pre></div>
+<pre><code>#R&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#R&gt;   0.530   3.330   4.650   5.896   6.880  24.980</code></pre>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="packages.html#cb170-1"></a><span class="kw">summary</span>(education)                 <span class="co"># Summarize the variable education</span></span></code></pre></div>
+<pre><code>#R&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#R&gt;    0.00   12.00   12.00   12.56   14.00   18.00</code></pre>
+<p>Extracting the needed columns from the data frame is easy. We already discussed the <code>$</code>-Operator, which allows us to address named parts of an object. After extracting the data and giving the variables comprehensive names, we should gain a condensed overview of what we are using for our analysis. The <code>summary()</code> command is a generic function which works for many types of data and responds with a useful summary depending on the input. In our case <code>summary()</code> returns typical descriptive measures. As we now have a first feeling of the data, we can construct our linear model using the <code>lm()</code>-function.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="packages.html#cb172-1"></a><span class="kw">lm</span>(wage <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>education)            <span class="co"># Perform bivariate regression</span></span></code></pre></div>
+<pre><code>#R&gt; 
+#R&gt; Call:
+#R&gt; lm(formula = wage ~ 1 + education)
+#R&gt; 
+#R&gt; Coefficients:
+#R&gt; (Intercept)    education  
+#R&gt;     -0.9049       0.5414</code></pre>
+<p>When simply executing the <code>lm()</code>-function R only returns the parameter estimates. That is far too less to evaluate if the model is appropriate or if the estimated effects are significant. We can use the <code>summary()</code>-function again to gain a deeper understanding of what we have calculated and how our model looks like. For convenience and re-usability it makes sense to store the results in an own object.</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="packages.html#cb174-1"></a>model.uni &lt;-<span class="st"> </span><span class="kw">lm</span>(wage <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>education)  <span class="co"># Store results in variable</span></span>
+<span id="cb174-2"><a href="packages.html#cb174-2"></a><span class="kw">summary</span>(model.uni)                     <span class="co"># Summarize the fitted model</span></span></code></pre></div>
+<pre><code>#R&gt; 
+#R&gt; Call:
+#R&gt; lm(formula = wage ~ 1 + education)
+#R&gt; 
+#R&gt; Residuals:
+#R&gt;     Min      1Q  Median      3Q     Max 
+#R&gt; -5.3396 -2.1501 -0.9674  1.1921 16.6085 
+#R&gt; 
+#R&gt; Coefficients:
+#R&gt;             Estimate Std. Error t value Pr(&gt;|t|)    
+#R&gt; (Intercept) -0.90485    0.68497  -1.321    0.187    
+#R&gt; education    0.54136    0.05325  10.167   &lt;2e-16 ***
+#R&gt; ---
+#R&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+#R&gt; 
+#R&gt; Residual standard error: 3.378 on 524 degrees of freedom
+#R&gt; Multiple R-squared:  0.1648,    Adjusted R-squared:  0.1632 
+#R&gt; F-statistic: 103.4 on 1 and 524 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>The summary view of the regression object <code>model.uni</code> gives us much more information than the <code>lm()</code>-function itself. This allows us to evaluate and interpret the model parameters as we have learned in our basic undergraduate statistic courses.</p>
+</div>
+<div id="packages-with-functions" class="section level3">
+<h3><span class="header-section-number">1.6.2</span> Packages with Functions</h3>
+<p>There are thousands of functions in the R core, but sometimes this is not enough and you have the need to expand R’s functionalities. As you are not the only programmer out there many of the required additional functions already exist, written by users like you, professionals or professors all around the world. And they are giving them to you for free so that you can use them for any purpose you want. So before starting a new programming project always do proper research and look at what is already out there.</p>
+<p>Results from statistical works and analysis are often displayed using graphical tools. Producing plots of data to gain a quick aggregated overview of the data or using graphics to support your results is common, needed and useful. R is already equipped with tools to generate plots like <code>plot()</code> and <code>hist()</code> and RStudio makes them easy to use and comfortable to handle their outputs.</p>
+<p>An additional option that aims to produce strong, nice looking plots with less effort than the standard R toolset is the package <code>ggplot2</code>. Their creators state that the package “takes care of many of the fiddly details that make plotting a hassle (like drawing legends)”. It seems to be worth to add <code>ggplot2</code> to our portfolio. We are looking at some basics and produce some nice plots here. But first, we need to install the package. As long as you are connected to the Internet it is quite easy to install new packages using the command line:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="packages.html#cb176-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)           <span class="co"># Installing packages requires</span></span>
+<span id="cb176-2"><a href="packages.html#cb176-2"></a>                                      <span class="co"># a working internet connection</span></span></code></pre></div>
+<p>That’s it, already. R takes care of the rest. It will visit the website, download the package and install it with all dependencies automatically and report the progress in the console. If you already know the name of a package and want to install it, you can do this by simply replacing the text in quotation marks. If you don’t know the packages name - we will discuss some resources besides your favorite search engine to find useful packages and additional help later.</p>
+<p>Before you can use the power of a freshly installed package you have to advise R to load the package (even if it is already installed). You can do this using the <code>library()</code>-function. If you are trying to execute a command from the package before loading it R will respond with an error.</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="packages.html#cb177-1"></a><span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)    <span class="co"># Loads an already installed package into memory</span></span></code></pre></div>
+<p>One of <code>ggplot2</code>’s most powerful functions is the ability to create quick (but nice looking) plots using <code>qplot()</code>. This is a generic function which produces its output dependent on its input, just like <code>summary()</code>. If you give <code>qplot()</code> a single vector it will produce a nice histogram, if you give it two vectors of equal length it will create a scatter plot.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="packages.html#cb178-1"></a>sample &lt;-<span class="st"> </span><span class="kw">rnorm</span>( <span class="dv">1000</span> )         <span class="co"># Generate 1000 norm. dist. numbers</span></span>
+<span id="cb178-2"><a href="packages.html#cb178-2"></a><span class="kw">head</span>(sample, <span class="dv">10</span>)                <span class="co"># Preview the first 10 numbers</span></span></code></pre></div>
+<pre><code>#R&gt;  [1] -1.539950042 -0.928567035 -0.294720447 -0.005767173  2.404653389
+#R&gt;  [6]  0.763593461 -0.799009249 -1.147657009 -0.289461574 -0.299215118</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="packages.html#cb180-1"></a><span class="kw">qplot</span>(sample , <span class="dt">binwidth =</span> <span class="fl">.1</span>)   <span class="co"># Plot generated sample as histogram</span></span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-51-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>As you can see, it is very fast forward to generate nice histograms out of single vectors. The argument <code>binwidth = .1</code> defines the width of each cluster to aggregate the generated values into pillars. As you may have noticed I have not written <code>0.1</code>. Lazy programmers (and who isn’t?) can get rid of the leading zero and start floating point numbers with the dot. Please notice that your histogram may look a little different as <code>rnorm()</code> also relies on the internal random number generator and of course you can use the function <code>hist()</code> instead to produce a similar plot. We will dive deeper into random numbers and distributions in one of the following chapters. Let’s try out what happens if we give <code>qplot()</code> two vectors.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="packages.html#cb181-1"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dt">by =</span> <span class="fl">.1</span>)</span>
+<span id="cb181-2"><a href="packages.html#cb181-2"></a>y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb181-3"><a href="packages.html#cb181-3"></a></span>
+<span id="cb181-4"><a href="packages.html#cb181-4"></a><span class="kw">qplot</span>(x,y)                      <span class="co"># Plot using ggplot2-package</span></span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-52-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="packages.html#cb182-1"></a><span class="kw">plot</span>(x,y)                       <span class="co"># Plot using R&#39;s core function</span></span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-52-2.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="getting-help.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +440,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>Topic 2: Forecasting | Computational Statistics</title>
+  <meta name="description" content="Topic 2: Forecasting | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="Topic 2: Forecasting | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="Topic 2: Forecasting | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="Topic 2: Forecasting | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="Topic 2: Forecasting | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="topic-1-web-scraping.html"/>
+<link rel="next" href="topic-3-algorithm-implementation-data-analysis.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="topic-2-forecasting" class="section level2 unnumbered">
+<h2>Topic 2: Forecasting</h2>
+<p>In autoregression models, the variable of interest is forecasted using a linear combination of past values of the variable itself. The term autoregression indicates that it is a regression of the variable against itself. The <span class="math inline">\(AR(p)\)</span>-Model for a time series <span class="math inline">\(\{y_t\}\)</span> is given by:</p>
+<p><span class="math display">\[ y_t = c + \phi_1 \cdot y_{t-1} + \ldots + \phi_p \cdot y_{t-p} + \epsilon_t\]</span>
+If <span class="math inline">\(\{y_t\}\)</span> is instationary it may be preferable to estimate the model on the basis of the first differences of the time series which is given by <span class="math inline">\(z_t = y_t - y_{t-1}\)</span> (details in the referenced literature). The goal of this task is to compare the performance of the <span class="math inline">\(AR(p)\)</span> model on the 100.000 Series of the M4 Time Series Dataset. Therefore it is required to develop a function that estimates a model of a given order and calculates a required amount of forecasts. These forecasts should be compared against the real data from the M4 holdout by means of the Mean Absolute Scaled Error (MASE). Please report results for stationary and instationary <span class="math inline">\(AR(p=1)\)</span> to <span class="math inline">\(AR(p=10)\)</span> models (20 models in total) for the whole M4 dataset. Additionally you can also include an stationary and instationary <span class="math inline">\(AR(p=0)\)</span> model to model the data as a simple and trivial benchmark for the more compelx models (yielding 22 models in total).</p>
+<!--
+**Key Steps:**
 
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
-</div>
+- Function that performs model estimation and generates forecasts for one specified model
+- Forecasts for all 100.000 time series and for all models
+- Evaluate and present accuracy for the forecasts in terms of MASE by model and yearly, quarterly, monthly, weekly, daily and hourly frequencies
+-->
+<p><strong>Dataset:</strong></p>
+<p>M4 Competition Website: <a href="https://www.mcompetitions.unic.ac.cy/the-dataset/" class="uri">https://www.mcompetitions.unic.ac.cy/the-dataset/</a></p>
+<p><strong>Getting started Literature:</strong></p>
+<p>Hyndman, R.J., &amp; Athanasopoulos, G. (2018) Forecasting: principles and practice, 2nd edition, OTexts: Melbourne, Australia. Accompanying website: <a href="http://OTexts.com/fpp2" class="uri">http://OTexts.com/fpp2</a>.</p>
+<!--
+---
 
+## Topic 3: Robust Standard Errors {-}
+The assumption of homoskedasticity often does not hold when analyzing real-world datasets. As a consequence, the OLS estimator for the regression standard error is not consistent anymore. Therefore, a number of various different estimators have been proposed to overcome this problem. The idea of this task is to understand the implications of heteroskedasticity (only not in conjunction with autocorrelation) on the regression results and explore pathways that have been proposed to practically deal with the issue. 
+
+**Key Steps:**
+
+- Simulate multiple datasets (1 to 10 exogenous variable ) that violate the assumption of homoskedasticity
+- Explain one concept to adjust standard errors to obtain a heteroskedasticity-consistent standard error estimate (e.g White Estimator; see recommended literature).
+- Function that calculates adapted variance-covariance matrix on the basis of normal regression (alternatively you can write a complete regression function all by yourself)
+- Compare, illustrate and interpret the standard and corrected regression results
+
+**Getting started Literature:**
+
+Zeileis, A. (2004). Econometric Computing with HC and HAC Covariance Matrix Estimators. Journal of Statistical Software, 11(10), 1 - 17. doi:http://dx.doi.org/10.18637/jss.v011.i10
+
+---
+
+## Topic 4: Backpropagation Algorithm {-}
+Backpropagation is short for “backward propagation of errors” and is a mechanism used to update the weights of a neural network using gradient descent. The main idea is to calculate the gradient of the error function with respect to the neural network's weights while proceeding backward through the network. The goal of this task is to implement a simple and exemplarily illustrated version of the backpropagation algorithm for a simple feed-forward neural network and present the results of weight adaptions under different learning rates.
+
+**Key Steps:**
+
+- Understand Feed Forward Neural Network
+- Understand the Idea of Backpropagation
+- Create a simple Example Network
+- Illustrate Backpropagation Step by Step for one fixed Learning Rate
+- Illustrate Results when variating Learning Rate
+
+**Getting started Literature:**
+
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville. 2016. Deep Learning. The MIT Press. Accompanying website: https://www.deeplearningbook.org/.
+
+---
+
+## Topic 5: Safe Withdrawal Simulation {-}
+The question of safe withdrawal rates in retirement portfolios has become an active field of research in finance. The basic concept is as follows: After reaching retirement age, a person starts to withdraw money from the personal wealth portfolio in order to maintain her/his standard of living. However, the retiree should calculate which percentage of the wealth portfolio can be withdrawn without risking to run out of money or the necessity to cut down the standard of living in a later stage. To model this process retirees mainly need three parameters: 
+
+- Length of retirement period (As we don't want to underestimate life expectancy we can assume a fixed value e.g. 30 years, however, life expectancy is a stochastic variable that can also be modeled based on mortality tables)
+- Yearly portfolio returns (to model the portfolio development without withdrawals) 
+- Yearly inflation rate (to model the necessary changes of withdrawals over the time span in order to remain the standard of living) 
+
+One way to model these parameters are simulation/bootstrapping approaches. The idea behind these approaches is to simulate the withdrawal process several times while incorporating the uncertainty of the variables in the analysis. Given the portfolio return and inflation rate for every year of a multi-decade period, bootstrapping consists of sampling values for the parameters for each year (with replacement) in order to model the portfolio development during the retirement period. The portfolio succeeded if the portfolio value is never smaller than zero, as it was possible to maintain the real value of the withdrawals without running out of money. If the portfolio value falls below zero, the portfolio failed, as the anticipated withdrawals haven't been possible. Reproducing/simulating this process $B$ times for different starting withdrawals allows approximating the fraction of scenarios in which the portfolio succeeds and fails. Thereby, it is possible to observe the (obviously) inverse relationship between initial withdrawal rate and portfolio success probability in detail, which can be described and explained in detail.
+
+**Key Steps:**
+
+- Construct a portfolio of 50% stocks (DAX) and 50% riskless assets (government bonds with 1-year maturity).
+- Making justified assumptions about parameter values and distributions for all uncertain values.
+- Writing a function that simulates if the portfolio is successful, given the starting values.
+- Replicate the simulation using at least $B=1.000.000$
+- Present results (textually and graphically) and conclude.
+
+**Getting started Literature:**
+
+Bengen, W. P. (1994): Determining withdrawal rates using historical data. Journal of Financial Planning, Vol. 7, pp. 171-180.
+
+Spitzer, J. J. et al. (2007): Guidelines for withdrawal rates and portfolio safety during retirement. Journal of Financial Planning, Vol. 20(10), pp. 52-59.
+
+Cooley, P. L. (2003): A comparative analysis of retirement portfolio success rates: Simulation vs. overlapping periods. Financial Services Review, Vol. 12, pp. 115-128.
+
+-->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="topic-1-web-scraping.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="topic-3-algorithm-implementation-data-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

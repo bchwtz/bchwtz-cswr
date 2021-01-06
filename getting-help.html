@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>1.7 Getting Help | Computational Statistics</title>
+  <meta name="description" content="1.7 Getting Help | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="1.7 Getting Help | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="1.7 Getting Help | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="1.7 Getting Help | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="1.7 Getting Help | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="packages.html"/>
+<link rel="next" href="exercises.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
-
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
+<div id="getting-help" class="section level2">
+<h2><span class="header-section-number">1.7</span> Getting Help</h2>
+<div id="integrated-help-system" class="section level3">
+<h3><span class="header-section-number">1.7.1</span> Integrated Help System</h3>
+<p>The flexible package system has a lot of advantages and puts the mind power of world-leading data scientists directly to your fingertips. When installing a new package or adding a new function which has been developed either by the R Core Team or by another developer you need to use the documentation to get used to the new functions, what they are doing in detail, how the package is used and what overlaps and problems might occur. This is exactly the reason why R has a build in help system. You can get useful information about every function you have at hand. Just place the question mark in front of the function name and hit enter or use the more formal function <code>help()</code>.</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="getting-help.html#cb183-1"></a><span class="co"># This is how to help yourself and find out how new or existing </span></span>
+<span id="cb183-2"><a href="getting-help.html#cb183-2"></a><span class="co"># functions work. Always read the help page before asking someone!</span></span>
+<span id="cb183-3"><a href="getting-help.html#cb183-3"></a></span>
+<span id="cb183-4"><a href="getting-help.html#cb183-4"></a><span class="kw">help</span>(sin)             <span class="co"># Load documentation for a function</span></span>
+<span id="cb183-5"><a href="getting-help.html#cb183-5"></a></span>
+<span id="cb183-6"><a href="getting-help.html#cb183-6"></a>?sin                  <span class="co"># Shortcut to help()</span></span>
+<span id="cb183-7"><a href="getting-help.html#cb183-7"></a></span>
+<span id="cb183-8"><a href="getting-help.html#cb183-8"></a><span class="kw">help</span>(<span class="dt">package=</span>ggplot2) <span class="co"># Information about whole package</span></span></code></pre></div>
+<p>A help page consists of different sections, each discussing a special aspect of the function. While the exact parts of a help page vary due to different purposes of different functions the following list is not exhaustive for all functions, but you can expect to see at least the following sections:</p>
+<ul>
+<li><p><strong>Description:</strong> Provides a brief overview of what the function actually does or what it was intended to do. This section allows you to quickly grasp if the function is useful for your intended case.</p></li>
+<li><p><strong>Usage:</strong> Shows a very short function call, often just enough to see required arguments. It’s good to get easy functions to work, for more advanced applications look at the dedicated example section.</p></li>
+<li><p><strong>Arguments:</strong> Explains the arguments used or required by a function and gives an overview of the needed datatypes or in what way an argument manipulates the behavior of a function.</p></li>
+<li><p><strong>Details:</strong> Provides background information on the behavior of the function and often mentions or briefly explains the theoretical concept underlying the function.</p></li>
+<li><p><strong>Examples:</strong> Often the second focal point after the description section. This section provides working code examples which show in more or less detail how the function could be used in practice. Especially the combination with other functions and creation of sample data is a good source of inspiration for your own projects.</p></li>
+</ul>
+<p>If you don’t know what the exact name of a function is you can use the <code>help.search()</code>-function to search for a keyword in the whole documentation. The question mark shortcut for this search function is <code>??</code> and it’s automatically suggested by R if it can’t find the function you were looking for.</p>
 </div>
-
+<div id="help-on-the-internet" class="section level3">
+<h3><span class="header-section-number">1.7.2</span> Help on the Internet</h3>
+<p>R has a gigantic global supporter and fan base. Therefore you can find a lot about solving special problems, handling errors or information about packages by simply searching the web. Sometimes it may be difficult to search something related to R as R is at least to some people also the <span class="math inline">\(18^{th}\)</span> letter of the alphabet and this may be confusing for your favorite search engine. Here are a few starting points which may help you on your programming journey:</p>
+<ul>
+<li>www.rseek.org</li>
+<li>www.stackoverflow.com</li>
+<li>www.r-project.org/mail.html</li>
+</ul>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +382,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
 "text": "Edit"
 },
 "history": {

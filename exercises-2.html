@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>Exercises | Computational Statistics</title>
+  <meta name="description" content="Exercises | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="Exercises | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="Exercises | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="Exercises | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="Exercises | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="dates-and-times.html"/>
+<link rel="next" href="structure.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="exercises-2" class="section level2 unnumbered">
+<h2>Exercises</h2>
+<p><img src="gfx/CH00-ExercisesHeader.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="ex-1-2" class="section level3 unnumbered">
+<h3>EX 1</h3>
 
 <div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
+The function ´apply´ offers three main arguments ´X´, ´MARGIN´, ´FUN´. Please explain their purpose and possible parameterization options.
 </div>
 
 </div>
+<div id="ex-2-2" class="section level3 unnumbered">
+<h3>EX 2</h3>
+
+<div class="rmdexercise">
+What is the idea behind the additional three dot argument ´…´ (dotdotdot) that can be set when using ´apply´?
+</div>
+
+</div>
+<div id="ex-3-2" class="section level3 unnumbered">
+<h3>EX 3</h3>
+
+<div class="rmdexercise">
+Please explain the following three lines of code (line by line):
+</div>
+
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="exercises-2.html#cb434-1"></a>x &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">x1 =</span> <span class="dv">3</span>, <span class="dt">x2 =</span> <span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>))</span>
+<span id="cb434-2"><a href="exercises-2.html#cb434-2"></a><span class="kw">dimnames</span>(x)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>]</span>
+<span id="cb434-3"><a href="exercises-2.html#cb434-3"></a><span class="kw">apply</span>(x, <span class="dv">2</span>, mean, <span class="dt">trim =</span> <span class="fl">.2</span>)</span></code></pre></div>
+</div>
+<div id="ex-4-2" class="section level3 unnumbered">
+<h3>EX 4</h3>
+
+<div class="rmdexercise">
+Explain the difference between the two function calls without executing them.
+</div>
+
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="exercises-2.html#cb435-1"></a><span class="kw">paste</span>(<span class="st">&quot;variable&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb435-2"><a href="exercises-2.html#cb435-2"></a><span class="kw">paste</span>(<span class="st">&quot;variable&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">collapse=</span><span class="st">&quot;&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+</div>
+<div id="ex-5-1" class="section level3 unnumbered">
+<h3>EX 5</h3>
+
+<div class="rmdexercise">
+What does the following code produce? Please derive the output and explain what happens before executing the code.
+</div>
+
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="exercises-2.html#cb436-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb436-2"><a href="exercises-2.html#cb436-2"></a>mat2 &lt;-<span class="st"> </span>mat <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb436-3"><a href="exercises-2.html#cb436-3"></a><span class="kw">apply</span>(mat2, <span class="dv">2</span>, <span class="cf">function</span>(x){x[<span class="dv">1</span>]<span class="op">|</span>x[<span class="dv">2</span>]})</span></code></pre></div>
+</div>
+<div id="ex-6" class="section level3 unnumbered">
+<h3>EX 6</h3>
+
+<div class="rmdexercise">
+Calculate the average value of each column in the following matrix ´m´ after removing lines 10, 24 and 30-37.
+</div>
+
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="exercises-2.html#cb437-1"></a><span class="kw">set.seed</span>(<span class="dv">5</span>)</span>
+<span id="cb437-2"><a href="exercises-2.html#cb437-2"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span><span class="op">^</span><span class="dv">7</span>), <span class="dt">ncol=</span><span class="dv">10</span>, <span class="dt">byrow=</span>T)</span></code></pre></div>
+</div>
+<div id="ex-7" class="section level3 unnumbered">
+<h3>EX 7</h3>
+
+<div class="rmdexercise">
+Try to come up with an explanation of what the following code does and why it works.
+</div>
+
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="exercises-2.html#cb438-1"></a><span class="st">&#39;[&#39;</span>(mat, <span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
+
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dates-and-times.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="structure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +422,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-datastructures.Rmd",
 "text": "Edit"
 },
 "history": {

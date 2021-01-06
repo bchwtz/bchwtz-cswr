@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>3.2 Matrices and Arrays | Computational Statistics</title>
+  <meta name="description" content="3.2 Matrices and Arrays | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="3.2 Matrices and Arrays | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="3.2 Matrices and Arrays | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="3.2 Matrices and Arrays | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="3.2 Matrices and Arrays | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="vectors.html"/>
+<link rel="next" href="lists.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
-
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
-</div>
-
+<div id="matrices-and-arrays" class="section level2">
+<h2><span class="header-section-number">3.2</span> Matrices and Arrays</h2>
+<p>Matrices support the same operations as vectors and of course, you can formulate ambitious filtering commands to extract or manipulate data.</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="matrices-and-arrays.html#cb346-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>, <span class="dt">nrow =</span> <span class="dv">5</span>)</span>
+<span id="cb346-2"><a href="matrices-and-arrays.html#cb346-2"></a><span class="dv">10</span> <span class="op">%%</span><span class="st"> </span><span class="dv">3</span>                           <span class="co"># Modulo operation</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 1</code></pre>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="matrices-and-arrays.html#cb348-1"></a>mat <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<pre><code>#R&gt;       [,1]  [,2]  [,3]  [,4]  [,5]
+#R&gt; [1,]  TRUE FALSE  TRUE FALSE  TRUE
+#R&gt; [2,] FALSE  TRUE FALSE  TRUE FALSE
+#R&gt; [3,]  TRUE FALSE  TRUE FALSE  TRUE
+#R&gt; [4,] FALSE  TRUE FALSE  TRUE FALSE
+#R&gt; [5,]  TRUE FALSE  TRUE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="matrices-and-arrays.html#cb350-1"></a>mat[<span class="kw">which</span>(mat <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)]</span></code></pre></div>
+<pre><code>#R&gt;  [1]  1  3  5  7  9 11 13 15 17 19 21 23 25</code></pre>
+<p>Matrices as known from undergraduate mathematical courses usually have two dimensions. Sometimes there is the need for more dimensions and of course, R supports us with a construct that is similar to a more dimensional matrix - this structure is called an array. If you already played around with other programming languages you may insist, that an array does not need to have three or more dimensions, which is absolutely right. You can imagine <em>array</em> as a generic term for a (numeric) n-dimensional data-structure. A vector, therefore, can be called a one-dimensional array while matrices can also be called two-dimensional arrays. If you store data in a three-dimensional structure - the array is normally called a cube, but of course, we are not limited to three dimensions. Cubes of higher dimensions are usually called Hypercubes or just referred to as arrays. To printout, our n-dimensional structure on the two-dimensional command-line R gives back the array in slices. The command to create an array is <code>array()</code>.</p>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="matrices-and-arrays.html#cb352-1"></a>A &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span> , <span class="dv">11</span><span class="op">:</span><span class="dv">19</span> , <span class="dv">21</span><span class="op">:</span><span class="dv">29</span>), <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">3</span> , <span class="dv">3</span> , <span class="dv">3</span>))</span>
+<span id="cb352-2"><a href="matrices-and-arrays.html#cb352-2"></a></span>
+<span id="cb352-3"><a href="matrices-and-arrays.html#cb352-3"></a>A                                <span class="co"># Display array</span></span></code></pre></div>
+<pre><code>#R&gt; , , 1
+#R&gt; 
+#R&gt;      [,1] [,2] [,3]
+#R&gt; [1,]    1    4    7
+#R&gt; [2,]    2    5    8
+#R&gt; [3,]    3    6    9
+#R&gt; 
+#R&gt; , , 2
+#R&gt; 
+#R&gt;      [,1] [,2] [,3]
+#R&gt; [1,]   11   14   17
+#R&gt; [2,]   12   15   18
+#R&gt; [3,]   13   16   19
+#R&gt; 
+#R&gt; , , 3
+#R&gt; 
+#R&gt;      [,1] [,2] [,3]
+#R&gt; [1,]   21   24   27
+#R&gt; [2,]   22   25   28
+#R&gt; [3,]   23   26   29</code></pre>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="matrices-and-arrays.html#cb354-1"></a><span class="kw">dim</span>(A)</span></code></pre></div>
+<pre><code>#R&gt; [1] 3 3 3</code></pre>
+<p>When entering higher dimensions the complexity level increases drastically and may get confusing. During our data science journey, we mostly use two-dimensional structures and therefore won’t explore the world of n-dimensional arrays here.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vectors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lists.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +392,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-datastructures.Rmd",
 "text": "Edit"
 },
 "history": {

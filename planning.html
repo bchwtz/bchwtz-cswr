@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>5.1 Planning | Computational Statistics</title>
+  <meta name="description" content="5.1 Planning | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="5.1 Planning | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="5.1 Planning | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="5.1 Planning | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="5.1 Planning | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="software-development.html"/>
+<link rel="next" href="coding.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="planning" class="section level2">
+<h2><span class="header-section-number">5.1</span> Planning</h2>
+<p>Especially in scientific environments software usually fulfills a strict purpose and solves an (academic) problem. The planning phase, therefore, captures the user requirements and aligns them with the prospective software architecture. The output of this phase usually is a document with the requirements and a plan for the software architecture.</p>
+<!--
+Explanation requirement document
+Explaation software architecture
++ Examples
+-->
+<p>For good software, it is key to separate the actual coding from the planning phase. Usually, it is a good idea to <strong>start a new project with an empty sheet of paper</strong> and collect the theoretical and practical aspects to form a sketch of the possible solution. Do not think about technical details in this phase too much, but write down your ideas in <code>pseudo code</code> like <em>load data</em>, <em>transform (scale and logarithmize) input</em>, <em>calculate regression coefficients</em>, * analyze error terms*.</p>
+<p>Sub-problems that occur multiple times or code that needs to be executed more than once should be <strong>modularized</strong> and needs to be put into a function. This avoids inconsistencies and provides a single place to maintain functionalities and implement changes. Besides this, functions have additional advantages - they make the code more readable and facilitate testing and validation. When wrapping boring sections like data transformation in a function this can usually be done by a single line of code including easily visible arguments. Therefore, you can think of modules like building blocks to your solution, each block (function) should handle a single task and not more. In addition to solving one thing well, functions should be flexible and solve a <strong>sufficiently general</strong> problem. It is more advisable to make a function flexible and solve the n-dimensional case (and avoid hard-coding the 2-dimensional case), as your requirements may increase over time.</p>
+<p>The general steps and the building blocks of functions can be combined into an architecture that solves the specific problem. Proceeding this way, the problem is being divided into simpler steps and each sub-problem is solved individually (Principle: Divide and Conquer). It is always advisable to support the planning process with a <strong>graphical representation</strong> that allows to easily discover dependencies and the right sequence of commands. While computer and system sciences lead to a huge variety of “modeling languages” even simple graphical representations are often useful.</p>
+<!--
+The most basic diagrams to visually express code are Nassi-Schneiderman Diagrams, while processes and other sequences can easily be visualized using the Unified Modelling Language (UML). 
 
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
-</div>
+Workflow: no data manipulation in spreadsheet programs
+-->
+<p>A lot of problems and requirements have already been solved and implemented by other programmers and quite often there is no need to reimplement every little step on your own. It is fair and good practice to reuse, modify and recycle existing packages, libraries, functions or code fragments. “Whenever possible, steal code” is one of the many bits of advice frequently given to new programmers. While this is usually good advice and shortens the implementation and coding requirements it still comes at the cost of understanding and integrating someone else’s code into your project. While code often can be freely found in the web, it still comes with some requirements and liabilities which are usually bundled in the respective license that is linked or distributed with the code. Regardless of the license under which the software is distributed the usage of someone else’s ideas or intellectual property - especially in scientific projects - needs to be cited. If you use R packages they conveniently provide a reference that can be cited and is accessible with the command <code>citation("packagename")</code>. If <code>citation()</code> is used without an argument it returns the reference for the R Base System.</p>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="planning.html#cb478-1"></a><span class="kw">citation</span>()</span></code></pre></div>
+<pre><code>#R&gt; 
+#R&gt; To cite R in publications use:
+#R&gt; 
+#R&gt;   R Core Team (2020). R: A language and environment for statistical
+#R&gt;   computing. R Foundation for Statistical Computing, Vienna, Austria.
+#R&gt;   URL https://www.R-project.org/.
+#R&gt; 
+#R&gt; A BibTeX entry for LaTeX users is
+#R&gt; 
+#R&gt;   @Manual{,
+#R&gt;     title = {R: A Language and Environment for Statistical Computing},
+#R&gt;     author = {{R Core Team}},
+#R&gt;     organization = {R Foundation for Statistical Computing},
+#R&gt;     address = {Vienna, Austria},
+#R&gt;     year = {2020},
+#R&gt;     url = {https://www.R-project.org/},
+#R&gt;   }
+#R&gt; 
+#R&gt; We have invested a lot of time and effort in creating R, please cite it
+#R&gt; when using it for data analysis. See also &#39;citation(&quot;pkgname&quot;)&#39; for
+#R&gt; citing R packages.</code></pre>
+<p>Integrating other functions, packages or code fragments means to organize and handle how different functions hand over data, which means one has to <strong>think about the data format</strong> and use <strong>standard data formats</strong> wherever possible. Choosing or creating a data format is not to be mistaken by choosing a file extension like <code>.txt</code>,<code>.csv</code> or <code>.ppt</code> but defines the structure of your <code>list</code>, <code>data.frame</code> or comparable data-structure present in R. Choosing a standard, therefore, refers to choosing the type of object that captures, organizes and stores data, estimation results or other output. This is important for several reasons as bad designs of the data structures make the coding more difficult and the program less readable. Often one needs to consider that empirically derived results are almost never perfect or satisfactory after a first run and need to be recalculated on different subsets or transformations of the data. A designed data structure needs to combine all results including the envelope and meta information, like function arguments, etc. Last but not least a clever and compact design of the resulting data structure can affect the actual execution speed of a program significantly.</p>
+<p>Choosing a standard or convention is especially important. Imagine when using a matrix to store individual observations for e.g. multiple time series it makes sense to store the observations in rows and the variables/time series in columns. Additionally, one needs to think about missing values in the data (e.g. calendarial effects like holidays) and how to handle them.</p>
+<!--
+within R:
+ts
+zoo
+mts
 
+Some data exchange standards:
+JSON
+-->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="software-development.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="coding.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +400,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-softwaredevelopment.Rmd",
 "text": "Edit"
 },
 "history": {

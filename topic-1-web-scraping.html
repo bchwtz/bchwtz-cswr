@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>Topic 1: Web Scraping | Computational Statistics</title>
+  <meta name="description" content="Topic 1: Web Scraping | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="Topic 1: Web Scraping | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="Topic 1: Web Scraping | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="Topic 1: Web Scraping | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="Topic 1: Web Scraping | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="programming-project.html"/>
+<link rel="next" href="topic-2-forecasting.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="topic-1-web-scraping" class="section level2 unnumbered">
+<h2>Topic 1: Web Scraping</h2>
+<p>Data scraping, data harvesting, or data extraction is the process of extracting information from websites in an automated fashion. The program that downloads the content and extracts the desired piece of information is usually referred to as bot or crawler. The scraping process consists of two parts: fetching and extracting. The first step, fetching, is the downloading of a page. Therefore, web crawling is the main component of web scraping, to fetch pages for later extraction and processing. When a page has been downloaded (and saved) the second step, the information extraction can take place. This involves taking some parts out of the downloaded page and prepare it in a way that it can be used for another purpose, e.g. an analysis.</p>
+<p>The goal of this task is to scrape data such as cryptocurrency time series, job descriptions or car offers from a given website and calculate, present as well as interpret some descriptive statistics in an appealing way (for example using Shiny). The key learning is to develop a crawling algorithm that is capable of downloading content from the given site. Each of the following websites can be used only once in the course. If you are interested in a listed website please send me a message (<a href="mailto:benjamin.buchwitz@ku.de" class="email">benjamin.buchwitz@ku.de</a>) stating the website and your identifier/matriculation number. Websites are assigned on a first-come-first-serve basis. However, you can also propose a website, that will then be added to the list. When coding please keep in mind that you can and should not crawl the entire content from your chosen page. Please limit the number of crawled instances to an absolute maximum of 100.000 entries (less is also ok - if in doubt talk to me).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Site</th>
+<th align="left">Type</th>
+<th align="center">Student</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><a href="https://guide.michelin.co.jp/" class="uri">https://guide.michelin.co.jp/</a></td>
+<td align="left">Restaurants</td>
+<td align="center">wws22603</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://www.rottentomatoes.com/" class="uri">https://www.rottentomatoes.com/</a></td>
+<td align="left">Movies</td>
+<td align="center">wws23848</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://www.stepstone.de/" class="uri">https://www.stepstone.de/</a></td>
+<td align="left">Jobs</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://www.mobile.de/" class="uri">https://www.mobile.de/</a></td>
+<td align="left">Car / Motorbike</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://www.kickstarter.com/" class="uri">https://www.kickstarter.com/</a></td>
+<td align="left">Crowdfunding</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<!--
+**Key Steps:**
 
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
-</div>
-
+- Crawler-Function that downloads and saves the webpages in HTML format
+- Scraper-Function that extracts information from the saved files
+- Condense scraped information in an adequate data structure
+- Calculate, present and interpret descriptive statistics
+-->
+<p><strong>Getting started Literature:</strong></p>
+<p>Simon Munzert, Christian Rubba, Peter Meißner, and Dominic Nyhuis. 2014. Automated Data Collection with R. A Practical Guide to Web Scraping and Text Mining. Chichester: John Wiley &amp; Sons. Accompanying website: <a href="http://r-datacollection.com/" class="uri">http://r-datacollection.com/</a>.</p>
+<hr />
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="programming-project.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="topic-2-forecasting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

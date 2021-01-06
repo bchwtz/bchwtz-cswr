@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>B.1 Additional Exercises | Computational Statistics</title>
+  <meta name="description" content="B.1 Additional Exercises | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="B.1 Additional Exercises | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="B.1 Additional Exercises | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="B.1 Additional Exercises | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="B.1 Additional Exercises | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="test-exam.html"/>
+<link rel="next" href="exercise-ii.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
-
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
+<div id="additional-exercises" class="section level2">
+<h2><span class="header-section-number">B.1</span> Additional Exercises</h2>
+<div id="exercise-i" class="section level3">
+<h3><span class="header-section-number">B.1.1</span> Exercise I</h3>
+<p>The following function <code>makemat</code> was found in the file <code>function.final.final2.R</code> as part of an old undocumented project. Therefore its purpose is unknown. Being a young and ambitious R developer you were asked to answer the following questions.</p>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="additional-exercises.html#cb517-1"></a><span class="kw">set.seed</span>(<span class="dv">124</span>)</span>
+<span id="cb517-2"><a href="additional-exercises.html#cb517-2"></a>num &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">9</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="fl">0.6</span>), <span class="dv">2</span>)</span>
+<span id="cb517-3"><a href="additional-exercises.html#cb517-3"></a>num</span></code></pre></div>
+<pre><code>#R&gt; [1] 0.05 0.25 0.31 0.24 0.13 0.18 0.35 0.29 0.55</code></pre>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="additional-exercises.html#cb519-1"></a>kat &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb519-2"><a href="additional-exercises.html#cb519-2"></a>val &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>)</span>
+<span id="cb519-3"><a href="additional-exercises.html#cb519-3"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(num, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb519-4"><a href="additional-exercises.html#cb519-4"></a></span>
+<span id="cb519-5"><a href="additional-exercises.html#cb519-5"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">prod</span>(<span class="kw">dim</span>(mat)) ){</span>
+<span id="cb519-6"><a href="additional-exercises.html#cb519-6"></a>  <span class="cf">for</span> ( j <span class="cf">in</span> val){</span>
+<span id="cb519-7"><a href="additional-exercises.html#cb519-7"></a>    state &lt;-<span class="st"> </span>(mat[i] <span class="op">&lt;</span><span class="st"> </span>j)</span>
+<span id="cb519-8"><a href="additional-exercises.html#cb519-8"></a>    <span class="cf">if</span> (state){</span>
+<span id="cb519-9"><a href="additional-exercises.html#cb519-9"></a>      mat[i] &lt;-<span class="st"> </span>kat[j <span class="op">==</span><span class="st"> </span>val]</span>
+<span id="cb519-10"><a href="additional-exercises.html#cb519-10"></a>    }</span>
+<span id="cb519-11"><a href="additional-exercises.html#cb519-11"></a>  }</span>
+<span id="cb519-12"><a href="additional-exercises.html#cb519-12"></a>}</span>
+<span id="cb519-13"><a href="additional-exercises.html#cb519-13"></a>  </span>
+<span id="cb519-14"><a href="additional-exercises.html#cb519-14"></a>mat[(mat % <span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb519-15"><a href="additional-exercises.html#cb519-15"></a></span>
+<span id="cb519-16"><a href="additional-exercises.html#cb519-16"></a>mat</span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li><p>While executing and trying to load the function above the following message appears. Explain why the message is returned and correct the error in the provided source code.</p>
+<p><code>Error: unexpected input in "mat[(mat % 2) == 1] &lt;- 1"</code></p></li>
+<li><p>Make yourself familiar with the provided code and briefly describe in a generic way what the code does (line-by-line, one full iteration of the outer loop). Ensure that your description is short but precise and allows the reader to gain a deep understanding of the data manipulation process.</p></li>
+<li><p>Write down the content of the variable <code>mat</code> after fixing the error and executing the code above.</p></li>
+</ol>
 </div>
-
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="test-exam.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercise-ii.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +382,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/15-examprep.Rmd",
 "text": "Edit"
 },
 "history": {

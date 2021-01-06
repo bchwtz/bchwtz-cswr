@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>What is this? | Computational Statistics</title>
+  <meta name="description" content="What is this? | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="What is this? | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="What is this? | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="What is this? | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="What is this? | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="leaderboard.html"/>
+<link rel="next" href="test-exam.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,170 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="what-is-this" class="section level2 unnumbered">
+<h2>What is this?</h2>
+<p>A bug bounty program is a crowdsourcing initiative that rewards individuals for discovering and reporting errors. It is frequently used by big companies such as <a href="https://www.google.com/about/appsecurity/reward-program/">Google</a>, <a href="https://www.facebook.com/whitehat">Facebook</a> or <a href="https://www.microsoft.com/en-us/msrc/bounty">Microsoft</a> to attract hackers and security researchers to test their websites and platforms for security vulnerabilities. However, this bug bounty program here is inspired by the one initiated by Donald E. Knuth, where he rewards people when they find errors in his books.</p>
+<p>Every course and class member is encouraged to participate in the CSWR Bug Bounty program and report typographic errors, code problems or logic flaws in this course websites. Reporting an error is easy and can be done by sending a screenshot and a brief explanation of the error via email to <strong><a href="mailto:benjamin.buchwitz@ku.de" class="email">benjamin.buchwitz@ku.de</a></strong>. The person who first submits an error receives the reward, that ranges from <code>2^0</code> to <code>2^7</code> Bug Credits (BC) and will be added to the leaderboard. Typographic errors are always rewarded with <code>2^0</code> BC each. Bugs in the R code or flaws in algorithmic logic will be rewarded with respect to their severity and complexity and can be rewarded with up to <code>2^7</code> BC. Reported errors will be corrected within 48h so that the content of this site improves continuously.</p>
+<!--
+# Benchmarking
 
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
-</div>
+> Be quick, but don't hurry.   
+> -- John Wooden
+
+When repeating tasks very often the execution speed of functions gets more and more important. Of course, the execution speed can be measured directly from within R. The most famous choice for reliable timed measurements is implemented in the package `microbenchmark`.
+
+
+```r
+#install.packages(microbenchmark)
+library(microbenchmark)
+```
+
+You surely remember `if`-`else` clauses and the function `switch` which both perform very similar tasks. The difference between those two was discussed in the code structure section which concluded that `switch` is usually faster than the alternative. 
+
+To compare both alternatives we put each solution in a dummy function. These functions are defined below and do nothing more than simply selecting a case out of three possible ones. These stripped down functions enable us to directly compare the speed difference between `switch` and `if`-`else`.
+
+
+```r
+fun.switch <- function(type) {
+ switch(type,
+        case1 = 1,
+        case2 = 2,
+        case3 = 3)
+}
+
+fun.if <- function(type) {
+ if (type == "case1"){ 1 }
+ else if (type == "case2"){ 2 }
+ else if (type == "case3"){ 3 }
+}
+```
+
+These function are then passed to the `microbenchmark` function and each function is executed `1e3 = 1000` times. While 1000 repetitions is a reasonable choice one can easily choose higher values for the benchmarking if the function is as simple as in our example. The repetition makes the results more comparable and less dependent on the initial state of your computer. And the results can be seen below.
+
+
+```r
+microbenchmark(fun.switch('case1'), fun.if('case1'), times=1e3)
+```
+
+```
+#R> Unit: nanoseconds
+#R>                 expr min  lq     mean median  uq     max neval
+#R>  fun.switch("case1") 313 328 2060.197    358 375 1690301  1000
+#R>      fun.if("case1") 400 428 3956.675    441 456 3498314  1000
+```
+
+```r
+microbenchmark(fun.switch('case3'), fun.if('case3'), times=1e3)
+```
+
+```
+#R> Unit: nanoseconds
+#R>                 expr min  lq    mean median  uq   max neval
+#R>  fun.switch("case3") 357 378 421.356    411 425  6678  1000
+#R>      fun.if("case3") 638 671 720.232    689 703 20700  1000
+```
+
+
+
+# Encoding
+
+> What we've got here is failure to communicate.  
+> -- Captain (Cool Hand Luke)
+
+<img src="gfx/gif/Encoding.gif" width="70%" style="display: block; margin: auto;" />
+
+More to come, meanwhile:
+http://kunststube.net/encoding/
+
+
+
+
+# Parallelization
+
+# Rcpp
+
+> Caution: Cape does not enable user to fly.
+> -- Batman costume warning label
+
+R is a highly abstract and interpreted programming language. It is easy to learn and many methods are easily available. When speed is needed R provides vectorized functions, but sometimes that is just not fast enough. When you want to go really fast you'll need to switch the programming language and integration with R becomes a major paint point.
+
+Compiled C and C++ routines can be called from R using the built-in .Call() function. R objects passed to these routines have type SEXP. A SEXP is a pointer to an encapsulated structure that holds the object’s type, value, and other attributes used by the R interpreter.
+
+The R application programming interface (API) provides a limited set of macros and C routines for manipulating SEXPs and calling R functions.1 The level of abstraction in the R API is low. Even simple tasks may require writing lengthy boilerplate code. Using the R API from C++ is especially uncomfortable because it doesn’t take advantage of any of C++’s features.
+
+Rcpp is an R package that makes it easier to interface R and C++ code. Rcpp does this by providing a set of C++ wrapper classes for common R data types, as well as tools for automating the process of compiling and loading C++ routines for R. Installation is the same as for any other package, although Windows users must first install Rtools.
+
+http://heather.cs.ucdavis.edu/Rcpp.pdf
+
+
+# Projects & Packages
+
+# GitHub
+
+# BASH
+
+What you've written actually almost works (it would work if all the variables were numbers), but it's not an idiomatic way at all.
+
+(…) parentheses indicate a subshell. What's inside them isn't an expression like in many other languages. It's a list of commands (just like outside parentheses). These commands are executed in a separate subprocess, so any redirection, assignment, etc. performed inside the parentheses has no effect outside the parentheses.
+With a leading dollar sign, $(…) is a command substitution: there is a command inside the parentheses, and the output from the command is used as part of the command line (after extra expansions unless the substitution is between double quotes, but that's another story).
+{ … } braces are like parentheses in that they group commands, but they only influence parsing, not grouping. The program x=2; { x=4; }; echo $x prints 4, whereas x=2; (x=4); echo $x prints 2. (Also braces require spaces around them and a semicolon before closing, whereas parentheses don't. That's just a syntax quirk.)
+With a leading dollar sign, ${VAR} is a parameter expansion, expanding to the value of a variable, with possible extra transformations.
+((…)) double parentheses surround an arithmetic instruction, that is, a computation on integers, with a syntax resembling other programming languages. This syntax is mostly used for assignments and in conditionals.
+The same syntax is used in arithmetic expressions $((…)), which expand to the integer value of the expression.
+[[ … ]] double brackets surround conditional expressions. Conditional expressions are mostly built on operators such as -n $variable to test if a variable is empty and -e $file to test if a file exists. There are also string equality operators: "$string1" = "$string2" (beware that the right-hand side is a pattern, e.g. [[ $foo = a* ]] tests if $foo starts with a while [[ $foo = "a*" ]] tests if $foo is exactly a*), and the familiar !, && and || operators for negation, conjunction and disjunction as well as parentheses for grouping. Note that you need a space around each operator (e.g. [[ "$x" = "$y" ]], not [[ "$x"="$y" ]]), and a space or a character like ; both inside and outside the brackets (e.g. [[ -n $foo ]], not [[-n $foo]]).
+[ … ] single brackets are an alternate form of conditional expressions with more quirks (but older and more portable). Don't write any for now; start worrying about them when you find scripts that contain them.
+This is the idiomatic way to write your test in bash:
+
+if [[ $varA = 1 && ($varB = "t1" || $varC = "t2") ]]; then
+If you need portability to other shells, this would be the way (note the additional quoting and the separate sets of brackets around each individual test):
+
+if [ "$varA" = 1 ] && { [ "$varB" = "t1" ] || [ "$varC" = "t2" ]; }; then
+
+Source: https://stackoverflow.com/questions/6270440/simple-logical-operators-in-bash
+
+
+# Errors
+
+In case you hadn’t noticed, R does a lot of things differently from most other programming languages. Java and Python and C and all other languages covered in Wikipedia’s excellent page on Exception handling syntax use language statements to enable try-catch-finally. R, needing to be different, uses a function.
+
+But the tryCatch() function actually looks a lot like other languages’ try-catch syntax if you format it properly:
+
+
+```r
+result = tryCatch({
+    expr
+}, warning = function(w) {
+    warning-handler-code
+}, error = function(e) {
+    error-handler-code
+}, finally = {
+    cleanup-code
+}
+```
+
+
+http://mazamascience.com/WorkingWithData/?p=912
+
+
+
+# Acknowledgements
+
+This document has benefitted from various contributions, comments, and suggestions from both colleagues as well as students. We sincerely thank all participants for spending time and effort to make the course notes as complete and understandable as they are. We would like to express our very great appreciation to:
+
+- Florian Habermann (SS2019)
+
+
+-->
 
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="leaderboard.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="test-exam.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +506,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/14-appendix.Rmd",
 "text": "Edit"
 },
 "history": {

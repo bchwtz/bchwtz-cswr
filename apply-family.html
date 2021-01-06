@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>6.1 *apply-Family | Computational Statistics</title>
+  <meta name="description" content="6.1 *apply-Family | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="6.1 *apply-Family | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="6.1 *apply-Family | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="6.1 *apply-Family | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="6.1 *apply-Family | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="vectorization.html"/>
+<link rel="next" href="vectorized-functions.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,175 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
-
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
+<div id="apply-family" class="section level2">
+<h2><span class="header-section-number">6.1</span> *apply-Family</h2>
+<p>In the previous sections we already introduced some vectorized functions without explicitly metioning their rationale and that they are vectorized. The following functions all belong to the so called *apply-Family. Vectorization in R requires a thorough understanding of the available data structures, as the following functions iterate (automatically) over different slices of data strucutes and perform (loop-wise) repetitions on the data slices from vectors, matrices, arrays, lists and dataframes. More specifically, the family consists of <code>apply()</code>, <code>lapply()</code>, <code>sapply()</code>, <code>vapply()</code>, <code>tapply()</code>, <code>mapply()</code>, <code>rapply()</code>, and <code>eapply()</code>. The following snippet gives a very short overview over the functions we are going to discuss in more detail. All of these functions are provided by the R base system and are thus located in the library <code>base</code>.</p>
+<pre><code># The *apply-Family of Functions in the Library base
+base::apply     Apply Functions Over Array Margins
+base::lapply    Apply a Function over a List or Vector
+base::sapply    Simplified Version of lapply
+base::vapply    Safer Version of sapply
+base::tapply    Apply a Function Over a Ragged Array
+base::mapply    Apply a Function to Multiple List or Vector Arguments
+base::rapply    Recursively Apply a Function to a List
+base::eapply    Apply a Function Over Values in an Environment</code></pre>
+<div id="apply" class="section level3 unnumbered">
+<h3>apply</h3>
+<p>We already introduced <code>apply</code> and used it to apply a function to the rows or columns of a matrix, in the same fashion as functions like <code>rowMeans</code> or <code>colMeans</code> calculate a specific values for either a row or a column of a matrix. Generally speaking apply operates on (two dimensional) arrays, a.k.a. matrices. To get started we create a sample data set consisting of a matrix with 20 cells partitioned into five rows and four columns.</p>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="apply-family.html#cb486-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">21</span><span class="op">:</span><span class="dv">30</span>), <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb486-2"><a href="apply-family.html#cb486-2"></a>mat</span></code></pre></div>
+<pre><code>#R&gt;      [,1] [,2] [,3] [,4]
+#R&gt; [1,]    1    6   21   26
+#R&gt; [2,]    2    7   22   27
+#R&gt; [3,]    3    8   23   28
+#R&gt; [4,]    4    9   24   29
+#R&gt; [5,]    5   10   25   30</code></pre>
+<p>To mimic the functionality of <code>rowSums</code>, we now can use the apply function to find the sum over all elements of each row as follows.</p>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="apply-family.html#cb488-1"></a><span class="kw">apply</span>(<span class="dt">X=</span>mat, <span class="dt">MARGIN=</span><span class="dv">1</span>, <span class="dt">FUN=</span>sum)</span></code></pre></div>
+<pre><code>#R&gt; [1] 54 58 62 66 70</code></pre>
+<p>Notice that the funciton call to <code>apply</code> takes three arguments, where <code>X</code> is the data, <code>MARGIN</code> corresponds eiter to the rows as they are the first dimension of the data or to the columns, which correspond to the second dimension. <code>FUN</code> is the funciton that should be applied on the specified margin of the data. Note that the function in the snippet below is passed without parantheses (<code>sum</code> instead of <code>sum()</code>).</p>
+<p>Remember that in R everything is a vector. Therefore, a matrix can be seen as a collection of line vectors when you cross the matrix from top to bottom (along <code>MARGIN=1</code>), or as a list of column vectors, spanning the matrix left to right (along <code>MARGIN=2</code>). The code in the above R chunk therefore translates directo to the instruction to: “apply the function sum to the matrix <code>mat</code> along the rows”. Ursuprisingly this leads to a vector containing the sums of the values of each row. Mathematically speaking we would expect a column vector here, while R outputs a line vector. As R does not differentiate here while outputting these on the console this makes no difference for this case. The following picture illustrates the process.</p>
 </div>
+<div id="lapply" class="section level3 unnumbered">
+<h3>lapply</h3>
+<p>While matrices are an important and often used data structure they are not the only one. Quite often data comes as <code>list</code> and it may be a reasonable purpose to apply a function to every (sub-) element of a given list. As lists have no dimensions (see <code>dim</code>), the application of <code>apply</code> fails. Thefeore if you want to apply a specific function to every element of a list you have to use a list compatible version of apply, the <code>lapply</code>-function. The syntax is quite comparable to our usual <code>apply</code>, which can be seen when executing <code>?lapply</code>.</p>
+<p>Using our toy example with the previously introduced matrix, we construct a list by spliting <code>mat</code> by row. Applying the function <code>sum</code> to this list should now result in the same values as the previous application of <code>apply</code> on <code>mat</code>.</p>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="apply-family.html#cb490-1"></a>lst &lt;-<span class="st"> </span><span class="kw">split</span>(mat, <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mat))   <span class="co"># Split mat by row</span></span>
+<span id="cb490-2"><a href="apply-family.html#cb490-2"></a>lst</span></code></pre></div>
+<pre><code>#R&gt; $`1`
+#R&gt; [1]  1  6 21 26
+#R&gt; 
+#R&gt; $`2`
+#R&gt; [1]  2  7 22 27
+#R&gt; 
+#R&gt; $`3`
+#R&gt; [1]  3  8 23 28
+#R&gt; 
+#R&gt; $`4`
+#R&gt; [1]  4  9 24 29
+#R&gt; 
+#R&gt; $`5`
+#R&gt; [1]  5 10 25 30</code></pre>
+<p>Due to the flexibility and ubiquitousness of lists, <code>lapply</code> can be widely used and e.g. also works on dataframes in addition to lists. Additionally it is compatible with vectors, where the second most important part about <code>lapply</code>comes into place. Regardless if the data input <code>X</code> is a list, a dataframe or a vector, the returned data is always a <code>list</code>, which can be seen in the code below.</p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="apply-family.html#cb492-1"></a><span class="kw">lapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span></code></pre></div>
+<pre><code>#R&gt; $`1`
+#R&gt; [1] 54
+#R&gt; 
+#R&gt; $`2`
+#R&gt; [1] 58
+#R&gt; 
+#R&gt; $`3`
+#R&gt; [1] 62
+#R&gt; 
+#R&gt; $`4`
+#R&gt; [1] 66
+#R&gt; 
+#R&gt; $`5`
+#R&gt; [1] 70</code></pre>
+<p>The following image shows the proces and illustrates how <code>lapply</code> works. As seen above the results are identical to the ones delivered by <code>apply</code> and the returned data structure is (as expected) a list.</p>
+</div>
+<div id="sapply" class="section level3 unnumbered">
+<h3>sapply</h3>
+<p>The function <code>sapply</code> takes the same inputs and behaves in the exact same mannor as <code>lapply</code>, but tries to simplify the result so that it returns an appropriate data structure instead of always returning a list. Applied to our example from above <code>sapply</code> returns a numeric vector.</p>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="apply-family.html#cb494-1"></a><span class="kw">sapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span></code></pre></div>
+<pre><code>#R&gt;  1  2  3  4  5 
+#R&gt; 54 58 62 66 70</code></pre>
+<p><code>sapply</code> can be fored to behave exactly like lapply and also return a list by setting the argument <code>simplify</code> to <code>FALSE</code>.</p>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="apply-family.html#cb496-1"></a>res1 &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span>
+<span id="cb496-2"><a href="apply-family.html#cb496-2"></a>res2 &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb496-3"><a href="apply-family.html#cb496-3"></a><span class="kw">identical</span>(res1, res2)</span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="apply-family.html#cb498-1"></a><span class="kw">class</span>(res2)   <span class="co"># sapply also returns a list if forced to act like lapply</span></span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;list&quot;</code></pre>
+<p>The simplification performed by <code>sapply</code> can also be applied manually. R offers the commands <code>unlist</code> or <code>simplify2array</code>, that perform similar simplification operations. The code below shows that results obtained by <code>lapply</code> are identical to the ones generated by <code>sapply</code>, after passing them to the function <code>simplify2array</code>.</p>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="apply-family.html#cb500-1"></a>res3 &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span>
+<span id="cb500-2"><a href="apply-family.html#cb500-2"></a>res4 &lt;-<span class="st"> </span><span class="kw">simplify2array</span>(<span class="kw">lapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum))</span>
+<span id="cb500-3"><a href="apply-family.html#cb500-3"></a><span class="kw">identical</span>(res3, res4)</span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<p>While the manual simplification is possible, it should be strictly avoided. Using the built in capabilities of the functions makes the code more readable and may be more robust. It may cover additional cases that may not be covered when own functions or manual processes are used and therefore does not fail surprisingly.</p>
+</div>
+<div id="vapply" class="section level3 unnumbered">
+<h3>vapply</h3>
+<p><code>vapply</code> is similar to <code>sapply</code> and therefore somehow identical to <code>lapply</code>, but it requires to specify what type of data is expected as return value. Therefore <code>vapply</code> supports the additional argument <code>FUN.VALUE</code>, that allows to specify the expected return value. For the example used above we expect <code>l/s/vapply</code> to return a single numeric value for each list value, therefore <code>FUN.VALUE = numeric(1)</code>.</p>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="apply-family.html#cb502-1"></a><span class="kw">vapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">FUN.VALUE=</span><span class="kw">numeric</span>(<span class="dv">1</span>))</span></code></pre></div>
+<pre><code>#R&gt;  1  2  3  4  5 
+#R&gt; 54 58 62 66 70</code></pre>
+<p>If the value specified by <code>FUN.VALUE</code> and the actual value returned by <code>vapply</code> do not match an error is returned.</p>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="apply-family.html#cb504-1"></a><span class="kw">vapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">FUN.VALUE=</span><span class="kw">character</span>(<span class="dv">1</span>))</span></code></pre></div>
+<pre><code>#R&gt; Error in vapply(X = lst, FUN = sum, FUN.VALUE = character(1)): values must be type &#39;character&#39;,
+#R&gt;  but FUN(X[[1]]) result is type &#39;integer&#39;</code></pre>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="apply-family.html#cb506-1"></a><span class="kw">vapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">FUN.VALUE=</span><span class="kw">numeric</span>(<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>#R&gt; Error in vapply(X = lst, FUN = sum, FUN.VALUE = numeric(2)): values must be length 2,
+#R&gt;  but FUN(X[[1]]) result is length 1</code></pre>
+<p>Deciding which of these three functions <code>lapply</code>, <code>sapply</code> or <code>vapply</code> to use is obviously highly dependent on the context. While <code>lapply</code> always provides consistent results, the usage of <code>sapply</code> often helps to avoid annoiying transformations. When the input suffers from some inconsistencies <code>vapply</code> is the way to go, as it easily allows for checking special data types or even more complex data structures.</p>
+</div>
+<div id="tapply" class="section level3 unnumbered">
+<h3>tapply</h3>
+<p>While every considered <code>*apply</code>-function up to now only supports one data input, <code>tapply</code> supports two of them, where the additional argument resembles an <code>INDEX</code> or grouping variable. <code>tapply</code> splits the provided data by the grouping values and applies the specified function to these created groups. The values for <code>INDEX</code> can be constructed based on factor levels, which means the provided values need to be a factor or must work when (automatically) coerced to a factor.</p>
+<p>The following code transforms our sample data <code>mat</code> from the other examples to a data frame with three columns. The first columns conatins the actual values that we previously found within <code>mat</code>, the second column indicates the column index where a specific <code>value</code> was placed in <code>mat</code> and the thrid coolumn inicates the row index, where the <code>value</code> was located.</p>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="apply-family.html#cb508-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">value=</span><span class="kw">as.vector</span>(mat),    <span class="co"># Transform example mat into a data</span></span>
+<span id="cb508-2"><a href="apply-family.html#cb508-2"></a>                 <span class="dt">row=</span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">times=</span><span class="dv">4</span>),   <span class="co"># frame that contains row and column</span></span>
+<span id="cb508-3"><a href="apply-family.html#cb508-3"></a>                 <span class="dt">col=</span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">each=</span><span class="dv">4</span>))    <span class="co"># indices in addition to the value.</span></span>
+<span id="cb508-4"><a href="apply-family.html#cb508-4"></a></span>
+<span id="cb508-5"><a href="apply-family.html#cb508-5"></a><span class="kw">head</span>(df, <span class="dt">n=</span><span class="dv">3</span>) <span class="co"># First 3 rows of the data frame</span></span></code></pre></div>
+<pre><code>#R&gt;   value row col
+#R&gt; 1     1   1   1
+#R&gt; 2     2   2   1
+#R&gt; 3     3   3   1</code></pre>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="apply-family.html#cb510-1"></a><span class="kw">tail</span>(df, <span class="dt">n=</span><span class="dv">3</span>) <span class="co"># Last 3 rows of the data frame</span></span></code></pre></div>
+<pre><code>#R&gt;    value row col
+#R&gt; 18    28   3   5
+#R&gt; 19    29   4   5
+#R&gt; 20    30   5   5</code></pre>
+<p>The value in the top left corner (first row and first column) of <code>mat</code> is 1. Corresponding column indices are therefore <code>col=1</code> and <code>row=1</code>. This tupel forms the first row of the created dataframe <code>df</code>. All other values from <code>mat</code> are handled in the same way. As <code>mat</code> is a 5 by 4 matrix, we get a dataframe with 20 rows.</p>
+<p>We can now use <code>tapply</code>, the values from within <code>mat</code> and one of the column or row indices as grouping <code>INDEX</code> to calculate the <code>sum</code> of all values that belong to a specified group. Previously we calculated the sum of all values from a specified row. To obtain these exact same results, we can use the following function call.</p>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="apply-family.html#cb512-1"></a><span class="kw">tapply</span>(<span class="dt">X=</span>df<span class="op">$</span>value, <span class="dt">INDEX =</span> df<span class="op">$</span>row, <span class="dt">FUN =</span> sum)</span></code></pre></div>
+<pre><code>#R&gt;  1  2  3  4  5 
+#R&gt; 54 58 62 66 70</code></pre>
+<p>The following figure illustrates the process of the previous function call.</p>
+</div>
+<div id="mapply" class="section level3 unnumbered">
+<h3>mapply</h3>
+<!--
+The mapply() function stands for ‘multivariate’ apply. Its purpose is to be able to vectorize arguments to a function that is not usually accepting vectors as arguments.
 
+In short, mapply() applies a Function to Multiple List or multiple Vector Arguments.
+
+Let’s look at an mapply() example where you create a 4 x 4 matrix with a call to the rep() function repeatedly:
+
+
+Another example:
+
+```r
+x <- 1:5
+b <- 6:10
+mapply(sum, x, b)
+```
+
+```
+#R> [1]  7  9 11 13 15
+```
+-->
+</div>
+<div id="rapply" class="section level3 unnumbered">
+<h3>rapply</h3>
+</div>
+<div id="eapply" class="section level3 unnumbered">
+<h3>eapply</h3>
+<!--
+http://www.datasciencemadesimple.com/apply-function-r/
+http://www.dataperspective.info/2016/03/apply-lapply-rapply-sapply-functions-r.html
+https://nsaunders.wordpress.com/2010/08/20/a-brief-introduction-to-apply-in-r/
+-->
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vectorization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vectorized-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +511,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-vectorization.Rmd",
 "text": "Edit"
 },
 "history": {

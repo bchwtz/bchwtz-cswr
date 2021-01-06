@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Programming Project | Computational Statistics</title>
-  <meta name="description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <title>B.2 Exercise II | Computational Statistics</title>
+  <meta name="description" content="B.2 Exercise II | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Programming Project | Computational Statistics" />
+  <meta property="og:title" content="B.2 Exercise II | Computational Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bchwtz.de/cswr" />
   
-  <meta property="og:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="B.2 Exercise II | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Programming Project | Computational Statistics" />
+  <meta name="twitter:title" content="B.2 Exercise II | Computational Statistics" />
   
-  <meta name="twitter:description" content="Programming Project | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="B.2 Exercise II | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="homework-assignment.html"/>
-<link rel="next" href="topic-1-web-scraping.html"/>
+<link rel="prev" href="additional-exercises.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -312,22 +312,88 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="programming-project" class="section level1 unnumbered">
-<h1>Programming Project</h1>
-<p><img src="gfx/CH00-ProgrammingProject.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="exercise-ii" class="section level2">
+<h2><span class="header-section-number">B.2</span> Exercise II</h2>
+<p>The following three code snippets were found in the file <code>misc.support.final.final2.R</code> as part of an old undocumented project. Therefore their purpose is unknown. Being a young and ambitious R developer you were asked to explain the mysterious content of the following three snippets.</p>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="exercise-ii.html#cb520-1"></a><span class="co">### CODE SNIPPET 1</span></span>
+<span id="cb520-2"><a href="exercise-ii.html#cb520-2"></a>x &lt;-<span class="st"> </span><span class="dv">100</span></span>
+<span id="cb520-3"><a href="exercise-ii.html#cb520-3"></a>counter &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb520-4"><a href="exercise-ii.html#cb520-4"></a></span>
+<span id="cb520-5"><a href="exercise-ii.html#cb520-5"></a><span class="cf">while</span>( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>){</span>
+<span id="cb520-6"><a href="exercise-ii.html#cb520-6"></a> x &lt;-<span class="st"> </span>x<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb520-7"><a href="exercise-ii.html#cb520-7"></a> counter &lt;-<span class="st"> </span>counter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb520-8"><a href="exercise-ii.html#cb520-8"></a>}</span>
+<span id="cb520-9"><a href="exercise-ii.html#cb520-9"></a></span>
+<span id="cb520-10"><a href="exercise-ii.html#cb520-10"></a>counter</span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li>Briefly describe what the code snippet above does (line-by-line).</li>
+<li>Please give your opinion on the provided code and comment on time of execution.</li>
+</ol>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="exercise-ii.html#cb521-1"></a><span class="co">### CODE SNIPPET 2</span></span>
+<span id="cb521-2"><a href="exercise-ii.html#cb521-2"></a>res &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb521-3"><a href="exercise-ii.html#cb521-3"></a></span>
+<span id="cb521-4"><a href="exercise-ii.html#cb521-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
+<span id="cb521-5"><a href="exercise-ii.html#cb521-5"></a>  res[[i]] &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">0</span>,<span class="dt">to=</span><span class="dv">1</span>,<span class="dt">by=</span><span class="fl">0.2</span>))</span>
+<span id="cb521-6"><a href="exercise-ii.html#cb521-6"></a>}</span>
+<span id="cb521-7"><a href="exercise-ii.html#cb521-7"></a></span>
+<span id="cb521-8"><a href="exercise-ii.html#cb521-8"></a><span class="kw">sum</span>(<span class="kw">sapply</span>(res,<span class="dt">FUN =</span> sum))</span>
+<span id="cb521-9"><a href="exercise-ii.html#cb521-9"></a><span class="kw">length</span>(res)</span>
+<span id="cb521-10"><a href="exercise-ii.html#cb521-10"></a><span class="kw">typeof</span>(res[[<span class="dv">1</span>]][<span class="dv">1</span>])</span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Please write down what the last three lines of code snippet 2 return when executing the code above.</li>
+</ol>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="exercise-ii.html#cb522-1"></a><span class="co">### CODE SNIPPET 3</span></span>
+<span id="cb522-2"><a href="exercise-ii.html#cb522-2"></a>a &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">sort</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dv">4</span>)),<span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb522-3"><a href="exercise-ii.html#cb522-3"></a></span>
+<span id="cb522-4"><a href="exercise-ii.html#cb522-4"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(a)[<span class="dv">1</span>] ){</span>
+<span id="cb522-5"><a href="exercise-ii.html#cb522-5"></a>  <span class="cf">for</span> ( j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(a)[<span class="dv">2</span>] ){</span>
+<span id="cb522-6"><a href="exercise-ii.html#cb522-6"></a>    <span class="cf">for</span> ( k <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(a)[<span class="dv">3</span>] ){</span>
+<span id="cb522-7"><a href="exercise-ii.html#cb522-7"></a>      a[i,j,k]  &lt;-<span class="st"> </span><span class="kw">ifelse</span>(a[i,j,k] <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>, a[i,j,k], <span class="ot">NA</span>)</span>
+<span id="cb522-8"><a href="exercise-ii.html#cb522-8"></a>    }</span>
+<span id="cb522-9"><a href="exercise-ii.html#cb522-9"></a>  }</span>
+<span id="cb522-10"><a href="exercise-ii.html#cb522-10"></a>}</span>
+<span id="cb522-11"><a href="exercise-ii.html#cb522-11"></a></span>
+<span id="cb522-12"><a href="exercise-ii.html#cb522-12"></a>a</span></code></pre></div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Please write down the content of the variable <code>a</code> when snippet 3 is executed.</li>
+</ol>
+<div id="exercise-iii" class="section level3">
+<h3><span class="header-section-number">B.2.1</span> Exercise III</h3>
+<p>The following function <code>genlist</code> was found in the file <code>list-maker.final.final2.R</code> as part of an old undocumented project. Therefore its purpose is not known. Being a young and ambitious R developer you were asked to answer the following questions.</p>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="exercise-ii.html#cb523-1"></a>genlist &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">x=</span><span class="kw">sample</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">size=</span><span class="dv">5</span>)){</span>
+<span id="cb523-2"><a href="exercise-ii.html#cb523-2"></a>  n &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb523-3"><a href="exercise-ii.html#cb523-3"></a>  <span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(x))){</span>
+<span id="cb523-4"><a href="exercise-ii.html#cb523-4"></a>    <span class="cf">if</span> (x[i] % <span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){</span>
+<span id="cb523-5"><a href="exercise-ii.html#cb523-5"></a>      n &lt;-<span class="st"> </span>n <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb523-6"><a href="exercise-ii.html#cb523-6"></a>    }</span>
+<span id="cb523-7"><a href="exercise-ii.html#cb523-7"></a>  }</span>
+<span id="cb523-8"><a href="exercise-ii.html#cb523-8"></a>  res &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">n=</span>n, <span class="dt">x=</span>x, <span class="dt">y=</span><span class="kw">rev</span>(x), <span class="dt">z=</span><span class="kw">sort</span>(x))</span>
+<span id="cb523-9"><a href="exercise-ii.html#cb523-9"></a>  <span class="kw">return</span>(res)</span>
+<span id="cb523-10"><a href="exercise-ii.html#cb523-10"></a>}</span></code></pre></div>
+<ol style="list-style-type: lower-alpha">
+<li><p>While executing and trying to load the function above the following message appears. Explain why the message is returned and correct the error in the provided source code.</p>
+<p><code>Error: unexpected input in:</code></p>
+<p><code>"  for (i in (1:length(x))){</code></p>
+<p><code>if (x[i] % 2 == 1){"</code></p></li>
+<li><p>Briefly describe what the function <code>genlist</code> does (line-by-line) and returns. Ensure that your description is precise and allows the reader to gain a deep understanding of how the values in the returned list are generated.</p></li>
+<li><p>Provide the results to the following function call based on your corrected code.</p></li>
+</ol>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="exercise-ii.html#cb524-1"></a><span class="kw">genlist</span>()</span>
+<span id="cb524-2"><a href="exercise-ii.html#cb524-2"></a><span class="kw">genlist</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>)</span></code></pre></div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Please come up with a single line of code that returns the type of each list element. Name the respective datatypes and answer the question if these can be different from values returned by <code>class</code>.</li>
+</ol>
 
-<div class="rmdexercise">
-<p>Please chose <strong>one</strong> of the provided topics and hand in the answers to the programming project by uploading a PDF in Ilias before the deadline expires. The PDF should contain the theoretical background, the complete and documented implementation, explanations and all code (in the appendix) that is required to reproduce your results. The PDF needs to be produced using RMarkdown. This Project is an <strong>individual</strong> task, will be graded and determines your final grade. The deadline for submitting your solution is 21. June 2020 - 23:59.</p>
 </div>
-
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="homework-assignment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-1-web-scraping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="additional-exercises.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -358,7 +424,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-programmingproject.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/15-examprep.Rmd",
 "text": "Edit"
 },
 "history": {
