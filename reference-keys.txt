@@ -60,3 +60,16 @@ code-documentation-short-form-documentation
 user-documentation-long-form-documentation
 testing
 maintaining
+vectorization
+apply-family
+vectorized-functions
+technical-background
+word-puzzle
+requirements
+web-apps
+bug-bounty
+test-exam
+additional-exercises
+exercise-i
+exercise-ii
+exercise-iii

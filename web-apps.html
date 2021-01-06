@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Web Apps | Computational Statistics</title>
+  <meta name="description" content="Chapter 8 Web Apps | Computational Statistics with R Course Notes" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Web Apps | Computational Statistics" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bchwtz.de/cswr" />
+  
+  <meta property="og:description" content="Chapter 8 Web Apps | Computational Statistics with R Course Notes" />
+  <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Web Apps | Computational Statistics" />
+  
+  <meta name="twitter:description" content="Chapter 8 Web Apps | Computational Statistics with R Course Notes" />
+  
+
+<meta name="author" content="Benjamin Buchwitz" />
+
+
+<meta name="date" content="2021-01-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="references.html"/>
+<link rel="next" href="homework-assignment.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>Computational Statistics</b></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Hello World!</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i>Installation</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> The Basics</a><ul>
+<li class="chapter" data-level="1.1" data-path="r-and-the-r-project.html"><a href="r-and-the-r-project.html"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
+<li class="chapter" data-level="1.2" data-path="r-system-and-rstudio.html"><a href="r-system-and-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="first-steps-r-as-calculator.html"><a href="first-steps-r-as-calculator.html"><i class="fa fa-check"></i><b>1.3</b> First Steps: R as Calculator</a></li>
+<li class="chapter" data-level="1.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html"><i class="fa fa-check"></i><b>1.4</b> Objects and Data Structures</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-vectors"><i class="fa fa-check"></i><b>1.4.1</b> Data Structure: Vectors</a></li>
+<li class="chapter" data-level="1.4.2" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-matrices"><i class="fa fa-check"></i><b>1.4.2</b> Data Structure: Matrices</a></li>
+<li class="chapter" data-level="1.4.3" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-strings"><i class="fa fa-check"></i><b>1.4.3</b> Data Structure: Strings</a></li>
+<li class="chapter" data-level="1.4.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-lists-and-data-frames"><i class="fa fa-check"></i><b>1.4.4</b> Data Structure: Lists and Data Frames</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>1.5</b> Functions</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="functions.html"><a href="functions.html#using-functions"><i class="fa fa-check"></i><b>1.5.1</b> Using Functions</a></li>
+<li class="chapter" data-level="1.5.2" data-path="functions.html"><a href="functions.html#writing-functions"><i class="fa fa-check"></i><b>1.5.2</b> Writing Functions</a></li>
+<li class="chapter" data-level="1.5.3" data-path="functions.html"><a href="functions.html#solving-problems"><i class="fa fa-check"></i><b>1.5.3</b> Solving Problems</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>1.6</b> Packages</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="packages.html"><a href="packages.html#packages-with-data"><i class="fa fa-check"></i><b>1.6.1</b> Packages with Data</a></li>
+<li class="chapter" data-level="1.6.2" data-path="packages.html"><a href="packages.html#packages-with-functions"><i class="fa fa-check"></i><b>1.6.2</b> Packages with Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="getting-help.html"><a href="getting-help.html"><i class="fa fa-check"></i><b>1.7</b> Getting Help</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="getting-help.html"><a href="getting-help.html#integrated-help-system"><i class="fa fa-check"></i><b>1.7.1</b> Integrated Help System</a></li>
+<li class="chapter" data-level="1.7.2" data-path="getting-help.html"><a href="getting-help.html#help-on-the-internet"><i class="fa fa-check"></i><b>1.7.2</b> Help on the Internet</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-3"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-4"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-5"><i class="fa fa-check"></i>EX 5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2</b> Data Types</a><ul>
+<li class="chapter" data-level="2.1" data-path="fixed-and-floating-point-number-representation.html"><a href="fixed-and-floating-point-number-representation.html"><i class="fa fa-check"></i><b>2.1</b> Fixed and Floating Point Number Representation</a></li>
+<li class="chapter" data-level="2.2" data-path="numeric.html"><a href="numeric.html"><i class="fa fa-check"></i><b>2.2</b> Numeric</a></li>
+<li class="chapter" data-level="2.3" data-path="complex.html"><a href="complex.html"><i class="fa fa-check"></i><b>2.3</b> Complex</a></li>
+<li class="chapter" data-level="2.4" data-path="logical.html"><a href="logical.html"><i class="fa fa-check"></i><b>2.4</b> Logical</a></li>
+<li class="chapter" data-level="2.5" data-path="character.html"><a href="character.html"><i class="fa fa-check"></i><b>2.5</b> Character</a></li>
+<li class="chapter" data-level="2.6" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>2.6</b> Factors</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="factors.html"><a href="factors.html#unordered-factors"><i class="fa fa-check"></i><b>2.6.1</b> Unordered Factors</a></li>
+<li class="chapter" data-level="2.6.2" data-path="factors.html"><a href="factors.html#ordered-factors"><i class="fa fa-check"></i><b>2.6.2</b> Ordered Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="missing-and-raw-data.html"><a href="missing-and-raw-data.html"><i class="fa fa-check"></i><b>2.7</b> Missing and Raw Data</a></li>
+<li class="chapter" data-level="2.8" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html"><i class="fa fa-check"></i><b>2.8</b> Coercion, Attributes, and Class</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#coercion"><i class="fa fa-check"></i><b>2.8.1</b> Coercion</a></li>
+<li class="chapter" data-level="2.8.2" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#attributes-and-names"><i class="fa fa-check"></i><b>2.8.2</b> Attributes and Names</a></li>
+<li class="chapter" data-level="2.8.3" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#class"><i class="fa fa-check"></i><b>2.8.3</b> Class</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-1-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-2-1"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-3-1"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-4-1"><i class="fa fa-check"></i>EX 4</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation</a><ul>
+<li class="chapter" data-level="3.1" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="matrices-and-arrays.html"><a href="matrices-and-arrays.html"><i class="fa fa-check"></i><b>3.2</b> Matrices and Arrays</a></li>
+<li class="chapter" data-level="3.3" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a><ul>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#merging-rows-and-columns"><i class="fa fa-check"></i>Merging rows and columns</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#apply-functions-to-rows-and-columns"><i class="fa fa-check"></i>Apply functions to rows and columns</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#sweep-out-statistics-in-a-matrix"><i class="fa fa-check"></i>Sweep out Statistics in a Matrix</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#concatenate-all-values-from-a-dataframe"><i class="fa fa-check"></i>Concatenate all values from a dataframe</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#splitting-dataframes-while-applying-functions"><i class="fa fa-check"></i>Splitting dataframes while applying functions</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#transformations-without-recreating-dataframes"><i class="fa fa-check"></i>Transformations without recreating dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>3.5</b> Strings</a></li>
+<li class="chapter" data-level="3.6" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>3.6</b> Dates and Times</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-1-2"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-2-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-3-2"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-4-2"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-5-1"><i class="fa fa-check"></i>EX 5</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-6"><i class="fa fa-check"></i>EX 6</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-7"><i class="fa fa-check"></i>EX 7</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>4</b> Code Structure</a><ul>
+<li class="chapter" data-level="4.1" data-path="conditional-expressions.html"><a href="conditional-expressions.html"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a><ul>
+<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#if-and-else"><i class="fa fa-check"></i>If and Else</a></li>
+<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#switch"><i class="fa fa-check"></i>Switch</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>4.2</b> Loops</a><ul>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#for-loop"><i class="fa fa-check"></i>For-Loop</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#while-loop"><i class="fa fa-check"></i>While-Loop</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#repeat"><i class="fa fa-check"></i>Repeat</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#break-and-next"><i class="fa fa-check"></i>Break and Next</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#special-looping-over-non-numerical-data"><i class="fa fa-check"></i>Special: Looping over non-numerical data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html#bottles-of-beer"><i class="fa fa-check"></i>99 Bottles of Beer</a></li>
+<li class="chapter" data-level="4.2.1" data-path="exercises-3.html"><a href="exercises-3.html#multiplication-table"><i class="fa fa-check"></i><b>4.2.1</b> Multiplication Table</a></li>
+<li class="chapter" data-level="4.2.2" data-path="exercises-3.html"><a href="exercises-3.html#diagonal-matrix"><i class="fa fa-check"></i><b>4.2.2</b> Diagonal Matrix</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="software-development.html"><a href="software-development.html"><i class="fa fa-check"></i><b>5</b> Software Development</a><ul>
+<li class="chapter" data-level="5.1" data-path="planning.html"><a href="planning.html"><i class="fa fa-check"></i><b>5.1</b> Planning</a></li>
+<li class="chapter" data-level="5.2" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>5.2</b> Coding</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="coding.html"><a href="coding.html#standard-program-structure"><i class="fa fa-check"></i><b>5.2.1</b> Standard Program Structure</a></li>
+<li class="chapter" data-level="5.2.2" data-path="coding.html"><a href="coding.html#standard-function-structure"><i class="fa fa-check"></i><b>5.2.2</b> Standard Function Structure</a></li>
+<li class="chapter" data-level="5.2.3" data-path="coding.html"><a href="coding.html#naming-convention"><i class="fa fa-check"></i><b>5.2.3</b> Naming Convention</a></li>
+<li class="chapter" data-level="5.2.4" data-path="coding.html"><a href="coding.html#rules-best-practices"><i class="fa fa-check"></i><b>5.2.4</b> Rules &amp; Best Practices</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="documenting.html"><a href="documenting.html"><i class="fa fa-check"></i><b>5.3</b> Documenting</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="documenting.html"><a href="documenting.html#code-documentation-short-form-documentation"><i class="fa fa-check"></i><b>5.3.1</b> Code Documentation (Short-form Documentation)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="documenting.html"><a href="documenting.html#user-documentation-long-form-documentation"><i class="fa fa-check"></i><b>5.3.2</b> User documentation (Long-form Documentation)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>5.4</b> Testing</a></li>
+<li class="chapter" data-level="5.5" data-path="maintaining.html"><a href="maintaining.html"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectorization.html"><a href="vectorization.html"><i class="fa fa-check"></i><b>6</b> Vectorization</a><ul>
+<li class="chapter" data-level="6.1" data-path="apply-family.html"><a href="apply-family.html"><i class="fa fa-check"></i><b>6.1</b> *apply-Family</a><ul>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#apply"><i class="fa fa-check"></i>apply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#lapply"><i class="fa fa-check"></i>lapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#sapply"><i class="fa fa-check"></i>sapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#vapply"><i class="fa fa-check"></i>vapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#tapply"><i class="fa fa-check"></i>tapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#mapply"><i class="fa fa-check"></i>mapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#rapply"><i class="fa fa-check"></i>rapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#eapply"><i class="fa fa-check"></i>eapply</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="vectorized-functions.html"><a href="vectorized-functions.html"><i class="fa fa-check"></i><b>6.2</b> Vectorized Functions</a></li>
+<li class="chapter" data-level="6.3" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.3</b> Technical Background</a></li>
+<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>Applied Programming</b></span></li>
+<li class="chapter" data-level="7" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>7</b> Word Puzzle</a><ul>
+<li class="chapter" data-level="7.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>7.1</b> Requirements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="8" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>8</b> Web Apps</a></li>
+<li class="part"><span><b>Accompanying Work</b></span></li>
+<li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html"><i class="fa fa-check"></i>Programming Project</a><ul>
+<li class="chapter" data-level="" data-path="topic-1-web-scraping.html"><a href="topic-1-web-scraping.html"><i class="fa fa-check"></i>Topic 1: Web Scraping</a></li>
+<li class="chapter" data-level="" data-path="topic-2-forecasting.html"><a href="topic-2-forecasting.html"><i class="fa fa-check"></i>Topic 2: Forecasting</a></li>
+<li class="chapter" data-level="" data-path="topic-3-algorithm-implementation-data-analysis.html"><a href="topic-3-algorithm-implementation-data-analysis.html"><i class="fa fa-check"></i>Topic 3: Algorithm Implementation &amp; Data Analysis</a></li>
+<li class="chapter" data-level="" data-path="topic-4-custom-topic.html"><a href="topic-4-custom-topic.html"><i class="fa fa-check"></i>Topic 4: Custom Topic</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="bug-bounty.html"><a href="bug-bounty.html"><i class="fa fa-check"></i><b>A</b> Bug Bounty</a><ul>
+<li class="chapter" data-level="" data-path="leaderboard.html"><a href="leaderboard.html"><i class="fa fa-check"></i>Leaderboard</a></li>
+<li class="chapter" data-level="" data-path="what-is-this.html"><a href="what-is-this.html"><i class="fa fa-check"></i>What is this?</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="test-exam.html"><a href="test-exam.html"><i class="fa fa-check"></i><b>B</b> Test Exam</a><ul>
+<li class="chapter" data-level="B.1" data-path="additional-exercises.html"><a href="additional-exercises.html"><i class="fa fa-check"></i><b>B.1</b> Additional Exercises</a><ul>
+<li class="chapter" data-level="B.1.1" data-path="additional-exercises.html"><a href="additional-exercises.html#exercise-i"><i class="fa fa-check"></i><b>B.1.1</b> Exercise I</a></li>
+</ul></li>
+<li class="chapter" data-level="B.2" data-path="exercise-ii.html"><a href="exercise-ii.html"><i class="fa fa-check"></i><b>B.2</b> Exercise II</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="exercise-ii.html"><a href="exercise-ii.html#exercise-iii"><i class="fa fa-check"></i><b>B.2.1</b> Exercise III</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="http://www.bchwtz.de" target="blank"><center>www.<b>BCHWTZ</b>.de</center></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computational Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="web-apps" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Web Apps</h1>
+<p><img src="gfx/gif/shinyMeanProperties.gif" width="80%" style="display: block; margin: auto;" /></p>
+<p>To illustrate how web apps work we choose to visualize some well known, but for most people not very intuitive properties of the sample mean <span class="math inline">\(\bar{X}\)</span>. While it is quite obvious that the expected value of the sample mean <span class="math inline">\(E(\bar{X}) = E(\frac{1}{n}\sum_{i=1}^{n}X_i) = \mu\)</span> is equal to the expected value of <span class="math inline">\(X_i\)</span>, their variances differ.</p>
+<p>Let us illustrate these properties using a plot. First, we are going to generate 1000 random draws <span class="math inline">\(X_i\)</span> from a standard normal distribution <span class="math inline">\(N(\mu=0,\sigma^2=1)\)</span> and plot a histogram to exemplify their probability density. We calculate the sample mean of five consecutive draws (<code>n &lt;- 5</code>) and compare the probability density of these 200 (<code>N</code>) calculated means to the probability density of the initial draws. In order to compare the differences more clearly, we are also adding a density line for the empirical normal distribution.</p>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="web-apps.html#cb514-1"></a><span class="co"># Make results comparable</span></span>
+<span id="cb514-2"><a href="web-apps.html#cb514-2"></a><span class="kw">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb514-3"><a href="web-apps.html#cb514-3"></a></span>
+<span id="cb514-4"><a href="web-apps.html#cb514-4"></a><span class="co"># Draw random numbers and calculate N means based on n draws</span></span>
+<span id="cb514-5"><a href="web-apps.html#cb514-5"></a>n &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb514-6"><a href="web-apps.html#cb514-6"></a>N &lt;-<span class="st"> </span><span class="dv">200</span></span>
+<span id="cb514-7"><a href="web-apps.html#cb514-7"></a>rngmat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(n<span class="op">*</span>N), <span class="dt">nrow =</span> n, <span class="dt">ncol=</span>N)</span>
+<span id="cb514-8"><a href="web-apps.html#cb514-8"></a>meanvec &lt;-<span class="st"> </span><span class="kw">apply</span>(rngmat, <span class="dv">2</span>, mean)</span>
+<span id="cb514-9"><a href="web-apps.html#cb514-9"></a></span>
+<span id="cb514-10"><a href="web-apps.html#cb514-10"></a><span class="co"># Plot histograms </span></span>
+<span id="cb514-11"><a href="web-apps.html#cb514-11"></a>MASS<span class="op">::</span><span class="kw">truehist</span>(rngmat, <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">6</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb514-12"><a href="web-apps.html#cb514-12"></a><span class="kw">par</span>(<span class="dt">new=</span>T) <span class="co"># Necessary to combine two histograms in one plot</span></span>
+<span id="cb514-13"><a href="web-apps.html#cb514-13"></a>MASS<span class="op">::</span><span class="kw">truehist</span>(meanvec,<span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb514-14"><a href="web-apps.html#cb514-14"></a></span>
+<span id="cb514-15"><a href="web-apps.html#cb514-15"></a><span class="co"># Add empirical probability density as line</span></span>
+<span id="cb514-16"><a href="web-apps.html#cb514-16"></a>xseq &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">length.out =</span> <span class="dv">1000</span>)</span>
+<span id="cb514-17"><a href="web-apps.html#cb514-17"></a>y &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(rngmat),<span class="kw">sd</span>(rngmat))})</span>
+<span id="cb514-18"><a href="web-apps.html#cb514-18"></a>ymean &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(meanvec),<span class="kw">sd</span>(meanvec))})</span>
+<span id="cb514-19"><a href="web-apps.html#cb514-19"></a><span class="kw">lines</span>(xseq, ymean, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb514-20"><a href="web-apps.html#cb514-20"></a><span class="kw">lines</span>(xseq, y, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-197-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Obviously, the shown plot is dependent on the number of draws that are used for every calculation of a mean <code>n</code> and the total number of means that we want to calculate <code>N</code>. Additionally, we can make the user decide whether he wants the density lines in the plot and if the random numbers are drawn using a seeded random number generator for which a seed can be provided. Every time one of these four inputs changes the plot needs to be recreated. A very convenient way to make our small program accessible by users that have little or no experience using R, we can transform our script into a web app using the <code>shiny</code>-package.</p>
+<p>A shiny app can be easily build using three simple components: a page constructor, a server script, and app constructor. The page constructor creates the user interface meaning it provides a mechanism for users to input values for variables and displays results. The server script takes the inputs from the user interface, performs calculations and returns the output for the user interface. The app constructor links the user interface and the server script and coordinates everything. The general structure of a shiny app in the required form is as shown in the following snippet.</p>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="web-apps.html#cb515-1"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb515-2"><a href="web-apps.html#cb515-2"></a></span>
+<span id="cb515-3"><a href="web-apps.html#cb515-3"></a><span class="co"># Define UI for application that draws a histogram</span></span>
+<span id="cb515-4"><a href="web-apps.html#cb515-4"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb515-5"><a href="web-apps.html#cb515-5"></a></span>
+<span id="cb515-6"><a href="web-apps.html#cb515-6"></a>    <span class="kw">titlePanel</span>(<span class="st">&quot;Title&quot;</span>),</span>
+<span id="cb515-7"><a href="web-apps.html#cb515-7"></a></span>
+<span id="cb515-8"><a href="web-apps.html#cb515-8"></a>    <span class="kw">sidebarLayout</span>(</span>
+<span id="cb515-9"><a href="web-apps.html#cb515-9"></a>        <span class="kw">sidebarPanel</span>(</span>
+<span id="cb515-10"><a href="web-apps.html#cb515-10"></a>           <span class="co">## Input</span></span>
+<span id="cb515-11"><a href="web-apps.html#cb515-11"></a>        ),</span>
+<span id="cb515-12"><a href="web-apps.html#cb515-12"></a>        <span class="kw">mainPanel</span>(</span>
+<span id="cb515-13"><a href="web-apps.html#cb515-13"></a>           <span class="co">## Output</span></span>
+<span id="cb515-14"><a href="web-apps.html#cb515-14"></a>        )</span>
+<span id="cb515-15"><a href="web-apps.html#cb515-15"></a>    )</span>
+<span id="cb515-16"><a href="web-apps.html#cb515-16"></a>)</span>
+<span id="cb515-17"><a href="web-apps.html#cb515-17"></a></span>
+<span id="cb515-18"><a href="web-apps.html#cb515-18"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb515-19"><a href="web-apps.html#cb515-19"></a>      <span class="co">## Actual R Script </span></span>
+<span id="cb515-20"><a href="web-apps.html#cb515-20"></a>}</span>
+<span id="cb515-21"><a href="web-apps.html#cb515-21"></a></span>
+<span id="cb515-22"><a href="web-apps.html#cb515-22"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="web-apps.html#cb516-1"></a><span class="co"># Shiny Example for the CSWR Course</span></span>
+<span id="cb516-2"><a href="web-apps.html#cb516-2"></a></span>
+<span id="cb516-3"><a href="web-apps.html#cb516-3"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb516-4"><a href="web-apps.html#cb516-4"></a></span>
+<span id="cb516-5"><a href="web-apps.html#cb516-5"></a><span class="co"># Define UI for application that draws a histogram</span></span>
+<span id="cb516-6"><a href="web-apps.html#cb516-6"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb516-7"><a href="web-apps.html#cb516-7"></a></span>
+<span id="cb516-8"><a href="web-apps.html#cb516-8"></a>    <span class="co"># Application title</span></span>
+<span id="cb516-9"><a href="web-apps.html#cb516-9"></a>    <span class="kw">titlePanel</span>(<span class="st">&quot;Random Samples and their Mean&quot;</span>),</span>
+<span id="cb516-10"><a href="web-apps.html#cb516-10"></a></span>
+<span id="cb516-11"><a href="web-apps.html#cb516-11"></a>    <span class="co"># Sidebar with a slider input for number of bins </span></span>
+<span id="cb516-12"><a href="web-apps.html#cb516-12"></a>    <span class="kw">sidebarLayout</span>(</span>
+<span id="cb516-13"><a href="web-apps.html#cb516-13"></a>        <span class="kw">sidebarPanel</span>(</span>
+<span id="cb516-14"><a href="web-apps.html#cb516-14"></a>            <span class="kw">sliderInput</span>(<span class="st">&quot;N&quot;</span>,</span>
+<span id="cb516-15"><a href="web-apps.html#cb516-15"></a>                        <span class="st">&quot;Number of samples:&quot;</span>,</span>
+<span id="cb516-16"><a href="web-apps.html#cb516-16"></a>                        <span class="dt">min =</span> <span class="dv">10</span>,</span>
+<span id="cb516-17"><a href="web-apps.html#cb516-17"></a>                        <span class="dt">max =</span> <span class="dv">100</span>,</span>
+<span id="cb516-18"><a href="web-apps.html#cb516-18"></a>                        <span class="dt">value =</span> <span class="dv">50</span>),</span>
+<span id="cb516-19"><a href="web-apps.html#cb516-19"></a>            <span class="kw">sliderInput</span>(<span class="st">&quot;n&quot;</span>,</span>
+<span id="cb516-20"><a href="web-apps.html#cb516-20"></a>                        <span class="st">&quot;Number of draws per sample:&quot;</span>,</span>
+<span id="cb516-21"><a href="web-apps.html#cb516-21"></a>                        <span class="dt">min =</span> <span class="dv">1</span>,</span>
+<span id="cb516-22"><a href="web-apps.html#cb516-22"></a>                        <span class="dt">max =</span> <span class="dv">100</span>,</span>
+<span id="cb516-23"><a href="web-apps.html#cb516-23"></a>                        <span class="dt">value =</span> <span class="dv">1</span>),</span>
+<span id="cb516-24"><a href="web-apps.html#cb516-24"></a>            <span class="kw">checkboxInput</span>(<span class="st">&quot;showdensity&quot;</span>, </span>
+<span id="cb516-25"><a href="web-apps.html#cb516-25"></a>                          <span class="st">&quot;Show Density?&quot;</span>, </span>
+<span id="cb516-26"><a href="web-apps.html#cb516-26"></a>                          <span class="dt">value =</span> <span class="ot">FALSE</span>),</span>
+<span id="cb516-27"><a href="web-apps.html#cb516-27"></a>            <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Seed&quot;</span>, </span>
+<span id="cb516-28"><a href="web-apps.html#cb516-28"></a>                         <span class="dt">value=</span><span class="ot">NULL</span>, </span>
+<span id="cb516-29"><a href="web-apps.html#cb516-29"></a>                         <span class="dt">min =</span> <span class="dv">0</span>, </span>
+<span id="cb516-30"><a href="web-apps.html#cb516-30"></a>                         <span class="dt">max =</span> <span class="dv">10000</span>, </span>
+<span id="cb516-31"><a href="web-apps.html#cb516-31"></a>                         <span class="dt">step =</span> <span class="dv">1</span>)</span>
+<span id="cb516-32"><a href="web-apps.html#cb516-32"></a>        ),</span>
+<span id="cb516-33"><a href="web-apps.html#cb516-33"></a></span>
+<span id="cb516-34"><a href="web-apps.html#cb516-34"></a>        <span class="co"># Show a plot of the generated distribution</span></span>
+<span id="cb516-35"><a href="web-apps.html#cb516-35"></a>        <span class="kw">mainPanel</span>(</span>
+<span id="cb516-36"><a href="web-apps.html#cb516-36"></a>           <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
+<span id="cb516-37"><a href="web-apps.html#cb516-37"></a>        )</span>
+<span id="cb516-38"><a href="web-apps.html#cb516-38"></a>    )</span>
+<span id="cb516-39"><a href="web-apps.html#cb516-39"></a>)</span>
+<span id="cb516-40"><a href="web-apps.html#cb516-40"></a></span>
+<span id="cb516-41"><a href="web-apps.html#cb516-41"></a><span class="co"># Define server logic required to draw a histogram</span></span>
+<span id="cb516-42"><a href="web-apps.html#cb516-42"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb516-43"><a href="web-apps.html#cb516-43"></a></span>
+<span id="cb516-44"><a href="web-apps.html#cb516-44"></a>    output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb516-45"><a href="web-apps.html#cb516-45"></a>        </span>
+<span id="cb516-46"><a href="web-apps.html#cb516-46"></a>        <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.na</span>(input<span class="op">$</span>seed)) <span class="kw">set.seed</span>(input<span class="op">$</span>seed)</span>
+<span id="cb516-47"><a href="web-apps.html#cb516-47"></a>        rngmat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(input<span class="op">$</span>n<span class="op">*</span>input<span class="op">$</span>N), <span class="dt">nrow =</span> input<span class="op">$</span>n, <span class="dt">ncol=</span>input<span class="op">$</span>N)</span>
+<span id="cb516-48"><a href="web-apps.html#cb516-48"></a>        meanvec &lt;-<span class="st"> </span><span class="kw">apply</span>(rngmat, <span class="dv">2</span>, mean)</span>
+<span id="cb516-49"><a href="web-apps.html#cb516-49"></a>        </span>
+<span id="cb516-50"><a href="web-apps.html#cb516-50"></a>        xseq &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">length.out =</span> <span class="dv">1000</span>)</span>
+<span id="cb516-51"><a href="web-apps.html#cb516-51"></a>        y &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(rngmat),<span class="kw">sd</span>(rngmat))})</span>
+<span id="cb516-52"><a href="web-apps.html#cb516-52"></a>        ymean &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(meanvec),<span class="kw">sd</span>(meanvec))})</span>
+<span id="cb516-53"><a href="web-apps.html#cb516-53"></a>        </span>
+<span id="cb516-54"><a href="web-apps.html#cb516-54"></a>        ymax &lt;-<span class="st"> </span><span class="kw">ceiling</span>(<span class="kw">max</span>(<span class="kw">c</span>(y,ymean)))</span>
+<span id="cb516-55"><a href="web-apps.html#cb516-55"></a>        ymax &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">is.finite</span>(ymax),ymax, <span class="dv">1</span>)</span>
+<span id="cb516-56"><a href="web-apps.html#cb516-56"></a>        </span>
+<span id="cb516-57"><a href="web-apps.html#cb516-57"></a>        MASS<span class="op">::</span><span class="kw">truehist</span>(rngmat, <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">6</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,ymax),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb516-58"><a href="web-apps.html#cb516-58"></a>        <span class="cf">if</span>(input<span class="op">$</span>showdensity) <span class="kw">lines</span>(xseq,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb516-59"><a href="web-apps.html#cb516-59"></a>        <span class="kw">par</span>(<span class="dt">new=</span>T)</span>
+<span id="cb516-60"><a href="web-apps.html#cb516-60"></a>        MASS<span class="op">::</span><span class="kw">truehist</span>(meanvec,<span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,ymax),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb516-61"><a href="web-apps.html#cb516-61"></a>        <span class="cf">if</span>(input<span class="op">$</span>showdensity) <span class="kw">lines</span>(xseq,ymean,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb516-62"><a href="web-apps.html#cb516-62"></a>        </span>
+<span id="cb516-63"><a href="web-apps.html#cb516-63"></a></span>
+<span id="cb516-64"><a href="web-apps.html#cb516-64"></a>    })</span>
+<span id="cb516-65"><a href="web-apps.html#cb516-65"></a>}</span>
+<span id="cb516-66"><a href="web-apps.html#cb516-66"></a></span>
+<span id="cb516-67"><a href="web-apps.html#cb516-67"></a><span class="co"># Run the application </span></span>
+<span id="cb516-68"><a href="web-apps.html#cb516-68"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
+
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="references.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="homework-assignment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/11-webapps.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bchwtz-cswr.pdf", "bchwtz-cswr.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
