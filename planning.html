@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="5.1 Planning | Computational Statistics" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://bchwtz.de/cswr" />
   
   <meta property="og:description" content="5.1 Planning | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
@@ -134,7 +134,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./"><b>Computational Statistics</b></a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Hello World!</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i>Installation</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> The Basics</a><ul>
 <li class="chapter" data-level="1.1" data-path="r-and-the-r-project.html"><a href="r-and-the-r-project.html"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
 <li class="chapter" data-level="1.2" data-path="r-system-and-rstudio.html"><a href="r-system-and-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
@@ -283,28 +288,28 @@ The most basic diagrams to visually express code are Nassi-Schneiderman Diagrams
 Workflow: no data manipulation in spreadsheet programs
 -->
 <p>A lot of problems and requirements have already been solved and implemented by other programmers and quite often there is no need to reimplement every little step on your own. It is fair and good practice to reuse, modify and recycle existing packages, libraries, functions or code fragments. “Whenever possible, steal code” is one of the many bits of advice frequently given to new programmers. While this is usually good advice and shortens the implementation and coding requirements it still comes at the cost of understanding and integrating someone else’s code into your project. While code often can be freely found in the web, it still comes with some requirements and liabilities which are usually bundled in the respective license that is linked or distributed with the code. Regardless of the license under which the software is distributed the usage of someone else’s ideas or intellectual property - especially in scientific projects - needs to be cited. If you use R packages they conveniently provide a reference that can be cited and is accessible with the command <code>citation("packagename")</code>. If <code>citation()</code> is used without an argument it returns the reference for the R Base System.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="planning.html#cb479-1"></a><span class="kw">citation</span>()</span></code></pre></div>
-<pre><code>## 
-## To cite R in publications use:
-## 
-##   R Core Team (2020). R: A language and environment for statistical
-##   computing. R Foundation for Statistical Computing, Vienna, Austria.
-##   URL https://www.R-project.org/.
-## 
-## A BibTeX entry for LaTeX users is
-## 
-##   @Manual{,
-##     title = {R: A Language and Environment for Statistical Computing},
-##     author = {{R Core Team}},
-##     organization = {R Foundation for Statistical Computing},
-##     address = {Vienna, Austria},
-##     year = {2020},
-##     url = {https://www.R-project.org/},
-##   }
-## 
-## We have invested a lot of time and effort in creating R, please cite it
-## when using it for data analysis. See also &#39;citation(&quot;pkgname&quot;)&#39; for
-## citing R packages.</code></pre>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="planning.html#cb478-1"></a><span class="kw">citation</span>()</span></code></pre></div>
+<pre><code>#R&gt; 
+#R&gt; To cite R in publications use:
+#R&gt; 
+#R&gt;   R Core Team (2020). R: A language and environment for statistical
+#R&gt;   computing. R Foundation for Statistical Computing, Vienna, Austria.
+#R&gt;   URL https://www.R-project.org/.
+#R&gt; 
+#R&gt; A BibTeX entry for LaTeX users is
+#R&gt; 
+#R&gt;   @Manual{,
+#R&gt;     title = {R: A Language and Environment for Statistical Computing},
+#R&gt;     author = {{R Core Team}},
+#R&gt;     organization = {R Foundation for Statistical Computing},
+#R&gt;     address = {Vienna, Austria},
+#R&gt;     year = {2020},
+#R&gt;     url = {https://www.R-project.org/},
+#R&gt;   }
+#R&gt; 
+#R&gt; We have invested a lot of time and effort in creating R, please cite it
+#R&gt; when using it for data analysis. See also &#39;citation(&quot;pkgname&quot;)&#39; for
+#R&gt; citing R packages.</code></pre>
 <p>Integrating other functions, packages or code fragments means to organize and handle how different functions hand over data, which means one has to <strong>think about the data format</strong> and use <strong>standard data formats</strong> wherever possible. Choosing or creating a data format is not to be mistaken by choosing a file extension like <code>.txt</code>,<code>.csv</code> or <code>.ppt</code> but defines the structure of your <code>list</code>, <code>data.frame</code> or comparable data-structure present in R. Choosing a standard, therefore, refers to choosing the type of object that captures, organizes and stores data, estimation results or other output. This is important for several reasons as bad designs of the data structures make the coding more difficult and the program less readable. Often one needs to consider that empirically derived results are almost never perfect or satisfactory after a first run and need to be recalculated on different subsets or transformations of the data. A designed data structure needs to combine all results including the envelope and meta information, like function arguments, etc. Last but not least a clever and compact design of the resulting data structure can affect the actual execution speed of a program significantly.</p>
 <p>Choosing a standard or convention is especially important. Imagine when using a matrix to store individual observations for e.g. multiple time series it makes sense to store the observations in rows and the variables/time series in columns. Additionally, one needs to think about missing values in the data (e.g. calendarial effects like holidays) and how to handle them.</p>
 <!--

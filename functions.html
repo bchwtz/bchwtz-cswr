@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="1.5 Functions | Computational Statistics" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://bchwtz.de/cswr" />
   
   <meta property="og:description" content="1.5 Functions | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
@@ -134,7 +134,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./"><b>Computational Statistics</b></a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Hello World!</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i>Installation</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> The Basics</a><ul>
 <li class="chapter" data-level="1.1" data-path="r-and-the-r-project.html"><a href="r-and-the-r-project.html"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
 <li class="chapter" data-level="1.2" data-path="r-system-and-rstudio.html"><a href="r-system-and-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
@@ -272,35 +277,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">1.5.1</span> Using Functions</h3>
 <p>Programming reveals its value when bringing data and algorithms together. We already briefly talked about the different data storing concepts, now it is time to talk about “containers” for our algorithms, which we are going to call functions. We already encountered some basic functions like <code>sum()</code>, <code>sqrt()</code> and <code>det()</code>, which allow us to perform basic tasks with our stored data. The base version of R includes many other and much more powerful functions, even more can be added by installing extensions, called packages, from the internet. And of course, we can write functions on our own.</p>
 <p>A function is always defined by its name followed by a list of arguments or parameters. Most functions return a value, which can be a number, a matrix or a list. Using a function is pretty straightforward: just type in the name followed by parentheses with the data you want the function to use. Arguments can be numbers, vectors or even the output from other functions. This ability to handle the output of a function directly as an input for another function allows us to nest functions, which is also called linking.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="functions.html#cb123-1"></a><span class="kw">round</span>(pi)</span></code></pre></div>
-<pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="functions.html#cb125-1"></a><span class="kw">mean</span>(df<span class="op">$</span>Age)</span></code></pre></div>
-<pre><code>## [1] 22.5</code></pre>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="functions.html#cb127-1"></a><span class="kw">round</span>(<span class="kw">mean</span>(df<span class="op">$</span>Age))</span></code></pre></div>
-<pre><code>## [1] 22</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="functions.html#cb122-1"></a><span class="kw">round</span>(pi)</span></code></pre></div>
+<pre><code>#R&gt; [1] 3</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="functions.html#cb124-1"></a><span class="kw">mean</span>(df<span class="op">$</span>Age)</span></code></pre></div>
+<pre><code>#R&gt; [1] 22.5</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="functions.html#cb126-1"></a><span class="kw">round</span>(<span class="kw">mean</span>(df<span class="op">$</span>Age))</span></code></pre></div>
+<pre><code>#R&gt; [1] 22</code></pre>
 <p>Functions can handle multiple arguments as input. This allows us to specify what we want and handle different cases within the same function. But first we need to know the different arguments a function can accept - and of course, there is a function to find out about that. This function is called <code>args()</code>. As input, it accepts the function that you want to know the arguments of.</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="functions.html#cb129-1"></a><span class="kw">args</span>(round)</span></code></pre></div>
-<pre><code>## function (x, digits = 0) 
-## NULL</code></pre>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="functions.html#cb131-1"></a><span class="kw">round</span>(pi, <span class="dt">digits=</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 3.14</code></pre>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="functions.html#cb133-1"></a> <span class="kw">round</span>(pi, <span class="dt">length=</span><span class="dv">2</span>)   <span class="co">#causes an error</span></span></code></pre></div>
-<pre><code>## Error in round(pi, length = 2): unused argument (length = 2)</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="functions.html#cb128-1"></a><span class="kw">args</span>(round)</span></code></pre></div>
+<pre><code>#R&gt; function (x, digits = 0) 
+#R&gt; NULL</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="functions.html#cb130-1"></a><span class="kw">round</span>(pi, <span class="dt">digits=</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>#R&gt; [1] 3.14</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="functions.html#cb132-1"></a> <span class="kw">round</span>(pi, <span class="dt">length=</span><span class="dv">2</span>)   <span class="co">#causes an error</span></span></code></pre></div>
+<pre><code>#R&gt; Error in round(pi, length = 2): unused argument (length = 2)</code></pre>
 <p>When using arguments not listed in the output of <code>args()</code>, it is quite obvious that the function can’t handle such input and produces an error. All listed arguments can be used just by assigning a value while calling the function, as it’s done above with the argument <code>digits=2</code>. The function works also when we do not provide a value for <code>digits</code> and that is why this argument is called optional. Optional arguments always have a default value like <code>digits=0</code> for the function <code>round()</code>. Therefore, only the input to be rounded <code>x</code> is mandatory, so that you can not call <code>round</code> without providing a value for it.</p>
 <p>The majority of functions is able to accept multiple arguments as input and there are multiple ways to pass them over, meaning you can explicitly name the arguments and assign the data to them using the <code>=</code>. This allows you to completely mix up the order of the arguments. Alternatively, you can pass them to the function in the right order without directly naming or addressing them. In general, it is good practice to name each argument as this keeps your code clean and understandable.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="functions.html#cb135-1"></a>num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.25</span>, <span class="fl">0.125</span>, <span class="fl">0.0625</span>)      <span class="co"># Some arbitrary numbers</span></span>
-<span id="cb135-2"><a href="functions.html#cb135-2"></a></span>
-<span id="cb135-3"><a href="functions.html#cb135-3"></a><span class="kw">round</span>(<span class="dt">x =</span> num, <span class="dt">digits =</span> <span class="dv">2</span>)  <span class="co"># Function-call with named arguments</span></span></code></pre></div>
-<pre><code>## [1] 0.50 0.25 0.12 0.06</code></pre>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="functions.html#cb137-1"></a><span class="kw">round</span>(<span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">x =</span> num)  <span class="co"># Function-call with mixed up named arguments</span></span></code></pre></div>
-<pre><code>## [1] 0.50 0.25 0.12 0.06</code></pre>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="functions.html#cb139-1"></a><span class="kw">round</span>(num,<span class="dv">2</span>)                <span class="co"># Function-call with unnamed arguments</span></span></code></pre></div>
-<pre><code>## [1] 0.50 0.25 0.12 0.06</code></pre>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="functions.html#cb141-1"></a><span class="kw">round</span>(<span class="dv">2</span>, num)               <span class="co"># Watch out! Using unnamed arguments      </span></span></code></pre></div>
-<pre><code>## [1] 2 2 2 2</code></pre>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="functions.html#cb143-1"></a>                            <span class="co"># can lead to unintended results. </span></span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="functions.html#cb134-1"></a>num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.25</span>, <span class="fl">0.125</span>, <span class="fl">0.0625</span>)      <span class="co"># Some arbitrary numbers</span></span>
+<span id="cb134-2"><a href="functions.html#cb134-2"></a></span>
+<span id="cb134-3"><a href="functions.html#cb134-3"></a><span class="kw">round</span>(<span class="dt">x =</span> num, <span class="dt">digits =</span> <span class="dv">2</span>)  <span class="co"># Function-call with named arguments</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 0.50 0.25 0.12 0.06</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="functions.html#cb136-1"></a><span class="kw">round</span>(<span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">x =</span> num)  <span class="co"># Function-call with mixed up named arguments</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 0.50 0.25 0.12 0.06</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="functions.html#cb138-1"></a><span class="kw">round</span>(num,<span class="dv">2</span>)                <span class="co"># Function-call with unnamed arguments</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 0.50 0.25 0.12 0.06</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="functions.html#cb140-1"></a><span class="kw">round</span>(<span class="dv">2</span>, num)               <span class="co"># Watch out! Using unnamed arguments      </span></span></code></pre></div>
+<pre><code>#R&gt; [1] 2 2 2 2</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="functions.html#cb142-1"></a>                            <span class="co"># can lead to unintended results. </span></span></code></pre></div>
 <p>For some reason, people who are new to programming, feel the need to clean up the console window. As there is no real-world need for this, there is not an easy to remember command, but if you are one of those people who like it really tidy, the next example is for you:</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="functions.html#cb144-1"></a><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\014</span><span class="st">&quot;</span>)         <span class="co"># Removes all content from console window</span></span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="functions.html#cb143-1"></a><span class="kw">cat</span>(<span class="st">&quot;</span><span class="ch">\014</span><span class="st">&quot;</span>)         <span class="co"># Removes all content from console window</span></span></code></pre></div>
 <p>In RStudio you can also use <strong>CTRL + L</strong> when you have placed the cursor in the console pane to clear the output area or click Clear in the global environment window.</p>
 </div>
 <div id="writing-functions" class="section level3">
@@ -312,40 +317,40 @@ Write a function named <code>roll()</code> that simulates rolling a pair of dice
 </div>
 
 <p>At first, we need the numbers located on a die. Luckily, we already know how to produce them, so this isn’t a problem at all. Next thing is to get familiar with the <code>sample()</code> function. We can easily do this by using <code>args()</code> and playing a little bit around.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="functions.html#cb145-1"></a>num &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb145-2"><a href="functions.html#cb145-2"></a></span>
-<span id="cb145-3"><a href="functions.html#cb145-3"></a><span class="kw">args</span>(sample)</span></code></pre></div>
-<pre><code>## function (x, size, replace = FALSE, prob = NULL) 
-## NULL</code></pre>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="functions.html#cb147-1"></a><span class="kw">sample</span>(num)</span></code></pre></div>
-<pre><code>## [1] 3 4 6 5 1 2</code></pre>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="functions.html#cb149-1"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="functions.html#cb151-1"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">2</span>)         <span class="co"># Argument size allows us to adjust how</span></span></code></pre></div>
-<pre><code>## [1] 6 3</code></pre>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="functions.html#cb153-1"></a>                              <span class="co"># many times the dice are rolled</span></span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="functions.html#cb144-1"></a>num &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb144-2"><a href="functions.html#cb144-2"></a></span>
+<span id="cb144-3"><a href="functions.html#cb144-3"></a><span class="kw">args</span>(sample)</span></code></pre></div>
+<pre><code>#R&gt; function (x, size, replace = FALSE, prob = NULL) 
+#R&gt; NULL</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="functions.html#cb146-1"></a><span class="kw">sample</span>(num)</span></code></pre></div>
+<pre><code>#R&gt; [1] 1 6 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="functions.html#cb148-1"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>#R&gt; [1] 6</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="functions.html#cb150-1"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">2</span>)         <span class="co"># Argument size allows us to adjust how</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 5 6</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="functions.html#cb152-1"></a>                              <span class="co"># many times the dice are rolled</span></span></code></pre></div>
 <p>Using <code>sample()</code> only with our vector of numbers does not lead to the correct result, but the argument <code>size</code> allows us to adjust for the number of times a dice is rolled. We obviously need two returned values as we need one value per die, so <code>size=2</code>. When you run this line of code over and over again you may notice that the two returned values are never the same. If we are trying to increase the number of rolled dice, R points us directly to the reason:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="functions.html#cb154-1"></a><span class="co"># sample(num, size = 7) #causes an error</span></span>
-<span id="cb154-2"><a href="functions.html#cb154-2"></a></span>
-<span id="cb154-3"><a href="functions.html#cb154-3"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>## [1] 5 3</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="functions.html#cb153-1"></a><span class="co"># sample(num, size = 7) #causes an error</span></span>
+<span id="cb153-2"><a href="functions.html#cb153-2"></a></span>
+<span id="cb153-3"><a href="functions.html#cb153-3"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<pre><code>#R&gt; [1] 4 3</code></pre>
 <p>The behavior of the <code>sample()</code>-function takes us directly back to one of our first statistics lessons. Every time the function returns a value it removes it from the population/sample, so it can not be returned again. If we set the option <code>replace</code> to <code>TRUE</code> the previously withdrawn number is placed back in the sample and can be drawn again. Therefore this option allows us to create independent, random samples, which is exactly what we want. We just solved our first programming problem! Now we just need to wrap our code in a function so that we can call it using <code>roll()</code>. For this we need the function <code>function()</code>.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="functions.html#cb156-1"></a>my_function &lt;-<span class="st"> </span><span class="cf">function</span>() { }    <span class="co"># This is how a function is defined</span></span>
-<span id="cb156-2"><a href="functions.html#cb156-2"></a></span>
-<span id="cb156-3"><a href="functions.html#cb156-3"></a><span class="co"># We can simply put our working example in the function constructor,</span></span>
-<span id="cb156-4"><a href="functions.html#cb156-4"></a><span class="co"># give it a name and execute everything by calling the given name.</span></span>
-<span id="cb156-5"><a href="functions.html#cb156-5"></a></span>
-<span id="cb156-6"><a href="functions.html#cb156-6"></a>roll &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
-<span id="cb156-7"><a href="functions.html#cb156-7"></a>  num &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb156-8"><a href="functions.html#cb156-8"></a>  dice &lt;-<span class="st"> </span><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb156-9"><a href="functions.html#cb156-9"></a>  <span class="kw">return</span>(dice)</span>
-<span id="cb156-10"><a href="functions.html#cb156-10"></a>}</span>
-<span id="cb156-11"><a href="functions.html#cb156-11"></a></span>
-<span id="cb156-12"><a href="functions.html#cb156-12"></a><span class="kw">roll</span>()                           <span class="co"># We can now use our function</span></span></code></pre></div>
-<pre><code>## [1] 6 1</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="functions.html#cb155-1"></a>my_function &lt;-<span class="st"> </span><span class="cf">function</span>() { }    <span class="co"># This is how a function is defined</span></span>
+<span id="cb155-2"><a href="functions.html#cb155-2"></a></span>
+<span id="cb155-3"><a href="functions.html#cb155-3"></a><span class="co"># We can simply put our working example in the function constructor,</span></span>
+<span id="cb155-4"><a href="functions.html#cb155-4"></a><span class="co"># give it a name and execute everything by calling the given name.</span></span>
+<span id="cb155-5"><a href="functions.html#cb155-5"></a></span>
+<span id="cb155-6"><a href="functions.html#cb155-6"></a>roll &lt;-<span class="st"> </span><span class="cf">function</span>() {</span>
+<span id="cb155-7"><a href="functions.html#cb155-7"></a>  num &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
+<span id="cb155-8"><a href="functions.html#cb155-8"></a>  dice &lt;-<span class="st"> </span><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb155-9"><a href="functions.html#cb155-9"></a>  <span class="kw">return</span>(dice)</span>
+<span id="cb155-10"><a href="functions.html#cb155-10"></a>}</span>
+<span id="cb155-11"><a href="functions.html#cb155-11"></a></span>
+<span id="cb155-12"><a href="functions.html#cb155-12"></a><span class="kw">roll</span>()                           <span class="co"># We can now use our function</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 3 4</code></pre>
 <p>The code between the parentheses is called the body of a function. The complete code runs when you require R to execute your function. You can see how I indented these lines. This does not affect R’s behavior but makes the code a lot more readable. R ignores every blank line and space, so you can use them to structure your code.</p>
 <p>The <code>return()</code> at the end of the function advises R to explicitly give back a value. Code that does not produce an output on the console by running it line by line is called a silent function. If you perform a calculation that also produces an output on the console it will be automatically returned if its the last line in your function, e.g. <code>sum(dice)</code> instead of <code>return(dice)</code> would return the combined result of the two rolled dices. Let us have a look at an overview of all the different parts of a function:</p>
-<div class="figure"><span id="fig:unnamed-chunk-34"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-40"></span>
 <img src="gfx/CH01-FunctionParts.png" alt="Function Constructor and Parts of a Function" width="100%" />
 <p class="caption">
 Figure 1.2: Function Constructor and Parts of a Function
@@ -361,22 +366,22 @@ Write a function named <code>roll()</code> that simulates rolling a desired numb
 </div>
 
 <p>To solve this exercise we can use our existing <code>roll()</code>-function and modify it to meet the desired criteria. All we have to do is define the dependencies of the <code>sample()</code>-function in the body arguments of the function constructor. While doing this we can also define useful default values, so that we can still use the function without arguments. Let us use rolling a six-sided pair of dice for the default values. Our improved <code>roll()</code>-function now looks like this:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="functions.html#cb158-1"></a>roll &lt;-<span class="st"> </span><span class="cf">function</span>( <span class="dt">num =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span> , <span class="dt">rolls =</span> <span class="dv">2</span>) {</span>
-<span id="cb158-2"><a href="functions.html#cb158-2"></a>  dice &lt;-<span class="st"> </span><span class="kw">sample</span>(num, <span class="dt">size =</span> rolls, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb158-3"><a href="functions.html#cb158-3"></a>  <span class="kw">return</span>(dice)</span>
-<span id="cb158-4"><a href="functions.html#cb158-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="functions.html#cb157-1"></a>roll &lt;-<span class="st"> </span><span class="cf">function</span>( <span class="dt">num =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span> , <span class="dt">rolls =</span> <span class="dv">2</span>) {</span>
+<span id="cb157-2"><a href="functions.html#cb157-2"></a>  dice &lt;-<span class="st"> </span><span class="kw">sample</span>(num, <span class="dt">size =</span> rolls, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb157-3"><a href="functions.html#cb157-3"></a>  <span class="kw">return</span>(dice)</span>
+<span id="cb157-4"><a href="functions.html#cb157-4"></a>}</span></code></pre></div>
 <p>This function is now much more general and usable for a lot of different cases. Let’s have a brief look at how to use it. To show that the function delivers the same value when we call it with arguments and default arguments, we have to fix the random number generator. R uses this random number generator in the background to pick a value from our sample and will, therefore, deliver different results each time we call our function. Luckily we can lock the random number generator for a single execution using the <code>set.seed()</code> command with a freely selected numeric value as argument. Every time a routine relies on the random number generator and the seed is set to the same value R will produce the same result.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="functions.html#cb159-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)                      <span class="co"># Fix the Random Number Generator</span></span>
-<span id="cb159-2"><a href="functions.html#cb159-2"></a><span class="kw">roll</span>()                           <span class="co"># Execute modified function</span></span></code></pre></div>
-<pre><code>## [1] 1 4</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="functions.html#cb161-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb161-2"><a href="functions.html#cb161-2"></a><span class="kw">roll</span>(<span class="dt">num =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span> , <span class="dt">rolls =</span> <span class="dv">2</span>)      <span class="co"># Function call with default Arg.</span></span></code></pre></div>
-<pre><code>## [1] 1 4</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="functions.html#cb163-1"></a><span class="co"># It is easy to increase the number of rolls or the number of sides </span></span>
-<span id="cb163-2"><a href="functions.html#cb163-2"></a><span class="co"># of the rolled dice using the argument section of the function.</span></span>
-<span id="cb163-3"><a href="functions.html#cb163-3"></a></span>
-<span id="cb163-4"><a href="functions.html#cb163-4"></a><span class="kw">roll</span>(<span class="dt">num =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">18</span> , <span class="dt">rolls =</span> <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1]  7  1  2 11 14</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="functions.html#cb158-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)                      <span class="co"># Fix the Random Number Generator</span></span>
+<span id="cb158-2"><a href="functions.html#cb158-2"></a><span class="kw">roll</span>()                           <span class="co"># Execute modified function</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 1 4</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="functions.html#cb160-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb160-2"><a href="functions.html#cb160-2"></a><span class="kw">roll</span>(<span class="dt">num =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span> , <span class="dt">rolls =</span> <span class="dv">2</span>)      <span class="co"># Function call with default Arg.</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 1 4</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="functions.html#cb162-1"></a><span class="co"># It is easy to increase the number of rolls or the number of sides </span></span>
+<span id="cb162-2"><a href="functions.html#cb162-2"></a><span class="co"># of the rolled dice using the argument section of the function.</span></span>
+<span id="cb162-3"><a href="functions.html#cb162-3"></a></span>
+<span id="cb162-4"><a href="functions.html#cb162-4"></a><span class="kw">roll</span>(<span class="dt">num =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">18</span> , <span class="dt">rolls =</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>#R&gt; [1]  7  1  2 11 14</code></pre>
 <p>To execute multiple lines of code at once you can simply select them and hit the Run in the upper right corner of RStudios script pane.</p>
 </div>
 </div>

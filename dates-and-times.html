@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="3.6 Dates and Times | Computational Statistics" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://bchwtz.de/cswr" />
   
   <meta property="og:description" content="3.6 Dates and Times | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
@@ -134,7 +134,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./"><b>Computational Statistics</b></a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Hello World!</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i>Installation</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> The Basics</a><ul>
 <li class="chapter" data-level="1.1" data-path="r-and-the-r-project.html"><a href="r-and-the-r-project.html"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
 <li class="chapter" data-level="1.2" data-path="r-system-and-rstudio.html"><a href="r-system-and-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
@@ -269,21 +274,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="dates-and-times" class="section level2">
 <h2><span class="header-section-number">3.6</span> Dates and Times</h2>
 <p>Dates and times in computer science can easily fill a bunch of books. There are different time formats, different data types and there are countless routines to handle, measure and manipulate time objects. So let us focus on the basics to implement basic features in your programs when it comes to times. In R we have two simple methods to obtain the current time.</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="dates-and-times.html#cb417-1"></a><span class="kw">date</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;Wed Jan  6 09:15:47 2021&quot;</code></pre>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="dates-and-times.html#cb419-1"></a><span class="kw">Sys.time</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;2021-01-06 09:15:47 UTC&quot;</code></pre>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="dates-and-times.html#cb416-1"></a><span class="kw">date</span>()</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;Wed Jan  6 09:40:26 2021&quot;</code></pre>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="dates-and-times.html#cb418-1"></a><span class="kw">Sys.time</span>()</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;2021-01-06 09:40:26 UTC&quot;</code></pre>
 <p>Once we have a date we can encode and convert it to a POSIXlt-Object with the function <code>strptime()</code>. POSIX-Objects store the number of elapsed seconds since the 1. January 1970 - 00:00. Once we have a POSIXlt-Object it is easy to extract things like the month using the function <code>months()</code> or the day of the week using <code>weekdays()</code>.</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="dates-and-times.html#cb421-1"></a><span class="kw">Sys.setlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>,<span class="st">&quot;C&quot;</span>)           <span class="co"># Set regional parameters once</span></span></code></pre></div>
-<pre><code>## [1] &quot;C&quot;</code></pre>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="dates-and-times.html#cb423-1"></a><span class="kw">strptime</span>(<span class="st">&quot;15/mar/88&quot;</span>,<span class="dt">format=</span><span class="st">&quot;%d/%b/%y&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;1988-03-15 UTC&quot;</code></pre>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="dates-and-times.html#cb425-1"></a>date &lt;-<span class="st"> </span><span class="kw">strptime</span>(<span class="st">&quot;15/mar/88&quot;</span>,<span class="dt">format=</span><span class="st">&quot;%d/%b/%y&quot;</span>)</span>
-<span id="cb425-2"><a href="dates-and-times.html#cb425-2"></a></span>
-<span id="cb425-3"><a href="dates-and-times.html#cb425-3"></a><span class="kw">weekdays</span>(date)</span></code></pre></div>
-<pre><code>## [1] &quot;Tuesday&quot;</code></pre>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="dates-and-times.html#cb427-1"></a><span class="kw">months</span>(date)</span></code></pre></div>
-<pre><code>## [1] &quot;March&quot;</code></pre>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="dates-and-times.html#cb420-1"></a><span class="kw">Sys.setlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>,<span class="st">&quot;C&quot;</span>)           <span class="co"># Set regional parameters once</span></span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;C&quot;</code></pre>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="dates-and-times.html#cb422-1"></a><span class="kw">strptime</span>(<span class="st">&quot;15/mar/88&quot;</span>,<span class="dt">format=</span><span class="st">&quot;%d/%b/%y&quot;</span>)</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;1988-03-15 UTC&quot;</code></pre>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="dates-and-times.html#cb424-1"></a>date &lt;-<span class="st"> </span><span class="kw">strptime</span>(<span class="st">&quot;15/mar/88&quot;</span>,<span class="dt">format=</span><span class="st">&quot;%d/%b/%y&quot;</span>)</span>
+<span id="cb424-2"><a href="dates-and-times.html#cb424-2"></a></span>
+<span id="cb424-3"><a href="dates-and-times.html#cb424-3"></a><span class="kw">weekdays</span>(date)</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;Tuesday&quot;</code></pre>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="dates-and-times.html#cb426-1"></a><span class="kw">months</span>(date)</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;March&quot;</code></pre>
 <p>As you can see in the code snippet above you need to pass a proper <code>format</code> argument to the function <code>strptime()</code> in order to decode or encode the given time accordingly. This may look like hieroglyphs at first sight but is indeed quite easy to learn. The following table provides an overview of the most useful codes. A more extensive reference can be found in the help system (<code>?strptime</code>) or in the Linux man pages, as the POSIX standard also originated from the Unix-universe.</p>
 <table>
 <thead>
@@ -360,15 +365,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>When operating with POSIX-Objects we can perform lots of useful tasks which make handling time objects really convenient like comparing them and calculating the elapsed time between two events.</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="dates-and-times.html#cb429-1"></a>Event1 &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="st">&quot;1989-11-09&quot;</span>) <span class="co"># Fall of Berlin wall</span></span>
-<span id="cb429-2"><a href="dates-and-times.html#cb429-2"></a>Event2 &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="st">&quot;1949-05-23&quot;</span>) <span class="co"># Founding date of BRD</span></span>
-<span id="cb429-3"><a href="dates-and-times.html#cb429-3"></a></span>
-<span id="cb429-4"><a href="dates-and-times.html#cb429-4"></a>Event1 <span class="op">-</span><span class="st"> </span>Event2</span></code></pre></div>
-<pre><code>## Time difference of 14780 days</code></pre>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="dates-and-times.html#cb431-1"></a><span class="kw">difftime</span>(Event1, Event2, <span class="dt">units=</span><span class="st">&quot;hours&quot;</span>)</span></code></pre></div>
-<pre><code>## Time difference of 354720 hours</code></pre>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="dates-and-times.html#cb433-1"></a>Event1 <span class="op">&gt;</span><span class="st"> </span>Event2 </span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="dates-and-times.html#cb428-1"></a>Event1 &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="st">&quot;1989-11-09&quot;</span>) <span class="co"># Fall of Berlin wall</span></span>
+<span id="cb428-2"><a href="dates-and-times.html#cb428-2"></a>Event2 &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="st">&quot;1949-05-23&quot;</span>) <span class="co"># Founding date of BRD</span></span>
+<span id="cb428-3"><a href="dates-and-times.html#cb428-3"></a></span>
+<span id="cb428-4"><a href="dates-and-times.html#cb428-4"></a>Event1 <span class="op">-</span><span class="st"> </span>Event2</span></code></pre></div>
+<pre><code>#R&gt; Time difference of 14780 days</code></pre>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="dates-and-times.html#cb430-1"></a><span class="kw">difftime</span>(Event1, Event2, <span class="dt">units=</span><span class="st">&quot;hours&quot;</span>)</span></code></pre></div>
+<pre><code>#R&gt; Time difference of 354720 hours</code></pre>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="dates-and-times.html#cb432-1"></a>Event1 <span class="op">&gt;</span><span class="st"> </span>Event2 </span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
 <p>At this point, we are quite well equipped with knowledge to handle and manipulate all common appearances of data, but programming is much more. Data is important but we can leverage its ability only when we have more powerful tools to automatize dealing with it.</p>
 </div>
             </section>

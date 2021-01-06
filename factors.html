@@ -10,7 +10,7 @@
 
   <meta property="og:title" content="2.6 Factors | Computational Statistics" />
   <meta property="og:type" content="book" />
-  
+  <meta property="og:url" content="https://bchwtz.de/cswr" />
   
   <meta property="og:description" content="2.6 Factors | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
@@ -134,7 +134,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./"><b>Computational Statistics</b></a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Hello World!</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i>Installation</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> The Basics</a><ul>
 <li class="chapter" data-level="1.1" data-path="r-and-the-r-project.html"><a href="r-and-the-r-project.html"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
 <li class="chapter" data-level="1.2" data-path="r-system-and-rstudio.html"><a href="r-system-and-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
@@ -271,50 +276,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Factors are helpful to represent nominally and ordinally scaled variables.</p>
 <div id="unordered-factors" class="section level3">
 <h3><span class="header-section-number">2.6.1</span> Unordered Factors</h3>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="factors.html#cb247-1"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>,<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>))</span>
-<span id="cb247-2"><a href="factors.html#cb247-2"></a>x </span></code></pre></div>
-<pre><code>## [1] yes yes no  yes no 
-## Levels: no yes</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="factors.html#cb249-1"></a><span class="kw">table</span>(x)</span></code></pre></div>
-<pre><code>## x
-##  no yes 
-##   2   3</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="factors.html#cb251-1"></a><span class="kw">unclass</span>(x) <span class="co"># Levels are automatically generated in alphabetical order!</span></span></code></pre></div>
-<pre><code>## [1] 2 2 1 2 1
-## attr(,&quot;levels&quot;)
-## [1] &quot;no&quot;  &quot;yes&quot;</code></pre>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="factors.html#cb253-1"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>,<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>),</span>
-<span id="cb253-2"><a href="factors.html#cb253-2"></a>            <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>))</span>
-<span id="cb253-3"><a href="factors.html#cb253-3"></a><span class="kw">unclass</span>(x) <span class="co"># By setting levels explicitly the internal order can be defined.</span></span></code></pre></div>
-<pre><code>## [1] 1 1 2 1 2
-## attr(,&quot;levels&quot;)
-## [1] &quot;yes&quot; &quot;no&quot;</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="factors.html#cb255-1"></a>x[<span class="dv">1</span>] <span class="op">==</span><span class="st"> </span>x[<span class="dv">3</span>] <span class="co"># Nominally scaled variables can be check for equality</span></span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="factors.html#cb246-1"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>,<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>))</span>
+<span id="cb246-2"><a href="factors.html#cb246-2"></a>x </span></code></pre></div>
+<pre><code>#R&gt; [1] yes yes no  yes no 
+#R&gt; Levels: no yes</code></pre>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="factors.html#cb248-1"></a><span class="kw">table</span>(x)</span></code></pre></div>
+<pre><code>#R&gt; x
+#R&gt;  no yes 
+#R&gt;   2   3</code></pre>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="factors.html#cb250-1"></a><span class="kw">unclass</span>(x) <span class="co"># Levels are automatically generated in alphabetical order!</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 2 2 1 2 1
+#R&gt; attr(,&quot;levels&quot;)
+#R&gt; [1] &quot;no&quot;  &quot;yes&quot;</code></pre>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="factors.html#cb252-1"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>,<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>),</span>
+<span id="cb252-2"><a href="factors.html#cb252-2"></a>            <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>))</span>
+<span id="cb252-3"><a href="factors.html#cb252-3"></a><span class="kw">unclass</span>(x) <span class="co"># By setting levels explicitly the internal order can be defined.</span></span></code></pre></div>
+<pre><code>#R&gt; [1] 1 1 2 1 2
+#R&gt; attr(,&quot;levels&quot;)
+#R&gt; [1] &quot;yes&quot; &quot;no&quot;</code></pre>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="factors.html#cb254-1"></a>x[<span class="dv">1</span>] <span class="op">==</span><span class="st"> </span>x[<span class="dv">3</span>] <span class="co"># Nominally scaled variables can be check for equality</span></span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
 </div>
 <div id="ordered-factors" class="section level3">
 <h3><span class="header-section-number">2.6.2</span> Ordered Factors</h3>
 <p>An example for an ordered factor are ordinally scaled variables, which are often found in questionnaires, like the likert scale.</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="factors.html#cb257-1"></a>likert &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>),</span>
-<span id="cb257-2"><a href="factors.html#cb257-2"></a>                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>),</span>
-<span id="cb257-3"><a href="factors.html#cb257-3"></a>                 <span class="dt">labels =</span> <span class="kw">c</span>( <span class="st">&quot;strongly disagree&quot;</span>, <span class="st">&quot;disagree&quot;</span>, <span class="st">&quot;don’t know&quot;</span>, <span class="st">&quot;agree&quot;</span>, <span class="st">&quot;strongly agree&quot;</span>),</span>
-<span id="cb257-4"><a href="factors.html#cb257-4"></a>                 <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb257-5"><a href="factors.html#cb257-5"></a></span>
-<span id="cb257-6"><a href="factors.html#cb257-6"></a>likert</span></code></pre></div>
-<pre><code>##  [1] disagree          don’t know        strongly disagree strongly agree   
-##  [5] disagree          agree             strongly agree    disagree         
-##  [9] don’t know        don’t know       
-## 5 Levels: strongly disagree &lt; disagree &lt; don’t know &lt; ... &lt; strongly agree</code></pre>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="factors.html#cb259-1"></a>likert[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>likert[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="factors.html#cb261-1"></a>likert[<span class="dv">1</span>] <span class="op">&gt;</span><span class="st"> </span>likert[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="factors.html#cb263-1"></a>likert[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>likert[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## Warning in Ops.ordered(likert[1], likert[2]): &#39;+&#39; is not meaningful for ordered
-## factors</code></pre>
-<pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="factors.html#cb266-1"></a>likert[<span class="dv">1</span>] <span class="op">==</span><span class="st"> </span>likert[<span class="dv">5</span>]</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="factors.html#cb256-1"></a>likert &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>),</span>
+<span id="cb256-2"><a href="factors.html#cb256-2"></a>                 <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>),</span>
+<span id="cb256-3"><a href="factors.html#cb256-3"></a>                 <span class="dt">labels =</span> <span class="kw">c</span>( <span class="st">&quot;strongly disagree&quot;</span>, <span class="st">&quot;disagree&quot;</span>, <span class="st">&quot;don’t know&quot;</span>, <span class="st">&quot;agree&quot;</span>, <span class="st">&quot;strongly agree&quot;</span>),</span>
+<span id="cb256-4"><a href="factors.html#cb256-4"></a>                 <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb256-5"><a href="factors.html#cb256-5"></a></span>
+<span id="cb256-6"><a href="factors.html#cb256-6"></a>likert</span></code></pre></div>
+<pre><code>#R&gt;  [1] disagree          don’t know        strongly disagree strongly agree   
+#R&gt;  [5] disagree          agree             strongly agree    disagree         
+#R&gt;  [9] don’t know        don’t know       
+#R&gt; 5 Levels: strongly disagree &lt; disagree &lt; don’t know &lt; ... &lt; strongly agree</code></pre>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="factors.html#cb258-1"></a>likert[<span class="dv">1</span>] <span class="op">&lt;</span><span class="st"> </span>likert[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="factors.html#cb260-1"></a>likert[<span class="dv">1</span>] <span class="op">&gt;</span><span class="st"> </span>likert[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="factors.html#cb262-1"></a>likert[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>likert[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>#R&gt; Warning in Ops.ordered(likert[1], likert[2]): &#39;+&#39; is not meaningful for ordered
+#R&gt; factors</code></pre>
+<pre><code>#R&gt; [1] NA</code></pre>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="factors.html#cb265-1"></a>likert[<span class="dv">1</span>] <span class="op">==</span><span class="st"> </span>likert[<span class="dv">5</span>]</span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
 </div>
 </div>
             </section>
