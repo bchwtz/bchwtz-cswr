@@ -3,7 +3,8 @@ fig:unnamed-chunk-40
 fig:unnamed-chunk-78
 fig:unnamed-chunk-159
 fig:unnamed-chunk-161
-fig:unnamed-chunk-200
+fig:unnamed-chunk-198
+fig:unnamed-chunk-225
 intro
 r-and-the-r-project
 r-system-and-rstudio
@@ -67,6 +68,13 @@ vectorized-functions
 technical-background
 word-puzzle
 requirements
+blockchain
+hash-functions
+blocks
+proof-of-work-pow
+chaining-blocks
+security
+wrap-up
 forecasting
 time-series-data
 forecasting-process
