@@ -3,6 +3,7 @@ fig:unnamed-chunk-40
 fig:unnamed-chunk-78
 fig:unnamed-chunk-159
 fig:unnamed-chunk-161
+fig:unnamed-chunk-200
 intro
 r-and-the-r-project
 r-system-and-rstudio
@@ -66,6 +67,17 @@ vectorized-functions
 technical-background
 word-puzzle
 requirements
+forecasting
+time-series-data
+forecasting-process
+real-data
+judgemental-forecasting
+exponential-smoothing
+implementing-hes
+finding-best-alpha-and-gamma-values
+generating-forecasts
+practical-application
+forecast-evaluation
 web-apps
 bug-bounty
 test-exam
