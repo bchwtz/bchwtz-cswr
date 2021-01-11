@@ -68,6 +68,7 @@ vectorized-functions
 technical-background
 word-puzzle
 requirements
+solution
 blockchain
 hash-functions
 blocks
