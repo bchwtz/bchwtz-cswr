@@ -24,7 +24,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2021-01-11" />
+<meta name="date" content="2021-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -392,8 +392,8 @@ microbenchmark(fun.switch('case1'), fun.if('case1'), times=1e3)
 ```
 #R> Unit: nanoseconds
 #R>                 expr min  lq     mean median  uq     max neval
-#R>  fun.switch("case1") 309 332 2390.807  361.5 378 2025119  1000
-#R>      fun.if("case1") 398 428 3868.479  443.5 457 3412436  1000
+#R>  fun.switch("case1") 320 338 2262.042  372.5 390 1867421  1000
+#R>      fun.if("case1") 415 444 4613.495  460.0 482 4101993  1000
 ```
 
 ```r
@@ -402,9 +402,9 @@ microbenchmark(fun.switch('case3'), fun.if('case3'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min  lq    mean median    uq   max neval
-#R>  fun.switch("case3") 328 355 398.088    382 402.5  6949  1000
-#R>      fun.if("case3") 594 630 682.356    648 676.0 12052  1000
+#R>                 expr min  lq    mean median  uq   max neval
+#R>  fun.switch("case3") 348 365 406.038    401 413  4444  1000
+#R>      fun.if("case3") 643 670 722.560    690 710 19505  1000
 ```
 
 
