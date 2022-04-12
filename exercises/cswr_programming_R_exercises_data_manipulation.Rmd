@@ -1,0 +1,500 @@
+---
+title: "Programmierung R - Exercise"
+author: "Data manipulation"
+date: "April 12, SS 2022 || Hannah Behrens"
+
+toc: true
+tocoverview: false
+tocheader: Inhaltsübersicht
+titlefontsize: 22pt
+
+bibliography: referencescswr.bib
+biblio-style: authoryear-comp
+
+output: fhswf::presentation
+knit: rmarkdown::render
+
+nocite: |
+  @cswr
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+options(digits = 4)
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, cache=TRUE, 
+                      dev.args=list(pointsize=11), size="scriptsize", fig.height = 4, attr.source='.numberLines')
+
+# Packages
+library(car)
+library(fGarch)
+library(gtools)
+library(HistogramTools)
+library(ineq)
+library(kableExtra)
+library(texreg)
+library(tidyverse)
+library(vcd)
+library(latex2exp)
+library(knitcitations)
+library(gridExtra)
+library(plotly)
+library(rgl)
+library(mgcv)
+```
+
+## Task 1
+
+### Your turn
+
+In your R environment the data set `datasets::airquality` [@datasets] is already available.
+
+1.1 Make yourself familiar with this data set by examining
+
+- its data type
+
+- its structure (and dimensions) and
+
+- its variables.
+
+1.2 Where do and how many NAs occur in the data set? Remove those observations (full rows) and save this data set as `airquality2`. How many rows have been deleted?
+
+
+## Task 1.1 - answer
+
+1.1 Make yourself familiar with the data set `datasets::airquality` [@datasets]...
+
+```{r}
+typeof(airquality) # its data type
+
+str(airquality) # its structure and its variables
+
+?airquality # description of the data set
+```
+$\rightarrow$ This data set is a list, more precisely a data frame.
+
+$\rightarrow$ 153 observations (153 rows) and 6 variables (6 columns)
+
+## Task 1.2 - answer
+
+$\rightarrow$ 37 NAs are present in the column `Ozone` and 7 NAs in `Solar.R`.
+
+```{r}
+summary(airquality) # to see where and how many NAs occur
+```
+
+\begin{textblock}{6}(6,6)
+\begin{alertblock}{}
+Which return value would you expect if \texttt{summary()} were applied to a categorical variable?
+\end{alertblock}
+\end{textblock}
+
+## Task 1.2 - answer
+
+```{r}
+# remove those observations (full rows), where NAs occur:
+airquality2 <- na.omit(airquality) 
+nrow(airquality) - nrow(airquality2) # 42 rows have been removed 
+# consequently, 153 - 42 = 111 rows left
+```
+
+## Task 2
+
+### Your turn
+
+As we have already seen, the variable `Month` is numeric.
+
+2.1) Add a further variable named `Month_name` that saves the name of the month (as character) to the *NAs-free* `airquality2` data set.
+
+2.2) Apply `summary()` to `Month_name` and check your previous assumption. Assign the result to the variable `summary_air`.
+
+
+## Task 2.1 - answer
+
+As we have already seen, the variable `Month` is numeric.
+
+Add a further variable named `Month_name` that saves the name of the month (as character) to the *NAs-free* `airquality2` data set.
+
+```{r}
+levels_month <- unique(airquality2$Month) # get unique values of Month
+# add the names of the months as a factor to the data set:
+airquality2$Month_name <- factor(x = airquality2$Month,
+                               levels = levels_month, # alternatively: c(5, 6, 7, 8, 9)
+                               # labels: how to name the levels, 
+                               # make use of the predefined  constant named month.name
+                                 labels = month.name[levels_month])
+
+head(airquality2) # check the modification
+```
+
+## Task 2.2 - answer
+
+```{r}
+summary_air <- summary(airquality2$Month_name)
+summary_air # a vector results
+
+typeof(summary_air) 
+```
+
+
+## Task 3
+
+### Your turn
+
+\begin{alertblock}{}
+Apply the following tasks to the modified \texttt{airquality2} data set. 
+\end{alertblock}
+
+The temperature of the `airquality` data set is given in degrees F (Fahrenheit). 
+
+3.1 Convert these values into degrees Celsius [C] by using the following formula given by @NIST2021: $°C = \frac{(°F - 32)}{1.8}$.\newline
+
+3.2 You are unhappy with the variables' names of the `airquality2` data set. Get the column names and change `Temp` to `Temperature`. 
+
+
+## Tasks 3.1 and 3.2 - answers
+
+3.1 
+
+```{r}
+# convert temperature from degrees Fahrenheit to degrees Celsius
+# first option:
+airquality2 <- transform(airquality2,
+          Temp = (Temp - 32)/1.8)
+# second option:
+# airquality2$Temp <- (airquality2$Temp - 32)/1.8
+```
+
+
+3.2 
+
+```{r}
+colnames_airqu <- colnames(airquality2) # get column names of airquality2
+colnames_airqu
+
+colnames_airqu[4] <- "Temperature" # change "Temp" to "Temperature"
+colnames_airqu # check the modified vector
+```
+
+## Task 3.2 - answer
+
+```{r}
+colnames(airquality2) <- colnames_airqu # assign modified column names to data set
+colnames(airquality2) # check the modification
+```
+
+\begin{textblock}{4}(5,2)
+\begin{alertblock}{}
+Check your modifications!
+\end{alertblock}
+\end{textblock}
+
+
+## Task 4
+
+### Your turn
+
+4.1 Imagine the following observation `new_obs` has misleadingly not been integrated in the `airquality` data set. Add this observation to the modified data set, assign it to the variable `airquality3` and check the dimensions of the data set afterwards.
+
+```{r}
+new_obs <- data.frame(Ozone = 20, Solar.R = 300, Wind = 8.7,
+                      Temperature = 20, Month = 6, Day = 6, Month_name = "June")
+```
+
+4.2  Add a date column to the modified `airquality3` data set:
+
+  - First paste the entries of the `Month` and `Day` column with the year of the observations by separating the single values by "/".
+  
+  - Then convert these strings to POSIX objects.
+  
+4.3 Save the modified `airquality3` data set as CSV-file. Afterwards, control your created CSV-file by reading it in your console.
+
+## Tasks 4.1 and 4.2 - answers
+
+4.1
+
+```{r}
+airquality3 <- rbind(airquality2, new_obs) # add observation new_obs to the
+# modified airquality data set (airquality2) 
+dim(airquality3) # check the dimensions (+ 1 row)
+```
+4.2 
+
+```{r}
+# paste Month, Day and year together in form of Month/Day/Year e.g. 5/2/1973
+airquality3$Date <- paste(airquality3$Month, airquality3$Day, "1973", sep = "/")
+# convert these strings to POSIX objects based on strptime()
+airquality3$Date <- strptime(airquality3$Date, format = "%m/%d/%Y")
+
+head(airquality3) # check the modifications
+```
+
+## Task 4.3 - answer
+
+```{r, eval=FALSE}
+# save the modified data set as a csv-file:
+write.table(airquality3, file = "Airquality3.csv", sep = ",")
+getwd() # get working directory
+```
+```{r}
+airquality3_csv <- read.table(file = "Airquality3.csv", sep = ",") # read csv-file
+head(airquality3_csv)
+```
+
+\begin{textblock}{8}(3,1)
+\begin{alertblock}{}
+We will use this modified data set in a future exercise.
+\end{alertblock}
+\end{textblock}
+
+\begin{textblock}{8}(3,8)
+\begin{alertblock}{}
+DataCamp course to importing data in R will follow!
+\end{alertblock}
+\end{textblock}
+
+
+## Task 5
+
+### Your turn
+
+Answer the following questions by using `airquality3`.
+
+5.1 How many observations with temperatures above 30°C exist in the data set?
+
+5.2 Sort the modified `airquality3` data set by temperature in descending order and only return the ordered values of the variable `Wind`.
+
+5.3 Split `airquality3` into sub populations by `Month_name` and return the minimum of each variable. Does it work properly or are some changes necessary?
+
+5.4 Return only observations of those months that include a "u" in their names.
+
+## Tasks 5.1 and 5.2 - answers
+
+5.1 
+
+```{r}
+sum(airquality3$Temperature > 30) # Temperatures above 30°C have been measured 20 times
+```
+5.2
+
+```{r}
+# sort by temperature in descending order and return the values of Wind:
+airquality3$Wind[sort(airquality3$Temperature, decreasing = TRUE)] 
+```
+
+## Task 5.3 - answers
+
+5.3
+```{r, echo=TRUE, eval=FALSE}
+aggregate(x = airquality3, by = list(Month_name = airquality3$Month_name), FUN = min) 
+# error results
+```
+
+$\rightarrow$ It does not work since `Month_name` is an unordered factor, so order the levels of `Month_name` and apply `aggregate()` again.
+
+```{r}
+airquality3$Month_name <- factor(x = airquality3$Month_name, ordered = TRUE)
+# remove seventh column, otherwise Month_name would be listed twice
+aggregate(x = airquality3[,-7], by = list(Month_name = airquality3$Month_name), 
+          FUN = min)
+```
+
+
+## Task 5.4 - answers
+
+5.4
+
+```{r}
+# search for "u" in Month_name and only return the corresponding observations 
+airquality4 <- airquality3[grep(pattern = "u", x = airquality3$Month_name),] 
+
+head(airquality4)
+
+dim(airquality4)
+```
+
+## Task 6
+
+### Your turn
+
+6.1 Create a data frame `month_seasons` with two columns: In the first column called `Month_name` the names of all (12) months are listed. The second column named `Season` consists of the seasons (Spring, Summer, Autumn, Winter) corresponding to the months.
+
+6.2 Then, merge `month_seasons` and `airquality3` by `Month_name` and save this data frame as `airquality3`. Check the dimensions of the resulting data set.
+
+
+## Task 6.1 - answer
+
+6.1 
+```{r}
+month_seasons <- data.frame(Month_name = factor(x = month.name, levels = month.name, 
+                            ordered = TRUE), # order months
+                            Seasons = factor(x = c("Winter", "Winter", "Spring", 
+                            "Spring", "Spring", "Summer", "Summer", "Summer", "Autumn", 
+                            "Autumn", "Autumn", "Winter"), 
+                            levels = c("Spring", "Summer", "Autumn", "Winter"),  
+                            ordered = TRUE)) # order seasons
+
+head(month_seasons, n = 7)
+```
+
+## Task 6.2 - answer
+
+6.2
+
+```{r}
+airquality3 <- merge(x = airquality3, y = month_seasons, by = "Month_name")
+dim(airquality3) # + 1 column since column Seasons has been added
+```
+
+
+## Task 7
+
+**Do not** run the following code on your console!
+
+```{r, eval=FALSE}
+x <- c(1:10, 23:19, NA)
+X <- 3
+x <- x[x < 23]
+x <- x[x <= 22]
+x + X
+x[X] <- x[X] + X
+x <- x[X] + X
+x <- x %% 3
+y <- as.logical(x)
+```
+
+### Your turn
+
+What is the result of
+
++ `x` after executing lines 1--6?
+
++ `x` after executing lines 1--8?
+
++ `y`?
+
+
+## Task 7 - answer
+
+What is the result of `x` after executing lines 1--6?
+
+```{r}
+#>R [1]  1  2  6  4  5  6  7  8  9 10 22 21 20 19 NA
+```
+
+What is the result of `x` after executing lines 1--8?
+
+```{r}
+#>R [1] 0
+```
+
+What is the result of `y`?
+
+```{r}
+#>R [1] FALSE
+```
+
+
+## Task 8
+
+**Do not** run the following code on your console!
+
+```{r}
+L <- list(money = c(250, 124, 360, 720, 340, 340),
+          hours = c(19, 12, 30, 48, 26, 25),
+          idx = c(1:6),
+          name = c("Paul", "Emma", "Mia", "John", "Kim"))
+z <- 2
+L[[4]][[6]] <- "Maxi"
+L$hours <- L$hours * 1.3
+L[[1]] <- L$money + 25
+L[1] <- 1250
+L[[4]][[2]] <- L[[4]][[6]]
+L[[z]] <- 150
+```
+
+### Your turn
+
+What is the result of
+
++ `L` after executing lines 1--8?
+
++ `L` after executing lines 1--9?
+
++ `L` after executing lines 1--11?
+
+
+## Task 8 - answers
+
+What is the result of `L` after executing lines 1--8?
+
+```{r}
+#>R 
+#>R $money
+#>R [1] 275 149 385 745 365 365
+
+#>R $hours
+#>R [1] 24.7 15.6 39.0 62.4 33.8 32.5
+
+#>R $idx
+#>R [1] 1 2 3 4 5 6
+
+#>R $name
+#>R [1] "Paul" "Emma" "Mia"  "John" "Kim"  "Maxi"
+
+# since "Maxi" has been added to the name list,
+# since each element of the hours list has been multiplied by 1.3 and
+# since to each element of the money list 25 has been added
+```
+
+## Task 8 - answers
+
+What is the result of `L` after executing lines 1--9?
+
+```{r}
+#>R $money
+#>R [1] 1250
+
+#>R $hours
+#>R [1] 24.7 15.6 39.0 62.4 33.8 32.5
+
+#>R $idx
+#>R [1] 1 2 3 4 5 6
+
+#>R $name
+#>R [1] "Paul" "Emma" "Mia"  "John" "Kim"  "Maxi"
+
+# in addition to the previous steps, the value 1250 has been assigned as the first list
+# (money) of L
+```
+
+## Task 8 - answers
+
+What is the result of `L` after executing lines 1--11?
+
+```{r}
+#>R $money
+#>R [1] 1250
+
+#>R $hours
+#>R [1] 150
+
+#>R $idx
+#>R [1] 1 2 3 4 5 6
+
+#>R $name
+#>R [1] "Paul" "Maxi" "Mia"  "John" "Kim"  "Maxi"
+
+# in addition to the previous steps, the second element of the name list has been 
+# overwritten by the sixth name and
+# the value 150 has been assigned as the second list (hours) of L
+```
+
+
+## References 
+
+
+
+
+
+
+

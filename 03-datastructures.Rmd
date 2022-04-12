@@ -323,6 +323,11 @@ At this point, we are quite well equipped with knowledge to handle and manipulat
 knitr::include_graphics("gfx/CH00-ExercisesHeader.png")
 ```
 
+### From April 12, 2022 {-}
+
+```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
+knitr::include_graphics("exercises/cswr_programming_R_exercises_data_manipulation.pdf.")
+```
 
 ### EX 1 {-}
 
