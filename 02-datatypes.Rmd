@@ -307,7 +307,7 @@ knitr::include_graphics("gfx/CH00-ExercisesHeader.png")
 ### From April 5, 2022 {-}
 
 ```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
-knitr::include_graphics("exercises/cswr_programming_R_exercises_data_types.pdf.")
+knitr::include_graphics("exercises/cswr_programming_R_exercises_data_types.pdf")
 ```
 
 ### EX 1 {-}
