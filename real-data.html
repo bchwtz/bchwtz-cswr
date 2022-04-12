@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-04-07" />
+<meta name="date" content="2022-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -213,6 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>3.5</b> Strings<span></span></a></li>
 <li class="chapter" data-level="3.6" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>3.6</b> Dates and Times<span></span></a></li>
 <li><a href="exercises-2.html#exercises-2">Exercises<span></span></a><ul>
+<li><a href="exercises-2.html#from-april-12-2022">From April 12, 2022<span></span></a></li>
 <li><a href="exercises-2.html#ex-1-2">EX 1<span></span></a></li>
 <li><a href="exercises-2.html#ex-2-2">EX 2<span></span></a></li>
 <li><a href="exercises-2.html#ex-3-2">EX 3<span></span></a></li>
@@ -433,7 +434,7 @@ To find the folder to which these files were saved (if you have not specifically
 <span id="cb570-14"><a href="real-data.html#cb570-14"></a></span>
 <span id="cb570-15"><a href="real-data.html#cb570-15"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;T-Series&quot;</span>, <span class="st">&quot;Bibis Beauty Palace&quot;</span>),</span>
 <span id="cb570-16"><a href="real-data.html#cb570-16"></a>       <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">lty=</span><span class="dv">1</span>, <span class="dt">cex=</span><span class="fl">0.8</span>, <span class="dt">inset=</span>.<span class="dv">05</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-230-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-231-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>While both curves look fairly smooth the day-to-day changes for the last month show that the data fairly fluctuates over time with a roughly constant absolute growth.</p>
 <div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="real-data.html#cb571-1"></a>n &lt;-<span class="st"> </span><span class="dv">31</span></span>
 <span id="cb571-2"><a href="real-data.html#cb571-2"></a>t.diff &lt;-<span class="st"> </span><span class="kw">ts</span>(<span class="kw">diff</span>(<span class="kw">tail</span>(tseries.subs<span class="op">$</span>TotalSubscribers, n)))</span>
@@ -452,7 +453,7 @@ To find the folder to which these files were saved (if you have not specifically
 <span id="cb571-15"><a href="real-data.html#cb571-15"></a>     <span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Subscribers&quot;</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
 <span id="cb571-16"><a href="real-data.html#cb571-16"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">lty=</span><span class="st">&quot;dotted&quot;</span>,<span class="dt">col=</span><span class="st">&quot;grey&quot;</span>)</span>
 <span id="cb571-17"><a href="real-data.html#cb571-17"></a><span class="kw">mtext</span>(<span class="st">&quot;Bibis Beauty Palace&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-231-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-232-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

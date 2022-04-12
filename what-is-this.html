@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-04-07" />
+<meta name="date" content="2022-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -213,6 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>3.5</b> Strings<span></span></a></li>
 <li class="chapter" data-level="3.6" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>3.6</b> Dates and Times<span></span></a></li>
 <li><a href="exercises-2.html#exercises-2">Exercises<span></span></a><ul>
+<li><a href="exercises-2.html#from-april-12-2022">From April 12, 2022<span></span></a></li>
 <li><a href="exercises-2.html#ex-1-2">EX 1<span></span></a></li>
 <li><a href="exercises-2.html#ex-2-2">EX 2<span></span></a></li>
 <li><a href="exercises-2.html#ex-3-2">EX 3<span></span></a></li>
@@ -396,8 +397,8 @@ microbenchmark(fun.switch('case1'), fun.if('case1'), times=1e3)
 ```
 #R> Unit: nanoseconds
 #R>                 expr min  lq     mean median  uq     max neval
-#R>  fun.switch("case1") 318 332 2200.418  357.5 373 1831207  1000
-#R>      fun.if("case1") 407 420 4297.400  445.0 456 3824010  1000
+#R>  fun.switch("case1") 320 333 2226.264  363.5 374 1856209  1000
+#R>      fun.if("case1") 409 427 4334.983  449.0 459 3864476  1000
 ```
 
 ```r
@@ -406,9 +407,9 @@ microbenchmark(fun.switch('case3'), fun.if('case3'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min  lq    mean median    uq   max neval
-#R>  fun.switch("case3") 357 374 409.620    398 412.0  3735  1000
-#R>      fun.if("case3") 642 659 725.524    684 699.5 19538  1000
+#R>                 expr min  lq    mean median  uq   max neval
+#R>  fun.switch("case3") 336 356 408.920    385 397 12857  1000
+#R>      fun.if("case3") 627 649 715.823    670 690 12891  1000
 ```
 
 

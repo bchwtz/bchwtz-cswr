@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-04-07" />
+<meta name="date" content="2022-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -213,6 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>3.5</b> Strings<span></span></a></li>
 <li class="chapter" data-level="3.6" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>3.6</b> Dates and Times<span></span></a></li>
 <li><a href="exercises-2.html#exercises-2">Exercises<span></span></a><ul>
+<li><a href="exercises-2.html#from-april-12-2022">From April 12, 2022<span></span></a></li>
 <li><a href="exercises-2.html#ex-1-2">EX 1<span></span></a></li>
 <li><a href="exercises-2.html#ex-2-2">EX 2<span></span></a></li>
 <li><a href="exercises-2.html#ex-3-2">EX 3<span></span></a></li>
@@ -353,10 +354,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Due to the fact that the hash for each block considers not only the core information like index, timestamp and the data but also the hash of the previous block, applying the discussed process repeatedly leads to a chain of blocks. This chain is built on all information from all previous blocks due to the hashing process, meaning that one can only calculate the valid hash if one knows the correct and very easily verifiable hash from the block before. This leads to an unbreakable chain that proves the integrity of all information, changing prior information requires to recalculate all hashes. Let us put together what we learned and build our first block chain starting with the already generated genesis block.</p>
 <div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="chaining-blocks.html#cb542-1"></a>genesisBlockHashed</span></code></pre></div>
 <pre><code>#R&gt; :::::::::: BLOCKCHAIN BLOCK 1 :::::::::: 
-#R&gt; Timestamp: 1649327498 
+#R&gt; Timestamp: 1649771166 
 #R&gt; Previous Hash: 
 #R&gt; Difficulty: 0 
-#R&gt; Hash: d2bcf31ef78dad3d8b6b7a389eb1083556ed6c9c62741f8e8485800946d6931d</code></pre>
+#R&gt; Hash: 1d5b9eb112449ccccc118fe4acf1c8172b31684f13020dab4ab8145c26820ea8</code></pre>
 <p>Let us assume that we received a single transaction request that needs to be included in the second block of the blockchain. The following transaction mimics the first bitcoin transaction, where 10.000 bitcoins were used to buy two pizzas at a Papa Johns restaurant. The next transaction is just another example that we can include in the third block to extend our chain a little more.</p>
 <div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="chaining-blocks.html#cb544-1"></a>transaction.b2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sender=</span><span class="st">&quot;Papa&quot;</span>, <span class="dt">Receiver=</span><span class="st">&quot;John&quot;</span>, <span class="dt">Amount=</span><span class="dv">10000</span>)</span>
 <span id="cb544-2"><a href="chaining-blocks.html#cb544-2"></a>transaction.b2</span></code></pre></div>
@@ -401,24 +402,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb549-4"><a href="chaining-blocks.html#cb549-4"></a>chain                                                <span class="co"># Block Chain with 3 blocks</span></span></code></pre></div>
 <pre><code>#R&gt; [[1]]
 #R&gt; :::::::::: BLOCKCHAIN BLOCK 1 :::::::::: 
-#R&gt; Timestamp: 1649327498 
+#R&gt; Timestamp: 1649771166 
 #R&gt; Previous Hash: 
 #R&gt; Difficulty: 0 
-#R&gt; Hash: d2bcf31ef78dad3d8b6b7a389eb1083556ed6c9c62741f8e8485800946d6931d 
+#R&gt; Hash: 1d5b9eb112449ccccc118fe4acf1c8172b31684f13020dab4ab8145c26820ea8 
 #R&gt; 
 #R&gt; [[2]]
 #R&gt; :::::::::: BLOCKCHAIN BLOCK 2 :::::::::: 
-#R&gt; Timestamp: 1649327498 
-#R&gt; Previous Hash: d2bcf31ef78dad3d8b6b7a389eb1083556ed6c9c62741f8e8485800946d6931d 
+#R&gt; Timestamp: 1649771167 
+#R&gt; Previous Hash: 1d5b9eb112449ccccc118fe4acf1c8172b31684f13020dab4ab8145c26820ea8 
 #R&gt; Difficulty: 0 
-#R&gt; Hash: c0fa16cba3cdc577fbffbe7542707223da8a7e4689106a4e4484e95fec5a04f2 
+#R&gt; Hash: b23962bba4f93fb0954bec52b9d54f1ac546e918145e1c98d9f17f487f0fad5a 
 #R&gt; 
 #R&gt; [[3]]
 #R&gt; :::::::::: BLOCKCHAIN BLOCK 3 :::::::::: 
-#R&gt; Timestamp: 1649327498 
-#R&gt; Previous Hash: c0fa16cba3cdc577fbffbe7542707223da8a7e4689106a4e4484e95fec5a04f2 
+#R&gt; Timestamp: 1649771167 
+#R&gt; Previous Hash: b23962bba4f93fb0954bec52b9d54f1ac546e918145e1c98d9f17f487f0fad5a 
 #R&gt; Difficulty: 0 
-#R&gt; Hash: c8f14f0730582c29274599f6d136c54265e90c8b4273e8c10894695b00da9e1b</code></pre>
+#R&gt; Hash: b51420e2f38a25df8cd812853d1d772ac2f8ecc45ee75bf2c5804942fd910775</code></pre>
 </div>
             </section>
 

@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-04-07" />
+<meta name="date" content="2022-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -213,6 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>3.5</b> Strings<span></span></a></li>
 <li class="chapter" data-level="3.6" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>3.6</b> Dates and Times<span></span></a></li>
 <li><a href="exercises-2.html#exercises-2">Exercises<span></span></a><ul>
+<li><a href="exercises-2.html#from-april-12-2022">From April 12, 2022<span></span></a></li>
 <li><a href="exercises-2.html#ex-1-2">EX 1<span></span></a></li>
 <li><a href="exercises-2.html#ex-2-2">EX 2<span></span></a></li>
 <li><a href="exercises-2.html#ex-3-2">EX 3<span></span></a></li>
@@ -351,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="hash-functions" class="section level2 hasAnchor">
 <h2><span class="header-section-number">8.1</span> Hash Functions<a href="hash-functions.html#hash-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A hash function is any function that maps data of arbitrary size onto data of a fixed size. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes. The most common application of hash functions is in cryptography. A cryptographic hash function allows verifying whether the input data maps onto a given hash value. However, when the input is unknown it is very difficult or (almost) impossible to reconstruct it from a given hash value. The following figure exemplarily illustrates the working principle of hash functions. The four inputs are mapped to one of the outputs. While the inputs show varying lengths (and can even be whole documents indicated by the word processor logo) the output is always a decimal number ranging from zero to eight (3-bit hash value).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-199"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-200"></span>
 <img src="gfx/CHAP-HashFun.png" alt="Hash Function" width="100%" />
 <p class="caption">
 Figure 8.1: Hash Function
@@ -376,7 +377,7 @@ Figure 8.1: Hash Function
 <div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="hash-functions.html#cb527-1"></a><span class="co"># Not even using a &#39;stolen&#39; hash value as password helps</span></span>
 <span id="cb527-2"><a href="hash-functions.html#cb527-2"></a><span class="kw">accessGranted</span>(<span class="dt">passwd =</span> <span class="st">&quot;27f16d4aece13cf0443ebfd7deb7be198d0aa6adb637ca37b3c72f4fb2e01d7e&quot;</span>)</span></code></pre></div>
 <pre><code>#R&gt; [1] FALSE</code></pre>
-<p>Obviously, the main feature of cryptographic hash functions is their irreversibility, which is strongly dependent on the actual algorithm used to create the hash value. Making and breaking hash functions is an active area of research which has revealed many vulnerabilities and lead to some hashing algorithms being insecure. The algorithm used in the examples above is called “SHA-256” and is considered secure as of today (07.04.2022). Other popular algorithms such as <code>MD5</code>or the algorithms used for storing Windows XP Passwords <code>LM-Hash</code> and <code>NTLM-Hash</code> are compromised and insecure, meaning that the hash value can be used to recover the password.</p>
+<p>Obviously, the main feature of cryptographic hash functions is their irreversibility, which is strongly dependent on the actual algorithm used to create the hash value. Making and breaking hash functions is an active area of research which has revealed many vulnerabilities and lead to some hashing algorithms being insecure. The algorithm used in the examples above is called “SHA-256” and is considered secure as of today (12.04.2022). Other popular algorithms such as <code>MD5</code>or the algorithms used for storing Windows XP Passwords <code>LM-Hash</code> and <code>NTLM-Hash</code> are compromised and insecure, meaning that the hash value can be used to recover the password.</p>
 <div id="exercises-5" class="section level3 unnumbered hasAnchor">
 <h3>Exercises<a href="hash-functions.html#exercises-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="gfx/CH00-ExercisesHeader.png" width="100%" style="display: block; margin: auto;" /></p>
