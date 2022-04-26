@@ -1,10 +1,10 @@
 fig:unnamed-chunk-9
 fig:unnamed-chunk-40
 fig:unnamed-chunk-78
-fig:unnamed-chunk-161
-fig:unnamed-chunk-163
-fig:unnamed-chunk-200
-fig:unnamed-chunk-227
+fig:unnamed-chunk-162
+fig:unnamed-chunk-164
+fig:unnamed-chunk-201
+fig:unnamed-chunk-228
 intro
 r-and-the-r-project
 r-system-and-rstudio
