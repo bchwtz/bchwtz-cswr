@@ -273,6 +273,12 @@ The shown example is, of course, arbitrary and the result could have been achiev
 knitr::include_graphics("gfx/CH00-ExercisesHeader.png")
 ```
 
+### From April 26, 2022 {-}
+
+```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
+knitr::include_graphics("exercises/cswr_programming_R_exercises_code_structure.pdf")
+```
+
 <!--
 ### Clever BMI Calculator {-}
 
