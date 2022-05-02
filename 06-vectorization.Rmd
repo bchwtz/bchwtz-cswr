@@ -185,6 +185,94 @@ zu können.
 -->
 
 
+## Parallelization using vectorized functions
+
+A very convenient method of parallelization is by utilizing the `parallel` package that provides parallelized versions of functions from the `*apply`-family. However as it uses a technique called *forking* the usage of these function is limited to operating systems that are based on Unix such as Linux or MacOS. 
+
+```{r}
+library(parallel)
+num.cores <- detectCores()
+num.cores
+```
+
+As you can see this document was generated on a computer with `r detectCores()` computing cores. Depending on the specific processor these may either be real cores or logical cores. The number only differs if a real core can handle two tasks (threads) at once and thus behaves like two actual cores. In the case of my computer the CPU has `r detectCores(logical = F)` real cores. 
+
+```{r}
+regnames <- names(mtcars[,-1])
+regoptions <- rep(list(c(T,F)),length(regnames))
+regselector <- as.matrix(expand.grid(regoptions))
+colnames(regselector) <- regnames
+```
+
+
+```{r}
+modellist <- apply(regselector,1,function(x){as.formula(paste(c("mpg ~ 1", regnames[x]), collapse = " + "))})
+```
+
+```{r}
+system.time(res.sequential <- lapply(modellist, function(f){lm(f,data=mtcars)}))
+system.time(res.parallel <- mclapply(modellist, function(f){lm(f,data=mtcars)},mc.cores=num.cores))
+
+```
+
+
+```{r}
+rsquared.sequential <- sapply(res.sequential, function(x){summary(x)$r.squared})
+rsquared.parallel <- sapply(res.parallel, function(x){summary(x)$r.squared})
+table(rsquared.sequential == rsquared.parallel)
+```
+
+
+```{r}
+summary(rsquared.sequential)
+summary(rsquared.parallel)
+```
+
+
+<!-- ## Parallelization using foreach -->
+
+<!-- ```{r} -->
+<!-- library(foreach) -->
+<!-- library(doParallel) -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- for (idx in 1:3) { -->
+<!--   print(sqrt(idx)) -->
+<!-- } -->
+<!-- ``` -->
+
+
+
+<!-- ```{r} -->
+<!-- library(foreach) -->
+<!-- foreach (i=1:3) %do% { -->
+<!--   sqrt(i) -->
+<!-- } -->
+<!-- ``` -->
+
+
+
+<!-- ```{r} -->
+<!-- registerDoParallel(num.cores) -->
+<!-- system.time({ -->
+<!--   res.dopar <- foreach (idx=1:length(modellist), .combine = c) %dopar% { -->
+<!--     list(lm(modellist[[idx]], data=mtcars)) -->
+<!--   } -->
+<!-- }) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- rsquared.dopar <- sapply(res.dopar, function(x){summary(x)$r.squared}) -->
+<!-- table(rsquared.dopar == rsquared.parallel) -->
+<!-- summary(rsquared.dopar) -->
+<!-- ``` -->
+
+
+
+
+
 ## Exercises {-}
 ```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
 knitr::include_graphics("gfx/CH00-ExercisesHeader.png")
