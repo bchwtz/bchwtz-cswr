@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-04-26" />
+<meta name="date" content="2022-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -270,6 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="vectorized-functions.html"><a href="vectorized-functions.html"><i class="fa fa-check"></i><b>6.2</b> Vectorized Functions</a></li>
 <li class="chapter" data-level="6.3" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.3</b> Technical Background</a></li>
+<li class="chapter" data-level="6.4" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.4</b> Parallelization using vectorized functions</a></li>
 <li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>Applications</b></span></li>
@@ -353,65 +354,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="security" class="section level2 hasAnchor">
 <h2><span class="header-section-number">8.5</span> Security<a href="security.html#security" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>While it should now be already pretty clear that the data in the blockchain is not manipulatable without recalculating all hashes in the chain, we can look at a few examples of what happens when we manipulate information. Considering the discussed principles, we consider two possible manipulation attacks. First one can manipulate the data stored in the blockchain directly. The second approach that we analyze is the case where someone just inserts a block in the chain. We utilize the following two functions that use the hashes to check the integrity of the information of a block and analyze the linkage of the chain.</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="security.html#cb551-1"></a>verifyBlock &lt;-<span class="st"> </span><span class="cf">function</span>(block){</span>
-<span id="cb551-2"><a href="security.html#cb551-2"></a>  rehashedBlock &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(block)</span>
-<span id="cb551-3"><a href="security.html#cb551-3"></a>  validHash &lt;-<span class="st"> </span>rehashedBlock<span class="op">$</span>hash <span class="op">==</span><span class="st"> </span>block<span class="op">$</span>hash</span>
-<span id="cb551-4"><a href="security.html#cb551-4"></a>  <span class="kw">return</span>(validHash)</span>
-<span id="cb551-5"><a href="security.html#cb551-5"></a>}</span>
-<span id="cb551-6"><a href="security.html#cb551-6"></a></span>
-<span id="cb551-7"><a href="security.html#cb551-7"></a>verifyChain &lt;-<span class="st"> </span><span class="cf">function</span>(chain){</span>
-<span id="cb551-8"><a href="security.html#cb551-8"></a>  actualHashes &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>hash))</span>
-<span id="cb551-9"><a href="security.html#cb551-9"></a>  previousHashes &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>previousHash))</span>
-<span id="cb551-10"><a href="security.html#cb551-10"></a>  hashesLinked &lt;-<span class="st"> </span>previousHashes <span class="op">==</span><span class="st"> </span>actualHashes[<span class="op">-</span><span class="kw">length</span>(actualHashes)]</span>
-<span id="cb551-11"><a href="security.html#cb551-11"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">all</span>(hashesLinked)){</span>
-<span id="cb551-12"><a href="security.html#cb551-12"></a>    <span class="kw">message</span>(<span class="st">&quot;The provided chain is not linked at block index &quot;</span>, </span>
-<span id="cb551-13"><a href="security.html#cb551-13"></a>            <span class="kw">which</span>(<span class="op">!</span>hashesLinked),<span class="st">&quot; (link manipulation)!&quot;</span>)</span>
-<span id="cb551-14"><a href="security.html#cb551-14"></a>    <span class="kw">return</span>(<span class="kw">all</span>(hashesLinked))</span>
-<span id="cb551-15"><a href="security.html#cb551-15"></a>  }</span>
-<span id="cb551-16"><a href="security.html#cb551-16"></a>  blockVerification &lt;-<span class="st"> </span><span class="kw">sapply</span>(chain,verifyBlock)</span>
-<span id="cb551-17"><a href="security.html#cb551-17"></a>  validChain &lt;-<span class="st"> </span><span class="kw">all</span>(blockVerification)</span>
-<span id="cb551-18"><a href="security.html#cb551-18"></a>  <span class="cf">if</span> (<span class="kw">any</span>(<span class="op">!</span>blockVerification)){</span>
-<span id="cb551-19"><a href="security.html#cb551-19"></a>    <span class="kw">message</span>(<span class="st">&quot;The chain broke at block index &quot;</span>, </span>
-<span id="cb551-20"><a href="security.html#cb551-20"></a>            <span class="kw">which</span>(<span class="op">!</span>blockVerification),<span class="st">&quot; (block manipulation)!&quot;</span>)</span>
-<span id="cb551-21"><a href="security.html#cb551-21"></a>  }</span>
-<span id="cb551-22"><a href="security.html#cb551-22"></a>  <span class="kw">return</span>(validChain)</span>
-<span id="cb551-23"><a href="security.html#cb551-23"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="security.html#cb552-1"></a><span class="kw">verifyBlock</span>(chain[[<span class="dv">2</span>]])   <span class="co"># Check block 2 of the chain</span></span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="security.html#cb565-1"></a>verifyBlock &lt;-<span class="st"> </span><span class="cf">function</span>(block){</span>
+<span id="cb565-2"><a href="security.html#cb565-2"></a>  rehashedBlock &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(block)</span>
+<span id="cb565-3"><a href="security.html#cb565-3"></a>  validHash &lt;-<span class="st"> </span>rehashedBlock<span class="op">$</span>hash <span class="op">==</span><span class="st"> </span>block<span class="op">$</span>hash</span>
+<span id="cb565-4"><a href="security.html#cb565-4"></a>  <span class="kw">return</span>(validHash)</span>
+<span id="cb565-5"><a href="security.html#cb565-5"></a>}</span>
+<span id="cb565-6"><a href="security.html#cb565-6"></a></span>
+<span id="cb565-7"><a href="security.html#cb565-7"></a>verifyChain &lt;-<span class="st"> </span><span class="cf">function</span>(chain){</span>
+<span id="cb565-8"><a href="security.html#cb565-8"></a>  actualHashes &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>hash))</span>
+<span id="cb565-9"><a href="security.html#cb565-9"></a>  previousHashes &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>previousHash))</span>
+<span id="cb565-10"><a href="security.html#cb565-10"></a>  hashesLinked &lt;-<span class="st"> </span>previousHashes <span class="op">==</span><span class="st"> </span>actualHashes[<span class="op">-</span><span class="kw">length</span>(actualHashes)]</span>
+<span id="cb565-11"><a href="security.html#cb565-11"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">all</span>(hashesLinked)){</span>
+<span id="cb565-12"><a href="security.html#cb565-12"></a>    <span class="kw">message</span>(<span class="st">&quot;The provided chain is not linked at block index &quot;</span>, </span>
+<span id="cb565-13"><a href="security.html#cb565-13"></a>            <span class="kw">which</span>(<span class="op">!</span>hashesLinked),<span class="st">&quot; (link manipulation)!&quot;</span>)</span>
+<span id="cb565-14"><a href="security.html#cb565-14"></a>    <span class="kw">return</span>(<span class="kw">all</span>(hashesLinked))</span>
+<span id="cb565-15"><a href="security.html#cb565-15"></a>  }</span>
+<span id="cb565-16"><a href="security.html#cb565-16"></a>  blockVerification &lt;-<span class="st"> </span><span class="kw">sapply</span>(chain,verifyBlock)</span>
+<span id="cb565-17"><a href="security.html#cb565-17"></a>  validChain &lt;-<span class="st"> </span><span class="kw">all</span>(blockVerification)</span>
+<span id="cb565-18"><a href="security.html#cb565-18"></a>  <span class="cf">if</span> (<span class="kw">any</span>(<span class="op">!</span>blockVerification)){</span>
+<span id="cb565-19"><a href="security.html#cb565-19"></a>    <span class="kw">message</span>(<span class="st">&quot;The chain broke at block index &quot;</span>, </span>
+<span id="cb565-20"><a href="security.html#cb565-20"></a>            <span class="kw">which</span>(<span class="op">!</span>blockVerification),<span class="st">&quot; (block manipulation)!&quot;</span>)</span>
+<span id="cb565-21"><a href="security.html#cb565-21"></a>  }</span>
+<span id="cb565-22"><a href="security.html#cb565-22"></a>  <span class="kw">return</span>(validChain)</span>
+<span id="cb565-23"><a href="security.html#cb565-23"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="security.html#cb566-1"></a><span class="kw">verifyBlock</span>(chain[[<span class="dv">2</span>]])   <span class="co"># Check block 2 of the chain</span></span></code></pre></div>
 <pre><code>#R&gt; [1] TRUE</code></pre>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="security.html#cb554-1"></a><span class="kw">verifyChain</span>(chain)        <span class="co"># Check the entire chain</span></span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="security.html#cb568-1"></a><span class="kw">verifyChain</span>(chain)        <span class="co"># Check the entire chain</span></span></code></pre></div>
 <pre><code>#R&gt; [1] TRUE</code></pre>
 <div id="manipulation-1" class="section level3 unnumbered hasAnchor">
 <h3>Manipulation 1<a href="security.html#manipulation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As the entire information of the blockchain is freely available on the internet and everybody can download it, everybody can try to manipulate it as well.</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="security.html#cb556-1"></a><span class="co"># Manipulate amount for first transaction in block 2</span></span>
-<span id="cb556-2"><a href="security.html#cb556-2"></a>evilchain &lt;-<span class="st"> </span>chain</span>
-<span id="cb556-3"><a href="security.html#cb556-3"></a>evilchain[[<span class="dv">2</span>]]<span class="op">$</span>data<span class="op">$</span>Amount[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">9999</span> </span>
-<span id="cb556-4"><a href="security.html#cb556-4"></a></span>
-<span id="cb556-5"><a href="security.html#cb556-5"></a><span class="kw">verifyBlock</span>(evilchain[[<span class="dv">2</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="security.html#cb570-1"></a><span class="co"># Manipulate amount for first transaction in block 2</span></span>
+<span id="cb570-2"><a href="security.html#cb570-2"></a>evilchain &lt;-<span class="st"> </span>chain</span>
+<span id="cb570-3"><a href="security.html#cb570-3"></a>evilchain[[<span class="dv">2</span>]]<span class="op">$</span>data<span class="op">$</span>Amount[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">9999</span> </span>
+<span id="cb570-4"><a href="security.html#cb570-4"></a></span>
+<span id="cb570-5"><a href="security.html#cb570-5"></a><span class="kw">verifyBlock</span>(evilchain[[<span class="dv">2</span>]])</span></code></pre></div>
 <pre><code>#R&gt; [1] FALSE</code></pre>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="security.html#cb558-1"></a><span class="kw">verifyChain</span>(evilchain)</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="security.html#cb572-1"></a><span class="kw">verifyChain</span>(evilchain)</span></code></pre></div>
 <pre><code>#R&gt; The chain broke at block index 2 (block manipulation)!</code></pre>
 <pre><code>#R&gt; [1] FALSE</code></pre>
 </div>
 <div id="manipulation-2" class="section level3 unnumbered hasAnchor">
 <h3>Manipulation 2<a href="security.html#manipulation-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let us now inject a block that contains transactional data to steal money.</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="security.html#cb561-1"></a>evilBlock &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(</span>
-<span id="cb561-2"><a href="security.html#cb561-2"></a>  <span class="dt">index =</span> <span class="dv">2</span>,</span>
-<span id="cb561-3"><a href="security.html#cb561-3"></a>  <span class="dt">timestamp =</span> <span class="kw">Sys.time</span>(),</span>
-<span id="cb561-4"><a href="security.html#cb561-4"></a>  <span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">Sender=</span><span class="st">&quot;Everyone&quot;</span>, <span class="dt">Receiver=</span><span class="st">&quot;Me!&quot;</span>, <span class="dt">Amount=</span><span class="dv">5</span>),</span>
-<span id="cb561-5"><a href="security.html#cb561-5"></a>  <span class="dt">previousHash =</span> chain[[<span class="dv">1</span>]]<span class="op">$</span>hash,</span>
-<span id="cb561-6"><a href="security.html#cb561-6"></a>  <span class="dt">difficulty =</span> <span class="dv">0</span>,</span>
-<span id="cb561-7"><a href="security.html#cb561-7"></a>  <span class="dt">nonce =</span> <span class="dv">1</span>,</span>
-<span id="cb561-8"><a href="security.html#cb561-8"></a>  <span class="dt">hash =</span> <span class="ot">NULL</span>),<span class="dt">class=</span><span class="kw">c</span>(<span class="st">&quot;block&quot;</span>,<span class="st">&quot;list&quot;</span>))</span>
-<span id="cb561-9"><a href="security.html#cb561-9"></a></span>
-<span id="cb561-10"><a href="security.html#cb561-10"></a>evilBlockHashed &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(evilBlock)</span>
-<span id="cb561-11"><a href="security.html#cb561-11"></a></span>
-<span id="cb561-12"><a href="security.html#cb561-12"></a>evilchain &lt;-<span class="st"> </span><span class="kw">c</span>(chain[<span class="dv">1</span>],<span class="kw">list</span>(evilBlockHashed),chain[<span class="dv">3</span>]) <span class="co"># Substitute block 2</span></span>
-<span id="cb561-13"><a href="security.html#cb561-13"></a></span>
-<span id="cb561-14"><a href="security.html#cb561-14"></a><span class="kw">verifyBlock</span>(evilchain[[<span class="dv">2</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="security.html#cb575-1"></a>evilBlock &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(</span>
+<span id="cb575-2"><a href="security.html#cb575-2"></a>  <span class="dt">index =</span> <span class="dv">2</span>,</span>
+<span id="cb575-3"><a href="security.html#cb575-3"></a>  <span class="dt">timestamp =</span> <span class="kw">Sys.time</span>(),</span>
+<span id="cb575-4"><a href="security.html#cb575-4"></a>  <span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">Sender=</span><span class="st">&quot;Everyone&quot;</span>, <span class="dt">Receiver=</span><span class="st">&quot;Me!&quot;</span>, <span class="dt">Amount=</span><span class="dv">5</span>),</span>
+<span id="cb575-5"><a href="security.html#cb575-5"></a>  <span class="dt">previousHash =</span> chain[[<span class="dv">1</span>]]<span class="op">$</span>hash,</span>
+<span id="cb575-6"><a href="security.html#cb575-6"></a>  <span class="dt">difficulty =</span> <span class="dv">0</span>,</span>
+<span id="cb575-7"><a href="security.html#cb575-7"></a>  <span class="dt">nonce =</span> <span class="dv">1</span>,</span>
+<span id="cb575-8"><a href="security.html#cb575-8"></a>  <span class="dt">hash =</span> <span class="ot">NULL</span>),<span class="dt">class=</span><span class="kw">c</span>(<span class="st">&quot;block&quot;</span>,<span class="st">&quot;list&quot;</span>))</span>
+<span id="cb575-9"><a href="security.html#cb575-9"></a></span>
+<span id="cb575-10"><a href="security.html#cb575-10"></a>evilBlockHashed &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(evilBlock)</span>
+<span id="cb575-11"><a href="security.html#cb575-11"></a></span>
+<span id="cb575-12"><a href="security.html#cb575-12"></a>evilchain &lt;-<span class="st"> </span><span class="kw">c</span>(chain[<span class="dv">1</span>],<span class="kw">list</span>(evilBlockHashed),chain[<span class="dv">3</span>]) <span class="co"># Substitute block 2</span></span>
+<span id="cb575-13"><a href="security.html#cb575-13"></a></span>
+<span id="cb575-14"><a href="security.html#cb575-14"></a><span class="kw">verifyBlock</span>(evilchain[[<span class="dv">2</span>]])</span></code></pre></div>
 <pre><code>#R&gt; [1] TRUE</code></pre>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="security.html#cb563-1"></a><span class="kw">verifyChain</span>(evilchain)</span></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="security.html#cb577-1"></a><span class="kw">verifyChain</span>(evilchain)</span></code></pre></div>
 <pre><code>#R&gt; The provided chain is not linked at block index 2 (link manipulation)!</code></pre>
 <pre><code>#R&gt; [1] FALSE</code></pre>
 <p>These examples hopefully help to clarify why the blockchain cannot be easily manipulated. Additionally to the already discussed measures, the blockchain is shared over a network. While it would be easy to manipulate a blockchain and recreate the linkage by re-hashing every block, this disregards the other participants in the system. When a new block is required, the necessary information is sent out to the network and every single participant. Everybody interested in participating can now try to solve the proof of work that is similar to the algorithm we implemented. The process of “finding” a new block by solving the computational puzzle is actually called mining and the goal in case of bitcoin is to generate one new block every 10 minutes (600 seconds). The participant who first solves the puzzle and submits a correct solution to the network is rewarded with bitcoins. Mining new blocks, therefore, creates new bitcoins. New blocks are sent out to all nodes in the network so that everyone has an up to date copy of the blockchain and can verify the results himself. This ensures that the power to create new blocks and bitcoins is and stays decentralized. While there are some more aspects regarding the security of the chain that deal with special properties of and attacks tailored to the network these techniques often exploit imbalances of the distribution of computing power in the network and are not discussed further.</p>

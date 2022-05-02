@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-04-26" />
+<meta name="date" content="2022-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -270,6 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="vectorized-functions.html"><a href="vectorized-functions.html"><i class="fa fa-check"></i><b>6.2</b> Vectorized Functions</a></li>
 <li class="chapter" data-level="6.3" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.3</b> Technical Background</a></li>
+<li class="chapter" data-level="6.4" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.4</b> Parallelization using vectorized functions</a></li>
 <li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>Applications</b></span></li>
@@ -398,8 +399,8 @@ microbenchmark(fun.switch('case1'), fun.if('case1'), times=1e3)
 ```
 #R> Unit: nanoseconds
 #R>                 expr min  lq     mean median  uq     max neval
-#R>  fun.switch("case1") 339 356 2351.309    388 403 1926571  1000
-#R>      fun.if("case1") 455 483 4452.304    493 505 3935055  1000
+#R>  fun.switch("case1") 403 427 2836.733    462 478 2370521  1000
+#R>      fun.if("case1") 551 583 5257.992    593 609 4628176  1000
 ```
 
 ```r
@@ -408,9 +409,9 @@ microbenchmark(fun.switch('case3'), fun.if('case3'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min  lq    mean median  uq   max neval
-#R>  fun.switch("case3") 360 385 459.194    422 437 13402  1000
-#R>      fun.if("case3") 690 724 790.419    734 752 12729  1000
+#R>                 expr min  lq    mean median  uq  max neval
+#R>  fun.switch("case3") 432 466 535.954    512 529 3738  1000
+#R>      fun.if("case3") 827 870 957.884    887 925 8368  1000
 ```
 
 

@@ -3,8 +3,8 @@ fig:unnamed-chunk-40
 fig:unnamed-chunk-78
 fig:unnamed-chunk-162
 fig:unnamed-chunk-164
-fig:unnamed-chunk-201
-fig:unnamed-chunk-228
+fig:unnamed-chunk-207
+fig:unnamed-chunk-234
 intro
 r-and-the-r-project
 r-system-and-rstudio
@@ -66,6 +66,7 @@ vectorization
 apply-family
 vectorized-functions
 technical-background
+parallelization-using-vectorized-functions
 word-puzzle
 requirements
 solution

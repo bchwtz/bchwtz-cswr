@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-04-26" />
+<meta name="date" content="2022-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -270,6 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="vectorized-functions.html"><a href="vectorized-functions.html"><i class="fa fa-check"></i><b>6.2</b> Vectorized Functions</a></li>
 <li class="chapter" data-level="6.3" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.3</b> Technical Background</a></li>
+<li class="chapter" data-level="6.4" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.4</b> Parallelization using vectorized functions</a></li>
 <li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>Applications</b></span></li>
@@ -353,13 +354,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="practical-application" class="section level2 hasAnchor">
 <h2><span class="header-section-number">9.6</span> Practical Application<a href="practical-application.html#practical-application" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We already looked at some real data and talked about the forecast objective and the respective problem definition (Step 1). By Scraping the data from the web we also completed the information gathering phase (Step 2) and conducted a short explanatory analysis by plotting the data (Step 3), discussing potential trends and looking at day-to-day subscriber changes. This leaves two remaining steps of the forecasting process for the practical application, namely Configure and Estimate Models (Step 4) and Generate and Evaluate Forecasts (Step 5).</p>
-<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="practical-application.html#cb587-1"></a>firstforecastdate &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2019-06-04&quot;</span>) <span class="co"># Date of the last lecture</span></span>
-<span id="cb587-2"><a href="practical-application.html#cb587-2"></a></span>
-<span id="cb587-3"><a href="practical-application.html#cb587-3"></a>bibi.train &lt;-<span class="st"> </span>bibi.subs[bibi.subs<span class="op">$</span>date <span class="op">&lt;</span><span class="st"> </span>firstforecastdate, ]</span>
-<span id="cb587-4"><a href="practical-application.html#cb587-4"></a>bibi.test &lt;-<span class="st"> </span>bibi.subs[bibi.subs<span class="op">$</span>date <span class="op">&gt;=</span><span class="st"> </span>firstforecastdate, ]</span>
-<span id="cb587-5"><a href="practical-application.html#cb587-5"></a></span>
-<span id="cb587-6"><a href="practical-application.html#cb587-6"></a>tseries.train &lt;-<span class="st"> </span>tseries.subs[tseries.subs<span class="op">$</span>date <span class="op">&lt;</span><span class="st"> </span>firstforecastdate, ]</span>
-<span id="cb587-7"><a href="practical-application.html#cb587-7"></a>tseries.test &lt;-<span class="st"> </span>tseries.subs[tseries.subs<span class="op">$</span>date <span class="op">&gt;=</span><span class="st"> </span>firstforecastdate, ]</span></code></pre></div>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="practical-application.html#cb601-1"></a>firstforecastdate &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2019-06-04&quot;</span>) <span class="co"># Date of the last lecture</span></span>
+<span id="cb601-2"><a href="practical-application.html#cb601-2"></a></span>
+<span id="cb601-3"><a href="practical-application.html#cb601-3"></a>bibi.train &lt;-<span class="st"> </span>bibi.subs[bibi.subs<span class="op">$</span>date <span class="op">&lt;</span><span class="st"> </span>firstforecastdate, ]</span>
+<span id="cb601-4"><a href="practical-application.html#cb601-4"></a>bibi.test &lt;-<span class="st"> </span>bibi.subs[bibi.subs<span class="op">$</span>date <span class="op">&gt;=</span><span class="st"> </span>firstforecastdate, ]</span>
+<span id="cb601-5"><a href="practical-application.html#cb601-5"></a></span>
+<span id="cb601-6"><a href="practical-application.html#cb601-6"></a>tseries.train &lt;-<span class="st"> </span>tseries.subs[tseries.subs<span class="op">$</span>date <span class="op">&lt;</span><span class="st"> </span>firstforecastdate, ]</span>
+<span id="cb601-7"><a href="practical-application.html#cb601-7"></a>tseries.test &lt;-<span class="st"> </span>tseries.subs[tseries.subs<span class="op">$</span>date <span class="op">&gt;=</span><span class="st"> </span>firstforecastdate, ]</span></code></pre></div>
 <p>Before we proceed and actually produce forecasts that then can be evaluated, we split the sample into two portions, a training set, and a test set. The training set is used to perform the modeling and estimate parameters and the test set contains data that we want to forecast and puts it aside for the evaluation. You can interpret the value of the <code>firstforecastdate</code> as the first value after a <em>simulated or pretended</em> forecast origin.</p>
 
 <div class="rmdexcercise">
@@ -367,26 +368,26 @@ Calculate H=8 forecasts for the youtube subscriber data using only the observati
 </div>
 
 <p>The actual forecast generation can now easily be performed in three distinctive steps. First, the time series needs to be constructed based on the downloaded subscriber data. Afterward, the best parameters for the exponential smoothing model can be determined (<strong>Tip:</strong> Increase the resolution to <code>100</code> or <code>1000</code> when estimating the parameters on your notebook). Finally, the eight step-ahead forecasts can be generated using the estimated parameters.</p>
-<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="practical-application.html#cb588-1"></a><span class="co"># Load the data and convert to time series</span></span>
-<span id="cb588-2"><a href="practical-application.html#cb588-2"></a>yt &lt;-<span class="st"> </span><span class="kw">ts</span>(bibi.train<span class="op">$</span>TotalSubscribers)</span>
-<span id="cb588-3"><a href="practical-application.html#cb588-3"></a></span>
-<span id="cb588-4"><a href="practical-application.html#cb588-4"></a><span class="co"># Find Parameters and mode data</span></span>
-<span id="cb588-5"><a href="practical-application.html#cb588-5"></a>params &lt;-<span class="st"> </span><span class="kw">hesGridSearch</span>(yt, <span class="dt">resolution=</span><span class="dv">10</span>)</span>
-<span id="cb588-6"><a href="practical-application.html#cb588-6"></a>mod &lt;-<span class="st"> </span><span class="kw">holtExponentialSmoothing</span>(<span class="dt">yt=</span>yt,<span class="dt">alpha=</span>params[<span class="dv">1</span>], <span class="dt">gamma=</span>params[<span class="dv">2</span>])</span>
-<span id="cb588-7"><a href="practical-application.html#cb588-7"></a></span>
-<span id="cb588-8"><a href="practical-application.html#cb588-8"></a><span class="co"># Calculate the Forecasts</span></span>
-<span id="cb588-9"><a href="practical-application.html#cb588-9"></a>H &lt;-<span class="st"> </span><span class="dv">8</span> </span>
-<span id="cb588-10"><a href="practical-application.html#cb588-10"></a>fc &lt;-<span class="st"> </span><span class="kw">forecastHES</span>(mod, <span class="dt">H=</span>H)</span>
-<span id="cb588-11"><a href="practical-application.html#cb588-11"></a>fc</span></code></pre></div>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="practical-application.html#cb602-1"></a><span class="co"># Load the data and convert to time series</span></span>
+<span id="cb602-2"><a href="practical-application.html#cb602-2"></a>yt &lt;-<span class="st"> </span><span class="kw">ts</span>(bibi.train<span class="op">$</span>TotalSubscribers)</span>
+<span id="cb602-3"><a href="practical-application.html#cb602-3"></a></span>
+<span id="cb602-4"><a href="practical-application.html#cb602-4"></a><span class="co"># Find Parameters and mode data</span></span>
+<span id="cb602-5"><a href="practical-application.html#cb602-5"></a>params &lt;-<span class="st"> </span><span class="kw">hesGridSearch</span>(yt, <span class="dt">resolution=</span><span class="dv">10</span>)</span>
+<span id="cb602-6"><a href="practical-application.html#cb602-6"></a>mod &lt;-<span class="st"> </span><span class="kw">holtExponentialSmoothing</span>(<span class="dt">yt=</span>yt,<span class="dt">alpha=</span>params[<span class="dv">1</span>], <span class="dt">gamma=</span>params[<span class="dv">2</span>])</span>
+<span id="cb602-7"><a href="practical-application.html#cb602-7"></a></span>
+<span id="cb602-8"><a href="practical-application.html#cb602-8"></a><span class="co"># Calculate the Forecasts</span></span>
+<span id="cb602-9"><a href="practical-application.html#cb602-9"></a>H &lt;-<span class="st"> </span><span class="dv">8</span> </span>
+<span id="cb602-10"><a href="practical-application.html#cb602-10"></a>fc &lt;-<span class="st"> </span><span class="kw">forecastHES</span>(mod, <span class="dt">H=</span>H)</span>
+<span id="cb602-11"><a href="practical-application.html#cb602-11"></a>fc</span></code></pre></div>
 <pre><code>#R&gt; Time Series:
 #R&gt; Start = 1075 
 #R&gt; End = 1082 
 #R&gt; Frequency = 1 
 #R&gt; [1] 5644250 5644680 5645110 5645539 5645969 5646399 5646829 5647259</code></pre>
 <p>The following plot based on the daily subscriber changes shows that the model fits the data fairly well. The black line and circles show the observed subscriber changes, while the red line shows how good the model with the best parameters, determined by grid search replicate the time series.</p>
-<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="practical-application.html#cb590-1"></a><span class="kw">plot</span>(<span class="kw">diff</span>(mod<span class="op">$</span>yt),<span class="dt">type=</span><span class="st">&quot;b&quot;</span>)</span>
-<span id="cb590-2"><a href="practical-application.html#cb590-2"></a><span class="kw">lines</span>(<span class="kw">diff</span>(mod<span class="op">$</span>fitted),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-246-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="practical-application.html#cb604-1"></a><span class="kw">plot</span>(<span class="kw">diff</span>(mod<span class="op">$</span>yt),<span class="dt">type=</span><span class="st">&quot;b&quot;</span>)</span>
+<span id="cb604-2"><a href="practical-application.html#cb604-2"></a><span class="kw">lines</span>(<span class="kw">diff</span>(mod<span class="op">$</span>fitted),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-252-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

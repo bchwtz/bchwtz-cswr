@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Exercises | Computational Statistics</title>
-  <meta name="description" content="Exercises | Computational Statistics with R Course Notes" />
+  <title>6.4 Parallelization using vectorized functions | Computational Statistics</title>
+  <meta name="description" content="6.4 Parallelization using vectorized functions | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Exercises | Computational Statistics" />
+  <meta property="og:title" content="6.4 Parallelization using vectorized functions | Computational Statistics" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Exercises | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="6.4 Parallelization using vectorized functions | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Exercises | Computational Statistics" />
+  <meta name="twitter:title" content="6.4 Parallelization using vectorized functions | Computational Statistics" />
   
-  <meta name="twitter:description" content="Exercises | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="6.4 Parallelization using vectorized functions | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="parallelization-using-vectorized-functions.html"/>
-<link rel="next" href="word-puzzle.html"/>
+<link rel="prev" href="technical-background.html"/>
+<link rel="next" href="exercises-4.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -351,38 +351,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exercises-4" class="section level2 unnumbered hasAnchor">
-<h2>Exercises<a href="exercises-4.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><img src="gfx/CH00-ExercisesHeader.png" width="100%" style="display: block; margin: auto;" /></p>
-<!--
-For example, in the mtcars dataset:
-
-
-```r
-library(datasets)
-tapply(mtcars$wt, mtcars$cyl, mean)
-```
-
-```
-#R>        4        6        8 
-#R> 2.285727 3.117143 3.999214
-```
-The tapply function first groups the cars together based on the number of cylinders they have, and then calculates the mean weight for each group.
--->
-
-</div>
-<!-- </div> -->
-
-
-
+<div id="parallelization-using-vectorized-functions" class="section level2 hasAnchor">
+<h2><span class="header-section-number">6.4</span> Parallelization using vectorized functions<a href="parallelization-using-vectorized-functions.html#parallelization-using-vectorized-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A very convenient method of parallelization is by utilizing the <code>parallel</code> package that provides parallelized versions of functions from the <code>*apply</code>-family. However as it uses a technique called <em>forking</em> the usage of these function is limited to operating systems that are based on Unix such as Linux or MacOS.</p>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="parallelization-using-vectorized-functions.html#cb515-1"></a><span class="kw">library</span>(parallel)</span>
+<span id="cb515-2"><a href="parallelization-using-vectorized-functions.html#cb515-2"></a>num.cores &lt;-<span class="st"> </span><span class="kw">detectCores</span>()</span>
+<span id="cb515-3"><a href="parallelization-using-vectorized-functions.html#cb515-3"></a>num.cores</span></code></pre></div>
+<pre><code>#R&gt; [1] 3</code></pre>
+<p>As you can see this document was generated on a computer with 3 computing cores. Depending on the specific processor these may either be real cores or logical cores. The number only differs if a real core can handle two tasks (threads) at once and thus behaves like two actual cores. In the case of my computer the CPU has 3 real cores.</p>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="parallelization-using-vectorized-functions.html#cb517-1"></a>regnames &lt;-<span class="st"> </span><span class="kw">names</span>(mtcars[,<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb517-2"><a href="parallelization-using-vectorized-functions.html#cb517-2"></a>regoptions &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">list</span>(<span class="kw">c</span>(T,F)),<span class="kw">length</span>(regnames))</span>
+<span id="cb517-3"><a href="parallelization-using-vectorized-functions.html#cb517-3"></a>regselector &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">expand.grid</span>(regoptions))</span>
+<span id="cb517-4"><a href="parallelization-using-vectorized-functions.html#cb517-4"></a><span class="kw">colnames</span>(regselector) &lt;-<span class="st"> </span>regnames</span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="parallelization-using-vectorized-functions.html#cb518-1"></a>modellist &lt;-<span class="st"> </span><span class="kw">apply</span>(regselector,<span class="dv">1</span>,<span class="cf">function</span>(x){<span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">&quot;mpg ~ 1&quot;</span>, regnames[x]), <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>))})</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="parallelization-using-vectorized-functions.html#cb519-1"></a><span class="kw">system.time</span>(res.sequential &lt;-<span class="st"> </span><span class="kw">lapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)}))</span></code></pre></div>
+<pre><code>#R&gt;    user  system elapsed 
+#R&gt;   1.611   0.032   1.649</code></pre>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="parallelization-using-vectorized-functions.html#cb521-1"></a><span class="kw">system.time</span>(res.parallel &lt;-<span class="st"> </span><span class="kw">mclapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)},<span class="dt">mc.cores=</span>num.cores))</span></code></pre></div>
+<pre><code>#R&gt;    user  system elapsed 
+#R&gt;   0.743   0.199   1.067</code></pre>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="parallelization-using-vectorized-functions.html#cb523-1"></a>rsquared.sequential &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.sequential, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
+<span id="cb523-2"><a href="parallelization-using-vectorized-functions.html#cb523-2"></a>rsquared.parallel &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.parallel, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
+<span id="cb523-3"><a href="parallelization-using-vectorized-functions.html#cb523-3"></a><span class="kw">table</span>(rsquared.sequential <span class="op">==</span><span class="st"> </span>rsquared.parallel)</span></code></pre></div>
+<pre><code>#R&gt; 
+#R&gt; TRUE 
+#R&gt; 1024</code></pre>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="parallelization-using-vectorized-functions.html#cb525-1"></a><span class="kw">summary</span>(rsquared.sequential)</span></code></pre></div>
+<pre><code>#R&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#R&gt;  0.0000  0.7899  0.8325  0.8106  0.8499  0.8690</code></pre>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="parallelization-using-vectorized-functions.html#cb527-1"></a><span class="kw">summary</span>(rsquared.parallel)</span></code></pre></div>
+<pre><code>#R&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#R&gt;  0.0000  0.7899  0.8325  0.8106  0.8499  0.8690</code></pre>
+<!-- ## Parallelization using foreach -->
+<!-- ```{r} -->
+<!-- library(foreach) -->
+<!-- library(doParallel) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- for (idx in 1:3) { -->
+<!--   print(sqrt(idx)) -->
+<!-- } -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- library(foreach) -->
+<!-- foreach (i=1:3) %do% { -->
+<!--   sqrt(i) -->
+<!-- } -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- registerDoParallel(num.cores) -->
+<!-- system.time({ -->
+<!--   res.dopar <- foreach (idx=1:length(modellist), .combine = c) %dopar% { -->
+<!--     list(lm(modellist[[idx]], data=mtcars)) -->
+<!--   } -->
+<!-- }) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- rsquared.dopar <- sapply(res.dopar, function(x){summary(x)$r.squared}) -->
+<!-- table(rsquared.dopar == rsquared.parallel) -->
+<!-- summary(rsquared.dopar) -->
+<!-- ``` -->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="parallelization-using-vectorized-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="word-puzzle.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="technical-background.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
