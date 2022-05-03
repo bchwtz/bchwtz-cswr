@@ -255,7 +255,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.2" data-path="documenting.html"><a href="documenting.html#user-documentation-long-form-documentation"><i class="fa fa-check"></i><b>5.3.2</b> User documentation (Long-form Documentation)</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>5.4</b> Testing</a></li>
-<li class="chapter" data-level="5.5" data-path="maintaining.html"><a href="maintaining.html"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a></li>
+<li class="chapter" data-level="5.5" data-path="maintaining.html"><a href="maintaining.html"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a><ul>
+<li class="chapter" data-level="" data-path="maintaining.html"><a href="maintaining.html#from-may-3-2022"><i class="fa fa-check"></i>From May 3, 2022</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="vectorization.html"><a href="vectorization.html"><i class="fa fa-check"></i><b>6</b> Vectorization</a><ul>
 <li class="chapter" data-level="6.1" data-path="apply-family.html"><a href="apply-family.html"><i class="fa fa-check"></i><b>6.1</b> *apply-Family</a><ul>
@@ -534,7 +536,7 @@ base::eapply    Apply a Function Over Values in an Environment</code></pre>
 <span id="cb520-8"><a href="apply-family.html#cb520-8"></a>       <span class="cf">function</span>(x,y){<span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">rep</span>(x,<span class="kw">length</span>(y[,x])),</span>
 <span id="cb520-9"><a href="apply-family.html#cb520-9"></a>                            <span class="dt">y =</span> y[,x])}, </span>
 <span id="cb520-10"><a href="apply-family.html#cb520-10"></a>       <span class="dt">y =</span> y)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-189-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-190-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><code>mapply</code>can be used to behave like nested <code>for</code> loops as the iterators can simply be anticipated and all iterator combinatinos can be generated in advance, e.g. with <code>expand.grid</code>. The following code shows how to iterate over all cells of a $5 10 $ matrix using <code>mapply</code>.</p>
 <div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="apply-family.html#cb521-1"></a>nrow &lt;-<span class="st"> </span><span class="dv">5</span></span>
 <span id="cb521-2"><a href="apply-family.html#cb521-2"></a>ncol &lt;-<span class="st"> </span><span class="dv">10</span></span>

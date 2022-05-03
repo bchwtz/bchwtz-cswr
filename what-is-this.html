@@ -255,7 +255,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3.2" data-path="documenting.html"><a href="documenting.html#user-documentation-long-form-documentation"><i class="fa fa-check"></i><b>5.3.2</b> User documentation (Long-form Documentation)</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>5.4</b> Testing</a></li>
-<li class="chapter" data-level="5.5" data-path="maintaining.html"><a href="maintaining.html"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a></li>
+<li class="chapter" data-level="5.5" data-path="maintaining.html"><a href="maintaining.html"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a><ul>
+<li class="chapter" data-level="" data-path="maintaining.html"><a href="maintaining.html#from-may-3-2022"><i class="fa fa-check"></i>From May 3, 2022</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="vectorization.html"><a href="vectorization.html"><i class="fa fa-check"></i><b>6</b> Vectorization</a><ul>
 <li class="chapter" data-level="6.1" data-path="apply-family.html"><a href="apply-family.html"><i class="fa fa-check"></i><b>6.1</b> *apply-Family</a><ul>
@@ -398,8 +400,8 @@ microbenchmark(fun.switch('case1'), fun.if('case1'), times=1e3)
 ```
 #R> Unit: nanoseconds
 #R>                 expr min  lq     mean median  uq     max neval
-#R>  fun.switch("case1") 325 347 2263.943    376 389 1874124  1000
-#R>      fun.if("case1") 448 476 4364.846    485 495 3861413  1000
+#R>  fun.switch("case1") 336 359 2357.022    394 414 1916781  1000
+#R>      fun.if("case1") 464 489 4800.026    501 537 4228293  1000
 ```
 
 ```r
@@ -409,8 +411,8 @@ microbenchmark(fun.switch('case3'), fun.if('case3'), times=1e3)
 ```
 #R> Unit: nanoseconds
 #R>                 expr min  lq    mean median  uq   max neval
-#R>  fun.switch("case3") 362 387 433.580    423 435  2983  1000
-#R>      fun.if("case3") 700 726 799.382    737 761 15285  1000
+#R>  fun.switch("case3") 370 398 443.908    431 445  4015  1000
+#R>      fun.if("case3") 688 724 776.021    735 749 17119  1000
 ```
 
 
