@@ -342,6 +342,19 @@ Software systems evolve and need adaptation as well as fixes to continuously del
 
 The key software maintenance issues are both managerial and technical ones. Usually, maintenance tasks include error fixing, capabilities extensions, removing obsolete capabilities, and process or functionality optimizations. Productive software requires strict versioning to allow users as well as developers to keep track of the changes. While simple programs that are being written for simple analyses or software that implements research prototypes often only require a single "release", this is obviously different for business and professional applications. Naturally, maintenance in a research context is not that intensively discussed, and as this is an introductory course we abstain from further explanations here. However, maintaining the value a software delivers has to be kept in mind for bigger and continuous projects.
 
+### From May 3, 2022 {-}
+
+```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
+knitr::include_graphics("exercises/cswr_programming_R_exercises_software_development.pdf")
+```
+
+| Description | R script | 
+| :---: | :--------:   | 
+| main program | [main_program_aus_tourism](exercises/aus_tourism/main_program_aus_tourism.R)    |
+| function `selectedData()` | [selectedData](exercises/aus_tourism/selectedData.R) |
+| function `plotTs()` | [plotTs](exercises/aus_tourism/plotTs.R) |
+| function `summarizeRegion()`   |  [summarizeRegion](exercises/aus_tourism/summarizeRegion.R) |
+
 <!-- 
 ## Software Engineering
 ## Licensing
