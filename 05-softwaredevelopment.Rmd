@@ -353,6 +353,8 @@ knitr::include_graphics("gfx/CH00-ExercisesHeader.png")
 knitr::include_graphics("exercises/cswr_programming_R_exercises_software_development.pdf")
 ```
 
+
+
 | Description | R script | 
 | :---: | :--------:   | 
 | main program | [main_program_aus_tourism](exercises/aus_tourism/main_program_aus_tourism.R)    |
