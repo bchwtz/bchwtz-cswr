@@ -4,33 +4,33 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6.3 Technical Background | Computational Statistics</title>
-  <meta name="description" content="6.3 Technical Background | Computational Statistics with R Course Notes" />
+  <title>6.2 Technical Background | Computational Statistics</title>
+  <meta name="description" content="6.2 Technical Background | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.3 Technical Background | Computational Statistics" />
+  <meta property="og:title" content="6.2 Technical Background | Computational Statistics" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="6.3 Technical Background | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="6.2 Technical Background | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.3 Technical Background | Computational Statistics" />
+  <meta name="twitter:title" content="6.2 Technical Background | Computational Statistics" />
   
-  <meta name="twitter:description" content="6.3 Technical Background | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="6.2 Technical Background | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-05-02" />
+<meta name="date" content="2022-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="vectorized-functions.html"/>
+<link rel="prev" href="apply-family.html"/>
 <link rel="next" href="parallelization-using-vectorized-functions.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -268,9 +268,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#rapply"><i class="fa fa-check"></i>rapply</a></li>
 <li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#eapply"><i class="fa fa-check"></i>eapply</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="vectorized-functions.html"><a href="vectorized-functions.html"><i class="fa fa-check"></i><b>6.2</b> Vectorized Functions</a></li>
-<li class="chapter" data-level="6.3" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.3</b> Technical Background</a></li>
-<li class="chapter" data-level="6.4" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.4</b> Parallelization using vectorized functions</a></li>
+<li class="chapter" data-level="6.2" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.2</b> Technical Background</a></li>
+<li class="chapter" data-level="6.3" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.3</b> Parallelization using vectorized functions</a></li>
 <li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>Applications</b></span></li>
@@ -352,26 +351,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="technical-background" class="section level2 hasAnchor">
-<h2><span class="header-section-number">6.3</span> Technical Background<a href="technical-background.html#technical-background" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<!--
-The paradigm of vectorization is closedly linked to functional programming...
-https://www.r-bloggers.com/vectorization-in-r-why/
-
-Die Funktionalität dieser funktional-applikativen Abbildungsfunktionen wird mittlerweile
-im Rahmen des ‘Tidyverse’ zwar auch durch die im Paket purrr sehr umfangreich und vielfältig implementierten
-Abbildungs- und Kumulationsfunktionen (u.a. durch die map_*-Familie) implementiert. Da
-diese Funktionen jedoch noch nicht häufig verwendet werden, beschränkt sich diese Kurseinheit auf die in
-(ebd.) primär benutzten R-Basis-Funktionen apply, lappy, sapply, mapply, sweep, scale, rowSums und
-colSums, zumal man diese Funktionen ohnehin kennen muss, um andere R-Programme nachvollziehen
-zu können.
--->
+<h2><span class="header-section-number">6.2</span> Technical Background<a href="technical-background.html#technical-background" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The paradigm of vectorization is closedly linked to functional programming and one can find a few reasons (e.g. execution speed in some cases), to make use of them. A very comparable set of functions an some additional patterns are implementd in the <code>purrr</code> package that is part of the <code>tidyverse</code>.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="vectorized-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="apply-family.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="parallelization-using-vectorized-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

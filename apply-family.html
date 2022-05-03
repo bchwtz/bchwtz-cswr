@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-05-02" />
+<meta name="date" content="2022-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="vectorization.html"/>
-<link rel="next" href="vectorized-functions.html"/>
+<link rel="next" href="technical-background.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -268,9 +268,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#rapply"><i class="fa fa-check"></i>rapply</a></li>
 <li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#eapply"><i class="fa fa-check"></i>eapply</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="vectorized-functions.html"><a href="vectorized-functions.html"><i class="fa fa-check"></i><b>6.2</b> Vectorized Functions</a></li>
-<li class="chapter" data-level="6.3" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.3</b> Technical Background</a></li>
-<li class="chapter" data-level="6.4" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.4</b> Parallelization using vectorized functions</a></li>
+<li class="chapter" data-level="6.2" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.2</b> Technical Background</a></li>
+<li class="chapter" data-level="6.3" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.3</b> Parallelization using vectorized functions</a></li>
 <li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>Applications</b></span></li>
@@ -476,41 +475,105 @@ base::eapply    Apply a Function Over Values in an Environment</code></pre>
 <div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="apply-family.html#cb513-1"></a><span class="kw">tapply</span>(<span class="dt">X=</span>df<span class="op">$</span>value, <span class="dt">INDEX =</span> df<span class="op">$</span>row, <span class="dt">FUN =</span> sum)</span></code></pre></div>
 <pre><code>#R&gt;  1  2  3  4  5 
 #R&gt; 54 58 62 66 70</code></pre>
-<p>The following figure illustrates the process of the previous function call.</p>
+<!-- The following figure illustrates the process of the previous function call. -->
+<!-- ```{r, echo=FALSE, fig.cap=NULL, out.width="50%"} -->
+<!-- #knitr::include_graphics("gfx/CH06-TapplyExample.png") -->
+<!-- ``` -->
 </div>
 <div id="mapply" class="section level3 unnumbered hasAnchor">
 <h3>mapply<a href="apply-family.html#mapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<!--
-The mapply() function stands for ‘multivariate’ apply. Its purpose is to be able to vectorize arguments to a function that is not usually accepting vectors as arguments.
-
-In short, mapply() applies a Function to Multiple List or multiple Vector Arguments.
-
-Let’s look at an mapply() example where you create a 4 x 4 matrix with a call to the rep() function repeatedly:
-
-
-Another example:
-
-```r
-x <- 1:5
-b <- 6:10
-mapply(sum, x, b)
-```
-
-```
-#R> [1]  7  9 11 13 15
-```
--->
+<p><code>mapply</code> stands for ‘multivariate’ apply. Its purpose is to be able to vectorize arguments to a function that is not usually accepting vectors as arguments. <code>mapply</code> applies a function to multiple Input arguments. The Inputs can either be lists or vectors. For a small example we define the following three vectors.</p>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="apply-family.html#cb515-1"></a>n &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dt">x =</span> <span class="dv">15</span>, <span class="dt">n =</span> <span class="dv">10</span>)</span>
+<span id="cb515-2"><a href="apply-family.html#cb515-2"></a>m &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dt">x =</span>  <span class="dv">0</span>, <span class="dt">n =</span> <span class="dv">10</span>)</span>
+<span id="cb515-3"><a href="apply-family.html#cb515-3"></a>s &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">100</span>, <span class="dt">length.out =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>The following example generates <span class="math inline">\(n = 15\)</span> (<code>n</code>) normally distributed random numbers with mean <span class="math inline">\(\mu = 0\)</span> (<code>m</code>) and varying standard deviation <span class="math inline">\(\sigma\)</span> (<code>s</code>).While the arguments for <code>n</code> are for all iterations equal to 15 and for <code>m</code> equal to 0 the values for <code>s</code> differ for each group of 15 numbers.</p>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="apply-family.html#cb516-1"></a>y &lt;-<span class="st"> </span><span class="kw">mapply</span>(<span class="dt">FUN =</span> rnorm, <span class="dt">n =</span> n, <span class="dt">mean =</span> m, <span class="dt">sd =</span> s)</span>
+<span id="cb516-2"><a href="apply-family.html#cb516-2"></a><span class="kw">colnames</span>(<span class="kw">paste0</span>(<span class="st">&quot;s=&quot;</span>,s))</span></code></pre></div>
+<pre><code>#R&gt; NULL</code></pre>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="apply-family.html#cb518-1"></a><span class="kw">round</span>(y, <span class="dt">digits =</span> <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>#R&gt;          [,1]     [,2]     [,3]     [,4]     [,5]      [,6]     [,7]      [,8]
+#R&gt;  [1,] -0.3197  -1.3505 -39.5232 -40.4332  -2.2562  -15.3775 -33.4822    8.7811
+#R&gt;  [2,]  0.6714   4.8064 -24.6356 -59.4359 -47.6597   16.7118 107.1783   -9.6354
+#R&gt;  [3,] -0.8737  -2.3748  18.8879  61.5044 -39.0888  108.6574  43.8071   79.2238
+#R&gt;  [4,]  0.4372  -4.4322  -5.9077  58.1222  77.2545   33.2104 -27.6363   44.2322
+#R&gt;  [5,] -0.0837 -10.1182 -40.5401  39.1807  89.6296 -162.4549 -89.1815   -1.1865
+#R&gt;  [6,] -0.9776  12.3341 -22.5402 -51.5201 -36.8089   46.6530  -0.6849  -22.3735
+#R&gt;  [7,]  0.1972   9.0089  14.8953  18.0268  14.8789 -101.1431 -16.9997   -2.7931
+#R&gt;  [8,] -0.3204  -5.3583  -2.7345  -4.7797  95.4754  -34.1848 102.8748  -97.3877
+#R&gt;  [9,] -0.1080  -5.3385  -2.8679 -12.4431 -19.3939  -54.0886  40.5622 -118.5427
+#R&gt; [10,] -0.3231  30.2885  11.4056  15.8892  -7.6271   40.5288 -49.4943  -72.5640
+#R&gt; [11,]  0.7047  13.1733  -9.5396   5.4634 -20.7525  -34.0843 -23.2182  -13.9135
+#R&gt; [12,] -0.4510 -21.8347  30.2582 -40.7978  65.2406  -12.3291  -0.2253  -89.4798
+#R&gt; [13,] -0.1394  -7.7416   3.3178  12.1550  39.0508   62.9464 -35.0932   50.0533
+#R&gt; [14,] -0.3987 -13.7062 -11.7581   1.6372 -61.2028  -53.6670   4.1789  -87.3442
+#R&gt; [15,]  1.1819   7.8985 -10.9405 -32.0110   6.5984    5.7072  -4.0933  -50.7509
+#R&gt;           [,9]     [,10]
+#R&gt;  [1,] -26.8273  100.5772
+#R&gt;  [2,] 108.8673  -16.6370
+#R&gt;  [3,]  51.3577  140.1667
+#R&gt;  [4,]  38.4638  -26.8911
+#R&gt;  [5,] -49.1832   14.1799
+#R&gt;  [6,] 242.8926   54.7768
+#R&gt;  [7,]  -9.1407   26.0456
+#R&gt;  [8,] -68.0724   51.5007
+#R&gt;  [9,]  83.3629  -15.0771
+#R&gt; [10,]  84.3996 -130.0417
+#R&gt; [11,]  65.7816   -6.5586
+#R&gt; [12,] 100.2040   -0.2008
+#R&gt; [13,]  92.6045 -123.7849
+#R&gt; [14,]  36.4904   32.3467
+#R&gt; [15,]   8.2663   97.7759</code></pre>
+<p>The outcome is illustated using the following plot.</p>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="apply-family.html#cb520-1"></a><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">ylim =</span> <span class="kw">range</span>(y), <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>), </span>
+<span id="cb520-2"><a href="apply-family.html#cb520-2"></a>     <span class="dt">ylab =</span> <span class="st">&quot;Random Number&quot;</span>, </span>
+<span id="cb520-3"><a href="apply-family.html#cb520-3"></a>     <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">xlab=</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb520-4"><a href="apply-family.html#cb520-4"></a>     <span class="dt">main =</span> <span class="st">&quot;Normally Distributed Random Numbers&quot;</span>)</span>
+<span id="cb520-5"><a href="apply-family.html#cb520-5"></a>     <span class="kw">mtext</span>(<span class="st">&quot;with varying Standard Deviation&quot;</span>)</span>
+<span id="cb520-6"><a href="apply-family.html#cb520-6"></a></span>
+<span id="cb520-7"><a href="apply-family.html#cb520-7"></a>z &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, </span>
+<span id="cb520-8"><a href="apply-family.html#cb520-8"></a>       <span class="cf">function</span>(x,y){<span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">rep</span>(x,<span class="kw">length</span>(y[,x])),</span>
+<span id="cb520-9"><a href="apply-family.html#cb520-9"></a>                            <span class="dt">y =</span> y[,x])}, </span>
+<span id="cb520-10"><a href="apply-family.html#cb520-10"></a>       <span class="dt">y =</span> y)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-189-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><code>mapply</code>can be used to behave like nested <code>for</code> loops as the iterators can simply be anticipated and all iterator combinatinos can be generated in advance, e.g. with <code>expand.grid</code>. The following code shows how to iterate over all cells of a $5 10 $ matrix using <code>mapply</code>.</p>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="apply-family.html#cb521-1"></a>nrow &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb521-2"><a href="apply-family.html#cb521-2"></a>ncol &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb521-3"><a href="apply-family.html#cb521-3"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span>(nrow<span class="op">*</span>ncol), <span class="dt">nrow =</span> nrow, <span class="dt">ncol =</span> ncol)</span>
+<span id="cb521-4"><a href="apply-family.html#cb521-4"></a>ic &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dv">1</span><span class="op">:</span>nrow, <span class="dv">1</span><span class="op">:</span>ncol)</span>
+<span id="cb521-5"><a href="apply-family.html#cb521-5"></a>afun &lt;-<span class="st"> </span><span class="cf">function</span>(r,c,m){m[r,c]<span class="op">^</span><span class="dv">2</span>}</span>
+<span id="cb521-6"><a href="apply-family.html#cb521-6"></a><span class="kw">mapply</span>(afun, <span class="dt">r =</span> ic[,<span class="dv">1</span>], <span class="dt">c =</span> ic[,<span class="dv">2</span>], <span class="dt">MoreArgs =</span> <span class="kw">list</span>(m))</span></code></pre></div>
+<pre><code>#R&gt;  [1]    1    4    9   16   25   36   49   64   81  100  121  144  169  196  225
+#R&gt; [16]  256  289  324  361  400  441  484  529  576  625  676  729  784  841  900
+#R&gt; [31]  961 1024 1089 1156 1225 1296 1369 1444 1521 1600 1681 1764 1849 1936 2025
+#R&gt; [46] 2116 2209 2304 2401 2500</code></pre>
 </div>
 <div id="rapply" class="section level3 unnumbered hasAnchor">
 <h3>rapply<a href="apply-family.html#rapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>rapply</code> is recursive version of <code>lapply</code>, that applies a function recursively to every list element.</p>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="apply-family.html#cb523-1"></a>l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="kw">list</span>(<span class="dt">a1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span> , <span class="dt">a2 =</span> <span class="dv">20</span><span class="op">:</span><span class="dv">30</span>),</span>
+<span id="cb523-2"><a href="apply-family.html#cb523-2"></a>          <span class="dt">b =</span> <span class="kw">list</span>(<span class="dt">b1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">b2 =</span> <span class="dv">5</span>))</span>
+<span id="cb523-3"><a href="apply-family.html#cb523-3"></a></span>
+<span id="cb523-4"><a href="apply-family.html#cb523-4"></a><span class="kw">rapply</span>(<span class="dt">object =</span> l, <span class="dt">f =</span> sum)</span></code></pre></div>
+<pre><code>#R&gt; a.a1 a.a2 b.b1 b.b2 
+#R&gt;   55  275 5050    5</code></pre>
 </div>
 <div id="eapply" class="section level3 unnumbered hasAnchor">
 <h3>eapply<a href="apply-family.html#eapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<!--
-http://www.datasciencemadesimple.com/apply-function-r/
-http://www.dataperspective.info/2016/03/apply-lapply-rapply-sapply-functions-r.html
-https://nsaunders.wordpress.com/2010/08/20/a-brief-introduction-to-apply-in-r/
--->
+<p><code>eapply</code> applies a function to every (visible = not hidden) element in an environment.</p>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="apply-family.html#cb525-1"></a>env &lt;-<span class="st"> </span><span class="kw">new.env</span>()</span>
+<span id="cb525-2"><a href="apply-family.html#cb525-2"></a>env<span class="op">$</span>a &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb525-3"><a href="apply-family.html#cb525-3"></a>env<span class="op">$</span>b &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span><span class="dv">3</span><span class="op">:</span><span class="dv">3</span>)</span>
+<span id="cb525-4"><a href="apply-family.html#cb525-4"></a>env<span class="op">$</span>c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb525-5"><a href="apply-family.html#cb525-5"></a></span>
+<span id="cb525-6"><a href="apply-family.html#cb525-6"></a><span class="kw">eapply</span>(env, mean)</span></code></pre></div>
+<pre><code>#R&gt; $a
+#R&gt; [1] 5.5
+#R&gt; 
+#R&gt; $b
+#R&gt; [1] 4.535125
+#R&gt; 
+#R&gt; $c
+#R&gt; [1] 0.5</code></pre>
 </div>
 </div>
             </section>
@@ -519,7 +582,7 @@ https://nsaunders.wordpress.com/2010/08/20/a-brief-introduction-to-apply-in-r/
         </div>
       </div>
 <a href="vectorization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vectorized-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="technical-background.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

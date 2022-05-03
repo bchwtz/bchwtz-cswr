@@ -3,8 +3,8 @@ fig:unnamed-chunk-40
 fig:unnamed-chunk-78
 fig:unnamed-chunk-162
 fig:unnamed-chunk-164
-fig:unnamed-chunk-207
-fig:unnamed-chunk-234
+fig:unnamed-chunk-211
+fig:unnamed-chunk-238
 intro
 r-and-the-r-project
 r-system-and-rstudio
@@ -64,7 +64,6 @@ testing
 maintaining
 vectorization
 apply-family
-vectorized-functions
 technical-background
 parallelization-using-vectorized-functions
 word-puzzle

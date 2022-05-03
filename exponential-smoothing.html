@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-05-02" />
+<meta name="date" content="2022-05-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -268,9 +268,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#rapply"><i class="fa fa-check"></i>rapply</a></li>
 <li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#eapply"><i class="fa fa-check"></i>eapply</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="vectorized-functions.html"><a href="vectorized-functions.html"><i class="fa fa-check"></i><b>6.2</b> Vectorized Functions</a></li>
-<li class="chapter" data-level="6.3" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.3</b> Technical Background</a></li>
-<li class="chapter" data-level="6.4" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.4</b> Parallelization using vectorized functions</a></li>
+<li class="chapter" data-level="6.2" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.2</b> Technical Background</a></li>
+<li class="chapter" data-level="6.3" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.3</b> Parallelization using vectorized functions</a></li>
 <li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 <li class="part"><span><b>Applications</b></span></li>
@@ -371,8 +370,8 @@ T_0 = y_2 - y_1
 <div id="implementing-hes" class="section level3 hasAnchor">
 <h3><span class="header-section-number">9.5.1</span> Implementing HES<a href="exponential-smoothing.html#implementing-hes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In order to have a simple example let us implement and illustrate the whole process using a very short and artificially generated time series instead of the long youtube subscribers series. This facilitates development and the explanation of the concepts. Our example time series consists of only four observations:</p>
-<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="exponential-smoothing.html#cb586-1"></a>yt &lt;-<span class="st"> </span><span class="kw">ts</span>(<span class="kw">c</span>(<span class="dv">195</span>,<span class="dv">198</span>,<span class="dv">200</span>,<span class="dv">203</span>), <span class="dt">frequency=</span><span class="dv">1</span>)</span>
-<span id="cb586-2"><a href="exponential-smoothing.html#cb586-2"></a>yt</span></code></pre></div>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="exponential-smoothing.html#cb598-1"></a>yt &lt;-<span class="st"> </span><span class="kw">ts</span>(<span class="kw">c</span>(<span class="dv">195</span>,<span class="dv">198</span>,<span class="dv">200</span>,<span class="dv">203</span>), <span class="dt">frequency=</span><span class="dv">1</span>)</span>
+<span id="cb598-2"><a href="exponential-smoothing.html#cb598-2"></a>yt</span></code></pre></div>
 <pre><code>#R&gt; Time Series:
 #R&gt; Start = 1 
 #R&gt; End = 4 
@@ -383,29 +382,29 @@ T_0 = y_2 - y_1
 y_t = \hat{y}_t + \hat{e}_t \\
 \hat{y}_t =  \hat{L}_t + \hat{T}_t
 \]</span></p>
-<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="exponential-smoothing.html#cb588-1"></a>holtExponentialSmoothing &lt;-<span class="st"> </span><span class="cf">function</span>(yt, alpha, gamma){</span>
-<span id="cb588-2"><a href="exponential-smoothing.html#cb588-2"></a>  <span class="co"># Setting initial Values</span></span>
-<span id="cb588-3"><a href="exponential-smoothing.html#cb588-3"></a>  l0 &lt;-<span class="st"> </span>yt[<span class="dv">1</span>]</span>
-<span id="cb588-4"><a href="exponential-smoothing.html#cb588-4"></a>  t0 &lt;-<span class="st"> </span>yt[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>yt[<span class="dv">1</span>]</span>
-<span id="cb588-5"><a href="exponential-smoothing.html#cb588-5"></a>  </span>
-<span id="cb588-6"><a href="exponential-smoothing.html#cb588-6"></a>  <span class="co"># Intialize vectors for iterative calculations</span></span>
-<span id="cb588-7"><a href="exponential-smoothing.html#cb588-7"></a>  level &lt;-<span class="st"> </span>l0</span>
-<span id="cb588-8"><a href="exponential-smoothing.html#cb588-8"></a>  trend &lt;-<span class="st"> </span>t0</span>
-<span id="cb588-9"><a href="exponential-smoothing.html#cb588-9"></a>  </span>
-<span id="cb588-10"><a href="exponential-smoothing.html#cb588-10"></a>  <span class="co"># Calculate fit</span></span>
-<span id="cb588-11"><a href="exponential-smoothing.html#cb588-11"></a>  <span class="cf">for</span> (idx <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>(<span class="kw">length</span>(yt)<span class="op">+</span><span class="dv">1</span>)){</span>
-<span id="cb588-12"><a href="exponential-smoothing.html#cb588-12"></a>    level[idx] &lt;-<span class="st"> </span>alpha <span class="op">*</span><span class="st"> </span>yt[idx<span class="dv">-1</span>] <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">-</span>alpha) <span class="op">*</span><span class="st"> </span>(level[idx<span class="dv">-1</span>] <span class="op">+</span><span class="st"> </span>trend[idx<span class="dv">-1</span>])</span>
-<span id="cb588-13"><a href="exponential-smoothing.html#cb588-13"></a>    trend[idx] &lt;-<span class="st"> </span>gamma <span class="op">*</span><span class="st"> </span>(level[idx]<span class="op">-</span>level[idx<span class="dv">-1</span>]) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">-</span>gamma) <span class="op">*</span><span class="st"> </span>trend[idx<span class="dv">-1</span>]</span>
-<span id="cb588-14"><a href="exponential-smoothing.html#cb588-14"></a>  }</span>
-<span id="cb588-15"><a href="exponential-smoothing.html#cb588-15"></a>  </span>
-<span id="cb588-16"><a href="exponential-smoothing.html#cb588-16"></a>  <span class="co"># Calculate and Return results</span></span>
-<span id="cb588-17"><a href="exponential-smoothing.html#cb588-17"></a>  fitted &lt;-(trend<span class="op">+</span>level)[<span class="op">-</span><span class="kw">length</span>(trend)]</span>
-<span id="cb588-18"><a href="exponential-smoothing.html#cb588-18"></a>  residuals &lt;-<span class="st"> </span>yt <span class="op">-</span><span class="st"> </span>fitted</span>
-<span id="cb588-19"><a href="exponential-smoothing.html#cb588-19"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">fitted=</span>fitted,<span class="dt">residuals=</span>residuals,<span class="dt">yt=</span>yt,</span>
-<span id="cb588-20"><a href="exponential-smoothing.html#cb588-20"></a>              <span class="dt">trend=</span>trend,<span class="dt">level=</span>level, </span>
-<span id="cb588-21"><a href="exponential-smoothing.html#cb588-21"></a>              <span class="dt">alpha=</span>alpha, <span class="dt">gamma=</span>gamma, </span>
-<span id="cb588-22"><a href="exponential-smoothing.html#cb588-22"></a>              <span class="dt">l0=</span>l0, <span class="dt">t0=</span>t0))</span>
-<span id="cb588-23"><a href="exponential-smoothing.html#cb588-23"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="exponential-smoothing.html#cb600-1"></a>holtExponentialSmoothing &lt;-<span class="st"> </span><span class="cf">function</span>(yt, alpha, gamma){</span>
+<span id="cb600-2"><a href="exponential-smoothing.html#cb600-2"></a>  <span class="co"># Setting initial Values</span></span>
+<span id="cb600-3"><a href="exponential-smoothing.html#cb600-3"></a>  l0 &lt;-<span class="st"> </span>yt[<span class="dv">1</span>]</span>
+<span id="cb600-4"><a href="exponential-smoothing.html#cb600-4"></a>  t0 &lt;-<span class="st"> </span>yt[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>yt[<span class="dv">1</span>]</span>
+<span id="cb600-5"><a href="exponential-smoothing.html#cb600-5"></a>  </span>
+<span id="cb600-6"><a href="exponential-smoothing.html#cb600-6"></a>  <span class="co"># Intialize vectors for iterative calculations</span></span>
+<span id="cb600-7"><a href="exponential-smoothing.html#cb600-7"></a>  level &lt;-<span class="st"> </span>l0</span>
+<span id="cb600-8"><a href="exponential-smoothing.html#cb600-8"></a>  trend &lt;-<span class="st"> </span>t0</span>
+<span id="cb600-9"><a href="exponential-smoothing.html#cb600-9"></a>  </span>
+<span id="cb600-10"><a href="exponential-smoothing.html#cb600-10"></a>  <span class="co"># Calculate fit</span></span>
+<span id="cb600-11"><a href="exponential-smoothing.html#cb600-11"></a>  <span class="cf">for</span> (idx <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span>(<span class="kw">length</span>(yt)<span class="op">+</span><span class="dv">1</span>)){</span>
+<span id="cb600-12"><a href="exponential-smoothing.html#cb600-12"></a>    level[idx] &lt;-<span class="st"> </span>alpha <span class="op">*</span><span class="st"> </span>yt[idx<span class="dv">-1</span>] <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">-</span>alpha) <span class="op">*</span><span class="st"> </span>(level[idx<span class="dv">-1</span>] <span class="op">+</span><span class="st"> </span>trend[idx<span class="dv">-1</span>])</span>
+<span id="cb600-13"><a href="exponential-smoothing.html#cb600-13"></a>    trend[idx] &lt;-<span class="st"> </span>gamma <span class="op">*</span><span class="st"> </span>(level[idx]<span class="op">-</span>level[idx<span class="dv">-1</span>]) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">-</span>gamma) <span class="op">*</span><span class="st"> </span>trend[idx<span class="dv">-1</span>]</span>
+<span id="cb600-14"><a href="exponential-smoothing.html#cb600-14"></a>  }</span>
+<span id="cb600-15"><a href="exponential-smoothing.html#cb600-15"></a>  </span>
+<span id="cb600-16"><a href="exponential-smoothing.html#cb600-16"></a>  <span class="co"># Calculate and Return results</span></span>
+<span id="cb600-17"><a href="exponential-smoothing.html#cb600-17"></a>  fitted &lt;-(trend<span class="op">+</span>level)[<span class="op">-</span><span class="kw">length</span>(trend)]</span>
+<span id="cb600-18"><a href="exponential-smoothing.html#cb600-18"></a>  residuals &lt;-<span class="st"> </span>yt <span class="op">-</span><span class="st"> </span>fitted</span>
+<span id="cb600-19"><a href="exponential-smoothing.html#cb600-19"></a>  <span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">fitted=</span>fitted,<span class="dt">residuals=</span>residuals,<span class="dt">yt=</span>yt,</span>
+<span id="cb600-20"><a href="exponential-smoothing.html#cb600-20"></a>              <span class="dt">trend=</span>trend,<span class="dt">level=</span>level, </span>
+<span id="cb600-21"><a href="exponential-smoothing.html#cb600-21"></a>              <span class="dt">alpha=</span>alpha, <span class="dt">gamma=</span>gamma, </span>
+<span id="cb600-22"><a href="exponential-smoothing.html#cb600-22"></a>              <span class="dt">l0=</span>l0, <span class="dt">t0=</span>t0))</span>
+<span id="cb600-23"><a href="exponential-smoothing.html#cb600-23"></a>}</span></code></pre></div>
 </div>
 <div id="finding-best-alpha-and-gamma-values" class="section level3 hasAnchor">
 <h3><span class="header-section-number">9.5.2</span> Finding best alpha and gamma values<a href="exponential-smoothing.html#finding-best-alpha-and-gamma-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -415,22 +414,22 @@ MSE_{\alpha,\gamma} =  \frac{1}{T} \sum_{i=1}^{T} \hat{e}_i^2
 \]</span>
 We are now looking for the combination of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\gamma\)</span> that minimizes the MSE in dependence of the smoothing constants that we can configure. While there are many possible optimization routines available, most of them are algebraically complex and would need additional theoretical knowledge in order to understand and use them. Therefore, we are applying a more direct search routine, which is called grid search.</p>
 <p>Grid searching routines try a combination of plausible values and calculate the error measure of interest for all desired combinations of the values. From a computational perspective, this approach is not very efficient but works reasonably well for our purpose. The following code snippet performs this parameter search and returns over a parameter space with a comparably small resolution. By increasing the resolution the process takes considerably longer, but the considered parameters are more precise in return.</p>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="exponential-smoothing.html#cb589-1"></a>resolution &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb589-2"><a href="exponential-smoothing.html#cb589-2"></a>parameterspace &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span>resolution)</span>
-<span id="cb589-3"><a href="exponential-smoothing.html#cb589-3"></a>mseMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow=</span><span class="kw">length</span>(parameterspace), <span class="dt">ncol=</span><span class="kw">length</span>(parameterspace))</span>
-<span id="cb589-4"><a href="exponential-smoothing.html#cb589-4"></a></span>
-<span id="cb589-5"><a href="exponential-smoothing.html#cb589-5"></a><span class="cf">for</span>(adx <span class="cf">in</span> parameterspace){</span>
-<span id="cb589-6"><a href="exponential-smoothing.html#cb589-6"></a>  <span class="cf">for</span>(gdx <span class="cf">in</span> parameterspace){</span>
-<span id="cb589-7"><a href="exponential-smoothing.html#cb589-7"></a>    rdx &lt;-<span class="st"> </span><span class="kw">round</span>(adx<span class="op">*</span>resolution <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">0</span>) <span class="co"># Recalculate Row index</span></span>
-<span id="cb589-8"><a href="exponential-smoothing.html#cb589-8"></a>    cdx &lt;-<span class="st"> </span><span class="kw">round</span>(gdx<span class="op">*</span>resolution <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">0</span>) <span class="co"># Recalculate Col index</span></span>
-<span id="cb589-9"><a href="exponential-smoothing.html#cb589-9"></a>    mod &lt;-<span class="st"> </span><span class="kw">holtExponentialSmoothing</span>(<span class="dt">yt=</span>yt, <span class="dt">alpha=</span>adx, <span class="dt">gamma=</span>gdx)</span>
-<span id="cb589-10"><a href="exponential-smoothing.html#cb589-10"></a>    mseMat[rdx,cdx] &lt;-<span class="st"> </span><span class="kw">mean</span>(mod<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb589-11"><a href="exponential-smoothing.html#cb589-11"></a>  }</span>
-<span id="cb589-12"><a href="exponential-smoothing.html#cb589-12"></a>}</span>
-<span id="cb589-13"><a href="exponential-smoothing.html#cb589-13"></a></span>
-<span id="cb589-14"><a href="exponential-smoothing.html#cb589-14"></a><span class="kw">rownames</span>(mseMat) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;a=&quot;</span>,parameterspace)</span>
-<span id="cb589-15"><a href="exponential-smoothing.html#cb589-15"></a><span class="kw">colnames</span>(mseMat) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;g=&quot;</span>,parameterspace)</span>
-<span id="cb589-16"><a href="exponential-smoothing.html#cb589-16"></a><span class="kw">round</span>(mseMat,<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="exponential-smoothing.html#cb601-1"></a>resolution &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb601-2"><a href="exponential-smoothing.html#cb601-2"></a>parameterspace &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span>resolution)</span>
+<span id="cb601-3"><a href="exponential-smoothing.html#cb601-3"></a>mseMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow=</span><span class="kw">length</span>(parameterspace), <span class="dt">ncol=</span><span class="kw">length</span>(parameterspace))</span>
+<span id="cb601-4"><a href="exponential-smoothing.html#cb601-4"></a></span>
+<span id="cb601-5"><a href="exponential-smoothing.html#cb601-5"></a><span class="cf">for</span>(adx <span class="cf">in</span> parameterspace){</span>
+<span id="cb601-6"><a href="exponential-smoothing.html#cb601-6"></a>  <span class="cf">for</span>(gdx <span class="cf">in</span> parameterspace){</span>
+<span id="cb601-7"><a href="exponential-smoothing.html#cb601-7"></a>    rdx &lt;-<span class="st"> </span><span class="kw">round</span>(adx<span class="op">*</span>resolution <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">0</span>) <span class="co"># Recalculate Row index</span></span>
+<span id="cb601-8"><a href="exponential-smoothing.html#cb601-8"></a>    cdx &lt;-<span class="st"> </span><span class="kw">round</span>(gdx<span class="op">*</span>resolution <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">0</span>) <span class="co"># Recalculate Col index</span></span>
+<span id="cb601-9"><a href="exponential-smoothing.html#cb601-9"></a>    mod &lt;-<span class="st"> </span><span class="kw">holtExponentialSmoothing</span>(<span class="dt">yt=</span>yt, <span class="dt">alpha=</span>adx, <span class="dt">gamma=</span>gdx)</span>
+<span id="cb601-10"><a href="exponential-smoothing.html#cb601-10"></a>    mseMat[rdx,cdx] &lt;-<span class="st"> </span><span class="kw">mean</span>(mod<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb601-11"><a href="exponential-smoothing.html#cb601-11"></a>  }</span>
+<span id="cb601-12"><a href="exponential-smoothing.html#cb601-12"></a>}</span>
+<span id="cb601-13"><a href="exponential-smoothing.html#cb601-13"></a></span>
+<span id="cb601-14"><a href="exponential-smoothing.html#cb601-14"></a><span class="kw">rownames</span>(mseMat) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;a=&quot;</span>,parameterspace)</span>
+<span id="cb601-15"><a href="exponential-smoothing.html#cb601-15"></a><span class="kw">colnames</span>(mseMat) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;g=&quot;</span>,parameterspace)</span>
+<span id="cb601-16"><a href="exponential-smoothing.html#cb601-16"></a><span class="kw">round</span>(mseMat,<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>#R&gt;          g=0  g=0.1  g=0.2  g=0.3  g=0.4  g=0.5  g=0.6  g=0.7  g=0.8  g=0.9
 #R&gt; a=0   12.500 12.500 12.500 12.500 12.500 12.500 12.500 12.500 12.500 12.500
 #R&gt; a=0.1  9.396  8.965  8.557  8.171  7.805  7.460  7.134  6.827  6.538  6.266
@@ -457,69 +456,69 @@ We are now looking for the combination of <span class="math inline">\(\alpha\)</
 #R&gt; a=1    5.000</code></pre>
 <p>The <code>round</code> when recalculating the row and column indices <code>rdx</code> and <code>cdx</code> ensures that we only get real indices and do not run into precision errors, when the resolution parameter is increased.</p>
 <p>Given the calculated Mean Square Error Values for all combinations, we can now select the best parameter combination, by filtering the <code>parameterspace</code> vector based using the MSE values. These values lead to the lowest MSE for the training set. They, therefore, represent the values that lead to the best adaption of the method to the data (as the error is minimized). We now assume that the parameter combination that creates the best fit to the data is also good when extrapolating the time series to future values and leads to small error values there as well.</p>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="exponential-smoothing.html#cb591-1"></a>alpha.best &lt;-<span class="st"> </span>parameterspace[<span class="kw">which.min</span>(<span class="kw">apply</span>(mseMat, <span class="dv">1</span>, min))]</span>
-<span id="cb591-2"><a href="exponential-smoothing.html#cb591-2"></a>alpha.best</span></code></pre></div>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="exponential-smoothing.html#cb603-1"></a>alpha.best &lt;-<span class="st"> </span>parameterspace[<span class="kw">which.min</span>(<span class="kw">apply</span>(mseMat, <span class="dv">1</span>, min))]</span>
+<span id="cb603-2"><a href="exponential-smoothing.html#cb603-2"></a>alpha.best</span></code></pre></div>
 <pre><code>#R&gt; [1] 0.8</code></pre>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="exponential-smoothing.html#cb593-1"></a>gamma.best &lt;-<span class="st"> </span>parameterspace[<span class="kw">which.min</span>(<span class="kw">apply</span>(mseMat, <span class="dv">2</span>, min))]</span>
-<span id="cb593-2"><a href="exponential-smoothing.html#cb593-2"></a>gamma.best</span></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="exponential-smoothing.html#cb605-1"></a>gamma.best &lt;-<span class="st"> </span>parameterspace[<span class="kw">which.min</span>(<span class="kw">apply</span>(mseMat, <span class="dv">2</span>, min))]</span>
+<span id="cb605-2"><a href="exponential-smoothing.html#cb605-2"></a>gamma.best</span></code></pre></div>
 <pre><code>#R&gt; [1] 0.2</code></pre>
 
 <div class="rmdexcercise">
 Write the function <code>hesGridSearch</code> that performs the paramter estimation conditional on the time-series <code>yt</code> and with a user defineable <code>resolution</code> argument.
 </div>
 
-<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="exponential-smoothing.html#cb595-1"></a><span class="co">## Solution to Excercise</span></span>
-<span id="cb595-2"><a href="exponential-smoothing.html#cb595-2"></a></span>
-<span id="cb595-3"><a href="exponential-smoothing.html#cb595-3"></a>hesGridSearch &lt;-<span class="st"> </span><span class="cf">function</span>(yt, <span class="dt">resolution =</span> <span class="dv">10</span>){</span>
-<span id="cb595-4"><a href="exponential-smoothing.html#cb595-4"></a>  parameterspace &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span>resolution)</span>
-<span id="cb595-5"><a href="exponential-smoothing.html#cb595-5"></a>  mseMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow=</span><span class="kw">length</span>(parameterspace), <span class="dt">ncol=</span><span class="kw">length</span>(parameterspace))</span>
-<span id="cb595-6"><a href="exponential-smoothing.html#cb595-6"></a>  </span>
-<span id="cb595-7"><a href="exponential-smoothing.html#cb595-7"></a>  <span class="cf">for</span>(adx <span class="cf">in</span> parameterspace){</span>
-<span id="cb595-8"><a href="exponential-smoothing.html#cb595-8"></a>    <span class="cf">for</span>(gdx <span class="cf">in</span> parameterspace){</span>
-<span id="cb595-9"><a href="exponential-smoothing.html#cb595-9"></a>    rdx &lt;-<span class="st"> </span><span class="kw">round</span>(adx<span class="op">*</span>resolution <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">0</span>) <span class="co"># Recalculate Row index</span></span>
-<span id="cb595-10"><a href="exponential-smoothing.html#cb595-10"></a>    cdx &lt;-<span class="st"> </span><span class="kw">round</span>(gdx<span class="op">*</span>resolution <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">0</span>) <span class="co"># Recalculate Col index</span></span>
-<span id="cb595-11"><a href="exponential-smoothing.html#cb595-11"></a>      mod &lt;-<span class="st"> </span><span class="kw">holtExponentialSmoothing</span>(<span class="dt">yt=</span>yt, <span class="dt">alpha=</span>adx, <span class="dt">gamma=</span>gdx)</span>
-<span id="cb595-12"><a href="exponential-smoothing.html#cb595-12"></a>      mseMat[rdx,cdx] &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">mean</span>(mod<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb595-13"><a href="exponential-smoothing.html#cb595-13"></a>    }</span>
-<span id="cb595-14"><a href="exponential-smoothing.html#cb595-14"></a>  }</span>
-<span id="cb595-15"><a href="exponential-smoothing.html#cb595-15"></a>  </span>
-<span id="cb595-16"><a href="exponential-smoothing.html#cb595-16"></a>  <span class="kw">rownames</span>(mseMat) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;a=&quot;</span>,parameterspace)</span>
-<span id="cb595-17"><a href="exponential-smoothing.html#cb595-17"></a>  <span class="kw">colnames</span>(mseMat) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;g=&quot;</span>,parameterspace)</span>
-<span id="cb595-18"><a href="exponential-smoothing.html#cb595-18"></a>  </span>
-<span id="cb595-19"><a href="exponential-smoothing.html#cb595-19"></a>  alpha.best &lt;-<span class="st"> </span>parameterspace[<span class="kw">which.min</span>(<span class="kw">apply</span>(mseMat, <span class="dv">1</span>, min))]</span>
-<span id="cb595-20"><a href="exponential-smoothing.html#cb595-20"></a>  gamma.best &lt;-<span class="st"> </span>parameterspace[<span class="kw">which.min</span>(<span class="kw">apply</span>(mseMat, <span class="dv">2</span>, min))]</span>
-<span id="cb595-21"><a href="exponential-smoothing.html#cb595-21"></a>  </span>
-<span id="cb595-22"><a href="exponential-smoothing.html#cb595-22"></a>  <span class="kw">return</span>(<span class="kw">c</span>(<span class="dt">alpha=</span>alpha.best,<span class="dt">gamma=</span>gamma.best))</span>
-<span id="cb595-23"><a href="exponential-smoothing.html#cb595-23"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="exponential-smoothing.html#cb607-1"></a><span class="co">## Solution to Excercise</span></span>
+<span id="cb607-2"><a href="exponential-smoothing.html#cb607-2"></a></span>
+<span id="cb607-3"><a href="exponential-smoothing.html#cb607-3"></a>hesGridSearch &lt;-<span class="st"> </span><span class="cf">function</span>(yt, <span class="dt">resolution =</span> <span class="dv">10</span>){</span>
+<span id="cb607-4"><a href="exponential-smoothing.html#cb607-4"></a>  parameterspace &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span>resolution)</span>
+<span id="cb607-5"><a href="exponential-smoothing.html#cb607-5"></a>  mseMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow=</span><span class="kw">length</span>(parameterspace), <span class="dt">ncol=</span><span class="kw">length</span>(parameterspace))</span>
+<span id="cb607-6"><a href="exponential-smoothing.html#cb607-6"></a>  </span>
+<span id="cb607-7"><a href="exponential-smoothing.html#cb607-7"></a>  <span class="cf">for</span>(adx <span class="cf">in</span> parameterspace){</span>
+<span id="cb607-8"><a href="exponential-smoothing.html#cb607-8"></a>    <span class="cf">for</span>(gdx <span class="cf">in</span> parameterspace){</span>
+<span id="cb607-9"><a href="exponential-smoothing.html#cb607-9"></a>    rdx &lt;-<span class="st"> </span><span class="kw">round</span>(adx<span class="op">*</span>resolution <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">0</span>) <span class="co"># Recalculate Row index</span></span>
+<span id="cb607-10"><a href="exponential-smoothing.html#cb607-10"></a>    cdx &lt;-<span class="st"> </span><span class="kw">round</span>(gdx<span class="op">*</span>resolution <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">0</span>) <span class="co"># Recalculate Col index</span></span>
+<span id="cb607-11"><a href="exponential-smoothing.html#cb607-11"></a>      mod &lt;-<span class="st"> </span><span class="kw">holtExponentialSmoothing</span>(<span class="dt">yt=</span>yt, <span class="dt">alpha=</span>adx, <span class="dt">gamma=</span>gdx)</span>
+<span id="cb607-12"><a href="exponential-smoothing.html#cb607-12"></a>      mseMat[rdx,cdx] &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">mean</span>(mod<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>))</span>
+<span id="cb607-13"><a href="exponential-smoothing.html#cb607-13"></a>    }</span>
+<span id="cb607-14"><a href="exponential-smoothing.html#cb607-14"></a>  }</span>
+<span id="cb607-15"><a href="exponential-smoothing.html#cb607-15"></a>  </span>
+<span id="cb607-16"><a href="exponential-smoothing.html#cb607-16"></a>  <span class="kw">rownames</span>(mseMat) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;a=&quot;</span>,parameterspace)</span>
+<span id="cb607-17"><a href="exponential-smoothing.html#cb607-17"></a>  <span class="kw">colnames</span>(mseMat) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;g=&quot;</span>,parameterspace)</span>
+<span id="cb607-18"><a href="exponential-smoothing.html#cb607-18"></a>  </span>
+<span id="cb607-19"><a href="exponential-smoothing.html#cb607-19"></a>  alpha.best &lt;-<span class="st"> </span>parameterspace[<span class="kw">which.min</span>(<span class="kw">apply</span>(mseMat, <span class="dv">1</span>, min))]</span>
+<span id="cb607-20"><a href="exponential-smoothing.html#cb607-20"></a>  gamma.best &lt;-<span class="st"> </span>parameterspace[<span class="kw">which.min</span>(<span class="kw">apply</span>(mseMat, <span class="dv">2</span>, min))]</span>
+<span id="cb607-21"><a href="exponential-smoothing.html#cb607-21"></a>  </span>
+<span id="cb607-22"><a href="exponential-smoothing.html#cb607-22"></a>  <span class="kw">return</span>(<span class="kw">c</span>(<span class="dt">alpha=</span>alpha.best,<span class="dt">gamma=</span>gamma.best))</span>
+<span id="cb607-23"><a href="exponential-smoothing.html#cb607-23"></a>}</span></code></pre></div>
 <p><strong>REMARK:</strong> Please keep in mind that the examples in this course are designed to illustrate a simplified version of the forecasting process and to get an impression of a quite successful forecasting method. However, real-world applications are usually much more complex. While this is true for most methods themselves this also applies to the parameter estimation and optimization processes. From a practical perspective, all aspects of statistical learning such as bagging, boosting, cross-validation and constructing ensembles are also incorporated in the model building process but are not covered here.</p>
 </div>
 <div id="generating-forecasts" class="section level3 hasAnchor">
 <h3><span class="header-section-number">9.5.3</span> Generating Forecasts<a href="exponential-smoothing.html#generating-forecasts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The process of generating the actual forecasts conditional on the estimated parameters is now fairly easy. Given the forecasting formula above one only needs the last fitted level and last fitted trend which are combined to produce a linear forecast. The function <code>forecastHES</code> below additionally considers the time series properties (<code>tsp</code>) of the original time series in the model object (<code>mod$yt</code>) and changes the timeline of the forecast so that it can be later plotted conveniently in the same plot.</p>
-<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="exponential-smoothing.html#cb596-1"></a>params &lt;-<span class="st"> </span><span class="kw">hesGridSearch</span>(yt, <span class="dt">resolution=</span><span class="dv">10</span>)</span>
-<span id="cb596-2"><a href="exponential-smoothing.html#cb596-2"></a>params <span class="co"># Parameters with lowest (in-sample) MSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="exponential-smoothing.html#cb608-1"></a>params &lt;-<span class="st"> </span><span class="kw">hesGridSearch</span>(yt, <span class="dt">resolution=</span><span class="dv">10</span>)</span>
+<span id="cb608-2"><a href="exponential-smoothing.html#cb608-2"></a>params <span class="co"># Parameters with lowest (in-sample) MSE</span></span></code></pre></div>
 <pre><code>#R&gt; alpha gamma 
 #R&gt;   0.8   0.2</code></pre>
-<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="exponential-smoothing.html#cb598-1"></a>mod &lt;-<span class="st"> </span><span class="kw">holtExponentialSmoothing</span>(<span class="dt">yt=</span>yt,<span class="dt">alpha=</span>params[<span class="dv">1</span>],<span class="dt">gamma=</span>params[<span class="dv">2</span>])</span>
-<span id="cb598-2"><a href="exponential-smoothing.html#cb598-2"></a></span>
-<span id="cb598-3"><a href="exponential-smoothing.html#cb598-3"></a>forecastHES &lt;-<span class="st"> </span><span class="cf">function</span>(mod, H){</span>
-<span id="cb598-4"><a href="exponential-smoothing.html#cb598-4"></a>  fc &lt;-<span class="st"> </span><span class="kw">tail</span>(mod<span class="op">$</span>level,<span class="dv">1</span>) <span class="op">+</span><span class="st">  </span><span class="kw">tail</span>(mod<span class="op">$</span>trend, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span>H</span>
-<span id="cb598-5"><a href="exponential-smoothing.html#cb598-5"></a>  fc &lt;-<span class="st"> </span><span class="kw">ts</span>(fc,<span class="dt">start=</span><span class="kw">tsp</span>(mod<span class="op">$</span>yt)[<span class="dv">2</span>]<span class="op">+</span><span class="dv">1</span>, <span class="dt">end=</span><span class="kw">tsp</span>(mod<span class="op">$</span>yt)[<span class="dv">2</span>]<span class="op">+</span>H,<span class="dt">frequency =</span> <span class="kw">frequency</span>(mod<span class="op">$</span>yt))</span>
-<span id="cb598-6"><a href="exponential-smoothing.html#cb598-6"></a>  <span class="kw">return</span>(fc)</span>
-<span id="cb598-7"><a href="exponential-smoothing.html#cb598-7"></a>}</span>
-<span id="cb598-8"><a href="exponential-smoothing.html#cb598-8"></a></span>
-<span id="cb598-9"><a href="exponential-smoothing.html#cb598-9"></a>fc &lt;-<span class="st"> </span><span class="kw">forecastHES</span>(mod, <span class="dt">H =</span> <span class="dv">3</span>)</span>
-<span id="cb598-10"><a href="exponential-smoothing.html#cb598-10"></a>fc</span></code></pre></div>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="exponential-smoothing.html#cb610-1"></a>mod &lt;-<span class="st"> </span><span class="kw">holtExponentialSmoothing</span>(<span class="dt">yt=</span>yt,<span class="dt">alpha=</span>params[<span class="dv">1</span>],<span class="dt">gamma=</span>params[<span class="dv">2</span>])</span>
+<span id="cb610-2"><a href="exponential-smoothing.html#cb610-2"></a></span>
+<span id="cb610-3"><a href="exponential-smoothing.html#cb610-3"></a>forecastHES &lt;-<span class="st"> </span><span class="cf">function</span>(mod, H){</span>
+<span id="cb610-4"><a href="exponential-smoothing.html#cb610-4"></a>  fc &lt;-<span class="st"> </span><span class="kw">tail</span>(mod<span class="op">$</span>level,<span class="dv">1</span>) <span class="op">+</span><span class="st">  </span><span class="kw">tail</span>(mod<span class="op">$</span>trend, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span>H</span>
+<span id="cb610-5"><a href="exponential-smoothing.html#cb610-5"></a>  fc &lt;-<span class="st"> </span><span class="kw">ts</span>(fc,<span class="dt">start=</span><span class="kw">tsp</span>(mod<span class="op">$</span>yt)[<span class="dv">2</span>]<span class="op">+</span><span class="dv">1</span>, <span class="dt">end=</span><span class="kw">tsp</span>(mod<span class="op">$</span>yt)[<span class="dv">2</span>]<span class="op">+</span>H,<span class="dt">frequency =</span> <span class="kw">frequency</span>(mod<span class="op">$</span>yt))</span>
+<span id="cb610-6"><a href="exponential-smoothing.html#cb610-6"></a>  <span class="kw">return</span>(fc)</span>
+<span id="cb610-7"><a href="exponential-smoothing.html#cb610-7"></a>}</span>
+<span id="cb610-8"><a href="exponential-smoothing.html#cb610-8"></a></span>
+<span id="cb610-9"><a href="exponential-smoothing.html#cb610-9"></a>fc &lt;-<span class="st"> </span><span class="kw">forecastHES</span>(mod, <span class="dt">H =</span> <span class="dv">3</span>)</span>
+<span id="cb610-10"><a href="exponential-smoothing.html#cb610-10"></a>fc</span></code></pre></div>
 <pre><code>#R&gt; Time Series:
 #R&gt; Start = 5 
 #R&gt; End = 7 
 #R&gt; Frequency = 1 
 #R&gt; [1] 205.3977 207.8910 210.3844</code></pre>
-<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="exponential-smoothing.html#cb600-1"></a><span class="kw">plot</span>(yt, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">190</span>,<span class="dv">215</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>),<span class="dt">type=</span><span class="st">&quot;b&quot;</span>,</span>
-<span id="cb600-2"><a href="exponential-smoothing.html#cb600-2"></a>     <span class="dt">main=</span><span class="st">&quot;Example Time Series and Forecast&quot;</span>)</span>
-<span id="cb600-3"><a href="exponential-smoothing.html#cb600-3"></a><span class="kw">lines</span>(fc, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">type=</span><span class="st">&quot;b&quot;</span>)</span>
-<span id="cb600-4"><a href="exponential-smoothing.html#cb600-4"></a><span class="kw">grid</span>()</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-246-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="exponential-smoothing.html#cb612-1"></a><span class="kw">plot</span>(yt, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">190</span>,<span class="dv">215</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>),<span class="dt">type=</span><span class="st">&quot;b&quot;</span>,</span>
+<span id="cb612-2"><a href="exponential-smoothing.html#cb612-2"></a>     <span class="dt">main=</span><span class="st">&quot;Example Time Series and Forecast&quot;</span>)</span>
+<span id="cb612-3"><a href="exponential-smoothing.html#cb612-3"></a><span class="kw">lines</span>(fc, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">type=</span><span class="st">&quot;b&quot;</span>)</span>
+<span id="cb612-4"><a href="exponential-smoothing.html#cb612-4"></a><span class="kw">grid</span>()</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-250-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
             </section>
