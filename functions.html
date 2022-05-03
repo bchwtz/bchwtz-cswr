@@ -405,17 +405,17 @@ Write a function named <code>roll()</code> that simulates rolling a pair of dice
 <pre><code>#R&gt; function (x, size, replace = FALSE, prob = NULL) 
 #R&gt; NULL</code></pre>
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="functions.html#cb146-1"></a><span class="kw">sample</span>(num)</span></code></pre></div>
-<pre><code>#R&gt; [1] 3 6 4 2 5 1</code></pre>
+<pre><code>#R&gt; [1] 5 2 4 6 1 3</code></pre>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="functions.html#cb148-1"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">1</span>)</span></code></pre></div>
-<pre><code>#R&gt; [1] 2</code></pre>
+<pre><code>#R&gt; [1] 3</code></pre>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="functions.html#cb150-1"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">2</span>)         <span class="co"># Argument size allows us to adjust how</span></span></code></pre></div>
-<pre><code>#R&gt; [1] 2 4</code></pre>
+<pre><code>#R&gt; [1] 6 3</code></pre>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="functions.html#cb152-1"></a>                              <span class="co"># many times the dice are rolled</span></span></code></pre></div>
 <p>Using <code>sample()</code> only with our vector of numbers does not lead to the correct result, but the argument <code>size</code> allows us to adjust for the number of times a dice is rolled. We obviously need two returned values as we need one value per die, so <code>size=2</code>. When you run this line of code over and over again you may notice that the two returned values are never the same. If we are trying to increase the number of rolled dice, R points us directly to the reason:</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="functions.html#cb153-1"></a><span class="co"># sample(num, size = 7) #causes an error</span></span>
 <span id="cb153-2"><a href="functions.html#cb153-2"></a></span>
 <span id="cb153-3"><a href="functions.html#cb153-3"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>#R&gt; [1] 2 3</code></pre>
+<pre><code>#R&gt; [1] 1 5</code></pre>
 <p>The behavior of the <code>sample()</code>-function takes us directly back to one of our first statistics lessons. Every time the function returns a value it removes it from the population/sample, so it can not be returned again. If we set the option <code>replace</code> to <code>TRUE</code> the previously withdrawn number is placed back in the sample and can be drawn again. Therefore this option allows us to create independent, random samples, which is exactly what we want. We just solved our first programming problem! Now we just need to wrap our code in a function so that we can call it using <code>roll()</code>. For this we need the function <code>function()</code>.</p>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="functions.html#cb155-1"></a>my_function &lt;-<span class="st"> </span><span class="cf">function</span>() { }    <span class="co"># This is how a function is defined</span></span>
 <span id="cb155-2"><a href="functions.html#cb155-2"></a></span>
