@@ -3,8 +3,8 @@ fig:unnamed-chunk-40
 fig:unnamed-chunk-78
 fig:unnamed-chunk-162
 fig:unnamed-chunk-164
-fig:unnamed-chunk-213
-fig:unnamed-chunk-240
+fig:unnamed-chunk-214
+fig:unnamed-chunk-241
 intro
 r-and-the-r-project
 r-system-and-rstudio
