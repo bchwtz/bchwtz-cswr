@@ -1,1 +1,1 @@
-# (PART\*) Applications {-} 
+# Applications - Graphics {-} 
