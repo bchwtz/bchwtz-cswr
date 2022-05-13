@@ -277,7 +277,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html#from-may-10-2022"><i class="fa fa-check"></i>From May 10, 2022</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="applications---graphics.html"><a href="applications---graphics.html"><i class="fa fa-check"></i>Applications - Graphics</a></li>
+<li class="chapter" data-level="" data-path="applications---graphics.html"><a href="applications---graphics.html"><i class="fa fa-check"></i>Applications - Graphics</a><ul>
+<li class="chapter" data-level="" data-path="lecture-and-exercises.html"><a href="lecture-and-exercises.html"><i class="fa fa-check"></i>Lecture and exercises</a><ul>
+<li class="chapter" data-level="" data-path="lecture-and-exercises.html"><a href="lecture-and-exercises.html#from-may-17-2022"><i class="fa fa-check"></i>From May 17, 2022</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>7</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="7.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>7.1</b> Requirements</a></li>
 <li class="chapter" data-level="7.2" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>7.2</b> Solution</a></li>
@@ -359,9 +363,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.6</span> Dates and Times<a href="dates-and-times.html#dates-and-times" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Dates and times in computer science can easily fill a bunch of books. There are different time formats, different data types and there are countless routines to handle, measure and manipulate time objects. So let us focus on the basics to implement basic features in your programs when it comes to times. In R we have two simple methods to obtain the current time.</p>
 <div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="dates-and-times.html#cb417-1"></a><span class="kw">date</span>()</span></code></pre></div>
-<pre><code>#R&gt; [1] &quot;Fri May 13 08:29:37 2022&quot;</code></pre>
+<pre><code>#R&gt; [1] &quot;Fri May 13 08:37:20 2022&quot;</code></pre>
 <div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="dates-and-times.html#cb419-1"></a><span class="kw">Sys.time</span>()</span></code></pre></div>
-<pre><code>#R&gt; [1] &quot;2022-05-13 08:29:37 UTC&quot;</code></pre>
+<pre><code>#R&gt; [1] &quot;2022-05-13 08:37:20 UTC&quot;</code></pre>
 <p>Once we have a date we can encode and convert it to a POSIXlt-Object with the function <code>strptime()</code>. POSIX-Objects store the number of elapsed seconds since the 1. January 1970 - 00:00. Once we have a POSIXlt-Object it is easy to extract things like the month using the function <code>months()</code> or the day of the week using <code>weekdays()</code>.</p>
 <div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="dates-and-times.html#cb421-1"></a><span class="kw">Sys.setlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>,<span class="st">&quot;C&quot;</span>)           <span class="co"># Set regional parameters once</span></span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;C&quot;</code></pre>
