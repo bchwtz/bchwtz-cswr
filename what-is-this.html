@@ -277,11 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html#from-may-10-2022"><i class="fa fa-check"></i>From May 10, 2022</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="applications---graphics.html"><a href="applications---graphics.html"><i class="fa fa-check"></i>Applications - Graphics</a><ul>
-<li class="chapter" data-level="" data-path="lecture-and-exercises.html"><a href="lecture-and-exercises.html"><i class="fa fa-check"></i>Lecture and exercises</a><ul>
-<li class="chapter" data-level="" data-path="lecture-and-exercises.html"><a href="lecture-and-exercises.html#from-may-17-2022"><i class="fa fa-check"></i>From May 17, 2022</a></li>
-</ul></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="applications---graphics.html"><a href="applications---graphics.html"><i class="fa fa-check"></i>Applications - Graphics</a></li>
 <li class="chapter" data-level="7" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>7</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="7.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>7.1</b> Requirements</a></li>
 <li class="chapter" data-level="7.2" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>7.2</b> Solution</a></li>
@@ -407,8 +403,8 @@ microbenchmark(fun.switch('case1'), fun.if('case1'), times=1e3)
 ```
 #R> Unit: nanoseconds
 #R>                 expr min  lq     mean median  uq     max neval
-#R>  fun.switch("case1") 337 357 2555.490    394 407 2151516  1000
-#R>      fun.if("case1") 458 484 6152.985    493 505 5617335  1000
+#R>  fun.switch("case1") 327 352 2263.558    381 396 1865572  1000
+#R>      fun.if("case1") 450 478 4320.878    489 501 3802041  1000
 ```
 
 ```r
@@ -417,9 +413,9 @@ microbenchmark(fun.switch('case3'), fun.if('case3'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min  lq    mean median  uq   max neval
-#R>  fun.switch("case3") 368 398 445.803    432 448  5204  1000
-#R>      fun.if("case3") 698 726 798.669    737 755 23523  1000
+#R>                 expr min  lq    mean median    uq  max neval
+#R>  fun.switch("case3") 369 395 435.962    430 444.0 3079  1000
+#R>      fun.if("case3") 697 722 760.539    733 747.5 7532  1000
 ```
 
 
