@@ -1,1 +1,11 @@
 # Applications - Graphics {-} 
+
+## Lecture and exercises {-}
+```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
+knitr::include_graphics("gfx/CH00-ExercisesHeader.png")
+```
+
+### From May 17, 2022 {-}
+
+
+
