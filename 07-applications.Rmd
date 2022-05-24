@@ -1,3 +1,6 @@
 # Applications - Graphics {-} 
 
+```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
+knitr::include_graphics("exercises/applications_graphics/cswr_programming_R_appl_graphics.pdf")
+```
 
