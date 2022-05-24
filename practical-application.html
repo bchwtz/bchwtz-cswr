@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-05-13" />
+<meta name="date" content="2022-05-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -391,7 +391,7 @@ Calculate H=8 forecasts for the youtube subscriber data using only the observati
 <p>The following plot based on the daily subscriber changes shows that the model fits the data fairly well. The black line and circles show the observed subscriber changes, while the red line shows how good the model with the best parameters, determined by grid search replicate the time series.</p>
 <div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="practical-application.html#cb616-1"></a><span class="kw">plot</span>(<span class="kw">diff</span>(mod<span class="op">$</span>yt),<span class="dt">type=</span><span class="st">&quot;b&quot;</span>)</span>
 <span id="cb616-2"><a href="practical-application.html#cb616-2"></a><span class="kw">lines</span>(<span class="kw">diff</span>(mod<span class="op">$</span>fitted),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-259-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-260-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

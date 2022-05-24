@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-05-13" />
+<meta name="date" content="2022-05-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -387,7 +387,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb562-4"><a href="proof-of-work-pow.html#cb562-4"></a>}</span>
 <span id="cb562-5"><a href="proof-of-work-pow.html#cb562-5"></a><span class="kw">plot</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(pvec),<span class="dt">y=</span>pvec, </span>
 <span id="cb562-6"><a href="proof-of-work-pow.html#cb562-6"></a>     <span class="dt">xlab=</span><span class="st">&quot;Steps of Proofs&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Proof Number&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-225-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-226-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Additionally to the predictability of the proof numbers in the simple algorithm our example has numerous additional disadvantages that disqualify it for productive use. In the case of the Hashcash algorithm, the challenge is actually much more randomized and based on hash functions. The challenge is to generate hash values that contain a certain amount of leading zeros. Additionally, there needs to be a mechanism to account for growing computing power, so that new solutions to provided puzzles are found in approximately equal time slices. This in turns means that the difficulty of the puzzles needs to be adjustable.</p>
 </div>
 <div id="combining-pow-and-hashing" class="section level3 unnumbered hasAnchor">
@@ -405,11 +405,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For a practical example let us use the genesis block that we just created as the starting point for our own blockchain and feed it to the new <code>proofOfWork</code> function after setting the difficulty to a moderate value.</p>
 <div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="proof-of-work-pow.html#cb564-1"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   0.013   0.000   0.013</code></pre>
+#R&gt;   0.012   0.000   0.013</code></pre>
 <div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="proof-of-work-pow.html#cb566-1"></a>genesisBlock<span class="op">$</span>difficulty &lt;-<span class="st"> </span><span class="dv">3</span></span>
 <span id="cb566-2"><a href="proof-of-work-pow.html#cb566-2"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock)) <span class="co"># Execute again with increased difficulty</span></span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   0.496   0.029   0.525</code></pre>
+#R&gt;   0.056   0.003   0.059</code></pre>
 </div>
 <div id="exercises-7" class="section level3 unnumbered hasAnchor">
 <h3>Exercises<a href="proof-of-work-pow.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
