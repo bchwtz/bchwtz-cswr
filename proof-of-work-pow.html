@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-05-24" />
+<meta name="date" content="2022-06-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -313,7 +313,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6" data-path="practical-application.html"><a href="practical-application.html"><i class="fa fa-check"></i><b>9.6</b> Practical Application</a></li>
 <li class="chapter" data-level="9.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>9.7</b> Forecast Evaluation</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>10</b> Web Apps</a></li>
+<li class="chapter" data-level="10" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>10</b> Web Apps</a><ul>
+<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#for-june-21-2022-in-advance"><i class="fa fa-check"></i>For June 21, 2022 (in advance)</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
 <li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
 <li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html"><i class="fa fa-check"></i>Programming Project</a><ul>
@@ -405,11 +409,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For a practical example let us use the genesis block that we just created as the starting point for our own blockchain and feed it to the new <code>proofOfWork</code> function after setting the difficulty to a moderate value.</p>
 <div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="proof-of-work-pow.html#cb564-1"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   0.013   0.000   0.013</code></pre>
+#R&gt;   0.012   0.000   0.012</code></pre>
 <div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="proof-of-work-pow.html#cb566-1"></a>genesisBlock<span class="op">$</span>difficulty &lt;-<span class="st"> </span><span class="dv">3</span></span>
 <span id="cb566-2"><a href="proof-of-work-pow.html#cb566-2"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock)) <span class="co"># Execute again with increased difficulty</span></span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   0.107   0.006   0.136</code></pre>
+#R&gt;   0.027   0.001   0.028</code></pre>
 </div>
 <div id="exercises-7" class="section level3 unnumbered hasAnchor">
 <h3>Exercises<a href="proof-of-work-pow.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>

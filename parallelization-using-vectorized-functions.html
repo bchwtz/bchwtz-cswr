@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-05-24" />
+<meta name="date" content="2022-06-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -313,7 +313,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6" data-path="practical-application.html"><a href="practical-application.html"><i class="fa fa-check"></i><b>9.6</b> Practical Application</a></li>
 <li class="chapter" data-level="9.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>9.7</b> Forecast Evaluation</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>10</b> Web Apps</a></li>
+<li class="chapter" data-level="10" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>10</b> Web Apps</a><ul>
+<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#for-june-21-2022-in-advance"><i class="fa fa-check"></i>For June 21, 2022 (in advance)</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
 <li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
 <li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html"><i class="fa fa-check"></i>Programming Project</a><ul>
@@ -370,10 +374,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="parallelization-using-vectorized-functions.html#cb530-1"></a>modellist &lt;-<span class="st"> </span><span class="kw">apply</span>(regselector,<span class="dv">1</span>,<span class="cf">function</span>(x){<span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">&quot;mpg ~ 1&quot;</span>, regnames[x]), <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>))})</span></code></pre></div>
 <div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="parallelization-using-vectorized-functions.html#cb531-1"></a><span class="kw">system.time</span>(res.sequential &lt;-<span class="st"> </span><span class="kw">lapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)}))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   1.346   0.024   1.532</code></pre>
+#R&gt;   1.308   0.036   2.034</code></pre>
 <div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="parallelization-using-vectorized-functions.html#cb533-1"></a><span class="kw">system.time</span>(res.parallel &lt;-<span class="st"> </span><span class="kw">mclapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)},<span class="dt">mc.cores=</span>num.cores))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   0.065   0.039   1.605</code></pre>
+#R&gt;   0.600   0.156   1.570</code></pre>
 <div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="parallelization-using-vectorized-functions.html#cb535-1"></a>rsquared.sequential &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.sequential, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
 <span id="cb535-2"><a href="parallelization-using-vectorized-functions.html#cb535-2"></a>rsquared.parallel &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.parallel, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
 <span id="cb535-3"><a href="parallelization-using-vectorized-functions.html#cb535-3"></a><span class="kw">table</span>(rsquared.sequential <span class="op">==</span><span class="st"> </span>rsquared.parallel)</span></code></pre></div>

@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-05-24" />
+<meta name="date" content="2022-06-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -313,7 +313,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6" data-path="practical-application.html"><a href="practical-application.html"><i class="fa fa-check"></i><b>9.6</b> Practical Application</a></li>
 <li class="chapter" data-level="9.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>9.7</b> Forecast Evaluation</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>10</b> Web Apps</a></li>
+<li class="chapter" data-level="10" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>10</b> Web Apps</a><ul>
+<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#for-june-21-2022-in-advance"><i class="fa fa-check"></i>For June 21, 2022 (in advance)</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
 <li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
 <li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html"><i class="fa fa-check"></i>Programming Project</a><ul>
@@ -407,17 +411,17 @@ Write a function named <code>roll()</code> that simulates rolling a pair of dice
 <pre><code>#R&gt; function (x, size, replace = FALSE, prob = NULL) 
 #R&gt; NULL</code></pre>
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="functions.html#cb146-1"></a><span class="kw">sample</span>(num)</span></code></pre></div>
-<pre><code>#R&gt; [1] 3 6 2 1 5 4</code></pre>
+<pre><code>#R&gt; [1] 3 6 4 5 2 1</code></pre>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="functions.html#cb148-1"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>#R&gt; [1] 5</code></pre>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="functions.html#cb150-1"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">2</span>)         <span class="co"># Argument size allows us to adjust how</span></span></code></pre></div>
-<pre><code>#R&gt; [1] 1 3</code></pre>
+<pre><code>#R&gt; [1] 3 1</code></pre>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="functions.html#cb152-1"></a>                              <span class="co"># many times the dice are rolled</span></span></code></pre></div>
 <p>Using <code>sample()</code> only with our vector of numbers does not lead to the correct result, but the argument <code>size</code> allows us to adjust for the number of times a dice is rolled. We obviously need two returned values as we need one value per die, so <code>size=2</code>. When you run this line of code over and over again you may notice that the two returned values are never the same. If we are trying to increase the number of rolled dice, R points us directly to the reason:</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="functions.html#cb153-1"></a><span class="co"># sample(num, size = 7) #causes an error</span></span>
 <span id="cb153-2"><a href="functions.html#cb153-2"></a></span>
 <span id="cb153-3"><a href="functions.html#cb153-3"></a><span class="kw">sample</span>(num, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>#R&gt; [1] 2 1</code></pre>
+<pre><code>#R&gt; [1] 4 3</code></pre>
 <p>The behavior of the <code>sample()</code>-function takes us directly back to one of our first statistics lessons. Every time the function returns a value it removes it from the population/sample, so it can not be returned again. If we set the option <code>replace</code> to <code>TRUE</code> the previously withdrawn number is placed back in the sample and can be drawn again. Therefore this option allows us to create independent, random samples, which is exactly what we want. We just solved our first programming problem! Now we just need to wrap our code in a function so that we can call it using <code>roll()</code>. For this we need the function <code>function()</code>.</p>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="functions.html#cb155-1"></a>my_function &lt;-<span class="st"> </span><span class="cf">function</span>() { }    <span class="co"># This is how a function is defined</span></span>
 <span id="cb155-2"><a href="functions.html#cb155-2"></a></span>
@@ -431,7 +435,7 @@ Write a function named <code>roll()</code> that simulates rolling a pair of dice
 <span id="cb155-10"><a href="functions.html#cb155-10"></a>}</span>
 <span id="cb155-11"><a href="functions.html#cb155-11"></a></span>
 <span id="cb155-12"><a href="functions.html#cb155-12"></a><span class="kw">roll</span>()                           <span class="co"># We can now use our function</span></span></code></pre></div>
-<pre><code>#R&gt; [1] 6 5</code></pre>
+<pre><code>#R&gt; [1] 1 5</code></pre>
 <p>The code between the parentheses is called the body of a function. The complete code runs when you require R to execute your function. You can see how I indented these lines. This does not affect R’s behavior but makes the code a lot more readable. R ignores every blank line and space, so you can use them to structure your code.</p>
 <p>The <code>return()</code> at the end of the function advises R to explicitly give back a value. Code that does not produce an output on the console by running it line by line is called a silent function. If you perform a calculation that also produces an output on the console it will be automatically returned if its the last line in your function, e.g. <code>sum(dice)</code> instead of <code>return(dice)</code> would return the combined result of the two rolled dices. Let us have a look at an overview of all the different parts of a function:</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-40"></span>
