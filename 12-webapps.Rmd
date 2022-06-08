@@ -135,3 +135,14 @@ shinyApp(ui = ui, server = server)
 
 ```
 
+
+## Exercises {-}
+```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
+knitr::include_graphics("gfx/CH00-ExercisesHeader.png")
+```
+
+### For June 21, 2022 (in advance) {-}
+
+```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
+knitr::include_graphics("exercises/web_apps/cswr_programming_R_appl_shiny_web_apps_first_task.pdf")
+```
