@@ -407,8 +407,8 @@ microbenchmark(fun.switch('case1'), fun.if('case1'), times=1e3)
 ```
 #R> Unit: nanoseconds
 #R>                 expr min  lq     mean median  uq     max neval
-#R>  fun.switch("case1") 337 358 2519.089    390 404 2111305  1000
-#R>      fun.if("case1") 458 487 4757.331    495 506 4223700  1000
+#R>  fun.switch("case1") 325 348 2221.799    379 396 1812441  1000
+#R>      fun.if("case1") 453 484 4330.043    494 506 3815693  1000
 ```
 
 ```r
@@ -417,9 +417,9 @@ microbenchmark(fun.switch('case3'), fun.if('case3'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min  lq    mean median  uq   max neval
-#R>  fun.switch("case3") 369 394 467.649    430 446 20280  1000
-#R>      fun.if("case3") 693 725 803.934    737 758 17629  1000
+#R>                 expr min    lq    mean median  uq  max neval
+#R>  fun.switch("case3") 362 385.5 429.715    425 438 6138  1000
+#R>      fun.if("case3") 692 721.0 753.389    731 746 9088  1000
 ```
 
 
