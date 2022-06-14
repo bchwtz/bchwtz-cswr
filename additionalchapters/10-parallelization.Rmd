@@ -4,17 +4,9 @@
 knitr::include_graphics("gfx/CHAP-haswell-e-die-shot.jpg")
 ```
 
-## Some data
-```{r}
-t(apply(mtcars,2, summary))
-```
-
-Additional details describing the variables can be accessed by `?mtcars`.
-
-
 ## Parallelization using vectorized functions
 
-A very convenient method of parallelization is by utilizing the `parallel` package that provides parallelized versions of functions from the `*apply`-family. However as it uses a technique called *forking* the usage of these function is limited to operating systems that are based on unix such as Linux or Mac OS. 
+A very convenient method of parallelization is by utilizing the `parallel` package that provides parallelized versions of functions from the `*apply`-family. However as it uses a technique called *forking* the usage of these function is limited to operating systems that are based on Unix such as Linux or MacOS. 
 
 ```{r}
 library(parallel)
