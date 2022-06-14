@@ -1,0 +1,491 @@
+---
+title: "Programmierung R - Exercise"
+author: "Vectorization"
+date: "May 10, SS 2022 || Hannah Behrens"
+
+toc: true
+tocoverview: false
+tocheader: Inhaltsübersicht
+titlefontsize: 22pt
+
+bibliography: C:/Users/Mitarbeiterin/sciebo/nongit/SoSe_22/cswr_R_Programmierung_2022/Uebungen_Slides/referencescswr.bib
+biblio-style: authoryear-comp
+
+output: fhswf::presentation
+knit: rmarkdown::render
+
+nocite: |
+    @cswr
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+options(digits = 4)
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, cache=TRUE, 
+                      dev.args=list(pointsize=11), size="scriptsize", fig.height = 4, attr.source='.numberLines')
+
+# Packages
+library(car)
+library(fGarch)
+library(gtools)
+library(HistogramTools)
+library(ineq)
+library(kableExtra)
+library(texreg)
+library(tidyverse)
+library(vcd)
+library(latex2exp)
+library(knitcitations)
+library(gridExtra)
+library(plotly)
+library(rgl)
+library(mgcv)
+library(parallel)
+```
+
+## Task 1
+
+### Your turn
+
+1.1 Load the data set `Airquality3.csv` we have created at our second appointment from April 12, 2022 (Exercise *Data manipulation*).
+
+1.2  Compute the mean of each numeric variable (use different `apply`- functions (`apply()`, `lapply()`, `sapply()` and `vapply()`)). How do the outputs differ?
+
+1.3 Compute the median of `Temperature` dependent on the month.
+
+
+## Tasks 1.1 and 1.2 - answers
+
+1.1 
+```{r, echo=FALSE, eval=TRUE}
+# read csv-file named "Airquality3.csv" (exercise from the 12th of April 2022)
+gwd <- getwd()
+```
+
+```{r}
+# read csv-file named "Airquality3.csv" (exercise from April 12, 2022)
+airqu3 <- read.table("Airquality3.csv", sep = ",")
+```
+
+1.2 
+
+```{r}
+# the first six variables are numeric:
+str(airqu3)
+```
+
+## Task 1.2 - `apply()` - answer
+
+
+```{r}
+# apply the mean function to the first six columns of airqu3
+airqu3_apply <- apply(X = airqu3[,c(1:6)], MARGIN = 2, FUN = mean) 
+airqu3_apply
+typeof(airqu3_apply) # output: a vector
+```
+
+\begin{textblock}{4}(6,1)
+\begin{alertblock}{}
+function \texttt{apply()}
+\end{alertblock}
+\end{textblock}
+
+## Task 1.2 - `lapply()` - answer
+
+```{r}
+airqu3_lapply <- lapply(X = airqu3[,c(1:6)], FUN = mean)
+airqu3_lapply
+typeof(airqu3_lapply) # output: a list
+```
+
+\begin{textblock}{4}(6,4)
+\begin{alertblock}{}
+function \texttt{lapply()},\newline
+return value: a list
+\end{alertblock}
+\end{textblock}
+
+
+## Task 1.2 - answer
+
+```{r}
+air_list <- list(Ozone = airqu3$Ozone, Solar.R = airqu3$Solar.R,
+                 Wind = airqu3$Wind, Temperature = airqu3$Temperature,
+                 Month = airqu3$Month, Day = airqu3$Day)
+air_list
+```
+
+
+\begin{textblock}{6}(5,2)
+\begin{alertblock}{}
+Saving \texttt{airqu3} as a list named \texttt{air\_list}
+\end{alertblock}
+\end{textblock}
+
+## Task 1.2 - `lapply()` - answer
+
+```{r}
+airqu3_lapply2 <- lapply(X = air_list, FUN = mean)
+airqu3_lapply2
+typeof(airqu3_lapply2) # output: a list
+```
+
+\begin{textblock}{7}(4,3)
+\begin{alertblock}{}
+applying \texttt{lapply()} to a list $\rightarrow$ a list is returned
+\end{alertblock}
+\end{textblock}
+
+## Task 1.2 - `sapply()` - answer
+
+
+```{r}
+airqu3_sapply <- sapply(X = airqu3[,c(1:6)], FUN = mean)
+airqu3_sapply
+typeof(airqu3_sapply) # output: a vector
+```
+
+\begin{textblock}{4}(6,1)
+\begin{alertblock}{}
+function \texttt{sapply()}
+\end{alertblock}
+\end{textblock}
+
+## Task 1.2 - `sapply()` - answer
+
+```{r}
+airqu3_sapply2 <- sapply(air_list, FUN = mean)
+airqu3_sapply2
+typeof(airqu3_sapply2) # output: a vector
+```
+
+\begin{textblock}{11}(1,1)
+\begin{alertblock}{}
+applying \texttt{sapply()} to a list $\rightarrow$ a vector is returned when \texttt{simplify = TRUE}
+\end{alertblock}
+\end{textblock}
+
+\begin{textblock}{7}(2,7)
+\begin{alertblock}{}
+What happens when \texttt{simplify} is set to \texttt{FALSE}?
+\end{alertblock}
+\end{textblock}
+
+## Task 1.2 - `sapply()` - answer
+
+```{r}
+airqu3_sapply3 <- sapply(air_list, FUN = mean, simplify = FALSE)
+airqu3_sapply3
+typeof(airqu3_sapply3) # output: a vector
+```
+
+\begin{textblock}{7}(4,2)
+\begin{alertblock}{}
+Setting \texttt{simplify = FALSE}: a list is returned
+\end{alertblock}
+\end{textblock}
+
+## Task 1.2 - `vapply()` - answer
+
+```{r}
+airqu3_vapply <- vapply(X = airqu3[,c(1:6)], FUN = mean, FUN.VALUE = numeric(1))
+airqu3_vapply
+typeof(airqu3_vapply) # output: a vector
+```
+
+\begin{textblock}{11}(0.7,1)
+\begin{alertblock}{}
+function \texttt{vapply()}: specification of the return value (\texttt{FUN.VALUE}) is necessary
+\end{alertblock}
+\end{textblock}
+
+
+## Task 1.3 - answer
+
+1.3 Based on `Airquality3.csv`, compute the median of `Temperature` dependent on the month.
+
+```{r}
+tapply(X = airqu3$Temperature, INDEX = airqu3$Month, FUN = median)
+# or
+tapply(X = airqu3$Temperature, INDEX = airqu3$Month_name, FUN = median)
+
+# --> is a big advantage compared to calculating the median of the temperature 
+# for each month piecewise like
+median(airqu3$Temperature[which(airqu3$Month == 5)]) 
+# ... and so on
+```
+
+
+## Task 2
+
+Remember the data set `datasets::airquality` [@datasets]. It consists of the following variables
+
+```{r}
+colnames(airquality)
+```
+
+which are numeric.
+
+We are interested in all possible and different linear models when one of these six variables is considered as the dependent variable $y$. How can we achieve this?
+
+\begin{textblock}{10}(0.7, 8)
+\begin{alertblock}{}
+How many combinations of different linear models exist for each $y$?
+\end{alertblock}
+\end{textblock}
+
+## Task 2 - number of combinations - answer
+
+For each $y$: 
+
++ $N = 5$ remaining variables as predictors to form linear models, e.g. $y$ = `Ozone`:
+
+```{r, eval=FALSE}
+lm(Ozone ~ 1 + Solar.R + Wind + Temp + Month + Day)
+# but also
+lm(Ozone ~ 1 + Solar.R + Wind + Temp + Month)
+# as well as
+lm(Ozone ~ 1 + Solar.R + Wind + Temp + Day)
+# and so on...
+```
+
+
++ As we have seen, a linear model for `Ozone` can be created based on 5, 4, 3, 2 and 1 variable(s) as predictor(s). 
+
++ Each predictor appears only **once** in each linear model and the ordering **does not** play any role: So, the number of combinations
+ when picking up 5 of 5, 4 of 5 predictors and so on is calculated based on the binomial coefficient $\binom{N}{n} = \frac{N!}{n! \cdot (N-n)!}$. [@Fahrmeir2016, p. 187f.]
+
+## Task 2 - number of combinations - answer
+
+From that it follows:
+
++ When forming a model with 5 predictors, only 1 combination is possible: $\binom{5}{5} = \frac{5!}{5! \cdot (5-5)!} = 1$
+
++ When forming a model with 4 predictors, 5 combinations are possible: $\binom{5}{4} = \frac{5!}{4! \cdot (5-4)!} = 5$
+
+$\rightarrow$ So, for each $y$ 
+
+```{r}
+combi_per_y <- choose(5,5) + choose(5,4) + choose(5,3) + choose(5,2) + choose(5,1)
+combi_per_y
+```
+
+different linear models can be created and examined.
+
+
+## Task 2 - implementation - step 1
+
+### Your turn 
+
+Based on the presented theory, the first step is to *combine the predictors* to create `r combi_per_y` linear models in the next step. These *combinations* should be saved in a list.\newline
+How can we do this?
+
+
+## Task 2 - implementation - step 1 - answer
+
+
+```{r, eval=TRUE}
+## main program
+data <- airquality
+coln_names <- colnames(data) # get column names
+
+y <- coln_names[1] # e.g. Ozone (column 1) as the dependent variable (y)
+vars_grid <- coln_names[-1] # the remaining variables are predictors
+variables_grid <- expand.grid(replicate(length(vars_grid), vars_grid,
+                     simplify = FALSE)) # make a grid with all possible combinations
+    # since each predictor can only be listed once in the linear model, remove replicates
+variables_grid_unique <- apply(variables_grid, MARGIN = 1, FUN = unique)
+# sort entries of the sublists since the order of the predictors does not play any role
+variables_grid_sort <- lapply(variables_grid_unique, sort)
+    # then remove replicates again
+variables_grid_sort_unique <- unique(variables_grid_sort)
+   # add y to the end of all sublists:
+variables_grid_sort_unique_y <- lapply(variables_grid_sort_unique, 
+                                FUN = function(x){c(x, x[length(x)+1] <- y)})
+air_grid_lm <- variables_grid_sort_unique_y
+    # ... something is missing here
+```
+
+\begin{textblock}{10}(0.7, 8)
+\begin{alertblock}{}
+What to do next? Any ideas? Suggestions?
+\end{alertblock}
+\end{textblock}
+
+\begin{textblock}{8}(4, 0.8)
+\begin{alertblock}{}
+Combining the predictors to create `r combi_per_y` linear models
+\end{alertblock}
+\end{textblock}
+
+## Task 2 - step 2 
+
+### Your turn
+
+Based on our list `air_grid_lm`, we have to create the formulas of each linear model with $y$ (here: `Ozone`) as dependent variable. How can you implement it? Do it!
+
+## Task 2 - step 2 - implementation - answer
+
+
+
+```{r, echo=FALSE, eval=TRUE}
+gwd <- getwd()
+source("determiningLinMod.R")
+```
+
+
+```{r, eval=FALSE}
+# x: the first element(s) of each sublist (= predictors)
+# y: the last element of each sublist
+determiningLinMod <- function(x, y = x[length(x)], dataset = airquality){
+  # predictors x1 ,..., x_{length(x)-1}
+  predictors <- paste(x[-length(x)], collapse = " + ") # concatenate the predictors 
+  # by a + -sign
+  make_formula <- paste(y, " ~ 1 + ", predictors)
+  formula_lm <- as.formula(make_formula) # convert the string to a formula
+  lin_model <- lm(formula_lm, data = dataset) # call lm()
+  # return the different formulas as well as the model
+  return(list(formula = formula_lm, model = lin_model))
+}
+```
+
+```{r, eval=TRUE}
+# apply the function determiningLinMod() to each combination listed in air_grid_lm:
+lapply_lm_air <- lapply(X = air_grid_lm, FUN = determiningLinMod)
+```
+
+## Task 2 - step 2 - implementation - answer
+
+```{r, eval=FALSE}
+## main program
+data <- airquality
+coln_names <- colnames(data) # get column names
+
+y <- coln_names[1] # e.g. Ozone (column 1) as the dependent variable (y)
+vars_grid <- coln_names[-1] # the remaining variables are predictors
+variables_grid <- expand.grid(replicate(length(vars_grid), vars_grid,
+                     simplify = FALSE)) # make a grid with all possible combinations
+    # since each predictor can only be listed once in the linear model, remove replicates
+variables_grid_unique <- apply(variables_grid, MARGIN = 1, FUN = unique)
+# sort entries of the sublists since the order of the predictors does not play any role
+variables_grid_sort <- lapply(variables_grid_unique, sort)
+    # then remove replicates again
+variables_grid_sort_unique <- unique(variables_grid_sort)
+   # add y to the end of all sublists:
+variables_grid_sort_unique_y <- lapply(variables_grid_sort_unique, 
+                                FUN = function(x){c(x, x[length(x)+1] <- y)})
+air_grid_lm <- variables_grid_sort_unique_y
+# insert:
+lapply_lm_air <- lapply(air_grid_lm, FUN = determiningLinMod)
+```
+
+## Task 2 - step 2 - implementation - results
+
+```{r}
+length(lapply_lm_air) # 31 combinations expected (see some slides before)
+
+
+lapply_lm_air
+```
+
+
+## Task 2 - step 3 - parallelization
+
+Very nice! We get all possible linear models for the variable `Ozone` of the `airquality` data set [@datasets].
+
+But now, we want to go a step further by parallelizing the determination of the `r combi_per_y`  linear models for `Ozone`.
+
+\begin{textblock}{4}(4, 6.5)
+\begin{alertblock}{}
+How can we achieve this?
+\end{alertblock}
+\end{textblock}
+
+## Task 2 - step 3 - parallelization
+
+The function `parallel::mclapply()` [@parallel] is available which works as follows (The example is taken from @Peng2020):
+
+
+```{r}
+ r <- mclapply(1:10, function(i) {
+         Sys.sleep(10)  # Do nothing for 10 seconds
+}, mc.cores = 1)
+r
+```
+
+
+## Task 2 - step 3 - parallelization
+
+\begin{textblock}{6}(6, 2)
+\begin{alertblock}{}
+Instead of using \texttt{lapply()} \texttt{mclapply} (R Core Team 2021b) is used.\newline Parallelization based on \texttt{mclapply} is not possible on Windows.
+\end{alertblock}
+\end{textblock}
+
+```{r}
+parallelized_lm_air <- parallel::mclapply(X = air_grid_lm, 
+                                          FUN = determiningLinMod, mc.cores = 1)
+parallelized_lm_air
+```
+
+
+## Task 2 - step 3 - parallelization
+
+```{r}
+length(parallelized_lm_air)
+```
+
+
+\begin{textblock}{6}(4, 6.5)
+\begin{alertblock}{}
+The expectations have been fulfilled!
+\end{alertblock}
+\end{textblock}
+
+## Task 3
+
+
+The following list is given:
+
+```{r}
+L <- list(money = c(250, 124, 360, 720, 340, 340),
+          hours = c(19, 12, 30, 48, 26, 25),
+          idx = c(1:6),
+          name = c("Paul", "Emma", "Mia", "John", "Kim", "Maxi"))
+```
+
+### Your turn
+Make use of the `*apply()`-functions and
+
+a) compute the total sum of `money`, `hours` and `idx` and return a list.
+
+b) compute the mean of `money` and `hours` and return a vector.
+
+c) multiply each element of `money` and `hours` by 1.5 and return a matrix.
+
+## Tasks 3a) and 3b) - answers
+
+```{r}
+# 3.a)
+lapply(X = L[1:3], FUN = sum)
+
+# 3.b) 
+sapply(X = L[1:2], FUN = mean)
+# vapply(L[1:2], mean, FUN.VALUE=numeric(1)) # alternative
+# --> the value specified by FUN.VALUE (here: numeric(1)) and the actual value returned
+# (here: the mean of money and hours) have to match
+```
+
+
+## Task 3.c) - answer
+
+```{r}
+sapply(X = L[1:2], FUN = function(x){x * 1.5})
+```
+
+## For home
+
+Document the code (main program (slide 23) and function \texttt{determiningLinMod()}) as you have learned in the last lecture and exercise about *Software Development*.\newline
+You can also think of wrapping the code from slide 23 in a function.
+
+## References

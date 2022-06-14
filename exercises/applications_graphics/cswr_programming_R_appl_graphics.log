@@ -1,0 +1,2229 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.3.18)  24 MAY 2022 15:22
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**cswr_programming_R_appl_graphics.tex
+(./cswr_programming_R_appl_graphics.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamer.cls
+Document Class: beamer 2022/02/08 v3.66 A class for typesetting presentations
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasemodes.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count185
+)
+\beamer@tempbox=\box50
+\beamer@tempcount=\count186
+\c@beamerpauses=\count187
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasedecode.sty
+\beamer@slideinframe=\count188
+\beamer@minimum=\count189
+\beamer@decode@box=\box51
+)
+\beamer@commentbox=\box52
+\beamer@modecount=\count190
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+)
+\headdp=\dimen138
+\footheight=\dimen139
+\sidebarheight=\dimen140
+\beamer@tempdim=\dimen141
+\beamer@finalheight=\dimen142
+\beamer@animht=\dimen143
+\beamer@animdp=\dimen144
+\beamer@animwd=\dimen145
+\beamer@leftmargin=\dimen146
+\beamer@rightmargin=\dimen147
+\beamer@leftsidebar=\dimen148
+\beamer@rightsidebar=\dimen149
+\beamer@boxsize=\dimen150
+\beamer@vboxoffset=\dimen151
+\beamer@descdefault=\dimen152
+\beamer@descriptionwidth=\dimen153
+\beamer@lastskip=\skip47
+\beamer@areabox=\box53
+\beamer@animcurrent=\box54
+\beamer@animshowbox=\box55
+\beamer@sectionbox=\box56
+\beamer@logobox=\box57
+\beamer@linebox=\box58
+\beamer@sectioncount=\count191
+\beamer@subsubsectionmax=\count192
+\beamer@subsectionmax=\count193
+\beamer@sectionmax=\count194
+\beamer@totalheads=\count195
+\beamer@headcounter=\count196
+\beamer@partstartpage=\count197
+\beamer@sectionstartpage=\count198
+\beamer@subsectionstartpage=\count199
+\beamer@animationtempa=\count266
+\beamer@animationtempb=\count267
+\beamer@xpos=\count268
+\beamer@ypos=\count269
+\beamer@ypos@offset=\count270
+\beamer@showpartnumber=\count271
+\beamer@currentsubsection=\count272
+\beamer@coveringdepth=\count273
+\beamer@sectionadjust=\count274
+\beamer@toclastsection=\count275
+\beamer@tocsectionnumber=\count276
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaseoptions.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+))
+\beamer@paperwidth=\skip48
+\beamer@paperheight=\skip49
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count277
+\Gm@cntv=\count278
+\c@Gm@tempcnt=\count279
+\Gm@bindingoffset=\dimen154
+\Gm@wd@mp=\dimen155
+\Gm@odd@mp=\dimen156
+\Gm@even@mp=\dimen157
+\Gm@layoutwidth=\dimen158
+\Gm@layoutheight=\dimen159
+\Gm@layouthoffset=\dimen160
+\Gm@layoutvoffset=\dimen161
+\Gm@dimlist=\toks17
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/math/pgfmath.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks18
+\pgfutil@tempdima=\dimen162
+\pgfutil@tempdimb=\dimen163
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box59
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks21
+))) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+\pgf@x=\dimen164
+\pgf@xa=\dimen165
+\pgf@xb=\dimen166
+\pgf@xc=\dimen167
+\pgf@y=\dimen168
+\pgf@ya=\dimen169
+\pgf@yb=\dimen170
+\pgf@yc=\dimen171
+\c@pgf@counta=\count280
+\c@pgf@countb=\count281
+\c@pgf@countc=\count282
+\c@pgf@countd=\count283
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen172
+\pgfmath@count=\count284
+\pgfmath@box=\box60
+\pgfmath@toks=\toks22
+\pgfmath@stack@operand=\toks23
+\pgfmath@stack@operation=\toks24
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count285
+))) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen173
+\Gin@req@width=\dimen174
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+\pgf@x=\dimen175
+\pgf@y=\dimen176
+\pgf@xa=\dimen177
+\pgf@ya=\dimen178
+\pgf@xb=\dimen179
+\pgf@yb=\dimen180
+\pgf@xc=\dimen181
+\pgf@yc=\dimen182
+\pgf@xd=\dimen183
+\pgf@yd=\dimen184
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count286
+\c@pgf@countb=\count287
+\c@pgf@countc=\count288
+\c@pgf@countd=\count289
+\t@pgf@toka=\toks25
+\t@pgf@tokb=\toks26
+\t@pgf@tokc=\toks27
+\pgf@sys@id@count=\count290
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
+)
+Driver file for pgf: pgfsys-pdftex.def
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2021/05/15 v3.1.9a (3.1.9a)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
+))) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfsyssoftpath@smallbuffer@items=\count291
+\pgfsyssoftpath@bigbuffer@items=\count292
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@picminx=\dimen185
+\pgf@picmaxx=\dimen186
+\pgf@picminy=\dimen187
+\pgf@picmaxy=\dimen188
+\pgf@pathminx=\dimen189
+\pgf@pathmaxx=\dimen190
+\pgf@pathminy=\dimen191
+\pgf@pathmaxy=\dimen192
+\pgf@xx=\dimen193
+\pgf@xy=\dimen194
+\pgf@yx=\dimen195
+\pgf@yy=\dimen196
+\pgf@zx=\dimen197
+\pgf@zy=\dimen198
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@path@lastx=\dimen199
+\pgf@path@lasty=\dimen256
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@shorten@end@additional=\dimen257
+\pgf@shorten@start@additional=\dimen258
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfpic=\box61
+\pgf@hbox=\box62
+\pgf@layerbox@main=\box63
+\pgf@picture@serial@count=\count293
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgflinewidth=\dimen259
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@pt@x=\dimen260
+\pgf@pt@y=\dimen261
+\pgf@pt@temp=\dimen262
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfarrowsep=\dimen263
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@max=\dimen264
+\pgf@sys@shading@range@num=\count294
+\pgf@shadingcount=\count295
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfexternal@startupbox=\box64
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/xxcolor.sty
+Package: xxcolor 2003/10/24 ver 0.1
+\XC@nummixins=\count296
+\XC@countmixins=\count297
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2022-02-21 v7.00n Hypertext links for LaTeX
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+)
+\@linkdim=\dimen265
+\Hy@linkcounter=\count298
+\Hy@pagecounter=\count299
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2022-02-21 v7.00n Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count300
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2022-02-21 v7.00n Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4018.
+Package hyperref Info: Option `bookmarks' set `true' on input line 4018.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 4018.
+Package hyperref Info: Option `implicit' set `false' on input line 4018.
+Package hyperref Info: Hyper figures OFF on input line 4137.
+Package hyperref Info: Link nesting OFF on input line 4142.
+Package hyperref Info: Hyper index ON on input line 4145.
+Package hyperref Info: Plain pages OFF on input line 4152.
+Package hyperref Info: Backreferencing OFF on input line 4157.
+Package hyperref Info: Implicit mode OFF; no redefinition of LaTeX internals.
+Package hyperref Info: Bookmarks ON on input line 4390.
+\c@Hy@tempcnt=\count301
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4749.
+\XeTeXLinkMargin=\dimen266
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count302
+\Field@Width=\dimen267
+\Fld@charsize=\dimen268
+Package hyperref Info: Hyper figures OFF on input line 6027.
+Package hyperref Info: Link nesting OFF on input line 6032.
+Package hyperref Info: Hyper index ON on input line 6035.
+Package hyperref Info: backreferencing OFF on input line 6042.
+Package hyperref Info: Link coloring OFF on input line 6047.
+Package hyperref Info: Link coloring with OCG OFF on input line 6052.
+Package hyperref Info: PDF/A mode OFF on input line 6057.
+LaTeX Info: Redefining \ref on input line 6097.
+LaTeX Info: Redefining \pageref on input line 6101.
+\Hy@abspage=\count303
+
+Package hyperref Message: Stopped early.
+
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2022-02-21 v7.00n Hyperref driver for pdfTeX
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+)
+\Fld@listcount=\count304
+\c@bookmark@seq@number=\count305
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaserequires.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasecompatibility.sty) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasefont.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks28
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/sansmathaccent/sansmathaccent.sty
+Package: sansmathaccent 2020/01/31
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2021/11/13 v3.35 KOMA-Script package (file load hooks)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+Package: scrlfile-hook 2021/11/13 v3.35 KOMA-Script package (using LaTeX hooks)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/koma-script/scrlogo.sty
+Package: scrlogo 2021/11/13 v3.35 KOMA-Script package (logo)
+))))) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasetranslator.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/translator/translator.sty
+Package: translator 2021-05-31 v1.12d Easy translation of strings in LaTeX
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasemisc.sty) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasetwoscreens.sty) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaseoverlay.sty
+\beamer@argscount=\count306
+\beamer@lastskipcover=\skip50
+\beamer@trivlistdepth=\count307
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasetitle.sty) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasesection.sty
+\c@lecture=\count308
+\c@part=\count309
+\c@section=\count310
+\c@subsection=\count311
+\c@subsubsection=\count312
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaseframe.sty
+\beamer@framebox=\box65
+\beamer@frametitlebox=\box66
+\beamer@zoombox=\box67
+\beamer@zoomcount=\count313
+\beamer@zoomframecount=\count314
+\beamer@frametextheight=\dimen269
+\c@subsectionslide=\count315
+\beamer@frametopskip=\skip51
+\beamer@framebottomskip=\skip52
+\beamer@frametopskipautobreak=\skip53
+\beamer@framebottomskipautobreak=\skip54
+\beamer@envbody=\toks29
+\framewidth=\dimen270
+\c@framenumber=\count316
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaseverbatim.sty
+\beamer@verbatimfileout=\write4
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaseframesize.sty
+\beamer@splitbox=\box68
+\beamer@autobreakcount=\count317
+\beamer@autobreaklastheight=\dimen271
+\beamer@frametitletoks=\toks30
+\beamer@framesubtitletoks=\toks31
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaseframecomponents.sty
+\beamer@footins=\box69
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasecolor.sty) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasenotes.sty
+\beamer@frameboxcopy=\box70
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasetoc.sty) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasetemplates.sty
+\beamer@sbttoks=\toks32
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaseauxtemplates.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaseboxes.sty
+\bmb@box=\box71
+\bmb@colorbox=\box72
+\bmb@boxwidth=\dimen272
+\bmb@boxheight=\dimen273
+\bmb@prevheight=\dimen274
+\bmb@temp=\dimen275
+\bmb@dima=\dimen276
+\bmb@dimb=\dimen277
+\bmb@prevheight=\dimen278
+)
+\beamer@blockheadheight=\dimen279
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaselocalstructure.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks33
+)
+\beamer@bibiconwidth=\skip55
+\c@figure=\count318
+\c@table=\count319
+\abovecaptionskip=\skip56
+\belowcaptionskip=\skip57
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasenavigation.sty
+\beamer@section@min@dim=\dimen280
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasetheorems.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
+\@mathmargin=\skip58
+For additional information on amsmath, use the `?' option.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks34
+\ex@=\dimen281
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen282
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
+)
+\inf@bad=\count320
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count321
+\leftroot@=\count322
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count323
+\DOTSCASE@=\count324
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box73
+\strutbox@=\box74
+\big@size=\dimen283
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count325
+\c@MaxMatrixCols=\count326
+\dotsspace@=\muskip17
+\c@parentequation=\count327
+\dspbrk@lvl=\count328
+\tag@help=\toks35
+\row@=\count329
+\column@=\count330
+\maxfields@=\count331
+\andhelp@=\toks36
+\eqnshift@=\dimen284
+\alignsep@=\dimen285
+\tagshift@=\dimen286
+\tagwidth@=\dimen287
+\totwidth@=\dimen288
+\lineht@=\dimen289
+\@envbody=\toks37
+\multlinegap=\skip59
+\multlinetaggap=\skip60
+\mathdisplay@stack=\toks38
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks39
+\thm@bodyfont=\toks40
+\thm@headfont=\toks41
+\thm@notefont=\toks42
+\thm@headpunct=\toks43
+\thm@preskip=\skip61
+\thm@postskip=\skip62
+\thm@headsep=\skip63
+\dth@everypar=\toks44
+)
+\c@theorem=\count332
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasethemes.sty)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerthemedefault.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerfontthemedefault.sty) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamercolorthemedefault.sty) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerinnerthemedefault.sty
+\beamer@dima=\dimen290
+\beamer@dimb=\dimen291
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerouterthemedefault.sty))) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfpages.sty
+Package: pgfpages 2011/01/05 ver 0.02
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count333
+\calc@Bcount=\count334
+\calc@Adimen=\dimen292
+\calc@Bdimen=\dimen293
+\calc@Askip=\skip64
+\calc@Bskip=\skip65
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count335
+\calc@Cskip=\skip66
+)
+\pgf@logicalpages=\count336
+\pgf@firstshipout=\count337
+\pgf@lastshipout=\count338
+\pgf@currentshipout=\count339
+\pgf@cpn=\count340
+\pgf@shipoutnextto=\count341
+\pgfphysicalheight=\dimen294
+\pgfphysicalwidth=\dimen295
+\pgfpages@shipoutbox=\box75
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/cancel/cancel.sty
+Package: cancel 2013/04/12 v2.2 Cancel math terms
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen296
+\ar@mcellbox=\box76
+\extrarowheight=\dimen297
+\NC@list=\toks45
+\extratabsurround=\skip67
+\backup@length=\skip68
+\ar@cellbox=\box77
+)
+\TX@col@width=\dimen298
+\TX@old@table=\dimen299
+\TX@old@col=\dimen300
+\TX@target=\dimen301
+\TX@delta=\dimen302
+\TX@cols=\count342
+\TX@ftn=\toks46
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
+Applying: [2015/01/01] Old fixltx2e package on input line 46.
+
+Package fixltx2e Warning: fixltx2e is not required with releases after 2015
+(fixltx2e)                All fixes are now in the LaTeX kernel.
+(fixltx2e)                See the latexrelease package for details.
+
+Already applied: [0000/00/00] Old fixltx2e package on input line 53.
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 112.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks47
+\inpenc@posthook=\toks48
+) (./beamerthemefhswf.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamertheme-metropolis/beamerthememetropolis.sty
+Package: beamerthememetropolis 2017/01/23 v1.2 Metropolis Beamer theme
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgfopts/pgfopts.sty
+Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
+\pgfopts@list@add@a@toks=\toks49
+\pgfopts@list@add@b@toks=\toks50
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamertheme-metropolis/beamerinnerthememetropolis.sty
+Package: beamerinnerthememetropolis 2017/01/23 Metropolis inner theme
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfnodeparttextbox=\box78
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@nodesepstart=\dimen303
+\pgf@nodesepend=\dimen304
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen305
+\pgffor@skip=\dimen306
+\pgffor@stack=\toks51
+\pgffor@toks=\toks52
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@plot@mark@count=\count343
+\pgfplotmarksize=\dimen307
+)
+\tikz@lastx=\dimen308
+\tikz@lasty=\dimen309
+\tikz@lastxsaved=\dimen310
+\tikz@lastysaved=\dimen311
+\tikz@lastmovetox=\dimen312
+\tikz@lastmovetoy=\dimen313
+\tikzleveldistance=\dimen314
+\tikzsiblingdistance=\dimen315
+\tikz@figbox=\box79
+\tikz@figbox@bg=\box80
+\tikz@tempbox=\box81
+\tikz@tempbox@bg=\box82
+\tikztreelevel=\count344
+\tikznumberofchildren=\count345
+\tikznumberofcurrentchild=\count346
+\tikz@fig@count=\count347
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfmatrixcurrentrow=\count348
+\pgfmatrixcurrentcolumn=\count349
+\pgf@matrix@numberofcolumns=\count350
+)
+\tikz@expandcount=\count351
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)))
+\metropolis@titleseparator@linewidth=\skip69
+\metropolis@progressonsectionpage=\skip70
+\metropolis@progressonsectionpage@linewidth=\skip71
+\metropolis@blocksep=\skip72
+\metropolis@blockadjust=\skip73
+\metropolis@parskip=\skip74
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamertheme-metropolis/beamerouterthememetropolis.sty
+Package: beamerouterthememetropolis 2017/01/23 Metropolis outer theme
+\metropolis@frametitle@padding=\skip75
+\metropolis@progressinheadfoot=\skip76
+\metropolis@progressinheadfoot@linewidth=\skip77
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamertheme-metropolis/beamercolorthememetropolis.sty
+Package: beamercolorthememetropolis 2017/01/23 Metropolis color theme
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamertheme-metropolis/beamerfontthememetropolis.sty
+Package: beamerfontthememetropolis 2017/01/23 Metropolis font theme
+
+Package beamerthememetropolis Warning: You need to compile with XeLaTeX or LuaLaTeX to use the Fira fonts on input line 95.
+
+)) (./beamerfontthemefhswf.sty (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/carlito/carlito.sty
+Package: carlito 2014/08/20 (Bob Tennent) Supports Carlito fonts for LaTeX, pdfLaTeX, luaLaTeX and xeLaTeX.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks53
+\XKV@tempa@toks=\toks54
+)
+\XKV@depth=\count352
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+Package: fontaxes 2020/07/21 v1.0e Font selection axes
+LaTeX Info: Redefining \upshape on input line 29.
+LaTeX Info: Redefining \itshape on input line 31.
+LaTeX Info: Redefining \slshape on input line 33.
+LaTeX Info: Redefining \swshape on input line 35.
+LaTeX Info: Redefining \scshape on input line 37.
+LaTeX Info: Redefining \sscshape on input line 39.
+LaTeX Info: Redefining \ulcshape on input line 41.
+LaTeX Info: Redefining \textsw on input line 47.
+LaTeX Info: Redefining \textssc on input line 48.
+LaTeX Info: Redefining \textulc on input line 49.
+)
+LaTeX Info: Redefining \textin on input line 153.
+)) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerinnerthemerounded.sty) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/textpos/textpos.sty
+Package: textpos 2020/09/26 v1.10
+Package: textpos 2020/09/26 1.10, absolute positioning of text on the page
+Package textpos Info: choosing support for LaTeX3 on input line 61.
+\TP@textbox=\box83
+\TP@holdbox=\box84
+\TPHorizModule=\dimen316
+\TPVertModule=\dimen317
+\TP@margin=\dimen318
+\TP@absmargin=\dimen319
+Grid set 16 x 16 = 22.7622pt x 17.07166pt
+\TPboxrulesize=\dimen320
+\TP@ox=\dimen321
+\TP@oy=\dimen322
+\TP@tbargs=\toks55
+TextBlockOrigin set to 0pt x 0pt
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen323
+\lightrulewidth=\dimen324
+\cmidrulewidth=\dimen325
+\belowrulesep=\dimen326
+\belowbottomsep=\dimen327
+\aboverulesep=\dimen328
+\abovetopsep=\dimen329
+\cmidrulesep=\dimen330
+\cmidrulekern=\dimen331
+\defaultaddspace=\dimen332
+\@cmidla=\count353
+\@cmidlb=\count354
+\@aboverulesep=\dimen333
+\@belowrulesep=\dimen334
+\@thisruleclass=\count355
+\@lastruleclass=\count356
+\@thisrulewidth=\dimen335
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip78
+\multirow@cntb=\count357
+\multirow@dima=\skip79
+\bigstrutjot=\dimen336
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2022/03/14 v3.0d Micro-typographical refinements (RS)
+\MT@toks=\toks56
+\MT@tempbox=\box85
+\MT@count=\count358
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1027.
+LaTeX Info: Redefining \leftprotrusion on input line 1028.
+LaTeX Info: Redefining \rightprotrusion on input line 1036.
+LaTeX Info: Redefining \textls on input line 1195.
+\MT@outer@kern=\dimen337
+LaTeX Info: Redefining \textmicrotypecontext on input line 1781.
+\MT@listname@count=\count359
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2022/03/14 v3.0d Definitions specific to pdftex (RS)
+LaTeX Info: Redefining \lsstyle on input line 900.
+LaTeX Info: Redefining \lslig on input line 900.
+\MT@outer@space=\skip80
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2022/03/14 v3.0d microtype main configuration file (RS)
+))) (./beamercolorthemefhswfwhite.sty)
+\cslhangindent=\skip81
+\csllabelwidth=\skip82
+\cslentryspacingunit=\skip83
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
+)
+Package hyperref Info: Option `breaklinks' set `true' on input line 102.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2021/12/21 4.1b verbatim text (tvz,hv)
+\FV@CodeLineNo=\count360
+\FV@InFile=\read3
+\FV@TabBox=\box86
+\c@FancyVerbLine=\count361
+\FV@StepNumber=\count362
+\FV@OutFile=\write5
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip84
+\fb@frw=\dimen338
+\fb@frh=\dimen339
+\FrameRule=\dimen340
+\FrameSep=\dimen341
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/grffile/grffile.sty
+Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legacy)
+Package grffile Info: This package is an empty stub for compatibility on input line 40.
+)
+LaTeX Font Info:    Trying to load font information for T1+Carlito-TLF on input line 225.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/carlito/T1Carlito-TLF.fd
+File: T1Carlito-TLF.fd 2014/08/20 (autoinst) Font definitions for T1/Carlito-TLF.
+)
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 225.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count363
+\l__pdf_internal_box=\box87
+) (./cswr_programming_R_appl_graphics.aux)
+\openout1 = `cswr_programming_R_appl_graphics.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 225.
+LaTeX Font Info:    ... okay on input line 225.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: includehead includefoot 
+* h-part:(L,W,R)=(20.0pt, 324.19536pt, 20.0pt)
+* v-part:(T,H,B)=(0.0pt, 273.14662pt, 0.0pt)
+* \paperwidth=364.19536pt
+* \paperheight=273.14662pt
+* \textwidth=324.19536pt
+* \textheight=244.6939pt
+* \oddsidemargin=-52.26999pt
+* \evensidemargin=-52.26999pt
+* \topmargin=-72.26999pt
+* \headheight=14.22636pt
+* \headsep=0.0pt
+* \topskip=10.0pt
+* \footskip=14.22636pt
+* \marginparwidth=3.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count364
+\scratchdimen=\dimen342
+\scratchbox=\box88
+\nofMPsegments=\count365
+\nofMParguments=\count366
+\everyMPshowfont=\toks57
+\MPscratchCnt=\count367
+\MPscratchDim=\dimen343
+\MPnumerator=\count368
+\makeMPintoPDFobject=\count369
+\everyMPtoPDFconversion=\toks58
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+Package hyperref Info: Link coloring OFF on input line 225.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count370
+)
+LaTeX Info: Redefining \ref on input line 225.
+LaTeX Info: Redefining \pageref on input line 225.
+LaTeX Info: Redefining \nameref on input line 225.
+(./cswr_programming_R_appl_graphics.out) (./cswr_programming_R_appl_graphics.out)
+\@outlinefile=\write6
+\openout6 = `cswr_programming_R_appl_graphics.out'.
+
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 225.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 225.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/Carlito-TLF/m/n on input line 225.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmss/b/n --> OT1/Carlito-TLF/b/n on input line 225.
+\symnumbers=\mathgroup6
+\sympureletters=\mathgroup7
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  OT1/Carlito-TLF/m/n --> T1/lmr/m/n on input line 225.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/lmr/bx/n --> T1/Carlito-TLF/b/n on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/lmr/bx/n --> T1/Carlito-TLF/b/n on input line 225.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/lmss/m/n --> T1/Carlito-TLF/m/n on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/lmss/bx/n --> T1/Carlito-TLF/m/n on input line 225.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/lmr/m/it --> T1/Carlito-TLF/m/it on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/lmr/bx/it --> T1/Carlito-TLF/m/it on input line 225.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 225.
+LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
+(Font)                  T1/Carlito-TLF/m/n --> T1/Carlito-TLF/b/n on input line 225.
+LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
+(Font)                  T1/Carlito-TLF/m/it --> T1/Carlito-TLF/b/it on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
+(Font)                  OT1/Carlito-TLF/b/n --> T1/lmr/b/n on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  T1/Carlito-TLF/b/n --> T1/Carlito-TLF/b/n on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  T1/Carlito-TLF/m/n --> T1/Carlito-TLF/b/n on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  T1/Carlito-TLF/m/it --> T1/Carlito-TLF/b/it on input line 225.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 225.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
+Dictionary: translator-basic-dictionary, Language: English 
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
+Dictionary: translator-bibliography-dictionary, Language: English 
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/translator/translator-environment-dictionary-English.dict
+Dictionary: translator-environment-dictionary, Language: English 
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/translator/translator-months-dictionary-English.dict
+Dictionary: translator-months-dictionary, Language: English 
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/translator/translator-numbers-dictionary-English.dict
+Dictionary: translator-numbers-dictionary, Language: English 
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/translator/translator-theorem-dictionary-English.dict
+Dictionary: translator-theorem-dictionary, Language: English 
+)
+\c@mv@tabular=\count371
+\c@mv@boldtabular=\count372
+LaTeX Info: Redefining \microtypecontext on input line 225.
+Package microtype Info: Applying patch `item' on input line 225.
+Package microtype Info: Applying patch `toc' on input line 225.
+Package microtype Info: Applying patch `eqnum' on input line 225.
+
+Package microtype Warning: Unable to apply patch `footnote' on input line 225.
+
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `basicmath'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 225.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `Carlito-TLF' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+(./cswr_programming_R_appl_graphics.nav)
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/m/n' will be
+(Font)              scaled to size 5.0pt on input line 225.
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 225.
+<titlepage.pdf, id=13, 1138.11195pt x 853.57898pt>
+File: titlepage.pdf Graphic file (type pdf)
+<use titlepage.pdf>
+Package pdftex.def Info: titlepage.pdf  used on input line 230.
+(pdftex.def)             Requested size: 367.8328pt x 275.87299pt.
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/m/n' will be
+(Font)              scaled to size 22.0pt on input line 230.
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/b/n' will be
+(Font)              scaled to size 22.0pt on input line 230.
+[1
+
+{c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./titlepage.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 8.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+))
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 249.
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/b/n' will be
+(Font)              scaled to size 12.0pt on input line 249.
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/m/n' will be
+(Font)              scaled to size 4.0pt on input line 249.
+[2
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/b/n' will be
+(Font)              scaled to size 10.0pt on input line 3.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 15.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
+))
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 277.
+[3
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-2-1.pdf, id=71, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-2-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-2-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-2-1.pdf  used on input line 11.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [4
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-2-1.pdf>] [5
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-3-1.pdf, id=90, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-3-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-3-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-3-1.pdf  used on input line 11.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [6
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-3-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [7
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [8
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-5-1.pdf, id=117, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-5-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-5-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-5-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.1816pt too high) detected at line 388
+ []
+
+[9
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-5-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-7-1.pdf, id=130, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-7-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-7-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-7-1.pdf  used on input line 19.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.1816pt too high) detected at line 411
+ []
+
+[10
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-7-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-9-1.pdf, id=144, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-9-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-9-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-9-1.pdf  used on input line 19.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.1816pt too high) detected at line 441
+ []
+
+[11
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-9-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [12
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [13
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [14
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 7.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
+File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-11-1.pdf, id=181, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-11-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-11-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-11-1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 18.
+) [15
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-11-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb)
+Overfull \vbox (4.45183pt too high) detected at line 585
+ []
+
+[16
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-13-1.pdf, id=202, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-13-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-13-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-13-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.24973pt too high) detected at line 610
+ []
+
+[17
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-13-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-14-1.pdf, id=215, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-14-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-14-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-14-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.24973pt too high) detected at line 635
+ []
+
+[18
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-14-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-15-1.pdf, id=228, 578.16pt x 252.945pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-15-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-15-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-15-1.pdf  used on input line 13.
+(pdftex.def)             Requested size: 324.19084pt x 141.8335pt.
+) [19
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-15-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+LaTeX Font Info:    Trying to load font information for OT1+Carlito-TLF on input line 42.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/carlito/OT1Carlito-TLF.fd
+File: OT1Carlito-TLF.fd 2014/08/20 (autoinst) Font definitions for OT1/Carlito-TLF.
+)
+LaTeX Font Info:    Font shape `OT1/Carlito-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 42.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `Carlito-TLF' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `OT1/Carlito-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 42.
+LaTeX Font Info:    Font shape `OT1/Carlito-TLF/m/n' will be
+(Font)              scaled to size 5.0pt on input line 42.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 42.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 42.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 42.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 42.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 42.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 42.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
+(c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/m/it' will be
+(Font)              scaled to size 10.0pt on input line 42.
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/m/it' will be
+(Font)              scaled to size 7.0pt on input line 42.
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/m/it' will be
+(Font)              scaled to size 5.0pt on input line 42.
+)
+Overfull \vbox (29.52391pt too high) detected at line 718
+ []
+
+[20
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-17-1.pdf, id=250, 578.16pt x 252.945pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-17-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-17-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-17-1.pdf  used on input line 19.
+(pdftex.def)             Requested size: 324.19084pt x 141.8335pt.
+)
+Overfull \vbox (22.78761pt too high) detected at line 747
+ []
+
+[21
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-17-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [22
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [23
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [24
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-20-1.pdf, id=285, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-20-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-20-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-20-1.pdf  used on input line 13.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [25
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-20-1.pdf>]
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-21-1.pdf, id=300, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-21-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-21-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-21-1.pdf  used on input line 871.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+[26
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-21-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-22-1.pdf, id=313, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-22-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-22-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-22-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (5.59904pt too high) detected at line 896
+ []
+
+[27
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-22-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [28
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [29
+
+]
+<The_grammar_of_graphics_Wilkinson.png, id=337, 604.2575pt x 185.19188pt>
+File: The_grammar_of_graphics_Wilkinson.png Graphic file (type png)
+<use The_grammar_of_graphics_Wilkinson.png>
+Package pdftex.def Info: The_grammar_of_graphics_Wilkinson.png  used on input line 992.
+(pdftex.def)             Requested size: 256.07303pt x 78.48083pt.
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/b/n' will be
+(Font)              scaled to size 9.0pt on input line 992.
+
+Overfull \vbox (15.7081pt too high) detected at line 992
+ []
+
+[30
+
+ <./The_grammar_of_graphics_Wilkinson.PNG>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-26-1.pdf, id=348, 578.16pt x 216.81pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-26-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-26-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-26-1.pdf  used on input line 23.
+(pdftex.def)             Requested size: 324.19084pt x 121.57156pt.
+)
+Overfull \vbox (6.85788pt too high) detected at line 1026
+ []
+
+[31
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-26-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-28-1.pdf, id=361, 578.16pt x 216.81pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-28-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-28-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-28-1.pdf  used on input line 23.
+(pdftex.def)             Requested size: 324.19084pt x 121.57156pt.
+)
+Overfull \vbox (6.85788pt too high) detected at line 1060
+ []
+
+[32
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-28-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [33
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [34
+
+] [35
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-34-1.pdf, id=393, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-34-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-34-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-34-1.pdf  used on input line 27.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (11.3302pt too high) detected at line 1199
+ []
+
+[36
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-34-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-35-1.pdf, id=405, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-35-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-35-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-35-1.pdf  used on input line 13.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [37
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-35-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-36-1.pdf, id=418, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-36-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-36-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-36-1.pdf  used on input line 17.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (24.5815pt too high) detected at line 1250
+ []
+
+[38
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-36-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-37-1.pdf, id=431, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-37-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-37-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-37-1.pdf  used on input line 17.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (24.5815pt too high) detected at line 1277
+ []
+
+[39
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-37-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [40
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb)
+Overfull \vbox (7262.24683pt too high) detected at line 2123
+ []
+
+[41
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-41-1.pdf, id=456, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-41-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-41-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-41-1.pdf  used on input line 16.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [42
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-41-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [43
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-44-1.pdf, id=475, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-44-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-44-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-44-1.pdf  used on input line 16.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (15.38155pt too high) detected at line 2221
+ []
+
+[44
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-44-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [45
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-45-1.pdf, id=495, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-45-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-45-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-45-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.1816pt too high) detected at line 2266
+ []
+
+[46
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-45-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [47
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-46-1.pdf, id=518, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-46-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-46-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-46-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.18161pt too high) detected at line 2310
+ []
+
+[48
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-46-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-47-1.pdf, id=530, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-47-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-47-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-47-1.pdf  used on input line 17.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (24.58151pt too high) detected at line 2339
+ []
+
+[49
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-47-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-48-1.pdf, id=547, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-48-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-48-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-48-1.pdf  used on input line 14.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [50
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-48-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-49-1.pdf, id=564, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-49-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-49-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-49-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.18161pt too high) detected at line 2392
+ []
+
+[51
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-49-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-50-1.pdf, id=580, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-50-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-50-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-50-1.pdf  used on input line 13.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [52
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-50-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [53
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-51-1.pdf, id=600, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-51-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-51-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-51-1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [54
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-51-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-52-1.pdf, id=613, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-52-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-52-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-52-1.pdf  used on input line 16.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (15.38155pt too high) detected at line 2463
+ []
+
+[55
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-52-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-54-1.pdf, id=626, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-54-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-54-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-54-1.pdf  used on input line 24.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (19.94107pt too high) detected at line 2492
+ []
+
+[56
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-54-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-56-1.pdf, id=638, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-56-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-56-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-56-1.pdf  used on input line 21.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (24.5815pt too high) detected at line 2517
+ []
+
+[57
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-56-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-57-1.pdf, id=650, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-57-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-57-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-57-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.18161pt too high) detected at line 2542
+ []
+
+[58
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-57-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-58-1.pdf, id=662, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-58-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-58-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-58-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.1816pt too high) detected at line 2561
+ []
+
+[59
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-58-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb)
+Overfull \vbox (46.78937pt too high) detected at line 2616
+ []
+
+[60
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <7> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 7.
+
+LaTeX Font Warning: Font shape `T1/lmtt/bx/it' in size <7> not available
+(Font)              Font shape `T1/lmtt/b/sl' tried instead on input line 7.
+
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-60-1.pdf, id=680, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-60-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-60-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-60-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.1816pt too high) detected at line 2635
+ []
+
+[61
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-60-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb)
+Overfull \vbox (72.82082pt too high) detected at line 2692
+ []
+
+[62
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-62-1.pdf, id=701, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-62-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-62-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-62-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.1816pt too high) detected at line 2711
+ []
+
+[63
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-62-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-63-1.pdf, id=713, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-63-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-63-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-63-1.pdf  used on input line 17.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (24.5815pt too high) detected at line 2732
+ []
+
+[64
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-63-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [65
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-65-1.pdf, id=731, 578.16pt x 252.945pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-65-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-65-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-65-1.pdf  used on input line 17.
+(pdftex.def)             Requested size: 324.19084pt x 141.8335pt.
+)
+Overfull \vbox (4.3196pt too high) detected at line 2789
+ []
+
+[66
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-65-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-66-1.pdf, id=743, 578.16pt x 252.945pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-66-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-66-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-66-1.pdf  used on input line 18.
+(pdftex.def)             Requested size: 324.19084pt x 141.8335pt.
+)
+Overfull \vbox (13.51955pt too high) detected at line 2812
+ []
+
+[67
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-66-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [68
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-67-1.pdf, id=763, 289.08pt x 252.945pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-67-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-67-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-67-1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 225.85641pt x 197.62437pt.
+)
+Overfull \vbox (14.1107pt too high) detected at line 2845
+ []
+
+[69
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-67-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-68-1.pdf, id=775, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-68-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-68-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-68-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.1816pt too high) detected at line 2871
+ []
+
+[70
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-68-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-69-1.pdf, id=787, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-69-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-69-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-69-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.18161pt too high) detected at line 2898
+ []
+
+[71
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-69-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-70-1.pdf, id=799, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-70-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-70-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-70-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.18161pt too high) detected at line 2918
+ []
+
+[72
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-70-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-71-1.pdf, id=812, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-71-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-71-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-71-1.pdf  used on input line 20.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [73
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-71-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [74
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-72-1.pdf, id=832, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-72-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-72-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-72-1.pdf  used on input line 14.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [75
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-72-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-73-1.pdf, id=844, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-73-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-73-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-73-1.pdf  used on input line 14.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [76
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-73-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-74-1.pdf, id=859, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-74-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-74-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-74-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.1816pt too high) detected at line 3045
+ []
+
+[77
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-74-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [78
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-75-1.pdf, id=878, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-75-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-75-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-75-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (22.28151pt too high) detected at line 3075
+ []
+
+[79
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-75-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb)
+Overfull \vbox (1228.04532pt too high) detected at line 3250
+ []
+
+[80
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-78-1.pdf, id=898, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-78-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-78-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-78-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (6.1816pt too high) detected at line 3276
+ []
+
+[81
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-78-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-79-1.pdf, id=910, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-79-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-79-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-79-1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [82
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-79-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-80-1.pdf, id=922, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-80-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-80-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-80-1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [83
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-80-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-81-1.pdf, id=937, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-81-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-81-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-81-1.pdf  used on input line 13.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [84
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-81-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-83-1.pdf, id=953, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-83-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-83-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-83-1.pdf  used on input line 15.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+)
+Overfull \vbox (5.59253pt too high) detected at line 3356
+ []
+
+[85
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-83-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb) [86
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-85-1.pdf, id=976, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-85-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-85-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-85-1.pdf  used on input line 13.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [87
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-85-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-86-1.pdf, id=988, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-86-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-86-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-86-1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [88
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-86-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-87-1.pdf, id=1000, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-87-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-87-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-87-1.pdf  used on input line 13.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [89
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-87-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-88-1.pdf, id=1012, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-88-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-88-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-88-1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [90
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-88-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-89-1.pdf, id=1025, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-89-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-89-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-89-1.pdf  used on input line 12.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [91
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-89-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-91-1.pdf, id=1039, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-91-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-91-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-91-1.pdf  used on input line 13.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [92
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-91-1.pdf>] [93
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<ggplotly_air_lm.png, id=1057, 1025.33063pt x 757.32938pt>
+File: ggplotly_air_lm.png Graphic file (type png)
+<use ggplotly_air_lm.png>
+Package pdftex.def Info: ggplotly_air_lm.png  used on input line 23.
+(pdftex.def)             Requested size: 192.60886pt x 142.2647pt.
+)
+Overfull \vbox (14.95087pt too high) detected at line 3559
+ []
+
+[94
+
+ <./ggplotly_air_lm.png>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<plot_ly_airquality.png, id=1065, 1112.65688pt x 734.745pt>
+File: plot_ly_airquality.png Graphic file (type png)
+<use plot_ly_airquality.png>
+Package pdftex.def Info: plot_ly_airquality.png  used on input line 15.
+(pdftex.def)             Requested size: 215.43073pt x 142.26007pt.
+)
+Overfull \vbox (6.65874pt too high) detected at line 3579
+ []
+
+[95
+
+ <./plot_ly_airquality.png>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb)
+Overfull \vbox (12.75162pt too high) detected at line 3613
+ []
+
+[96
+
+]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-94-1.pdf, id=1080, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-94-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-94-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-94-1.pdf  used on input line 13.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [97
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-94-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-95-1.pdf, id=1095, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-95-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-95-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-95-1.pdf  used on input line 14.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [98
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-95-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-96-1.pdf, id=1108, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-96-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-96-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-96-1.pdf  used on input line 14.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [99
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-96-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-97-1.pdf, id=1120, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-97-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-97-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-97-1.pdf  used on input line 14.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [100
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-97-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-98-1.pdf, id=1132, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-98-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-98-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-98-1.pdf  used on input line 14.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [101
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-98-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-99-1.pdf, id=1144, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-99-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-99-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-99-1.pdf  used on input line 13.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [102
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-99-1.pdf>]
+\openout4 = `cswr_programming_R_appl_graphics.vrb'.
+
+(./cswr_programming_R_appl_graphics.vrb
+<cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-100-1.pdf, id=1156, 578.16pt x 289.08pt>
+File: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-100-1.pdf Graphic file (type pdf)
+<use cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-100-1.pdf>
+Package pdftex.def Info: cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-100-1.pdf  used on input line 14.
+(pdftex.def)             Requested size: 324.19084pt x 162.09541pt.
+) [103
+
+ <./cswr_programming_R_appl_graphics_files/figure-beamer/unnamed-chunk-100-1.pdf>]
+LaTeX Font Info:    Font shape `T1/Carlito-TLF/m/it' will be
+(Font)              scaled to size 9.0pt on input line 3768.
+[104
+
+] [105
+
+] [106
+
+] [107
+
+
+]
+\tf@nav=\write7
+\openout7 = `cswr_programming_R_appl_graphics.nav'.
+
+\tf@toc=\write8
+\openout8 = `cswr_programming_R_appl_graphics.toc'.
+
+\tf@snm=\write9
+\openout9 = `cswr_programming_R_appl_graphics.snm'.
+
+(./cswr_programming_R_appl_graphics.aux)
+Package rerunfilecheck Info: File `cswr_programming_R_appl_graphics.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 30602 strings out of 478276
+ 659049 string characters out of 5835020
+ 1202977 words of memory out of 5000000
+ 47356 multiletter control sequences out of 15000+600000
+ 623621 words of font info for 175 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 128i,14n,125p,1851b,1913s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/carlito/crlt_57h366.enc}{c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/carlito/crlt_z7vml3.enc}{c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}<c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/typoland/carlito/Carlito-Bold.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/typoland/carlito/Carlito-Italic.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/typoland/carlito/Carlito.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr5.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtko10.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt8.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt9.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtti10.pfb><c:/Users/Mitarbeiterin/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam5.pfb>
+Output written on cswr_programming_R_appl_graphics.pdf (107 pages, 1255988 bytes).
+PDF statistics:
+ 1365 PDF objects out of 1440 (max. 8388607)
+ 1055 compressed objects within 11 object streams
+ 346 named destinations out of 1000 (max. 500000)
+ 61834 words of extra memory for PDF output out of 61914 (max. 10000000)
+

@@ -1,0 +1,138 @@
+---
+title: "Programmierung R - Exercise"
+author: "Shiny Web Apps"
+date: "June 21, SS 2022 || Hannah Behrens"
+
+toc: true
+tocoverview: false
+tocheader: Inhaltsübersicht
+titlefontsize: 22pt
+
+bibliography: exercises/referencescswr.bib
+biblio-style: authoryear-comp
+
+output: fhswf::presentation
+knit: rmarkdown::render
+
+nocite: |
+  @cswr, @shiny, @shinyCheatsheet, @ShinyGallery
+  
+header-includes:
+  - \widowpenalties 1 150
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+options(digits = 4)
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, cache=TRUE, 
+                      dev.args=list(pointsize=11), size="scriptsize", fig.height = 4, attr.source='.numberLines')
+
+# Packages
+library(car)
+library(fGarch)
+library(gtools)
+library(HistogramTools)
+library(ineq)
+library(kableExtra)
+library(texreg)
+library(tidyverse)
+library(vcd)
+library(latex2exp)
+library(knitcitations)
+library(gridExtra)
+library(plotly)
+library(rgl)
+library(mgcv)
+library(readxl)
+```
+
+## Any questions?
+
+Are there any questions concerning the last exercise(s)?
+
+## Schedule
+
+Room: 1.1.14
+
+- April 5: Functions and data types
+- April 12: Data Manipulation
+- April 19: holiday
+- April 26: Code structure
+- May 3   : Software Development
+- May 10  : Vectorization
+- May 17  : Applications - graphics
+- ...
+- June 21 : **Web Apps**
+- June 28 : Scientific Writing in R Markdown
+
+
+## Today's task
+
+Remember our appointment from the 3rd of May 2022: 
+
+**Aim**
+
+We are interested in considering the overnight trips of a specific region in a specific state in Australia. Optionally, we want to select a specific purpose for the overnight trips, e.g. we are interested in the time-dependent visits of business people in Adelaide in South Australia.
+
+On the one hand, we want to get and save the filtered data and on the other hand we want to visualize the resulting time series in a nice ggplot.
+Furthermore, we are also interested in the total number of overnight trips for each region in a state like South Australia.
+
+\begin{textblock}{11}(0.7,7.5)
+\begin{alertblock}{}
+Today's aim is to implement our program from the mentioned appointment in form of a Shiny Web App based on the R package \texttt{shiny} (Chang et al. 2021).
+\end{alertblock}
+\end{textblock}
+
+
+
+## First steps of creating a Shiny Web App
+
+1. File $\rightarrow$ New File $\rightarrow$ Shiny Web App...
+
+2. 
+
+\begin{figure}
+\includegraphics[width=7cm]{start_Shiny_App.png}
+\caption{Creating a Shiny Web App.}
+\end{figure}
+
+$\rightarrow$ Either a **single** file named `app.R` **or two files** named `ui.R` and `server.R` respectively will be opened. A folder with the application name you tipped in will be created in which the app's file(s) is/are saved.
+
+## ui and server
+
+In both cases (`app.R` **or** `ui.R` and `server.R`): 
+
++ ui: user interface, where we can interact with the app by
+selecting/typing in values/words, clicking on buttons, ticking a box and so on\newline
+$\rightarrow$ Consequently, on the ui are different boxes, fields (where we can choose values) and panels (where plot(s), text, etc. will be shown).
+    
++ server: we define how the different outputs (boxes, panels, text, tables, etc.) will be generated, when we interact with the ui e.g. by ticking a box
+
+
+calling `shinyApp(ui = ui, server = server)` to create a Shiny app object
+
+\begin{textblock}{11}(0.7,7)
+\begin{alertblock}{}
+Today's main references for constructing Shiny Web Apps: Take a look at the functions of \texttt{shiny} (Chang et al. 2021), at the Shiny Cheat Sheet (RStudio, Inc. 2015) and at the Shiny Gallery (RStudio, Inc. 2020).
+\end{alertblock}
+\end{textblock}
+
+## Task - Sketch of Australian tourism Shiny Web App 
+
+
+### Your turn
+
+Make a sketch, how the Shiny Web App for the Australian tourism data should look like. How should the different elements of the ui interact with the server and vice versa?
+
+## to be continued
+
+## Helpful links
+
+- [Shiny Gallery (Shiny Web Apps - Examples)](https://shiny.rstudio.com/gallery/)
+
+- [Shiny Homepage](https://shiny.rstudio.com/)
+
+- [Shiny Cheat Sheet](https://shiny.rstudio.com/images/shiny-cheatsheet.pdf)
+
+
+## References {.allowframebreaks}

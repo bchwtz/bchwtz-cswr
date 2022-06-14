@@ -1,0 +1,1600 @@
+---
+title: "Programmierung R"
+author: "Applications - Graphics"
+date: "May 24, SS 2022 || Hannah Behrens"
+
+toc: true
+tocoverview: false
+tocheader: Inhaltsübersicht
+titlefontsize: 22pt
+
+bibliography: referencescswr.bib
+biblio-style: authoryear-comp
+
+output: fhswf::presentation
+knit: rmarkdown::render
+
+nocite: |
+ @latex2exp, @datasets, @gridExtra, @plotly, @tidyr, @NIST2021
+ 
+header-includes:
+  - \widowpenalties 1 150
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+options(digits = 4)
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, cache=TRUE, 
+                      dev.args=list(pointsize=11), size="scriptsize", fig.height = 4, attr.source='.numberLines')
+
+# Packages
+library(car)
+library(fGarch)
+library(gtools)
+library(HistogramTools)
+library(ineq)
+library(kableExtra)
+library(texreg)
+library(tidyverse)
+library(vcd)
+library(latex2exp)
+library(knitcitations)
+library(gridExtra)
+library(plotly)
+library(rgl)
+library(mgcv)
+```
+
+
+## Today's schedule
+
+Creating graphics in R 
+
+- with `base`
+- with `ggplot2` [@ggplot2]
+- outlook: interactive plots with `plotly` [@plotly]
+
+a mix of theory and exercises in between
+
+
+## Some simple plots in `base` R
+
+### Your turn
+
+1. Make yourself familiar with the function `plot()`.
+
+2. The variables `x` and `y` are defined as follows:
+
+    ```{r}
+    x <- seq(from = -8, to = 8, by = 0.1)
+    y <- dnorm(x = x)
+    ```
+
+
+3. Plot `y` vs. `x`.
+
+4. What did you plot? Hint: Type `?dnorm` into your console.
+
+## Some simple plots
+
+```{r}
+plot(x = x, y = y)
+```
+
+## Some simple plots 
+
+### Your turn
+
+5. Add a suitable title to your plot.
+
+6. How can you change the type of your plot in order to plot a line instead of points? 
+
+
+## Some simple plots
+
+```{r}
+plot(x = x, y = y, main = "Normal distribution - density", type = "l")
+```
+
+
+## The normal distribution
+
+### Your turn
+
+Look at your plot and at the description of `dnorm()`.\newline
+What is the mean and standard deviation of your normal distribution?
+
+- What will happen, if you change the mean?
+- What will happen, if you change the standard deviation? Try it out!
+
+
+## The normal distribution - changing mean and standard deviation
+
+```{r}
+y2 <- dnorm(x = x, mean = -1)
+y3 <- dnorm(x = x, mean = 2)
+y4<- dnorm(x = x, mean = 0, sd = 0.5)
+y5 <- dnorm(x = x, mean = 0, sd = 2)
+nd <- data.frame(x, y, y2, y3, y4, y5)
+```
+
+\begin{textblock}{7}(3,6)
+\begin{alertblock}{}
+How can multiple lines be added to the plot?
+\end{alertblock}
+\end{textblock}
+
+
+## The normal distribution 
+
+
+```{r}
+plot(x = x, y = y, main = "Normal distribution - density", type = "l", ylim = c(0,0.8))
+lines(x, y2, col = "cyan") 
+lines(x, y3, col = "blue")
+lines(x, y4, col = "orange")
+lines(x, y5, col = "gold4")
+```
+
+\begin{textblock}{7}(5,2)
+\begin{alertblock}{}
+\texttt{ylim} limits the y-axis. The argument \texttt{xlim} works analogously for the x-axis.
+\end{alertblock}
+\end{textblock}
+
+
+## The normal distribution - Adding a legend
+
+```{r, echo=TRUE, eval=FALSE}
+plot(...)
+... # see code from the slide before
+legend("topleft", legend = c("mean=0, sd=1", "mean=-1, sd=1", "mean=2, sd=1", 
+"mean=0, sd=0.5", "mean=0, sd=2"), 
+text.col = c("black", "cyan", "blue", "orange", "gold4"))
+```
+
+```{r, echo=FALSE}
+plot(x = x, y = y, main = "Normal distribution - density", type = "l", ylim = c(0,0.8))
+lines(x, y2, col = "cyan")
+lines(x, y3, col = "blue")
+lines(x, y4, col = "orange")
+lines(x, y5, col = "gold4")
+legend("topleft", legend = c("mean=0, sd=1", "mean=-1, sd=1", "mean=2, sd=1", 
+"mean=0, sd=0.5", "mean=0, sd=2"), 
+text.col = c("black", "cyan", "blue", "orange", "gold4"))
+```
+
+
+## Making the legend much prettier with `latex2exp` [@latex2exp]
+
+```{r, echo=TRUE, eval=FALSE, fig.height=4}
+plot(...) ...
+legend("topleft", legend=c(latex2exp::TeX("$\\mu = 0, \\sigma = 1$"),
+latex2exp::TeX("$\\mu = -1, \\sigma = 1$"), latex2exp::TeX("$\\mu = 2, \\sigma = 1$"),
+latex2exp::TeX("$\\mu = 0, \\sigma = 0.5$"), latex2exp::TeX("$\\mu = 0, \\sigma = 2$")), 
+text.col=c("black", "cyan", "blue", "orange", "gold4"))
+```
+
+```{r, echo=FALSE}
+plot(x, y, main="Normal distribution - density", type="l", ylim=c(0,0.8))
+lines(x, y2, col="cyan")
+lines(x, y3, col="blue")
+lines(x, y4, col="orange")
+lines(x, y5, col="gold4")
+legend("topleft", legend=c(latex2exp::TeX("$\\mu=0, \\sigma=1$"), latex2exp::TeX("$\\mu=-1, \\sigma=1$"), 
+latex2exp::TeX("$\\mu=2, \\sigma=1$"), latex2exp::TeX("$\\mu=0, \\sigma=0.5$"), latex2exp::TeX("$\\mu=0, \\sigma=2$")), 
+text.col=c("black", "cyan", "blue", "orange", "gold4"))
+```
+
+\begin{textblock}{7}(0.7,8)
+\begin{alertblock}{}
+R package \texttt{latex2exp} (Meschiari 2022)
+\end{alertblock}
+\end{textblock}
+
+## Airquality data set 
+
+### Your turn
+
+Remember the data set `datasets::airquality` [@datasets].
+
+```{r}
+head(airquality)
+dim(airquality)
+```
+
+## Airquality data - descriptive statistics
+
+### Your turn
+
+You want to take a closer look at the values of the variables `Wind` and `Temp` of the `airquality` data set. You are interested in the range and distribution of the values of each variable.\newline
+Which graphical devices can you use?
+
+
+## Airquality data - descriptive statistics
+
+### Your turn
+
+You want to take a closer look at the values of the variables `Wind` and `Temp` of the `airquality` data set. You are interested in the range and distribution of the values of each variable.\newline
+Which graphical devices can you use?
+
+- Histogram
+
+- Boxplot
+
+## Airquality data - Histogram of Temperature
+
+```{r}
+h_temp <- hist(x = airquality$Temp, xlab = "Temperature [°F]", ylab = "Count",
+               main = "Histogram - Temp.")
+```
+
+\begin{textblock}{11}(0.7, 8)
+\begin{alertblock}{}
+\small What is the benefit of assigning the histogram to a variable in general and here to \texttt{h\_temp}?
+\end{alertblock}
+\end{textblock}
+
+## Airquality data - Histogram of Temperature
+
+```{r}
+h_temp # getting information about the plotted data
+```
+
+\begin{textblock}{4.5}(7.5,1.5)
+\begin{alertblock}{}
+- \texttt{breaks}: the bin boundaries
+
+- \texttt{counts}: the counts in (a,b]
+\end{alertblock}
+\end{textblock}
+
+\begin{textblock}{7.5}(4.5,6)
+\begin{alertblock}{}
+- \texttt{density}: relative frequencies divided by binwidth, here: density = \texttt{h\_temp\$counts / sum(h\_temp\$counts))/5}
+
+- \texttt{mids}: midpoints of the bins
+
+- \texttt{equidist}: whether distances between breaks are the same
+\end{alertblock}
+\end{textblock}
+
+## Airquality data - Histograms
+
+```{r}
+par(mfrow = c(2,1)) # c(r,c): c(number of rows, number of columns)
+h_temp <- hist(x = airquality$Temp, xlab = "Temperature [°F]", ylab = "Count",
+               main = "Histogram - Temp.")
+h_wind <- hist(airquality$Wind, xlab = "Wind [mph]", ylab = "Count", 
+               main = "Histogram - Wind")
+```
+
+\begin{textblock}{5}(0.7,2.5)
+\begin{alertblock}{}
+\small Set \texttt{main = ""} to leave out a title.
+\end{alertblock}
+\end{textblock}
+
+## Airquality data - Histograms
+
+```{r}
+par(mfcol = c(2,1)) # c(r,c): c(number of rows, number of columns)
+h_temp <- hist(x = airquality$Temp, xlab = "Temperature [°F]", ylab = "Count",
+               main = "Histogram - Temp.")
+h_wind <- hist(airquality$Wind, xlab = "Wind [mph]", ylab = "Count", 
+               main = "Histogram - Wind")
+```
+
+\begin{textblock}{5}(0.7,2.5)
+\begin{alertblock}{}
+\texttt{mfcol} is similar to \texttt{mfrow}.
+\end{alertblock}
+\end{textblock}
+
+## Airquality data - Boxplot
+
+```{r, fig.height=3.5}
+par(mfrow = c(1,2)) # c(r,c): c(number of rows, number of columns)
+b1 <- boxplot(x = airquality$Temp, main = "Boxplot - Temperature [°F]")
+b2 <- boxplot(x = airquality$Wind, main = "Boxplot - Wind [mph]")
+```
+
+\begin{textblock}{11}(0.7,7)
+\begin{alertblock}{}
+What is the advantage of assigning the two boxplots to \texttt{b1} and \texttt{b2} respectively?
+\end{alertblock}
+\end{textblock}
+
+## Airquality data - Boxplot - accessing values
+
+```{r}
+b2
+```
+
+\begin{textblock}{8}(4,2)
+\begin{alertblock}{}
+\texttt{stats}: lower whisker, $q_{0.25}$, $q_{0.5}$, $q_{0.75}$, upper whisker
+
+\texttt{n}: number of non-NA observations
+
+\texttt{conf}: lower and upper extremes of the notch
+
+\texttt{out}: any data point \emph{outside} the whiskers
+
+\texttt{group}: indicating to which group the outliers belong
+\end{alertblock}
+\end{textblock}
+
+\begin{textblock}{8}(4,6)
+\begin{alertblock}{}
+How far do the whiskers extend out from the box?
+\end{alertblock}
+\end{textblock}
+
+## Airquality data - Boxplot
+
+```{r, fig.height=3.5}
+par(mfrow = c(1,2)) # c(r,c): c(number of rows, number of columns)
+b1 <- boxplot(x = airquality$Temp, main = "Boxplot - Temperature [°F]")
+b2 <- boxplot(x = airquality$Wind, main = "Boxplot - Wind [mph]", medcol = "chocolate",
+            notch = TRUE)
+points(x = rep(1,length(b2$out)), y = b2$out, col = "orange", pch = 19)
+points(x = c(1,1), y = b2$conf, col = "red", pch = 19)
+points(x = 1, y = min(airquality$Wind), col = "khaki3", pch = 17)
+points(x = 1, y = max(airquality$Wind), col = "darkred", pch = 17)
+text(x = 0.7, y = b2$stats[3,], labels = b2$stats[3,], col = "chocolate")
+```
+
+\begin{textblock}{11}(0.7,8.2)
+\begin{alertblock}{}
+Which values are colored in the boxplot on the right?  
+\end{alertblock}
+\end{textblock}
+
+
+## Colors in R
+
+using colors in R independently of creating graphics with `base`, `ggplot2` or another R package
+
+$\rightarrow$ just define the corresponding argument which allows coloring text, points, lines etc. like `col` in `base` R by typing 
+
+1. the color's name e.g.
+
+    ```{r, eval=FALSE}
+    plot(..., col = "cyan")
+    ```
+
+    see a list of colors written as words which can be used in R: [*colors in R as text*](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) [@Wei2021]
+
+2. the color's hexadecimal code, e.g. the hexadecimal code of cyan: #00FFFF
+
+    ```{r, eval=FALSE}
+    plot(..., col = "#00FFFF")
+    ```
+
+
+## Adding information to a plot - points, lines and  text
+
++ Marking points in a plot with `points()`
+
++ Drawing a (vertical, horizontal, ...) line in a plot with `lines()`
+
++ Adding text in a plot with `text()`
+
+Each of these functions needs the x and y coordinates,
+
+  + which point to mark,
+    
+  + where to set a line (from x to y) or 
+    
+  + where to put the text.
+
+You can *color* points, text and lines, change the *shape* of points and the *size* of points, text, lines etc. (just take a look at the corresponding functions).
+
+
+
+## Airquality data - Wind vs. Temperature
+
+### Your turn
+
+- Plot the variable `Wind` vs. the variable `Temp`. Do not forget to label the x- and y-axis.
+- What can you see in the plot?
+
+## Airquality
+
+```{r}
+par(mar = c(4,4,2,2)) # margins 
+plot(x = airquality$Temp, y = airquality$Wind, xlab = "Temperature [°F]",
+     ylab = "Wind [mph]")
+```
+
+\begin{textblock}{11}(0.7, 2.05)
+\begin{alertblock}{}
+For margins see \url{https://r-graph-gallery.com/74-margin-and-oma-cheatsheet.html}
+\end{alertblock}
+\end{textblock}
+
+
+## Airquality
+
+```{r, height=3.5, echo=FALSE}
+par(mar = c(4, 4, 2, 2))
+plot(x = airquality$Temp, y = airquality$Wind, xlab = "Temperature [°F]",
+     ylab = "Wind [mph]")
+```
+
+
+### Your turn
+
+Find a line that goes through the data points in the *best possible way* and add it to the plot.
+
+
+## Fitting a regression model to the data
+
+```{r}
+par(mar = c(4,4,2,2))
+plot(x = airquality$Temp, y = airquality$Wind, xlab = "Temperature [°F]",
+     ylab = "Wind [mph]")
+air_model <- lm(Wind ~ 1 + Temp, data = airquality)
+abline(air_model, col = "blue")
+```
+
+\begin{textblock}{11}(0.7,8.3)
+\begin{alertblock}{}
+Why is it sufficient to apply \texttt{abline()} only to the model object?
+\end{alertblock}
+\end{textblock}
+
+
+## Visualizing a regression line with `abline()`
+
+```{r}
+args(abline) # the first two arguments: a (the intercept), b (the slope)
+```
+
+```{r}
+air_model 
+```
+
+\begin{textblock}{11}(0.7,7.5)
+\begin{alertblock}{}
+Since \texttt{air\_model} is a regression object (see argument \texttt{reg} of function \texttt{abline()}), its coefficients (intercept and slope) will be extracted by calling \texttt{coef()} and a corresponding line will be drawn.
+\end{alertblock}
+\end{textblock}
+
+## Creating plots with `ggplot2`
+
+R package `ggplot2` by @ggplot2
+
++ is based on **the grammar of graphics (GoG)** [@Wilkinson2010]
+
++ making (advanced) plots by defining different layers and connecting them by a "+"-sign:
+
++ helpful by handling multiple variables
+
+\begin{textblock}{11}(0.7,7)
+\begin{alertblock}{}
+There is an own book: Wilkinson L.The Grammar of Graphics. 2nd ed.New York: Springer-Verlag; 2005.
+\end{alertblock}
+\end{textblock}
+
+## The grammar of graphics (GoG) by @Wilkinson2010
+
+\begin{figure}
+\includegraphics[width=9cm]{The_grammar_of_graphics_Wilkinson.png}
+\vspace{-0.5cm}
+\caption{The grammar of graphics data flow from Wilkinson (2010).}
+\end{figure}
+
++ variables: the variables to plot (*varset* = set of variables)
+
++ algebra: combinations of variables, e.g. tuples $\left(x_i,\, y_i\right)$, $\left(x_i,\, z_i\right)$
+
++ scales: scaling the data e.g. log, ordering values, ...
+
++ statistics: input a varset and output another varset after computing statistical summaries, e.g. summary statistics of boxplot
+
++ geometry: geometric graphs like points, lines, area, ... the same statistic can be represented by multiple geometric objects
+
++ coordinates: usually, Cartesian coordinates
+
++ aesthetics: maps a graph to a graphic
+
+
+## The grammar of graphics in `ggplot2` [@ggplot2]
+
+Basics: a data set, mapping variables (aes), a coordinate system (grid) and geoms (representing data points) 
+
+```{r, eval=FALSE}
+# option 1:
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+ # initial. a ggplot object
+  geom_point()
+# or option 2:
+ggplot(data = airquality)+
+  geom_point(mapping = aes(x = Temp, y = Wind))
+```
+
+```{r, fig.height=3, echo=FALSE}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point(stat = "identity") # stat = "identity" by default
+```
+
+\begin{textblock}{4.8}(7.2, 3)
+\begin{alertblock}{}
+Elements of a ggplot: see the cheat sheet of \texttt{ggplot2} (RStudio, PBC 2021)
+\end{alertblock}
+\end{textblock}
+
+## The grammar of graphics in ggplot2, see @ggplot2Cheatsheet
+
+Basics: a data set, mapping variables (aes), a coordinate system (grid) and geoms (representing data points) 
+
+```{r, eval=FALSE}
+# option 1:
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point()
+# or option 2:
+ggplot(data = airquality)+
+  geom_point(mapping = aes(x = Temp, y = Wind))
+```
+
+```{r, fig.height=3, echo=FALSE}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point(stat = "identity") # stat = "identity" by default
+```
+
+\begin{textblock}{4}(7.4,3)
+\begin{alertblock}{}
+What is the difference between option 1 and 2?
+\end{alertblock}
+\end{textblock}
+
+
+## The grammar of graphics in ggplot2, see @ggplot2Cheatsheet
+
+Basics: a data set, mapping variables (aes), a coordinate system (grid) and geoms (representing data points) 
+
+```{r, eval=FALSE}
+# option 1:
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point()
+# or option 2:
+ggplot(data = airquality)+
+  geom_point(mapping = aes(x = Temp, y = Wind))
+# or option 3:
+ggplot(data = airquality, mapping = aes(x = Temp))+
+  geom_point(mapping = aes(y = Wind))
+```
+
+\begin{textblock}{11}(0.7,7)
+\begin{alertblock}{}
+Difference: mapping the variables to the elements of the geom in diverse layers
+\end{alertblock}
+\end{textblock}
+
+## The grammar of graphics in ggplot2, see @ggplot2Cheatsheet
+
+Implementing statistics and geometry by
+
++ *Stats* and *Geoms* (see cheat sheet of `ggplot2`) depending on the number of variables and their scale of measurement (continuous, categorical) with their arguments `geom` and `stat` respectively, e.g.
+    
+```{r, eval=FALSE}
+geom_bar(stat = "count") # is equal to
+stat_count(geom = "bar")
+```
+
+```{r, fig.height=3, echo=TRUE, eval=FALSE}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point(stat = "identity") # stat = "identity" by default
+# is equal to
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  stat_identity(geom = "point") # geom = "point" by default
+```
+
+## The grammar of graphics in ggplot2, see @ggplot2Cheatsheet
+
++ Aes (aesthetics)
+
++ Scales (scales)
+
++ Coordinate Systems (coordinates)
+
++ Faceting
+
++ Position Adjustments
+
++ Themes
+
++ Labels and Legends
+
++ (Zooming) $\rightarrow$ Take a look at the [ggplot2 cheat sheet by @ggplot2Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
+
+\begin{textblock}{6}(5.5,4.8)
+\begin{alertblock}{}
+In the following, we will consider these components of a ggplot.
+\end{alertblock}
+\end{textblock}
+
+## Normal distribution in ggplot2
+
+```{r, echo=FALSE, eval=TRUE}
+x <- seq(-8, 8, by = 0.1)
+y <- dnorm(x = x)
+y2 <- dnorm(x=x, mean= -1)
+y3 <- dnorm(x=x, mean=2)
+y4<- dnorm(x=x, mean=0, sd=0.5)
+y5 <- dnorm(x=x, mean=0, sd=2)
+```
+
+```{r}
+nd <- data.frame(x, y, y2, y3, y4, y5)
+```
+
+```{r}
+ggplot(data = nd, aes(x = x, y = y))+ # initialization of a ggplot object
+  geom_point()+ # adding points to a plot
+  ggtitle("Normal distribution - density function")
+```
+\begin{textblock}{4}(7.5,3)
+\begin{alertblock}{}
+How can the data points be visualized in form of a line?
+\end{alertblock}
+\end{textblock}
+
+## Normal distribution in `ggplot2` - answer
+
+```{r}
+ggplot(data = nd, aes(x = x, y = y))+ # initialization of a ggplot object
+  geom_line()+ # add a line to the plot
+  ggtitle("Normal distribution - density function")
+```
+
+\begin{textblock}{3.5}(8,2)
+\begin{alertblock}{}
+Changing the geometry.
+\end{alertblock}
+\end{textblock}
+
+## Normal distribution in `ggplot2` - multiple density functions
+
+```{r}
+ggplot(data = nd, mapping = aes(x = x))+ # initialization of a ggplot object
+  geom_line(mapping = aes(y = y))+ # add a line to the plot
+  geom_line(mapping = aes(y = y2))+
+  geom_line(mapping = aes(y = y3))+
+  geom_line(mapping = aes(y = y4))+
+  geom_line(mapping = aes(y = y5))+
+  ggtitle("Density functions of a normal distribution")
+```
+
+\begin{textblock}{4}(8,4)
+\begin{alertblock}{}
+How can we color the density functions?
+\end{alertblock}
+\end{textblock}
+
+## Coloring several density functions
+
+```{r}
+ggplot(data=nd, mapping = aes(x = x))+ # initialization of a ggplot object
+  geom_line(mapping = aes(y = y), color = "blue", size = 2, linetype = "dotted")+ 
+  geom_line(mapping = aes(y = y2), color = "#7FFF00")+ # add a line to the plot
+  geom_line(mapping = aes(y = y3), color = "yellow")+
+  geom_line(mapping = aes(y = y4), color = "goldenrod3")+
+  geom_line(mapping = aes(y = y5), color = "cyan")+
+  ggtitle("Density functions of a normal distribution")
+```
+
+\begin{textblock}{4}(8,3.5)
+\begin{alertblock}{}
+Important to notice: \textbf{Here}, the color, size and type of the lines are customized \textbf{outside} \texttt{aes()}.
+\end{alertblock}
+\end{textblock}
+
+## Task - normal distribution
+
+### Your turn
+
+Plot the density functions of the normal distribution - saved in `nd` - as a ggplot and color them but this time without adding each single line by an extra layer. How can you do this?
+
+
+## Task - normal distribution - answer (1)
+
+```{r, echo=FALSE}
+x <- seq(-8, 8, by = 0.1)
+```
+
+
+```{r}
+nd2 <- data.frame(x = rep(x,5), density=c(y, y2, y3, y4, y5), 
+                  curve = c(rep("y", times = length(y)), rep("y2", times = length(y)),
+                      rep("y3", times = length(y)), rep("y4", times = length(y)),
+                      rep("y5", times = length(y))))
+nd2 
+```
+
+\begin{textblock}{6}(5,3)
+\begin{alertblock}{}
+Solution: \emph{lengthens} the data in order to define \texttt{y} as the density of the different curves and \texttt{color} as the name of the curves inside \texttt{aes()}
+\end{alertblock}
+\end{textblock}
+
+
+## Task - normal distribution - answer (1)
+
+```{r, echo=FALSE}
+x <- seq(-8, 8, by = 0.1)
+```
+
+
+```{r}
+ggplot(nd2, mapping = aes(x = x, y = density, color = curve))+
+  geom_line()
+```
+
+\begin{textblock}{4}(8,2)
+\begin{alertblock}{}
+Important to notice: Define the \texttt{color} as well as further arguments \textbf{inside} \texttt{aes()}.
+\end{alertblock}
+\end{textblock}
+
+## `aes()`, see @ggplot2Cheatsheet
+
+
+- **variables**: define the variable's name **inside** the `geom`' s `aes()` function, e.g. 
+
+```{r, eval=FALSE}
+ggplot(nd2, mapping = aes(x = x, y = density))+
+  geom_line(mapping = aes(color = curve))
+```
+
+
+- **single** points, lines etc.: define the aesthetics arguments **outside** `aes()`, e.g.
+
+```{r, eval=FALSE}
+ggplot(nd, mapping = aes(x = x, y = y))+
+  geom_line(color = "blue")
+```
+
+
+## Task - normal distribution - answer (2)
+
+```{r}
+nd2 <- nd %>% pivot_longer(cols = c(y, y2, y3, y4, y5)) # columns y, y2, y3, y4 and y5 
+# are concatenated to form one column, the other columns have been adjusted automatically
+colnames(nd2)<-c("x", "curve", "density")
+
+ggplot(data = nd2, mapping = aes(x = x, y = density))+
+  geom_line(mapping = aes(color = curve))
+```
+
+\begin{textblock}{4}(1.6,3)
+\begin{alertblock}{}
+Smart solution to \emph{lengthens} the data: \texttt{pivot\_longer()} from \texttt{tidyr} (Wickham
+and Girlich 2022)
+\end{alertblock}
+\end{textblock}
+
+\begin{textblock}{5}(7,3)
+\begin{alertblock}{}
+By only defining the argument \texttt{color}: a legend has been added automatically!
+\end{alertblock}
+\end{textblock}
+
+## Task - normal distribution - Fill the curves
+
+### Your turn
+
+1. Fill the curves of the density functions. Which `geom_*()`-function is appropriate? Do you have to specify arguments of your chosen `geom_*()`-function? If yes, which ones?
+
+2. Customize the layout of your plot, i.e. add a nice legend. *Hint*: Take a look at the [`ggplot2` cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) .
+
+
+## Task - normal distribution - Fill the curves - answer 
+
+```{r}
+ggplot(data = nd2, mapping = aes(x = x, y = density, fill = curve))+
+  geom_polygon(alpha = 0.4)+
+  scale_fill_discrete(name = "Density", labels= c(latex2exp::TeX("$\\mu=0, \\sigma=1$"),
+  latex2exp::TeX("$\\mu= -1, \\sigma=1$"), latex2exp::TeX("$\\mu=2, \\sigma=1$"),
+  latex2exp::TeX("$\\mu=0, \\sigma=0.5$"), latex2exp::TeX("$\\mu=0, \\sigma=2$")))
+```
+
+\begin{textblock}{4}(7,3)
+\begin{alertblock}{}
+Argument \texttt{alpha} for the opacity.
+\end{alertblock}
+\end{textblock}
+
+## Airquality data set in `ggplot2` 
+
+Based on the data set `datasets::airquality` [@datasets], we want to
+
++ create and customize
+
+    + scatterplots,
+
+    + histograms,
+
+    + boxplots and
+    
+    + a linear regression model and
+
++ generate subplots by $\geq 1$ discrete variable(s) (called *faceting*).
+
+
+## Airquality data set in ggplot2 - Scatterplot
+
+
+```{r, fig.height=4}
+ggplot(data = airquality, aes(x = Temp, y = Wind))+ # initialization of a ggplot object
+  geom_point()+ # adding points to the plot
+  ggtitle("Scatterplot")+ # adding a title to the plot
+  xlab("Temperature [°F]")+ # labeling the x-axis
+  ylab("Wind [mph]") # labeling the y-axis
+```
+
+
+## Customizing points in `ggplot2` (1) - Scatterplot
+
+```{r, fig.height=4}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+ # init. of a ggplot object
+  # adding points to the plot and making them transparent
+  geom_point(alpha = 0.5, shape = 21, color = "black", fill = "cyan", size = 3,
+             stroke = 1.5)+ 
+ggtitle("Scatterplot")+ # adding a title to the plot
+  xlab("Temperature [°F]")+ # labeling the x-axis
+  ylab("Wind [mph]") # labeling the y-axis
+```
+
+\begin{textblock}{5}(6.5,3)
+\begin{alertblock}{}
+\small
+To define colors: argument \texttt{color} as well as \texttt{colour} works!
+\end{alertblock}
+\end{textblock}
+
+## Customizing points in `ggplot2` (2) - Scatterplot
+
+```{r}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+ # init. of a ggplot object
+  geom_point(alpha = 0.5, shape = 21, color = "grey", fill = "cyan", size = 3)+
+  geom_text(mapping = aes(label = ifelse(Temp > 80, Temp, "")))+
+ggtitle("Scatterplot with transparency") # adding a title to the plot
+```
+
+\begin{textblock}{5.5}(6.3,2.5)
+\begin{alertblock}{}
+\small
+Fill points by defining \texttt{fill} and create a colored border by defining \texttt{color}.
+\end{alertblock}
+\end{textblock}
+
+## Customizing points in `ggplot2` (2) - Scatterplot
+
+```{r}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+ # init. of a ggplot object
+  geom_point(alpha = 0.5, shape = 21, color = "grey", fill = "cyan", size = 3, 
+             position = "jitter")+
+  geom_text(mapping = aes(label = ifelse(Temp > 80, Temp, "")))+
+ggtitle("Scatterplot with transparency") # adding a title to the plot
+```
+
+\begin{textblock}{5.5}(6.3,2.5)
+\begin{alertblock}{}
+\small
+By specifying the \texttt{position = "jitter"}: random noise to avoid overplotting.
+\end{alertblock}
+\end{textblock}
+
+## Customizing points in `ggplot2` (3) - Scatterplot
+
+```{r}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+ 
+  geom_point(mapping = aes(color = Temp))+
+ggtitle("Scatterplot with colored temperature") 
+```
+
+## Task - Customizing points in `ggplot2` (4) - Scatterplot 
+
+### Your turn
+
+Plot `Wind` vs. `Temp` and color the plotted points by `Solar.R`.
+
+## Task - Customizing points in `ggplot2` (4) - Scatterplot - answer
+
+```{r}
+ggplot(airquality, mapping = aes(x = Temp, y = Wind, color = Solar.R))+
+  geom_point()
+```
+
+\begin{textblock}{4}(1,8)
+\begin{alertblock}{}
+Handling $> 2$ variables
+\end{alertblock}
+\end{textblock}
+
+
+## Changing scales (1)
+
+
+```{r, fig.height=4}
+ggplot(data=airquality, mapping = aes(x = (Temp-32)*5/9, y = Wind))+ # modify x,
+# (National Institute of Standards and Technology (NIST) (2021))
+  geom_point()+ 
+  ggtitle("Scatterplot")+ 
+  xlab("Temperature [°C]")+ 
+  ylab("Wind [mph]") 
+```
+
+## Changing scales (2) - simulated exponential growth data
+
+```{r}
+time <- 1:100 # days
+growth <- exp(time)
+growth_df <- data.frame(time, growth)
+```
+```{r, fig.height=4}
+ggplot(data = growth_df, mapping = aes(x = time, y = growth))+ 
+  geom_line() + xlab("Time [d]") + ylab("Growth [cm]") + ggtitle("Exponential growth")
+```
+
+
+## Changing scales (2)
+
+```{r, eval=FALSE}
+ggplot(data = growth_df, mapping = aes(x = time, y = growth))+ 
+   scale_y_log10()+ # applying logarithm (base 10) to y values
+  geom_line()+ xlab("Time [d]") + ylab("Growth [cm]")
+# alternatively:
+ggplot(data=growth_df, mapping = aes(x = time, y = growth))+ 
+  geom_line()+ # first geom layer, then defining the scale
+  scale_y_log10()+ xlab("Time [d]") + ylab("Growth [cm]")
+```
+
+```{r, echo=FALSE, fig.height=4}
+ggplot(data=growth_df, mapping = aes(x = time, y = growth))+ # initialization of a ggplot object
+   scale_y_log10()+ # applying logarithm (base 10) to y values
+  geom_line() # concatenating points by a line
+```
+
+
+## Histograms
+
+```{r, fig.height=4}
+g1 <- ggplot(data = airquality)+ 
+  geom_histogram(mapping = aes(x = Wind))
+g2 <- ggplot(data = airquality)+ 
+  geom_histogram(mapping = aes(x = Temp))
+grid.arrange(g1, g2, ncol = 2) # arrange both histograms in one row
+```
+\begin{textblock}{5.5}(6.3,1)
+\begin{alertblock}{}
+R package \texttt{gridExtra} (Auguie 2017)
+\end{alertblock}
+\end{textblock}
+
+## Histograms - binwidth
+
+```{r, fig.height=4}
+g1 <- ggplot(data = airquality)+ 
+  geom_histogram(mapping = aes(x = Wind))
+g2 <- ggplot(data = airquality)+ 
+  geom_histogram(mapping = aes(x = Temp), binwidth = 5) # binwidth has been changed
+grid.arrange(g1, g2, ncol=2)
+```
+
+## Extracting data from a ggplot - binwidth
+
+```{r}
+typeof(ggplot_build(g2))
+ggplot_build(g2)$data # number of rows: number of bins
+```
+
+\begin{textblock}{6}(6,0.7)
+\begin{alertblock}{}
+access data by \texttt{ggplot\_build()}
+
+interval: (\texttt{xmin}, \texttt{xman}], \texttt{x}: center of interval, \texttt{count}: number of points in bin
+\end{alertblock}
+\end{textblock}
+
+
+## Histograms - number of bins
+
+```{r, fig.height=4}
+g1 <- ggplot(data = airquality)+ ## initialization of a ggplot object
+  geom_histogram(mapping = aes(x = Wind)) + labs(x = "Wind [mph]")
+g2 <- ggplot(data = airquality)+ ## initialization of a ggplot object
+  geom_histogram(mapping = aes(x = Temp), bins = 10) + labs(x = "Temperature [°F]")
+grid.arrange(g1, g2, ncol = 2)
+```
+
+## Extracting data from a ggplot - number of bins
+
+```{r}
+ggplot_build(g2)$data
+
+## each bin has the same binwidth
+ggplot_build(g2)$data[[1]][,5] - ggplot_build(g2)$data[[1]][,4]
+```
+
+\begin{textblock}{6}(6,0.5)
+\begin{alertblock}{}
+interval: (\texttt{xmin}, \texttt{xman}], \texttt{x}: center of interval\newline
+\texttt{count}: number of points in bin
+\end{alertblock}
+\end{textblock}
+
+
+## Boxplots
+
+```{r, fig.height=4}
+g1 <- ggplot(data = airquality)+ 
+  geom_boxplot(mapping = aes(x = Wind)) + labs(x = "Wind [mph]")
+g2 <- ggplot(data = airquality)+ 
+  geom_boxplot(mapping = aes(x = Temp)) + labs(x = "Temperature [°F]")
+grid.arrange(g1, g2, ncol = 2)
+```
+
+## Boxplots - flipping coordinates
+
+```{r, fig.height=4}
+g1 <- ggplot(data = airquality)+ 
+  geom_boxplot(mapping = aes(x = Wind))+ labs(x = "Wind [mph]")+
+  coord_flip() # flip coordinates
+g2 <- ggplot(data = airquality)+ 
+  geom_boxplot(mapping = aes(x = Temp))+ labs(x = "Temperature [°F]")+
+  coord_flip() # flip coordinates
+grid.arrange(g1, g2, ncol = 2)
+```
+
+## Extracting data from boxplots
+
+```{r}
+boxplot_g1 <- ggplot_build(g1)$data[[1]]
+
+typeof(boxplot_g1)
+boxplot_g1$outliers # accessing the outliers
+```
+
+\begin{textblock}{6}(5,6.5)
+\begin{alertblock}{}
+Several further values of the boxplot are saved in \texttt{boxplot\_g1}.
+\end{alertblock}
+\end{textblock}
+
+
+## Boxplots - marking values
+
+```{r, fig.height=3.5}
+wind_boxplot <- ggplot(data = airquality)+ 
+  geom_boxplot(mapping = aes(x = Wind), outlier.colour = "orange")+ # coloring outliers
+  geom_segment(data = boxplot_g1, mapping = aes(x = xmiddle, xend = xmiddle, 
+               y = ymin, yend = ymax), colour = "chocolate")+ # ymin, ymax: coordinates
+  # of box
+  geom_text(x = 9.2, y = -0.35, label = paste(boxplot_g1$xmiddle), color = "chocolate")
+wind_boxplot # call the defined boxplot
+```
+
+## Boxplots - marking values - removing labeling of y-axis
+
+```{r, fig.height=3.5}
+wind_boxplot <- ggplot(data = airquality)+ 
+  geom_boxplot(mapping = aes(x = Wind), outlier.colour = "orange")+ # coloring outliers
+  geom_segment(data = boxplot_g1, mapping = aes(x = xmiddle, xend = xmiddle, 
+               y = ymin, yend = ymax), colour = "chocolate")+ # ymin, ymax: coordinates
+  # of box
+  geom_text(x = 9.2, y = -0.35, label = paste(boxplot_g1$xmiddle), color = "chocolate")+
+    theme(axis.title.y = element_blank()) # remove title of y-axis
+wind_boxplot # call the defined boxplot
+```
+
+## Task - airquality data set - boxplots for the single months
+
+### Your turn
+
+Based on the `airquality` data set: How can you create several boxplots of `Temp` for the single months?
+
+
+## Task - airquality data set - boxplots of `Temp` for single months - answer
+
+
+```{r, fig.height=3.5, fig.width=4}
+ggplot(airquality, mapping = aes(x = Month, y = Temp))+
+  geom_boxplot()
+```
+
+\begin{textblock}{4}(7,2)
+\begin{alertblock}{}
+\textbf{This does not work!}
+\end{alertblock}
+\end{textblock}
+
+## Task - airquality data set - boxplots of `Temp` for single months - answer
+
+```{r}
+airquality$Month_categ <- factor(airquality$Month, levels = c(5, 6, 7, 8, 9),
+                          labels = c("May", "June", "July", "August", "September"))
+ggplot(airquality, mapping = aes(x = Month_categ, y = Temp))+
+  xlab("Month")+ ylab("Temperature [°F]")+
+  geom_boxplot()
+```
+
+\begin{textblock}{11}(0.7,2.6)
+\begin{alertblock}{}
+Transforming the numerical values of \texttt{Month} into categories!
+\end{alertblock}
+\end{textblock}
+
+## Airquality - Boxplots of `Temp` for single months
+
+```{r}
+boxplot_Temp_Month <- ggplot(airquality, mapping = aes(x = Month_categ, y = Temp, 
+  fill = Month_categ))+
+  xlab("Month")+ ylab("Temperature [°F]")+
+  geom_boxplot()
+boxplot_Temp_Month # call the plot
+```
+\begin{textblock}{5.5}(6.5,1.5)
+\begin{alertblock}{}
+\small
+By defining only the argument \texttt{fill}: a legend has automatically been added!
+\end{alertblock}{}
+\end{textblock}
+
+
+## Airquality - Boxplots of `Temp` for single months
+
+```{r}
+boxplot_Temp_Month + guides(fill = guide_legend(title = "Month"))+ # title of legend
+theme(legend.title = element_text(face = "bold"), # make title bold
+      # fill legend and create a border
+      legend.background = element_rect(fill = "gray88", colour = "black"), 
+      legend.position = "top") # change position of legend
+```
+
+
+
+## Airquality - Boxplots of `Temp` for single months - predefined themes
+
+\begin{textblock}{6}(6,1.9)
+\begin{alertblock}{}
+\small
+Some predefined themes already exist or you can create your own theme!
+\end{alertblock}
+\end{textblock}
+
+```{r}
+boxplot_Temp_Month + 
+  guides(fill = guide_legend(title = "Month"))+
+  theme_bw() # black and white
+```
+
+## `ggplot2` - theme() [@ggplot2]
+
+
+`theme()`: non-data components of plots (different arguments to access the different components)
+
+$\rightarrow$ `element_*` functions to modify the attributes (e.g. color, size etc.) 
+  
+  - `element_blank()`: nothing is drawn e.g. to leave out a legend
+        
+  - `element_rect()`: for borders and backgrounds (abbreviation for rectangle)
+        
+  - `element_line()`: customize lines
+        
+  - `elment_text()`: customize text
+  
+  - and some more...
+  
+## Linear regression in ggplot2 [@ggplot2]
+
+```{r}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)+
+  labs(x = "Temperature [°F]", y = "Wind [mph]")
+```
+
+\begin{textblock}{5.9}(6.3,2.2)
+\begin{alertblock}{}
+Argument \texttt{method} for specifying the smoothing method (here: linear model).
+\end{alertblock}
+\end{textblock}
+
+\begin{textblock}{6}(1,8.5)
+\begin{alertblock}{}
+What happens when you set \texttt{se = TRUE}? 
+\end{alertblock}
+\end{textblock}
+
+## Linear regression in `ggplot2`
+
+```{r}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point()+
+  geom_smooth(method = "lm", se = TRUE)+ # se = TRUE by default
+  labs(x = "Temperature [°F]", y = "Wind [mph]")
+```
+
+\begin{textblock}{5.5}(6.3,2.3)
+\begin{alertblock}{}
+Confidence interval will be shown if\newline \texttt{se = TRUE}. 
+\end{alertblock}
+\end{textblock}
+
+## Linear regression in `ggplot2`
+
+```{r}
+air_lmodel <- lm(Wind ~ 1 + Temp, data = airquality)
+ggplot(airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point()+
+  geom_abline(slope = coef(air_lmodel)[2], intercept = coef(air_lmodel)[1], 
+              color = "blue")+ labs(x = "Temperature [°F]", y = "Wind [mph]")
+```
+
+\begin{textblock}{5.5}(6.3,2.6)
+\begin{alertblock}{}
+Alternatively, defining the model with \texttt{lm()} and calling \texttt{coef()} and \texttt{geom\_abline()}.
+\end{alertblock}
+\end{textblock}
+
+
+## Task - airquality - multiple variables - faceting
+
+
+### Your turn
+
+Plot `Wind` vs. `Temp` for the single months and color the plotted points by `Solar.R`.
+
+
+## Task - airquality - multiple variables - faceting - answer, see @ggplot2Cheatsheet
+
+```{r}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind, color = Solar.R))+
+  geom_point()+
+  facet_wrap(~ Month_categ, nrow = 3, ncol = 2)+ # rectangular layout 
+  # (by default: nrow = 2, ncol = 3)
+  labs(x = "Temperature [°F]", y = "Wind [mph]")
+```
+
+## modified data set `datasets::airquality` [@datasets]
+
+```{r}
+airquality
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
+airquality %>% mutate(
+  Solar_categ = case_when(
+  Solar.R <= 100 ~ 100,
+  Solar.R > 100 & Solar.R <= 200 ~ 200,
+  Solar.R > 200 & Solar.R < 300 ~ 300,
+  Solar.R > 300 ~ 400
+))
+```
+
+
+## Airquality - multiple variables - faceting [@ggplot2]
+
+
+```{r}
+air_ggplot <- ggplot(airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point()+
+  facet_grid(rows = vars(Month))+ 
+  labs(x = "Temperature [°F]", y = "Wind [mph]")
+air_ggplot
+```
+
+\begin{textblock}{8}(3, 2.3)
+\begin{alertblock}{}
+Forming subplots based on \texttt{Month} by calling \texttt{vars()}
+\end{alertblock}
+\end{textblock}
+  
+## Faceting - linear regression in `ggplot2` [@ggplot2]
+
+```{r}
+air_ggplot + # call the already defined ggplot
+  geom_smooth(method = "lm", se = FALSE) # add a linear model to each subplot
+```
+
+
+## Faceting - linear regression in `ggplot2` [@ggplot2]
+      
+```{r}
+air_ggplot + 
+  geom_smooth(method = "lm", se = TRUE)
+```
+
+## Additional features in `ggplot2` - Grid (1)
+
+```{r}
+air_ggplot + 
+  geom_smooth(method = "lm", se = TRUE)+
+  theme(panel.grid = element_blank()) # turning the grid off
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
+ggplot(data=growth_df, mapping = aes(x = time, y = growth))+ # initialization of a ggplot object
+  geom_line()+ # concatenating points by a line
+  scale_y_log10()+ # applying logarithm (base 10) to y values
+  theme(panel.grid = element_blank())+ # turning the grid off
+  labs(x = "Time [d]", y = "Growth [cm]", title = "Exponential growth")
+```
+
+## Additional features in `ggplot2` - Grid (2)
+
+
+```{r}
+air_ggplot + 
+  geom_smooth(method = "lm", se = TRUE)+
+  # coloring the background and border:
+theme(panel.background = element_rect(fill = "ghostwhite", colour = "black"), 
+        panel.grid = element_line(colour = "gainsboro")) # coloring the grid lines
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
+ggplot(data=growth_df, mapping = aes(x = time, y = growth))+ ## initialization of a ggplot object
+  geom_line()+ ## concatenating points by a line
+  scale_y_log10()+ ## applying logarithm (base 10) to y values
+  theme(panel.background = element_rect(fill = "ghostwhite", colour="black"),
+        panel.grid=element_line(colour = "gainsboro"))+ ## coloring the panel
+  labs(x = "Time [d]", y = "Growth [cm]", title = "Exponential growth")
+```
+
+## Task - bar plots in `ggplot2` [@ggplot2]
+
+### Your turn
+
+So far, we have seen different geoms (for scatterplots, histograms, boxplots and smoothing methods).
+
+Now, it is your turn: Explore the functions `geom_bar()` and `geom_col()` by applying it to the `datasets::airquality` [@datasets] data set. What will happen if you change the position argument?
+
+## bar plots in `ggplot2` - airquality - answer
+
+```{r}
+gbar_temp <- ggplot(airquality, mapping = aes(x = Temp))+
+  geom_bar()
+gbar_temp
+```
+
+\begin{textblock}{7.5}(3,1.8)
+\begin{alertblock}{}
+Counts the different temperatures; vertical bars
+\end{alertblock}
+\end{textblock}
+
+## Task - bar plots in `ggplot2` - airquality - answer
+
+```{r}
+ggplot(data = airquality, mapping = aes(y = Temp))+
+  geom_bar()
+```
+
+\begin{textblock}{7.5}(3,1.8)
+\begin{alertblock}{}
+Counts the different temperatures; horizontal bars
+\end{alertblock}
+\end{textblock}
+
+## Task - bar plots in `ggplot2` - airquality - answer
+
+```{r}
+gbar_temp_wind <- ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_col()
+gbar_temp_wind
+```
+
+\begin{textblock}{6.5}(5,1.5)
+\begin{alertblock}{}
+Sums up the wind speed at the single temperatures
+\end{alertblock}
+\end{textblock}
+
+## Task - bar plots in `ggplot2` - airquality - answer
+
+```{r}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind, fill = Month))+
+  geom_col(position = "stack") # by default, position = "stack"
+```
+
+\begin{textblock}{8}(2,2)
+\begin{alertblock}{}
+Sums up the wind speed at the single temperatures depending on the months
+\end{alertblock}
+\end{textblock}
+
+## Task - bar plots in `ggplot2` - airquality - answer
+
+```{r}
+ggplot(airquality, mapping = aes(x = Temp, y = Wind, fill = Month))+
+  geom_col(position = "fill")
+```
+
+\begin{textblock}{11}(1,8.1)
+\begin{alertblock}{}
+Shows the relative proportions of the summed wind speed at the single temperatures depending on the months
+\end{alertblock}
+\end{textblock}
+
+
+```{r, echo=FALSE, eval=FALSE}
+airquality_filtered <- airquality %>% filter(Temp >= 90) 
+gbar_air1 <- ggplot(data = airquality_filtered, mapping = aes(x = Temp, y = Wind, 
+  fill = Month_categ))+
+  geom_col(position = "dodge")
+gbar_air1
+```
+
+
+## Task - bar plots in `ggplot2` - airquality - answer
+
+```{r}
+airquality %>% filter(Temp >= 90) %>%
+ggplot(mapping = aes(x = Temp, y = Wind, fill = Month_categ))+
+  geom_col(position = "dodge2")
+```
+
+\begin{textblock}{6}(6,2)
+\begin{alertblock}{}
+Month as category, for each value: one bar
+\end{alertblock}
+\end{textblock}
+
+
+## Advanced plots with plotly [@plotly]
+
++ Interactive plots
+
++ (Interactive) 3D plots
+
+\begin{textblock}{6}(6,4.3)
+\begin{alertblock}{}
+R package \texttt{plotly} (Sievert 2020)
+\end{alertblock}
+\end{textblock}
+
+## Interactive plots
+
+\begin{textblock}{5}(7,2.5)
+\begin{alertblock}{}
+R package \texttt{plotly} (Sievert 2020)
+\end{alertblock}
+\end{textblock}
+
+```{r, echo=TRUE, eval=FALSE}
+air_lm_ggplot <- ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+geom_point()+
+geom_smooth(method = "lm", se = FALSE)
+ggplotly(air_lm_ggplot) # converts ggplot2 to a plotly object
+```
+
+\begin{figure}
+\includegraphics[height=5cm]{ggplotly_air_lm.png}
+\caption{Two-dimensional plot (\texttt{plotly} object) based on \texttt{air\_lm\_ggplot}.}
+\end{figure}
+
+## Interactive three-dimensional plots [@plotly]
+
+```{r, eval=FALSE}
+plot_ly(airquality, x = ~Temp, y = ~Wind, z = ~Solar.R) %>%
+  add_markers(color = ~Month)
+```
+
+\begin{figure}
+\includegraphics[height=5cm]{plot_ly_airquality.png}
+\caption{Three-dimensional plot (\texttt{plotly} object) based on \texttt{datasets::airquality} (R Core Team 2021).}
+\end{figure}
+
+
+## Task - Repetition
+
+### Your turn
+
+In your R environment the `datasets::mtcars` data set [@datasets] is available.
+
+1) Plot the cars' weights vs. the miles per gallon, colored by horsepower dependent on the number of cylinders.
+
+2) Add to your plot from 1) a horizontal line that goes through the point (0, 2.5).
+
+3) Change the plot you have created so far (1)-2)) by coloring all data points that lie below the horizontal line in red, whereas all other data points are colored in green-blue.
+
+4) Change the plot you have created so far (1)-3)) by differentiating between those observations whose number of cylinders is equal to four and the rest.
+
+5) Label the resulting panels by setting `labeller = (cyl = label_both)` and see what happens.
+
+6) Plot miles per gallon vs. weight and fit a linear regression model. Create a plot on the one hand with `base` R and on the other hand with `ggplot2`.
+
+## Task - Repetition - 1) - answers
+
+```{r}
+mtcars %>% ggplot(mapping = aes(x = mpg, y = wt, color = hp))+
+  geom_point()+
+  facet_wrap(~ cyl)
+```
+
+## Task - Repetition - 2) - answers
+
+```{r}
+mtcars %>% ggplot(mapping = aes(x = mpg, y = wt, color = hp))+
+  geom_point()+
+  facet_wrap(~ cyl)+
+  geom_hline(yintercept = 2.5)
+```
+
+
+## Task - Repetition - 3) - answers
+
+```{r}
+mtcars %>% ggplot(mapping = aes(x = mpg, y = wt, color = wt >= 2.5))+
+  geom_point()+
+  facet_wrap(~ cyl)+
+  geom_hline(yintercept = 2.5)
+```
+
+## Task - Repetition - 4) - answers
+
+```{r}
+mtcars %>% ggplot(mapping = aes(x = mpg, y = wt, color = wt >= 2.5))+
+  geom_point()+
+  facet_wrap(~ cyl == 4)+
+  geom_hline(yintercept = 2.5)
+```
+
+## Task - Repetition - 5) - answers
+
+```{r}
+mtcars %>% ggplot(mapping = aes(x = mpg, y = wt, color = wt >= 2.5))+
+  geom_point()+
+  facet_wrap(~ cyl == 4, labeller = (cyl = label_both))+
+  geom_hline(yintercept = 2.5)
+```
+
+## Task - Repetition - 6) in `base` R - answer
+
+```{r}
+plot(mtcars$wt, mtcars$mpg, xlab="Weight [1000 lbs]", ylab="Miles/(US) gallon")
+wt_mpg <- lm(mpg ~ 1 + wt, data = mtcars)
+abline(wt_mpg, col = "blue")
+```
+
+
+## Task - Repetition - 6) - `ggplot2` - answer
+
+```{r}
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)+
+  xlab("Weight [1000 lbs]")+ylab("Miles/(US) gallon")
+```
+
+
+## More information
+
++ Call the help page of the single functions $\rightarrow$ lots of arguments to specify
+
++ DataCamp courses about ggplot2
+
+  - *Introduction to data visualization with ggplot2*
+  
+  - *Intermediate data visualization with ggplot2* 
+  
++ Just search the internet: diverse forums like stackoverflow help, e.g.: \url{https://stackoverflow.com/questions/30002257/change-color-median-line-ggplot-geom-boxplot}
+
++ [Click here: *Legends (ggplot2)*](http://www.cookbook-r.com/Graphs/Legends_(ggplot2)/) [accessed: May 11, 2022]
+
++ [Click here: *Interactive web-based data visualization with R, plotly, and shiny* by Sievert (2020)](https://plotly-r.com/index.html)
+
+## For home
+
+Customize the different plots shown here in this presentation (label the axes, add a title etc. if they are missing).
+
+## References {.allowframebreaks}
+
+
+

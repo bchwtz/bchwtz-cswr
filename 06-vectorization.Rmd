@@ -301,6 +301,20 @@ summary(rsquared.parallel)
 knitr::include_graphics("gfx/CH00-ExercisesHeader.png")
 ```
 
+### From May 10, 2022 {-}
+
+```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
+knitr::include_graphics("exercises/cswr_programming_R_exercises_vectorization.pdf")
+```
+
+
+
+| Description | R script | 
+| :---: | :--------:   | 
+| function `determiningLinMod()` | [determiningLinMod](exercises/determiningLinMod.R)    |
+
+
+
 <!--
 For example, in the mtcars dataset:
 
