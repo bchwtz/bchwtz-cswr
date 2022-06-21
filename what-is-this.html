@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>What is this? | Computational Statistics</title>
   <meta name="description" content="What is this? | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="What is this? | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-06-14" />
+<meta name="date" content="2022-06-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -315,7 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>10</b> Web Apps</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#for-june-21-2022-in-advance"><i class="fa fa-check"></i>For June 21, 2022 (in advance)</a></li>
+<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
@@ -406,9 +406,9 @@ microbenchmark(fun.switch('case1'), fun.if('case1'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min  lq     mean median  uq     max neval
-#R>  fun.switch("case1") 325 348 2221.799    379 396 1812441  1000
-#R>      fun.if("case1") 453 484 4330.043    494 506 3815693  1000
+#R>                 expr min  lq     mean median    uq     max neval
+#R>  fun.switch("case1") 340 362 2382.696    394 414.5 1936964  1000
+#R>      fun.if("case1") 463 488 4503.605    500 540.0 3921461  1000
 ```
 
 ```r
@@ -417,9 +417,9 @@ microbenchmark(fun.switch('case3'), fun.if('case3'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min    lq    mean median  uq  max neval
-#R>  fun.switch("case3") 362 385.5 429.715    425 438 6138  1000
-#R>      fun.if("case3") 692 721.0 753.389    731 746 9088  1000
+#R>                 expr min    lq    mean median    uq  max neval
+#R>  fun.switch("case3") 368 393.5 433.256  428.5 443.0 3725  1000
+#R>      fun.if("case3") 693 724.0 754.676  734.0 748.5 6425  1000
 ```
 
 

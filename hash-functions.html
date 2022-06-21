@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8.1 Hash Functions | Computational Statistics</title>
   <meta name="description" content="8.1 Hash Functions | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8.1 Hash Functions | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-06-14" />
+<meta name="date" content="2022-06-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -315,7 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>10</b> Web Apps</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#for-june-21-2022-in-advance"><i class="fa fa-check"></i>For June 21, 2022 (in advance)</a></li>
+<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
@@ -387,7 +387,7 @@ Figure 8.1: Hash Function
 <div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="hash-functions.html#cb553-1"></a><span class="co"># Not even using a &#39;stolen&#39; hash value as password helps</span></span>
 <span id="cb553-2"><a href="hash-functions.html#cb553-2"></a><span class="kw">accessGranted</span>(<span class="dt">passwd =</span> <span class="st">&quot;27f16d4aece13cf0443ebfd7deb7be198d0aa6adb637ca37b3c72f4fb2e01d7e&quot;</span>)</span></code></pre></div>
 <pre><code>#R&gt; [1] FALSE</code></pre>
-<p>Obviously, the main feature of cryptographic hash functions is their irreversibility, which is strongly dependent on the actual algorithm used to create the hash value. Making and breaking hash functions is an active area of research which has revealed many vulnerabilities and lead to some hashing algorithms being insecure. The algorithm used in the examples above is called “SHA-256” and is considered secure as of today (14.06.2022). Other popular algorithms such as <code>MD5</code>or the algorithms used for storing Windows XP Passwords <code>LM-Hash</code> and <code>NTLM-Hash</code> are compromised and insecure, meaning that the hash value can be used to recover the password.</p>
+<p>Obviously, the main feature of cryptographic hash functions is their irreversibility, which is strongly dependent on the actual algorithm used to create the hash value. Making and breaking hash functions is an active area of research which has revealed many vulnerabilities and lead to some hashing algorithms being insecure. The algorithm used in the examples above is called “SHA-256” and is considered secure as of today (21.06.2022). Other popular algorithms such as <code>MD5</code>or the algorithms used for storing Windows XP Passwords <code>LM-Hash</code> and <code>NTLM-Hash</code> are compromised and insecure, meaning that the hash value can be used to recover the password.</p>
 <div id="exercises-6" class="section level3 unnumbered hasAnchor">
 <h3>Exercises<a href="hash-functions.html#exercises-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="gfx/CH00-ExercisesHeader.png" width="100%" style="display: block; margin: auto;" /></p>
