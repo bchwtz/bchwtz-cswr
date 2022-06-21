@@ -205,7 +205,7 @@ eapply(env, mean)
 
 ## Technical Background
 
-The paradigm of vectorization is closedly linked to functional programming and one can find a few reasons (e.g. execution speed in some cases), to make use of them. A very comparable set of functions an some additional patterns are implementd in the `purrr` package that is part of the `tidyverse`. 
+The paradigm of vectorization is closedly linked to functional programming and one can find a few reasons (e.g. execution speed or readability in some cases), to make use of them. A very comparable set of functions and some additional patterns (e.g. `map_*`) are implemented in the `purrr` package that is part of the `tidyverse`. 
 
 ## Parallelization using vectorized functions
 
@@ -217,7 +217,7 @@ num.cores <- detectCores()
 num.cores
 ```
 
-As you can see this document was generated on a computer with `r detectCores()` computing cores. Depending on the specific processor these may either be real cores or logical cores. The number only differs if a real core can handle two tasks (threads) at once and thus behaves like two actual cores. In the case of my computer the CPU has `r detectCores(logical = F)` real cores. 
+As you can see this document was generated on a computer with `r detectCores()` computing cores. Depending on the specific processor these may either be real cores or logical cores. The number only differs if a real core can handle two tasks (threads) at once and thus behaves somewhat like two actual cores. In the case of my computer the CPU has `r detectCores(logical = F)` real cores. 
 
 
 ```{r}
