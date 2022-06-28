@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-06-21" />
+<meta name="date" content="2022-06-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -317,6 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
+<li class="chapter" data-level="10.1" data-path="implementation-task.html"><a href="implementation-task.html"><i class="fa fa-check"></i><b>10.1</b> Implementation task</a></li>
 </ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
 <li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
@@ -406,9 +407,9 @@ microbenchmark(fun.switch('case1'), fun.if('case1'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min  lq     mean median    uq     max neval
-#R>  fun.switch("case1") 340 362 2382.696    394 414.5 1936964  1000
-#R>      fun.if("case1") 463 488 4503.605    500 540.0 3921461  1000
+#R>                 expr min  lq     mean median  uq     max neval
+#R>  fun.switch("case1") 327 340 2371.484    384 397 1983415  1000
+#R>      fun.if("case1") 457 478 4803.940    491 508 4247520  1000
 ```
 
 ```r
@@ -417,9 +418,9 @@ microbenchmark(fun.switch('case3'), fun.if('case3'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min    lq    mean median    uq  max neval
-#R>  fun.switch("case3") 368 393.5 433.256  428.5 443.0 3725  1000
-#R>      fun.if("case3") 693 724.0 754.676  734.0 748.5 6425  1000
+#R>                 expr min  lq    mean median  uq   max neval
+#R>  fun.switch("case3") 350 364 405.627  410.5 418  2829  1000
+#R>      fun.if("case3") 691 714 765.730  724.0 736 18665  1000
 ```
 
 
