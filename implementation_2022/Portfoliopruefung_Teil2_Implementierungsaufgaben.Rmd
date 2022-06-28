@@ -1,0 +1,116 @@
+---
+title: "Computational Statistics (Programmierung mit R)"
+subtitle: "Portfolioprüfung Teil 2: Implementierungsaufgaben"
+author: "Prof. Dr. Benjamin Buchwitz"
+date: "SoSe 2022"
+output: pdf_document
+knit: rmarkdown::render
+
+bibliography: references_implementation_cswr.bib
+biblio-style: authoryear-comp
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(sandwich)
+```
+
+# Expectations
+
+For each student one task that will be introduced in the following has been prepared. Each task has to be solved **individually** and **autonomously**.\newline
+In the first step, you will make yourself familiar with the theoretical background which is needed to solve the task. This means, the theory (e.g. a method) has to be presented and explained in your own words. Describe and explain hypotheses, equations etc., if necessary. Why is the topic - you work on - of interest? Whenever you use literature, cite it!\newline
+In the second step, you will do the implementation.\newline
+In some of the tasks, you will also have to check and document the functionality and correctness of your implementation as it is an essential step to be sure that your code works appropriately. Furthermore, document your code as it was shown in the lecture and exercise about *Software Development* so that the single implementation steps are easy to understand.
+
+# Organization and formal criteria
+
+Your results must be submitted in the form of a PDF-Document that was generated from RMarkdown. Please use the fhswf-seminarpaper Template that is part of the `fhswf` Package [@fhswf]. This
+template contains a declaration of authorship (Ehrenwörtliche Erklärung). **Your results cannot be graded if this declaration is missing!**
+
+Please ensure that the format of your results and graphics is in accordance to academic standards (label the axes, add a caption to plots, add a legend and so on . . . ) and hand in your results (PDF-, RMarkdown- and Bib-file as well as further R scripts (if necessary)) via Email to your corresponding supervisor buchwitz.benjamin@fh-swf.de or behrens.hannah@fh-swf.de **until September 1, 2022**.
+
+
+# Task 1: Implementation of the White Test for Heteroskedasticity and estimation of the *heteroscedasticity-consistent covariance matrix* for a linear regression model
+
+student: **Marvin Schwarze**, supervisors: **Prof. Dr. Benjamin Buchwitz** & **Hannah Behrens**
+
+The task consists of implementing *the White Test for Heteroskedasticity* as well as estimating the *heteroscedasticity-consistent covariance matrix* for a linear regression model - introduced by @White - in R [@R2021]. Therefore, the following steps are necessary:
+
+
+1. The theory has to be presented and explained since it is the basis for the following implementation. Consequently, hypotheses, equations and so on should be introduced and explained in your own words. Whenever you use literature, cite it! For an introduction to the *White Test* and the estimation of the *heteroscedasticity-consistent covariance matrix* see @Wooldridge1 and @Greene. The data sets which are mentioned by @Wooldridge1 are available in the R-package `wooldridge` [@wooldridgepackage].
+
+2. Implement *the White Test for Heteroskedasticity* and estimate the *heteroscedasticity-consistent covariance matrix* for a linear regression model. Your created function(s) and your main program have to be documented as it was shown in the lecture and exercise about *Software Development* so that the single implementation steps are easy to understand.\newline
+Your function for the *White test* should return at least the following values:
+
+    + the value of the computed test statistic,
+
+    + the corresponding number(s) of degrees of freedom,
+
+    + the corresponding p-value,
+
+    and it should return text which states 
+
+    + what the alternative hypothesis is and
+
+    + whether the null hypothesis has to be rejected or not.
+    
+    Your fuction for the estimation of the *heteroscedasticity-consistent covariance matrix* should return a matrix in which the *heteroscedasticity-consistent covariances* are listed in the form of (in your output `x1` and `x2` should be substitued by the concrete names of the variables):
+    
+    ```{r, echo = FALSE}
+    air_lm <- lm(Wind ~ 1 + Temp + Ozone, data = airquality)
+
+    cov_m <- vcovHC(air_lm, type = "HC")
+    matrix(round(cov_m, 4), nrow=3, ncol = 3, dimnames = list(c("Intercept", "x1", "x2"),
+                                                    c("Intercept", "x1", "x2")))
+    ```
+    
+    
+3. In order to check whether your code works correctly you should compare your computed results with an example extracted from the literature and/or with (an) already existing function(s) like `sandwich::vcovHC()` with `type = HC` or `type = HC0` [@sandwich1; @sandwich2].
+
+*Hint:* In order to work with matrices in R the following commands might be helpful:
+
++ `%*%`: for matrix multiplication and
+
++ `base::solve()` [@R2021]: for the inverse of a matrix.
+
+
+# Task 2: Creation of a `shiny` web application in order to visualize the relationship between the density, distribution and quantile function of the normal distribution
+
+student: **Robin Langer**, supervisor: **Hannah Behrens**
+
+The task consists of visualizing the relationship between the density, distribution and quantile function of the normal distribution in form of a web application based on the R package `shiny` [@shiny]. Therefore, the following steps are necessary:
+
+1. The first part consists of presenting and explaining the theory by defining *at least* the density, distribution and quantile function in general and in the context of the normal distribution since these functions and this distribution are the basis for the following implementation. Consequently, equations and so on should be introduced and explained in your own words. Whenever you use literature, cite it!\newline
+For an introduction to the mentioned functions and the normal distribution see for example @Fahrmeir2016 and @Weigand2009. For information about `shiny` web apps see the slides (\url{https://bchwtz.github.io/bchwtz-cswr/web-apps.html}) and (\url{https://bchwtz.github.io/bchwtz-cswr/exercises-9.html}).
+
+2. Visualize the relationships by creating a `shiny` web app [@shiny]. Document your code as it was shown in the lecture and exercise about *Software Development* so that the single implementation steps are easy to understand.\newline
+Your `shiny` web app should *at least* consist of the following characteristics and elements:
+
+    + The user can choose some x values, a mean ($\mu$) and a standard deviation ($\sigma$). Based on these values, a density, distribution and a quantile function of the normal distribution will be plotted.
+
+    + You can visualize the relations between the density, distribution and quantile function for example by allowing that the user can choose an x value from the plotted density function and the corresponding values in the plotted distribution and quantile function will be marked (e.g. colored) in order to read off the interesting values. Additionally, print the interesting values.
+
+    + Create interactive plots by making use of the R function `plotly::ggplotly()` [@plotly] that is based on the R package `ggplot2` [@ggplot2].
+
+3. Based on your `shiny` web app, explain the relationships between the density, distribution and quantile function of the normal distribution.
+
+<!-- # Task 3: Reimplementation of the $\chi^2$-test -->
+<!-- student: **Jan Kempert**, supervisor: **Prof. Dr. Benjamin Buchwitz** -->
+
+
+# Task 3: Reimplementation of the `optim()`-function with the `Nelder-Mead`-algorithm as chosen method
+
+student: **Ferdinand Moritz Schreiber**, supervisor: **Prof. Dr. Benjamin Buchwitz**
+
+The task consists of an implementation of the Nelder-Mead Simplex Algorithm used for non-linear optimization [@neldermead] and an exemplary application of that implementation. Therefore, the following steps are necessary:
+
+1. The Nelder-Mead Algorithm is one of the non-linear optimization algorithms that does not require differentiation.The theory and intuition has to be presented and explained (e.g. Mirroring, Expansion, Contraction, Compression) since it is the basis for the following implementation. Consequently, starting from the simplex the algorithmic procedure should be introduced, explained and visualised in your own words. Whenever you use literature, cite it! For an introduction to the *Nelder-Mead Algorithm* see @neldermead (and the correction that eradicates the errors in that first paper).
+
+2. Implement *Nelder-Mead Algorithm* and use your implementation to show the functionality using an example of your choice (preferably some form of paramter estimation for an non-linear model). Your created function(s) and your main program have to be documented as it was shown in the lecture and exercise about *Software Development* so that the single implementation steps are easy to understand. Your function for the *Nelder-Mead Algorithm* should return at least the values returned by `optim()`.
+
+3. In order to check whether your code works correctly you should compare your computed results with the `optim()` function. Explain the differences you observe. 
+
+\newpage
+
+# References
