@@ -88,7 +88,6 @@ generating-forecasts
 practical-application
 forecast-evaluation
 web-apps
-implementation-task
 bug-bounty
 test-exam
 additional-exercises

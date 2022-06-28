@@ -317,7 +317,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
-<li class="chapter" data-level="10.1" data-path="implementation-task.html"><a href="implementation-task.html"><i class="fa fa-check"></i><b>10.1</b> Implementation task</a></li>
 </ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
 <li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
@@ -364,9 +363,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.6</span> Dates and Times<a href="dates-and-times.html#dates-and-times" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Dates and times in computer science can easily fill a bunch of books. There are different time formats, different data types and there are countless routines to handle, measure and manipulate time objects. So let us focus on the basics to implement basic features in your programs when it comes to times. In R we have two simple methods to obtain the current time.</p>
 <div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="dates-and-times.html#cb417-1"></a><span class="kw">date</span>()</span></code></pre></div>
-<pre><code>#R&gt; [1] &quot;Tue Jun 28 07:56:29 2022&quot;</code></pre>
+<pre><code>#R&gt; [1] &quot;Tue Jun 28 07:57:12 2022&quot;</code></pre>
 <div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="dates-and-times.html#cb419-1"></a><span class="kw">Sys.time</span>()</span></code></pre></div>
-<pre><code>#R&gt; [1] &quot;2022-06-28 07:56:29 UTC&quot;</code></pre>
+<pre><code>#R&gt; [1] &quot;2022-06-28 07:57:12 UTC&quot;</code></pre>
 <p>Once we have a date we can encode and convert it to a POSIXlt-Object with the function <code>strptime()</code>. POSIX-Objects store the number of elapsed seconds since the 1. January 1970 - 00:00. Once we have a POSIXlt-Object it is easy to extract things like the month using the function <code>months()</code> or the day of the week using <code>weekdays()</code>.</p>
 <div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="dates-and-times.html#cb421-1"></a><span class="kw">Sys.setlocale</span>(<span class="st">&quot;LC_TIME&quot;</span>,<span class="st">&quot;C&quot;</span>)           <span class="co"># Set regional parameters once</span></span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;C&quot;</code></pre>
