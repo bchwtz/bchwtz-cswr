@@ -152,10 +152,4 @@ knitr::include_graphics("exercises/web_apps/cswr_programming_R_appl_shiny_web_ap
 | `shiny` web app (R-Datei)|  [app.R](exercises/web_apps/app.R) |
 
 
-## Implementation task
-
-```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
-knitr::include_graphics("implementation_2022/Portfoliopruefung_Teil2_Implementierungsaufgaben.pdf")
-```
-
 
