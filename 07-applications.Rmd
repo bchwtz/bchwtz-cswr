@@ -1,6 +1,218 @@
-# Applications - Graphics {-} 
+# Applications - Graphics 
 
 ```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
 knitr::include_graphics("exercises/applications_graphics/cswr_programming_R_appl_graphics.pdf")
 ```
 
+## Plots with base R
+
+base-R provides already a lot of functions to create plots at which we want to take a look in this subsection. Since we cannot go into detail concerning all parameters and arguments the functions provide, just check them out by calling the help page.
+
+### `plot()`
+
+`plot()` allows building two-dimensional plots by simply defining two vectors `x` and `y` as follows
+
+```{r dens-norm, fig.cap="Density function of a normal distribution."}
+x <- seq(from = -8, to = 8, by = 0.1)
+y <- dnorm(x = x) # density function of the normal distribution with mean = 0 and 
+# standard deviation = 1, by default
+plot(x = x, y = y)
+```
+
+Alternatively, `plot()` can also handle a formula as data input like `y ~ x`.\newline
+By defining its arguments `main`, `xlab` and `ylab`, a title for the plot, for the x and y axis can be added, respectively. Instead of plotting points, a line can be drawn by defining `type = "l"`. Furthermore, points and a line which goes through the points are visualized by `type = "b"` (**b** stands for **b**oth); further options are possible.
+
+To the plot above, figure \@ref(fig:dens-norm), further lines can be added by calling `lines()` for example:
+
+```{r dens-norm-lines, fig.cap="Density functions for the normal distribution with means 0, -1 and 2."}
+y2 <- dnorm(x = x, mean = -1)
+y3 <- dnorm(x = x, mean = 2)
+plot(x, y, main = "Normal distribution - density", type = "l")
+lines(x, y2, col = "cyan")
+lines(x, y3, col = "blue")
+```
+
+To visualize horizontal and/or vertical lines the x and y coordinates - where the lines start and end - are necessary:
+
+```{r, eval=FALSE}
+lines(x = c(0, 0), y = c(0, 0.4), col = "blue") # vertical line starts in (0, 0) and ends in (0, 0.4)
+lines(x = c(-10, 10), y = c(0.2, 0.2), col = "green") # horizontal line starts in (-10, 0.2) and ends in (10, 0.2)
+```
+
+Analogously, further *points* can be plotted by `points()` and *text* by `text()` and they can be customized by several arguments e.g. `pch` to determine the plotting symbols (for example `pch = 19` for filled points, see `?points` and see figure \@ref(fig:dens-pch)).\newline
+A list of colors that can be assigned to the argument `col` is given by @Wei2021 (\url{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}). Instead of writing the colors names as @Wei2021 introduces, the hexadecimal code can also be used.
+
+```{r dens-pch, fig.cap="(ref:dens-pch-caption)"}
+plot(x, y, main = "Normal distribution - density", type = "l", ylim = c(0, 0.5)) 
+# ylim: limits (range) of the y-axis (xlim for x-axis)
+points(x, y2, col = "cyan", pch = 19)
+points(x, y3, col = "blue", pch = 21)
+```
+
+(ref:dens-pch-caption) Density functions for the normal distribution with $\mu = 0$, $\mu = -1$ and $\mu = 2$ and $\sigma = 1$ in all three cases.
+
+After plotting the density functions in figure \@ref(fig:dens-norm-lines), it is of interest to add a legend to the plot which can be done with `legend()`:
+
+```{r dens-norm-lines-legend, fig.cap="Density functions for the normal distribution whose properties are annotated by the legend."}
+plot(x, y, main="Normal distribution - density", type="l")
+lines(x, y2, col="cyan")
+lines(x, y3, col="blue")
+legend(x = "topleft", legend=c("mean = 0, sd = 1", "mean = -1, sd = 1", "mean = 2, sd = 1"),
+text.col=c("black", "cyan", "blue"))
+```
+
+where the first argument can be a pre-defined keyword (here: `topleft`) or a coordinate where to position the legend. The content of the legend, i.e. descriptions of the plotted data (here the distribution functions), is presented by the argument `legend`. Here, information about the mean and standard deviation of each density function is shown in the legend.\newline
+There are a lot of further arguments of `legend()` to define, e.g.:
+
++ `text.col`: the color of the legend text,
+
++ `text.font`: the font of the legend text,
+
++ `pch`: plotting symbols,
+
++ \dots
+
+The legend in figure \@ref(fig:dens-norm-lines-legend) is bad concerning mathematical notations. Therefore, the R package `latex2exp` by @latex2exp allows integrating LaTeX into R by calling `TeX()` and using the known LaTeX-notation (`$...$`) like:
+
+```{r, dens-norm-lines-legend2, fig.cap="(ref:dens-leg2)"}
+plot(x, y, main="Normal distribution - density", type="l")
+lines(x, y2, col="cyan")
+lines(x, y3, col="blue")
+legend("topleft", legend=c(latex2exp::TeX("$\\mu=0, \\sigma=1$"),
+latex2exp::TeX("$\\mu=-1, \\sigma=1$"), latex2exp::TeX("$\\mu=2, \\sigma=1$")), 
+text.col=c("black", "cyan", "blue"))
+```
+
+(ref:dens-leg2) Density functions for the normal distribution whose properties are annotated by the legend based on `latex2exp` [@latex2exp].
+
+### Histograms and boxplots
+
+Histograms and boxplots are helpful devices to get a closer look at the values of some variables. In the following we will focus on the `airquality` data set which consists of six variables in order to describe the daily air quality in New York (May to September 1973) from the R package `datasets` [@R]:
+
+```{r}
+head(airquality)
+```
+
+A Histogram for example of the variable `Temp` (Temperature in °F) [@R] can be created based on `hist()` like this (we already know the arguments `xlab`, `ylab` and `main` from `plot()`):
+
+```{r}
+h_temp <- hist(x = airquality$Temp, xlab = "Temperature [°F]", ylab = "Count",
+               main = "Histogram - Temperature.")
+```
+
+Usually, when a plot is assigned to a variable (here we assigned the histogram of `Temp` to `h_temp`), the plot will not be shown, but this is not the case here. The argument `plot` of `hist()` is set to `TRUE` by default.\newline
+The benefit of assigning the histogram to a variable (here: `h_temp`) is that we can access the information about the plot:
+
+```{r}
+h_temp
+```
+
+From that we can see the following:
+
+- `breaks`: the bin boundaries,
+
+- `counts`: the counts in (a,b],
+
+- `density`: relative frequencies divided by binwidth,
+here: density = `h_temp$counts / sum(h_temp$counts))/5`,
+
+- `mids`: midpoints of the bins,
+
+- `equidist`: whether distances between breaks are the same and
+
+- the class of `h_temp` which is a "histogram" (see also `?hist`).
+
+If it is desired to compare to histograms with each other, it will be helpful to plot them on top of each other by defining `par(mfrow = c(2, 1))` (the first values indicates the number of rows (here: `2`) and the second value indicates the number of columns (here: `1`)):
+
+```{r}
+par(mfrow = c(2, 1)) # c(r,c): c(number of rows, number of columns)
+hist(x = airquality$Temp, xlab = "Temperature [°F]", ylab = "Count", 
+     main = "Histogram - Temp.") # main  = "" to leave out the title
+hist(airquality$Wind, xlab = "Wind [mph]", ylab = "Count",
+     main = "Histogram - Wind")
+```
+
+In order to create boxplots in base-R the function `boxplot()` is available which works similarily like `hist()` (and `plot()`).
+
+```{r}
+par(mfrow = c(1,2)) # c(r,c): c(number of rows, number of columns)
+b1 <- boxplot(x = airquality$Temp, main = "Boxplot - Temperature [°F]")
+b2 <- boxplot(x = airquality$Wind, main = "Boxplot - Wind [mph]")
+```
+
+When we assign the boxplots of the temperature (`Temp`) and the wind speed (`Wind`) to `b1` and `b2` respectively, we get information about the boxplots. Exemplarily, we look at `b2`:
+
+```{r}
+b2
+```
+
+with its return values:
+
++ `stats`: lower whisker, $q_{0.25}$, $q_{0.5}$, $q_{0.75}$ (25 %-, 50 % (Median)- and 75 %-Quantile) and upper whisker (the whiskers extend to maximal $1.5 \cdot \text{ interquantile range }$ by default),
+
++ `n`: number of non NA observations,
+
++ `conf`: lower and upper extremes of the notch,
+
++ `out`: any data point outside the whiskers,
+
++ `group`: indicating to which group the outliers belong and 
+
++ `names`: naming the groups (see `group`).
+
+Based on the information saved in `b2` and the functions `points()` and `text()` *important* values are marked in our boxplot:
+
+```{r}
+boxplot(x = airquality$Wind, main = "Boxplot - Wind [mph]", medcol = "chocolate")
+points(x = rep(1,length(b2$out)), y = b2$out, col = "orange", pch = 19)
+points(x = c(1,1), y = b2$conf, col = "red", pch = 19)
+points(x = 1, y = min(airquality$Wind), col = "khaki3", pch = 17)
+points(x = 1, y = max(airquality$Wind), col = "darkred", pch = 17)
+text(x = 0.7, y = b2$stats[3,], labels = b2$stats[3,], col = "chocolate")
+```
+
+> Which values of the boxplot are marked in which color?
+
+### Scatterplots and linear regression
+
+When the variable `Wind` is plotted dependent on the variable `Temp` in figure xx, a negative relation is obvious: The higher the temperature, the lower the wind speed.
+
+```{r}
+plot(x = airquality$Temp, y = airquality$Wind, xlab = "Temperature [°F]",
+     ylab = "Wind [mph]")
+```
+
+Based on the relation between `Temp` and `Wind`, we define a linear model
+
+```{r}
+air_model <- lm(Wind ~ 1 + Temp, data = airquality)
+```
+
+whose regression line can be added to our scatterplot by calling the function `abline()` like this:
+
+```{r}
+abline(air_model, col = "blue")
+```
+
+Since `air_model` is a regression object (see argument `reg` of `abline()`), its coefficients (intercept and slope) will be extracted by calling `coef()` and then a corresponding line is drawn based on `abline()`.
+
+The manual page of `abline()` (see `?abline`) as well as
+
+```{r}
+args(abline)
+```
+
+reveal that 
+
++ the intercept and slope (arguments `a` and `b`) can be manually defined to draw a corresponding line,
+
++ a horizontal line can be drawn by defining `h` (the y-value(s)) and
+
++ a vertical line can be drawn by defining `v` (the x-value(s)).
+
+
+
+## Plots with `ggplot2` [@ggplot2]
+
+
+## Interactive plots with `plotly` [@plotly]
