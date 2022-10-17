@@ -3,8 +3,13 @@ fig:unnamed-chunk-40
 fig:unnamed-chunk-78
 fig:unnamed-chunk-162
 fig:unnamed-chunk-164
-fig:unnamed-chunk-215
-fig:unnamed-chunk-242
+fig:dens-norm
+fig:dens-norm-lines
+fig:dens-pch
+fig:dens-norm-lines-legend
+fig:dens-norm-lines-legend2
+fig:unnamed-chunk-227
+fig:unnamed-chunk-254
 intro
 r-and-the-r-project
 r-system-and-rstudio
@@ -66,6 +71,13 @@ vectorization
 apply-family
 technical-background
 parallelization-using-vectorized-functions
+applications---graphics
+plots-with-base-r
+plot
+histograms-and-boxplots
+scatterplots-and-linear-regression
+plots-with-ggplot2-ggplot2
+interactive-plots-with-plotly-plotly
 word-puzzle
 requirements
 solution
@@ -88,6 +100,7 @@ generating-forecasts
 practical-application
 forecast-evaluation
 web-apps
+literature
 bug-bounty
 test-exam
 additional-exercises
