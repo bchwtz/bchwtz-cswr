@@ -6,7 +6,7 @@ knitr::include_graphics("exercises/applications_graphics/cswr_programming_R_appl
 
 ## Plots with base R
 
-base-R provides already a lot of functions to create plots at which we want to take a look in this subsection. Since we cannot go into detail concerning all parameters and arguments the functions provide, just check them out by calling the help page.
+base-R provides already a lot of functions to create plots; we want to take a look at them in this subsection. Since we cannot go into detail concerning all parameters and arguments the functions provide, just check them out by calling the corresponding help pages (e.g. `?plot`).
 
 ### `plot()`
 
@@ -19,8 +19,14 @@ y <- dnorm(x = x) # density function of the normal distribution with mean = 0 an
 plot(x = x, y = y)
 ```
 
-Alternatively, `plot()` can also handle a formula as data input like `y ~ x`.\newline
-By defining its arguments `main`, `xlab` and `ylab`, a title for the plot, for the x and y axis can be added, respectively. Instead of plotting points, a line can be drawn by defining `type = "l"`. Furthermore, points and a line which goes through the points are visualized by `type = "b"` (**b** stands for **b**oth); further options are possible.
+Alternatively, `plot()` can also handle a formula as data input like `y ~ x`. Consequently, 
+
+```{r, eval=FALSE}
+plot(y ~ x)
+```
+
+results in the same plot as in figure \@ref(fig:dens-norm).\newline
+By defining the arguments `main`, `xlab` and `ylab` in `plot()`, a title for the plot, for the x and y axis can be added, respectively. Instead of plotting points, a line that goes through the points can be drawn by defining `type = "l"`. Furthermore, both - points and a line - are visualized by calling `type = "b"` (**b** stands for **b**oth); further options are possible.
 
 To the plot above, figure \@ref(fig:dens-norm), further lines can be added by calling `lines()` for example:
 
@@ -32,24 +38,51 @@ lines(x, y2, col = "cyan")
 lines(x, y3, col = "blue")
 ```
 
-To visualize horizontal and/or vertical lines the x and y coordinates - where the lines start and end - are necessary:
+where we have also defined colors for the single lines via the argument `col`.
+To visualize horizontal and/or vertical lines in the plot the x and y coordinates - where the lines start and end - are necessary. Adding these two lines 
 
 ```{r, eval=FALSE}
-lines(x = c(0, 0), y = c(0, 0.4), col = "blue") # vertical line starts in (0, 0) and ends in (0, 0.4)
-lines(x = c(-10, 10), y = c(0.2, 0.2), col = "green") # horizontal line starts in (-10, 0.2) and ends in (10, 0.2)
+lines(x = c(0, 0), y = c(0, 0.4), col = "grey") # vertical line starts in (0, 0) and ends in (0, 0.4)
+lines(x = c(-8, 8), y = c(0.2, 0.2), col = "darkgreen") # horizontal line starts in (-8, 0.2) and ends in (8, 0.2)
 ```
 
-Analogously, further *points* can be plotted by `points()` and *text* by `text()` and they can be customized by several arguments e.g. `pch` to determine the plotting symbols (for example `pch = 19` for filled points, see `?points` and see figure \@ref(fig:dens-pch)).\newline
-A list of colors that can be assigned to the argument `col` is given by @Wei2021 (\url{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}). Instead of writing the colors names as @Wei2021 introduces, the hexadecimal code can also be used.
+to figure \@ref(fig:dens-norm-lines) results in:
 
-```{r dens-pch, fig.cap="(ref:dens-pch-caption)"}
-plot(x, y, main = "Normal distribution - density", type = "l", ylim = c(0, 0.5)) 
-# ylim: limits (range) of the y-axis (xlim for x-axis)
-points(x, y2, col = "cyan", pch = 19)
-points(x, y3, col = "blue", pch = 21)
+```{r dens-norm-lines2, fig.cap="Plot of three density functions for the normal distribution with means 0, -1 and 2, respectively, and a horizontal and a vertical line."}
+y2 <- dnorm(x = x, mean = -1)
+y3 <- dnorm(x = x, mean = 2)
+plot(x, y, main = "Normal distribution - density", type = "l")
+lines(x, y2, col = "cyan")
+lines(x, y3, col = "blue")
+lines(x = c(0, 0), y = c(0, 0.4), col = "grey") 
+lines(x = c(-8, 8), y = c(0.2, 0.2), col = "darkgreen")
 ```
 
-(ref:dens-pch-caption) Density functions for the normal distribution with $\mu = 0$, $\mu = -1$ and $\mu = 2$ and $\sigma = 1$ in all three cases.
+
+Analogously, (further) *points* can be added to a plot by `points()` and *text* by `text()`, e.g. adding
+
+```{r}
+points(x = x, y = dnorm(x = x, mean = 0, sd = 0.5), pch = 19, col = "darkblue")
+```
+
+to figure \@ref(fig:dens-norm-lines2) results in figure \@ref(fig:dens-norm-lines3):
+
+```{r dens-norm-lines3, fig.cap="Plot of four density functions for the normal distribution."}
+y2 <- dnorm(x = x, mean = -1)
+y3 <- dnorm(x = x, mean = 2)
+plot(x, y, main = "Normal distribution - density", type = "l")
+lines(x, y2, col = "cyan")
+lines(x, y3, col = "blue")
+lines(x = c(0, 0), y = c(0, 0.4), col = "grey") 
+lines(x = c(-8, 8), y = c(0.2, 0.2), col = "darkgreen")
+points(x = x, y = dnorm(x = x, mean = 0, sd = 1.5), pch = 19, col = "darkblue")
+points(x = x, y = dnorm(x = x, mean = 0, sd = 2), pch = 21, col = "khaki")
+```
+
+
+Several arguments exist to customize points (and text); e.g. `pch = 19` creates filled points. See `?points` and `?text` for much information.
+A list of colors that can be assigned to the argument `col` is given by @Wei2021 (\url{http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf}). Instead of writing the names of the colors as @Wei2021 introduces, the hexadecimal code can also be used.
+
 
 After plotting the density functions in figure \@ref(fig:dens-norm-lines), it is of interest to add a legend to the plot which can be done with `legend()`:
 
@@ -61,8 +94,8 @@ legend(x = "topleft", legend=c("mean = 0, sd = 1", "mean = -1, sd = 1", "mean = 
 text.col=c("black", "cyan", "blue"))
 ```
 
-where the first argument can be a pre-defined keyword (here: `topleft`) or a coordinate where to position the legend. The content of the legend, i.e. descriptions of the plotted data (here the distribution functions), is presented by the argument `legend`. Here, information about the mean and standard deviation of each density function is shown in the legend.\newline
-There are a lot of further arguments of `legend()` to define, e.g.:
+where the first argument can be a pre-defined keyword (here: `"topleft"`) or coordinates where to position the legend. The content of the legend, i.e. descriptions of the plotted data (here the distribution functions), is presented by the argument `legend`. Here, information about the mean and standard deviation of each density function is shown in the legend.\newline
+There are much more arguments of `legend()` to define, e.g.:
 
 + `text.col`: the color of the legend text,
 
@@ -70,7 +103,8 @@ There are a lot of further arguments of `legend()` to define, e.g.:
 
 + `pch`: plotting symbols,
 
-+ \dots
++ ...
+
 
 The legend in figure \@ref(fig:dens-norm-lines-legend) is bad concerning mathematical notations. Therefore, the R package `latex2exp` by @latex2exp allows integrating LaTeX into R by calling `TeX()` and using the known LaTeX-notation (`$...$`) like:
 
@@ -216,3 +250,31 @@ reveal that
 
 
 ## Interactive plots with `plotly` [@plotly]
+
+
+```{r, echo=TRUE, eval=FALSE}
+air_lm_ggplot <- ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+geom_point()+
+geom_smooth(method = "lm", se = FALSE)
+ggplotly(air_lm_ggplot) # converts ggplot2 to a plotly object
+```
+
+```{r, eval=FALSE, fig.cap = "(ref:ggplotly-air-lm)"}
+knitr::include_graphics("gfx/ggplotly_air_lm.png")
+```
+
+(ref:ggplotly-air-lm) Two-dimensional plot (`plotly` object) based on `air_lm_ggplot`.
+
+
+```{r, eval=FALSE}
+plot_ly(airquality, x = ~Temp, y = ~Wind, z = ~Solar.R) %>%
+  add_markers(color = ~Month)
+```
+
+```{r, eval=FALSE, fig.cap = "(ref:plotly-3d)"}
+knitr::include_graphics("gfx/plot_ly_airquality.png")
+```
+
+(ref:plotly-3d) Three-dimensional plot (`plotly` object) based on `datasets::airquality` [@R].
+
+
