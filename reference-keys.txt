@@ -12,8 +12,12 @@ fig:dens-norm-lines-legend2
 fig:hist-temp-wind
 fig:box-temp-wind
 fig:box-wind
-fig:unnamed-chunk-230
-fig:unnamed-chunk-257
+fig:scatterplot-temp-wind
+fig:scatterplot-temp-wind-linReg
+fig:ggplotly-air-lm
+fig:plotly-airquality
+fig:unnamed-chunk-227
+fig:unnamed-chunk-254
 intro
 r-and-the-r-project
 r-system-and-rstudio

@@ -520,9 +520,9 @@ here: density = <code>h_temp$counts / sum(h_temp$counts))/5</code>,</p></li>
 <span id="cb554-4"><a href="plots-with-base-r.html#cb554-4"></a><span class="kw">hist</span>(airquality<span class="op">$</span>Wind, <span class="dt">xlab =</span> <span class="st">&quot;Wind [mph]&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>,</span>
 <span id="cb554-5"><a href="plots-with-base-r.html#cb554-5"></a>     <span class="dt">main =</span> <span class="st">&quot;Histogram - Wind&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:hist-temp-wind"></span>
-<img src="bchwtz-cswr_files/figure-html/hist-temp-wind-1.png" alt="Histograms of the temperature and the wind speed of the airquality dataset (???)." width="672" />
+<img src="bchwtz-cswr_files/figure-html/hist-temp-wind-1.png" alt="Histograms of the temperature and the wind speed of the airquality dataset (R Core Team 2021)." width="672" />
 <p class="caption">
-Figure 7.7: Histograms of the temperature and the wind speed of the <code>airquality</code> dataset <span class="citation">(<span class="citeproc-not-found" data-reference-id="datasets"><strong>???</strong></span>)</span>.
+Figure 7.7: Histograms of the temperature and the wind speed of the <code>airquality</code> dataset <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>.
 </p>
 </div>
 
@@ -531,9 +531,9 @@ Figure 7.7: Histograms of the temperature and the wind speed of the <code>airqua
 <span id="cb555-2"><a href="plots-with-base-r.html#cb555-2"></a>b1 &lt;-<span class="st"> </span><span class="kw">boxplot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Temp, <span class="dt">main =</span> <span class="st">&quot;Boxplot - Temperature [°F]&quot;</span>)</span>
 <span id="cb555-3"><a href="plots-with-base-r.html#cb555-3"></a>b2 &lt;-<span class="st"> </span><span class="kw">boxplot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Wind, <span class="dt">main =</span> <span class="st">&quot;Boxplot - Wind [mph]&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:box-temp-wind"></span>
-<img src="bchwtz-cswr_files/figure-html/box-temp-wind-1.png" alt="Boxplots of the temperature and the wind speed of the airquality dataset (???)." width="672" />
+<img src="bchwtz-cswr_files/figure-html/box-temp-wind-1.png" alt="Boxplots of the temperature and the wind speed of the airquality dataset (R Core Team 2021)." width="672" />
 <p class="caption">
-Figure 7.8: Boxplots of the temperature and the wind speed of the <code>airquality</code> dataset <span class="citation">(<span class="citeproc-not-found" data-reference-id="datasets"><strong>???</strong></span>)</span>.
+Figure 7.8: Boxplots of the temperature and the wind speed of the <code>airquality</code> dataset <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>.
 </p>
 </div>
 
@@ -579,9 +579,9 @@ Figure 7.8: Boxplots of the temperature and the wind speed of the <code>airquali
 <span id="cb558-4"><a href="plots-with-base-r.html#cb558-4"></a><span class="kw">points</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="kw">max</span>(airquality<span class="op">$</span>Wind), <span class="dt">col =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">pch =</span> <span class="dv">17</span>)</span>
 <span id="cb558-5"><a href="plots-with-base-r.html#cb558-5"></a><span class="kw">text</span>(<span class="dt">x =</span> <span class="fl">0.7</span>, <span class="dt">y =</span> b2<span class="op">$</span>stats[<span class="dv">3</span>,], <span class="dt">labels =</span> b2<span class="op">$</span>stats[<span class="dv">3</span>,], <span class="dt">col =</span> <span class="st">&quot;chocolate&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:box-wind"></span>
-<img src="bchwtz-cswr_files/figure-html/box-wind-1.png" alt="Boxplot of the wind speed of the airquality dataset (???)." width="672" />
+<img src="bchwtz-cswr_files/figure-html/box-wind-1.png" alt="Boxplot of the wind speed of the airquality dataset (R Core Team 2021)." width="672" />
 <p class="caption">
-Figure 7.9: Boxplot of the wind speed of the <code>airquality</code> dataset <span class="citation">(<span class="citeproc-not-found" data-reference-id="datasets"><strong>???</strong></span>)</span>.
+Figure 7.9: Boxplot of the wind speed of the <code>airquality</code> dataset <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>.
 </p>
 </div>
 
@@ -592,17 +592,33 @@ Figure 7.9: Boxplot of the wind speed of the <code>airquality</code> dataset <sp
 </div>
 <div id="scatterplots-and-linear-regression" class="section level3 hasAnchor">
 <h3><span class="header-section-number">7.1.3</span> Scatterplots and linear regression<a href="plots-with-base-r.html#scatterplots-and-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When the variable <code>Wind</code> is plotted dependent on the variable <code>Temp</code> in figure xx, a negative relation is obvious: The higher the temperature, the lower the wind speed.</p>
+<p>When the variable <code>Wind</code> is plotted dependent on the variable <code>Temp</code> in figure <a href="plots-with-base-r.html#fig:scatterplot-temp-wind">7.10</a>, a negative relation is obvious: The higher the temperature, the lower the wind speed.</p>
 <div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="plots-with-base-r.html#cb559-1"></a><span class="kw">plot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Temp, <span class="dt">y =</span> airquality<span class="op">$</span>Wind, <span class="dt">xlab =</span> <span class="st">&quot;Temperature [°F]&quot;</span>,</span>
 <span id="cb559-2"><a href="plots-with-base-r.html#cb559-2"></a>     <span class="dt">ylab =</span> <span class="st">&quot;Wind [mph]&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-212-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:scatterplot-temp-wind"></span>
+<img src="bchwtz-cswr_files/figure-html/scatterplot-temp-wind-1.png" alt="Scatterplot of the wind speed dependent on the temperature [°F] of the airquality data set (R Core Team 2021)." width="672" />
+<p class="caption">
+Figure 7.10: Scatterplot of the wind speed dependent on the temperature [°F] of the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>.
+</p>
+</div>
+
 <p>Based on the relation between <code>Temp</code> and <code>Wind</code>, we define a linear model</p>
 <div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="plots-with-base-r.html#cb560-1"></a>air_model &lt;-<span class="st"> </span><span class="kw">lm</span>(Wind <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>Temp, <span class="dt">data =</span> airquality)</span></code></pre></div>
 <p>whose regression line can be added to our scatterplot by calling the function <code>abline()</code> like this:</p>
 <div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="plots-with-base-r.html#cb561-1"></a><span class="kw">abline</span>(air_model, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p>Since <code>air_model</code> is a regression object (see argument <code>reg</code> of <code>abline()</code>), its coefficients (intercept and slope) will be extracted by calling <code>coef()</code> and then a corresponding line is drawn based on <code>abline()</code>.</p>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="plots-with-base-r.html#cb562-1"></a><span class="kw">plot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Temp, <span class="dt">y =</span> airquality<span class="op">$</span>Wind, <span class="dt">xlab =</span> <span class="st">&quot;Temperature [°F]&quot;</span>,</span>
+<span id="cb562-2"><a href="plots-with-base-r.html#cb562-2"></a>     <span class="dt">ylab =</span> <span class="st">&quot;Wind [mph]&quot;</span>)</span>
+<span id="cb562-3"><a href="plots-with-base-r.html#cb562-3"></a><span class="kw">abline</span>(air_model, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:scatterplot-temp-wind-linReg"></span>
+<img src="bchwtz-cswr_files/figure-html/scatterplot-temp-wind-linReg-1.png" alt="Scatterplot of the wind speed dependent on the temperature [°F] of the airquality data set (R Core Team 2021) with a linear regression line." width="672" />
+<p class="caption">
+Figure 7.11: Scatterplot of the wind speed dependent on the temperature [°F] of the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> with a linear regression line.
+</p>
+</div>
+
+<p>Since <code>air_model</code> is a regression object (see argument <code>reg</code> of <code>abline()</code>), its coefficients (intercept and slope) will be extracted by calling <code>coef()</code> and then a corresponding line is drawn based on <code>abline()</code> (see figure <a href="plots-with-base-r.html#fig:scatterplot-temp-wind-linReg">7.11</a>).</p>
 <p>The manual page of <code>abline()</code> (see <code>?abline</code>) as well as</p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="plots-with-base-r.html#cb562-1"></a><span class="kw">args</span>(abline)</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="plots-with-base-r.html#cb563-1"></a><span class="kw">args</span>(abline)</span></code></pre></div>
 <pre><code>#R&gt; function (a = NULL, b = NULL, h = NULL, v = NULL, reg = NULL, 
 #R&gt;     coef = NULL, untf = FALSE, ...) 
 #R&gt; NULL</code></pre>
@@ -612,6 +628,11 @@ Figure 7.9: Boxplot of the wind speed of the <code>airquality</code> dataset <sp
 <li><p>a horizontal line can be drawn by defining <code>h</code> (the y-value(s)) and</p></li>
 <li><p>a vertical line can be drawn by defining <code>v</code> (the x-value(s)).</p></li>
 </ul>
+<p>Remember in figure <a href="plots-with-base-r.html#fig:dens-norm-lines2">7.3</a> we added a horizontal and a vertical line by using <code>lines()</code>.</p>
+<p><strong>Do the following:</strong></p>
+<blockquote>
+<p>Instead of defining the vertical and horizontal lines in figure <a href="plots-with-base-r.html#fig:dens-norm-lines2">7.3</a> by <code>lines()</code> use <code>abline()</code>.</p>
+</blockquote>
 </div>
 </div>
 <h3>References</h3>
