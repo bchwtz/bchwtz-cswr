@@ -4,7 +4,7 @@
 knitr::include_graphics("exercises/applications_graphics/cswr_programming_R_appl_graphics.pdf")
 ```
 
-## Plots with base R
+## Plots with base R{#plotsbaseR}
 
 base-R provides already a lot of functions to create plots; we want to take a look at them in this subsection. Since we cannot go into detail concerning all parameters and arguments the functions provide, just check them out by calling the corresponding help pages (e.g. `?plot`).
 
@@ -305,6 +305,76 @@ ylab("Wind [mph]") ## labeling the y axis
 ```
 
 (ref:ggplot1-air) Scatterplot of wind speed vs. temperature of the `airquality` data set [@R] as a `ggplot` [@ggplot2].
+
+In the code of the plots (figures \@ref(fig:first-ggplot) and \@ref(fig:first-ggplot-air)), the aesthetics have been defined inside `ggplot()`. It is also possible to define the aesthetics inside the `*geom()`-function. Consequently, the following options exist:
+
+```{r, echo=TRUE, eval=FALSE}
+# option 1:
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+ # initialize a ggplot object
+ geom_point()
+ # option 2:
+ggplot(data = airquality)+
+geom_point(mapping = aes(x = Temp, y = Wind))
+# option 3:
+ggplot(data = airquality, mapping = aes(x = Temp))+
+geom_point(mapping = aes(y = Wind))
+```
+
+In this example, it does not matter whether the aesthetics are defined inside `ggplot()` and/or in `geom_point()` since the resulting plot does not change. In contrast to that, when we define another variable in the `geom()`-function (e.g. `y = Solar.R`) although we have already defined a y-variable in `ggplot()` (e.g. `y = Wind`), the variable `Wind` will be overwritten by the variable `Solar.R`. The y-axis is called `Wind` in figure \@ref(fig:ggplot-hierarchy), but that is not true any longer. So, we have to adjust the labeling (see figure \@ref(fig:ggplot-hierarchy-label)).
+
+```{r ggplot-hierarchy, fig.cap="(ref:ggplot-h-l)"}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+ geom_point(aes(y = Solar.R))
+```
+
+(ref:ggplot-h) Scatterplot of solar radiation vs. temperature although the y-axis is called `Wind` since the y-variable has been overwritten.
+
+```{r ggplot-hierarchy-label, fig.cap="(ref:ggplot-h-l)"}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+ geom_point(aes(y = Solar.R))
+```
+
+(ref:ggplot-h-l) Figure \@ref(fig:ggplot-hierarchy) with labeling. 
+
+Dependent on the number of variables and their scale of measurement (discrete, continuous) the `ggplot2` Cheatsheet [@ggplot2Cheatsheet] shows which `geom()_*`-function(s) to use. The `stat_*()`-function(s) work similarily as the `geom()_*`-functions (`stat_*()`- and `geom_*()`-functions are equivalents), e.g.
+    
+```{r, eval=FALSE}
+geom_bar(stat = "count") # is equal to
+stat_count(geom = "bar")
+```
+
+```{r, fig.height=3, echo=TRUE, eval=FALSE}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point(stat = "identity") # stat = "identity" by default
+# is equal to
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  stat_identity(geom = "point") # geom = "point" by default
+```
+
+Here are some of the `stat_*()`- and `geom_*()`-function equivalents based on [@Arnold2020]:
+
+
+`geom`    | `stat`
+----------|------------------
+`geom_bar()` | `stat_count()`
+`geom_bin2d()` | `stat_bin_2d()`
+`geom_boxplot()` | `stat_boxplot()`
+`geom_contour()` | `stat_contour()`
+`geom_count()` | `stat_sum()`
+`geom_density()` | `stat_density()`
+`geom_density_2d()` | `stat_density_2d()`
+`geom_hex()` | `stat_hex()`
+`geom_histogram()` | `stat_bin()`
+`geom_qq_line()` | `stat_qq_line()`
+`geom_qq()` | `stat_qq()`
+`geom_quantile()` | `stat_quantile()`
+`geom_smooth()` | `stat_smooth()`
+`geom_violin()` | `stat_violin()`
+`geom_sf()` | `stat_sf()`
+
+
+Based on this introduction of ggplots, we can easily reconstruct the plots we created in base-R (see chapter \@ref(plotsbaseR)).
+
 
 
 ## Interactive plots with `plotly` [@plotly]
