@@ -269,6 +269,43 @@ Remember in figure \@ref(fig:dens-norm-lines2) we added a horizontal and a verti
 
 ## Plots with `ggplot2` [@ggplot2]
 
+Another form of plots are ggplots which are based on the R package `ggplot2` by @ggplot2. As we will see, ggplots are especially helpful by handling multiple variables.\newline
+The name of the package indicates that the plots are based on the **G**rammar of **G**raphics. [@ggplot2] Basically, the Grammar of Graphics is a system with strict *rules* that describe how statistical graphics are generated based on raw data. [@Wilkinson2010] This means, a defined syntax - which components are necessary to build a plot - and a semantic - how the components will be interpreted to create a plot on the whole - exist. [@Wilkinson2010; @ggplot2Cheatsheet]\newline
+We are not going into detail concerning the Grammar of Graphics; there is an own book about it, see @Wilkinson2005. We will focus on how `ggplot2` realizes the Grammar of Graphics and how you can create plots with `ggplot2`. 
+
+As the `ggplot2` Cheatsheet [@ggplot2Cheatsheet] introduces only a data set, a coordinate system (grid), geoms (visual points representing data points) as well as aesthetics (i.e. variables of the data set have to be mapped to properties of the geom) are necessary to create a graph as we will see. The `ggplot2` Cheatsheet [@ggplot2Cheatsheet] as well as the manual pages of the functions of the `ggplot2` package [@ggplot2] are the basis for the creation of the following ggplots, their descriptions and further explanations.
+
+ggplots are divided in layers which will be concatenated by a "`+`" sign: The first layer, which cannot be leaved out, includes the data; this is realized by `ggplot()` (see code below). Its first argument is the data set (here: `df`) followed by defining which variables will be plotted inside the `aes()` function. By only calling `ggplot()` as described, no data in form of points, lines etc. will be visible since geoms have not been defined, so far.\newline
+To overcome this, one of the `geom_*()` functions is called which specifies how the data will be visualized, for example by points (`geom_point()`), by a line (`geom_line()`), a boxplot (`geom_boxplot()`), a histogram (`geom_histogram()`), etc.
+
+```{r}
+df <- data.frame(x = x, y = y)
+head(df)
+```
+
+
+```{r first-ggplot, fig.cap="(ref:ggplot1-basic)"}
+ggplot(data = df, mapping = aes(x = x, y = y))+ # initialize a ggplot object
+  geom_point()+ # visualize data points
+ggtitle("Density function of normal distribution")+ # adding a title to the plot
+xlab("x")+ # labeling the x axis
+ylab("density") # labeling the y axis
+```
+
+(ref:ggplot1-basic) A simple ggplot. 
+
+Furthermore, a title for the plot as well as for the x- and y-axis have been added to the plots, figures \@ref(fig:first-ggplot) and \@ref(fig:first-ggplot-air), and  by the functions `ggtitle()`, `xlab()` and `ylab()`, respectively, and by using the "`x`"-sign.
+
+```{r first-ggplot-air, fig.cap="(ref:ggplot1-air)"}
+ggplot(data = airquality, aes(x = Temp, y = Wind))+ ## initialization of a ggplot object
+geom_point()+ ## adding points to a plot
+ggtitle("Scatterplot")+ ## adding a title to the plot
+xlab("Temperature [°F]")+ ## labeling the x axis
+ylab("Wind [mph]") ## labeling the y axis
+```
+
+(ref:ggplot1-air) Scatterplot of temperature vs. wind speed of the `airquality` data set [@R] as a `ggplot` [@ggplot2].
+
 
 ## Interactive plots with `plotly` [@plotly]
 
