@@ -370,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="plots-with-base-r" class="section level2 hasAnchor">
 <h2><span class="header-section-number">7.1</span> Plots with base R<a href="plots-with-base-r.html#plots-with-base-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>base-R provides already a lot of functions to create plots at which we want to take a look in this subsection. Since we cannot go into detail concerning all parameters and arguments the functions provide, just check them out by calling the help page.</p>
+<p>base-R provides already a lot of functions to create plots; we want to take a look at them in this subsection. Since we cannot go into detail concerning all parameters and arguments the functions provide, just check them out by calling the corresponding help pages (e.g. <code>?plot</code>).</p>
 <div id="plot" class="section level3 hasAnchor">
 <h3><span class="header-section-number">7.1.1</span> <code>plot()</code><a href="plots-with-base-r.html#plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>plot()</code> allows building two-dimensional plots by simply defining two vectors <code>x</code> and <code>y</code> as follows</p>
@@ -384,67 +384,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figure 7.1: Density function of a normal distribution.
 </p>
 </div>
-<p>Alternatively, <code>plot()</code> can also handle a formula as data input like <code>y ~ x</code>.
-By defining its arguments <code>main</code>, <code>xlab</code> and <code>ylab</code>, a title for the plot, for the x and y axis can be added, respectively. Instead of plotting points, a line can be drawn by defining <code>type = "l"</code>. Furthermore, points and a line which goes through the points are visualized by <code>type = "b"</code> (<strong>b</strong> stands for <strong>b</strong>oth); further options are possible.</p>
+<p>Alternatively, <code>plot()</code> can also handle a formula as data input like <code>y ~ x</code>. Consequently,</p>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="plots-with-base-r.html#cb542-1"></a><span class="kw">plot</span>(y <span class="op">~</span><span class="st"> </span>x)</span></code></pre></div>
+<p>results in the same plot as in figure <a href="plots-with-base-r.html#fig:dens-norm">7.1</a>.
+By defining the arguments <code>main</code>, <code>xlab</code> and <code>ylab</code> in <code>plot()</code>, a title for the plot, for the x and y axis can be added, respectively. Instead of plotting points, a line that goes through the points can be drawn by defining <code>type = "l"</code>. Furthermore, both - points and a line - are visualized by calling <code>type = "b"</code> (<strong>b</strong> stands for <strong>b</strong>oth); further options are possible.</p>
 <p>To the plot above, figure <a href="plots-with-base-r.html#fig:dens-norm">7.1</a>, further lines can be added by calling <code>lines()</code> for example:</p>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="plots-with-base-r.html#cb542-1"></a>y2 &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">-1</span>)</span>
-<span id="cb542-2"><a href="plots-with-base-r.html#cb542-2"></a>y3 &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">2</span>)</span>
-<span id="cb542-3"><a href="plots-with-base-r.html#cb542-3"></a><span class="kw">plot</span>(x, y, <span class="dt">main =</span> <span class="st">&quot;Normal distribution - density&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</span>
-<span id="cb542-4"><a href="plots-with-base-r.html#cb542-4"></a><span class="kw">lines</span>(x, y2, <span class="dt">col =</span> <span class="st">&quot;cyan&quot;</span>)</span>
-<span id="cb542-5"><a href="plots-with-base-r.html#cb542-5"></a><span class="kw">lines</span>(x, y3, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="plots-with-base-r.html#cb543-1"></a>y2 &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">-1</span>)</span>
+<span id="cb543-2"><a href="plots-with-base-r.html#cb543-2"></a>y3 &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">2</span>)</span>
+<span id="cb543-3"><a href="plots-with-base-r.html#cb543-3"></a><span class="kw">plot</span>(x, y, <span class="dt">main =</span> <span class="st">&quot;Normal distribution - density&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb543-4"><a href="plots-with-base-r.html#cb543-4"></a><span class="kw">lines</span>(x, y2, <span class="dt">col =</span> <span class="st">&quot;cyan&quot;</span>)</span>
+<span id="cb543-5"><a href="plots-with-base-r.html#cb543-5"></a><span class="kw">lines</span>(x, y3, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dens-norm-lines"></span>
 <img src="bchwtz-cswr_files/figure-html/dens-norm-lines-1.png" alt="Density functions for the normal distribution with means 0, -1 and 2." width="672" />
 <p class="caption">
 Figure 7.2: Density functions for the normal distribution with means 0, -1 and 2.
 </p>
 </div>
-<p>To visualize horizontal and/or vertical lines the x and y coordinates - where the lines start and end - are necessary:</p>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="plots-with-base-r.html#cb543-1"></a><span class="kw">lines</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.4</span>), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="co"># vertical line starts in (0, 0) and ends in (0, 0.4)</span></span>
-<span id="cb543-2"><a href="plots-with-base-r.html#cb543-2"></a><span class="kw">lines</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>), <span class="dt">col =</span> <span class="st">&quot;green&quot;</span>) <span class="co"># horizontal line starts in (-10, 0.2) and ends in (10, 0.2)</span></span></code></pre></div>
-<p>Analogously, further <em>points</em> can be plotted by <code>points()</code> and <em>text</em> by <code>text()</code> and they can be customized by several arguments e.g. <code>pch</code> to determine the plotting symbols (for example <code>pch = 19</code> for filled points, see <code>?points</code> and see figure <a href="plots-with-base-r.html#fig:dens-pch">7.3</a>).
-A list of colors that can be assigned to the argument <code>col</code> is given by <span class="citation">(<span class="citeproc-not-found" data-reference-id="Wei2021"><strong>???</strong></span>)</span> (). Instead of writing the colors names as <span class="citation">(<span class="citeproc-not-found" data-reference-id="Wei2021"><strong>???</strong></span>)</span> introduces, the hexadecimal code can also be used.</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="plots-with-base-r.html#cb544-1"></a><span class="kw">plot</span>(x, y, <span class="dt">main =</span> <span class="st">&quot;Normal distribution - density&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>)) </span>
-<span id="cb544-2"><a href="plots-with-base-r.html#cb544-2"></a><span class="co"># ylim: limits (range) of the y-axis (xlim for x-axis)</span></span>
-<span id="cb544-3"><a href="plots-with-base-r.html#cb544-3"></a><span class="kw">points</span>(x, y2, <span class="dt">col =</span> <span class="st">&quot;cyan&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</span>
-<span id="cb544-4"><a href="plots-with-base-r.html#cb544-4"></a><span class="kw">points</span>(x, y3, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">pch =</span> <span class="dv">21</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dens-pch"></span>
-<img src="bchwtz-cswr_files/figure-html/dens-pch-1.png" alt="Density functions for the normal distribution with \(\mu = 0\), \(\mu = -1\) and \(\mu = 2\) and \(\sigma = 1\) in all three cases." width="672" />
+<p>where we have also defined colors for the single lines via the argument <code>col</code>.
+To visualize horizontal and/or vertical lines in the plot the x and y coordinates - where the lines start and end - are necessary. Adding these two lines</p>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="plots-with-base-r.html#cb544-1"></a><span class="kw">lines</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.4</span>), <span class="dt">col =</span> <span class="st">&quot;grey&quot;</span>) <span class="co"># vertical line starts in (0, 0) and ends in (0, 0.4)</span></span>
+<span id="cb544-2"><a href="plots-with-base-r.html#cb544-2"></a><span class="kw">lines</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">8</span>, <span class="dv">8</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>), <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="co"># horizontal line starts in (-8, 0.2) and ends in (8, 0.2)</span></span></code></pre></div>
+<p>to figure <a href="plots-with-base-r.html#fig:dens-norm-lines">7.2</a> results in:</p>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="plots-with-base-r.html#cb545-1"></a>y2 &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">-1</span>)</span>
+<span id="cb545-2"><a href="plots-with-base-r.html#cb545-2"></a>y3 &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">2</span>)</span>
+<span id="cb545-3"><a href="plots-with-base-r.html#cb545-3"></a><span class="kw">plot</span>(x, y, <span class="dt">main =</span> <span class="st">&quot;Normal distribution - density&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb545-4"><a href="plots-with-base-r.html#cb545-4"></a><span class="kw">lines</span>(x, y2, <span class="dt">col =</span> <span class="st">&quot;cyan&quot;</span>)</span>
+<span id="cb545-5"><a href="plots-with-base-r.html#cb545-5"></a><span class="kw">lines</span>(x, y3, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb545-6"><a href="plots-with-base-r.html#cb545-6"></a><span class="kw">lines</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.4</span>), <span class="dt">col =</span> <span class="st">&quot;grey&quot;</span>) </span>
+<span id="cb545-7"><a href="plots-with-base-r.html#cb545-7"></a><span class="kw">lines</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">8</span>, <span class="dv">8</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>), <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dens-norm-lines2"></span>
+<img src="bchwtz-cswr_files/figure-html/dens-norm-lines2-1.png" alt="Plot of three density functions for the normal distribution with means 0, -1 and 2, respectively, and a horizontal and a vertical line." width="672" />
 <p class="caption">
-Figure 7.3: Density functions for the normal distribution with <span class="math inline">\(\mu = 0\)</span>, <span class="math inline">\(\mu = -1\)</span> and <span class="math inline">\(\mu = 2\)</span> and <span class="math inline">\(\sigma = 1\)</span> in all three cases.
+Figure 7.3: Plot of three density functions for the normal distribution with means 0, -1 and 2, respectively, and a horizontal and a vertical line.
 </p>
 </div>
-
+<p>Analogously, (further) <em>points</em> can be added to a plot by <code>points()</code> and <em>text</em> by <code>text()</code>, e.g. adding</p>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="plots-with-base-r.html#cb546-1"></a><span class="kw">points</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> <span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span> <span class="st">&quot;darkblue&quot;</span>)</span></code></pre></div>
+<p>to figure <a href="plots-with-base-r.html#fig:dens-norm-lines2">7.3</a> results in figure <a href="plots-with-base-r.html#fig:dens-norm-lines3">7.4</a>:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dens-norm-lines3"></span>
+<img src="bchwtz-cswr_files/figure-html/dens-norm-lines3-1.png" alt="Plot of four density functions for the normal distribution." width="672" />
+<p class="caption">
+Figure 7.4: Plot of four density functions for the normal distribution.
+</p>
+</div>
+<p>Several arguments exist to customize points (and text); e.g. <code>pch = 19</code> creates filled points. See <code>?points</code> and <code>?text</code> for much information.
+A list of colors that can be assigned to the argument <code>col</code> is given by <span class="citation">Wei (<a href="#ref-Wei2021" role="doc-biblioref">2021</a>)</span> (). Instead of writing the names of the colors as <span class="citation">Wei (<a href="#ref-Wei2021" role="doc-biblioref">2021</a>)</span> introduces, the hexadecimal code can also be used.</p>
 <p>After plotting the density functions in figure <a href="plots-with-base-r.html#fig:dens-norm-lines">7.2</a>, it is of interest to add a legend to the plot which can be done with <code>legend()</code>:</p>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="plots-with-base-r.html#cb545-1"></a><span class="kw">plot</span>(x, y, <span class="dt">main=</span><span class="st">&quot;Normal distribution - density&quot;</span>, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</span>
-<span id="cb545-2"><a href="plots-with-base-r.html#cb545-2"></a><span class="kw">lines</span>(x, y2, <span class="dt">col=</span><span class="st">&quot;cyan&quot;</span>)</span>
-<span id="cb545-3"><a href="plots-with-base-r.html#cb545-3"></a><span class="kw">lines</span>(x, y3, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb545-4"><a href="plots-with-base-r.html#cb545-4"></a><span class="kw">legend</span>(<span class="dt">x =</span> <span class="st">&quot;topleft&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;mean = 0, sd = 1&quot;</span>, <span class="st">&quot;mean = -1, sd = 1&quot;</span>, <span class="st">&quot;mean = 2, sd = 1&quot;</span>),</span>
-<span id="cb545-5"><a href="plots-with-base-r.html#cb545-5"></a><span class="dt">text.col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;cyan&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="plots-with-base-r.html#cb547-1"></a><span class="kw">plot</span>(x, y, <span class="dt">main=</span><span class="st">&quot;Normal distribution - density&quot;</span>, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</span>
+<span id="cb547-2"><a href="plots-with-base-r.html#cb547-2"></a><span class="kw">lines</span>(x, y2, <span class="dt">col=</span><span class="st">&quot;cyan&quot;</span>)</span>
+<span id="cb547-3"><a href="plots-with-base-r.html#cb547-3"></a><span class="kw">lines</span>(x, y3, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb547-4"><a href="plots-with-base-r.html#cb547-4"></a><span class="kw">legend</span>(<span class="dt">x =</span> <span class="st">&quot;topleft&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;mean = 0, sd = 1&quot;</span>, <span class="st">&quot;mean = -1, sd = 1&quot;</span>, <span class="st">&quot;mean = 2, sd = 1&quot;</span>),</span>
+<span id="cb547-5"><a href="plots-with-base-r.html#cb547-5"></a><span class="dt">text.col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;cyan&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dens-norm-lines-legend"></span>
 <img src="bchwtz-cswr_files/figure-html/dens-norm-lines-legend-1.png" alt="Density functions for the normal distribution whose properties are annotated by the legend." width="672" />
 <p class="caption">
-Figure 7.4: Density functions for the normal distribution whose properties are annotated by the legend.
+Figure 7.5: Density functions for the normal distribution whose properties are annotated by the legend.
 </p>
 </div>
-<p>where the first argument can be a pre-defined keyword (here: <code>topleft</code>) or a coordinate where to position the legend. The content of the legend, i.e. descriptions of the plotted data (here the distribution functions), is presented by the argument <code>legend</code>. Here, information about the mean and standard deviation of each density function is shown in the legend.
-There are a lot of further arguments of <code>legend()</code> to define, e.g.:</p>
+<p>where the first argument can be a pre-defined keyword (here: <code>"topleft"</code>) or coordinates where to position the legend. The content of the legend, i.e. descriptions of the plotted data (here the distribution functions), is presented by the argument <code>legend</code>. Here, information about the mean and standard deviation of each density function is shown in the legend.
+There are much more arguments of <code>legend()</code> to define, e.g.:</p>
 <ul>
 <li><p><code>text.col</code>: the color of the legend text,</p></li>
 <li><p><code>text.font</code>: the font of the legend text,</p></li>
 <li><p><code>pch</code>: plotting symbols,</p></li>
-<li><p></p></li>
+<li><p>…</p></li>
 </ul>
-<p>The legend in figure <a href="plots-with-base-r.html#fig:dens-norm-lines-legend">7.4</a> is bad concerning mathematical notations. Therefore, the R package <code>latex2exp</code> by <span class="citation">Meschiari (<a href="#ref-latex2exp" role="doc-biblioref">2022</a>)</span> allows integrating LaTeX into R by calling <code>TeX()</code> and using the known LaTeX-notation (<code>$...$</code>) like:</p>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="plots-with-base-r.html#cb546-1"></a><span class="kw">plot</span>(x, y, <span class="dt">main=</span><span class="st">&quot;Normal distribution - density&quot;</span>, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</span>
-<span id="cb546-2"><a href="plots-with-base-r.html#cb546-2"></a><span class="kw">lines</span>(x, y2, <span class="dt">col=</span><span class="st">&quot;cyan&quot;</span>)</span>
-<span id="cb546-3"><a href="plots-with-base-r.html#cb546-3"></a><span class="kw">lines</span>(x, y3, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb546-4"><a href="plots-with-base-r.html#cb546-4"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(latex2exp<span class="op">::</span><span class="kw">TeX</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">mu=0, </span><span class="ch">\\</span><span class="st">sigma=1$&quot;</span>),</span>
-<span id="cb546-5"><a href="plots-with-base-r.html#cb546-5"></a>latex2exp<span class="op">::</span><span class="kw">TeX</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">mu=-1, </span><span class="ch">\\</span><span class="st">sigma=1$&quot;</span>), latex2exp<span class="op">::</span><span class="kw">TeX</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">mu=2, </span><span class="ch">\\</span><span class="st">sigma=1$&quot;</span>)), </span>
-<span id="cb546-6"><a href="plots-with-base-r.html#cb546-6"></a><span class="dt">text.col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;cyan&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
+<p>The legend in figure <a href="plots-with-base-r.html#fig:dens-norm-lines-legend">7.5</a> is bad concerning mathematical notations. Therefore, the R package <code>latex2exp</code> by <span class="citation">Meschiari (<a href="#ref-latex2exp" role="doc-biblioref">2022</a>)</span> allows integrating LaTeX into R by calling <code>TeX()</code> and using the known LaTeX-notation (<code>$...$</code>) like:</p>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="plots-with-base-r.html#cb548-1"></a><span class="kw">plot</span>(x, y, <span class="dt">main=</span><span class="st">&quot;Normal distribution - density&quot;</span>, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</span>
+<span id="cb548-2"><a href="plots-with-base-r.html#cb548-2"></a><span class="kw">lines</span>(x, y2, <span class="dt">col=</span><span class="st">&quot;cyan&quot;</span>)</span>
+<span id="cb548-3"><a href="plots-with-base-r.html#cb548-3"></a><span class="kw">lines</span>(x, y3, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb548-4"><a href="plots-with-base-r.html#cb548-4"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(latex2exp<span class="op">::</span><span class="kw">TeX</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">mu=0, </span><span class="ch">\\</span><span class="st">sigma=1$&quot;</span>),</span>
+<span id="cb548-5"><a href="plots-with-base-r.html#cb548-5"></a>latex2exp<span class="op">::</span><span class="kw">TeX</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">mu=-1, </span><span class="ch">\\</span><span class="st">sigma=1$&quot;</span>), latex2exp<span class="op">::</span><span class="kw">TeX</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">mu=2, </span><span class="ch">\\</span><span class="st">sigma=1$&quot;</span>)), </span>
+<span id="cb548-6"><a href="plots-with-base-r.html#cb548-6"></a><span class="dt">text.col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;cyan&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dens-norm-lines-legend2"></span>
 <img src="bchwtz-cswr_files/figure-html/dens-norm-lines-legend2-1.png" alt="Density functions for the normal distribution whose properties are annotated by the legend based on latex2exp (Meschiari 2022)." width="672" />
 <p class="caption">
-Figure 7.5: Density functions for the normal distribution whose properties are annotated by the legend based on <code>latex2exp</code> <span class="citation">(Meschiari <a href="#ref-latex2exp" role="doc-biblioref">2022</a>)</span>.
+Figure 7.6: Density functions for the normal distribution whose properties are annotated by the legend based on <code>latex2exp</code> <span class="citation">(Meschiari <a href="#ref-latex2exp" role="doc-biblioref">2022</a>)</span>.
 </p>
 </div>
 
@@ -452,7 +467,7 @@ Figure 7.5: Density functions for the normal distribution whose properties are a
 <div id="histograms-and-boxplots" class="section level3 hasAnchor">
 <h3><span class="header-section-number">7.1.2</span> Histograms and boxplots<a href="plots-with-base-r.html#histograms-and-boxplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Histograms and boxplots are helpful devices to get a closer look at the values of some variables. In the following we will focus on the <code>airquality</code> data set which consists of six variables in order to describe the daily air quality in New York (May to September 1973) from the R package <code>datasets</code> <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>:</p>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="plots-with-base-r.html#cb547-1"></a><span class="kw">head</span>(airquality)</span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="plots-with-base-r.html#cb549-1"></a><span class="kw">head</span>(airquality)</span></code></pre></div>
 <pre><code>#R&gt;   Ozone Solar.R Wind Temp Month Day
 #R&gt; 1    41     190  7.4   67     5   1
 #R&gt; 2    36     118  8.0   72     5   2
@@ -461,12 +476,12 @@ Figure 7.5: Density functions for the normal distribution whose properties are a
 #R&gt; 5    NA      NA 14.3   56     5   5
 #R&gt; 6    28      NA 14.9   66     5   6</code></pre>
 <p>A Histogram for example of the variable <code>Temp</code> (Temperature in °F) <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> can be created based on <code>hist()</code> like this (we already know the arguments <code>xlab</code>, <code>ylab</code> and <code>main</code> from <code>plot()</code>):</p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="plots-with-base-r.html#cb549-1"></a>h_temp &lt;-<span class="st"> </span><span class="kw">hist</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Temp, <span class="dt">xlab =</span> <span class="st">&quot;Temperature [°F]&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>,</span>
-<span id="cb549-2"><a href="plots-with-base-r.html#cb549-2"></a>               <span class="dt">main =</span> <span class="st">&quot;Histogram - Temperature.&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-207-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Usually, when a plot is assigned to a variable (here we assigned the histogram of <code>Temp</code> to <code>h_temp</code>), the plot will not be shown, but this is not the case here. The argument <code>plot</code> of <code>hist()</code> is set to <code>TRUE</code> by default.
-The benefit of assigning the histogram to a variable (here: <code>h_temp</code>) is that we can access the information about the plot:</p>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="plots-with-base-r.html#cb550-1"></a>h_temp</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="plots-with-base-r.html#cb551-1"></a>h_temp &lt;-<span class="st"> </span><span class="kw">hist</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Temp, <span class="dt">xlab =</span> <span class="st">&quot;Temperature [°F]&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>,</span>
+<span id="cb551-2"><a href="plots-with-base-r.html#cb551-2"></a>               <span class="dt">main =</span> <span class="st">&quot;Histogram - Temperature&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-209-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Usually, when a plot is assigned to a variable (here we assigned the histogram of <code>Temp</code> to <code>h_temp</code>), the plot will not be shown, but this is not the case here. The argument <code>plot</code> of <code>hist()</code> is set to <code>TRUE</code> by default (see <code>?hist</code>).
+The benefit of assigning the histogram to a variable (here: <code>h_temp</code>) is that we can access information about the plot, i.e. histogram:</p>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="plots-with-base-r.html#cb552-1"></a>h_temp</span></code></pre></div>
 <pre><code>#R&gt; $breaks
 #R&gt;  [1]  55  60  65  70  75  80  85  90  95 100
 #R&gt; 
@@ -488,7 +503,7 @@ The benefit of assigning the histogram to a variable (here: <code>h_temp</code>)
 #R&gt; 
 #R&gt; attr(,&quot;class&quot;)
 #R&gt; [1] &quot;histogram&quot;</code></pre>
-<p>From that we can see the following:</p>
+<p>From that we see the following:</p>
 <ul>
 <li><p><code>breaks</code>: the bin boundaries,</p></li>
 <li><p><code>counts</code>: the counts in (a,b],</p></li>
@@ -498,20 +513,32 @@ here: density = <code>h_temp$counts / sum(h_temp$counts))/5</code>,</p></li>
 <li><p><code>equidist</code>: whether distances between breaks are the same and</p></li>
 <li><p>the class of <code>h_temp</code> which is a “histogram” (see also <code>?hist</code>).</p></li>
 </ul>
-<p>If it is desired to compare to histograms with each other, it will be helpful to plot them on top of each other by defining <code>par(mfrow = c(2, 1))</code> (the first values indicates the number of rows (here: <code>2</code>) and the second value indicates the number of columns (here: <code>1</code>)):</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="plots-with-base-r.html#cb552-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>)) <span class="co"># c(r,c): c(number of rows, number of columns)</span></span>
-<span id="cb552-2"><a href="plots-with-base-r.html#cb552-2"></a><span class="kw">hist</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Temp, <span class="dt">xlab =</span> <span class="st">&quot;Temperature [°F]&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>, </span>
-<span id="cb552-3"><a href="plots-with-base-r.html#cb552-3"></a>     <span class="dt">main =</span> <span class="st">&quot;Histogram - Temp.&quot;</span>) <span class="co"># main  = &quot;&quot; to leave out the title</span></span>
-<span id="cb552-4"><a href="plots-with-base-r.html#cb552-4"></a><span class="kw">hist</span>(airquality<span class="op">$</span>Wind, <span class="dt">xlab =</span> <span class="st">&quot;Wind [mph]&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>,</span>
-<span id="cb552-5"><a href="plots-with-base-r.html#cb552-5"></a>     <span class="dt">main =</span> <span class="st">&quot;Histogram - Wind&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-209-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>If it is desired to compare histograms with each other, it will be helpful to plot them on top of each other or side by side. In our example, we plot the histogram of <code>Temp</code> and of <code>Wind</code> on top of each other by defining <code>par(mfrow = c(2, 1))</code> (the first values indicates the number of rows (here: <code>2</code>) and the second value indicates the number of columns (here: <code>1</code>)):</p>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="plots-with-base-r.html#cb554-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>)) <span class="co"># c(r,c): c(number of rows, number of columns)</span></span>
+<span id="cb554-2"><a href="plots-with-base-r.html#cb554-2"></a><span class="kw">hist</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Temp, <span class="dt">xlab =</span> <span class="st">&quot;Temperature [°F]&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>, </span>
+<span id="cb554-3"><a href="plots-with-base-r.html#cb554-3"></a>     <span class="dt">main =</span> <span class="st">&quot;Histogram - Temp.&quot;</span>) <span class="co"># main  = &quot;&quot; to leave out the title</span></span>
+<span id="cb554-4"><a href="plots-with-base-r.html#cb554-4"></a><span class="kw">hist</span>(airquality<span class="op">$</span>Wind, <span class="dt">xlab =</span> <span class="st">&quot;Wind [mph]&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>,</span>
+<span id="cb554-5"><a href="plots-with-base-r.html#cb554-5"></a>     <span class="dt">main =</span> <span class="st">&quot;Histogram - Wind&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:hist-temp-wind"></span>
+<img src="bchwtz-cswr_files/figure-html/hist-temp-wind-1.png" alt="Histograms of the temperature and the wind speed of the airquality dataset (???)." width="672" />
+<p class="caption">
+Figure 7.7: Histograms of the temperature and the wind speed of the <code>airquality</code> dataset <span class="citation">(<span class="citeproc-not-found" data-reference-id="datasets"><strong>???</strong></span>)</span>.
+</p>
+</div>
+
 <p>In order to create boxplots in base-R the function <code>boxplot()</code> is available which works similarily like <code>hist()</code> (and <code>plot()</code>).</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="plots-with-base-r.html#cb553-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># c(r,c): c(number of rows, number of columns)</span></span>
-<span id="cb553-2"><a href="plots-with-base-r.html#cb553-2"></a>b1 &lt;-<span class="st"> </span><span class="kw">boxplot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Temp, <span class="dt">main =</span> <span class="st">&quot;Boxplot - Temperature [°F]&quot;</span>)</span>
-<span id="cb553-3"><a href="plots-with-base-r.html#cb553-3"></a>b2 &lt;-<span class="st"> </span><span class="kw">boxplot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Wind, <span class="dt">main =</span> <span class="st">&quot;Boxplot - Wind [mph]&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-210-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>When we assign the boxplots of the temperature (<code>Temp</code>) and the wind speed (<code>Wind</code>) to <code>b1</code> and <code>b2</code> respectively, we get information about the boxplots. Exemplarily, we look at <code>b2</code>:</p>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="plots-with-base-r.html#cb554-1"></a>b2</span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="plots-with-base-r.html#cb555-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># c(r,c): c(number of rows, number of columns)</span></span>
+<span id="cb555-2"><a href="plots-with-base-r.html#cb555-2"></a>b1 &lt;-<span class="st"> </span><span class="kw">boxplot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Temp, <span class="dt">main =</span> <span class="st">&quot;Boxplot - Temperature [°F]&quot;</span>)</span>
+<span id="cb555-3"><a href="plots-with-base-r.html#cb555-3"></a>b2 &lt;-<span class="st"> </span><span class="kw">boxplot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Wind, <span class="dt">main =</span> <span class="st">&quot;Boxplot - Wind [mph]&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:box-temp-wind"></span>
+<img src="bchwtz-cswr_files/figure-html/box-temp-wind-1.png" alt="Boxplots of the temperature and the wind speed of the airquality dataset (???)." width="672" />
+<p class="caption">
+Figure 7.8: Boxplots of the temperature and the wind speed of the <code>airquality</code> dataset <span class="citation">(<span class="citeproc-not-found" data-reference-id="datasets"><strong>???</strong></span>)</span>.
+</p>
+</div>
+
+<p>When we assign the boxplots of the temperature (<code>Temp</code>) and the wind speed (<code>Wind</code>) to <code>b1</code> and <code>b2</code>, respectively, we get information about the boxplots. Exemplarily, we look at <code>b2</code>:</p>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="plots-with-base-r.html#cb556-1"></a>b2</span></code></pre></div>
 <pre><code>#R&gt; $stats
 #R&gt;      [,1]
 #R&gt; [1,]  1.7
@@ -545,14 +572,20 @@ here: density = <code>h_temp$counts / sum(h_temp$counts))/5</code>,</p></li>
 <li><p><code>group</code>: indicating to which group the outliers belong and</p></li>
 <li><p><code>names</code>: naming the groups (see <code>group</code>).</p></li>
 </ul>
-<p>Based on the information saved in <code>b2</code> and the functions <code>points()</code> and <code>text()</code> <em>important</em> values are marked in our boxplot:</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="plots-with-base-r.html#cb556-1"></a><span class="kw">boxplot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Wind, <span class="dt">main =</span> <span class="st">&quot;Boxplot - Wind [mph]&quot;</span>, <span class="dt">medcol =</span> <span class="st">&quot;chocolate&quot;</span>)</span>
-<span id="cb556-2"><a href="plots-with-base-r.html#cb556-2"></a><span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span>,<span class="kw">length</span>(b2<span class="op">$</span>out)), <span class="dt">y =</span> b2<span class="op">$</span>out, <span class="dt">col =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</span>
-<span id="cb556-3"><a href="plots-with-base-r.html#cb556-3"></a><span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">y =</span> b2<span class="op">$</span>conf, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</span>
-<span id="cb556-4"><a href="plots-with-base-r.html#cb556-4"></a><span class="kw">points</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="kw">min</span>(airquality<span class="op">$</span>Wind), <span class="dt">col =</span> <span class="st">&quot;khaki3&quot;</span>, <span class="dt">pch =</span> <span class="dv">17</span>)</span>
-<span id="cb556-5"><a href="plots-with-base-r.html#cb556-5"></a><span class="kw">points</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="kw">max</span>(airquality<span class="op">$</span>Wind), <span class="dt">col =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">pch =</span> <span class="dv">17</span>)</span>
-<span id="cb556-6"><a href="plots-with-base-r.html#cb556-6"></a><span class="kw">text</span>(<span class="dt">x =</span> <span class="fl">0.7</span>, <span class="dt">y =</span> b2<span class="op">$</span>stats[<span class="dv">3</span>,], <span class="dt">labels =</span> b2<span class="op">$</span>stats[<span class="dv">3</span>,], <span class="dt">col =</span> <span class="st">&quot;chocolate&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-212-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Based on the information saved in <code>b2</code> and the functions <code>points()</code> and <code>text()</code> <em>important</em> values are marked in our boxplot (figure <a href="plots-with-base-r.html#fig:box-wind">7.9</a>).</p>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="plots-with-base-r.html#cb558-1"></a><span class="kw">boxplot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Wind, <span class="dt">main =</span> <span class="st">&quot;Boxplot - Wind [mph]&quot;</span>, <span class="dt">medcol =</span> <span class="st">&quot;chocolate&quot;</span>)</span>
+<span id="cb558-2"><a href="plots-with-base-r.html#cb558-2"></a><span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span>,<span class="kw">length</span>(b2<span class="op">$</span>out)), <span class="dt">y =</span> b2<span class="op">$</span>out, <span class="dt">col =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</span>
+<span id="cb558-3"><a href="plots-with-base-r.html#cb558-3"></a><span class="kw">points</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="kw">min</span>(airquality<span class="op">$</span>Wind), <span class="dt">col =</span> <span class="st">&quot;khaki3&quot;</span>, <span class="dt">pch =</span> <span class="dv">17</span>)</span>
+<span id="cb558-4"><a href="plots-with-base-r.html#cb558-4"></a><span class="kw">points</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="kw">max</span>(airquality<span class="op">$</span>Wind), <span class="dt">col =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">pch =</span> <span class="dv">17</span>)</span>
+<span id="cb558-5"><a href="plots-with-base-r.html#cb558-5"></a><span class="kw">text</span>(<span class="dt">x =</span> <span class="fl">0.7</span>, <span class="dt">y =</span> b2<span class="op">$</span>stats[<span class="dv">3</span>,], <span class="dt">labels =</span> b2<span class="op">$</span>stats[<span class="dv">3</span>,], <span class="dt">col =</span> <span class="st">&quot;chocolate&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:box-wind"></span>
+<img src="bchwtz-cswr_files/figure-html/box-wind-1.png" alt="Boxplot of the wind speed of the airquality dataset (???)." width="672" />
+<p class="caption">
+Figure 7.9: Boxplot of the wind speed of the <code>airquality</code> dataset <span class="citation">(<span class="citeproc-not-found" data-reference-id="datasets"><strong>???</strong></span>)</span>.
+</p>
+</div>
+
+<p><strong>Question:</strong></p>
 <blockquote>
 <p>Which values of the boxplot are marked in which color?</p>
 </blockquote>
@@ -560,16 +593,16 @@ here: density = <code>h_temp$counts / sum(h_temp$counts))/5</code>,</p></li>
 <div id="scatterplots-and-linear-regression" class="section level3 hasAnchor">
 <h3><span class="header-section-number">7.1.3</span> Scatterplots and linear regression<a href="plots-with-base-r.html#scatterplots-and-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When the variable <code>Wind</code> is plotted dependent on the variable <code>Temp</code> in figure xx, a negative relation is obvious: The higher the temperature, the lower the wind speed.</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="plots-with-base-r.html#cb557-1"></a><span class="kw">plot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Temp, <span class="dt">y =</span> airquality<span class="op">$</span>Wind, <span class="dt">xlab =</span> <span class="st">&quot;Temperature [°F]&quot;</span>,</span>
-<span id="cb557-2"><a href="plots-with-base-r.html#cb557-2"></a>     <span class="dt">ylab =</span> <span class="st">&quot;Wind [mph]&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-213-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="plots-with-base-r.html#cb559-1"></a><span class="kw">plot</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Temp, <span class="dt">y =</span> airquality<span class="op">$</span>Wind, <span class="dt">xlab =</span> <span class="st">&quot;Temperature [°F]&quot;</span>,</span>
+<span id="cb559-2"><a href="plots-with-base-r.html#cb559-2"></a>     <span class="dt">ylab =</span> <span class="st">&quot;Wind [mph]&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-212-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Based on the relation between <code>Temp</code> and <code>Wind</code>, we define a linear model</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="plots-with-base-r.html#cb558-1"></a>air_model &lt;-<span class="st"> </span><span class="kw">lm</span>(Wind <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>Temp, <span class="dt">data =</span> airquality)</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="plots-with-base-r.html#cb560-1"></a>air_model &lt;-<span class="st"> </span><span class="kw">lm</span>(Wind <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>Temp, <span class="dt">data =</span> airquality)</span></code></pre></div>
 <p>whose regression line can be added to our scatterplot by calling the function <code>abline()</code> like this:</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="plots-with-base-r.html#cb559-1"></a><span class="kw">abline</span>(air_model, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="plots-with-base-r.html#cb561-1"></a><span class="kw">abline</span>(air_model, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p>Since <code>air_model</code> is a regression object (see argument <code>reg</code> of <code>abline()</code>), its coefficients (intercept and slope) will be extracted by calling <code>coef()</code> and then a corresponding line is drawn based on <code>abline()</code>.</p>
 <p>The manual page of <code>abline()</code> (see <code>?abline</code>) as well as</p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="plots-with-base-r.html#cb560-1"></a><span class="kw">args</span>(abline)</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="plots-with-base-r.html#cb562-1"></a><span class="kw">args</span>(abline)</span></code></pre></div>
 <pre><code>#R&gt; function (a = NULL, b = NULL, h = NULL, v = NULL, reg = NULL, 
 #R&gt;     coef = NULL, untf = FALSE, ...) 
 #R&gt; NULL</code></pre>
@@ -588,6 +621,9 @@ here: density = <code>h_temp$counts / sum(h_temp$counts))/5</code>,</p></li>
 </div>
 <div id="ref-R">
 <p>R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-Wei2021">
+<p>Wei, Y. 2021. <em>Colors in R</em>. Department of Biostatistics, Columbia University. <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf</a>.</p>
 </div>
 </div>
             </section>

@@ -370,6 +370,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="interactive-plots-with-plotly-plotly" class="section level2 hasAnchor">
 <h2><span class="header-section-number">7.3</span> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <a href="#ref-plotly" role="doc-biblioref">2020</a>)</span><a href="interactive-plots-with-plotly-plotly.html#interactive-plots-with-plotly-plotly" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="interactive-plots-with-plotly-plotly.html#cb564-1"></a>air_lm_ggplot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb564-2"><a href="interactive-plots-with-plotly-plotly.html#cb564-2"></a><span class="kw">geom_point</span>()<span class="op">+</span></span>
+<span id="cb564-3"><a href="interactive-plots-with-plotly-plotly.html#cb564-3"></a><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb564-4"><a href="interactive-plots-with-plotly-plotly.html#cb564-4"></a><span class="kw">ggplotly</span>(air_lm_ggplot) <span class="co"># converts ggplot2 to a plotly object</span></span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="interactive-plots-with-plotly-plotly.html#cb565-1"></a>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;gfx/ggplotly_air_lm.png&quot;</span>)</span></code></pre></div>
+
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="interactive-plots-with-plotly-plotly.html#cb566-1"></a><span class="kw">plot_ly</span>(airquality, <span class="dt">x =</span> <span class="op">~</span>Temp, <span class="dt">y =</span> <span class="op">~</span>Wind, <span class="dt">z =</span> <span class="op">~</span>Solar.R) <span class="op">%&gt;%</span></span>
+<span id="cb566-2"><a href="interactive-plots-with-plotly-plotly.html#cb566-2"></a><span class="st">  </span><span class="kw">add_markers</span>(<span class="dt">color =</span> <span class="op">~</span>Month)</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="interactive-plots-with-plotly-plotly.html#cb567-1"></a>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;gfx/plot_ly_airquality.png&quot;</span>)</span></code></pre></div>
+
 
 </div>
 <!-- </div> -->

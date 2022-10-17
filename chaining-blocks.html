@@ -371,74 +371,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="chaining-blocks" class="section level2 hasAnchor">
 <h2><span class="header-section-number">9.4</span> Chaining Blocks<a href="chaining-blocks.html#chaining-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Due to the fact that the hash for each block considers not only the core information like index, timestamp and the data but also the hash of the previous block, applying the discussed process repeatedly leads to a chain of blocks. This chain is built on all information from all previous blocks due to the hashing process, meaning that one can only calculate the valid hash if one knows the correct and very easily verifiable hash from the block before. This leads to an unbreakable chain that proves the integrity of all information, changing prior information requires to recalculate all hashes. Let us put together what we learned and build our first block chain starting with the already generated genesis block.</p>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="chaining-blocks.html#cb589-1"></a>genesisBlockHashed</span></code></pre></div>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="chaining-blocks.html#cb595-1"></a>genesisBlockHashed</span></code></pre></div>
 <pre><code>#R&gt; :::::::::: BLOCKCHAIN BLOCK 1 :::::::::: 
-#R&gt; Timestamp: 1665990122 
+#R&gt; Timestamp: 1665994803 
 #R&gt; Previous Hash: 
 #R&gt; Difficulty: 0 
-#R&gt; Hash: 53910b0e28291ae46433912aebc5bda11941ab02d6011d903a9a2fb4b4868033</code></pre>
+#R&gt; Hash: abc58a02927e6979bb690927ce00a7d2c5ec689752cbed951e1580553aa182fa</code></pre>
 <p>Let us assume that we received a single transaction request that needs to be included in the second block of the blockchain. The following transaction mimics the first bitcoin transaction, where 10.000 bitcoins were used to buy two pizzas at a Papa Johns restaurant. The next transaction is just another example that we can include in the third block to extend our chain a little more.</p>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="chaining-blocks.html#cb591-1"></a>transaction.b2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sender=</span><span class="st">&quot;Papa&quot;</span>, <span class="dt">Receiver=</span><span class="st">&quot;John&quot;</span>, <span class="dt">Amount=</span><span class="dv">10000</span>)</span>
-<span id="cb591-2"><a href="chaining-blocks.html#cb591-2"></a>transaction.b2</span></code></pre></div>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="chaining-blocks.html#cb597-1"></a>transaction.b2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sender=</span><span class="st">&quot;Papa&quot;</span>, <span class="dt">Receiver=</span><span class="st">&quot;John&quot;</span>, <span class="dt">Amount=</span><span class="dv">10000</span>)</span>
+<span id="cb597-2"><a href="chaining-blocks.html#cb597-2"></a>transaction.b2</span></code></pre></div>
 <pre><code>#R&gt;   Sender Receiver Amount
 #R&gt; 1   Papa     John  10000</code></pre>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="chaining-blocks.html#cb593-1"></a>transaction.b3 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sender=</span><span class="st">&quot;Larry&quot;</span>, <span class="dt">Receiver=</span><span class="st">&quot;Tim&quot;</span>, <span class="dt">Amount=</span><span class="dv">500</span>)</span>
-<span id="cb593-2"><a href="chaining-blocks.html#cb593-2"></a>transaction.b3</span></code></pre></div>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="chaining-blocks.html#cb599-1"></a>transaction.b3 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sender=</span><span class="st">&quot;Larry&quot;</span>, <span class="dt">Receiver=</span><span class="st">&quot;Tim&quot;</span>, <span class="dt">Amount=</span><span class="dv">500</span>)</span>
+<span id="cb599-2"><a href="chaining-blocks.html#cb599-2"></a>transaction.b3</span></code></pre></div>
 <pre><code>#R&gt;   Sender Receiver Amount
 #R&gt; 1  Larry      Tim    500</code></pre>
 <p>Using the function <code>addBlock</code> we can add the transaction to our blockchain.</p>
-<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="chaining-blocks.html#cb595-1"></a>addBlock &lt;-<span class="st"> </span><span class="cf">function</span>(chain, <span class="dt">newdata=</span><span class="ot">NULL</span>, <span class="dt">difficulty=</span><span class="ot">NULL</span>){</span>
-<span id="cb595-2"><a href="chaining-blocks.html#cb595-2"></a>  </span>
-<span id="cb595-3"><a href="chaining-blocks.html#cb595-3"></a>  <span class="co"># Get Information from the existing chain</span></span>
-<span id="cb595-4"><a href="chaining-blocks.html#cb595-4"></a>  blkidx &lt;-<span class="st"> </span><span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>index)</span>
-<span id="cb595-5"><a href="chaining-blocks.html#cb595-5"></a>  </span>
-<span id="cb595-6"><a href="chaining-blocks.html#cb595-6"></a>  <span class="co"># Set difficulty conditional on user input</span></span>
-<span id="cb595-7"><a href="chaining-blocks.html#cb595-7"></a>  <span class="cf">if</span>(<span class="kw">is.null</span>(difficulty)){</span>
-<span id="cb595-8"><a href="chaining-blocks.html#cb595-8"></a>    dfc &lt;-<span class="st"> </span><span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>difficulty)</span>
-<span id="cb595-9"><a href="chaining-blocks.html#cb595-9"></a>    dfc &lt;-<span class="st"> </span>dfc[<span class="kw">which.max</span>(blkidx)]</span>
-<span id="cb595-10"><a href="chaining-blocks.html#cb595-10"></a>  } <span class="cf">else</span> {</span>
-<span id="cb595-11"><a href="chaining-blocks.html#cb595-11"></a>    dfc &lt;-<span class="st"> </span>difficulty</span>
-<span id="cb595-12"><a href="chaining-blocks.html#cb595-12"></a>  }</span>
-<span id="cb595-13"><a href="chaining-blocks.html#cb595-13"></a>  </span>
-<span id="cb595-14"><a href="chaining-blocks.html#cb595-14"></a>  <span class="co"># Generate new block</span></span>
-<span id="cb595-15"><a href="chaining-blocks.html#cb595-15"></a>  newBlock &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(</span>
-<span id="cb595-16"><a href="chaining-blocks.html#cb595-16"></a>    <span class="dt">index =</span> <span class="kw">max</span>(blkidx) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>,</span>
-<span id="cb595-17"><a href="chaining-blocks.html#cb595-17"></a>    <span class="dt">timestamp =</span> <span class="kw">Sys.time</span>(),</span>
-<span id="cb595-18"><a href="chaining-blocks.html#cb595-18"></a>    <span class="dt">data =</span> newdata,</span>
-<span id="cb595-19"><a href="chaining-blocks.html#cb595-19"></a>    <span class="dt">previousHash =</span> chain[[<span class="kw">which.max</span>(blkidx)]]<span class="op">$</span>hash,</span>
-<span id="cb595-20"><a href="chaining-blocks.html#cb595-20"></a>    <span class="dt">hash =</span> <span class="ot">NULL</span>,</span>
-<span id="cb595-21"><a href="chaining-blocks.html#cb595-21"></a>    <span class="dt">difficulty =</span> dfc,</span>
-<span id="cb595-22"><a href="chaining-blocks.html#cb595-22"></a>    <span class="dt">nonce =</span> <span class="dv">1</span>),<span class="dt">class=</span><span class="kw">c</span>(<span class="st">&quot;block&quot;</span>,<span class="st">&quot;list&quot;</span>))</span>
-<span id="cb595-23"><a href="chaining-blocks.html#cb595-23"></a>  </span>
-<span id="cb595-24"><a href="chaining-blocks.html#cb595-24"></a>  <span class="co"># Calculate Proof of Work and add block to the chain</span></span>
-<span id="cb595-25"><a href="chaining-blocks.html#cb595-25"></a>  newBlockHashed &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(newBlock)</span>
-<span id="cb595-26"><a href="chaining-blocks.html#cb595-26"></a>  chain &lt;-<span class="st"> </span><span class="kw">append</span>(chain, <span class="kw">list</span>(newBlockHashed))</span>
-<span id="cb595-27"><a href="chaining-blocks.html#cb595-27"></a>  <span class="kw">return</span>(chain)</span>
-<span id="cb595-28"><a href="chaining-blocks.html#cb595-28"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="chaining-blocks.html#cb596-1"></a>chain &lt;-<span class="st"> </span><span class="kw">list</span>(genesisBlockHashed)                    <span class="co"># Intialize the Blockchain</span></span>
-<span id="cb596-2"><a href="chaining-blocks.html#cb596-2"></a>chain &lt;-<span class="st"> </span><span class="kw">addBlock</span>(chain, <span class="dt">newdata =</span> transaction.b2)   <span class="co"># Add the transation data</span></span>
-<span id="cb596-3"><a href="chaining-blocks.html#cb596-3"></a>chain &lt;-<span class="st"> </span><span class="kw">addBlock</span>(chain, <span class="dt">newdata =</span> transaction.b3)   <span class="co"># Add the transation data</span></span>
-<span id="cb596-4"><a href="chaining-blocks.html#cb596-4"></a>chain                                                <span class="co"># Block Chain with 3 blocks</span></span></code></pre></div>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="chaining-blocks.html#cb601-1"></a>addBlock &lt;-<span class="st"> </span><span class="cf">function</span>(chain, <span class="dt">newdata=</span><span class="ot">NULL</span>, <span class="dt">difficulty=</span><span class="ot">NULL</span>){</span>
+<span id="cb601-2"><a href="chaining-blocks.html#cb601-2"></a>  </span>
+<span id="cb601-3"><a href="chaining-blocks.html#cb601-3"></a>  <span class="co"># Get Information from the existing chain</span></span>
+<span id="cb601-4"><a href="chaining-blocks.html#cb601-4"></a>  blkidx &lt;-<span class="st"> </span><span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>index)</span>
+<span id="cb601-5"><a href="chaining-blocks.html#cb601-5"></a>  </span>
+<span id="cb601-6"><a href="chaining-blocks.html#cb601-6"></a>  <span class="co"># Set difficulty conditional on user input</span></span>
+<span id="cb601-7"><a href="chaining-blocks.html#cb601-7"></a>  <span class="cf">if</span>(<span class="kw">is.null</span>(difficulty)){</span>
+<span id="cb601-8"><a href="chaining-blocks.html#cb601-8"></a>    dfc &lt;-<span class="st"> </span><span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>difficulty)</span>
+<span id="cb601-9"><a href="chaining-blocks.html#cb601-9"></a>    dfc &lt;-<span class="st"> </span>dfc[<span class="kw">which.max</span>(blkidx)]</span>
+<span id="cb601-10"><a href="chaining-blocks.html#cb601-10"></a>  } <span class="cf">else</span> {</span>
+<span id="cb601-11"><a href="chaining-blocks.html#cb601-11"></a>    dfc &lt;-<span class="st"> </span>difficulty</span>
+<span id="cb601-12"><a href="chaining-blocks.html#cb601-12"></a>  }</span>
+<span id="cb601-13"><a href="chaining-blocks.html#cb601-13"></a>  </span>
+<span id="cb601-14"><a href="chaining-blocks.html#cb601-14"></a>  <span class="co"># Generate new block</span></span>
+<span id="cb601-15"><a href="chaining-blocks.html#cb601-15"></a>  newBlock &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(</span>
+<span id="cb601-16"><a href="chaining-blocks.html#cb601-16"></a>    <span class="dt">index =</span> <span class="kw">max</span>(blkidx) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>,</span>
+<span id="cb601-17"><a href="chaining-blocks.html#cb601-17"></a>    <span class="dt">timestamp =</span> <span class="kw">Sys.time</span>(),</span>
+<span id="cb601-18"><a href="chaining-blocks.html#cb601-18"></a>    <span class="dt">data =</span> newdata,</span>
+<span id="cb601-19"><a href="chaining-blocks.html#cb601-19"></a>    <span class="dt">previousHash =</span> chain[[<span class="kw">which.max</span>(blkidx)]]<span class="op">$</span>hash,</span>
+<span id="cb601-20"><a href="chaining-blocks.html#cb601-20"></a>    <span class="dt">hash =</span> <span class="ot">NULL</span>,</span>
+<span id="cb601-21"><a href="chaining-blocks.html#cb601-21"></a>    <span class="dt">difficulty =</span> dfc,</span>
+<span id="cb601-22"><a href="chaining-blocks.html#cb601-22"></a>    <span class="dt">nonce =</span> <span class="dv">1</span>),<span class="dt">class=</span><span class="kw">c</span>(<span class="st">&quot;block&quot;</span>,<span class="st">&quot;list&quot;</span>))</span>
+<span id="cb601-23"><a href="chaining-blocks.html#cb601-23"></a>  </span>
+<span id="cb601-24"><a href="chaining-blocks.html#cb601-24"></a>  <span class="co"># Calculate Proof of Work and add block to the chain</span></span>
+<span id="cb601-25"><a href="chaining-blocks.html#cb601-25"></a>  newBlockHashed &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(newBlock)</span>
+<span id="cb601-26"><a href="chaining-blocks.html#cb601-26"></a>  chain &lt;-<span class="st"> </span><span class="kw">append</span>(chain, <span class="kw">list</span>(newBlockHashed))</span>
+<span id="cb601-27"><a href="chaining-blocks.html#cb601-27"></a>  <span class="kw">return</span>(chain)</span>
+<span id="cb601-28"><a href="chaining-blocks.html#cb601-28"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="chaining-blocks.html#cb602-1"></a>chain &lt;-<span class="st"> </span><span class="kw">list</span>(genesisBlockHashed)                    <span class="co"># Intialize the Blockchain</span></span>
+<span id="cb602-2"><a href="chaining-blocks.html#cb602-2"></a>chain &lt;-<span class="st"> </span><span class="kw">addBlock</span>(chain, <span class="dt">newdata =</span> transaction.b2)   <span class="co"># Add the transation data</span></span>
+<span id="cb602-3"><a href="chaining-blocks.html#cb602-3"></a>chain &lt;-<span class="st"> </span><span class="kw">addBlock</span>(chain, <span class="dt">newdata =</span> transaction.b3)   <span class="co"># Add the transation data</span></span>
+<span id="cb602-4"><a href="chaining-blocks.html#cb602-4"></a>chain                                                <span class="co"># Block Chain with 3 blocks</span></span></code></pre></div>
 <pre><code>#R&gt; [[1]]
 #R&gt; :::::::::: BLOCKCHAIN BLOCK 1 :::::::::: 
-#R&gt; Timestamp: 1665990122 
+#R&gt; Timestamp: 1665994803 
 #R&gt; Previous Hash: 
 #R&gt; Difficulty: 0 
-#R&gt; Hash: 53910b0e28291ae46433912aebc5bda11941ab02d6011d903a9a2fb4b4868033 
+#R&gt; Hash: abc58a02927e6979bb690927ce00a7d2c5ec689752cbed951e1580553aa182fa 
 #R&gt; 
 #R&gt; [[2]]
 #R&gt; :::::::::: BLOCKCHAIN BLOCK 2 :::::::::: 
-#R&gt; Timestamp: 1665990123 
-#R&gt; Previous Hash: 53910b0e28291ae46433912aebc5bda11941ab02d6011d903a9a2fb4b4868033 
+#R&gt; Timestamp: 1665994806 
+#R&gt; Previous Hash: abc58a02927e6979bb690927ce00a7d2c5ec689752cbed951e1580553aa182fa 
 #R&gt; Difficulty: 0 
-#R&gt; Hash: bbc5bd8ae8626793037211b43350c14a8842cb58ee2121121c9e1b50aff6cae4 
+#R&gt; Hash: 4bd2e3d5e69044b657152fb9106ae4286f2e0918306b4d8002019d173c756341 
 #R&gt; 
 #R&gt; [[3]]
 #R&gt; :::::::::: BLOCKCHAIN BLOCK 3 :::::::::: 
-#R&gt; Timestamp: 1665990123 
-#R&gt; Previous Hash: bbc5bd8ae8626793037211b43350c14a8842cb58ee2121121c9e1b50aff6cae4 
+#R&gt; Timestamp: 1665994806 
+#R&gt; Previous Hash: 4bd2e3d5e69044b657152fb9106ae4286f2e0918306b4d8002019d173c756341 
 #R&gt; Difficulty: 0 
-#R&gt; Hash: e2e9a4cb4a00424452d4e49635ab5d9675b864acf673d8ac7a09e7e6cdadcbfc</code></pre>
+#R&gt; Hash: 18abf8ade228645a2d7f88323092eb486e7e73f210e8a5005b2ed07976151fdb</code></pre>
 </div>
             </section>
 

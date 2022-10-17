@@ -380,44 +380,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Nonce: A number that can be randomly set; required for the proof of work algorithm.</li>
 </ul>
 <p>Let us create the first block of the chain. This is usually called the genesis block. As it cannot contain a hash over previous blocks, the value for <code>previousHash</code> is set to <code>NULL</code>.</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="blocks.html#cb576-1"></a>genesisBlock &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(</span>
-<span id="cb576-2"><a href="blocks.html#cb576-2"></a>  <span class="dt">index =</span> <span class="dv">1</span>,</span>
-<span id="cb576-3"><a href="blocks.html#cb576-3"></a>  <span class="dt">timestamp =</span> <span class="kw">Sys.time</span>(),</span>
-<span id="cb576-4"><a href="blocks.html#cb576-4"></a>  <span class="dt">data =</span> <span class="st">&quot;Genesis&quot;</span>,</span>
-<span id="cb576-5"><a href="blocks.html#cb576-5"></a>  <span class="dt">previousHash =</span> <span class="ot">NULL</span>,</span>
-<span id="cb576-6"><a href="blocks.html#cb576-6"></a>  <span class="dt">difficulty =</span> <span class="dv">0</span>,</span>
-<span id="cb576-7"><a href="blocks.html#cb576-7"></a>  <span class="dt">nonce =</span> <span class="dv">1</span>,</span>
-<span id="cb576-8"><a href="blocks.html#cb576-8"></a>  <span class="dt">hash =</span> <span class="ot">NULL</span>),<span class="dt">class=</span><span class="kw">c</span>(<span class="st">&quot;block&quot;</span>,<span class="st">&quot;list&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="blocks.html#cb582-1"></a>genesisBlock &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(</span>
+<span id="cb582-2"><a href="blocks.html#cb582-2"></a>  <span class="dt">index =</span> <span class="dv">1</span>,</span>
+<span id="cb582-3"><a href="blocks.html#cb582-3"></a>  <span class="dt">timestamp =</span> <span class="kw">Sys.time</span>(),</span>
+<span id="cb582-4"><a href="blocks.html#cb582-4"></a>  <span class="dt">data =</span> <span class="st">&quot;Genesis&quot;</span>,</span>
+<span id="cb582-5"><a href="blocks.html#cb582-5"></a>  <span class="dt">previousHash =</span> <span class="ot">NULL</span>,</span>
+<span id="cb582-6"><a href="blocks.html#cb582-6"></a>  <span class="dt">difficulty =</span> <span class="dv">0</span>,</span>
+<span id="cb582-7"><a href="blocks.html#cb582-7"></a>  <span class="dt">nonce =</span> <span class="dv">1</span>,</span>
+<span id="cb582-8"><a href="blocks.html#cb582-8"></a>  <span class="dt">hash =</span> <span class="ot">NULL</span>),<span class="dt">class=</span><span class="kw">c</span>(<span class="st">&quot;block&quot;</span>,<span class="st">&quot;list&quot;</span>))</span></code></pre></div>
 <p>For a nice printout on the console and a compact form of the following, we define the following printing function for our block. To keep the output compact even if long data objects are stored into the block, we suppress displaying the data by default.</p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="blocks.html#cb577-1"></a>print.block &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">showdata=</span>F){</span>
-<span id="cb577-2"><a href="blocks.html#cb577-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;:::::::::: BLOCKCHAIN BLOCK&quot;</span>,x<span class="op">$</span>index,<span class="st">&quot;:::::::::: </span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb577-3"><a href="blocks.html#cb577-3"></a>  <span class="kw">cat</span>(<span class="st">&quot;Timestamp:&quot;</span>, x<span class="op">$</span>timestamp,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb577-4"><a href="blocks.html#cb577-4"></a>  <span class="kw">cat</span>(<span class="st">&quot;Previous Hash:&quot;</span>, x<span class="op">$</span>previousHash,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb577-5"><a href="blocks.html#cb577-5"></a>  <span class="kw">cat</span>(<span class="st">&quot;Difficulty:&quot;</span>, x<span class="op">$</span>difficulty,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb577-6"><a href="blocks.html#cb577-6"></a>  <span class="kw">cat</span>(<span class="st">&quot;Hash:&quot;</span>, x<span class="op">$</span>hash,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb577-7"><a href="blocks.html#cb577-7"></a>  <span class="cf">if</span>(showdata){</span>
-<span id="cb577-8"><a href="blocks.html#cb577-8"></a>    <span class="kw">cat</span>(<span class="st">&quot;Data:&quot;</span>,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb577-9"><a href="blocks.html#cb577-9"></a>    <span class="kw">print</span>(x<span class="op">$</span>data)</span>
-<span id="cb577-10"><a href="blocks.html#cb577-10"></a>  }</span>
-<span id="cb577-11"><a href="blocks.html#cb577-11"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="blocks.html#cb583-1"></a>print.block &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">showdata=</span>F){</span>
+<span id="cb583-2"><a href="blocks.html#cb583-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;:::::::::: BLOCKCHAIN BLOCK&quot;</span>,x<span class="op">$</span>index,<span class="st">&quot;:::::::::: </span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb583-3"><a href="blocks.html#cb583-3"></a>  <span class="kw">cat</span>(<span class="st">&quot;Timestamp:&quot;</span>, x<span class="op">$</span>timestamp,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb583-4"><a href="blocks.html#cb583-4"></a>  <span class="kw">cat</span>(<span class="st">&quot;Previous Hash:&quot;</span>, x<span class="op">$</span>previousHash,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb583-5"><a href="blocks.html#cb583-5"></a>  <span class="kw">cat</span>(<span class="st">&quot;Difficulty:&quot;</span>, x<span class="op">$</span>difficulty,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb583-6"><a href="blocks.html#cb583-6"></a>  <span class="kw">cat</span>(<span class="st">&quot;Hash:&quot;</span>, x<span class="op">$</span>hash,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb583-7"><a href="blocks.html#cb583-7"></a>  <span class="cf">if</span>(showdata){</span>
+<span id="cb583-8"><a href="blocks.html#cb583-8"></a>    <span class="kw">cat</span>(<span class="st">&quot;Data:&quot;</span>,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb583-9"><a href="blocks.html#cb583-9"></a>    <span class="kw">print</span>(x<span class="op">$</span>data)</span>
+<span id="cb583-10"><a href="blocks.html#cb583-10"></a>  }</span>
+<span id="cb583-11"><a href="blocks.html#cb583-11"></a>}</span></code></pre></div>
 <p>Using a simple function, that concatenates the information from the given block and calculates a hash value we can complete the information needed for the block.</p>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="blocks.html#cb578-1"></a>hashBlock &lt;-<span class="st"> </span><span class="cf">function</span>(block){</span>
-<span id="cb578-2"><a href="blocks.html#cb578-2"></a>  block<span class="op">$</span>hash &lt;-<span class="st"> </span><span class="kw">digest</span>(<span class="kw">c</span>(block<span class="op">$</span>index,</span>
-<span id="cb578-3"><a href="blocks.html#cb578-3"></a>                         block<span class="op">$</span>timestamp,</span>
-<span id="cb578-4"><a href="blocks.html#cb578-4"></a>                         block<span class="op">$</span>data,</span>
-<span id="cb578-5"><a href="blocks.html#cb578-5"></a>                         block<span class="op">$</span>previousHash,</span>
-<span id="cb578-6"><a href="blocks.html#cb578-6"></a>                         block<span class="op">$</span>difficulty,</span>
-<span id="cb578-7"><a href="blocks.html#cb578-7"></a>                         block<span class="op">$</span>nonce), <span class="st">&quot;sha256&quot;</span>)</span>
-<span id="cb578-8"><a href="blocks.html#cb578-8"></a>  <span class="kw">return</span>(block)</span>
-<span id="cb578-9"><a href="blocks.html#cb578-9"></a>}</span>
-<span id="cb578-10"><a href="blocks.html#cb578-10"></a></span>
-<span id="cb578-11"><a href="blocks.html#cb578-11"></a>genesisBlockHashed &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(genesisBlock)</span>
-<span id="cb578-12"><a href="blocks.html#cb578-12"></a>genesisBlockHashed</span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="blocks.html#cb584-1"></a>hashBlock &lt;-<span class="st"> </span><span class="cf">function</span>(block){</span>
+<span id="cb584-2"><a href="blocks.html#cb584-2"></a>  block<span class="op">$</span>hash &lt;-<span class="st"> </span><span class="kw">digest</span>(<span class="kw">c</span>(block<span class="op">$</span>index,</span>
+<span id="cb584-3"><a href="blocks.html#cb584-3"></a>                         block<span class="op">$</span>timestamp,</span>
+<span id="cb584-4"><a href="blocks.html#cb584-4"></a>                         block<span class="op">$</span>data,</span>
+<span id="cb584-5"><a href="blocks.html#cb584-5"></a>                         block<span class="op">$</span>previousHash,</span>
+<span id="cb584-6"><a href="blocks.html#cb584-6"></a>                         block<span class="op">$</span>difficulty,</span>
+<span id="cb584-7"><a href="blocks.html#cb584-7"></a>                         block<span class="op">$</span>nonce), <span class="st">&quot;sha256&quot;</span>)</span>
+<span id="cb584-8"><a href="blocks.html#cb584-8"></a>  <span class="kw">return</span>(block)</span>
+<span id="cb584-9"><a href="blocks.html#cb584-9"></a>}</span>
+<span id="cb584-10"><a href="blocks.html#cb584-10"></a></span>
+<span id="cb584-11"><a href="blocks.html#cb584-11"></a>genesisBlockHashed &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(genesisBlock)</span>
+<span id="cb584-12"><a href="blocks.html#cb584-12"></a>genesisBlockHashed</span></code></pre></div>
 <pre><code>#R&gt; :::::::::: BLOCKCHAIN BLOCK 1 :::::::::: 
-#R&gt; Timestamp: 1665990122 
+#R&gt; Timestamp: 1665994803 
 #R&gt; Previous Hash: 
 #R&gt; Difficulty: 0 
-#R&gt; Hash: 53910b0e28291ae46433912aebc5bda11941ab02d6011d903a9a2fb4b4868033</code></pre>
+#R&gt; Hash: abc58a02927e6979bb690927ce00a7d2c5ec689752cbed951e1580553aa182fa</code></pre>
 </div>
             </section>
 
