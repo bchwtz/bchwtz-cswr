@@ -61,13 +61,13 @@ lines(x = c(-8, 8), y = c(0.2, 0.2), col = "darkgreen")
 
 Analogously, (further) *points* can be added to a plot by `points()` and *text* by `text()`, e.g. adding
 
-```{r}
+```{r, eval=FALSE}
 points(x = x, y = dnorm(x = x, mean = 0, sd = 0.5), pch = 19, col = "darkblue")
 ```
 
 to figure \@ref(fig:dens-norm-lines2) results in figure \@ref(fig:dens-norm-lines3):
 
-```{r dens-norm-lines3, fig.cap="Plot of four density functions for the normal distribution."}
+```{r dens-norm-lines3, fig.cap="Plot of four density functions for the normal distribution.", echo=FALSE}
 y2 <- dnorm(x = x, mean = -1)
 y3 <- dnorm(x = x, mean = 2)
 plot(x, y, main = "Normal distribution - density", type = "l")
@@ -131,17 +131,17 @@ A Histogram for example of the variable `Temp` (Temperature in °F) [@R] can be 
 
 ```{r}
 h_temp <- hist(x = airquality$Temp, xlab = "Temperature [°F]", ylab = "Count",
-               main = "Histogram - Temperature.")
+               main = "Histogram - Temperature")
 ```
 
-Usually, when a plot is assigned to a variable (here we assigned the histogram of `Temp` to `h_temp`), the plot will not be shown, but this is not the case here. The argument `plot` of `hist()` is set to `TRUE` by default.\newline
-The benefit of assigning the histogram to a variable (here: `h_temp`) is that we can access the information about the plot:
+Usually, when a plot is assigned to a variable (here we assigned the histogram of `Temp` to `h_temp`), the plot will not be shown, but this is not the case here. The argument `plot` of `hist()` is set to `TRUE` by default (see `?hist`).\newline
+The benefit of assigning the histogram to a variable (here: `h_temp`) is that we can access information about the plot, i.e. histogram:
 
 ```{r}
 h_temp
 ```
 
-From that we can see the following:
+From that we see the following:
 
 - `breaks`: the bin boundaries,
 
@@ -156,9 +156,9 @@ here: density = `h_temp$counts / sum(h_temp$counts))/5`,
 
 - the class of `h_temp` which is a "histogram" (see also `?hist`).
 
-If it is desired to compare to histograms with each other, it will be helpful to plot them on top of each other by defining `par(mfrow = c(2, 1))` (the first values indicates the number of rows (here: `2`) and the second value indicates the number of columns (here: `1`)):
+If it is desired to compare histograms with each other, it will be helpful to plot them on top of each other or side by side. In our example, we plot the histogram of `Temp` and of `Wind` on top of each other by defining `par(mfrow = c(2, 1))` (the first values indicates the number of rows (here: `2`) and the second value indicates the number of columns (here: `1`)):
 
-```{r}
+```{r hist-temp-wind, fig.cap="(ref:histogram-t-w)"}
 par(mfrow = c(2, 1)) # c(r,c): c(number of rows, number of columns)
 hist(x = airquality$Temp, xlab = "Temperature [°F]", ylab = "Count", 
      main = "Histogram - Temp.") # main  = "" to leave out the title
@@ -166,15 +166,19 @@ hist(airquality$Wind, xlab = "Wind [mph]", ylab = "Count",
      main = "Histogram - Wind")
 ```
 
+(ref:histogram-t-w) Histograms of the temperature and the wind speed of the `airquality` dataset [@datasets].
+
 In order to create boxplots in base-R the function `boxplot()` is available which works similarily like `hist()` (and `plot()`).
 
-```{r}
+```{r box-temp-wind, fig.cap="(ref:box-t-w)"}
 par(mfrow = c(1,2)) # c(r,c): c(number of rows, number of columns)
 b1 <- boxplot(x = airquality$Temp, main = "Boxplot - Temperature [°F]")
 b2 <- boxplot(x = airquality$Wind, main = "Boxplot - Wind [mph]")
 ```
 
-When we assign the boxplots of the temperature (`Temp`) and the wind speed (`Wind`) to `b1` and `b2` respectively, we get information about the boxplots. Exemplarily, we look at `b2`:
+(ref:box-t-w) Boxplots of the temperature and the wind speed of the `airquality` dataset [@datasets].
+
+When we assign the boxplots of the temperature (`Temp`) and the wind speed (`Wind`) to `b1` and `b2`, respectively, we get information about the boxplots. Exemplarily, we look at `b2`:
 
 ```{r}
 b2
@@ -194,16 +198,19 @@ with its return values:
 
 + `names`: naming the groups (see `group`).
 
-Based on the information saved in `b2` and the functions `points()` and `text()` *important* values are marked in our boxplot:
+Based on the information saved in `b2` and the functions `points()` and `text()` *important* values are marked in our boxplot (figure \@ref(fig:box-wind)).
 
-```{r}
+```{r box-wind, fig.cap="(ref:b-wind)"}
 boxplot(x = airquality$Wind, main = "Boxplot - Wind [mph]", medcol = "chocolate")
 points(x = rep(1,length(b2$out)), y = b2$out, col = "orange", pch = 19)
-points(x = c(1,1), y = b2$conf, col = "red", pch = 19)
 points(x = 1, y = min(airquality$Wind), col = "khaki3", pch = 17)
 points(x = 1, y = max(airquality$Wind), col = "darkred", pch = 17)
 text(x = 0.7, y = b2$stats[3,], labels = b2$stats[3,], col = "chocolate")
 ```
+
+(ref:b-wind) Boxplot of the wind speed of the `airquality` dataset [@datasets].
+
+**Question:**
 
 > Which values of the boxplot are marked in which color?
 
