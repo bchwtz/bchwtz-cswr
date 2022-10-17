@@ -23,6 +23,10 @@ url: 'https\://bchwtz.de/cswr'
 library(knitr)
 knitr::opts_chunk$set(comment="#R>")
 knitr::opts_chunk$set(fig.align="center")
+
+install.packages("latex2exp")
+install.packages("plotly")
+
 library(ggplot2)
 library(latex2exp)
 library(plotly)
