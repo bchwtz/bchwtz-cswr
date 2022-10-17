@@ -23,6 +23,9 @@ url: 'https\://bchwtz.de/cswr'
 library(knitr)
 knitr::opts_chunk$set(comment="#R>")
 knitr::opts_chunk$set(fig.align="center")
+library(ggplot2)
+library(latex2exp)
+library(plotly)
 #library(tutorial)
 #tutorial::go_interactive(greedy=FALSE)
 ```
