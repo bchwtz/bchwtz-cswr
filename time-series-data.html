@@ -328,7 +328,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
 <li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
-<li class="chapter" data-level="12" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>12</b> Literature</a></li>
+<li class="chapter" data-level="" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i>Literature</a></li>
 <li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html"><i class="fa fa-check"></i>Programming Project</a><ul>
 <li class="chapter" data-level="" data-path="topic-1-web-scraping.html"><a href="topic-1-web-scraping.html"><i class="fa fa-check"></i>Topic 1: Web Scraping</a></li>
 <li class="chapter" data-level="" data-path="topic-2-forecasting.html"><a href="topic-2-forecasting.html"><i class="fa fa-check"></i>Topic 2: Forecasting</a></li>
@@ -372,19 +372,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.1</span> Time Series Data<a href="time-series-data.html#time-series-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before we can start forecasting some data, we need to talk about the time series data-structure that can be represented in R and is available via the <code>ts()</code>-function. A time series is a series of data points ordered along a time-axis. Most commonly used are time with data points that are equally spaced, which is referred to as a sequence in discrete-time. While there are also datasets and forecasting methods for non-equidistant series (aka continuous time-series), the vast majority of applications, especially in business administration, concentrates on data with equidistant observations and in discrete-time.</p>
 <p>The following code snippet shows how to simulate a time series based on a linear trend with intercept. This is essentially the same concept as linear regression but reversed. First, the coefficients for the trend line are set, then the true line is calculated and afterward overlaid with a standard normally distributed error.</p>
-<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="time-series-data.html#cb618-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)                       <span class="co"># Fix the RNG</span></span>
-<span id="cb618-2"><a href="time-series-data.html#cb618-2"></a>b0 &lt;-<span class="st"> </span><span class="fl">0.5</span>                         <span class="co"># Intercept Coefficient</span></span>
-<span id="cb618-3"><a href="time-series-data.html#cb618-3"></a>b1 &lt;-<span class="st"> </span><span class="fl">0.7</span>                         <span class="co"># Slope Coefficient</span></span>
-<span id="cb618-4"><a href="time-series-data.html#cb618-4"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">25</span>                         <span class="co"># Abscissa Data (Time Index)</span></span>
-<span id="cb618-5"><a href="time-series-data.html#cb618-5"></a></span>
-<span id="cb618-6"><a href="time-series-data.html#cb618-6"></a>signal &lt;-<span class="st"> </span>b0 <span class="op">+</span><span class="st"> </span>b1 <span class="op">*</span><span class="st"> </span>x             <span class="co"># Generate the Signal</span></span>
-<span id="cb618-7"><a href="time-series-data.html#cb618-7"></a>noise &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(x))         <span class="co"># Generate the Noise</span></span>
-<span id="cb618-8"><a href="time-series-data.html#cb618-8"></a></span>
-<span id="cb618-9"><a href="time-series-data.html#cb618-9"></a>series &lt;-<span class="st"> </span><span class="kw">ts</span>(signal <span class="op">+</span><span class="st"> </span>noise)      <span class="co"># Combine Signal and Noise</span></span>
-<span id="cb618-10"><a href="time-series-data.html#cb618-10"></a><span class="kw">plot</span>(series)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-252-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="time-series-data.html#cb622-1"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)                       <span class="co"># Fix the RNG</span></span>
+<span id="cb622-2"><a href="time-series-data.html#cb622-2"></a>b0 &lt;-<span class="st"> </span><span class="fl">0.5</span>                         <span class="co"># Intercept Coefficient</span></span>
+<span id="cb622-3"><a href="time-series-data.html#cb622-3"></a>b1 &lt;-<span class="st"> </span><span class="fl">0.7</span>                         <span class="co"># Slope Coefficient</span></span>
+<span id="cb622-4"><a href="time-series-data.html#cb622-4"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">25</span>                         <span class="co"># Abscissa Data (Time Index)</span></span>
+<span id="cb622-5"><a href="time-series-data.html#cb622-5"></a></span>
+<span id="cb622-6"><a href="time-series-data.html#cb622-6"></a>signal &lt;-<span class="st"> </span>b0 <span class="op">+</span><span class="st"> </span>b1 <span class="op">*</span><span class="st"> </span>x             <span class="co"># Generate the Signal</span></span>
+<span id="cb622-7"><a href="time-series-data.html#cb622-7"></a>noise &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(x))         <span class="co"># Generate the Noise</span></span>
+<span id="cb622-8"><a href="time-series-data.html#cb622-8"></a></span>
+<span id="cb622-9"><a href="time-series-data.html#cb622-9"></a>series &lt;-<span class="st"> </span><span class="kw">ts</span>(signal <span class="op">+</span><span class="st"> </span>noise)      <span class="co"># Combine Signal and Noise</span></span>
+<span id="cb622-10"><a href="time-series-data.html#cb622-10"></a><span class="kw">plot</span>(series)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-253-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>However, obviously, time series data can be more complex and also exhibit a special time structure. While the time series properties are not explicitly defined, one can easily imagine a series that has a more complex structure than just a time index as above. Time series data without an underlying structure is assigned a <code>frequency</code> value of 1, which can, for example, stand four hourly data. Adding more complex frequency information to the data allows adding calendarial structure, monthly data, meaning a time series with a single data point for each month, for example, has <code>frequency = 12</code>. An example of a monthly time series is the <code>AirPassengers</code> series, that shows the monthly total of international airline passengers from 1949 to 1960. Some additional information for this series is available via <code>?AirPassengers</code>.</p>
-<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="time-series-data.html#cb619-1"></a>AirPassengers</span></code></pre></div>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="time-series-data.html#cb623-1"></a>AirPassengers</span></code></pre></div>
 <pre><code>#R&gt;      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 #R&gt; 1949 112 118 132 129 121 135 148 148 136 119 104 118
 #R&gt; 1950 115 126 141 135 125 149 170 170 158 133 114 140
@@ -398,8 +398,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #R&gt; 1958 340 318 362 348 363 435 491 505 404 359 310 337
 #R&gt; 1959 360 342 406 396 420 472 548 559 463 407 362 405
 #R&gt; 1960 417 391 419 461 472 535 622 606 508 461 390 432</code></pre>
-<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="time-series-data.html#cb621-1"></a><span class="kw">plot</span>(AirPassengers)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-253-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="time-series-data.html#cb625-1"></a><span class="kw">plot</span>(AirPassengers)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-254-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Obviously, the process that is required to simulate a time series comparable to <code>AirPassengers</code> is not just a single linear trend as the series clearly shows peaks for the summer months each year. This data feature is called seasonality and the process that yields the respective time series (without the error term) is called a Data Generation Process (DGP). Forecasting in a technical sense is essentially applying methods to identify this DGP by separating the observed data into signal and noise. The statistical and mathematical description of the DGP can then be used to extrapolate the deterministic structure of the data. Forecasts generated on the basis of this idea deliver future values, that are most likely to be realized in the future (to the best of the knowledge at the time of generation).</p>
 </div>
             </section>

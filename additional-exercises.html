@@ -328,7 +328,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
 <li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
-<li class="chapter" data-level="12" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>12</b> Literature</a></li>
+<li class="chapter" data-level="" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i>Literature</a></li>
 <li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html"><i class="fa fa-check"></i>Programming Project</a><ul>
 <li class="chapter" data-level="" data-path="topic-1-web-scraping.html"><a href="topic-1-web-scraping.html"><i class="fa fa-check"></i>Topic 1: Web Scraping</a></li>
 <li class="chapter" data-level="" data-path="topic-2-forecasting.html"><a href="topic-2-forecasting.html"><i class="fa fa-check"></i>Topic 2: Forecasting</a></li>
@@ -373,26 +373,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercise-i" class="section level3 hasAnchor">
 <h3><span class="header-section-number">B.1.1</span> Exercise I<a href="additional-exercises.html#exercise-i" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The following function <code>makemat</code> was found in the file <code>function.final.final2.R</code> as part of an old undocumented project. Therefore its purpose is unknown. Being a young and ambitious R developer you were asked to answer the following questions.</p>
-<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="additional-exercises.html#cb653-1"></a><span class="kw">set.seed</span>(<span class="dv">124</span>)</span>
-<span id="cb653-2"><a href="additional-exercises.html#cb653-2"></a>num &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">9</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="fl">0.6</span>), <span class="dv">2</span>)</span>
-<span id="cb653-3"><a href="additional-exercises.html#cb653-3"></a>num</span></code></pre></div>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="additional-exercises.html#cb657-1"></a><span class="kw">set.seed</span>(<span class="dv">124</span>)</span>
+<span id="cb657-2"><a href="additional-exercises.html#cb657-2"></a>num &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">9</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="fl">0.6</span>), <span class="dv">2</span>)</span>
+<span id="cb657-3"><a href="additional-exercises.html#cb657-3"></a>num</span></code></pre></div>
 <pre><code>#R&gt; [1] 0.05 0.25 0.31 0.24 0.13 0.18 0.35 0.29 0.55</code></pre>
-<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="additional-exercises.html#cb655-1"></a>kat &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb655-2"><a href="additional-exercises.html#cb655-2"></a>val &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>)</span>
-<span id="cb655-3"><a href="additional-exercises.html#cb655-3"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(num, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
-<span id="cb655-4"><a href="additional-exercises.html#cb655-4"></a></span>
-<span id="cb655-5"><a href="additional-exercises.html#cb655-5"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">prod</span>(<span class="kw">dim</span>(mat)) ){</span>
-<span id="cb655-6"><a href="additional-exercises.html#cb655-6"></a>  <span class="cf">for</span> ( j <span class="cf">in</span> val){</span>
-<span id="cb655-7"><a href="additional-exercises.html#cb655-7"></a>    state &lt;-<span class="st"> </span>(mat[i] <span class="op">&lt;</span><span class="st"> </span>j)</span>
-<span id="cb655-8"><a href="additional-exercises.html#cb655-8"></a>    <span class="cf">if</span> (state){</span>
-<span id="cb655-9"><a href="additional-exercises.html#cb655-9"></a>      mat[i] &lt;-<span class="st"> </span>kat[j <span class="op">==</span><span class="st"> </span>val]</span>
-<span id="cb655-10"><a href="additional-exercises.html#cb655-10"></a>    }</span>
-<span id="cb655-11"><a href="additional-exercises.html#cb655-11"></a>  }</span>
-<span id="cb655-12"><a href="additional-exercises.html#cb655-12"></a>}</span>
-<span id="cb655-13"><a href="additional-exercises.html#cb655-13"></a>  </span>
-<span id="cb655-14"><a href="additional-exercises.html#cb655-14"></a>mat[(mat % <span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb655-15"><a href="additional-exercises.html#cb655-15"></a></span>
-<span id="cb655-16"><a href="additional-exercises.html#cb655-16"></a>mat</span></code></pre></div>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="additional-exercises.html#cb659-1"></a>kat &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb659-2"><a href="additional-exercises.html#cb659-2"></a>val &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>)</span>
+<span id="cb659-3"><a href="additional-exercises.html#cb659-3"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(num, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb659-4"><a href="additional-exercises.html#cb659-4"></a></span>
+<span id="cb659-5"><a href="additional-exercises.html#cb659-5"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">prod</span>(<span class="kw">dim</span>(mat)) ){</span>
+<span id="cb659-6"><a href="additional-exercises.html#cb659-6"></a>  <span class="cf">for</span> ( j <span class="cf">in</span> val){</span>
+<span id="cb659-7"><a href="additional-exercises.html#cb659-7"></a>    state &lt;-<span class="st"> </span>(mat[i] <span class="op">&lt;</span><span class="st"> </span>j)</span>
+<span id="cb659-8"><a href="additional-exercises.html#cb659-8"></a>    <span class="cf">if</span> (state){</span>
+<span id="cb659-9"><a href="additional-exercises.html#cb659-9"></a>      mat[i] &lt;-<span class="st"> </span>kat[j <span class="op">==</span><span class="st"> </span>val]</span>
+<span id="cb659-10"><a href="additional-exercises.html#cb659-10"></a>    }</span>
+<span id="cb659-11"><a href="additional-exercises.html#cb659-11"></a>  }</span>
+<span id="cb659-12"><a href="additional-exercises.html#cb659-12"></a>}</span>
+<span id="cb659-13"><a href="additional-exercises.html#cb659-13"></a>  </span>
+<span id="cb659-14"><a href="additional-exercises.html#cb659-14"></a>mat[(mat % <span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb659-15"><a href="additional-exercises.html#cb659-15"></a></span>
+<span id="cb659-16"><a href="additional-exercises.html#cb659-16"></a>mat</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>While executing and trying to load the function above the following message appears. Explain why the message is returned and correct the error in the provided source code.</p>
 <p><code>Error: unexpected input in "mat[(mat % 2) == 1] &lt;- 1"</code></p></li>

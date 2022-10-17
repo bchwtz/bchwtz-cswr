@@ -328,7 +328,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
 <li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
-<li class="chapter" data-level="12" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>12</b> Literature</a></li>
+<li class="chapter" data-level="" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i>Literature</a></li>
 <li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html"><i class="fa fa-check"></i>Programming Project</a><ul>
 <li class="chapter" data-level="" data-path="topic-1-web-scraping.html"><a href="topic-1-web-scraping.html"><i class="fa fa-check"></i>Topic 1: Web Scraping</a></li>
 <li class="chapter" data-level="" data-path="topic-2-forecasting.html"><a href="topic-2-forecasting.html"><i class="fa fa-check"></i>Topic 2: Forecasting</a></li>
@@ -370,11 +370,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="plots-with-ggplot2-ggplot2" class="section level2 hasAnchor">
 <h2><span class="header-section-number">7.2</span> Plots with <code>ggplot2</code> <span class="citation">(Wickham <a href="#ref-ggplot2" role="doc-biblioref">2016</a>)</span><a href="plots-with-ggplot2-ggplot2.html#plots-with-ggplot2-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another form of plots are ggplots which are based on the R package <code>ggplot2</code> by <span class="citation">Wickham (<a href="#ref-ggplot2" role="doc-biblioref">2016</a>)</span>. As we will see, ggplots are especially helpful by handling multiple variables.
+The name of the package indicates that the plots are based on the <strong>G</strong>rammar of <strong>G</strong>raphics. <span class="citation">(Wickham <a href="#ref-ggplot2" role="doc-biblioref">2016</a>)</span> Basically, the Grammar of Graphics is a system with strict <em>rules</em> that describe how statistical graphics are generated based on raw data. <span class="citation">(Wilkinson <a href="#ref-Wilkinson2010" role="doc-biblioref">2010</a>)</span> This means, a defined syntax - which components are necessary to build a plot - and a semantic - how the components will be interpreted to create a plot on the whole - exist. <span class="citation">(Wilkinson <a href="#ref-Wilkinson2010" role="doc-biblioref">2010</a>; RStudio, PBC <a href="#ref-ggplot2Cheatsheet" role="doc-biblioref">2021</a>)</span>
+We are not going into detail concerning the Grammar of Graphics; there is an own book about it, see <span class="citation">Wilkinson (<a href="#ref-Wilkinson2005" role="doc-biblioref">n.d.</a>)</span>. We will focus on how <code>ggplot2</code> realizes the Grammar of Graphics and how you can create plots with <code>ggplot2</code>.</p>
+<p>As the <code>ggplot2</code> Cheatsheet <span class="citation">(RStudio, PBC <a href="#ref-ggplot2Cheatsheet" role="doc-biblioref">2021</a>)</span> introduces only a data set, a coordinate system (grid), geoms (visual points representing data points) as well as aesthetics (i.e. variables of the data set have to be mapped to properties of the geom) are necessary to create a graph as we will see. The <code>ggplot2</code> Cheatsheet <span class="citation">(RStudio, PBC <a href="#ref-ggplot2Cheatsheet" role="doc-biblioref">2021</a>)</span> as well as the manual pages of the functions of the <code>ggplot2</code> package <span class="citation">(Wickham <a href="#ref-ggplot2" role="doc-biblioref">2016</a>)</span> are the basis for the creation of the following ggplots, their descriptions and further explanations.</p>
+<p>ggplots are divided in layers which will be concatenated by a “<code>+</code>” sign: The first layer, which cannot be leaved out, includes the data; this is realized by <code>ggplot()</code> (see code below). Its first argument is the data set (here: <code>df</code>) followed by defining which variables will be plotted inside the <code>aes()</code> function. By only calling <code>ggplot()</code> as described, no data in form of points, lines etc. will be visible since geoms have not been defined, so far.
+To overcome this, one of the <code>geom_*()</code> functions is called which specifies how the data will be visualized, for example by points (<code>geom_point()</code>), by a line (<code>geom_line()</code>), a boxplot (<code>geom_boxplot()</code>), a histogram (<code>geom_histogram()</code>), etc.</p>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="plots-with-ggplot2-ggplot2.html#cb565-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)</span>
+<span id="cb565-2"><a href="plots-with-ggplot2-ggplot2.html#cb565-2"></a><span class="kw">head</span>(df)</span></code></pre></div>
+<pre><code>#R&gt;      x            y
+#R&gt; 1 -8.0 5.052271e-15
+#R&gt; 2 -7.9 1.118796e-14
+#R&gt; 3 -7.8 2.452855e-14
+#R&gt; 4 -7.7 5.324148e-14
+#R&gt; 5 -7.6 1.144156e-13
+#R&gt; 6 -7.5 2.434321e-13</code></pre>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="plots-with-ggplot2-ggplot2.html#cb567-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y))<span class="op">+</span><span class="st"> </span><span class="co"># initialize a ggplot object</span></span>
+<span id="cb567-2"><a href="plots-with-ggplot2-ggplot2.html#cb567-2"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span><span class="st"> </span><span class="co"># visualize data points</span></span>
+<span id="cb567-3"><a href="plots-with-ggplot2-ggplot2.html#cb567-3"></a><span class="kw">ggtitle</span>(<span class="st">&quot;Density function of normal distribution&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># adding a title to the plot</span></span>
+<span id="cb567-4"><a href="plots-with-ggplot2-ggplot2.html#cb567-4"></a><span class="kw">xlab</span>(<span class="st">&quot;x&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># labeling the x axis</span></span>
+<span id="cb567-5"><a href="plots-with-ggplot2-ggplot2.html#cb567-5"></a><span class="kw">ylab</span>(<span class="st">&quot;density&quot;</span>) <span class="co"># labeling the y axis</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:first-ggplot"></span>
+<img src="bchwtz-cswr_files/figure-html/first-ggplot-1.png" alt="A simple ggplot." width="672" />
+<p class="caption">
+Figure 7.12: A simple ggplot.
+</p>
+</div>
+
+<p>Furthermore, a title for the plot as well as for the x- and y-axis have been added to the plots, figures <a href="plots-with-ggplot2-ggplot2.html#fig:first-ggplot">7.12</a> and <a href="plots-with-ggplot2-ggplot2.html#fig:first-ggplot-air">7.13</a>, and by the functions <code>ggtitle()</code>, <code>xlab()</code> and <code>ylab()</code>, respectively, and by using the “<code>x</code>”-sign.</p>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="plots-with-ggplot2-ggplot2.html#cb568-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span><span class="st"> </span><span class="co">## initialization of a ggplot object</span></span>
+<span id="cb568-2"><a href="plots-with-ggplot2-ggplot2.html#cb568-2"></a><span class="kw">geom_point</span>()<span class="op">+</span><span class="st"> </span><span class="co">## adding points to a plot</span></span>
+<span id="cb568-3"><a href="plots-with-ggplot2-ggplot2.html#cb568-3"></a><span class="kw">ggtitle</span>(<span class="st">&quot;Scatterplot&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co">## adding a title to the plot</span></span>
+<span id="cb568-4"><a href="plots-with-ggplot2-ggplot2.html#cb568-4"></a><span class="kw">xlab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co">## labeling the x axis</span></span>
+<span id="cb568-5"><a href="plots-with-ggplot2-ggplot2.html#cb568-5"></a><span class="kw">ylab</span>(<span class="st">&quot;Wind [mph]&quot;</span>) <span class="co">## labeling the y axis</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:first-ggplot-air"></span>
+<img src="bchwtz-cswr_files/figure-html/first-ggplot-air-1.png" alt="Scatterplot of temperature vs. wind speed of the airquality data set (R Core Team 2021) as a ggplot (Wickham 2016)." width="672" />
+<p class="caption">
+Figure 7.13: Scatterplot of temperature vs. wind speed of the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> as a <code>ggplot</code> <span class="citation">(Wickham <a href="#ref-ggplot2" role="doc-biblioref">2016</a>)</span>.
+</p>
+</div>
+
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
+<div id="ref-R">
+<p>R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-ggplot2Cheatsheet">
+<p>RStudio, PBC. 2021. <em>Data Visualization with Ggplot2::CHEAT Sheet</em>. <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf</a>.</p>
+</div>
 <div id="ref-ggplot2">
 <p>Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.</p>
+</div>
+<div id="ref-Wilkinson2005">
+<p>Wilkinson, L. n.d. <em>The Grammar of Graphics</em>. 2nd ed. New York: Springer.</p>
+</div>
+<div id="ref-Wilkinson2010">
+<p>Wilkinson, Leland. 2010. “The Grammar of Graphics.” <em>Wiley Interdisciplinary Reviews. Computational Statistics</em> 2 (6): 673–77.</p>
 </div>
 </div>
             </section>

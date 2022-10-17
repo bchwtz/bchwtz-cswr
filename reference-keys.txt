@@ -14,10 +14,12 @@ fig:box-temp-wind
 fig:box-wind
 fig:scatterplot-temp-wind
 fig:scatterplot-temp-wind-linReg
+fig:first-ggplot
+fig:first-ggplot-air
 fig:ggplotly-air-lm
 fig:plotly-airquality
-fig:unnamed-chunk-227
-fig:unnamed-chunk-254
+fig:unnamed-chunk-228
+fig:unnamed-chunk-255
 intro
 r-and-the-r-project
 r-system-and-rstudio
@@ -108,7 +110,6 @@ generating-forecasts
 practical-application
 forecast-evaluation
 web-apps
-literature
 bug-bounty
 test-exam
 additional-exercises
