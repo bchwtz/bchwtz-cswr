@@ -190,7 +190,7 @@ air_model <- lm(Wind ~ 1 + Temp, data = airquality)
 
 whose regression line can be added to our scatterplot by calling the function `abline()` like this:
 
-```{r}
+```{r, echo=TRUE, eval=FALSE}
 abline(air_model, col = "blue")
 ```
 
