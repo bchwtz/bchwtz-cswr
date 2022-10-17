@@ -166,7 +166,7 @@ hist(airquality$Wind, xlab = "Wind [mph]", ylab = "Count",
      main = "Histogram - Wind")
 ```
 
-(ref:histogram-t-w) Histograms of the temperature and the wind speed of the `airquality` dataset [@datasets].
+(ref:histogram-t-w) Histograms of the temperature and the wind speed of the `airquality` dataset [@R].
 
 In order to create boxplots in base-R the function `boxplot()` is available which works similarily like `hist()` (and `plot()`).
 
@@ -176,7 +176,7 @@ b1 <- boxplot(x = airquality$Temp, main = "Boxplot - Temperature [°F]")
 b2 <- boxplot(x = airquality$Wind, main = "Boxplot - Wind [mph]")
 ```
 
-(ref:box-t-w) Boxplots of the temperature and the wind speed of the `airquality` dataset [@datasets].
+(ref:box-t-w) Boxplots of the temperature and the wind speed of the `airquality` dataset [@R].
 
 When we assign the boxplots of the temperature (`Temp`) and the wind speed (`Wind`) to `b1` and `b2`, respectively, we get information about the boxplots. Exemplarily, we look at `b2`:
 
@@ -208,7 +208,7 @@ points(x = 1, y = max(airquality$Wind), col = "darkred", pch = 17)
 text(x = 0.7, y = b2$stats[3,], labels = b2$stats[3,], col = "chocolate")
 ```
 
-(ref:b-wind) Boxplot of the wind speed of the `airquality` dataset [@datasets].
+(ref:b-wind) Boxplot of the wind speed of the `airquality` dataset [@R].
 
 **Question:**
 
@@ -216,12 +216,14 @@ text(x = 0.7, y = b2$stats[3,], labels = b2$stats[3,], col = "chocolate")
 
 ### Scatterplots and linear regression
 
-When the variable `Wind` is plotted dependent on the variable `Temp` in figure xx, a negative relation is obvious: The higher the temperature, the lower the wind speed.
+When the variable `Wind` is plotted dependent on the variable `Temp` in figure \@ref(fig:scatterplot-temp-wind), a negative relation is obvious: The higher the temperature, the lower the wind speed.
 
-```{r}
+```{r, scatterplot-temp-wind, fig.cap="(ref:sc-temp-wind)"}
 plot(x = airquality$Temp, y = airquality$Wind, xlab = "Temperature [°F]",
      ylab = "Wind [mph]")
 ```
+
+(ref:sc-temp-wind) Scatterplot of the wind speed dependent on the temperature [°F] of the `airquality` data set [@R].
 
 Based on the relation between `Temp` and `Wind`, we define a linear model
 
@@ -235,9 +237,17 @@ whose regression line can be added to our scatterplot by calling the function `a
 abline(air_model, col = "blue")
 ```
 
-Since `air_model` is a regression object (see argument `reg` of `abline()`), its coefficients (intercept and slope) will be extracted by calling `coef()` and then a corresponding line is drawn based on `abline()`.
+```{r, scatterplot-temp-wind-linReg, fig.cap="(ref:sc-temp-wind-linReg)"}
+plot(x = airquality$Temp, y = airquality$Wind, xlab = "Temperature [°F]",
+     ylab = "Wind [mph]")
+abline(air_model, col = "blue")
+```
 
-The manual page of `abline()` (see `?abline`) as well as
+(ref:sc-temp-wind-linReg) Scatterplot of the wind speed dependent on the temperature [°F] of the `airquality` data set [@R] with a linear regression line.
+
+Since `air_model` is a regression object (see argument `reg` of `abline()`), its coefficients (intercept and slope) will be extracted by calling `coef()` and then a corresponding line is drawn based on `abline()` (see figure \@ref(fig:scatterplot-temp-wind-linReg)).
+
+The manual page of `abline()` (see `?abline`) as well as 
 
 ```{r}
 args(abline)
@@ -251,7 +261,11 @@ reveal that
 
 + a vertical line can be drawn by defining `v` (the x-value(s)).
 
+Remember in figure \@ref(fig:dens-norm-lines2) we added a horizontal and a vertical line by using `lines()`.
 
+**Do the following:**
+
+> Instead of defining the vertical and horizontal lines in figure \@ref(fig:dens-norm-lines2) by `lines()` use `abline()`.
 
 ## Plots with `ggplot2` [@ggplot2]
 
@@ -266,7 +280,7 @@ geom_smooth(method = "lm", se = FALSE)
 ggplotly(air_lm_ggplot) # converts ggplot2 to a plotly object
 ```
 
-```{r, eval=FALSE, fig.cap = "(ref:ggplotly-air-lm)"}
+```{r ggplotly-air-lm, fig.cap = "(ref:ggplotly-air-lm)", echo=FALSE}
 knitr::include_graphics("gfx/ggplotly_air_lm.png")
 ```
 
@@ -278,7 +292,7 @@ plot_ly(airquality, x = ~Temp, y = ~Wind, z = ~Solar.R) %>%
   add_markers(color = ~Month)
 ```
 
-```{r, eval=FALSE, fig.cap = "(ref:plotly-3d)"}
+```{r, plotly-airquality, echo=FALSE, fig.cap = "(ref:plotly-3d)"}
 knitr::include_graphics("gfx/plot_ly_airquality.png")
 ```
 
