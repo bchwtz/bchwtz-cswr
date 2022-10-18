@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8.1 Requirements | Computational Statistics</title>
-  <meta name="description" content="8.1 Requirements | Computational Statistics with R Course Notes" />
+  <title>7.3 Histograms and boxplots | Computational Statistics</title>
+  <meta name="description" content="7.3 Histograms and boxplots | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8.1 Requirements | Computational Statistics" />
+  <meta property="og:title" content="7.3 Histograms and boxplots | Computational Statistics" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="8.1 Requirements | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="7.3 Histograms and boxplots | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8.1 Requirements | Computational Statistics" />
+  <meta name="twitter:title" content="7.3 Histograms and boxplots | Computational Statistics" />
   
-  <meta name="twitter:description" content="8.1 Requirements | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="7.3 Histograms and boxplots | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="word-puzzle.html"/>
-<link rel="next" href="solution.html"/>
+<link rel="prev" href="plots-with-ggplot2-ggplot2.html"/>
+<link rel="next" href="interactive-plots-with-plotly-plotly.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -369,21 +369,166 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="requirements" class="section level2 hasAnchor">
-<h2><span class="header-section-number">8.1</span> Requirements<a href="requirements.html#requirements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-
-<div class="rmdexcercise">
-Write a program <code>evilpuzzle()</code> that generates an evil word puzzle (optionally with or without the word) and make sure that every word with at least 3 letters can be used to generate a puzzle with desired but meaningful dimensions.
+<div id="histograms-and-boxplots-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.3</span> Histograms and boxplots<a href="histograms-and-boxplots-1.html#histograms-and-boxplots-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The creation of histograms in <code>ggplot2</code> is allowed by the geom <code>geom_histogram()</code> which is exemplarily applied to the wind speed and temperature of the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>. The arrangement of ggplots (on top of each other, side by side, …) is achieved by using an extra R package called <code>gridExtra</code> <span class="citation">(Auguie <a href="#ref-gridExtra" role="doc-biblioref">2017</a>)</span>:</p>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="histograms-and-boxplots-1.html#cb590-1"></a>g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb590-2"><a href="histograms-and-boxplots-1.html#cb590-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Wind))</span>
+<span id="cb590-3"><a href="histograms-and-boxplots-1.html#cb590-3"></a>g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb590-4"><a href="histograms-and-boxplots-1.html#cb590-4"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp), <span class="dt">binwidth =</span> <span class="dv">5</span>)</span>
+<span id="cb590-5"><a href="histograms-and-boxplots-1.html#cb590-5"></a><span class="kw">grid.arrange</span>(g1, g2, <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="co"># arrange both histograms in one row</span></span></code></pre></div>
+<pre><code>#R&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-224-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Since the two boxplots have been assigned to <code>g1</code> and <code>g2</code>, respectively, again, information can be received by applying <code>ggplot_build()</code>:</p>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="histograms-and-boxplots-1.html#cb592-1"></a><span class="kw">ggplot_build</span>(g2)<span class="op">$</span>data</span></code></pre></div>
+<pre><code>#R&gt; [[1]]
+#R&gt;    y count  x xmin xmax     density    ncount  ndensity flipped_aes PANEL group
+#R&gt; 1  4     4 55 52.5 57.5 0.005228758 0.1081081 0.1081081       FALSE     1    -1
+#R&gt; 2  9     9 60 57.5 62.5 0.011764706 0.2432432 0.2432432       FALSE     1    -1
+#R&gt; 3 12    12 65 62.5 67.5 0.015686275 0.3243243 0.3243243       FALSE     1    -1
+#R&gt; 4 14    14 70 67.5 72.5 0.018300654 0.3783784 0.3783784       FALSE     1    -1
+#R&gt; 5 29    29 75 72.5 77.5 0.037908497 0.7837838 0.7837838       FALSE     1    -1
+#R&gt; 6 37    37 80 77.5 82.5 0.048366013 1.0000000 1.0000000       FALSE     1    -1
+#R&gt; 7 26    26 85 82.5 87.5 0.033986928 0.7027027 0.7027027       FALSE     1    -1
+#R&gt; 8 15    15 90 87.5 92.5 0.019607843 0.4054054 0.4054054       FALSE     1    -1
+#R&gt; 9  7     7 95 92.5 97.5 0.009150327 0.1891892 0.1891892       FALSE     1    -1
+#R&gt;   ymin ymax colour   fill size linetype alpha
+#R&gt; 1    0    4     NA grey35  0.5        1    NA
+#R&gt; 2    0    9     NA grey35  0.5        1    NA
+#R&gt; 3    0   12     NA grey35  0.5        1    NA
+#R&gt; 4    0   14     NA grey35  0.5        1    NA
+#R&gt; 5    0   29     NA grey35  0.5        1    NA
+#R&gt; 6    0   37     NA grey35  0.5        1    NA
+#R&gt; 7    0   26     NA grey35  0.5        1    NA
+#R&gt; 8    0   15     NA grey35  0.5        1    NA
+#R&gt; 9    0    7     NA grey35  0.5        1    NA</code></pre>
+<p>where</p>
+<ul>
+<li><p><code>count</code> describes the number of points (values) in the bin,</p></li>
+<li><p>the intervals of the single bins are defined as (<code>xmin</code>, <code>xmax</code>] which is the <code>binwidth</code> (Since we have defined <code>binwidth = 5</code>, all intervals have the same size (5).),</p></li>
+<li><p><code>x</code> is the center of the interval and</p></li>
+<li><p>much more information.</p></li>
+</ul>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="histograms-and-boxplots-1.html#cb594-1"></a><span class="kw">typeof</span>(<span class="kw">ggplot_build</span>(g2))</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;list&quot;</code></pre>
+<p>Instead of defining the <code>binwidth</code> we can specify the number of bins (argument <code>bins</code>), e.g.:</p>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="histograms-and-boxplots-1.html#cb596-1"></a>g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb596-2"><a href="histograms-and-boxplots-1.html#cb596-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp), <span class="dt">bins =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>Then, the number of rows in</p>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="histograms-and-boxplots-1.html#cb597-1"></a><span class="kw">ggplot_build</span>(g2)<span class="op">$</span>data[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>#R&gt;     y count        x     xmin     xmax     density     ncount   ndensity
+#R&gt; 1   1     1 54.66667 52.38889 56.94444 0.001434720 0.02941176 0.02941176
+#R&gt; 2  10    10 59.22222 56.94444 61.50000 0.014347202 0.29411765 0.29411765
+#R&gt; 3  10    10 63.77778 61.50000 66.05556 0.014347202 0.29411765 0.29411765
+#R&gt; 4  12    12 68.33333 66.05556 70.61111 0.017216643 0.35294118 0.35294118
+#R&gt; 5  19    19 72.88889 70.61111 75.16667 0.027259684 0.55882353 0.55882353
+#R&gt; 6  28    28 77.44444 75.16667 79.72222 0.040172166 0.82352941 0.82352941
+#R&gt; 7  34    34 82.00000 79.72222 84.27778 0.048780488 1.00000000 1.00000000
+#R&gt; 8  20    20 86.55556 84.27778 88.83333 0.028694405 0.58823529 0.58823529
+#R&gt; 9  15    15 91.11111 88.83333 93.38889 0.021520803 0.44117647 0.44117647
+#R&gt; 10  4     4 95.66667 93.38889 97.94444 0.005738881 0.11764706 0.11764706
+#R&gt;    flipped_aes PANEL group ymin ymax colour   fill size linetype alpha
+#R&gt; 1        FALSE     1    -1    0    1     NA grey35  0.5        1    NA
+#R&gt; 2        FALSE     1    -1    0   10     NA grey35  0.5        1    NA
+#R&gt; 3        FALSE     1    -1    0   10     NA grey35  0.5        1    NA
+#R&gt; 4        FALSE     1    -1    0   12     NA grey35  0.5        1    NA
+#R&gt; 5        FALSE     1    -1    0   19     NA grey35  0.5        1    NA
+#R&gt; 6        FALSE     1    -1    0   28     NA grey35  0.5        1    NA
+#R&gt; 7        FALSE     1    -1    0   34     NA grey35  0.5        1    NA
+#R&gt; 8        FALSE     1    -1    0   20     NA grey35  0.5        1    NA
+#R&gt; 9        FALSE     1    -1    0   15     NA grey35  0.5        1    NA
+#R&gt; 10       FALSE     1    -1    0    4     NA grey35  0.5        1    NA</code></pre>
+<p>is equal to <code>bins = 10</code>.</p>
+<p>The creation and examination of boxplots works similarily:</p>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="histograms-and-boxplots-1.html#cb599-1"></a>g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb599-2"><a href="histograms-and-boxplots-1.html#cb599-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Wind)) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Wind [mph]&quot;</span>)</span>
+<span id="cb599-3"><a href="histograms-and-boxplots-1.html#cb599-3"></a>g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb599-4"><a href="histograms-and-boxplots-1.html#cb599-4"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp)) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature [°F]&quot;</span>)</span>
+<span id="cb599-5"><a href="histograms-and-boxplots-1.html#cb599-5"></a><span class="kw">grid.arrange</span>(g1, g2, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-229-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The boxplots can be <em>flipped</em> by using <code>coord_flip()</code> the following way:</p>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="histograms-and-boxplots-1.html#cb600-1"></a>g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb600-2"><a href="histograms-and-boxplots-1.html#cb600-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Wind)) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Wind [mph]&quot;</span>)<span class="op">+</span></span>
+<span id="cb600-3"><a href="histograms-and-boxplots-1.html#cb600-3"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="co"># flip coordinates</span></span>
+<span id="cb600-4"><a href="histograms-and-boxplots-1.html#cb600-4"></a>g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb600-5"><a href="histograms-and-boxplots-1.html#cb600-5"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp)) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span></span>
+<span id="cb600-6"><a href="histograms-and-boxplots-1.html#cb600-6"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="co"># flip coordinates</span></span>
+<span id="cb600-7"><a href="histograms-and-boxplots-1.html#cb600-7"></a><span class="kw">grid.arrange</span>(g1, g2, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-230-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Again, the data of the boxplot can be accessed as we already know:</p>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="histograms-and-boxplots-1.html#cb601-1"></a>boxplot_g1 &lt;-<span class="st"> </span><span class="kw">ggplot_build</span>(g1)<span class="op">$</span>data[[<span class="dv">1</span>]]</span>
+<span id="cb601-2"><a href="histograms-and-boxplots-1.html#cb601-2"></a><span class="kw">typeof</span>(boxplot_g1)</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="histograms-and-boxplots-1.html#cb603-1"></a><span class="kw">str</span>(boxplot_g1)</span></code></pre></div>
+<pre><code>#R&gt; &#39;data.frame&#39;:   1 obs. of  26 variables:
+#R&gt;  $ xmin       : num 1.7
+#R&gt;  $ xlower     : num 7.4
+#R&gt;  $ xmiddle    : num 9.7
+#R&gt;  $ xupper     : num 11.5
+#R&gt;  $ xmax       : num 16.6
+#R&gt;  $ outliers   :List of 1
+#R&gt;   ..$ : num  20.1 18.4 20.7
+#R&gt;  $ notchupper : num 10.2
+#R&gt;  $ notchlower : num 9.18
+#R&gt;  $ y          : num 0
+#R&gt;  $ flipped_aes: logi TRUE
+#R&gt;  $ PANEL      : Factor w/ 1 level &quot;1&quot;: 1
+#R&gt;  $ group      : int -1
+#R&gt;  $ xmin_final : num 1.7
+#R&gt;  $ xmax_final : num 20.7
+#R&gt;  $ ymin       : num -0.375
+#R&gt;  $ ymax       : num 0.375
+#R&gt;  $ xid        : num 1
+#R&gt;  $ newx       : num 0
+#R&gt;  $ new_width  : num 0.75
+#R&gt;  $ weight     : num 1
+#R&gt;  $ colour     : chr &quot;grey20&quot;
+#R&gt;  $ fill       : chr &quot;white&quot;
+#R&gt;  $ size       : num 0.5
+#R&gt;  $ alpha      : logi NA
+#R&gt;  $ shape      : num 19
+#R&gt;  $ linetype   : chr &quot;solid&quot;</code></pre>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="histograms-and-boxplots-1.html#cb605-1"></a>boxplot_g1</span></code></pre></div>
+<pre><code>#R&gt;   xmin xlower xmiddle xupper xmax         outliers notchupper notchlower y
+#R&gt; 1  1.7    7.4     9.7   11.5 16.6 20.1, 18.4, 20.7   10.22372   9.176285 0
+#R&gt;   flipped_aes PANEL group xmin_final xmax_final   ymin  ymax xid newx new_width
+#R&gt; 1        TRUE     1    -1        1.7       20.7 -0.375 0.375   1    0      0.75
+#R&gt;   weight colour  fill size alpha shape linetype
+#R&gt; 1      1 grey20 white  0.5    NA    19    solid</code></pre>
+<p>Consequently, the outliers are extracted by:</p>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="histograms-and-boxplots-1.html#cb607-1"></a>boxplot_g1<span class="op">$</span>outliers</span></code></pre></div>
+<pre><code>#R&gt; [[1]]
+#R&gt; [1] 20.1 18.4 20.7</code></pre>
+<p>Based on <code>boxplot_g1</code> <em>interesting</em> values can be marked:</p>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="histograms-and-boxplots-1.html#cb609-1"></a>wind_boxplot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb609-2"><a href="histograms-and-boxplots-1.html#cb609-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Wind), <span class="dt">outlier.colour =</span> <span class="st">&quot;orange&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># coloring outliers</span></span>
+<span id="cb609-3"><a href="histograms-and-boxplots-1.html#cb609-3"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">data =</span> boxplot_g1, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> xmiddle, <span class="dt">xend =</span> xmiddle,</span>
+<span id="cb609-4"><a href="histograms-and-boxplots-1.html#cb609-4"></a>                                                <span class="dt">y =</span> ymin, <span class="dt">yend =</span> ymax), <span class="dt">colour =</span> <span class="st">&quot;chocolate&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># ymin, ymax: coordinates of box</span></span>
+<span id="cb609-5"><a href="histograms-and-boxplots-1.html#cb609-5"></a><span class="kw">geom_text</span>(<span class="dt">x =</span> <span class="fl">9.2</span>, <span class="dt">y =</span> <span class="fl">-0.35</span>, <span class="dt">label =</span> <span class="kw">paste</span>(boxplot_g1<span class="op">$</span>xmiddle), <span class="dt">color =</span> <span class="st">&quot;chocolate&quot;</span>)<span class="op">+</span></span>
+<span id="cb609-6"><a href="histograms-and-boxplots-1.html#cb609-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_blank</span>()) <span class="co"># remove title of y-axis</span></span>
+<span id="cb609-7"><a href="histograms-and-boxplots-1.html#cb609-7"></a>wind_boxplot <span class="co"># call the defined boxplot</span></span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-233-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><strong>Question(s):</strong></p>
+<blockquote>
+<p>Which values have been marked in the previous boxplot (figure xx)?</p>
+</blockquote>
 </div>
-
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-gridExtra">
+<p>Auguie, Baptiste. 2017. <em>GridExtra: Miscellaneous Functions for "Grid" Graphics</em>. <a href="https://CRAN.R-project.org/package=gridExtra">https://CRAN.R-project.org/package=gridExtra</a>.</p>
+</div>
+<div id="ref-R">
+<p>R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="word-puzzle.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="solution.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="plots-with-ggplot2-ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interactive-plots-with-plotly-plotly.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -414,7 +559,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-appliedprogramming.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-applications.Rmd",
 "text": "Edit"
 },
 "history": {

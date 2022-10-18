@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-17" />
+<meta name="date" content="2022-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -278,13 +278,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="applications---graphics.html"><a href="applications---graphics.html"><i class="fa fa-check"></i><b>7</b> Applications - Graphics</a><ul>
-<li class="chapter" data-level="7.1" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
-<li class="chapter" data-level="7.1.2" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.1.3" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
+<li class="chapter" data-level="7.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
+<li class="chapter" data-level="7.1.2" data-path="plotsbaseR.html"><a href="plotsbaseR.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.1.3" data-path="plotsbaseR.html"><a href="plotsbaseR.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="plots-with-ggplot2-ggplot2.html"><a href="plots-with-ggplot2-ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a></li>
-<li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
+<li class="chapter" data-level="7.3" data-path="histograms-and-boxplots-1.html"><a href="histograms-and-boxplots-1.html"><i class="fa fa-check"></i><b>7.3</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.4" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.4</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
@@ -374,55 +375,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="simple-pow-example" class="section level3 unnumbered hasAnchor">
 <h3>Simple PoW Example<a href="proof-of-work-pow.html#simple-pow-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For explanatory purposes, we start by using a simple proof of work system that is easy to understand and easily implementable. Remember that the work to obtain the proof must be feasible on the side of the service requester, but easy to check for the service provider. For our example, we require a service requester to find a number that is divisible by 99 and a given and previously known proof number, which can be done with the following two functions.</p>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="proof-of-work-pow.html#cb589-1"></a><span class="co"># Calculate a new proof of work</span></span>
-<span id="cb589-2"><a href="proof-of-work-pow.html#cb589-2"></a>proofOfWork &lt;-<span class="st"> </span><span class="cf">function</span>(lastProof){</span>
-<span id="cb589-3"><a href="proof-of-work-pow.html#cb589-3"></a>  proof &lt;-<span class="st"> </span>lastProof <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb589-4"><a href="proof-of-work-pow.html#cb589-4"></a>  <span class="cf">while</span> (<span class="op">!</span><span class="kw">isProofValid</span>(proof, lastProof)){</span>
-<span id="cb589-5"><a href="proof-of-work-pow.html#cb589-5"></a>    proof &lt;-<span class="st"> </span>proof <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="co"># Increment proof by 1 until a valid solution is found.</span></span>
-<span id="cb589-6"><a href="proof-of-work-pow.html#cb589-6"></a>  }</span>
-<span id="cb589-7"><a href="proof-of-work-pow.html#cb589-7"></a>  <span class="kw">return</span>(proof)</span>
-<span id="cb589-8"><a href="proof-of-work-pow.html#cb589-8"></a>}</span>
-<span id="cb589-9"><a href="proof-of-work-pow.html#cb589-9"></a></span>
-<span id="cb589-10"><a href="proof-of-work-pow.html#cb589-10"></a><span class="co"># Check if a proof of work is valid</span></span>
-<span id="cb589-11"><a href="proof-of-work-pow.html#cb589-11"></a>isProofValid &lt;-<span class="st"> </span><span class="cf">function</span>(proof, lastProof){</span>
-<span id="cb589-12"><a href="proof-of-work-pow.html#cb589-12"></a>  <span class="kw">return</span>(proof <span class="op">%%</span><span class="st"> </span><span class="dv">99</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;&amp;</span><span class="st"> </span>proof <span class="op">%%</span><span class="st"> </span>lastProof <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</span>
-<span id="cb589-13"><a href="proof-of-work-pow.html#cb589-13"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="proof-of-work-pow.html#cb590-1"></a>P1 &lt;-<span class="st"> </span><span class="dv">1</span>                             <span class="co"># Initial Proof</span></span>
-<span id="cb590-2"><a href="proof-of-work-pow.html#cb590-2"></a>P2 &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(<span class="dt">lastProof =</span> P1)   <span class="co"># Second Proof</span></span>
-<span id="cb590-3"><a href="proof-of-work-pow.html#cb590-3"></a>P3 &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(<span class="dt">lastProof =</span> P2)   <span class="co"># Third Proof</span></span>
-<span id="cb590-4"><a href="proof-of-work-pow.html#cb590-4"></a>P4 &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(<span class="dt">lastProof =</span> P3)   <span class="co"># Fourth Proof</span></span>
-<span id="cb590-5"><a href="proof-of-work-pow.html#cb590-5"></a><span class="kw">c</span>(P1, P2, P3, P4)</span></code></pre></div>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="proof-of-work-pow.html#cb630-1"></a><span class="co"># Calculate a new proof of work</span></span>
+<span id="cb630-2"><a href="proof-of-work-pow.html#cb630-2"></a>proofOfWork &lt;-<span class="st"> </span><span class="cf">function</span>(lastProof){</span>
+<span id="cb630-3"><a href="proof-of-work-pow.html#cb630-3"></a>  proof &lt;-<span class="st"> </span>lastProof <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb630-4"><a href="proof-of-work-pow.html#cb630-4"></a>  <span class="cf">while</span> (<span class="op">!</span><span class="kw">isProofValid</span>(proof, lastProof)){</span>
+<span id="cb630-5"><a href="proof-of-work-pow.html#cb630-5"></a>    proof &lt;-<span class="st"> </span>proof <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="co"># Increment proof by 1 until a valid solution is found.</span></span>
+<span id="cb630-6"><a href="proof-of-work-pow.html#cb630-6"></a>  }</span>
+<span id="cb630-7"><a href="proof-of-work-pow.html#cb630-7"></a>  <span class="kw">return</span>(proof)</span>
+<span id="cb630-8"><a href="proof-of-work-pow.html#cb630-8"></a>}</span>
+<span id="cb630-9"><a href="proof-of-work-pow.html#cb630-9"></a></span>
+<span id="cb630-10"><a href="proof-of-work-pow.html#cb630-10"></a><span class="co"># Check if a proof of work is valid</span></span>
+<span id="cb630-11"><a href="proof-of-work-pow.html#cb630-11"></a>isProofValid &lt;-<span class="st"> </span><span class="cf">function</span>(proof, lastProof){</span>
+<span id="cb630-12"><a href="proof-of-work-pow.html#cb630-12"></a>  <span class="kw">return</span>(proof <span class="op">%%</span><span class="st"> </span><span class="dv">99</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;&amp;</span><span class="st"> </span>proof <span class="op">%%</span><span class="st"> </span>lastProof <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb630-13"><a href="proof-of-work-pow.html#cb630-13"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="proof-of-work-pow.html#cb631-1"></a>P1 &lt;-<span class="st"> </span><span class="dv">1</span>                             <span class="co"># Initial Proof</span></span>
+<span id="cb631-2"><a href="proof-of-work-pow.html#cb631-2"></a>P2 &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(<span class="dt">lastProof =</span> P1)   <span class="co"># Second Proof</span></span>
+<span id="cb631-3"><a href="proof-of-work-pow.html#cb631-3"></a>P3 &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(<span class="dt">lastProof =</span> P2)   <span class="co"># Third Proof</span></span>
+<span id="cb631-4"><a href="proof-of-work-pow.html#cb631-4"></a>P4 &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(<span class="dt">lastProof =</span> P3)   <span class="co"># Fourth Proof</span></span>
+<span id="cb631-5"><a href="proof-of-work-pow.html#cb631-5"></a><span class="kw">c</span>(P1, P2, P3, P4)</span></code></pre></div>
 <pre><code>#R&gt; [1]   1  99 198 396</code></pre>
 <p>While the example hopefully illustrates the principle, it must be kept in mind that this is not a proper proof of work algorithm. It can be easily seen that the sequence of proof numbers follows an identifiable pattern and thus can be calculated directly ( and not spending as much CPU time as desired for the solution).</p>
-<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="proof-of-work-pow.html#cb592-1"></a>pvec &lt;-<span class="st"> </span><span class="dv">1</span>                     <span class="co"># Initial Proof</span></span>
-<span id="cb592-2"><a href="proof-of-work-pow.html#cb592-2"></a><span class="cf">for</span>(idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
-<span id="cb592-3"><a href="proof-of-work-pow.html#cb592-3"></a>  pvec &lt;-<span class="st"> </span><span class="kw">append</span>(pvec,<span class="kw">proofOfWork</span>(pvec[idx]))</span>
-<span id="cb592-4"><a href="proof-of-work-pow.html#cb592-4"></a>}</span>
-<span id="cb592-5"><a href="proof-of-work-pow.html#cb592-5"></a><span class="kw">plot</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(pvec),<span class="dt">y=</span>pvec, </span>
-<span id="cb592-6"><a href="proof-of-work-pow.html#cb592-6"></a>     <span class="dt">xlab=</span><span class="st">&quot;Steps of Proofs&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Proof Number&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-239-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="proof-of-work-pow.html#cb633-1"></a>pvec &lt;-<span class="st"> </span><span class="dv">1</span>                     <span class="co"># Initial Proof</span></span>
+<span id="cb633-2"><a href="proof-of-work-pow.html#cb633-2"></a><span class="cf">for</span>(idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
+<span id="cb633-3"><a href="proof-of-work-pow.html#cb633-3"></a>  pvec &lt;-<span class="st"> </span><span class="kw">append</span>(pvec,<span class="kw">proofOfWork</span>(pvec[idx]))</span>
+<span id="cb633-4"><a href="proof-of-work-pow.html#cb633-4"></a>}</span>
+<span id="cb633-5"><a href="proof-of-work-pow.html#cb633-5"></a><span class="kw">plot</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(pvec),<span class="dt">y=</span>pvec, </span>
+<span id="cb633-6"><a href="proof-of-work-pow.html#cb633-6"></a>     <span class="dt">xlab=</span><span class="st">&quot;Steps of Proofs&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Proof Number&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-257-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Additionally to the predictability of the proof numbers in the simple algorithm our example has numerous additional disadvantages that disqualify it for productive use. In the case of the Hashcash algorithm, the challenge is actually much more randomized and based on hash functions. The challenge is to generate hash values that contain a certain amount of leading zeros. Additionally, there needs to be a mechanism to account for growing computing power, so that new solutions to provided puzzles are found in approximately equal time slices. This in turns means that the difficulty of the puzzles needs to be adjustable.</p>
 </div>
 <div id="combining-pow-and-hashing" class="section level3 unnumbered hasAnchor">
 <h3>Combining PoW and Hashing<a href="proof-of-work-pow.html#combining-pow-and-hashing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A good proof of work algorithm for cryptocurrencies should not only be adjustable in terms of its difficulty but should also be random, so that it is not possible to predict its outcome and save computing power. It is therefore comparable to a lottery. A more in-depth example for a proof of work algorithm is shown in the following code snippet.</p>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="proof-of-work-pow.html#cb593-1"></a>proofOfWork &lt;-<span class="st"> </span><span class="cf">function</span>(block){</span>
-<span id="cb593-2"><a href="proof-of-work-pow.html#cb593-2"></a>  hashedBlock &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(block)</span>
-<span id="cb593-3"><a href="proof-of-work-pow.html#cb593-3"></a>  targetHashBeginning &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="kw">rep</span>(<span class="dv">0</span>, block<span class="op">$</span>difficulty),<span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb593-4"><a href="proof-of-work-pow.html#cb593-4"></a>  <span class="cf">while</span>( <span class="op">!</span>(<span class="kw">substr</span>(hashedBlock<span class="op">$</span>hash,<span class="dv">1</span>,block<span class="op">$</span>difficulty) <span class="op">==</span><span class="st"> </span>targetHashBeginning) ){</span>
-<span id="cb593-5"><a href="proof-of-work-pow.html#cb593-5"></a>    hashedBlock<span class="op">$</span>nonce &lt;-<span class="st"> </span>hashedBlock<span class="op">$</span>nonce <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb593-6"><a href="proof-of-work-pow.html#cb593-6"></a>    hashedBlock &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(hashedBlock)</span>
-<span id="cb593-7"><a href="proof-of-work-pow.html#cb593-7"></a>  }</span>
-<span id="cb593-8"><a href="proof-of-work-pow.html#cb593-8"></a>  <span class="kw">return</span>(hashedBlock)</span>
-<span id="cb593-9"><a href="proof-of-work-pow.html#cb593-9"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="proof-of-work-pow.html#cb634-1"></a>proofOfWork &lt;-<span class="st"> </span><span class="cf">function</span>(block){</span>
+<span id="cb634-2"><a href="proof-of-work-pow.html#cb634-2"></a>  hashedBlock &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(block)</span>
+<span id="cb634-3"><a href="proof-of-work-pow.html#cb634-3"></a>  targetHashBeginning &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="kw">rep</span>(<span class="dv">0</span>, block<span class="op">$</span>difficulty),<span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb634-4"><a href="proof-of-work-pow.html#cb634-4"></a>  <span class="cf">while</span>( <span class="op">!</span>(<span class="kw">substr</span>(hashedBlock<span class="op">$</span>hash,<span class="dv">1</span>,block<span class="op">$</span>difficulty) <span class="op">==</span><span class="st"> </span>targetHashBeginning) ){</span>
+<span id="cb634-5"><a href="proof-of-work-pow.html#cb634-5"></a>    hashedBlock<span class="op">$</span>nonce &lt;-<span class="st"> </span>hashedBlock<span class="op">$</span>nonce <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb634-6"><a href="proof-of-work-pow.html#cb634-6"></a>    hashedBlock &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(hashedBlock)</span>
+<span id="cb634-7"><a href="proof-of-work-pow.html#cb634-7"></a>  }</span>
+<span id="cb634-8"><a href="proof-of-work-pow.html#cb634-8"></a>  <span class="kw">return</span>(hashedBlock)</span>
+<span id="cb634-9"><a href="proof-of-work-pow.html#cb634-9"></a>}</span></code></pre></div>
 <p>For a practical example let us use the genesis block that we just created as the starting point for our own blockchain and feed it to the new <code>proofOfWork</code> function after setting the difficulty to a moderate value.</p>
-<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="proof-of-work-pow.html#cb594-1"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock))</span></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="proof-of-work-pow.html#cb635-1"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   0.024   0.000   0.024</code></pre>
-<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="proof-of-work-pow.html#cb596-1"></a>genesisBlock<span class="op">$</span>difficulty &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb596-2"><a href="proof-of-work-pow.html#cb596-2"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock)) <span class="co"># Execute again with increased difficulty</span></span></code></pre></div>
+#R&gt;   0.013   0.000   0.014</code></pre>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="proof-of-work-pow.html#cb637-1"></a>genesisBlock<span class="op">$</span>difficulty &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb637-2"><a href="proof-of-work-pow.html#cb637-2"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock)) <span class="co"># Execute again with increased difficulty</span></span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   0.469   0.044   0.563</code></pre>
+#R&gt;   0.029   0.001   0.031</code></pre>
 </div>
 <div id="exercises-7" class="section level3 unnumbered hasAnchor">
 <h3>Exercises<a href="proof-of-work-pow.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>

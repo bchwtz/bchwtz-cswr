@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-17" />
+<meta name="date" content="2022-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -278,13 +278,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="applications---graphics.html"><a href="applications---graphics.html"><i class="fa fa-check"></i><b>7</b> Applications - Graphics</a><ul>
-<li class="chapter" data-level="7.1" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
-<li class="chapter" data-level="7.1.2" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.1.3" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
+<li class="chapter" data-level="7.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
+<li class="chapter" data-level="7.1.2" data-path="plotsbaseR.html"><a href="plotsbaseR.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.1.3" data-path="plotsbaseR.html"><a href="plotsbaseR.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="plots-with-ggplot2-ggplot2.html"><a href="plots-with-ggplot2-ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a></li>
-<li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
+<li class="chapter" data-level="7.3" data-path="histograms-and-boxplots-1.html"><a href="histograms-and-boxplots-1.html"><i class="fa fa-check"></i><b>7.3</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.4" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.4</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
@@ -371,32 +372,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="hash-functions" class="section level2 hasAnchor">
 <h2><span class="header-section-number">9.1</span> Hash Functions<a href="hash-functions.html#hash-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A hash function is any function that maps data of arbitrary size onto data of a fixed size. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes. The most common application of hash functions is in cryptography. A cryptographic hash function allows verifying whether the input data maps onto a given hash value. However, when the input is unknown it is very difficult or (almost) impossible to reconstruct it from a given hash value. The following figure exemplarily illustrates the working principle of hash functions. The four inputs are mapped to one of the outputs. While the inputs show varying lengths (and can even be whole documents indicated by the word processor logo) the output is always a decimal number ranging from zero to eight (3-bit hash value).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-228"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-246"></span>
 <img src="gfx/CHAP-HashFun.png" alt="Hash Function" width="100%" />
 <p class="caption">
 Figure 9.1: Hash Function
 </p>
 </div>
 <p>A common example of hash functions besides blockchains is storing passwords. When a user creates a user account his password is not kept in clear text, but the hash values are the only piece of information about the password saved in the data basis. Even if an attacker or hacker gains access to the database and manages to steal a copy of the information he can not log into a user’s account, because the hash value is worthless to him and cannot be used to reconstruct the password. This is exemplified by the following R code, which uses the <code>SHA-256</code> algorithm to create hash values. Contrary to the simple example the hash value is not 3 but 256 bits long. The shown hash values are coded as hexadecimal values.</p>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="hash-functions.html#cb579-1"></a><span class="kw">library</span>(digest) <span class="co"># Load package &#39;digest&#39; that implements hash functions</span></span>
-<span id="cb579-2"><a href="hash-functions.html#cb579-2"></a></span>
-<span id="cb579-3"><a href="hash-functions.html#cb579-3"></a>accessGranted &lt;-<span class="st"> </span><span class="cf">function</span>(passwd){</span>
-<span id="cb579-4"><a href="hash-functions.html#cb579-4"></a>  hash &lt;-<span class="st"> </span><span class="kw">digest</span>(passwd, <span class="dt">algo =</span> <span class="st">&quot;sha256&quot;</span>)</span>
-<span id="cb579-5"><a href="hash-functions.html#cb579-5"></a>  databasis &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;27f16d4aece13cf0443ebfd7deb7be198d0aa6adb637ca37b3c72f4fb2e01d7e&quot;</span>,</span>
-<span id="cb579-6"><a href="hash-functions.html#cb579-6"></a>                 <span class="st">&quot;f92733254bac134a89313b489af49a20f8d0f76543824f503361ce3f92ca4d25&quot;</span>,</span>
-<span id="cb579-7"><a href="hash-functions.html#cb579-7"></a>                 <span class="st">&quot;67f9a8c826a4e3d958d265b999030e85632cf2a2f65781cab08dfbe338f434f1&quot;</span>)</span>
-<span id="cb579-8"><a href="hash-functions.html#cb579-8"></a>  access &lt;-<span class="st"> </span>hash <span class="op">%in%</span><span class="st"> </span>databasis</span>
-<span id="cb579-9"><a href="hash-functions.html#cb579-9"></a>  <span class="kw">return</span>(access)</span>
-<span id="cb579-10"><a href="hash-functions.html#cb579-10"></a>}</span>
-<span id="cb579-11"><a href="hash-functions.html#cb579-11"></a></span>
-<span id="cb579-12"><a href="hash-functions.html#cb579-12"></a><span class="kw">accessGranted</span>(<span class="dt">passwd =</span> <span class="st">&quot;uberpassword&quot;</span>)     <span class="co"># Guess No. 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="hash-functions.html#cb620-1"></a><span class="kw">library</span>(digest) <span class="co"># Load package &#39;digest&#39; that implements hash functions</span></span>
+<span id="cb620-2"><a href="hash-functions.html#cb620-2"></a></span>
+<span id="cb620-3"><a href="hash-functions.html#cb620-3"></a>accessGranted &lt;-<span class="st"> </span><span class="cf">function</span>(passwd){</span>
+<span id="cb620-4"><a href="hash-functions.html#cb620-4"></a>  hash &lt;-<span class="st"> </span><span class="kw">digest</span>(passwd, <span class="dt">algo =</span> <span class="st">&quot;sha256&quot;</span>)</span>
+<span id="cb620-5"><a href="hash-functions.html#cb620-5"></a>  databasis &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;27f16d4aece13cf0443ebfd7deb7be198d0aa6adb637ca37b3c72f4fb2e01d7e&quot;</span>,</span>
+<span id="cb620-6"><a href="hash-functions.html#cb620-6"></a>                 <span class="st">&quot;f92733254bac134a89313b489af49a20f8d0f76543824f503361ce3f92ca4d25&quot;</span>,</span>
+<span id="cb620-7"><a href="hash-functions.html#cb620-7"></a>                 <span class="st">&quot;67f9a8c826a4e3d958d265b999030e85632cf2a2f65781cab08dfbe338f434f1&quot;</span>)</span>
+<span id="cb620-8"><a href="hash-functions.html#cb620-8"></a>  access &lt;-<span class="st"> </span>hash <span class="op">%in%</span><span class="st"> </span>databasis</span>
+<span id="cb620-9"><a href="hash-functions.html#cb620-9"></a>  <span class="kw">return</span>(access)</span>
+<span id="cb620-10"><a href="hash-functions.html#cb620-10"></a>}</span>
+<span id="cb620-11"><a href="hash-functions.html#cb620-11"></a></span>
+<span id="cb620-12"><a href="hash-functions.html#cb620-12"></a><span class="kw">accessGranted</span>(<span class="dt">passwd =</span> <span class="st">&quot;uberpassword&quot;</span>)     <span class="co"># Guess No. 1</span></span></code></pre></div>
 <pre><code>#R&gt; [1] FALSE</code></pre>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="hash-functions.html#cb581-1"></a><span class="kw">accessGranted</span>(<span class="dt">passwd =</span> <span class="st">&quot;administrator&quot;</span>)    <span class="co"># Guess No. 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="hash-functions.html#cb622-1"></a><span class="kw">accessGranted</span>(<span class="dt">passwd =</span> <span class="st">&quot;administrator&quot;</span>)    <span class="co"># Guess No. 2</span></span></code></pre></div>
 <pre><code>#R&gt; [1] FALSE</code></pre>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="hash-functions.html#cb583-1"></a><span class="co"># Not even using a &#39;stolen&#39; hash value as password helps</span></span>
-<span id="cb583-2"><a href="hash-functions.html#cb583-2"></a><span class="kw">accessGranted</span>(<span class="dt">passwd =</span> <span class="st">&quot;27f16d4aece13cf0443ebfd7deb7be198d0aa6adb637ca37b3c72f4fb2e01d7e&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="hash-functions.html#cb624-1"></a><span class="co"># Not even using a &#39;stolen&#39; hash value as password helps</span></span>
+<span id="cb624-2"><a href="hash-functions.html#cb624-2"></a><span class="kw">accessGranted</span>(<span class="dt">passwd =</span> <span class="st">&quot;27f16d4aece13cf0443ebfd7deb7be198d0aa6adb637ca37b3c72f4fb2e01d7e&quot;</span>)</span></code></pre></div>
 <pre><code>#R&gt; [1] FALSE</code></pre>
-<p>Obviously, the main feature of cryptographic hash functions is their irreversibility, which is strongly dependent on the actual algorithm used to create the hash value. Making and breaking hash functions is an active area of research which has revealed many vulnerabilities and lead to some hashing algorithms being insecure. The algorithm used in the examples above is called “SHA-256” and is considered secure as of today (17.10.2022). Other popular algorithms such as <code>MD5</code>or the algorithms used for storing Windows XP Passwords <code>LM-Hash</code> and <code>NTLM-Hash</code> are compromised and insecure, meaning that the hash value can be used to recover the password.</p>
+<p>Obviously, the main feature of cryptographic hash functions is their irreversibility, which is strongly dependent on the actual algorithm used to create the hash value. Making and breaking hash functions is an active area of research which has revealed many vulnerabilities and lead to some hashing algorithms being insecure. The algorithm used in the examples above is called “SHA-256” and is considered secure as of today (18.10.2022). Other popular algorithms such as <code>MD5</code>or the algorithms used for storing Windows XP Passwords <code>LM-Hash</code> and <code>NTLM-Hash</code> are compromised and insecure, meaning that the hash value can be used to recover the password.</p>
 <div id="exercises-6" class="section level3 unnumbered hasAnchor">
 <h3>Exercises<a href="hash-functions.html#exercises-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="gfx/CH00-ExercisesHeader.png" width="100%" style="display: block; margin: auto;" /></p>

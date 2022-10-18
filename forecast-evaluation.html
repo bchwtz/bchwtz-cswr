@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-17" />
+<meta name="date" content="2022-10-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -278,13 +278,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="applications---graphics.html"><a href="applications---graphics.html"><i class="fa fa-check"></i><b>7</b> Applications - Graphics</a><ul>
-<li class="chapter" data-level="7.1" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
-<li class="chapter" data-level="7.1.2" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.1.3" data-path="plots-with-base-r.html"><a href="plots-with-base-r.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
+<li class="chapter" data-level="7.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
+<li class="chapter" data-level="7.1.2" data-path="plotsbaseR.html"><a href="plotsbaseR.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.1.3" data-path="plotsbaseR.html"><a href="plotsbaseR.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="plots-with-ggplot2-ggplot2.html"><a href="plots-with-ggplot2-ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a></li>
-<li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
+<li class="chapter" data-level="7.3" data-path="histograms-and-boxplots-1.html"><a href="histograms-and-boxplots-1.html"><i class="fa fa-check"></i><b>7.3</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.4" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.4</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
@@ -371,12 +372,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="forecast-evaluation" class="section level2 hasAnchor">
 <h2><span class="header-section-number">10.7</span> Forecast Evaluation<a href="forecast-evaluation.html#forecast-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>By translating the formula of the MSE into R code we receive a simple function that directly outputs the error measure based on a vector of predictions and observations.</p>
-<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="forecast-evaluation.html#cb647-1"></a>MSE &lt;-<span class="st"> </span><span class="cf">function</span>(pred, obs){ <span class="kw">return</span>(<span class="kw">mean</span>((obs<span class="op">-</span>pred)<span class="op">^</span><span class="dv">2</span>)) }</span></code></pre></div>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="forecast-evaluation.html#cb688-1"></a>MSE &lt;-<span class="st"> </span><span class="cf">function</span>(pred, obs){ <span class="kw">return</span>(<span class="kw">mean</span>((obs<span class="op">-</span>pred)<span class="op">^</span><span class="dv">2</span>)) }</span></code></pre></div>
 <p>After getting the respective observations from the test set (depending on when the data was downloaded the test set contains more ‘future’ observations and needs to be trimmed accordingly), we can, therefore, calculate the performance for Holt’s Exponential Smoothing Model.</p>
-<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="forecast-evaluation.html#cb648-1"></a><span class="co"># Get the first H observations from the test set.</span></span>
-<span id="cb648-2"><a href="forecast-evaluation.html#cb648-2"></a>obs &lt;-<span class="st"> </span><span class="kw">head</span>(bibi.test<span class="op">$</span>TotalSubscribers, H) </span>
-<span id="cb648-3"><a href="forecast-evaluation.html#cb648-3"></a>mse.hes &lt;-<span class="st"> </span><span class="kw">MSE</span>(<span class="dt">pred=</span>fc,<span class="dt">obs=</span>obs) <span class="co"># Calculate the out-of-sample MSE</span></span>
-<span id="cb648-4"><a href="forecast-evaluation.html#cb648-4"></a>mse.hes</span></code></pre></div>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="forecast-evaluation.html#cb689-1"></a><span class="co"># Get the first H observations from the test set.</span></span>
+<span id="cb689-2"><a href="forecast-evaluation.html#cb689-2"></a>obs &lt;-<span class="st"> </span><span class="kw">head</span>(bibi.test<span class="op">$</span>TotalSubscribers, H) </span>
+<span id="cb689-3"><a href="forecast-evaluation.html#cb689-3"></a>mse.hes &lt;-<span class="st"> </span><span class="kw">MSE</span>(<span class="dt">pred=</span>fc,<span class="dt">obs=</span>obs) <span class="co"># Calculate the out-of-sample MSE</span></span>
+<span id="cb689-4"><a href="forecast-evaluation.html#cb689-4"></a>mse.hes</span></code></pre></div>
 <pre><code>#R&gt; [1] 62630.29</code></pre>
 <p>When analyzed alone the MSE is not interpretable. It can not be said directly if 6.263029210^{4} is a high or low value without a reference. However, technically speaking, most of the things that you learned in your undergraduate statistics course also applies to the MSE. Being a squared error measure it honors when deviations from the original data are small, while high differences are punished (by squaring obviously). The unit of the MSE shown is Subscribers<span class="math inline">\(^2\)</span>, which is not directly interpretable (and also not very meaningful).</p>
 <p>To get a feeling of how good the HES-Model actually performs, we compare it with the judgemental forecasts generated in the course. The corresponding <code>.csv</code> file contains all generated forecasts and can be downloaded here:</p>
@@ -395,24 +396,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>After downloading the respective file/s to your working directory you can load them into R using the function <code>read.csv2</code>. As <code>.csv</code> files contain only text, the dates in the file need to be converted manually to be proper dates.</p>
-<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="forecast-evaluation.html#cb650-1"></a>studentfc &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;fc2019.csv&quot;</span>,<span class="dt">stringsAsFactors =</span> F)</span>
-<span id="cb650-2"><a href="forecast-evaluation.html#cb650-2"></a>studentfc<span class="op">$</span>date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(studentfc<span class="op">$</span>date)</span></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="forecast-evaluation.html#cb691-1"></a>studentfc &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;fc2019.csv&quot;</span>,<span class="dt">stringsAsFactors =</span> F)</span>
+<span id="cb691-2"><a href="forecast-evaluation.html#cb691-2"></a>studentfc<span class="op">$</span>date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(studentfc<span class="op">$</span>date)</span></code></pre></div>
 <p>Before we formally evaluate the forecasts it is always a good idea to graphically analyze the performance and see if the forecasted values correspond to our intuition. We, therefore, select the last few values from the observations (up to the pretended forecast origin) and extend the plot by the student forecasts (red), the HES forecasts (blue) and the real observed values (green).</p>
-<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="forecast-evaluation.html#cb651-1"></a>y &lt;-<span class="st"> </span><span class="kw">tail</span>(bibi.train<span class="op">$</span>TotalSubscribers,<span class="dv">20</span>) </span>
-<span id="cb651-2"><a href="forecast-evaluation.html#cb651-2"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span>(<span class="kw">length</span>(y)<span class="op">+</span>H)</span>
-<span id="cb651-3"><a href="forecast-evaluation.html#cb651-3"></a></span>
-<span id="cb651-4"><a href="forecast-evaluation.html#cb651-4"></a><span class="kw">plot</span>(<span class="dt">x=</span>x,<span class="dt">y=</span><span class="kw">c</span>(y,<span class="kw">rep</span>(<span class="ot">NA</span>,H)),</span>
-<span id="cb651-5"><a href="forecast-evaluation.html#cb651-5"></a>     <span class="dt">ylim=</span><span class="kw">c</span>(<span class="kw">min</span>(y), <span class="kw">max</span>(studentfc[,<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)])),</span>
-<span id="cb651-6"><a href="forecast-evaluation.html#cb651-6"></a>     <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Subscribers&quot;</span>)</span>
-<span id="cb651-7"><a href="forecast-evaluation.html#cb651-7"></a></span>
-<span id="cb651-8"><a href="forecast-evaluation.html#cb651-8"></a>x.fc &lt;-<span class="st"> </span>(<span class="kw">length</span>(y)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>(<span class="kw">length</span>(y)<span class="op">+</span>H)</span>
-<span id="cb651-9"><a href="forecast-evaluation.html#cb651-9"></a><span class="kw">invisible</span>(<span class="kw">apply</span>(studentfc[,<span class="op">-</span><span class="dv">1</span>], <span class="dv">2</span>, lines, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">x=</span>x.fc))</span>
-<span id="cb651-10"><a href="forecast-evaluation.html#cb651-10"></a><span class="kw">lines</span>(<span class="dt">y=</span>obs,<span class="dt">x=</span>x.fc,<span class="dt">col=</span><span class="st">&quot;green&quot;</span>,<span class="dt">type=</span><span class="st">&quot;b&quot;</span>) <span class="co"># Actual amount of subscribers</span></span>
-<span id="cb651-11"><a href="forecast-evaluation.html#cb651-11"></a><span class="kw">lines</span>(<span class="dt">y=</span>fc,<span class="dt">x=</span>x.fc,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>)   <span class="co"># Forecast generated by HES</span></span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-278-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="forecast-evaluation.html#cb692-1"></a>y &lt;-<span class="st"> </span><span class="kw">tail</span>(bibi.train<span class="op">$</span>TotalSubscribers,<span class="dv">20</span>) </span>
+<span id="cb692-2"><a href="forecast-evaluation.html#cb692-2"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span>(<span class="kw">length</span>(y)<span class="op">+</span>H)</span>
+<span id="cb692-3"><a href="forecast-evaluation.html#cb692-3"></a></span>
+<span id="cb692-4"><a href="forecast-evaluation.html#cb692-4"></a><span class="kw">plot</span>(<span class="dt">x=</span>x,<span class="dt">y=</span><span class="kw">c</span>(y,<span class="kw">rep</span>(<span class="ot">NA</span>,H)),</span>
+<span id="cb692-5"><a href="forecast-evaluation.html#cb692-5"></a>     <span class="dt">ylim=</span><span class="kw">c</span>(<span class="kw">min</span>(y), <span class="kw">max</span>(studentfc[,<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)])),</span>
+<span id="cb692-6"><a href="forecast-evaluation.html#cb692-6"></a>     <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Subscribers&quot;</span>)</span>
+<span id="cb692-7"><a href="forecast-evaluation.html#cb692-7"></a></span>
+<span id="cb692-8"><a href="forecast-evaluation.html#cb692-8"></a>x.fc &lt;-<span class="st"> </span>(<span class="kw">length</span>(y)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>(<span class="kw">length</span>(y)<span class="op">+</span>H)</span>
+<span id="cb692-9"><a href="forecast-evaluation.html#cb692-9"></a><span class="kw">invisible</span>(<span class="kw">apply</span>(studentfc[,<span class="op">-</span><span class="dv">1</span>], <span class="dv">2</span>, lines, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">x=</span>x.fc))</span>
+<span id="cb692-10"><a href="forecast-evaluation.html#cb692-10"></a><span class="kw">lines</span>(<span class="dt">y=</span>obs,<span class="dt">x=</span>x.fc,<span class="dt">col=</span><span class="st">&quot;green&quot;</span>,<span class="dt">type=</span><span class="st">&quot;b&quot;</span>) <span class="co"># Actual amount of subscribers</span></span>
+<span id="cb692-11"><a href="forecast-evaluation.html#cb692-11"></a><span class="kw">lines</span>(<span class="dt">y=</span>fc,<span class="dt">x=</span>x.fc,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>)   <span class="co"># Forecast generated by HES</span></span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-296-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The plot shows that the majority of the student forecasts pick up the general momentum of the series and present reasonable extensions. Outliers in these judgemental forecasts are present and some forecasts seem to be substantially lower than the series. The HES forecast is (by construction) linear, while this is not necessarily the case for judgemental forecasts. However, in addition to some of the student forecasts the HES forecast is relatively close to the observed values. To get a more precise and objectified evaluation we calculate the MSE for all forecasts.</p>
-<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="forecast-evaluation.html#cb652-1"></a>mse.all &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">hes=</span>mse.hes,<span class="kw">apply</span>(studentfc[,<span class="op">-</span><span class="dv">1</span>],<span class="dv">2</span>,MSE,<span class="dt">obs=</span>obs))</span>
-<span id="cb652-2"><a href="forecast-evaluation.html#cb652-2"></a>mse.all</span></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="forecast-evaluation.html#cb693-1"></a>mse.all &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">hes=</span>mse.hes,<span class="kw">apply</span>(studentfc[,<span class="op">-</span><span class="dv">1</span>],<span class="dv">2</span>,MSE,<span class="dt">obs=</span>obs))</span>
+<span id="cb693-2"><a href="forecast-evaluation.html#cb693-2"></a>mse.all</span></code></pre></div>
 <pre><code>#R&gt;          hes     ggs16494     wws18129     sls16662     wws16618     wws22365 
 #R&gt; 6.263029e+04 2.799490e+13 5.429494e+05 5.207438e+05 6.632625e+07 3.414909e+06 
 #R&gt;     wws20866     wws22320     wws22358     wws19675     wws22321     wws22376 
