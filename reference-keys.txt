@@ -20,6 +20,7 @@ fig:ggplot-hierarchy
 fig:ggplot-hierarchy-label
 fig:ggplot-normal-distrib
 fig:ggplot-normal-distrib2
+fig:ggplot-nv-filled-curves
 fig:ggplot-month-categ
 fig:first-ggplot-air-points1
 fig:first-ggplot-air-points1-2
@@ -39,8 +40,8 @@ fig:ggpot-more2var-5
 fig:ggpot-more2var-6
 fig:ggplotly-air-lm
 fig:plotly-airquality
-fig:unnamed-chunk-258
-fig:unnamed-chunk-285
+fig:unnamed-chunk-257
+fig:unnamed-chunk-284
 intro
 r-and-the-r-project
 r-system-and-rstudio
