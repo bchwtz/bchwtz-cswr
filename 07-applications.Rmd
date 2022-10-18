@@ -923,6 +923,7 @@ knitr::include_graphics("gfx/ggplotly_air_lm.png")
 
 (ref:ggplotly-air-lm) Two-dimensional plot (`plotly` object) based on `air_lm_ggplot`.
 
+From figure \@ref(fig:ggplotly-air-lm) it becomes clear that `ggplotly()` opens a new window in which the generated three-dimensional plot can be zoomed in and out, can be shifted within the window and turned around, etc.
 Besides, `plotly` provides the function `plot_ly()` which allows generating three-dimensional plots like the following one:
 
 ```{r, eval=FALSE}
@@ -936,4 +937,8 @@ knitr::include_graphics("gfx/plot_ly_airquality.png")
 
 (ref:plotly-3d) Three-dimensional plot (`plotly` object) based on `datasets::airquality` [@R].
 
-From figure \@ref(fig:plotly-airquality) it becomes clear that `plot_ly()` opens a new window in which the generated three-dimensional plot can be zoomed in and out, can be shifted within the window and turned around, etc.
+From figure \@ref(fig:plotly-airquality) we see that `plot_ly()` also opens a window in which the user can examine the created three-dimensional plot.
+
+# Excercises {-}
+
+
