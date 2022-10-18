@@ -452,6 +452,106 @@ ggplot(data = nd2, mapping = aes(x = x, y = density, fill = curve))+
 
 As we have already seen in chapter \@ref(baseRplot), the package `latex2exp` is used to customize the legend inside `scale_fill_discrete()` [@ggplot2Cheatsheet].
 
+## Histograms and boxplots
+
+The creation of histograms in `ggplot2` is allowed by the geom `geom_histogram()` which is exemplarily applied to the wind speed and temperature of the `airquality` data set [@R]. The arrangement of ggplots (on top of each other, side by side, ...) is achieved by using an extra R package called `gridExtra` [@gridExtra]:
+
+```{r}
+g1 <- ggplot(data = airquality)+
+  geom_histogram(mapping = aes(x = Wind))
+g2 <- ggplot(data = airquality)+
+  geom_histogram(mapping = aes(x = Temp), binwidth = 5)
+grid.arrange(g1, g2, ncol = 2) # arrange both histograms in one row
+```
+
+Since the two boxplots have been assigned to `g1` and `g2`, respectively, again, information can be received by applying `ggplot_build()`:
+
+```{r}
+ggplot_build(g2)$data
+```
+
+where
+
++ `count` describes the number of points (values) in the bin,
+
++ the intervals of the single bins are defined as (`xmin`, `xmax`] which is the `binwidth` (Since we have defined `binwidth = 5`, all intervals have the same size (5).),
+
++ `x` is the center of the interval and
+
++ much more information.
+
+```{r}
+typeof(ggplot_build(g2))
+```
+
+Instead of defining the `binwidth` we can specify the number of bins (argument `bins`), e.g.:
+
+```{r}
+g2 <- ggplot(data = airquality)+
+  geom_histogram(mapping = aes(x = Temp), bins = 10)
+```
+
+Then, the number of rows in 
+
+```{r}
+ggplot_build(g2)$data[[1]]
+```
+
+is equal to `bins = 10`.
+
+The creation and examination of boxplots works similarily:
+
+```{r}
+g1 <- ggplot(data = airquality)+
+  geom_boxplot(mapping = aes(x = Wind)) + labs(x = "Wind [mph]")
+g2 <- ggplot(data = airquality)+
+  geom_boxplot(mapping = aes(x = Temp)) + labs(x = "Temperature [°F]")
+grid.arrange(g1, g2, ncol = 2)
+```
+
+The boxplots can be *flipped* by using `coord_flip()` the following way:
+
+```{r}
+g1 <- ggplot(data = airquality)+
+  geom_boxplot(mapping = aes(x = Wind)) + labs(x = "Wind [mph]")+
+  coord_flip() # flip coordinates
+g2 <- ggplot(data = airquality)+
+  geom_boxplot(mapping = aes(x = Temp)) + labs(x = "Temperature [°F]")+
+  coord_flip() # flip coordinates
+grid.arrange(g1, g2, ncol = 2)
+```
+
+Again, the data of the boxplot can be accessed as we already know:
+
+```{r}
+boxplot_g1 <- ggplot_build(g1)$data[[1]]
+typeof(boxplot_g1)
+str(boxplot_g1)
+boxplot_g1
+```
+
+Consequently, the outliers are extracted by:
+
+```{r}
+boxplot_g1$outliers
+```
+
+Based on `boxplot_g1` *interesting* values can be marked:
+
+```{r}
+wind_boxplot <- ggplot(data = airquality)+
+  geom_boxplot(mapping = aes(x = Wind), outlier.colour = "orange")+ # coloring outliers
+  geom_segment(data = boxplot_g1, mapping = aes(x = xmiddle, xend = xmiddle,
+                                                y = ymin, yend = ymax), colour = "chocolate")+ # ymin, ymax: coordinates of box
+geom_text(x = 9.2, y = -0.35, label = paste(boxplot_g1$xmiddle), color = "chocolate")+
+  theme(axis.title.y = element_blank()) # remove title of y-axis
+wind_boxplot # call the defined boxplot
+```
+
+**Question(s):**
+
+> Which values have been marked in the previous boxplot (figure xx)? 
+
 
 ## Interactive plots with `plotly` [@plotly]
 
