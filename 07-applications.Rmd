@@ -267,7 +267,7 @@ Remember in figure \@ref(fig:dens-norm-lines2) we added a horizontal and a verti
 
 > Instead of defining the vertical and horizontal lines in figure \@ref(fig:dens-norm-lines2) by `lines()` use `abline()`.
 
-## Plots with `ggplot2` [@ggplot2]
+## Plots with `ggplot2` [@ggplot2]{#plotsggplot2}
 
 Another form of plots are ggplots which are based on the R package `ggplot2` by @ggplot2. As we will see, ggplots are especially helpful by handling multiple variables.\newline
 The name of the package indicates that the plots are based on the **G**rammar of **G**raphics. [@ggplot2] Basically, the Grammar of Graphics is a system with strict *rules* that describe how statistical graphics are generated based on raw data. [@Wilkinson2010] This means, a defined syntax - which components are necessary to build a plot - and a semantic - how the components will be interpreted to create a plot on the whole - exist. [@Wilkinson2010; @ggplot2Cheatsheet]\newline
@@ -297,11 +297,11 @@ ylab("density") # labeling the y axis
 Furthermore, a title for the plot as well as for the x- and y-axis have been added to the plots, figures \@ref(fig:first-ggplot) and \@ref(fig:first-ggplot-air), by the functions `ggtitle()`, `xlab()` and `ylab()`, respectively, and by using the "`x`"-sign.
 
 ```{r first-ggplot-air, fig.cap="(ref:ggplot1-air)"}
-ggplot(data = airquality, aes(x = Temp, y = Wind))+ ## initialization of a ggplot object
-geom_point()+ ## adding points to a plot
-ggtitle("Scatterplot of temperature and wind speed")+ ## adding a title to the plot
-xlab("Temperature [°F]")+ ## labeling the x axis
-ylab("Wind [mph]") ## labeling the y axis
+ggplot(data = airquality, aes(x = Temp, y = Wind))+ # initialization of a ggplot object
+geom_point()+ # adding points to a plot
+ggtitle("Scatterplot of temperature and wind speed")+ # adding a title to the plot
+xlab("Temperature [°F]")+ # labeling the x axis
+ylab("Wind [mph]") # labeling the y axis
 ```
 
 (ref:ggplot1-air) Scatterplot of wind speed vs. temperature of the `airquality` data set [@R] as a `ggplot` [@ggplot2].
@@ -452,7 +452,7 @@ ggplot(data = nd2, mapping = aes(x = x, y = density, fill = curve))+
 
 As we have already seen in chapter \@ref(baseRplot), the package `latex2exp` is used to customize the legend inside `scale_fill_discrete()` [@ggplot2Cheatsheet].
 
-## Histograms and boxplots
+### Histograms and boxplots
 
 The creation of histograms in `ggplot2` is allowed by the geom `geom_histogram()` which is exemplarily applied to the wind speed and temperature of the `airquality` data set [@R]. The arrangement of ggplots (on top of each other, side by side, ...) is achieved by using an extra R package called `gridExtra` [@gridExtra]:
 
@@ -550,11 +550,335 @@ wind_boxplot # call the defined boxplot
 
 **Question(s):**
 
-> Which values have been marked in the previous boxplot (figure xx)? 
+> Which values have been marked in the previous boxplot (figure xx)?
 
+As we have seen in chapter \@ref(plotsbaseR), the `airquality` data set consists von values from May to September in 1973. [@R] How can we create several boxplots of the temperature for the single months in one plot?
+
+The following code does not work; since `Month` is a continuous variable! 
+
+```{r}
+ggplot(airquality, mapping = aes(x = Month, y = Temp))+
+  geom_boxplot()
+```
+
+The trick is again to create categories; two options exist:
+
+1) By creating a factor that consists of the categories "May", "June", "July", "August" and "September" (saved as varibale `Month_categ`)
+
+```{r}
+airquality$Month_categ <- factor(airquality$Month, levels = c(5, 6, 7, 8, 9),
+                                 labels = c("May", "June", "July", "August", "September"))
+```
+
+and then calling `x = Month_categ` inside `aes()` results in the desired boxplots:
+
+```{r ggplot-month-categ, fig.cap="(ref:month-categ)"}
+ggplot(airquality, mapping = aes(x = Month_categ, y = Temp))+
+  xlab("Month")+ ylab("Temperature [°F]")+
+  geom_boxplot()
+```
+
+(ref:month-categ) Boxplots of the temperature for the single months based on the `airquality` data set [@R].
+
+2) A shorter version is to use the argument `group` inside `aes()`
+
+```{r}
+ggplot(airquality, mapping = aes(group = Month, y = Temp))+
+  geom_boxplot()+
+  xlab("Month")+ ylab("Temperature [°F]")
+```
+
+but then the x-axis ticks have to be adapted which might be more complicated than just converting a variable into a factor.
+
+### Linear regression
+
+In order to determine and to add a linear regression line to a scatterplot - like the one in figure \@ref(fig:first-ggplot-air) - the geom `geom_smooth()` with `method = "lm"` (`lm`: linear model) is used:
+
+```{r}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)+
+  labs(x = "Temperature [°F]", y = "Wind [mph]") # instead of xlab() and ylab()
+```
+
+The argument `se` is set to `FALSE`, meaning that no confindence intervals around the regression line are displayed. When `se = TRUE` it looks like this:
+
+```{r}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point()+
+  geom_smooth(method = "lm", se = TRUE)+
+  labs(x = "Temperature [°F]", y = "Wind [mph]") 
+```
+
+Remember the definition of linear models in base-R based on function `lm()` as we have already done in chapter \@ref(plotsbaseR):
+
+```{r}
+air_lmodel <- lm(Wind ~ 1 + Temp, data = airquality)
+```
+
+Instead of using `geom_smooth()`, now, we use `geom_abline()` to visualize the regression line in the scatterplot as follows:
+
+```{r}
+ggplot(airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point()+
+  geom_abline(slope = coef(air_lmodel)[2], intercept = coef(air_lmodel)[1], color = "blue")+ 
+  labs(x = "Temperature [°F]", y = "Wind [mph]")
+```
+
+where we accessed the slope and intercept via `coef()`.
+
+### Customizing ggplots
+
+Apart from the opportunities to customize ggplots which we have seen so far here are some additional hints to mark points, to modify legends, etc.
+
+**Customizing plotting symbols:**
+
+The following examples are based on the `airquality` data set [@R] as well as on figure \@ref(fig:first-ggplot-air).
+
+```{r first-ggplot-air-points1, fig.cap="(ref:ggplot1-air-p1)"}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point(alpha = 0.5, shape = 21, color = "black", fill = "cyan", size = 3, stroke = 1.5)+
+ggtitle("Scatterplot of temperature and wind speed")+ 
+xlab("Temperature [°F]")+ 
+ylab("Wind [mph]") 
+```
+
+(ref:ggplot1-air-p1) Scatterplot of wind speed vs. temperature of the `airquality` data set [@R] with modified points.
+
+```{r first-ggplot-air-points1-2, fig.cap="(ref:ggplot1-air-p1-2)"}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point(alpha = 0.2, shape = 23, color = "black",  fill = "yellow", size = 2, stroke = 2.5)+
+ggtitle("Scatterplot of temperature and wind speed")+ 
+xlab("Temperature [°F]")+ 
+ylab("Wind [mph]") 
+```
+
+(ref:ggplot1-air-p1-2) Scatterplot of wind speed vs. temperature of the `airquality` data set [@R] with triangular points.
+
+```{r first-ggplot-air-points1-3, fig.cap="(ref:ggplot1-air-p1-3)"}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point(alpha = 0.2, shape = 23, color = "darkgreen", size = 2, stroke = 2.5)+
+ggtitle("Scatterplot of temperature and wind speed")+ 
+xlab("Temperature [°F]")+ 
+ylab("Wind [mph]") 
+```
+
+(ref:ggplot1-air-p1-3) Scatterplot of wind speed vs. temperature of the `airquality` data set [@R] with triangular points.
+
+```{r first-ggplot-air-points2, fig.cap="(ref:ggplot1-air-p2)"}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point(alpha = 0.5, shape = 21, color = "grey", fill = "cyan", size = 3)+
+  geom_text(mapping = aes(label = ifelse(Temp > 80, Temp, "")))+
+  ggtitle("Scatterplot of temperature and wind speed")+ 
+xlab("Temperature [°F]")+ ylab("Wind [mph]")
+```
+
+(ref:ggplot1-air-p2) Another scatterplot of wind speed vs. temperature of the `airquality` data set [@R] with modified points.
+
+```{r first-ggplot-air-points3, fig.cap="(ref:ggplot1-air-p3)"}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
+  geom_point(alpha = 0.5, shape = 21, color = "grey", fill = "cyan", size = 3, position = "jitter")+
+  geom_text(mapping = aes(label = ifelse(Temp > 80, Temp, "")))+
+  ggtitle("Scatterplot of temperature and wind speed")+ 
+xlab("Temperature [°F]")+ ylab("Wind [mph]")
+```
+
+(ref:ggplot1-air-p3) Scatterplot of wind speed vs. temperature of the `airquality` data set [@R] with *jittered* points.
+
+
+From figures \@ref(fig:first-ggplot-air-points1), \@ref(fig:first-ggplot-air-points1-2), \@ref(fig:first-ggplot-air-points1-3), \@ref(fig:first-ggplot-air-points2) and \@ref(fig:first-ggplot-air-points3) and the corresponding codes we conclude that
+
++ the smaller the value of `alpha`, the more translucent the data points.
+
++ the argument `shape` controls the shape of the plotting symbols (see `?points()` for more information).
+
++ the arguments `color` and `fill` control the color of the symbols dependent on the shape of the symbols (i.e. whether the symbols have a border or not).
+
++ the argument `size` controls the size of the plotting symbols.
+
++ the argument `stroke` will control the thickness of the border of the plotting symbols if they have one.
+
++ text is added to the plot via `geom_text(maping = aes(label = ...))`.
+
++ `position = "jitter"` adds random noise to the plotting symbols to avoid overplotting.
+
+
+**Changing scales**
+
+Here are some exmaples how scales can be changed in `ggplot2`; for further information see @ggplot2Cheatsheet.
+
+```{r}
+ggplot(data = airquality, mapping = aes(x = (Temp-32)*5/9, y = Wind))+ 
+  # modify the temperature from degree Fahrenheit to Celsius
+# (National Institute of Standards and Technology (NIST) (2021))
+  geom_point()+
+  ggtitle("Scatterplot")+ xlab("Temperature [°C]")+ ylab("Wind [mph]")
+```
+
+Simulated exponential growth data
+
+```{r}
+time <- 1:100 # days
+growth <- exp(time)
+growth_df <- data.frame(time, growth)
+```
+
+with its ggplot
+
+```{r}
+ggplot(data = growth_df, mapping = aes(x = time, y = growth))+
+  geom_line() + xlab("Time [d]") + ylab("Growth [cm]") +
+  ggtitle("Exponential growth")
+```
+
+which can be log-transformed to this:
+
+```{r}
+ggplot(data = growth_df, mapping = aes(x = time, y = growth))+
+  scale_y_log10()+ # applying logarithm (base 10) to y values
+  geom_line()+ xlab("Time [d]") + ylab("Growth [cm]")
+```
+
+
+**Themes - Modifying legends, grids, etc.:**
+
+The modification of legends is illustrated based on figure \@ref(fig:ggplot-month-categ) in which we created boxplots of the temperature for each month. Now, we color the boxplots (one color for each month) by setting `fill = Month_categ`). A legend has been automatically added:
+
+```{r boxplot-legend0, fig.cap="(ref:boxp-leg0)"}
+boxplot_Temp_Month <- ggplot(airquality, mapping = aes(x = Month_categ, y = Temp, fill = Month_categ))+
+  xlab("Month")+ ylab("Temperature [°F]")+
+  geom_boxplot()
+boxplot_Temp_Month 
+```
+
+(ref:boxp-leg0) Boxplots of temperature for each month based on the `airquality` data set [@R].
+
+Since the previous plot is saved as `boxplot_Temp_Month` some more specifications can be easily added to it without repeating every line of code (i.e. the single layers).
+
+```{r boxplot-legend1, fig.cap="(ref:boxp-leg1)"}
+boxplot_Temp_Month + guides(fill = guide_legend(title = "Month"))+ # title of legend
+  theme(legend.title = element_text(face = "bold"), # make title bold
+        legend.background = element_rect(fill = "gray88", colour = "black"),
+        legend.position = "top") # change position of legend
+```
+
+(ref:boxp-leg1) Boxplots of temperature for each month based on the `airquality` data set [@R] with a modified legend.
+
+```{r boxplot-legend2, fig.cap="(ref:boxp-leg2)"}
+boxplot_Temp_Month +
+  guides(fill = guide_legend(title = "Month"))+ # title of legend
+  theme_bw() # black and white
+```
+
+(ref:boxp-leg2) Boxplots of temperature for each month based on the `airquality` data set [@R] with a modified legend and a predefined theme.
+
+From figure \@ref(fig:boxplot-legend1) and its corresponding code it is obvious that
+
++ the legend's characteristics are accessed via `legend.*` inside `theme()`.
+
++ `theme()` controls non-data components of plots (arguments for the single components exist) (see `?theme`).
+
++ `element_*()`-functions are used to modify the attributes of the components (for example the color of the legend title), e.g.:
+
+    + `element_blank()`: nothing is drawn, e.g. to leave out a legend, turning the grid off (see figure \@ref(fig:boxplot-grid-off))
+    
+    + `element_rect()`: for borders and backgrounds (`rect`: rectangle),
+    
+    + `element_line()`: customize lines,
+    
+    + `element_text()`: customize text
+    
+    + and some more... (see `element_*` for more information).
+ 
+ 
+Another example for using `theme()` consists of modifying the grid:  
+```{r boxplot-grid-off, fig.cap="(ref:box-grid-off)"}
+boxplot_Temp_Month +
+  theme(panel.grid = element_blank()) # turning the grid off
+```
+
+(ref:box-grid-off) Boxplots of temperature for each month based on the `airquality` data set [@R] with no grid.
+    
+```{r boxplot-grid-colored, fig.cap="(ref:grid-colored)"}
+boxplot_Temp_Month +
+  # coloring the background and border:
+theme(panel.background = element_rect(fill = "ghostwhite", colour = "black"),
+panel.grid = element_line(colour = "gainsboro")) # coloring grid lines
+```
+
+(ref:grid-colored) Boxplots of temperature for each month based on the `airquality` data set [@R] with a customized grid.
+
+### Handling > 2 variables and faceting
+
+As it was announced in the beginning of this chapter \@ref(plotsggplot2) `ggplot2` provides help in dealing with more than two variables. The simplest way is to use the arguments of `aes()` in order to color, group (see figure \@ref(fig:ggplot-month-categ)),... values, e.g.:
+
+```{r ggpot-more2var-1, fig.cap="(ref:more2var-1)"}
+ggplot(airquality, mapping = aes(x = Temp, y = Wind, color = Solar.R))+
+  geom_point()+
+  ggtitle("Scatterplot of temperature and wind speed")+ 
+xlab("Temperature [°F]")+ ylab("Wind [mph]")
+```
+(ref:more2var-1) Scatterplot of wind speed vs. temperature colored by solar radiation based on the `airquality` data set [@R].
+
+Consequently, dealing with three variables is also quite simple, but how can we handle four or more variables in a two-dimensional plot?
+
+```{r}
+airquality$Month_categ <- factor(airquality$Month, levels = c(5, 6, 7, 8, 9),
+                                 labels = c("May", "June", "July", "August", "September"))
+```
+
+We can simply define multiple arguments **inside** `aes()`, e.g. for each month different plotting symbols are used and the size of the symbols is dependent on the solar radion. So, multiple legends result.
+
+```{r ggpot-more2var-2, fig.cap="(ref:more2var-2)"}
+ggplot(airquality, mapping = aes(x = Temp, y = Wind, size = Solar.R))+
+  geom_point(aes(shape = Month_categ))+
+  ggtitle("Scatterplot of temperature and wind speed")+ 
+xlab("Temperature [°F]")+ ylab("Wind [mph]")
+```
+
+(ref:more2var-2) Scatterplot of wind speed vs. temperature where the shape of the plotting symbols is dependent on the month and their sizes are dependent on solar radiation based on the `airquality` data set [@R].
+
+Another option is to use `faceting`; a plot is divided into subplots. [@ggplot2Cheatsheet] Figure \@ref(fig:ggpot-more2var-2) can be transformed by *faceting* to figures \@ref(fig:ggpot-more2var-3) and \@ref(fig:ggpot-more2var-4):
+
+```{r ggpot-more2var-3, fig.cap="(ref:more2var-3)"}
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind, color = Solar.R))+
+  geom_point()+
+  facet_wrap(~ Month_categ, nrow = 3, ncol = 2)+ # rectangular layout 
+  # (by default: nrow = 2, ncol = 3)
+  labs(x = "Temperature [°F]", y = "Wind [mph]")
+```
+
+(ref:more2var-3) Subplots of the scatterplots of wind speed vs. temperature by month; based on the `airquality` data set [@R] and `facet_wrap()`.
+
+```{r ggpot-more2var-4, fig.cap="(ref:more2var-4)"}
+air_ggplot <- ggplot(airquality, mapping = aes(x = Temp, y = Wind, color = Solar.R))+
+  geom_point()+
+  facet_grid(rows = vars(Month_categ))+
+  labs(x = "Temperature [°F]", y = "Wind [mph]")
+air_ggplot
+```
+
+(ref:more2var-4) Subplots of the scatterplots of wind speed vs. temperature by month; based on the `airquality` data set [@R] and `facet_grid()`.
+
+Some more examples based on *faceting*:
+
+```{r ggpot-more2var-5, fig.cap="(ref:more2var-5)"}
+air_ggplot + # call the already defined ggplot
+  geom_smooth(method = "lm", se = FALSE) # add a linear model to each subplot
+```
+
+(ref:more2var-5) Subplots of the scatterplots of wind speed vs. temperature by month with regression lines; based on the `airquality` data set [@R].
+
+```{r ggpot-more2var-6, fig.cap="(ref:more2var-6)"}
+air_ggplot + # call the already defined ggplot
+  geom_smooth(method = "lm", se = TRUE) # add a linear model to each subplot
+```
+
+(ref:more2var-6) Subplots of the scatterplots of wind speed vs. temperature by month with regression lines and confidence intervals; based on the `airquality` data set [@R].
 
 ## Interactive plots with `plotly` [@plotly]
 
+When a ggplot has been created it can be converted to an interactive plot based on the R package `plolty` [@plotly], meaning that by clicking with the mouse on a plotting symbol its values are shown. In figure \@ref(fig:ggplotly-air-lm) the x- (`Temp`: 74) and y-value (`Wind`: 12.6) are displayed.
 
 ```{r, echo=TRUE, eval=FALSE}
 air_lm_ggplot <- ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
@@ -569,16 +893,17 @@ knitr::include_graphics("gfx/ggplotly_air_lm.png")
 
 (ref:ggplotly-air-lm) Two-dimensional plot (`plotly` object) based on `air_lm_ggplot`.
 
+Besides, `plotly` provides the function `plot_ly()` which allows generating three-dimensional plots like the following one:
 
 ```{r, eval=FALSE}
 plot_ly(airquality, x = ~Temp, y = ~Wind, z = ~Solar.R) %>%
   add_markers(color = ~Month)
 ```
 
-```{r, plotly-airquality, echo=FALSE, fig.cap = "(ref:plotly-3d)"}
+```{r plotly-airquality, echo=FALSE, fig.cap = "(ref:plotly-3d)"}
 knitr::include_graphics("gfx/plot_ly_airquality.png")
 ```
 
 (ref:plotly-3d) Three-dimensional plot (`plotly` object) based on `datasets::airquality` [@R].
 
-
+From figure \@ref(fig:plotly-airquality) it becomes clear that `plot_ly()` opens a new window in which the generated three-dimensional plot can be zoomed in and out, can be shifted within the window and turned around, etc.
