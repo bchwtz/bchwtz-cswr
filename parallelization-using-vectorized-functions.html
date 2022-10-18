@@ -283,9 +283,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.2" data-path="plotsbaseR.html"><a href="plotsbaseR.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
 <li class="chapter" data-level="7.1.3" data-path="plotsbaseR.html"><a href="plotsbaseR.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="plots-with-ggplot2-ggplot2.html"><a href="plots-with-ggplot2-ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a></li>
-<li class="chapter" data-level="7.3" data-path="histograms-and-boxplots-1.html"><a href="histograms-and-boxplots-1.html"><i class="fa fa-check"></i><b>7.3</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.4" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.4</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
+<li class="chapter" data-level="7.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="plotsggplot2.html"><a href="plotsggplot2.html#histograms-and-boxplots-1"><i class="fa fa-check"></i><b>7.2.1</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.2.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html#linear-regression"><i class="fa fa-check"></i><b>7.2.2</b> Linear regression</a></li>
+<li class="chapter" data-level="7.2.3" data-path="plotsggplot2.html"><a href="plotsggplot2.html#customizing-ggplots"><i class="fa fa-check"></i><b>7.2.3</b> Customizing ggplots</a></li>
+<li class="chapter" data-level="7.2.4" data-path="plotsggplot2.html"><a href="plotsggplot2.html#handling-2-variables-and-faceting"><i class="fa fa-check"></i><b>7.2.4</b> Handling &gt; 2 variables and faceting</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
@@ -384,10 +388,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="parallelization-using-vectorized-functions.html#cb530-1"></a>modellist &lt;-<span class="st"> </span><span class="kw">apply</span>(regselector,<span class="dv">1</span>,<span class="cf">function</span>(x){<span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">&quot;mpg ~ 1&quot;</span>, regnames[x]), <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>))})</span></code></pre></div>
 <div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="parallelization-using-vectorized-functions.html#cb531-1"></a><span class="kw">system.time</span>(res.sequential &lt;-<span class="st"> </span><span class="kw">lapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)}))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   1.321   0.021   1.468</code></pre>
+#R&gt;   1.318   0.016   1.463</code></pre>
 <div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="parallelization-using-vectorized-functions.html#cb533-1"></a><span class="kw">system.time</span>(res.parallel &lt;-<span class="st"> </span><span class="kw">mclapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)},<span class="dt">mc.cores=</span>num.cores))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   1.867   0.518   1.551</code></pre>
+#R&gt;   0.646   0.175   1.252</code></pre>
 <div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="parallelization-using-vectorized-functions.html#cb535-1"></a>rsquared.sequential &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.sequential, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
 <span id="cb535-2"><a href="parallelization-using-vectorized-functions.html#cb535-2"></a>rsquared.parallel &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.parallel, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
 <span id="cb535-3"><a href="parallelization-using-vectorized-functions.html#cb535-3"></a><span class="kw">table</span>(rsquared.sequential <span class="op">==</span><span class="st"> </span>rsquared.parallel)</span></code></pre></div>

@@ -283,9 +283,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.2" data-path="plotsbaseR.html"><a href="plotsbaseR.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
 <li class="chapter" data-level="7.1.3" data-path="plotsbaseR.html"><a href="plotsbaseR.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="plots-with-ggplot2-ggplot2.html"><a href="plots-with-ggplot2-ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a></li>
-<li class="chapter" data-level="7.3" data-path="histograms-and-boxplots-1.html"><a href="histograms-and-boxplots-1.html"><i class="fa fa-check"></i><b>7.3</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.4" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.4</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
+<li class="chapter" data-level="7.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="plotsggplot2.html"><a href="plotsggplot2.html#histograms-and-boxplots-1"><i class="fa fa-check"></i><b>7.2.1</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.2.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html#linear-regression"><i class="fa fa-check"></i><b>7.2.2</b> Linear regression</a></li>
+<li class="chapter" data-level="7.2.3" data-path="plotsggplot2.html"><a href="plotsggplot2.html#customizing-ggplots"><i class="fa fa-check"></i><b>7.2.3</b> Customizing ggplots</a></li>
+<li class="chapter" data-level="7.2.4" data-path="plotsggplot2.html"><a href="plotsggplot2.html#handling-2-variables-and-faceting"><i class="fa fa-check"></i><b>7.2.4</b> Handling &gt; 2 variables and faceting</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
@@ -372,59 +376,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="solution" class="section level2 hasAnchor">
 <h2><span class="header-section-number">8.2</span> Solution<a href="solution.html#solution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let us start to solve the Excercise by generating a matrix full of letters from the desired word. We can easily do this using the <code>sample()</code>-command. If we want to fill the matrix one by one we can do this easily with two nested <code>for</code>-loops we just discussed, but the <code>matrix()</code>-command is much faster and the better option here.</p>
-<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="solution.html#cb612-1"></a>word &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;K&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;K&quot;</span>)</span>
-<span id="cb612-2"><a href="solution.html#cb612-2"></a></span>
-<span id="cb612-3"><a href="solution.html#cb612-3"></a>cols &lt;-<span class="st"> </span><span class="dv">15</span></span>
-<span id="cb612-4"><a href="solution.html#cb612-4"></a>rows &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb612-5"><a href="solution.html#cb612-5"></a></span>
-<span id="cb612-6"><a href="solution.html#cb612-6"></a><span class="co"># Generate word matrix with loops (very inefficient and slow!)</span></span>
-<span id="cb612-7"><a href="solution.html#cb612-7"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>,<span class="dt">nrow=</span>rows,<span class="dt">ncol=</span>cols)</span>
-<span id="cb612-8"><a href="solution.html#cb612-8"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>rows) {</span>
-<span id="cb612-9"><a href="solution.html#cb612-9"></a>  <span class="cf">for</span> (jdx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>cols) {</span>
-<span id="cb612-10"><a href="solution.html#cb612-10"></a>    mat[idx,jdx] &lt;-<span class="st"> </span><span class="kw">sample</span>(word,<span class="dt">size=</span><span class="dv">1</span>) </span>
-<span id="cb612-11"><a href="solution.html#cb612-11"></a>  }</span>
-<span id="cb612-12"><a href="solution.html#cb612-12"></a>}</span>
-<span id="cb612-13"><a href="solution.html#cb612-13"></a></span>
-<span id="cb612-14"><a href="solution.html#cb612-14"></a><span class="co"># Generate word matrix vectorized (the way to go!)</span></span>
-<span id="cb612-15"><a href="solution.html#cb612-15"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(word,<span class="dt">replace=</span>T,<span class="dt">size=</span>rows<span class="op">*</span>cols),</span>
-<span id="cb612-16"><a href="solution.html#cb612-16"></a>              <span class="dt">nrow =</span> rows,</span>
-<span id="cb612-17"><a href="solution.html#cb612-17"></a>              <span class="dt">ncol =</span> cols)</span></code></pre></div>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="solution.html#cb647-1"></a>word &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;K&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;K&quot;</span>)</span>
+<span id="cb647-2"><a href="solution.html#cb647-2"></a></span>
+<span id="cb647-3"><a href="solution.html#cb647-3"></a>cols &lt;-<span class="st"> </span><span class="dv">15</span></span>
+<span id="cb647-4"><a href="solution.html#cb647-4"></a>rows &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb647-5"><a href="solution.html#cb647-5"></a></span>
+<span id="cb647-6"><a href="solution.html#cb647-6"></a><span class="co"># Generate word matrix with loops (very inefficient and slow!)</span></span>
+<span id="cb647-7"><a href="solution.html#cb647-7"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>,<span class="dt">nrow=</span>rows,<span class="dt">ncol=</span>cols)</span>
+<span id="cb647-8"><a href="solution.html#cb647-8"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>rows) {</span>
+<span id="cb647-9"><a href="solution.html#cb647-9"></a>  <span class="cf">for</span> (jdx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>cols) {</span>
+<span id="cb647-10"><a href="solution.html#cb647-10"></a>    mat[idx,jdx] &lt;-<span class="st"> </span><span class="kw">sample</span>(word,<span class="dt">size=</span><span class="dv">1</span>) </span>
+<span id="cb647-11"><a href="solution.html#cb647-11"></a>  }</span>
+<span id="cb647-12"><a href="solution.html#cb647-12"></a>}</span>
+<span id="cb647-13"><a href="solution.html#cb647-13"></a></span>
+<span id="cb647-14"><a href="solution.html#cb647-14"></a><span class="co"># Generate word matrix vectorized (the way to go!)</span></span>
+<span id="cb647-15"><a href="solution.html#cb647-15"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(word,<span class="dt">replace=</span>T,<span class="dt">size=</span>rows<span class="op">*</span>cols),</span>
+<span id="cb647-16"><a href="solution.html#cb647-16"></a>              <span class="dt">nrow =</span> rows,</span>
+<span id="cb647-17"><a href="solution.html#cb647-17"></a>              <span class="dt">ncol =</span> cols)</span></code></pre></div>
 <p>We now have the matrix <code>mat</code> that contains letters from our word <strong>KAYAK</strong> in totally random order. The bigger the matrix gets via the <code>cols</code> and <code>rows</code> arguments the more likely is it that it contains the word itself up to a few times. Therefore, we have to check for that and correct this when necessary.</p>
 <p>Logically there are a couple of approaches to solve the task of controlling if <code>mat</code> contains our word more often and of course it is possible to directly check for this while generating the matrix. Another option is to decompose the matrix by rows and columns and check if the resulting and/or the reversed string contains our word. A more loop-based solution is going through the letters one by one and check if starting with the actual position the word can be found either horizontally, horizontally reversed, vertically or vertically reversed. Every time the word is found, the corresponding part is replaced with new random letters drawn from the word. As we can not be sure that we have not accidentally created the word by replacing the letters in an earlier position we have to go once again through the matrix after finishing our first iteration so that we can be sure that the word is not included anymore. So our first step towards the solution is to create a complete word free matrix. Using loops this can be translated in two nested <code>for</code>-loops running through rows and columns of <code>mat</code> and a <code>while</code>-loop that encapsulates the nested loops and takes care of starting over when we have replaced the occurring word in the matrix. In this case, our skeleton looks like this:</p>
-<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="solution.html#cb613-1"></a>check &lt;-<span class="st"> </span><span class="ot">TRUE</span>    <span class="co"># Make sure the while loop is entered</span></span>
-<span id="cb613-2"><a href="solution.html#cb613-2"></a></span>
-<span id="cb613-3"><a href="solution.html#cb613-3"></a><span class="cf">while</span> ( check <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span> ){</span>
-<span id="cb613-4"><a href="solution.html#cb613-4"></a>  </span>
-<span id="cb613-5"><a href="solution.html#cb613-5"></a>  check &lt;-<span class="st"> </span><span class="ot">FALSE</span> <span class="co"># Assuming one iteration is enough we can leave the</span></span>
-<span id="cb613-6"><a href="solution.html#cb613-6"></a>                 <span class="co"># loop after the current iteration. </span></span>
-<span id="cb613-7"><a href="solution.html#cb613-7"></a>  </span>
-<span id="cb613-8"><a href="solution.html#cb613-8"></a>  <span class="cf">for</span> ( row <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mat)){    <span class="co"># Loop running through rows</span></span>
-<span id="cb613-9"><a href="solution.html#cb613-9"></a>    <span class="cf">for</span> (col <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(mat)){   <span class="co"># Loop running through columns</span></span>
-<span id="cb613-10"><a href="solution.html#cb613-10"></a>      </span>
-<span id="cb613-11"><a href="solution.html#cb613-11"></a>      <span class="co"># Code to solve the actual problem!</span></span>
-<span id="cb613-12"><a href="solution.html#cb613-12"></a>      </span>
-<span id="cb613-13"><a href="solution.html#cb613-13"></a>    } <span class="co"># End for (columns)</span></span>
-<span id="cb613-14"><a href="solution.html#cb613-14"></a>  } <span class="co">#End for (rows)</span></span>
-<span id="cb613-15"><a href="solution.html#cb613-15"></a>} <span class="co">#End while</span></span></code></pre></div>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="solution.html#cb648-1"></a>check &lt;-<span class="st"> </span><span class="ot">TRUE</span>    <span class="co"># Make sure the while loop is entered</span></span>
+<span id="cb648-2"><a href="solution.html#cb648-2"></a></span>
+<span id="cb648-3"><a href="solution.html#cb648-3"></a><span class="cf">while</span> ( check <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span> ){</span>
+<span id="cb648-4"><a href="solution.html#cb648-4"></a>  </span>
+<span id="cb648-5"><a href="solution.html#cb648-5"></a>  check &lt;-<span class="st"> </span><span class="ot">FALSE</span> <span class="co"># Assuming one iteration is enough we can leave the</span></span>
+<span id="cb648-6"><a href="solution.html#cb648-6"></a>                 <span class="co"># loop after the current iteration. </span></span>
+<span id="cb648-7"><a href="solution.html#cb648-7"></a>  </span>
+<span id="cb648-8"><a href="solution.html#cb648-8"></a>  <span class="cf">for</span> ( row <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mat)){    <span class="co"># Loop running through rows</span></span>
+<span id="cb648-9"><a href="solution.html#cb648-9"></a>    <span class="cf">for</span> (col <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(mat)){   <span class="co"># Loop running through columns</span></span>
+<span id="cb648-10"><a href="solution.html#cb648-10"></a>      </span>
+<span id="cb648-11"><a href="solution.html#cb648-11"></a>      <span class="co"># Code to solve the actual problem!</span></span>
+<span id="cb648-12"><a href="solution.html#cb648-12"></a>      </span>
+<span id="cb648-13"><a href="solution.html#cb648-13"></a>    } <span class="co"># End for (columns)</span></span>
+<span id="cb648-14"><a href="solution.html#cb648-14"></a>  } <span class="co">#End for (rows)</span></span>
+<span id="cb648-15"><a href="solution.html#cb648-15"></a>} <span class="co">#End while</span></span></code></pre></div>
 <p>With that basic setup we run through the entire matrix one element at a time. We can easily adress the element using the running variables <code>row</code> and <code>col</code> from the <code>for</code>-loops using them as indices in brackets. Depending on the word length we can now calculate which submatrix of <code>mat</code> has to be checked for our word. Namely these areas are the following ones:</p>
-<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="solution.html#cb614-1"></a><span class="co"># Obtain ranges to check for the word</span></span>
-<span id="cb614-2"><a href="solution.html#cb614-2"></a>mat[row,col<span class="op">:</span>(col<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>)] <span class="co"># Horizontal (left to right)</span></span>
-<span id="cb614-3"><a href="solution.html#cb614-3"></a>mat[row,(col<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>col] <span class="co"># Horizontal reverse (right to left)</span></span>
-<span id="cb614-4"><a href="solution.html#cb614-4"></a>mat[row<span class="op">:</span>(row<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>),col] <span class="co"># Vertical (top to bottom)</span></span>
-<span id="cb614-5"><a href="solution.html#cb614-5"></a>mat[(row<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>row,col] <span class="co"># Vertical reverse (bottom to top)</span></span></code></pre></div>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="solution.html#cb649-1"></a><span class="co"># Obtain ranges to check for the word</span></span>
+<span id="cb649-2"><a href="solution.html#cb649-2"></a>mat[row,col<span class="op">:</span>(col<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>)] <span class="co"># Horizontal (left to right)</span></span>
+<span id="cb649-3"><a href="solution.html#cb649-3"></a>mat[row,(col<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>col] <span class="co"># Horizontal reverse (right to left)</span></span>
+<span id="cb649-4"><a href="solution.html#cb649-4"></a>mat[row<span class="op">:</span>(row<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>),col] <span class="co"># Vertical (top to bottom)</span></span>
+<span id="cb649-5"><a href="solution.html#cb649-5"></a>mat[(row<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>row,col] <span class="co"># Vertical reverse (bottom to top)</span></span></code></pre></div>
 <p>As it makes sense not to wrap everything in <code>if-else</code>-clauses we can simply put the indices which we have to check in lists and use them out of another loop to compare them with the actual word. Wrapping them in a list so that we can dynamically address them is easily done like so:</p>
-<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="solution.html#cb615-1"></a>rows &lt;-<span class="st"> </span><span class="kw">list</span>(row,                      <span class="co"># List for row indices</span></span>
-<span id="cb615-2"><a href="solution.html#cb615-2"></a>             row,</span>
-<span id="cb615-3"><a href="solution.html#cb615-3"></a>             row<span class="op">:</span>(row<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>),</span>
-<span id="cb615-4"><a href="solution.html#cb615-4"></a>             (row<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>row)</span>
-<span id="cb615-5"><a href="solution.html#cb615-5"></a></span>
-<span id="cb615-6"><a href="solution.html#cb615-6"></a></span>
-<span id="cb615-7"><a href="solution.html#cb615-7"></a>cols &lt;-<span class="st"> </span><span class="kw">list</span>(col<span class="op">:</span>(col<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>), <span class="co"># List for column indices</span></span>
-<span id="cb615-8"><a href="solution.html#cb615-8"></a>             (col<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>col,</span>
-<span id="cb615-9"><a href="solution.html#cb615-9"></a>             col,</span>
-<span id="cb615-10"><a href="solution.html#cb615-10"></a>             col)</span></code></pre></div>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="solution.html#cb650-1"></a>rows &lt;-<span class="st"> </span><span class="kw">list</span>(row,                      <span class="co"># List for row indices</span></span>
+<span id="cb650-2"><a href="solution.html#cb650-2"></a>             row,</span>
+<span id="cb650-3"><a href="solution.html#cb650-3"></a>             row<span class="op">:</span>(row<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>),</span>
+<span id="cb650-4"><a href="solution.html#cb650-4"></a>             (row<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>row)</span>
+<span id="cb650-5"><a href="solution.html#cb650-5"></a></span>
+<span id="cb650-6"><a href="solution.html#cb650-6"></a></span>
+<span id="cb650-7"><a href="solution.html#cb650-7"></a>cols &lt;-<span class="st"> </span><span class="kw">list</span>(col<span class="op">:</span>(col<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>), <span class="co"># List for column indices</span></span>
+<span id="cb650-8"><a href="solution.html#cb650-8"></a>             (col<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>col,</span>
+<span id="cb650-9"><a href="solution.html#cb650-9"></a>             col,</span>
+<span id="cb650-10"><a href="solution.html#cb650-10"></a>             col)</span></code></pre></div>
 <p>Now we can loop through the list entries and perform our comparison and then act accordingly, which can easily be done by using an <code>if</code>-clause and checking if the submatrix we are looking at is identical with our word. Sadly this is not enough. As we dynamically calculate the indices for the submatrix when using our lists <code>rows</code> and <code>columns</code> we have not yet checked if the indices exist. For example, when looking at the top left element in the matrix (<code>mat[1,1]</code>) we can not check if the indices from bottom to top and from right to left correspond to our word, because these indices do not exist and are negative numbers in our list. In this case, R responds with an error:</p>
-<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="solution.html#cb616-1"></a>mat[<span class="dv">1</span>,(<span class="dv">1</span><span class="op">:-</span><span class="dv">5</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb651-1"><a href="solution.html#cb651-1"></a>mat[<span class="dv">1</span>,(<span class="dv">1</span><span class="op">:-</span><span class="dv">5</span>)]</span></code></pre></div>
 <pre><code>#R&gt; Error in mat[1, (1:-5)]: only 0&#39;s may be mixed with negative subscripts</code></pre>
 <p>The same happens when we look at the bottom right element of the matrix and try to examine the cases horizontally and vertically as these do not exist. That means before overwriting an occurrence we have to check for 5 things.</p>
 <ol style="list-style-type: decimal">
@@ -435,122 +439,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Does the submatrix equal the word we are looking for?</li>
 </ol>
 <p>Due to the properties of the <code>&amp;&amp;</code>-Operator, we can perform all these comparisons in one if clause including the check if the submatrix equals the word. Even though the indices in the matrix do not exist in the matrix (be sure to understand why this does not work with the single <code>AND</code> operator (<code>&amp;</code>) which leads to the following code including the overwriting with a fresh randomly selected set of letters from our word:</p>
-<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="solution.html#cb618-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(rows)){ <span class="co"># Could have used length(cols) instead</span></span>
-<span id="cb618-2"><a href="solution.html#cb618-2"></a>  </span>
-<span id="cb618-3"><a href="solution.html#cb618-3"></a>  <span class="co"># If all rows and cols are in matrix and not out of bound and</span></span>
-<span id="cb618-4"><a href="solution.html#cb618-4"></a>  <span class="co"># the range equals the word resample this section of the matrix.</span></span>
-<span id="cb618-5"><a href="solution.html#cb618-5"></a>  </span>
-<span id="cb618-6"><a href="solution.html#cb618-6"></a>  <span class="cf">if</span> ( <span class="kw">all</span>(rows[[idx]] <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;&amp;</span><span class="st">                           </span><span class="co"># Check 1</span></span>
-<span id="cb618-7"><a href="solution.html#cb618-7"></a><span class="st">       </span><span class="kw">all</span>(cols[[idx]] <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;&amp;</span><span class="st">                           </span><span class="co"># Check 2</span></span>
-<span id="cb618-8"><a href="solution.html#cb618-8"></a><span class="st">       </span><span class="kw">all</span>(rows[[idx]] <span class="op">&lt;=</span><span class="st"> </span><span class="kw">nrow</span>(mat)) <span class="op">&amp;&amp;</span><span class="st">                  </span><span class="co"># Check 3</span></span>
-<span id="cb618-9"><a href="solution.html#cb618-9"></a><span class="st">       </span><span class="kw">all</span>(cols[[idx]] <span class="op">&lt;=</span><span class="st"> </span><span class="kw">ncol</span>(mat)) <span class="op">&amp;&amp;</span><span class="st">                  </span><span class="co"># Check 4</span></span>
-<span id="cb618-10"><a href="solution.html#cb618-10"></a><span class="st">       </span><span class="kw">identical</span>(mat[rows[[idx]], cols[[idx]]],word)) {  <span class="co"># Check 5</span></span>
-<span id="cb618-11"><a href="solution.html#cb618-11"></a>    </span>
-<span id="cb618-12"><a href="solution.html#cb618-12"></a>    <span class="co"># Overwrite the submatrix with fresh sampled letters</span></span>
-<span id="cb618-13"><a href="solution.html#cb618-13"></a>    mat[rows[[idx]],cols[[idx]]] &lt;-<span class="st"> </span><span class="kw">sample</span>(word,</span>
-<span id="cb618-14"><a href="solution.html#cb618-14"></a>                                       <span class="dt">replace=</span>T,</span>
-<span id="cb618-15"><a href="solution.html#cb618-15"></a>                                       <span class="dt">size=</span><span class="kw">length</span>(word))</span>
-<span id="cb618-16"><a href="solution.html#cb618-16"></a>    </span>
-<span id="cb618-17"><a href="solution.html#cb618-17"></a>    <span class="co"># After replacing we have to check the whole matrix again,</span></span>
-<span id="cb618-18"><a href="solution.html#cb618-18"></a>    <span class="co"># there we make sure to reenter the while loop!</span></span>
-<span id="cb618-19"><a href="solution.html#cb618-19"></a>    check &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb618-20"><a href="solution.html#cb618-20"></a>    </span>
-<span id="cb618-21"><a href="solution.html#cb618-21"></a>    <span class="co"># Feature to count how many occurrences have been replaced</span></span>
-<span id="cb618-22"><a href="solution.html#cb618-22"></a>    wordcounter &lt;-<span class="st"> </span>wordcounter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb618-23"><a href="solution.html#cb618-23"></a>    </span>
-<span id="cb618-24"><a href="solution.html#cb618-24"></a>  } <span class="co">#End if</span></span>
-<span id="cb618-25"><a href="solution.html#cb618-25"></a>} <span class="co">#End for</span></span></code></pre></div>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="solution.html#cb653-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(rows)){ <span class="co"># Could have used length(cols) instead</span></span>
+<span id="cb653-2"><a href="solution.html#cb653-2"></a>  </span>
+<span id="cb653-3"><a href="solution.html#cb653-3"></a>  <span class="co"># If all rows and cols are in matrix and not out of bound and</span></span>
+<span id="cb653-4"><a href="solution.html#cb653-4"></a>  <span class="co"># the range equals the word resample this section of the matrix.</span></span>
+<span id="cb653-5"><a href="solution.html#cb653-5"></a>  </span>
+<span id="cb653-6"><a href="solution.html#cb653-6"></a>  <span class="cf">if</span> ( <span class="kw">all</span>(rows[[idx]] <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;&amp;</span><span class="st">                           </span><span class="co"># Check 1</span></span>
+<span id="cb653-7"><a href="solution.html#cb653-7"></a><span class="st">       </span><span class="kw">all</span>(cols[[idx]] <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;&amp;</span><span class="st">                           </span><span class="co"># Check 2</span></span>
+<span id="cb653-8"><a href="solution.html#cb653-8"></a><span class="st">       </span><span class="kw">all</span>(rows[[idx]] <span class="op">&lt;=</span><span class="st"> </span><span class="kw">nrow</span>(mat)) <span class="op">&amp;&amp;</span><span class="st">                  </span><span class="co"># Check 3</span></span>
+<span id="cb653-9"><a href="solution.html#cb653-9"></a><span class="st">       </span><span class="kw">all</span>(cols[[idx]] <span class="op">&lt;=</span><span class="st"> </span><span class="kw">ncol</span>(mat)) <span class="op">&amp;&amp;</span><span class="st">                  </span><span class="co"># Check 4</span></span>
+<span id="cb653-10"><a href="solution.html#cb653-10"></a><span class="st">       </span><span class="kw">identical</span>(mat[rows[[idx]], cols[[idx]]],word)) {  <span class="co"># Check 5</span></span>
+<span id="cb653-11"><a href="solution.html#cb653-11"></a>    </span>
+<span id="cb653-12"><a href="solution.html#cb653-12"></a>    <span class="co"># Overwrite the submatrix with fresh sampled letters</span></span>
+<span id="cb653-13"><a href="solution.html#cb653-13"></a>    mat[rows[[idx]],cols[[idx]]] &lt;-<span class="st"> </span><span class="kw">sample</span>(word,</span>
+<span id="cb653-14"><a href="solution.html#cb653-14"></a>                                       <span class="dt">replace=</span>T,</span>
+<span id="cb653-15"><a href="solution.html#cb653-15"></a>                                       <span class="dt">size=</span><span class="kw">length</span>(word))</span>
+<span id="cb653-16"><a href="solution.html#cb653-16"></a>    </span>
+<span id="cb653-17"><a href="solution.html#cb653-17"></a>    <span class="co"># After replacing we have to check the whole matrix again,</span></span>
+<span id="cb653-18"><a href="solution.html#cb653-18"></a>    <span class="co"># there we make sure to reenter the while loop!</span></span>
+<span id="cb653-19"><a href="solution.html#cb653-19"></a>    check &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb653-20"><a href="solution.html#cb653-20"></a>    </span>
+<span id="cb653-21"><a href="solution.html#cb653-21"></a>    <span class="co"># Feature to count how many occurrences have been replaced</span></span>
+<span id="cb653-22"><a href="solution.html#cb653-22"></a>    wordcounter &lt;-<span class="st"> </span>wordcounter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb653-23"><a href="solution.html#cb653-23"></a>    </span>
+<span id="cb653-24"><a href="solution.html#cb653-24"></a>  } <span class="co">#End if</span></span>
+<span id="cb653-25"><a href="solution.html#cb653-25"></a>} <span class="co">#End for</span></span></code></pre></div>
 <p>When the <code>while</code>-loop has terminated we are left with a clean matrix that surely does not contain our word in the checked dimensions. If you want to be really evil you can printout the puzzle, give it to some friends and let them search for the word. If you only want to create a hard puzzle you can choose a random location to overwrite the letters there with the word.</p>
 <p>All that’s left to do is wrapping the existing code in a function with the requested name <code>evilpuzzle()</code>. If you want to improve the routine a little bit and make it more flexible you can implement some switches using <code>if-else</code>-clauses to control if the puzzle should be evil or super evil, meaning containing the search word or not and after placing the word within <code>mat</code> crosscheck if that only leads to a single occurrence and cannot be assembled into multiple hits when trying to solve the puzzle. If that is not enough you can also implement checking for diagonal occurrences of the word. The function corresponding to the exercise after assembling the discussed bits may look like this:</p>
-<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="solution.html#cb619-1"></a>evilpuzzle &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">word =</span> <span class="kw">c</span>(<span class="st">&quot;T&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;S&quot;</span>,<span class="st">&quot;T&quot;</span>),</span>
-<span id="cb619-2"><a href="solution.html#cb619-2"></a>                       <span class="dt">cols =</span> <span class="dv">15</span>,</span>
-<span id="cb619-3"><a href="solution.html#cb619-3"></a>                       <span class="dt">rows =</span> <span class="dv">10</span>,</span>
-<span id="cb619-4"><a href="solution.html#cb619-4"></a>                       <span class="dt">inclword=</span><span class="ot">TRUE</span>) {</span>
-<span id="cb619-5"><a href="solution.html#cb619-5"></a></span>
-<span id="cb619-6"><a href="solution.html#cb619-6"></a><span class="co"># Check if provided word is longer than 3 characters</span></span>
-<span id="cb619-7"><a href="solution.html#cb619-7"></a><span class="cf">if</span> ( <span class="kw">sum</span>(<span class="kw">nchar</span>(word)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> ) {</span>
-<span id="cb619-8"><a href="solution.html#cb619-8"></a>  <span class="kw">stop</span>(<span class="st">&quot;The provided word has to be longer than 3 characters!&quot;</span>)</span>
-<span id="cb619-9"><a href="solution.html#cb619-9"></a>}</span>
-<span id="cb619-10"><a href="solution.html#cb619-10"></a></span>
-<span id="cb619-11"><a href="solution.html#cb619-11"></a><span class="co"># Initialize</span></span>
-<span id="cb619-12"><a href="solution.html#cb619-12"></a>wordcounter &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb619-13"><a href="solution.html#cb619-13"></a></span>
-<span id="cb619-14"><a href="solution.html#cb619-14"></a><span class="co"># Generate word matrix vectorized</span></span>
-<span id="cb619-15"><a href="solution.html#cb619-15"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(word,<span class="dt">replace=</span>T,<span class="dt">size=</span>rows<span class="op">*</span>cols),</span>
-<span id="cb619-16"><a href="solution.html#cb619-16"></a>              <span class="dt">nrow =</span> rows,</span>
-<span id="cb619-17"><a href="solution.html#cb619-17"></a>              <span class="dt">ncol =</span> cols)</span>
-<span id="cb619-18"><a href="solution.html#cb619-18"></a></span>
-<span id="cb619-19"><a href="solution.html#cb619-19"></a>check &lt;-<span class="st"> </span><span class="ot">TRUE</span>    <span class="co"># Make sure the while loop is entered</span></span>
-<span id="cb619-20"><a href="solution.html#cb619-20"></a></span>
-<span id="cb619-21"><a href="solution.html#cb619-21"></a><span class="cf">while</span> ( check <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span> ){</span>
-<span id="cb619-22"><a href="solution.html#cb619-22"></a>  </span>
-<span id="cb619-23"><a href="solution.html#cb619-23"></a>  check &lt;-<span class="st"> </span><span class="ot">FALSE</span> <span class="co"># Assuming one iteration is enough we can leave the</span></span>
-<span id="cb619-24"><a href="solution.html#cb619-24"></a>                 <span class="co"># loop after the current iteration. </span></span>
-<span id="cb619-25"><a href="solution.html#cb619-25"></a>  </span>
-<span id="cb619-26"><a href="solution.html#cb619-26"></a>  <span class="cf">for</span> ( row <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mat)){    <span class="co"># Loop running through rows</span></span>
-<span id="cb619-27"><a href="solution.html#cb619-27"></a>    <span class="cf">for</span> (col <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(mat)){   <span class="co"># Loop running through columns</span></span>
-<span id="cb619-28"><a href="solution.html#cb619-28"></a>      </span>
-<span id="cb619-29"><a href="solution.html#cb619-29"></a>      rows &lt;-<span class="st"> </span><span class="kw">list</span>(row,                      <span class="co"># List for row indices</span></span>
-<span id="cb619-30"><a href="solution.html#cb619-30"></a>                   row,</span>
-<span id="cb619-31"><a href="solution.html#cb619-31"></a>                   row<span class="op">:</span>(row<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>),</span>
-<span id="cb619-32"><a href="solution.html#cb619-32"></a>                   (row<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>row)</span>
-<span id="cb619-33"><a href="solution.html#cb619-33"></a>      </span>
-<span id="cb619-34"><a href="solution.html#cb619-34"></a>      </span>
-<span id="cb619-35"><a href="solution.html#cb619-35"></a>      cols &lt;-<span class="st"> </span><span class="kw">list</span>(col<span class="op">:</span>(col<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>), <span class="co"># List for column indices</span></span>
-<span id="cb619-36"><a href="solution.html#cb619-36"></a>                   (col<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>col,</span>
-<span id="cb619-37"><a href="solution.html#cb619-37"></a>                   col,</span>
-<span id="cb619-38"><a href="solution.html#cb619-38"></a>                   col)</span>
-<span id="cb619-39"><a href="solution.html#cb619-39"></a>      </span>
-<span id="cb619-40"><a href="solution.html#cb619-40"></a><span class="co"># &lt;-- Indent removed for better overview outside of IDE!</span></span>
-<span id="cb619-41"><a href="solution.html#cb619-41"></a>            </span>
-<span id="cb619-42"><a href="solution.html#cb619-42"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(rows)){ <span class="co"># Could have used length(cols) instead</span></span>
-<span id="cb619-43"><a href="solution.html#cb619-43"></a>  </span>
-<span id="cb619-44"><a href="solution.html#cb619-44"></a>  </span>
-<span id="cb619-45"><a href="solution.html#cb619-45"></a>  <span class="co"># If all rows and cols are in matrix and not out of bound and</span></span>
-<span id="cb619-46"><a href="solution.html#cb619-46"></a>  <span class="co"># the range equals the word resample this section of the matrix.</span></span>
-<span id="cb619-47"><a href="solution.html#cb619-47"></a>  </span>
-<span id="cb619-48"><a href="solution.html#cb619-48"></a>  <span class="cf">if</span> ( <span class="kw">all</span>(rows[[idx]] <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;&amp;</span><span class="st">                           </span><span class="co"># Check 1</span></span>
-<span id="cb619-49"><a href="solution.html#cb619-49"></a><span class="st">       </span><span class="kw">all</span>(cols[[idx]] <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;&amp;</span><span class="st">                           </span><span class="co"># Check 2</span></span>
-<span id="cb619-50"><a href="solution.html#cb619-50"></a><span class="st">       </span><span class="kw">all</span>(rows[[idx]] <span class="op">&lt;=</span><span class="st"> </span><span class="kw">nrow</span>(mat)) <span class="op">&amp;&amp;</span><span class="st">                  </span><span class="co"># Check 3</span></span>
-<span id="cb619-51"><a href="solution.html#cb619-51"></a><span class="st">       </span><span class="kw">all</span>(cols[[idx]] <span class="op">&lt;=</span><span class="st"> </span><span class="kw">ncol</span>(mat)) <span class="op">&amp;&amp;</span><span class="st">                  </span><span class="co"># Check 4</span></span>
-<span id="cb619-52"><a href="solution.html#cb619-52"></a><span class="st">       </span><span class="kw">identical</span>(mat[rows[[idx]],cols[[idx]]],word)) {   <span class="co"># Check 5</span></span>
-<span id="cb619-53"><a href="solution.html#cb619-53"></a>    </span>
-<span id="cb619-54"><a href="solution.html#cb619-54"></a>    <span class="co"># Overwrite the submatrix with fresh sampled letters</span></span>
-<span id="cb619-55"><a href="solution.html#cb619-55"></a>    mat[rows[[idx]],cols[[idx]]] &lt;-<span class="st"> </span><span class="kw">sample</span>(word,</span>
-<span id="cb619-56"><a href="solution.html#cb619-56"></a>                                       <span class="dt">replace=</span>T,</span>
-<span id="cb619-57"><a href="solution.html#cb619-57"></a>                                       <span class="dt">size=</span><span class="kw">length</span>(word))</span>
-<span id="cb619-58"><a href="solution.html#cb619-58"></a>    </span>
-<span id="cb619-59"><a href="solution.html#cb619-59"></a>    <span class="co"># After replacing we have to check the whole matrix again,</span></span>
-<span id="cb619-60"><a href="solution.html#cb619-60"></a>    <span class="co"># therefore we make sure to reenter the while loop!</span></span>
-<span id="cb619-61"><a href="solution.html#cb619-61"></a>    check &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb619-62"><a href="solution.html#cb619-62"></a>    </span>
-<span id="cb619-63"><a href="solution.html#cb619-63"></a>    <span class="co"># Feature to count how many occurrences have been replaced</span></span>
-<span id="cb619-64"><a href="solution.html#cb619-64"></a>    wordcounter &lt;-<span class="st"> </span>wordcounter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb619-65"><a href="solution.html#cb619-65"></a>    </span>
-<span id="cb619-66"><a href="solution.html#cb619-66"></a>  } <span class="co">#End if</span></span>
-<span id="cb619-67"><a href="solution.html#cb619-67"></a>} <span class="co">#End for</span></span>
-<span id="cb619-68"><a href="solution.html#cb619-68"></a></span>
-<span id="cb619-69"><a href="solution.html#cb619-69"></a><span class="co"># &lt;-- Indent removed for better overview outside of IDE!    </span></span>
-<span id="cb619-70"><a href="solution.html#cb619-70"></a></span>
-<span id="cb619-71"><a href="solution.html#cb619-71"></a>    } <span class="co"># End for (columns)</span></span>
-<span id="cb619-72"><a href="solution.html#cb619-72"></a>  } <span class="co">#End for (rows)</span></span>
-<span id="cb619-73"><a href="solution.html#cb619-73"></a>} <span class="co">#End while</span></span>
-<span id="cb619-74"><a href="solution.html#cb619-74"></a></span>
-<span id="cb619-75"><a href="solution.html#cb619-75"></a><span class="co"># Message to the user how often the word has been replaced</span></span>
-<span id="cb619-76"><a href="solution.html#cb619-76"></a><span class="kw">cat</span>(<span class="st">&quot;The word&quot;</span>, <span class="kw">paste</span>(word,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>, <span class="dt">collapse=</span><span class="st">&quot;&quot;</span>), </span>
-<span id="cb619-77"><a href="solution.html#cb619-77"></a>    <span class="st">&quot;was replaced&quot;</span>, wordcounter, <span class="st">&quot;times! </span><span class="ch">\n</span><span class="st">&quot;</span> )</span>
-<span id="cb619-78"><a href="solution.html#cb619-78"></a></span>
-<span id="cb619-79"><a href="solution.html#cb619-79"></a><span class="co"># Add word to clean matrix if desired (only horizontally)</span></span>
-<span id="cb619-80"><a href="solution.html#cb619-80"></a><span class="cf">if</span> ( inclword <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) {</span>
-<span id="cb619-81"><a href="solution.html#cb619-81"></a>  row &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mat),<span class="dt">size=</span><span class="dv">1</span>)</span>
-<span id="cb619-82"><a href="solution.html#cb619-82"></a>  col &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>(<span class="kw">ncol</span>(mat)<span class="op">-</span><span class="kw">length</span>(word)),<span class="dt">size=</span><span class="dv">1</span>)</span>
-<span id="cb619-83"><a href="solution.html#cb619-83"></a>  mat[row,col<span class="op">:</span>(col<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>)] &lt;-<span class="st"> </span>word</span>
-<span id="cb619-84"><a href="solution.html#cb619-84"></a>}</span>
-<span id="cb619-85"><a href="solution.html#cb619-85"></a></span>
-<span id="cb619-86"><a href="solution.html#cb619-86"></a><span class="co"># Return the finished matrix to the user</span></span>
-<span id="cb619-87"><a href="solution.html#cb619-87"></a><span class="kw">return</span>(mat)</span>
-<span id="cb619-88"><a href="solution.html#cb619-88"></a></span>
-<span id="cb619-89"><a href="solution.html#cb619-89"></a>} <span class="co">#End function</span></span></code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="solution.html#cb654-1"></a>evilpuzzle &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">word =</span> <span class="kw">c</span>(<span class="st">&quot;T&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;S&quot;</span>,<span class="st">&quot;T&quot;</span>),</span>
+<span id="cb654-2"><a href="solution.html#cb654-2"></a>                       <span class="dt">cols =</span> <span class="dv">15</span>,</span>
+<span id="cb654-3"><a href="solution.html#cb654-3"></a>                       <span class="dt">rows =</span> <span class="dv">10</span>,</span>
+<span id="cb654-4"><a href="solution.html#cb654-4"></a>                       <span class="dt">inclword=</span><span class="ot">TRUE</span>) {</span>
+<span id="cb654-5"><a href="solution.html#cb654-5"></a></span>
+<span id="cb654-6"><a href="solution.html#cb654-6"></a><span class="co"># Check if provided word is longer than 3 characters</span></span>
+<span id="cb654-7"><a href="solution.html#cb654-7"></a><span class="cf">if</span> ( <span class="kw">sum</span>(<span class="kw">nchar</span>(word)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> ) {</span>
+<span id="cb654-8"><a href="solution.html#cb654-8"></a>  <span class="kw">stop</span>(<span class="st">&quot;The provided word has to be longer than 3 characters!&quot;</span>)</span>
+<span id="cb654-9"><a href="solution.html#cb654-9"></a>}</span>
+<span id="cb654-10"><a href="solution.html#cb654-10"></a></span>
+<span id="cb654-11"><a href="solution.html#cb654-11"></a><span class="co"># Initialize</span></span>
+<span id="cb654-12"><a href="solution.html#cb654-12"></a>wordcounter &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb654-13"><a href="solution.html#cb654-13"></a></span>
+<span id="cb654-14"><a href="solution.html#cb654-14"></a><span class="co"># Generate word matrix vectorized</span></span>
+<span id="cb654-15"><a href="solution.html#cb654-15"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(word,<span class="dt">replace=</span>T,<span class="dt">size=</span>rows<span class="op">*</span>cols),</span>
+<span id="cb654-16"><a href="solution.html#cb654-16"></a>              <span class="dt">nrow =</span> rows,</span>
+<span id="cb654-17"><a href="solution.html#cb654-17"></a>              <span class="dt">ncol =</span> cols)</span>
+<span id="cb654-18"><a href="solution.html#cb654-18"></a></span>
+<span id="cb654-19"><a href="solution.html#cb654-19"></a>check &lt;-<span class="st"> </span><span class="ot">TRUE</span>    <span class="co"># Make sure the while loop is entered</span></span>
+<span id="cb654-20"><a href="solution.html#cb654-20"></a></span>
+<span id="cb654-21"><a href="solution.html#cb654-21"></a><span class="cf">while</span> ( check <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span> ){</span>
+<span id="cb654-22"><a href="solution.html#cb654-22"></a>  </span>
+<span id="cb654-23"><a href="solution.html#cb654-23"></a>  check &lt;-<span class="st"> </span><span class="ot">FALSE</span> <span class="co"># Assuming one iteration is enough we can leave the</span></span>
+<span id="cb654-24"><a href="solution.html#cb654-24"></a>                 <span class="co"># loop after the current iteration. </span></span>
+<span id="cb654-25"><a href="solution.html#cb654-25"></a>  </span>
+<span id="cb654-26"><a href="solution.html#cb654-26"></a>  <span class="cf">for</span> ( row <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mat)){    <span class="co"># Loop running through rows</span></span>
+<span id="cb654-27"><a href="solution.html#cb654-27"></a>    <span class="cf">for</span> (col <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(mat)){   <span class="co"># Loop running through columns</span></span>
+<span id="cb654-28"><a href="solution.html#cb654-28"></a>      </span>
+<span id="cb654-29"><a href="solution.html#cb654-29"></a>      rows &lt;-<span class="st"> </span><span class="kw">list</span>(row,                      <span class="co"># List for row indices</span></span>
+<span id="cb654-30"><a href="solution.html#cb654-30"></a>                   row,</span>
+<span id="cb654-31"><a href="solution.html#cb654-31"></a>                   row<span class="op">:</span>(row<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>),</span>
+<span id="cb654-32"><a href="solution.html#cb654-32"></a>                   (row<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>row)</span>
+<span id="cb654-33"><a href="solution.html#cb654-33"></a>      </span>
+<span id="cb654-34"><a href="solution.html#cb654-34"></a>      </span>
+<span id="cb654-35"><a href="solution.html#cb654-35"></a>      cols &lt;-<span class="st"> </span><span class="kw">list</span>(col<span class="op">:</span>(col<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>), <span class="co"># List for column indices</span></span>
+<span id="cb654-36"><a href="solution.html#cb654-36"></a>                   (col<span class="op">-</span><span class="kw">length</span>(word)<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>col,</span>
+<span id="cb654-37"><a href="solution.html#cb654-37"></a>                   col,</span>
+<span id="cb654-38"><a href="solution.html#cb654-38"></a>                   col)</span>
+<span id="cb654-39"><a href="solution.html#cb654-39"></a>      </span>
+<span id="cb654-40"><a href="solution.html#cb654-40"></a><span class="co"># &lt;-- Indent removed for better overview outside of IDE!</span></span>
+<span id="cb654-41"><a href="solution.html#cb654-41"></a>            </span>
+<span id="cb654-42"><a href="solution.html#cb654-42"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(rows)){ <span class="co"># Could have used length(cols) instead</span></span>
+<span id="cb654-43"><a href="solution.html#cb654-43"></a>  </span>
+<span id="cb654-44"><a href="solution.html#cb654-44"></a>  </span>
+<span id="cb654-45"><a href="solution.html#cb654-45"></a>  <span class="co"># If all rows and cols are in matrix and not out of bound and</span></span>
+<span id="cb654-46"><a href="solution.html#cb654-46"></a>  <span class="co"># the range equals the word resample this section of the matrix.</span></span>
+<span id="cb654-47"><a href="solution.html#cb654-47"></a>  </span>
+<span id="cb654-48"><a href="solution.html#cb654-48"></a>  <span class="cf">if</span> ( <span class="kw">all</span>(rows[[idx]] <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;&amp;</span><span class="st">                           </span><span class="co"># Check 1</span></span>
+<span id="cb654-49"><a href="solution.html#cb654-49"></a><span class="st">       </span><span class="kw">all</span>(cols[[idx]] <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;&amp;</span><span class="st">                           </span><span class="co"># Check 2</span></span>
+<span id="cb654-50"><a href="solution.html#cb654-50"></a><span class="st">       </span><span class="kw">all</span>(rows[[idx]] <span class="op">&lt;=</span><span class="st"> </span><span class="kw">nrow</span>(mat)) <span class="op">&amp;&amp;</span><span class="st">                  </span><span class="co"># Check 3</span></span>
+<span id="cb654-51"><a href="solution.html#cb654-51"></a><span class="st">       </span><span class="kw">all</span>(cols[[idx]] <span class="op">&lt;=</span><span class="st"> </span><span class="kw">ncol</span>(mat)) <span class="op">&amp;&amp;</span><span class="st">                  </span><span class="co"># Check 4</span></span>
+<span id="cb654-52"><a href="solution.html#cb654-52"></a><span class="st">       </span><span class="kw">identical</span>(mat[rows[[idx]],cols[[idx]]],word)) {   <span class="co"># Check 5</span></span>
+<span id="cb654-53"><a href="solution.html#cb654-53"></a>    </span>
+<span id="cb654-54"><a href="solution.html#cb654-54"></a>    <span class="co"># Overwrite the submatrix with fresh sampled letters</span></span>
+<span id="cb654-55"><a href="solution.html#cb654-55"></a>    mat[rows[[idx]],cols[[idx]]] &lt;-<span class="st"> </span><span class="kw">sample</span>(word,</span>
+<span id="cb654-56"><a href="solution.html#cb654-56"></a>                                       <span class="dt">replace=</span>T,</span>
+<span id="cb654-57"><a href="solution.html#cb654-57"></a>                                       <span class="dt">size=</span><span class="kw">length</span>(word))</span>
+<span id="cb654-58"><a href="solution.html#cb654-58"></a>    </span>
+<span id="cb654-59"><a href="solution.html#cb654-59"></a>    <span class="co"># After replacing we have to check the whole matrix again,</span></span>
+<span id="cb654-60"><a href="solution.html#cb654-60"></a>    <span class="co"># therefore we make sure to reenter the while loop!</span></span>
+<span id="cb654-61"><a href="solution.html#cb654-61"></a>    check &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb654-62"><a href="solution.html#cb654-62"></a>    </span>
+<span id="cb654-63"><a href="solution.html#cb654-63"></a>    <span class="co"># Feature to count how many occurrences have been replaced</span></span>
+<span id="cb654-64"><a href="solution.html#cb654-64"></a>    wordcounter &lt;-<span class="st"> </span>wordcounter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb654-65"><a href="solution.html#cb654-65"></a>    </span>
+<span id="cb654-66"><a href="solution.html#cb654-66"></a>  } <span class="co">#End if</span></span>
+<span id="cb654-67"><a href="solution.html#cb654-67"></a>} <span class="co">#End for</span></span>
+<span id="cb654-68"><a href="solution.html#cb654-68"></a></span>
+<span id="cb654-69"><a href="solution.html#cb654-69"></a><span class="co"># &lt;-- Indent removed for better overview outside of IDE!    </span></span>
+<span id="cb654-70"><a href="solution.html#cb654-70"></a></span>
+<span id="cb654-71"><a href="solution.html#cb654-71"></a>    } <span class="co"># End for (columns)</span></span>
+<span id="cb654-72"><a href="solution.html#cb654-72"></a>  } <span class="co">#End for (rows)</span></span>
+<span id="cb654-73"><a href="solution.html#cb654-73"></a>} <span class="co">#End while</span></span>
+<span id="cb654-74"><a href="solution.html#cb654-74"></a></span>
+<span id="cb654-75"><a href="solution.html#cb654-75"></a><span class="co"># Message to the user how often the word has been replaced</span></span>
+<span id="cb654-76"><a href="solution.html#cb654-76"></a><span class="kw">cat</span>(<span class="st">&quot;The word&quot;</span>, <span class="kw">paste</span>(word,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>, <span class="dt">collapse=</span><span class="st">&quot;&quot;</span>), </span>
+<span id="cb654-77"><a href="solution.html#cb654-77"></a>    <span class="st">&quot;was replaced&quot;</span>, wordcounter, <span class="st">&quot;times! </span><span class="ch">\n</span><span class="st">&quot;</span> )</span>
+<span id="cb654-78"><a href="solution.html#cb654-78"></a></span>
+<span id="cb654-79"><a href="solution.html#cb654-79"></a><span class="co"># Add word to clean matrix if desired (only horizontally)</span></span>
+<span id="cb654-80"><a href="solution.html#cb654-80"></a><span class="cf">if</span> ( inclword <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) {</span>
+<span id="cb654-81"><a href="solution.html#cb654-81"></a>  row &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mat),<span class="dt">size=</span><span class="dv">1</span>)</span>
+<span id="cb654-82"><a href="solution.html#cb654-82"></a>  col &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span>(<span class="kw">ncol</span>(mat)<span class="op">-</span><span class="kw">length</span>(word)),<span class="dt">size=</span><span class="dv">1</span>)</span>
+<span id="cb654-83"><a href="solution.html#cb654-83"></a>  mat[row,col<span class="op">:</span>(col<span class="op">+</span><span class="kw">length</span>(word)<span class="op">-</span><span class="dv">1</span>)] &lt;-<span class="st"> </span>word</span>
+<span id="cb654-84"><a href="solution.html#cb654-84"></a>}</span>
+<span id="cb654-85"><a href="solution.html#cb654-85"></a></span>
+<span id="cb654-86"><a href="solution.html#cb654-86"></a><span class="co"># Return the finished matrix to the user</span></span>
+<span id="cb654-87"><a href="solution.html#cb654-87"></a><span class="kw">return</span>(mat)</span>
+<span id="cb654-88"><a href="solution.html#cb654-88"></a></span>
+<span id="cb654-89"><a href="solution.html#cb654-89"></a>} <span class="co">#End function</span></span></code></pre></div>
 <p>The function <code>evilpuzzle()</code> now suits the desired needs and is a promising candidate to fulfill the needs described in the exercise. However, there is much room for improvement as the program only supports inserting the word horizontally and as it does not support inserting it differently the user is not able to select in which way it should be represented in the matrix. As stated before the chosen approach is not very efficient as the word is compared with the submatrix for all four orientations and for every element in the matrix. Further following improvements are left to the user:</p>
 <ul>
 <li>The performed comparison of the submatrices with the word is not necessary for every element of the matrix. If the element we are looking at in a certain iteration does not equal the first letter of <code>word</code> there is no need to compare the whole submatrices. Therefore we can implement such a simple test to improve the efficiency of our program.</li>

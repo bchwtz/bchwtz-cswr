@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7.2 Plots with ggplot2 (Wickham 2016) | Computational Statistics</title>
+  <meta name="description" content="7.2 Plots with ggplot2 (Wickham 2016) | Computational Statistics with R Course Notes" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7.2 Plots with ggplot2 (Wickham 2016) | Computational Statistics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="7.2 Plots with ggplot2 (Wickham 2016) | Computational Statistics with R Course Notes" />
+  <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7.2 Plots with ggplot2 (Wickham 2016) | Computational Statistics" />
+  
+  <meta name="twitter:description" content="7.2 Plots with ggplot2 (Wickham 2016) | Computational Statistics with R Course Notes" />
+  
+
+<meta name="author" content="Benjamin Buchwitz" />
+
+
+<meta name="date" content="2022-10-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="plotsbaseR.html"/>
+<link rel="next" href="interactive-plots-with-plotly-plotly.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><b>Computational Statistics</b></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Hello World!</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i>Installation</a><ul>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
+<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> The Basics</a><ul>
+<li class="chapter" data-level="1.1" data-path="r-and-the-r-project.html"><a href="r-and-the-r-project.html"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
+<li class="chapter" data-level="1.2" data-path="r-system-and-rstudio.html"><a href="r-system-and-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="first-steps-r-as-calculator.html"><a href="first-steps-r-as-calculator.html"><i class="fa fa-check"></i><b>1.3</b> First Steps: R as Calculator</a></li>
+<li class="chapter" data-level="1.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html"><i class="fa fa-check"></i><b>1.4</b> Objects and Data Structures</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-vectors"><i class="fa fa-check"></i><b>1.4.1</b> Data Structure: Vectors</a></li>
+<li class="chapter" data-level="1.4.2" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-matrices"><i class="fa fa-check"></i><b>1.4.2</b> Data Structure: Matrices</a></li>
+<li class="chapter" data-level="1.4.3" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-strings"><i class="fa fa-check"></i><b>1.4.3</b> Data Structure: Strings</a></li>
+<li class="chapter" data-level="1.4.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-lists-and-data-frames"><i class="fa fa-check"></i><b>1.4.4</b> Data Structure: Lists and Data Frames</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>1.5</b> Functions</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="functions.html"><a href="functions.html#using-functions"><i class="fa fa-check"></i><b>1.5.1</b> Using Functions</a></li>
+<li class="chapter" data-level="1.5.2" data-path="functions.html"><a href="functions.html#writing-functions"><i class="fa fa-check"></i><b>1.5.2</b> Writing Functions</a></li>
+<li class="chapter" data-level="1.5.3" data-path="functions.html"><a href="functions.html#solving-problems"><i class="fa fa-check"></i><b>1.5.3</b> Solving Problems</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>1.6</b> Packages</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="packages.html"><a href="packages.html#packages-with-data"><i class="fa fa-check"></i><b>1.6.1</b> Packages with Data</a></li>
+<li class="chapter" data-level="1.6.2" data-path="packages.html"><a href="packages.html#packages-with-functions"><i class="fa fa-check"></i><b>1.6.2</b> Packages with Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="getting-help.html"><a href="getting-help.html"><i class="fa fa-check"></i><b>1.7</b> Getting Help</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="getting-help.html"><a href="getting-help.html#integrated-help-system"><i class="fa fa-check"></i><b>1.7.1</b> Integrated Help System</a></li>
+<li class="chapter" data-level="1.7.2" data-path="getting-help.html"><a href="getting-help.html#help-on-the-internet"><i class="fa fa-check"></i><b>1.7.2</b> Help on the Internet</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-3"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-4"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-5"><i class="fa fa-check"></i>EX 5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2</b> Data Types</a><ul>
+<li class="chapter" data-level="2.1" data-path="fixed-and-floating-point-number-representation.html"><a href="fixed-and-floating-point-number-representation.html"><i class="fa fa-check"></i><b>2.1</b> Fixed and Floating Point Number Representation</a></li>
+<li class="chapter" data-level="2.2" data-path="numeric.html"><a href="numeric.html"><i class="fa fa-check"></i><b>2.2</b> Numeric</a></li>
+<li class="chapter" data-level="2.3" data-path="complex.html"><a href="complex.html"><i class="fa fa-check"></i><b>2.3</b> Complex</a></li>
+<li class="chapter" data-level="2.4" data-path="logical.html"><a href="logical.html"><i class="fa fa-check"></i><b>2.4</b> Logical</a></li>
+<li class="chapter" data-level="2.5" data-path="character.html"><a href="character.html"><i class="fa fa-check"></i><b>2.5</b> Character</a></li>
+<li class="chapter" data-level="2.6" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>2.6</b> Factors</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="factors.html"><a href="factors.html#unordered-factors"><i class="fa fa-check"></i><b>2.6.1</b> Unordered Factors</a></li>
+<li class="chapter" data-level="2.6.2" data-path="factors.html"><a href="factors.html#ordered-factors"><i class="fa fa-check"></i><b>2.6.2</b> Ordered Factors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="missing-and-raw-data.html"><a href="missing-and-raw-data.html"><i class="fa fa-check"></i><b>2.7</b> Missing and Raw Data</a></li>
+<li class="chapter" data-level="2.8" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html"><i class="fa fa-check"></i><b>2.8</b> Coercion, Attributes, and Class</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#coercion"><i class="fa fa-check"></i><b>2.8.1</b> Coercion</a></li>
+<li class="chapter" data-level="2.8.2" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#attributes-and-names"><i class="fa fa-check"></i><b>2.8.2</b> Attributes and Names</a></li>
+<li class="chapter" data-level="2.8.3" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#class"><i class="fa fa-check"></i><b>2.8.3</b> Class</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#from-april-5-2022"><i class="fa fa-check"></i>From April 5, 2022</a></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-1-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-2-1"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-3-1"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-4-1"><i class="fa fa-check"></i>EX 4</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation</a><ul>
+<li class="chapter" data-level="3.1" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="matrices-and-arrays.html"><a href="matrices-and-arrays.html"><i class="fa fa-check"></i><b>3.2</b> Matrices and Arrays</a></li>
+<li class="chapter" data-level="3.3" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a><ul>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#merging-rows-and-columns"><i class="fa fa-check"></i>Merging rows and columns</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#apply-functions-to-rows-and-columns"><i class="fa fa-check"></i>Apply functions to rows and columns</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#sweep-out-statistics-in-a-matrix"><i class="fa fa-check"></i>Sweep out Statistics in a Matrix</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#concatenate-all-values-from-a-dataframe"><i class="fa fa-check"></i>Concatenate all values from a dataframe</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#splitting-dataframes-while-applying-functions"><i class="fa fa-check"></i>Splitting dataframes while applying functions</a></li>
+<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#transformations-without-recreating-dataframes"><i class="fa fa-check"></i>Transformations without recreating dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>3.5</b> Strings</a></li>
+<li class="chapter" data-level="3.6" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>3.6</b> Dates and Times</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#from-april-12-2022"><i class="fa fa-check"></i>From April 12, 2022</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-1-2"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-2-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-3-2"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-4-2"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-5-1"><i class="fa fa-check"></i>EX 5</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-6"><i class="fa fa-check"></i>EX 6</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-7"><i class="fa fa-check"></i>EX 7</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>4</b> Code Structure</a><ul>
+<li class="chapter" data-level="4.1" data-path="conditional-expressions.html"><a href="conditional-expressions.html"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a><ul>
+<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#if-and-else"><i class="fa fa-check"></i>If and Else</a></li>
+<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#switch"><i class="fa fa-check"></i>Switch</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>4.2</b> Loops</a><ul>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#for-loop"><i class="fa fa-check"></i>For-Loop</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#while-loop"><i class="fa fa-check"></i>While-Loop</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#repeat"><i class="fa fa-check"></i>Repeat</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#break-and-next"><i class="fa fa-check"></i>Break and Next</a></li>
+<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#special-looping-over-non-numerical-data"><i class="fa fa-check"></i>Special: Looping over non-numerical data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html#from-april-26-2022"><i class="fa fa-check"></i>From April 26, 2022</a></li>
+<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html#bottles-of-beer"><i class="fa fa-check"></i>99 Bottles of Beer</a></li>
+<li class="chapter" data-level="4.2.1" data-path="exercises-3.html"><a href="exercises-3.html#multiplication-table"><i class="fa fa-check"></i><b>4.2.1</b> Multiplication Table</a></li>
+<li class="chapter" data-level="4.2.2" data-path="exercises-3.html"><a href="exercises-3.html#diagonal-matrix"><i class="fa fa-check"></i><b>4.2.2</b> Diagonal Matrix</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="software-development.html"><a href="software-development.html"><i class="fa fa-check"></i><b>5</b> Software Development</a><ul>
+<li class="chapter" data-level="5.1" data-path="planning.html"><a href="planning.html"><i class="fa fa-check"></i><b>5.1</b> Planning</a></li>
+<li class="chapter" data-level="5.2" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>5.2</b> Coding</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="coding.html"><a href="coding.html#standard-program-structure"><i class="fa fa-check"></i><b>5.2.1</b> Standard Program Structure</a></li>
+<li class="chapter" data-level="5.2.2" data-path="coding.html"><a href="coding.html#standard-function-structure"><i class="fa fa-check"></i><b>5.2.2</b> Standard Function Structure</a></li>
+<li class="chapter" data-level="5.2.3" data-path="coding.html"><a href="coding.html#naming-convention"><i class="fa fa-check"></i><b>5.2.3</b> Naming Convention</a></li>
+<li class="chapter" data-level="5.2.4" data-path="coding.html"><a href="coding.html#rules-best-practices"><i class="fa fa-check"></i><b>5.2.4</b> Rules &amp; Best Practices</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="documenting.html"><a href="documenting.html"><i class="fa fa-check"></i><b>5.3</b> Documenting</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="documenting.html"><a href="documenting.html#code-documentation-short-form-documentation"><i class="fa fa-check"></i><b>5.3.1</b> Code Documentation (Short-form Documentation)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="documenting.html"><a href="documenting.html#user-documentation-long-form-documentation"><i class="fa fa-check"></i><b>5.3.2</b> User documentation (Long-form Documentation)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>5.4</b> Testing</a></li>
+<li class="chapter" data-level="5.5" data-path="maintaining.html"><a href="maintaining.html"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a></li>
+<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html#from-may-3-2022"><i class="fa fa-check"></i>From May 3, 2022</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectorization.html"><a href="vectorization.html"><i class="fa fa-check"></i><b>6</b> Vectorization</a><ul>
+<li class="chapter" data-level="6.1" data-path="apply-family.html"><a href="apply-family.html"><i class="fa fa-check"></i><b>6.1</b> *apply-Family</a><ul>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#apply"><i class="fa fa-check"></i>apply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#lapply"><i class="fa fa-check"></i>lapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#sapply"><i class="fa fa-check"></i>sapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#vapply"><i class="fa fa-check"></i>vapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#tapply"><i class="fa fa-check"></i>tapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#mapply"><i class="fa fa-check"></i>mapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#rapply"><i class="fa fa-check"></i>rapply</a></li>
+<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#eapply"><i class="fa fa-check"></i>eapply</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.2</b> Technical Background</a></li>
+<li class="chapter" data-level="6.3" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.3</b> Parallelization using vectorized functions</a></li>
+<li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html#from-may-10-2022"><i class="fa fa-check"></i>From May 10, 2022</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="applications---graphics.html"><a href="applications---graphics.html"><i class="fa fa-check"></i><b>7</b> Applications - Graphics</a><ul>
+<li class="chapter" data-level="7.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
+<li class="chapter" data-level="7.1.2" data-path="plotsbaseR.html"><a href="plotsbaseR.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.1.3" data-path="plotsbaseR.html"><a href="plotsbaseR.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="plotsggplot2.html"><a href="plotsggplot2.html#histograms-and-boxplots-1"><i class="fa fa-check"></i><b>7.2.1</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.2.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html#linear-regression"><i class="fa fa-check"></i><b>7.2.2</b> Linear regression</a></li>
+<li class="chapter" data-level="7.2.3" data-path="plotsggplot2.html"><a href="plotsggplot2.html#customizing-ggplots"><i class="fa fa-check"></i><b>7.2.3</b> Customizing ggplots</a></li>
+<li class="chapter" data-level="7.2.4" data-path="plotsggplot2.html"><a href="plotsggplot2.html#handling-2-variables-and-faceting"><i class="fa fa-check"></i><b>7.2.4</b> Handling &gt; 2 variables and faceting</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
+<li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
+<li class="chapter" data-level="8.2" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>8.2</b> Solution</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="blockchain.html"><a href="blockchain.html"><i class="fa fa-check"></i><b>9</b> Blockchain</a><ul>
+<li class="chapter" data-level="9.1" data-path="hash-functions.html"><a href="hash-functions.html"><i class="fa fa-check"></i><b>9.1</b> Hash Functions</a><ul>
+<li class="chapter" data-level="" data-path="hash-functions.html"><a href="hash-functions.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>9.2</b> Blocks</a></li>
+<li class="chapter" data-level="9.3" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html"><i class="fa fa-check"></i><b>9.3</b> Proof of Work (PoW)</a><ul>
+<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#simple-pow-example"><i class="fa fa-check"></i>Simple PoW Example</a></li>
+<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#combining-pow-and-hashing"><i class="fa fa-check"></i>Combining PoW and Hashing</a></li>
+<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chaining-blocks.html"><a href="chaining-blocks.html"><i class="fa fa-check"></i><b>9.4</b> Chaining Blocks</a></li>
+<li class="chapter" data-level="9.5" data-path="security.html"><a href="security.html"><i class="fa fa-check"></i><b>9.5</b> Security</a><ul>
+<li class="chapter" data-level="" data-path="security.html"><a href="security.html#manipulation-1"><i class="fa fa-check"></i>Manipulation 1</a></li>
+<li class="chapter" data-level="" data-path="security.html"><a href="security.html#manipulation-2"><i class="fa fa-check"></i>Manipulation 2</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="wrap-up.html"><a href="wrap-up.html"><i class="fa fa-check"></i><b>9.6</b> Wrap up</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="forecasting.html"><a href="forecasting.html"><i class="fa fa-check"></i><b>10</b> Forecasting</a><ul>
+<li class="chapter" data-level="10.1" data-path="time-series-data.html"><a href="time-series-data.html"><i class="fa fa-check"></i><b>10.1</b> Time Series Data</a></li>
+<li class="chapter" data-level="10.2" data-path="forecasting-process.html"><a href="forecasting-process.html"><i class="fa fa-check"></i><b>10.2</b> Forecasting Process</a></li>
+<li class="chapter" data-level="10.3" data-path="real-data.html"><a href="real-data.html"><i class="fa fa-check"></i><b>10.3</b> Real Data</a></li>
+<li class="chapter" data-level="10.4" data-path="judgemental-forecasting.html"><a href="judgemental-forecasting.html"><i class="fa fa-check"></i><b>10.4</b> Judgemental Forecasting</a></li>
+<li class="chapter" data-level="10.5" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html"><i class="fa fa-check"></i><b>10.5</b> Exponential Smoothing</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#implementing-hes"><i class="fa fa-check"></i><b>10.5.1</b> Implementing HES</a></li>
+<li class="chapter" data-level="10.5.2" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#finding-best-alpha-and-gamma-values"><i class="fa fa-check"></i><b>10.5.2</b> Finding best alpha and gamma values</a></li>
+<li class="chapter" data-level="10.5.3" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#generating-forecasts"><i class="fa fa-check"></i><b>10.5.3</b> Generating Forecasts</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="10.6" data-path="practical-application.html"><a href="practical-application.html"><i class="fa fa-check"></i><b>10.6</b> Practical Application</a></li>
+<li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>Accompanying Work</b></span></li>
+<li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
+<li class="chapter" data-level="" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i>Literature</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html"><i class="fa fa-check"></i>Programming Project</a><ul>
+<li class="chapter" data-level="" data-path="topic-1-web-scraping.html"><a href="topic-1-web-scraping.html"><i class="fa fa-check"></i>Topic 1: Web Scraping</a></li>
+<li class="chapter" data-level="" data-path="topic-2-forecasting.html"><a href="topic-2-forecasting.html"><i class="fa fa-check"></i>Topic 2: Forecasting</a></li>
+<li class="chapter" data-level="" data-path="topic-3-algorithm-implementation-data-analysis.html"><a href="topic-3-algorithm-implementation-data-analysis.html"><i class="fa fa-check"></i>Topic 3: Algorithm Implementation &amp; Data Analysis</a></li>
+<li class="chapter" data-level="" data-path="topic-4-custom-topic.html"><a href="topic-4-custom-topic.html"><i class="fa fa-check"></i>Topic 4: Custom Topic</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="bug-bounty.html"><a href="bug-bounty.html"><i class="fa fa-check"></i><b>A</b> Bug Bounty</a><ul>
+<li class="chapter" data-level="" data-path="leaderboard.html"><a href="leaderboard.html"><i class="fa fa-check"></i>Leaderboard</a></li>
+<li class="chapter" data-level="" data-path="what-is-this.html"><a href="what-is-this.html"><i class="fa fa-check"></i>What is this?</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="test-exam.html"><a href="test-exam.html"><i class="fa fa-check"></i><b>B</b> Test Exam</a><ul>
+<li class="chapter" data-level="B.1" data-path="additional-exercises.html"><a href="additional-exercises.html"><i class="fa fa-check"></i><b>B.1</b> Additional Exercises</a><ul>
+<li class="chapter" data-level="B.1.1" data-path="additional-exercises.html"><a href="additional-exercises.html#exercise-i"><i class="fa fa-check"></i><b>B.1.1</b> Exercise I</a></li>
+</ul></li>
+<li class="chapter" data-level="B.2" data-path="exercise-ii.html"><a href="exercise-ii.html"><i class="fa fa-check"></i><b>B.2</b> Exercise II</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="exercise-ii.html"><a href="exercise-ii.html#exercise-iii"><i class="fa fa-check"></i><b>B.2.1</b> Exercise III</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="http://www.bchwtz.de" target="blank"><center>www.<b>BCHWTZ</b>.de</center></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computational Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="plotsggplot2" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.2</span> Plots with <code>ggplot2</code> <span class="citation">(Wickham <a href="#ref-ggplot2" role="doc-biblioref">2016</a>)</span><a href="plotsggplot2.html#plotsggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another form of plots are ggplots which are based on the R package <code>ggplot2</code> by <span class="citation">Wickham (<a href="#ref-ggplot2" role="doc-biblioref">2016</a>)</span>. As we will see, ggplots are especially helpful by handling multiple variables.
+The name of the package indicates that the plots are based on the <strong>G</strong>rammar of <strong>G</strong>raphics. <span class="citation">(Wickham <a href="#ref-ggplot2" role="doc-biblioref">2016</a>)</span> Basically, the Grammar of Graphics is a system with strict <em>rules</em> that describe how statistical graphics are generated based on raw data. <span class="citation">(Wilkinson <a href="#ref-Wilkinson2010" role="doc-biblioref">2010</a>)</span> This means, a defined syntax - which components are necessary to build a plot - and a semantic - how the components will be interpreted to create a plot on the whole - exist. <span class="citation">(Wilkinson <a href="#ref-Wilkinson2010" role="doc-biblioref">2010</a>; RStudio, PBC <a href="#ref-ggplot2Cheatsheet" role="doc-biblioref">2021</a>)</span>
+We are not going into detail concerning the Grammar of Graphics; there is an own book about it, see <span class="citation">Wilkinson (<a href="#ref-Wilkinson2005" role="doc-biblioref">2005</a>)</span>. We will focus on how <code>ggplot2</code> realizes the Grammar of Graphics and how you can create plots with <code>ggplot2</code>.</p>
+<p>As the <code>ggplot2</code> Cheatsheet <span class="citation">(RStudio, PBC <a href="#ref-ggplot2Cheatsheet" role="doc-biblioref">2021</a>)</span> introduces only a data set, a coordinate system (grid), geoms (visual points representing data points) as well as aesthetics (i.e. variables of the data set have to be mapped to properties of the geom) are necessary to create a graph as we will see. The <code>ggplot2</code> Cheatsheet <span class="citation">(RStudio, PBC <a href="#ref-ggplot2Cheatsheet" role="doc-biblioref">2021</a>)</span> as well as the manual pages of the functions of the <code>ggplot2</code> package <span class="citation">(Wickham <a href="#ref-ggplot2" role="doc-biblioref">2016</a>)</span> are the basis for the creation of the following ggplots, their descriptions and further explanations.</p>
+<p>ggplots are divided in layers which will be concatenated by a “<code>+</code>” sign: The first layer, which <strong>cannot be leaved out</strong>, includes the data; this is realized by <code>ggplot()</code> (see code below). Its first argument is the data set (here: <code>df</code>) followed by defining which variables will be plotted inside the <code>aes()</code> function. By only calling <code>ggplot()</code> as described, no data in form of points, lines etc. will be visible since geoms have not been defined, so far.
+To overcome this, one of the <code>geom_*()</code> functions is called which specifies how the data will be visualized, for example by points (<code>geom_point()</code>), by a line (<code>geom_line()</code>), in form of a boxplot (<code>geom_boxplot()</code>), a histogram (<code>geom_histogram()</code>), etc.</p>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="plotsggplot2.html#cb565-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)</span>
+<span id="cb565-2"><a href="plotsggplot2.html#cb565-2"></a><span class="kw">head</span>(df)</span></code></pre></div>
+<pre><code>#R&gt;      x            y
+#R&gt; 1 -8.0 5.052271e-15
+#R&gt; 2 -7.9 1.118796e-14
+#R&gt; 3 -7.8 2.452855e-14
+#R&gt; 4 -7.7 5.324148e-14
+#R&gt; 5 -7.6 1.144156e-13
+#R&gt; 6 -7.5 2.434321e-13</code></pre>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="plotsggplot2.html#cb567-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y))<span class="op">+</span><span class="st"> </span><span class="co"># initialize a ggplot object</span></span>
+<span id="cb567-2"><a href="plotsggplot2.html#cb567-2"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span><span class="st"> </span><span class="co"># visualize data points</span></span>
+<span id="cb567-3"><a href="plotsggplot2.html#cb567-3"></a><span class="kw">ggtitle</span>(<span class="st">&quot;Density function of normal distribution&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># adding a title to the plot</span></span>
+<span id="cb567-4"><a href="plotsggplot2.html#cb567-4"></a><span class="kw">xlab</span>(<span class="st">&quot;x&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># labeling the x axis</span></span>
+<span id="cb567-5"><a href="plotsggplot2.html#cb567-5"></a><span class="kw">ylab</span>(<span class="st">&quot;density&quot;</span>) <span class="co"># labeling the y axis</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:first-ggplot"></span>
+<img src="bchwtz-cswr_files/figure-html/first-ggplot-1.png" alt="Density function for a normal distribution as a simple ggplot." width="672" />
+<p class="caption">
+Figure 7.12: Density function for a normal distribution as a simple ggplot.
+</p>
+</div>
+
+<p>Furthermore, a title for the plot as well as for the x- and y-axis have been added to the plots, figures <a href="plotsggplot2.html#fig:first-ggplot">7.12</a> and <a href="plotsggplot2.html#fig:first-ggplot-air">7.13</a>, by the functions <code>ggtitle()</code>, <code>xlab()</code> and <code>ylab()</code>, respectively, and by using the “<code>x</code>”-sign.</p>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="plotsggplot2.html#cb568-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span><span class="st"> </span><span class="co"># initialization of a ggplot object</span></span>
+<span id="cb568-2"><a href="plotsggplot2.html#cb568-2"></a><span class="kw">geom_point</span>()<span class="op">+</span><span class="st"> </span><span class="co"># adding points to a plot</span></span>
+<span id="cb568-3"><a href="plotsggplot2.html#cb568-3"></a><span class="kw">ggtitle</span>(<span class="st">&quot;Scatterplot of temperature and wind speed&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># adding a title to the plot</span></span>
+<span id="cb568-4"><a href="plotsggplot2.html#cb568-4"></a><span class="kw">xlab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># labeling the x axis</span></span>
+<span id="cb568-5"><a href="plotsggplot2.html#cb568-5"></a><span class="kw">ylab</span>(<span class="st">&quot;Wind [mph]&quot;</span>) <span class="co"># labeling the y axis</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:first-ggplot-air"></span>
+<img src="bchwtz-cswr_files/figure-html/first-ggplot-air-1.png" alt="Scatterplot of wind speed vs. temperature of the airquality data set (R Core Team 2021) as a ggplot (Wickham 2016)." width="672" />
+<p class="caption">
+Figure 7.13: Scatterplot of wind speed vs. temperature of the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> as a <code>ggplot</code> <span class="citation">(Wickham <a href="#ref-ggplot2" role="doc-biblioref">2016</a>)</span>.
+</p>
+</div>
+
+<p>In the code of the plots (figures <a href="plotsggplot2.html#fig:first-ggplot">7.12</a> and <a href="plotsggplot2.html#fig:first-ggplot-air">7.13</a>), the aesthetics have been defined inside <code>ggplot()</code>. It is also possible to define the aesthetics inside the <code>*geom()</code>-function. Consequently, the following options exist:</p>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="plotsggplot2.html#cb569-1"></a><span class="co"># option 1:</span></span>
+<span id="cb569-2"><a href="plotsggplot2.html#cb569-2"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span><span class="st"> </span><span class="co"># initialize a ggplot object</span></span>
+<span id="cb569-3"><a href="plotsggplot2.html#cb569-3"></a><span class="st"> </span><span class="kw">geom_point</span>()</span>
+<span id="cb569-4"><a href="plotsggplot2.html#cb569-4"></a> <span class="co"># option 2:</span></span>
+<span id="cb569-5"><a href="plotsggplot2.html#cb569-5"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb569-6"><a href="plotsggplot2.html#cb569-6"></a><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))</span>
+<span id="cb569-7"><a href="plotsggplot2.html#cb569-7"></a><span class="co"># option 3:</span></span>
+<span id="cb569-8"><a href="plotsggplot2.html#cb569-8"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp))<span class="op">+</span></span>
+<span id="cb569-9"><a href="plotsggplot2.html#cb569-9"></a><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">y =</span> Wind))</span></code></pre></div>
+<p>In this example, it does not matter whether the aesthetics are defined inside <code>ggplot()</code> and/or in <code>geom_point()</code> since the resulting plot does not change. In contrast to that, when we define another variable in the <code>geom()</code>-function (e.g. <code>y = Solar.R</code>) although we have already defined a y-variable in <code>ggplot()</code> (e.g. <code>y = Wind</code>), the variable <code>Wind</code> will be overwritten by the variable <code>Solar.R</code>. The y-axis is called <code>Wind</code> in figure <a href="plotsggplot2.html#fig:ggplot-hierarchy">7.14</a>, but that is not true any longer. So, we have to adjust the labeling (see figure <a href="plotsggplot2.html#fig:ggplot-hierarchy-label">7.15</a>).</p>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="plotsggplot2.html#cb570-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb570-2"><a href="plotsggplot2.html#cb570-2"></a><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Solar.R))</span></code></pre></div>
+<pre><code>#R&gt; Warning: Removed 7 rows containing missing values (geom_point).</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ggplot-hierarchy"></span>
+<img src="bchwtz-cswr_files/figure-html/ggplot-hierarchy-1.png" alt="Figure 7.14 with labeling." width="672" />
+<p class="caption">
+Figure 7.14: Figure <a href="plotsggplot2.html#fig:ggplot-hierarchy">7.14</a> with labeling.
+</p>
+</div>
+
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="plotsggplot2.html#cb572-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb572-2"><a href="plotsggplot2.html#cb572-2"></a><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Solar.R))</span></code></pre></div>
+<pre><code>#R&gt; Warning: Removed 7 rows containing missing values (geom_point).</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ggplot-hierarchy-label"></span>
+<img src="bchwtz-cswr_files/figure-html/ggplot-hierarchy-label-1.png" alt="Figure 7.14 with labeling." width="672" />
+<p class="caption">
+Figure 7.15: Figure <a href="plotsggplot2.html#fig:ggplot-hierarchy">7.14</a> with labeling.
+</p>
+</div>
+
+<p>Dependent on the number of variables and their scale of measurement (discrete, continuous) the <code>ggplot2</code> Cheatsheet <span class="citation">(RStudio, PBC <a href="#ref-ggplot2Cheatsheet" role="doc-biblioref">2021</a>)</span> shows which <code>geom()_*</code>-function(s) to use. The <code>stat_*()</code>-function(s) work similarily as the <code>geom()_*</code>-functions (<code>stat_*()</code>- and <code>geom_*()</code>-functions are equivalents), e.g.</p>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="plotsggplot2.html#cb574-1"></a><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;count&quot;</span>) <span class="co"># is equal to</span></span>
+<span id="cb574-2"><a href="plotsggplot2.html#cb574-2"></a><span class="kw">stat_count</span>(<span class="dt">geom =</span> <span class="st">&quot;bar&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="plotsggplot2.html#cb575-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb575-2"><a href="plotsggplot2.html#cb575-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="co"># stat = &quot;identity&quot; by default</span></span>
+<span id="cb575-3"><a href="plotsggplot2.html#cb575-3"></a><span class="co"># is equal to</span></span>
+<span id="cb575-4"><a href="plotsggplot2.html#cb575-4"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb575-5"><a href="plotsggplot2.html#cb575-5"></a><span class="st">  </span><span class="kw">stat_identity</span>(<span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>) <span class="co"># geom = &quot;point&quot; by default</span></span></code></pre></div>
+<p>Here are some of the <code>stat_*()</code>- and <code>geom_*()</code>-function equivalents based on <span class="citation">(Arnold <a href="#ref-Arnold2020" role="doc-biblioref">2020</a>)</span>:</p>
+<table>
+<thead>
+<tr class="header">
+<th><code>geom</code></th>
+<th><code>stat</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>geom_bar()</code></td>
+<td><code>stat_count()</code></td>
+</tr>
+<tr class="even">
+<td><code>geom_bin2d()</code></td>
+<td><code>stat_bin_2d()</code></td>
+</tr>
+<tr class="odd">
+<td><code>geom_boxplot()</code></td>
+<td><code>stat_boxplot()</code></td>
+</tr>
+<tr class="even">
+<td><code>geom_contour()</code></td>
+<td><code>stat_contour()</code></td>
+</tr>
+<tr class="odd">
+<td><code>geom_count()</code></td>
+<td><code>stat_sum()</code></td>
+</tr>
+<tr class="even">
+<td><code>geom_density()</code></td>
+<td><code>stat_density()</code></td>
+</tr>
+<tr class="odd">
+<td><code>geom_density_2d()</code></td>
+<td><code>stat_density_2d()</code></td>
+</tr>
+<tr class="even">
+<td><code>geom_hex()</code></td>
+<td><code>stat_hex()</code></td>
+</tr>
+<tr class="odd">
+<td><code>geom_histogram()</code></td>
+<td><code>stat_bin()</code></td>
+</tr>
+<tr class="even">
+<td><code>geom_qq_line()</code></td>
+<td><code>stat_qq_line()</code></td>
+</tr>
+<tr class="odd">
+<td><code>geom_qq()</code></td>
+<td><code>stat_qq()</code></td>
+</tr>
+<tr class="even">
+<td><code>geom_quantile()</code></td>
+<td><code>stat_quantile()</code></td>
+</tr>
+<tr class="odd">
+<td><code>geom_smooth()</code></td>
+<td><code>stat_smooth()</code></td>
+</tr>
+<tr class="even">
+<td><code>geom_violin()</code></td>
+<td><code>stat_violin()</code></td>
+</tr>
+<tr class="odd">
+<td><code>geom_sf()</code></td>
+<td><code>stat_sf()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Based on this introduction of ggplots, we can easily reconstruct the plots we created in base-R (see chapter <a href="plotsbaseR.html#plotsbaseR">7.1</a>).</p>
+<p>Based on this introduction of ggplots, we can easily reconstruct the plots we created in base-R (see chapter <a href="plotsbaseR.html#plotsbaseR">7.1</a>).
+Before we do that, it is recommended to save the variables in a data frame:</p>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="plotsggplot2.html#cb576-1"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">-8</span>, <span class="dt">to =</span> <span class="dv">8</span>, <span class="dt">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb576-2"><a href="plotsggplot2.html#cb576-2"></a>y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x =</span> x)</span>
+<span id="cb576-3"><a href="plotsggplot2.html#cb576-3"></a>y2 &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">-1</span>)</span>
+<span id="cb576-4"><a href="plotsggplot2.html#cb576-4"></a>y3 &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">2</span>)</span>
+<span id="cb576-5"><a href="plotsggplot2.html#cb576-5"></a>nd &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x, y, y2, y3)</span>
+<span id="cb576-6"><a href="plotsggplot2.html#cb576-6"></a><span class="kw">head</span>(nd)</span></code></pre></div>
+<pre><code>#R&gt;      x            y           y2           y3
+#R&gt; 1 -8.0 5.052271e-15 9.134720e-12 7.694599e-23
+#R&gt; 2 -7.9 1.118796e-14 1.830332e-11 2.081177e-22
+#R&gt; 3 -7.8 2.452855e-14 3.630962e-11 5.573000e-22
+#R&gt; 4 -7.7 5.324148e-14 7.131328e-11 1.477495e-21
+#R&gt; 5 -7.6 1.144156e-13 1.386680e-10 3.878112e-21
+#R&gt; 6 -7.5 2.434321e-13 2.669557e-10 1.007794e-20</code></pre>
+<p>Then, the single curves are added to the ggplot by adding layers (for each curve one layer) to the plot. Here, <code>geom_line()</code> is used to visualize the curves in form of lines. Furthermore, the following code chunk shows that the lines are colored by defining the argument <code>color</code> <strong>outside</strong> <code>aes()</code>.</p>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="plotsggplot2.html#cb578-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> nd, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> x))<span class="op">+</span></span>
+<span id="cb578-2"><a href="plotsggplot2.html#cb578-2"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">y =</span> y), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>)<span class="op">+</span></span>
+<span id="cb578-3"><a href="plotsggplot2.html#cb578-3"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">y =</span> y2), <span class="dt">color =</span> <span class="st">&quot;#7FFF00&quot;</span>)<span class="op">+</span></span>
+<span id="cb578-4"><a href="plotsggplot2.html#cb578-4"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">y =</span> y3), <span class="dt">color =</span> <span class="st">&quot;yellow&quot;</span>)<span class="op">+</span></span>
+<span id="cb578-5"><a href="plotsggplot2.html#cb578-5"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Normal distribution - density&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ggplot-normal-distrib"></span>
+<img src="bchwtz-cswr_files/figure-html/ggplot-normal-distrib-1.png" alt="Density functions for the normal distribution with \(\mu_1 = 0\), \(\mu_2 = -1\) and \(\mu_3 = 2\)." width="672" />
+<p class="caption">
+Figure 7.16: Density functions for the normal distribution with <span class="math inline">\(\mu_1 = 0\)</span>, <span class="math inline">\(\mu_2 = -1\)</span> and <span class="math inline">\(\mu_3 = 2\)</span>.
+</p>
+</div>
+
+<p>Instead of adding each density function to the plot by calling <code>geom_line()</code> several times, it is possible to add all curves to the plot by calling <code>geom_line()</code> only one time.
+For this, we have to modify the data set. We just want to call the <code>x</code> variable (x values) and the <code>y</code> variable (the density values of each curve) and color the values by the name of the curve (<code>y</code>, <code>y2</code> and <code>y3</code>). This is achieved by <em>lengthens</em> the data set:</p>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="plotsggplot2.html#cb579-1"></a>nd2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">rep</span>(x, <span class="dt">times =</span> <span class="dv">3</span>), <span class="dt">density=</span><span class="kw">c</span>(y, y2, y3),</span>
+<span id="cb579-2"><a href="plotsggplot2.html#cb579-2"></a>                  <span class="dt">curve =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">times =</span> <span class="kw">length</span>(y)), <span class="kw">rep</span>(<span class="st">&quot;y2&quot;</span>, <span class="dt">times =</span> <span class="kw">length</span>(y)),</span>
+<span id="cb579-3"><a href="plotsggplot2.html#cb579-3"></a>                            <span class="kw">rep</span>(<span class="st">&quot;y3&quot;</span>, <span class="dt">times =</span> <span class="kw">length</span>(y))))</span>
+<span id="cb579-4"><a href="plotsggplot2.html#cb579-4"></a> <span class="kw">head</span>(nd2, <span class="dt">n =</span> <span class="dv">20</span>)</span></code></pre></div>
+<pre><code>#R&gt;       x      density curve
+#R&gt; 1  -8.0 5.052271e-15     y
+#R&gt; 2  -7.9 1.118796e-14     y
+#R&gt; 3  -7.8 2.452855e-14     y
+#R&gt; 4  -7.7 5.324148e-14     y
+#R&gt; 5  -7.6 1.144156e-13     y
+#R&gt; 6  -7.5 2.434321e-13     y
+#R&gt; 7  -7.4 5.127754e-13     y
+#R&gt; 8  -7.3 1.069384e-12     y
+#R&gt; 9  -7.2 2.207990e-12     y
+#R&gt; 10 -7.1 4.513544e-12     y
+#R&gt; 11 -7.0 9.134720e-12     y
+#R&gt; 12 -6.9 1.830332e-11     y
+#R&gt; 13 -6.8 3.630962e-11     y
+#R&gt; 14 -6.7 7.131328e-11     y
+#R&gt; 15 -6.6 1.386680e-10     y
+#R&gt; 16 -6.5 2.669557e-10     y
+#R&gt; 17 -6.4 5.088140e-10     y
+#R&gt; 18 -6.3 9.601433e-10     y
+#R&gt; 19 -6.2 1.793784e-09     y
+#R&gt; 20 -6.1 3.317884e-09     y</code></pre>
+<p>In the first column, the <code>x</code> values are repeated three times (for curve <code>y</code>, <code>y2</code> and <code>y3</code>). The second column consists of the density values of curve <code>y</code>, <code>y2</code> and <code>y3</code> and the last columns assigns the name of the curve to each value. Consequently, the data set <code>nd2</code> has three times more rows than <code>nd</code> has:</p>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="plotsggplot2.html#cb581-1"></a><span class="kw">nrow</span>(nd)</span></code></pre></div>
+<pre><code>#R&gt; [1] 161</code></pre>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="plotsggplot2.html#cb583-1"></a><span class="kw">nrow</span>(nd2)</span></code></pre></div>
+<pre><code>#R&gt; [1] 483</code></pre>
+<p>The code to reproduce figure <a href="plotsggplot2.html#fig:ggplot-normal-distrib">7.16</a> is shortend:</p>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="plotsggplot2.html#cb585-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> nd2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> density, <span class="dt">color =</span> curve))<span class="op">+</span></span>
+<span id="cb585-2"><a href="plotsggplot2.html#cb585-2"></a><span class="st">  </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ggplot-normal-distrib2"></span>
+<img src="bchwtz-cswr_files/figure-html/ggplot-normal-distrib2-1.png" alt="Density functions for the normal distribution with \(\mu_1 = 0\), \(\mu_2 = -1\) and \(\mu_3 = 2\)." width="672" />
+<p class="caption">
+Figure 7.17: Density functions for the normal distribution with <span class="math inline">\(\mu_1 = 0\)</span>, <span class="math inline">\(\mu_2 = -1\)</span> and <span class="math inline">\(\mu_3 = 2\)</span>.
+</p>
+</div>
+
+<p>Now, the three curves are not colored by defining <code>color</code> outside <code>aes()</code>. Instead, <code>color</code> is defined <strong>inside</strong> <code>aes()</code> since we have called a <strong>variable</strong> (named <code>curve</code>). So, we can conclude from that:</p>
+<ul>
+<li><p>Single lines, points, etc. are colored by defining the aesthetics arguments <strong>outside</strong> <code>aes()</code>.</p></li>
+<li><p>Coloring a variable’s values by its categories (here: the curves’ names (<code>y</code>, <code>y2</code> and <code>y3</code>)) is achieved by assigning the variable’s name to the <code>color</code> argument <strong>inside</strong> <code>aes()</code>.</p></li>
+</ul>
+<p>It the latter case, a legend will be automatically added (see figure <a href="plotsggplot2.html#fig:ggplot-normal-distrib2">7.17</a>).</p>
+<p>A smart solution to <em>lengthens</em> the data set - instead of using <code>rep()</code> - is provided by <code>pivot_longer()</code> from <code>tidyr</code>-package created by <span class="citation">Wickham and Girlich (<a href="#ref-tidyr" role="doc-biblioref">2022</a>)</span>:</p>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="plotsggplot2.html#cb586-1"></a>nd2 &lt;-<span class="st"> </span>nd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(y, y2, y3)) <span class="co"># columns y, y2 and y3 are concatenated </span></span>
+<span id="cb586-2"><a href="plotsggplot2.html#cb586-2"></a><span class="co"># to form one column, the other columns have been adjusted automatically</span></span>
+<span id="cb586-3"><a href="plotsggplot2.html#cb586-3"></a><span class="kw">head</span>(nd2)</span></code></pre></div>
+<pre><code>#R&gt; # A tibble: 6 × 3
+#R&gt;       x name     value
+#R&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+#R&gt; 1  -8   y     5.05e-15
+#R&gt; 2  -8   y2    9.13e-12
+#R&gt; 3  -8   y3    7.69e-23
+#R&gt; 4  -7.9 y     1.12e-14
+#R&gt; 5  -7.9 y2    1.83e-11
+#R&gt; 6  -7.9 y3    2.08e-22</code></pre>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="plotsggplot2.html#cb588-1"></a><span class="kw">colnames</span>(nd2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;curve&quot;</span>, <span class="st">&quot;density&quot;</span>)</span></code></pre></div>
+<p>Based on the data set <code>nd2</code>, it is now easy to fill curves by calling <code>fill = curve</code> <strong>inside</strong> <code>aes()</code> (analogous to the argument <code>color</code>) and using <code>geom_polygon()</code> where <code>alpha</code> stands for the <em>degree</em> of opacity:</p>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="plotsggplot2.html#cb589-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> nd2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> density, <span class="dt">fill =</span> curve))<span class="op">+</span></span>
+<span id="cb589-2"><a href="plotsggplot2.html#cb589-2"></a><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">alpha =</span> <span class="fl">0.4</span>)<span class="op">+</span></span>
+<span id="cb589-3"><a href="plotsggplot2.html#cb589-3"></a><span class="st">  </span><span class="kw">scale_fill_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Density&quot;</span>, <span class="dt">labels=</span> <span class="kw">c</span>(latex2exp<span class="op">::</span><span class="kw">TeX</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">mu=0, </span><span class="ch">\\</span><span class="st">sigma=1$&quot;</span>), </span>
+<span id="cb589-4"><a href="plotsggplot2.html#cb589-4"></a>  latex2exp<span class="op">::</span><span class="kw">TeX</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">mu= -1, </span><span class="ch">\\</span><span class="st">sigma=1$&quot;</span>), latex2exp<span class="op">::</span><span class="kw">TeX</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">mu=2, </span><span class="ch">\\</span><span class="st">sigma=1$&quot;</span>)))</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-223-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>As we have already seen in chapter <a href="#baseRplot"><strong>??</strong></a>, the package <code>latex2exp</code> is used to customize the legend inside <code>scale_fill_discrete()</code> <span class="citation">(RStudio, PBC <a href="#ref-ggplot2Cheatsheet" role="doc-biblioref">2021</a>)</span>.</p>
+<div id="histograms-and-boxplots-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.2.1</span> Histograms and boxplots<a href="plotsggplot2.html#histograms-and-boxplots-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The creation of histograms in <code>ggplot2</code> is allowed by the geom <code>geom_histogram()</code> which is exemplarily applied to the wind speed and temperature of the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>. The arrangement of ggplots (on top of each other, side by side, …) is achieved by using an extra R package called <code>gridExtra</code> <span class="citation">(Auguie <a href="#ref-gridExtra" role="doc-biblioref">2017</a>)</span>:</p>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="plotsggplot2.html#cb590-1"></a>g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb590-2"><a href="plotsggplot2.html#cb590-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Wind))</span>
+<span id="cb590-3"><a href="plotsggplot2.html#cb590-3"></a>g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb590-4"><a href="plotsggplot2.html#cb590-4"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp), <span class="dt">binwidth =</span> <span class="dv">5</span>)</span>
+<span id="cb590-5"><a href="plotsggplot2.html#cb590-5"></a><span class="kw">grid.arrange</span>(g1, g2, <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="co"># arrange both histograms in one row</span></span></code></pre></div>
+<pre><code>#R&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-224-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Since the two boxplots have been assigned to <code>g1</code> and <code>g2</code>, respectively, again, information can be received by applying <code>ggplot_build()</code>:</p>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="plotsggplot2.html#cb592-1"></a><span class="kw">ggplot_build</span>(g2)<span class="op">$</span>data</span></code></pre></div>
+<pre><code>#R&gt; [[1]]
+#R&gt;    y count  x xmin xmax     density    ncount  ndensity flipped_aes PANEL group
+#R&gt; 1  4     4 55 52.5 57.5 0.005228758 0.1081081 0.1081081       FALSE     1    -1
+#R&gt; 2  9     9 60 57.5 62.5 0.011764706 0.2432432 0.2432432       FALSE     1    -1
+#R&gt; 3 12    12 65 62.5 67.5 0.015686275 0.3243243 0.3243243       FALSE     1    -1
+#R&gt; 4 14    14 70 67.5 72.5 0.018300654 0.3783784 0.3783784       FALSE     1    -1
+#R&gt; 5 29    29 75 72.5 77.5 0.037908497 0.7837838 0.7837838       FALSE     1    -1
+#R&gt; 6 37    37 80 77.5 82.5 0.048366013 1.0000000 1.0000000       FALSE     1    -1
+#R&gt; 7 26    26 85 82.5 87.5 0.033986928 0.7027027 0.7027027       FALSE     1    -1
+#R&gt; 8 15    15 90 87.5 92.5 0.019607843 0.4054054 0.4054054       FALSE     1    -1
+#R&gt; 9  7     7 95 92.5 97.5 0.009150327 0.1891892 0.1891892       FALSE     1    -1
+#R&gt;   ymin ymax colour   fill size linetype alpha
+#R&gt; 1    0    4     NA grey35  0.5        1    NA
+#R&gt; 2    0    9     NA grey35  0.5        1    NA
+#R&gt; 3    0   12     NA grey35  0.5        1    NA
+#R&gt; 4    0   14     NA grey35  0.5        1    NA
+#R&gt; 5    0   29     NA grey35  0.5        1    NA
+#R&gt; 6    0   37     NA grey35  0.5        1    NA
+#R&gt; 7    0   26     NA grey35  0.5        1    NA
+#R&gt; 8    0   15     NA grey35  0.5        1    NA
+#R&gt; 9    0    7     NA grey35  0.5        1    NA</code></pre>
+<p>where</p>
+<ul>
+<li><p><code>count</code> describes the number of points (values) in the bin,</p></li>
+<li><p>the intervals of the single bins are defined as (<code>xmin</code>, <code>xmax</code>] which is the <code>binwidth</code> (Since we have defined <code>binwidth = 5</code>, all intervals have the same size (5).),</p></li>
+<li><p><code>x</code> is the center of the interval and</p></li>
+<li><p>much more information.</p></li>
+</ul>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="plotsggplot2.html#cb594-1"></a><span class="kw">typeof</span>(<span class="kw">ggplot_build</span>(g2))</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;list&quot;</code></pre>
+<p>Instead of defining the <code>binwidth</code> we can specify the number of bins (argument <code>bins</code>), e.g.:</p>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="plotsggplot2.html#cb596-1"></a>g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb596-2"><a href="plotsggplot2.html#cb596-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp), <span class="dt">bins =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>Then, the number of rows in</p>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="plotsggplot2.html#cb597-1"></a><span class="kw">ggplot_build</span>(g2)<span class="op">$</span>data[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>#R&gt;     y count        x     xmin     xmax     density     ncount   ndensity
+#R&gt; 1   1     1 54.66667 52.38889 56.94444 0.001434720 0.02941176 0.02941176
+#R&gt; 2  10    10 59.22222 56.94444 61.50000 0.014347202 0.29411765 0.29411765
+#R&gt; 3  10    10 63.77778 61.50000 66.05556 0.014347202 0.29411765 0.29411765
+#R&gt; 4  12    12 68.33333 66.05556 70.61111 0.017216643 0.35294118 0.35294118
+#R&gt; 5  19    19 72.88889 70.61111 75.16667 0.027259684 0.55882353 0.55882353
+#R&gt; 6  28    28 77.44444 75.16667 79.72222 0.040172166 0.82352941 0.82352941
+#R&gt; 7  34    34 82.00000 79.72222 84.27778 0.048780488 1.00000000 1.00000000
+#R&gt; 8  20    20 86.55556 84.27778 88.83333 0.028694405 0.58823529 0.58823529
+#R&gt; 9  15    15 91.11111 88.83333 93.38889 0.021520803 0.44117647 0.44117647
+#R&gt; 10  4     4 95.66667 93.38889 97.94444 0.005738881 0.11764706 0.11764706
+#R&gt;    flipped_aes PANEL group ymin ymax colour   fill size linetype alpha
+#R&gt; 1        FALSE     1    -1    0    1     NA grey35  0.5        1    NA
+#R&gt; 2        FALSE     1    -1    0   10     NA grey35  0.5        1    NA
+#R&gt; 3        FALSE     1    -1    0   10     NA grey35  0.5        1    NA
+#R&gt; 4        FALSE     1    -1    0   12     NA grey35  0.5        1    NA
+#R&gt; 5        FALSE     1    -1    0   19     NA grey35  0.5        1    NA
+#R&gt; 6        FALSE     1    -1    0   28     NA grey35  0.5        1    NA
+#R&gt; 7        FALSE     1    -1    0   34     NA grey35  0.5        1    NA
+#R&gt; 8        FALSE     1    -1    0   20     NA grey35  0.5        1    NA
+#R&gt; 9        FALSE     1    -1    0   15     NA grey35  0.5        1    NA
+#R&gt; 10       FALSE     1    -1    0    4     NA grey35  0.5        1    NA</code></pre>
+<p>is equal to <code>bins = 10</code>.</p>
+<p>The creation and examination of boxplots works similarily:</p>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="plotsggplot2.html#cb599-1"></a>g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb599-2"><a href="plotsggplot2.html#cb599-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Wind)) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Wind [mph]&quot;</span>)</span>
+<span id="cb599-3"><a href="plotsggplot2.html#cb599-3"></a>g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb599-4"><a href="plotsggplot2.html#cb599-4"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp)) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature [°F]&quot;</span>)</span>
+<span id="cb599-5"><a href="plotsggplot2.html#cb599-5"></a><span class="kw">grid.arrange</span>(g1, g2, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-229-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The boxplots can be <em>flipped</em> by using <code>coord_flip()</code> the following way:</p>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="plotsggplot2.html#cb600-1"></a>g1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb600-2"><a href="plotsggplot2.html#cb600-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Wind)) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Wind [mph]&quot;</span>)<span class="op">+</span></span>
+<span id="cb600-3"><a href="plotsggplot2.html#cb600-3"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="co"># flip coordinates</span></span>
+<span id="cb600-4"><a href="plotsggplot2.html#cb600-4"></a>g2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb600-5"><a href="plotsggplot2.html#cb600-5"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp)) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span></span>
+<span id="cb600-6"><a href="plotsggplot2.html#cb600-6"></a><span class="st">  </span><span class="kw">coord_flip</span>() <span class="co"># flip coordinates</span></span>
+<span id="cb600-7"><a href="plotsggplot2.html#cb600-7"></a><span class="kw">grid.arrange</span>(g1, g2, <span class="dt">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-230-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Again, the data of the boxplot can be accessed as we already know:</p>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="plotsggplot2.html#cb601-1"></a>boxplot_g1 &lt;-<span class="st"> </span><span class="kw">ggplot_build</span>(g1)<span class="op">$</span>data[[<span class="dv">1</span>]]</span>
+<span id="cb601-2"><a href="plotsggplot2.html#cb601-2"></a><span class="kw">typeof</span>(boxplot_g1)</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="plotsggplot2.html#cb603-1"></a><span class="kw">str</span>(boxplot_g1)</span></code></pre></div>
+<pre><code>#R&gt; &#39;data.frame&#39;:   1 obs. of  26 variables:
+#R&gt;  $ xmin       : num 1.7
+#R&gt;  $ xlower     : num 7.4
+#R&gt;  $ xmiddle    : num 9.7
+#R&gt;  $ xupper     : num 11.5
+#R&gt;  $ xmax       : num 16.6
+#R&gt;  $ outliers   :List of 1
+#R&gt;   ..$ : num  20.1 18.4 20.7
+#R&gt;  $ notchupper : num 10.2
+#R&gt;  $ notchlower : num 9.18
+#R&gt;  $ y          : num 0
+#R&gt;  $ flipped_aes: logi TRUE
+#R&gt;  $ PANEL      : Factor w/ 1 level &quot;1&quot;: 1
+#R&gt;  $ group      : int -1
+#R&gt;  $ xmin_final : num 1.7
+#R&gt;  $ xmax_final : num 20.7
+#R&gt;  $ ymin       : num -0.375
+#R&gt;  $ ymax       : num 0.375
+#R&gt;  $ xid        : num 1
+#R&gt;  $ newx       : num 0
+#R&gt;  $ new_width  : num 0.75
+#R&gt;  $ weight     : num 1
+#R&gt;  $ colour     : chr &quot;grey20&quot;
+#R&gt;  $ fill       : chr &quot;white&quot;
+#R&gt;  $ size       : num 0.5
+#R&gt;  $ alpha      : logi NA
+#R&gt;  $ shape      : num 19
+#R&gt;  $ linetype   : chr &quot;solid&quot;</code></pre>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="plotsggplot2.html#cb605-1"></a>boxplot_g1</span></code></pre></div>
+<pre><code>#R&gt;   xmin xlower xmiddle xupper xmax         outliers notchupper notchlower y
+#R&gt; 1  1.7    7.4     9.7   11.5 16.6 20.1, 18.4, 20.7   10.22372   9.176285 0
+#R&gt;   flipped_aes PANEL group xmin_final xmax_final   ymin  ymax xid newx new_width
+#R&gt; 1        TRUE     1    -1        1.7       20.7 -0.375 0.375   1    0      0.75
+#R&gt;   weight colour  fill size alpha shape linetype
+#R&gt; 1      1 grey20 white  0.5    NA    19    solid</code></pre>
+<p>Consequently, the outliers are extracted by:</p>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="plotsggplot2.html#cb607-1"></a>boxplot_g1<span class="op">$</span>outliers</span></code></pre></div>
+<pre><code>#R&gt; [[1]]
+#R&gt; [1] 20.1 18.4 20.7</code></pre>
+<p>Based on <code>boxplot_g1</code> <em>interesting</em> values can be marked:</p>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="plotsggplot2.html#cb609-1"></a>wind_boxplot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality)<span class="op">+</span></span>
+<span id="cb609-2"><a href="plotsggplot2.html#cb609-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Wind), <span class="dt">outlier.colour =</span> <span class="st">&quot;orange&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># coloring outliers</span></span>
+<span id="cb609-3"><a href="plotsggplot2.html#cb609-3"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">data =</span> boxplot_g1, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> xmiddle, <span class="dt">xend =</span> xmiddle,</span>
+<span id="cb609-4"><a href="plotsggplot2.html#cb609-4"></a>                                                <span class="dt">y =</span> ymin, <span class="dt">yend =</span> ymax), <span class="dt">colour =</span> <span class="st">&quot;chocolate&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># ymin, ymax: coordinates of box</span></span>
+<span id="cb609-5"><a href="plotsggplot2.html#cb609-5"></a><span class="kw">geom_text</span>(<span class="dt">x =</span> <span class="fl">9.2</span>, <span class="dt">y =</span> <span class="fl">-0.35</span>, <span class="dt">label =</span> <span class="kw">paste</span>(boxplot_g1<span class="op">$</span>xmiddle), <span class="dt">color =</span> <span class="st">&quot;chocolate&quot;</span>)<span class="op">+</span></span>
+<span id="cb609-6"><a href="plotsggplot2.html#cb609-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_blank</span>()) <span class="co"># remove title of y-axis</span></span>
+<span id="cb609-7"><a href="plotsggplot2.html#cb609-7"></a>wind_boxplot <span class="co"># call the defined boxplot</span></span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-233-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><strong>Question(s):</strong></p>
+<blockquote>
+<p>Which values have been marked in the previous boxplot (figure xx)?</p>
+</blockquote>
+<p>As we have seen in chapter <a href="plotsbaseR.html#plotsbaseR">7.1</a>, the <code>airquality</code> data set consists von values from May to September in 1973. <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> How can we create several boxplots of the temperature for the single months in one plot?</p>
+<p>The following code does not work; since <code>Month</code> is a continuous variable!</p>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="plotsggplot2.html#cb610-1"></a><span class="kw">ggplot</span>(airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Month, <span class="dt">y =</span> Temp))<span class="op">+</span></span>
+<span id="cb610-2"><a href="plotsggplot2.html#cb610-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<pre><code>#R&gt; Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-234-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The trick is again to create categories; two options exist:</p>
+<ol style="list-style-type: decimal">
+<li>By creating a factor that consists of the categories “May”, “June”, “July”, “August” and “September” (saved as varibale <code>Month_categ</code>)</li>
+</ol>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="plotsggplot2.html#cb612-1"></a>airquality<span class="op">$</span>Month_categ &lt;-<span class="st"> </span><span class="kw">factor</span>(airquality<span class="op">$</span>Month, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>),</span>
+<span id="cb612-2"><a href="plotsggplot2.html#cb612-2"></a>                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;May&quot;</span>, <span class="st">&quot;June&quot;</span>, <span class="st">&quot;July&quot;</span>, <span class="st">&quot;August&quot;</span>, <span class="st">&quot;September&quot;</span>))</span></code></pre></div>
+<p>and then calling <code>x = Month_categ</code> inside <code>aes()</code> results in the desired boxplots:</p>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="plotsggplot2.html#cb613-1"></a><span class="kw">ggplot</span>(airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Month_categ, <span class="dt">y =</span> Temp))<span class="op">+</span></span>
+<span id="cb613-2"><a href="plotsggplot2.html#cb613-2"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Month&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span></span>
+<span id="cb613-3"><a href="plotsggplot2.html#cb613-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ggplot-month-categ"></span>
+<img src="bchwtz-cswr_files/figure-html/ggplot-month-categ-1.png" alt="Boxplots of the temperature for the single months based on the airquality data set (R Core Team 2021)." width="672" />
+<p class="caption">
+Figure 7.18: Boxplots of the temperature for the single months based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>.
+</p>
+</div>
+
+<ol start="2" style="list-style-type: decimal">
+<li>A shorter version is to use the argument <code>group</code> inside <code>aes()</code></li>
+</ol>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="plotsggplot2.html#cb614-1"></a><span class="kw">ggplot</span>(airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">group =</span> Month, <span class="dt">y =</span> Temp))<span class="op">+</span></span>
+<span id="cb614-2"><a href="plotsggplot2.html#cb614-2"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()<span class="op">+</span></span>
+<span id="cb614-3"><a href="plotsggplot2.html#cb614-3"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Month&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-236-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>but then the x-axis ticks have to be adapted which might be more complicated than just converting a variable into a factor.</p>
+</div>
+<div id="linear-regression" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.2.2</span> Linear regression<a href="plotsggplot2.html#linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In order to determine and to add a linear regression line to a scatterplot - like the one in figure <a href="plotsggplot2.html#fig:first-ggplot-air">7.13</a> - the geom <code>geom_smooth()</code> with <code>method = "lm"</code> (<code>lm</code>: linear model) is used:</p>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="plotsggplot2.html#cb615-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb615-2"><a href="plotsggplot2.html#cb615-2"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
+<span id="cb615-3"><a href="plotsggplot2.html#cb615-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)<span class="op">+</span></span>
+<span id="cb615-4"><a href="plotsggplot2.html#cb615-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature [°F]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Wind [mph]&quot;</span>) <span class="co"># instead of xlab() and ylab()</span></span></code></pre></div>
+<pre><code>#R&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-237-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>The argument <code>se</code> is set to <code>FALSE</code>, meaning that no confindence intervals around the regression line are displayed. When <code>se = TRUE</code> it looks like this:</p>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="plotsggplot2.html#cb617-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb617-2"><a href="plotsggplot2.html#cb617-2"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
+<span id="cb617-3"><a href="plotsggplot2.html#cb617-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">TRUE</span>)<span class="op">+</span></span>
+<span id="cb617-4"><a href="plotsggplot2.html#cb617-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature [°F]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Wind [mph]&quot;</span>) </span></code></pre></div>
+<pre><code>#R&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-238-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Remember the definition of linear models in base-R based on function <code>lm()</code> as we have already done in chapter <a href="plotsbaseR.html#plotsbaseR">7.1</a>:</p>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="plotsggplot2.html#cb619-1"></a>air_lmodel &lt;-<span class="st"> </span><span class="kw">lm</span>(Wind <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>Temp, <span class="dt">data =</span> airquality)</span></code></pre></div>
+<p>Instead of using <code>geom_smooth()</code>, now, we use <code>geom_abline()</code> to visualize the regression line in the scatterplot as follows:</p>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="plotsggplot2.html#cb620-1"></a><span class="kw">ggplot</span>(airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb620-2"><a href="plotsggplot2.html#cb620-2"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
+<span id="cb620-3"><a href="plotsggplot2.html#cb620-3"></a><span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="kw">coef</span>(air_lmodel)[<span class="dv">2</span>], <span class="dt">intercept =</span> <span class="kw">coef</span>(air_lmodel)[<span class="dv">1</span>], <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb620-4"><a href="plotsggplot2.html#cb620-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature [°F]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Wind [mph]&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-240-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>where we accessed the slope and intercept via <code>coef()</code>.</p>
+</div>
+<div id="customizing-ggplots" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.2.3</span> Customizing ggplots<a href="plotsggplot2.html#customizing-ggplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Apart from the opportunities to customize ggplots which we have seen so far here are some additional hints to mark points, to modify legends, etc.</p>
+<p><strong>Customizing plotting symbols:</strong></p>
+<p>The following examples are based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> as well as on figure <a href="plotsggplot2.html#fig:first-ggplot-air">7.13</a>.</p>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="plotsggplot2.html#cb621-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb621-2"><a href="plotsggplot2.html#cb621-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;cyan&quot;</span>, <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">stroke =</span> <span class="fl">1.5</span>)<span class="op">+</span></span>
+<span id="cb621-3"><a href="plotsggplot2.html#cb621-3"></a><span class="kw">ggtitle</span>(<span class="st">&quot;Scatterplot of temperature and wind speed&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb621-4"><a href="plotsggplot2.html#cb621-4"></a><span class="kw">xlab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb621-5"><a href="plotsggplot2.html#cb621-5"></a><span class="kw">ylab</span>(<span class="st">&quot;Wind [mph]&quot;</span>) </span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:first-ggplot-air-points1"></span>
+<img src="bchwtz-cswr_files/figure-html/first-ggplot-air-points1-1.png" alt="Scatterplot of wind speed vs. temperature of the airquality data set (R Core Team 2021) with modified points." width="672" />
+<p class="caption">
+Figure 7.19: Scatterplot of wind speed vs. temperature of the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> with modified points.
+</p>
+</div>
+
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="plotsggplot2.html#cb622-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb622-2"><a href="plotsggplot2.html#cb622-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">shape =</span> <span class="dv">23</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>,  <span class="dt">fill =</span> <span class="st">&quot;yellow&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">stroke =</span> <span class="fl">2.5</span>)<span class="op">+</span></span>
+<span id="cb622-3"><a href="plotsggplot2.html#cb622-3"></a><span class="kw">ggtitle</span>(<span class="st">&quot;Scatterplot of temperature and wind speed&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb622-4"><a href="plotsggplot2.html#cb622-4"></a><span class="kw">xlab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb622-5"><a href="plotsggplot2.html#cb622-5"></a><span class="kw">ylab</span>(<span class="st">&quot;Wind [mph]&quot;</span>) </span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:first-ggplot-air-points1-2"></span>
+<img src="bchwtz-cswr_files/figure-html/first-ggplot-air-points1-2-1.png" alt="Scatterplot of wind speed vs. temperature of the airquality data set (R Core Team 2021) with triangular points." width="672" />
+<p class="caption">
+Figure 7.20: Scatterplot of wind speed vs. temperature of the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> with triangular points.
+</p>
+</div>
+
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="plotsggplot2.html#cb623-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb623-2"><a href="plotsggplot2.html#cb623-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">shape =</span> <span class="dv">23</span>, <span class="dt">color =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">stroke =</span> <span class="fl">2.5</span>)<span class="op">+</span></span>
+<span id="cb623-3"><a href="plotsggplot2.html#cb623-3"></a><span class="kw">ggtitle</span>(<span class="st">&quot;Scatterplot of temperature and wind speed&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb623-4"><a href="plotsggplot2.html#cb623-4"></a><span class="kw">xlab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb623-5"><a href="plotsggplot2.html#cb623-5"></a><span class="kw">ylab</span>(<span class="st">&quot;Wind [mph]&quot;</span>) </span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:first-ggplot-air-points1-3"></span>
+<img src="bchwtz-cswr_files/figure-html/first-ggplot-air-points1-3-1.png" alt="Scatterplot of wind speed vs. temperature of the airquality data set (R Core Team 2021) with triangular points." width="672" />
+<p class="caption">
+Figure 7.21: Scatterplot of wind speed vs. temperature of the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> with triangular points.
+</p>
+</div>
+
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="plotsggplot2.html#cb624-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb624-2"><a href="plotsggplot2.html#cb624-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;cyan&quot;</span>, <span class="dt">size =</span> <span class="dv">3</span>)<span class="op">+</span></span>
+<span id="cb624-3"><a href="plotsggplot2.html#cb624-3"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">ifelse</span>(Temp <span class="op">&gt;</span><span class="st"> </span><span class="dv">80</span>, Temp, <span class="st">&quot;&quot;</span>)))<span class="op">+</span></span>
+<span id="cb624-4"><a href="plotsggplot2.html#cb624-4"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Scatterplot of temperature and wind speed&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb624-5"><a href="plotsggplot2.html#cb624-5"></a><span class="kw">xlab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Wind [mph]&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:first-ggplot-air-points2"></span>
+<img src="bchwtz-cswr_files/figure-html/first-ggplot-air-points2-1.png" alt="Another scatterplot of wind speed vs. temperature of the airquality data set (R Core Team 2021) with modified points." width="672" />
+<p class="caption">
+Figure 7.22: Another scatterplot of wind speed vs. temperature of the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> with modified points.
+</p>
+</div>
+
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="plotsggplot2.html#cb625-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
+<span id="cb625-2"><a href="plotsggplot2.html#cb625-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;cyan&quot;</span>, <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">position =</span> <span class="st">&quot;jitter&quot;</span>)<span class="op">+</span></span>
+<span id="cb625-3"><a href="plotsggplot2.html#cb625-3"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">label =</span> <span class="kw">ifelse</span>(Temp <span class="op">&gt;</span><span class="st"> </span><span class="dv">80</span>, Temp, <span class="st">&quot;&quot;</span>)))<span class="op">+</span></span>
+<span id="cb625-4"><a href="plotsggplot2.html#cb625-4"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Scatterplot of temperature and wind speed&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb625-5"><a href="plotsggplot2.html#cb625-5"></a><span class="kw">xlab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Wind [mph]&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:first-ggplot-air-points3"></span>
+<img src="bchwtz-cswr_files/figure-html/first-ggplot-air-points3-1.png" alt="Scatterplot of wind speed vs. temperature of the airquality data set (R Core Team 2021) with jittered points." width="672" />
+<p class="caption">
+Figure 7.23: Scatterplot of wind speed vs. temperature of the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> with <em>jittered</em> points.
+</p>
+</div>
+
+<p>From figures <a href="plotsggplot2.html#fig:first-ggplot-air-points1">7.19</a>, <a href="plotsggplot2.html#fig:first-ggplot-air-points1-2">7.20</a>, <a href="plotsggplot2.html#fig:first-ggplot-air-points1-3">7.21</a>, <a href="plotsggplot2.html#fig:first-ggplot-air-points2">7.22</a> and <a href="plotsggplot2.html#fig:first-ggplot-air-points3">7.23</a> and the corresponding codes we conclude that</p>
+<ul>
+<li><p>the smaller the value of <code>alpha</code>, the more translucent the data points.</p></li>
+<li><p>the argument <code>shape</code> controls the shape of the plotting symbols (see <code>?points()</code> for more information).</p></li>
+<li><p>the arguments <code>color</code> and <code>fill</code> control the color of the symbols dependent on the shape of the symbols (i.e. whether the symbols have a border or not).</p></li>
+<li><p>the argument <code>size</code> controls the size of the plotting symbols.</p></li>
+<li><p>the argument <code>stroke</code> will control the thickness of the border of the plotting symbols if they have one.</p></li>
+<li><p>text is added to the plot via <code>geom_text(maping = aes(label = ...))</code>.</p></li>
+<li><p><code>position = "jitter"</code> adds random noise to the plotting symbols to avoid overplotting.</p></li>
+</ul>
+<p><strong>Changing scales</strong></p>
+<p>Here are some exmaples how scales can be changed in <code>ggplot2</code>; for further information see <span class="citation">RStudio, PBC (<a href="#ref-ggplot2Cheatsheet" role="doc-biblioref">2021</a>)</span>.</p>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="plotsggplot2.html#cb626-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> (Temp<span class="dv">-32</span>)<span class="op">*</span><span class="dv">5</span><span class="op">/</span><span class="dv">9</span>, <span class="dt">y =</span> Wind))<span class="op">+</span><span class="st"> </span></span>
+<span id="cb626-2"><a href="plotsggplot2.html#cb626-2"></a><span class="st">  </span><span class="co"># modify the temperature from degree Fahrenheit to Celsius</span></span>
+<span id="cb626-3"><a href="plotsggplot2.html#cb626-3"></a><span class="co"># (National Institute of Standards and Technology (NIST) (2021))</span></span>
+<span id="cb626-4"><a href="plotsggplot2.html#cb626-4"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
+<span id="cb626-5"><a href="plotsggplot2.html#cb626-5"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Scatterplot&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Temperature [°C]&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Wind [mph]&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-241-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Simulated exponential growth data</p>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="plotsggplot2.html#cb627-1"></a>time &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span> <span class="co"># days</span></span>
+<span id="cb627-2"><a href="plotsggplot2.html#cb627-2"></a>growth &lt;-<span class="st"> </span><span class="kw">exp</span>(time)</span>
+<span id="cb627-3"><a href="plotsggplot2.html#cb627-3"></a>growth_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(time, growth)</span></code></pre></div>
+<p>with its ggplot</p>
+<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="plotsggplot2.html#cb628-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> growth_df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> growth))<span class="op">+</span></span>
+<span id="cb628-2"><a href="plotsggplot2.html#cb628-2"></a><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Time [d]&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Growth [cm]&quot;</span>) <span class="op">+</span></span>
+<span id="cb628-3"><a href="plotsggplot2.html#cb628-3"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Exponential growth&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-243-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>which can be log-transformed to this:</p>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="plotsggplot2.html#cb629-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> growth_df, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> growth))<span class="op">+</span></span>
+<span id="cb629-2"><a href="plotsggplot2.html#cb629-2"></a><span class="st">  </span><span class="kw">scale_y_log10</span>()<span class="op">+</span><span class="st"> </span><span class="co"># applying logarithm (base 10) to y values</span></span>
+<span id="cb629-3"><a href="plotsggplot2.html#cb629-3"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Time [d]&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Growth [cm]&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-244-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><strong>Themes - Modifying legends, grids, etc.:</strong></p>
+<p>The modification of legends is illustrated based on figure <a href="plotsggplot2.html#fig:ggplot-month-categ">7.18</a> in which we created boxplots of the temperature for each month. Now, we color the boxplots (one color for each month) by setting <code>fill = Month_categ</code>). A legend has been automatically added:</p>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="plotsggplot2.html#cb630-1"></a>boxplot_Temp_Month &lt;-<span class="st"> </span><span class="kw">ggplot</span>(airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Month_categ, <span class="dt">y =</span> Temp, <span class="dt">fill =</span> Month_categ))<span class="op">+</span></span>
+<span id="cb630-2"><a href="plotsggplot2.html#cb630-2"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Month&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span></span>
+<span id="cb630-3"><a href="plotsggplot2.html#cb630-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span>
+<span id="cb630-4"><a href="plotsggplot2.html#cb630-4"></a>boxplot_Temp_Month </span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxplot-legend0"></span>
+<img src="bchwtz-cswr_files/figure-html/boxplot-legend0-1.png" alt="Boxplots of temperature for each month based on the airquality data set (R Core Team 2021)." width="672" />
+<p class="caption">
+Figure 7.24: Boxplots of temperature for each month based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>.
+</p>
+</div>
+
+<p>Since the previous plot is saved as <code>boxplot_Temp_Month</code> some more specifications can be easily added to it without repeating every line of code (i.e. the single layers).</p>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="plotsggplot2.html#cb631-1"></a>boxplot_Temp_Month <span class="op">+</span><span class="st"> </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">title =</span> <span class="st">&quot;Month&quot;</span>))<span class="op">+</span><span class="st"> </span><span class="co"># title of legend</span></span>
+<span id="cb631-2"><a href="plotsggplot2.html#cb631-2"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>), <span class="co"># make title bold</span></span>
+<span id="cb631-3"><a href="plotsggplot2.html#cb631-3"></a>        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;gray88&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb631-4"><a href="plotsggplot2.html#cb631-4"></a>        <span class="dt">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="co"># change position of legend</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxplot-legend1"></span>
+<img src="bchwtz-cswr_files/figure-html/boxplot-legend1-1.png" alt="Boxplots of temperature for each month based on the airquality data set (R Core Team 2021) with a modified legend." width="672" />
+<p class="caption">
+Figure 7.25: Boxplots of temperature for each month based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> with a modified legend.
+</p>
+</div>
+
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="plotsggplot2.html#cb632-1"></a>boxplot_Temp_Month <span class="op">+</span></span>
+<span id="cb632-2"><a href="plotsggplot2.html#cb632-2"></a><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">title =</span> <span class="st">&quot;Month&quot;</span>))<span class="op">+</span><span class="st"> </span><span class="co"># title of legend</span></span>
+<span id="cb632-3"><a href="plotsggplot2.html#cb632-3"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="co"># black and white</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxplot-legend2"></span>
+<img src="bchwtz-cswr_files/figure-html/boxplot-legend2-1.png" alt="Boxplots of temperature for each month based on the airquality data set (R Core Team 2021) with a modified legend and a predefined theme." width="672" />
+<p class="caption">
+Figure 7.26: Boxplots of temperature for each month based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> with a modified legend and a predefined theme.
+</p>
+</div>
+
+<p>From figure <a href="plotsggplot2.html#fig:boxplot-legend1">7.25</a> and its corresponding code it is obvious that</p>
+<ul>
+<li><p>the legend’s characteristics are accessed via <code>legend.*</code> inside <code>theme()</code>.</p></li>
+<li><p><code>theme()</code> controls non-data components of plots (arguments for the single components exist) (see <code>?theme</code>).</p></li>
+<li><p><code>element_*()</code>-functions are used to modify the attributes of the components (for example the color of the legend title), e.g.:</p>
+<ul>
+<li><p><code>element_blank()</code>: nothing is drawn, e.g. to leave out a legend, turning the grid off (see figure <a href="plotsggplot2.html#fig:boxplot-grid-off">7.27</a>)</p></li>
+<li><p><code>element_rect()</code>: for borders and backgrounds (<code>rect</code>: rectangle),</p></li>
+<li><p><code>element_line()</code>: customize lines,</p></li>
+<li><p><code>element_text()</code>: customize text</p></li>
+<li><p>and some more… (see <code>element_*</code> for more information).</p></li>
+</ul></li>
+</ul>
+<p>Another example for using <code>theme()</code> consists of modifying the grid:</p>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="plotsggplot2.html#cb633-1"></a>boxplot_Temp_Month <span class="op">+</span></span>
+<span id="cb633-2"><a href="plotsggplot2.html#cb633-2"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid =</span> <span class="kw">element_blank</span>()) <span class="co"># turning the grid off</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxplot-grid-off"></span>
+<img src="bchwtz-cswr_files/figure-html/boxplot-grid-off-1.png" alt="Boxplots of temperature for each month based on the airquality data set (R Core Team 2021) with no grid." width="672" />
+<p class="caption">
+Figure 7.27: Boxplots of temperature for each month based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> with no grid.
+</p>
+</div>
+
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="plotsggplot2.html#cb634-1"></a>boxplot_Temp_Month <span class="op">+</span></span>
+<span id="cb634-2"><a href="plotsggplot2.html#cb634-2"></a><span class="st">  </span><span class="co"># coloring the background and border:</span></span>
+<span id="cb634-3"><a href="plotsggplot2.html#cb634-3"></a><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;ghostwhite&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb634-4"><a href="plotsggplot2.html#cb634-4"></a><span class="dt">panel.grid =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;gainsboro&quot;</span>)) <span class="co"># coloring grid lines</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boxplot-grid-colored"></span>
+<img src="bchwtz-cswr_files/figure-html/boxplot-grid-colored-1.png" alt="Boxplots of temperature for each month based on the airquality data set (R Core Team 2021) with a customized grid." width="672" />
+<p class="caption">
+Figure 7.28: Boxplots of temperature for each month based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> with a customized grid.
+</p>
+</div>
+
+</div>
+<div id="handling-2-variables-and-faceting" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.2.4</span> Handling &gt; 2 variables and faceting<a href="plotsggplot2.html#handling-2-variables-and-faceting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As it was announced in the beginning of this chapter <a href="plotsggplot2.html#plotsggplot2">7.2</a> <code>ggplot2</code> provides help in dealing with more than two variables. The simplest way is to use the arguments of <code>aes()</code> in order to color, group (see figure <a href="plotsggplot2.html#fig:ggplot-month-categ">7.18</a>),… values, e.g.:</p>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="plotsggplot2.html#cb635-1"></a><span class="kw">ggplot</span>(airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind, <span class="dt">color =</span> Solar.R))<span class="op">+</span></span>
+<span id="cb635-2"><a href="plotsggplot2.html#cb635-2"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
+<span id="cb635-3"><a href="plotsggplot2.html#cb635-3"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Scatterplot of temperature and wind speed&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb635-4"><a href="plotsggplot2.html#cb635-4"></a><span class="kw">xlab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Wind [mph]&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ggpot-more2var-1"></span>
+<img src="bchwtz-cswr_files/figure-html/ggpot-more2var-1-1.png" alt="Scatterplot of wind speed vs. temperature colored by solar radiation based on the airquality data set (R Core Team 2021)." width="672" />
+<p class="caption">
+Figure 7.29: Scatterplot of wind speed vs. temperature colored by solar radiation based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>.
+</p>
+</div>
+
+<p>Consequently, dealing with three variables is also quite simple, but how can we handle four or more variables in a two-dimensional plot?</p>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="plotsggplot2.html#cb636-1"></a>airquality<span class="op">$</span>Month_categ &lt;-<span class="st"> </span><span class="kw">factor</span>(airquality<span class="op">$</span>Month, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>),</span>
+<span id="cb636-2"><a href="plotsggplot2.html#cb636-2"></a>                                 <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;May&quot;</span>, <span class="st">&quot;June&quot;</span>, <span class="st">&quot;July&quot;</span>, <span class="st">&quot;August&quot;</span>, <span class="st">&quot;September&quot;</span>))</span></code></pre></div>
+<p>We can simply define multiple arguments <strong>inside</strong> <code>aes()</code>, e.g. for each month different plotting symbols are used and the size of the symbols is dependent on the solar radion. So, multiple legends result.</p>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="plotsggplot2.html#cb637-1"></a><span class="kw">ggplot</span>(airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind, <span class="dt">size =</span> Solar.R))<span class="op">+</span></span>
+<span id="cb637-2"><a href="plotsggplot2.html#cb637-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> Month_categ))<span class="op">+</span></span>
+<span id="cb637-3"><a href="plotsggplot2.html#cb637-3"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Scatterplot of temperature and wind speed&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
+<span id="cb637-4"><a href="plotsggplot2.html#cb637-4"></a><span class="kw">xlab</span>(<span class="st">&quot;Temperature [°F]&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Wind [mph]&quot;</span>)</span></code></pre></div>
+<pre><code>#R&gt; Warning: Removed 7 rows containing missing values (geom_point).</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ggpot-more2var-2"></span>
+<img src="bchwtz-cswr_files/figure-html/ggpot-more2var-2-1.png" alt="Scatterplot of wind speed vs. temperature where the shape of the plotting symbols is dependent on the month and their sizes are dependent on solar radiation based on the airquality data set (R Core Team 2021)." width="672" />
+<p class="caption">
+Figure 7.30: Scatterplot of wind speed vs. temperature where the shape of the plotting symbols is dependent on the month and their sizes are dependent on solar radiation based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>.
+</p>
+</div>
+
+<p>Another option is to use <code>faceting</code>; a plot is divided into subplots. <span class="citation">(RStudio, PBC <a href="#ref-ggplot2Cheatsheet" role="doc-biblioref">2021</a>)</span> Figure <a href="plotsggplot2.html#fig:ggpot-more2var-2">7.30</a> can be transformed by <em>faceting</em> to figures <a href="plotsggplot2.html#fig:ggpot-more2var-3">7.31</a> and <a href="plotsggplot2.html#fig:ggpot-more2var-4">7.32</a>:</p>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="plotsggplot2.html#cb639-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind, <span class="dt">color =</span> Solar.R))<span class="op">+</span></span>
+<span id="cb639-2"><a href="plotsggplot2.html#cb639-2"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
+<span id="cb639-3"><a href="plotsggplot2.html#cb639-3"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>Month_categ, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)<span class="op">+</span><span class="st"> </span><span class="co"># rectangular layout </span></span>
+<span id="cb639-4"><a href="plotsggplot2.html#cb639-4"></a><span class="st">  </span><span class="co"># (by default: nrow = 2, ncol = 3)</span></span>
+<span id="cb639-5"><a href="plotsggplot2.html#cb639-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature [°F]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Wind [mph]&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ggpot-more2var-3"></span>
+<img src="bchwtz-cswr_files/figure-html/ggpot-more2var-3-1.png" alt="Subplots of the scatterplots of wind speed vs. temperature by month; based on the airquality data set (R Core Team 2021) and facet_wrap()." width="672" />
+<p class="caption">
+Figure 7.31: Subplots of the scatterplots of wind speed vs. temperature by month; based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> and <code>facet_wrap()</code>.
+</p>
+</div>
+
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="plotsggplot2.html#cb640-1"></a>air_ggplot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind, <span class="dt">color =</span> Solar.R))<span class="op">+</span></span>
+<span id="cb640-2"><a href="plotsggplot2.html#cb640-2"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
+<span id="cb640-3"><a href="plotsggplot2.html#cb640-3"></a><span class="st">  </span><span class="kw">facet_grid</span>(<span class="dt">rows =</span> <span class="kw">vars</span>(Month_categ))<span class="op">+</span></span>
+<span id="cb640-4"><a href="plotsggplot2.html#cb640-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature [°F]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Wind [mph]&quot;</span>)</span>
+<span id="cb640-5"><a href="plotsggplot2.html#cb640-5"></a>air_ggplot</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ggpot-more2var-4"></span>
+<img src="bchwtz-cswr_files/figure-html/ggpot-more2var-4-1.png" alt="Subplots of the scatterplots of wind speed vs. temperature by month; based on the airquality data set (R Core Team 2021) and facet_grid()." width="672" />
+<p class="caption">
+Figure 7.32: Subplots of the scatterplots of wind speed vs. temperature by month; based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span> and <code>facet_grid()</code>.
+</p>
+</div>
+
+<p>Some more examples based on <em>faceting</em>:</p>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="plotsggplot2.html#cb641-1"></a>air_ggplot <span class="op">+</span><span class="st"> </span><span class="co"># call the already defined ggplot</span></span>
+<span id="cb641-2"><a href="plotsggplot2.html#cb641-2"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="co"># add a linear model to each subplot</span></span></code></pre></div>
+<pre><code>#R&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ggpot-more2var-5"></span>
+<img src="bchwtz-cswr_files/figure-html/ggpot-more2var-5-1.png" alt="Subplots of the scatterplots of wind speed vs. temperature by month with regression lines; based on the airquality data set (R Core Team 2021)." width="672" />
+<p class="caption">
+Figure 7.33: Subplots of the scatterplots of wind speed vs. temperature by month with regression lines; based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>.
+</p>
+</div>
+
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="plotsggplot2.html#cb643-1"></a>air_ggplot <span class="op">+</span><span class="st"> </span><span class="co"># call the already defined ggplot</span></span>
+<span id="cb643-2"><a href="plotsggplot2.html#cb643-2"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">TRUE</span>) <span class="co"># add a linear model to each subplot</span></span></code></pre></div>
+<pre><code>#R&gt; `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ggpot-more2var-6"></span>
+<img src="bchwtz-cswr_files/figure-html/ggpot-more2var-6-1.png" alt="Subplots of the scatterplots of wind speed vs. temperature by month with regression lines and confidence intervals; based on the airquality data set (R Core Team 2021)." width="672" />
+<p class="caption">
+Figure 7.34: Subplots of the scatterplots of wind speed vs. temperature by month with regression lines and confidence intervals; based on the <code>airquality</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>.
+</p>
+</div>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Arnold2020">
+<p>Arnold, Jeffrey B. 2020. <em>R for Data Science: Exercise Solutions. Chapter 3.7: Statistical Transformations.</em> <a href="https://jrnold.github.io/r4ds-exercise-solutions/data-visualisation.html#statistical-transformations">https://jrnold.github.io/r4ds-exercise-solutions/data-visualisation.html#statistical-transformations</a>.</p>
+</div>
+<div id="ref-gridExtra">
+<p>Auguie, Baptiste. 2017. <em>GridExtra: Miscellaneous Functions for "Grid" Graphics</em>. <a href="https://CRAN.R-project.org/package=gridExtra">https://CRAN.R-project.org/package=gridExtra</a>.</p>
+</div>
+<div id="ref-R">
+<p>R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-ggplot2Cheatsheet">
+<p>RStudio, PBC. 2021. <em>Data Visualization with Ggplot2::CHEAT Sheet</em>. <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf</a>.</p>
+</div>
+<div id="ref-ggplot2">
+<p>Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.</p>
+</div>
+<div id="ref-tidyr">
+<p>Wickham, Hadley, and Maximilian Girlich. 2022. <em>Tidyr: Tidy Messy Data</em>. <a href="https://CRAN.R-project.org/package=tidyr">https://CRAN.R-project.org/package=tidyr</a>.</p>
+</div>
+<div id="ref-Wilkinson2005">
+<p>Wilkinson, L. 2005. <em>The Grammar of Graphics</em>. 2nd ed. New York: Springer.</p>
+</div>
+<div id="ref-Wilkinson2010">
+<p>Wilkinson, Leland. 2010. “The Grammar of Graphics.” <em>Wiley Interdisciplinary Reviews. Computational Statistics</em> 2 (6): 673–77.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="plotsbaseR.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interactive-plots-with-plotly-plotly.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-applications.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bchwtz-cswr.pdf", "bchwtz-cswr.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

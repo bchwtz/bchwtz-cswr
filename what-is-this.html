@@ -283,9 +283,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.2" data-path="plotsbaseR.html"><a href="plotsbaseR.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
 <li class="chapter" data-level="7.1.3" data-path="plotsbaseR.html"><a href="plotsbaseR.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="plots-with-ggplot2-ggplot2.html"><a href="plots-with-ggplot2-ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a></li>
-<li class="chapter" data-level="7.3" data-path="histograms-and-boxplots-1.html"><a href="histograms-and-boxplots-1.html"><i class="fa fa-check"></i><b>7.3</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.4" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.4</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
+<li class="chapter" data-level="7.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="plotsggplot2.html"><a href="plotsggplot2.html#histograms-and-boxplots-1"><i class="fa fa-check"></i><b>7.2.1</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.2.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html#linear-regression"><i class="fa fa-check"></i><b>7.2.2</b> Linear regression</a></li>
+<li class="chapter" data-level="7.2.3" data-path="plotsggplot2.html"><a href="plotsggplot2.html#customizing-ggplots"><i class="fa fa-check"></i><b>7.2.3</b> Customizing ggplots</a></li>
+<li class="chapter" data-level="7.2.4" data-path="plotsggplot2.html"><a href="plotsggplot2.html#handling-2-variables-and-faceting"><i class="fa fa-check"></i><b>7.2.4</b> Handling &gt; 2 variables and faceting</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
@@ -416,9 +420,9 @@ microbenchmark(fun.switch('case1'), fun.if('case1'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min    lq     mean median  uq     max neval
-#R>  fun.switch("case1") 319 334.5 2555.335    379 394 1978699  1000
-#R>      fun.if("case1") 455 475.0 9120.026    489 524 7989082  1000
+#R>                 expr min  lq     mean median  uq     max neval
+#R>  fun.switch("case1") 327 340 2215.817    380 393 1836692  1000
+#R>      fun.if("case1") 456 477 4537.069    488 501 4032025  1000
 ```
 
 ```r
@@ -427,9 +431,9 @@ microbenchmark(fun.switch('case3'), fun.if('case3'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min  lq     mean median    uq    max neval
-#R>  fun.switch("case3") 353 367  675.558    414 429.0 142159  1000
-#R>      fun.if("case3") 692 714 1383.744    724 779.5 508380  1000
+#R>                 expr min  lq    mean median  uq  max neval
+#R>  fun.switch("case3") 360 375 418.380    420 431 2814  1000
+#R>      fun.if("case3") 698 720 758.655    728 741 7375  1000
 ```
 
 
