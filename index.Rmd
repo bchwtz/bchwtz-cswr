@@ -26,10 +26,12 @@ knitr::opts_chunk$set(fig.align="center")
 
 install.packages("latex2exp")
 install.packages("plotly")
+install.packages("gridExtra")
 
 library(ggplot2)
 library(latex2exp)
 library(plotly)
+library(gridExtra)
 #library(tutorial)
 #tutorial::go_interactive(greedy=FALSE)
 ```

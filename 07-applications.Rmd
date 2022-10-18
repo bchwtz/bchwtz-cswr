@@ -375,6 +375,82 @@ Here are some of the `stat_*()`- and `geom_*()`-function equivalents based on [@
 
 Based on this introduction of ggplots, we can easily reconstruct the plots we created in base-R (see chapter \@ref(plotsbaseR)).
 
+Based on this introduction of ggplots, we can easily reconstruct the plots we created in base-R (see chapter \@ref(plotsbaseR)).
+Before we do that, it is recommended to save the variables in a data frame:
+```{r}
+x <- seq(from = -8, to = 8, by = 0.1)
+y <- dnorm(x = x)
+y2 <- dnorm(x = x, mean = -1)
+y3 <- dnorm(x = x, mean = 2)
+nd <- data.frame(x, y, y2, y3)
+head(nd)
+```
+
+Then, the single curves are added to the ggplot by adding layers (for each curve one layer) to the plot. Here, `geom_line()` is used to visualize the curves in form of lines. Furthermore, the following code chunk shows that the lines are colored by defining the argument `color` **outside** `aes()`.
+
+```{r ggplot-normal-distrib, fig.cap="(ref:ggplot-nv)"}
+ggplot(data = nd, mapping = aes(x = x))+
+  geom_line(mapping = aes(y = y), color = "blue", size = 2, linetype = "dotted")+
+  geom_line(mapping = aes(y = y2), color = "#7FFF00")+
+  geom_line(mapping = aes(y = y3), color = "yellow")+
+  ggtitle("Normal distribution - density")
+```
+
+(ref:ggplot-nv) Density functions for the normal distribution with $\mu_1 = 0$, $\mu_2 = -1$ and $\mu_3 = 2$.
+
+Instead of adding each density function to the plot by calling `geom_line()` several times, it is possible to add all curves to the plot by calling `geom_line()` only one time.
+For this, we have to modify the data set. We just want to call the `x` variable (x values) and the `y` variable (the density values of each curve) and color the values by the name of the curve (`y`, `y2` and `y3`). This is achieved by *lengthens*  the data set:
+
+```{r}
+nd2 <- data.frame(x = rep(x, times = 3), density=c(y, y2, y3),
+                  curve = c(rep("y", times = length(y)), rep("y2", times = length(y)),
+                            rep("y3", times = length(y))))
+ head(nd2, n = 20)
+```
+
+In the first column, the `x` values are repeated three times (for curve `y`, `y2` and `y3`). The second column consists of the density values of curve `y`, `y2` and `y3` and the last columns assigns the name of the curve to each value. Consequently, the data set `nd2` has three times more rows than `nd` has:
+
+```{r}
+nrow(nd)
+nrow(nd2)
+```
+
+The code to reproduce figure \@ref(fig:ggplot-normal-distrib) is shortend:
+
+```{r ggplot-normal-distrib2, fig.cap="(ref:ggplot-nv2)"}
+ggplot(data = nd2, mapping = aes(x = x, y = density, color = curve))+
+  geom_line()
+```
+
+(ref:ggplot-nv2) Density functions for the normal distribution with $\mu_1 = 0$, $\mu_2 = -1$ and $\mu_3 = 2$.
+
+Now, the three curves are not colored by defining `color` outside `aes()`. Instead, `color` is defined **inside** `aes()` since we have called a **variable** (named `curve`). So, we can conclude from that: 
+
++ Single lines, points, etc. are colored by defining the aesthetics arguments **outside** `aes()`.
+
++ Coloring a variable's values by its categories (here: the curves' names (`y`, `y2` and `y3`)) is achieved by assigning the variable's name to the `color` argument **inside** `aes()`.
+
+It the latter case, a legend will be automatically added (see figure \@ref(fig:ggplot-normal-distrib2)).
+
+A smart solution to *lengthens* the data set - instead of using `rep()` - is provided by `pivot_longer()` from `tidyr`-package created by @tidyr:
+
+```{r}
+nd2 <- nd %>% pivot_longer(cols = c(y, y2, y3)) # columns y, y2 and y3 are concatenated 
+# to form one column, the other columns have been adjusted automatically
+head(nd2)
+colnames(nd2) <- c("x", "curve", "density")
+```
+
+Based on the data set `nd2`, it is now easy to fill curves by calling `fill = curve` **inside** `aes()` (analogous to the argument `color`) and using `geom_polygon()` where `alpha` stands for the *degree* of opacity:
+
+```{r}
+ggplot(data = nd2, mapping = aes(x = x, y = density, fill = curve))+
+  geom_polygon(alpha = 0.4)+
+  scale_fill_discrete(name = "Density", labels= c(latex2exp::TeX("$\\mu=0, \\sigma=1$"), 
+  latex2exp::TeX("$\\mu= -1, \\sigma=1$"), latex2exp::TeX("$\\mu=2, \\sigma=1$")))
+```
+
+As we have already seen in chapter \@ref(baseRplot), the package `latex2exp` is used to customize the legend inside `scale_fill_discrete()` [@ggplot2Cheatsheet].
 
 
 ## Interactive plots with `plotly` [@plotly]
