@@ -442,42 +442,42 @@ To find the folder to which these files were saved (if you have not specifically
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="real-data.html#cb703-1"></a><span class="kw">plot</span>(tseries.subs<span class="op">$</span>TotalSubscribers<span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">6</span>, <span class="dt">x=</span>tseries.subs<span class="op">$</span>date, </span>
-<span id="cb703-2"><a href="real-data.html#cb703-2"></a>     <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(<span class="kw">max</span>(tseries.subs<span class="op">$</span>TotalSubscribers),</span>
-<span id="cb703-3"><a href="real-data.html#cb703-3"></a>                  <span class="kw">max</span>(bibi.subs<span class="op">$</span>TotalSubscribers))<span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">6</span>),</span>
-<span id="cb703-4"><a href="real-data.html#cb703-4"></a>     <span class="dt">ylab=</span><span class="st">&quot;Total Subscribers&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Time&quot;</span>,</span>
-<span id="cb703-5"><a href="real-data.html#cb703-5"></a>     <span class="dt">main=</span><span class="st">&quot;Total Subscribers on Youtube&quot;</span>,</span>
-<span id="cb703-6"><a href="real-data.html#cb703-6"></a>     <span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</span>
-<span id="cb703-7"><a href="real-data.html#cb703-7"></a><span class="kw">mtext</span>(<span class="st">&quot;Units in Million&quot;</span>)</span>
-<span id="cb703-8"><a href="real-data.html#cb703-8"></a></span>
-<span id="cb703-9"><a href="real-data.html#cb703-9"></a><span class="kw">grid</span>(<span class="dt">nx=</span><span class="dv">0</span>, <span class="dt">ny=</span><span class="ot">NULL</span>)</span>
-<span id="cb703-10"><a href="real-data.html#cb703-10"></a>s &lt;-<span class="st"> </span><span class="kw">sapply</span>(tseries.subs<span class="op">$</span>date[<span class="kw">grepl</span>(tseries.subs<span class="op">$</span>date,<span class="dt">pattern =</span> <span class="st">&quot;01-01&quot;</span>)],</span>
-<span id="cb703-11"><a href="real-data.html#cb703-11"></a>       <span class="cf">function</span>(x){<span class="kw">abline</span>(<span class="dt">v=</span>x,<span class="dt">col=</span><span class="st">&quot;grey&quot;</span>,<span class="dt">lty=</span><span class="st">&quot;dotted&quot;</span>)})</span>
-<span id="cb703-12"><a href="real-data.html#cb703-12"></a></span>
-<span id="cb703-13"><a href="real-data.html#cb703-13"></a><span class="kw">lines</span>(<span class="dt">x=</span>bibi.subs<span class="op">$</span>date, <span class="dt">y=</span>bibi.subs<span class="op">$</span>TotalSubscribers<span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">6</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb703-14"><a href="real-data.html#cb703-14"></a></span>
-<span id="cb703-15"><a href="real-data.html#cb703-15"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;T-Series&quot;</span>, <span class="st">&quot;Bibis Beauty Palace&quot;</span>),</span>
-<span id="cb703-16"><a href="real-data.html#cb703-16"></a>       <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">lty=</span><span class="dv">1</span>, <span class="dt">cex=</span><span class="fl">0.8</span>, <span class="dt">inset=</span>.<span class="dv">05</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-288-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="real-data.html#cb698-1"></a><span class="kw">plot</span>(tseries.subs<span class="op">$</span>TotalSubscribers<span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">6</span>, <span class="dt">x=</span>tseries.subs<span class="op">$</span>date, </span>
+<span id="cb698-2"><a href="real-data.html#cb698-2"></a>     <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(<span class="kw">max</span>(tseries.subs<span class="op">$</span>TotalSubscribers),</span>
+<span id="cb698-3"><a href="real-data.html#cb698-3"></a>                  <span class="kw">max</span>(bibi.subs<span class="op">$</span>TotalSubscribers))<span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">6</span>),</span>
+<span id="cb698-4"><a href="real-data.html#cb698-4"></a>     <span class="dt">ylab=</span><span class="st">&quot;Total Subscribers&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Time&quot;</span>,</span>
+<span id="cb698-5"><a href="real-data.html#cb698-5"></a>     <span class="dt">main=</span><span class="st">&quot;Total Subscribers on Youtube&quot;</span>,</span>
+<span id="cb698-6"><a href="real-data.html#cb698-6"></a>     <span class="dt">type=</span><span class="st">&quot;l&quot;</span>)</span>
+<span id="cb698-7"><a href="real-data.html#cb698-7"></a><span class="kw">mtext</span>(<span class="st">&quot;Units in Million&quot;</span>)</span>
+<span id="cb698-8"><a href="real-data.html#cb698-8"></a></span>
+<span id="cb698-9"><a href="real-data.html#cb698-9"></a><span class="kw">grid</span>(<span class="dt">nx=</span><span class="dv">0</span>, <span class="dt">ny=</span><span class="ot">NULL</span>)</span>
+<span id="cb698-10"><a href="real-data.html#cb698-10"></a>s &lt;-<span class="st"> </span><span class="kw">sapply</span>(tseries.subs<span class="op">$</span>date[<span class="kw">grepl</span>(tseries.subs<span class="op">$</span>date,<span class="dt">pattern =</span> <span class="st">&quot;01-01&quot;</span>)],</span>
+<span id="cb698-11"><a href="real-data.html#cb698-11"></a>       <span class="cf">function</span>(x){<span class="kw">abline</span>(<span class="dt">v=</span>x,<span class="dt">col=</span><span class="st">&quot;grey&quot;</span>,<span class="dt">lty=</span><span class="st">&quot;dotted&quot;</span>)})</span>
+<span id="cb698-12"><a href="real-data.html#cb698-12"></a></span>
+<span id="cb698-13"><a href="real-data.html#cb698-13"></a><span class="kw">lines</span>(<span class="dt">x=</span>bibi.subs<span class="op">$</span>date, <span class="dt">y=</span>bibi.subs<span class="op">$</span>TotalSubscribers<span class="op">/</span><span class="dv">10</span><span class="op">^</span><span class="dv">6</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb698-14"><a href="real-data.html#cb698-14"></a></span>
+<span id="cb698-15"><a href="real-data.html#cb698-15"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;T-Series&quot;</span>, <span class="st">&quot;Bibis Beauty Palace&quot;</span>),</span>
+<span id="cb698-16"><a href="real-data.html#cb698-16"></a>       <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">lty=</span><span class="dv">1</span>, <span class="dt">cex=</span><span class="fl">0.8</span>, <span class="dt">inset=</span>.<span class="dv">05</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-277-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>While both curves look fairly smooth the day-to-day changes for the last month show that the data fairly fluctuates over time with a roughly constant absolute growth.</p>
-<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="real-data.html#cb704-1"></a>n &lt;-<span class="st"> </span><span class="dv">31</span></span>
-<span id="cb704-2"><a href="real-data.html#cb704-2"></a>t.diff &lt;-<span class="st"> </span><span class="kw">ts</span>(<span class="kw">diff</span>(<span class="kw">tail</span>(tseries.subs<span class="op">$</span>TotalSubscribers, n)))</span>
-<span id="cb704-3"><a href="real-data.html#cb704-3"></a>b.diff &lt;-<span class="st"> </span><span class="kw">ts</span>(<span class="kw">diff</span>(<span class="kw">tail</span>(bibi.subs<span class="op">$</span>TotalSubscribers, n)))</span>
-<span id="cb704-4"><a href="real-data.html#cb704-4"></a></span>
-<span id="cb704-5"><a href="real-data.html#cb704-5"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>))</span>
-<span id="cb704-6"><a href="real-data.html#cb704-6"></a></span>
-<span id="cb704-7"><a href="real-data.html#cb704-7"></a><span class="kw">plot</span>(<span class="dt">y=</span>t.diff,</span>
-<span id="cb704-8"><a href="real-data.html#cb704-8"></a>     <span class="dt">x=</span><span class="kw">tail</span>(tseries.subs<span class="op">$</span>date,n<span class="dv">-1</span>),</span>
-<span id="cb704-9"><a href="real-data.html#cb704-9"></a>     <span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Subscribers&quot;</span>,</span>
-<span id="cb704-10"><a href="real-data.html#cb704-10"></a>     <span class="dt">main=</span><span class="st">&quot;Day-to-Day Subscriber Growth&quot;</span>)</span>
-<span id="cb704-11"><a href="real-data.html#cb704-11"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">lty=</span><span class="st">&quot;dotted&quot;</span>,<span class="dt">col=</span><span class="st">&quot;grey&quot;</span>)</span>
-<span id="cb704-12"><a href="real-data.html#cb704-12"></a><span class="kw">mtext</span>(<span class="st">&quot;T-Series&quot;</span>)</span>
-<span id="cb704-13"><a href="real-data.html#cb704-13"></a><span class="kw">plot</span>(<span class="dt">y=</span>b.diff,</span>
-<span id="cb704-14"><a href="real-data.html#cb704-14"></a>     <span class="dt">x=</span><span class="kw">tail</span>(bibi.subs<span class="op">$</span>date,n<span class="dv">-1</span>),</span>
-<span id="cb704-15"><a href="real-data.html#cb704-15"></a>     <span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Subscribers&quot;</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb704-16"><a href="real-data.html#cb704-16"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">lty=</span><span class="st">&quot;dotted&quot;</span>,<span class="dt">col=</span><span class="st">&quot;grey&quot;</span>)</span>
-<span id="cb704-17"><a href="real-data.html#cb704-17"></a><span class="kw">mtext</span>(<span class="st">&quot;Bibis Beauty Palace&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-289-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="real-data.html#cb699-1"></a>n &lt;-<span class="st"> </span><span class="dv">31</span></span>
+<span id="cb699-2"><a href="real-data.html#cb699-2"></a>t.diff &lt;-<span class="st"> </span><span class="kw">ts</span>(<span class="kw">diff</span>(<span class="kw">tail</span>(tseries.subs<span class="op">$</span>TotalSubscribers, n)))</span>
+<span id="cb699-3"><a href="real-data.html#cb699-3"></a>b.diff &lt;-<span class="st"> </span><span class="kw">ts</span>(<span class="kw">diff</span>(<span class="kw">tail</span>(bibi.subs<span class="op">$</span>TotalSubscribers, n)))</span>
+<span id="cb699-4"><a href="real-data.html#cb699-4"></a></span>
+<span id="cb699-5"><a href="real-data.html#cb699-5"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb699-6"><a href="real-data.html#cb699-6"></a></span>
+<span id="cb699-7"><a href="real-data.html#cb699-7"></a><span class="kw">plot</span>(<span class="dt">y=</span>t.diff,</span>
+<span id="cb699-8"><a href="real-data.html#cb699-8"></a>     <span class="dt">x=</span><span class="kw">tail</span>(tseries.subs<span class="op">$</span>date,n<span class="dv">-1</span>),</span>
+<span id="cb699-9"><a href="real-data.html#cb699-9"></a>     <span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Subscribers&quot;</span>,</span>
+<span id="cb699-10"><a href="real-data.html#cb699-10"></a>     <span class="dt">main=</span><span class="st">&quot;Day-to-Day Subscriber Growth&quot;</span>)</span>
+<span id="cb699-11"><a href="real-data.html#cb699-11"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">lty=</span><span class="st">&quot;dotted&quot;</span>,<span class="dt">col=</span><span class="st">&quot;grey&quot;</span>)</span>
+<span id="cb699-12"><a href="real-data.html#cb699-12"></a><span class="kw">mtext</span>(<span class="st">&quot;T-Series&quot;</span>)</span>
+<span id="cb699-13"><a href="real-data.html#cb699-13"></a><span class="kw">plot</span>(<span class="dt">y=</span>b.diff,</span>
+<span id="cb699-14"><a href="real-data.html#cb699-14"></a>     <span class="dt">x=</span><span class="kw">tail</span>(bibi.subs<span class="op">$</span>date,n<span class="dv">-1</span>),</span>
+<span id="cb699-15"><a href="real-data.html#cb699-15"></a>     <span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Subscribers&quot;</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb699-16"><a href="real-data.html#cb699-16"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">lty=</span><span class="st">&quot;dotted&quot;</span>,<span class="dt">col=</span><span class="st">&quot;grey&quot;</span>)</span>
+<span id="cb699-17"><a href="real-data.html#cb699-17"></a><span class="kw">mtext</span>(<span class="st">&quot;Bibis Beauty Palace&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-278-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

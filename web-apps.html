@@ -378,119 +378,119 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="gfx/gif/shinyMeanProperties.gif" width="80%" style="display: block; margin: auto;" /></p>
 <p>To illustrate how web apps work we choose to visualize some well known, but for most people not very intuitive properties of the sample mean <span class="math inline">\(\bar{X}\)</span>. While it is quite obvious that the expected value of the sample mean <span class="math inline">\(E(\bar{X}) = E(\frac{1}{n}\sum_{i=1}^{n}X_i) = \mu\)</span> is equal to the expected value of <span class="math inline">\(X_i\)</span>, their variances differ.</p>
 <p>Let us illustrate these properties using a plot. First, we are going to generate 1000 random draws <span class="math inline">\(X_i\)</span> from a standard normal distribution <span class="math inline">\(N(\mu=0,\sigma^2=1)\)</span> and plot a histogram to exemplify their probability density. We calculate the sample mean of five consecutive draws (<code>n &lt;- 5</code>) and compare the probability density of these 200 (<code>N</code>) calculated means to the probability density of the initial draws. In order to compare the differences more clearly, we are also adding a density line for the empirical normal distribution.</p>
-<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="web-apps.html#cb731-1"></a><span class="co"># Make results comparable</span></span>
-<span id="cb731-2"><a href="web-apps.html#cb731-2"></a><span class="kw">set.seed</span>(<span class="dv">100</span>)</span>
-<span id="cb731-3"><a href="web-apps.html#cb731-3"></a></span>
-<span id="cb731-4"><a href="web-apps.html#cb731-4"></a><span class="co"># Draw random numbers and calculate N means based on n draws</span></span>
-<span id="cb731-5"><a href="web-apps.html#cb731-5"></a>n &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb731-6"><a href="web-apps.html#cb731-6"></a>N &lt;-<span class="st"> </span><span class="dv">200</span></span>
-<span id="cb731-7"><a href="web-apps.html#cb731-7"></a>rngmat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(n<span class="op">*</span>N), <span class="dt">nrow =</span> n, <span class="dt">ncol=</span>N)</span>
-<span id="cb731-8"><a href="web-apps.html#cb731-8"></a>meanvec &lt;-<span class="st"> </span><span class="kw">apply</span>(rngmat, <span class="dv">2</span>, mean)</span>
-<span id="cb731-9"><a href="web-apps.html#cb731-9"></a></span>
-<span id="cb731-10"><a href="web-apps.html#cb731-10"></a><span class="co"># Plot histograms </span></span>
-<span id="cb731-11"><a href="web-apps.html#cb731-11"></a>MASS<span class="op">::</span><span class="kw">truehist</span>(rngmat, <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">6</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb731-12"><a href="web-apps.html#cb731-12"></a><span class="kw">par</span>(<span class="dt">new=</span>T) <span class="co"># Necessary to combine two histograms in one plot</span></span>
-<span id="cb731-13"><a href="web-apps.html#cb731-13"></a>MASS<span class="op">::</span><span class="kw">truehist</span>(meanvec,<span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb731-14"><a href="web-apps.html#cb731-14"></a></span>
-<span id="cb731-15"><a href="web-apps.html#cb731-15"></a><span class="co"># Add empirical probability density as line</span></span>
-<span id="cb731-16"><a href="web-apps.html#cb731-16"></a>xseq &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">length.out =</span> <span class="dv">1000</span>)</span>
-<span id="cb731-17"><a href="web-apps.html#cb731-17"></a>y &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(rngmat),<span class="kw">sd</span>(rngmat))})</span>
-<span id="cb731-18"><a href="web-apps.html#cb731-18"></a>ymean &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(meanvec),<span class="kw">sd</span>(meanvec))})</span>
-<span id="cb731-19"><a href="web-apps.html#cb731-19"></a><span class="kw">lines</span>(xseq, ymean, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb731-20"><a href="web-apps.html#cb731-20"></a><span class="kw">lines</span>(xseq, y, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-311-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="web-apps.html#cb726-1"></a><span class="co"># Make results comparable</span></span>
+<span id="cb726-2"><a href="web-apps.html#cb726-2"></a><span class="kw">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb726-3"><a href="web-apps.html#cb726-3"></a></span>
+<span id="cb726-4"><a href="web-apps.html#cb726-4"></a><span class="co"># Draw random numbers and calculate N means based on n draws</span></span>
+<span id="cb726-5"><a href="web-apps.html#cb726-5"></a>n &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb726-6"><a href="web-apps.html#cb726-6"></a>N &lt;-<span class="st"> </span><span class="dv">200</span></span>
+<span id="cb726-7"><a href="web-apps.html#cb726-7"></a>rngmat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(n<span class="op">*</span>N), <span class="dt">nrow =</span> n, <span class="dt">ncol=</span>N)</span>
+<span id="cb726-8"><a href="web-apps.html#cb726-8"></a>meanvec &lt;-<span class="st"> </span><span class="kw">apply</span>(rngmat, <span class="dv">2</span>, mean)</span>
+<span id="cb726-9"><a href="web-apps.html#cb726-9"></a></span>
+<span id="cb726-10"><a href="web-apps.html#cb726-10"></a><span class="co"># Plot histograms </span></span>
+<span id="cb726-11"><a href="web-apps.html#cb726-11"></a>MASS<span class="op">::</span><span class="kw">truehist</span>(rngmat, <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">6</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb726-12"><a href="web-apps.html#cb726-12"></a><span class="kw">par</span>(<span class="dt">new=</span>T) <span class="co"># Necessary to combine two histograms in one plot</span></span>
+<span id="cb726-13"><a href="web-apps.html#cb726-13"></a>MASS<span class="op">::</span><span class="kw">truehist</span>(meanvec,<span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb726-14"><a href="web-apps.html#cb726-14"></a></span>
+<span id="cb726-15"><a href="web-apps.html#cb726-15"></a><span class="co"># Add empirical probability density as line</span></span>
+<span id="cb726-16"><a href="web-apps.html#cb726-16"></a>xseq &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">length.out =</span> <span class="dv">1000</span>)</span>
+<span id="cb726-17"><a href="web-apps.html#cb726-17"></a>y &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(rngmat),<span class="kw">sd</span>(rngmat))})</span>
+<span id="cb726-18"><a href="web-apps.html#cb726-18"></a>ymean &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(meanvec),<span class="kw">sd</span>(meanvec))})</span>
+<span id="cb726-19"><a href="web-apps.html#cb726-19"></a><span class="kw">lines</span>(xseq, ymean, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb726-20"><a href="web-apps.html#cb726-20"></a><span class="kw">lines</span>(xseq, y, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-300-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Obviously, the shown plot is dependent on the number of draws that are used for every calculation of a mean <code>n</code> and the total number of means that we want to calculate <code>N</code>. Additionally, we can make the user decide whether he wants the density lines in the plot and if the random numbers are drawn using a seeded random number generator for which a seed can be provided. Every time one of these four inputs changes the plot needs to be recreated. A very convenient way to make our small program accessible by users that have little or no experience using R, we can transform our script into a web app using the <code>shiny</code>-package.</p>
 <p>A shiny app can be easily build using three simple components: a page constructor, a server script, and app constructor. The page constructor creates the user interface meaning it provides a mechanism for users to input values for variables and displays results. The server script takes the inputs from the user interface, performs calculations and returns the output for the user interface. The app constructor links the user interface and the server script and coordinates everything. The general structure of a shiny app in the required form is as shown in the following snippet.</p>
-<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="web-apps.html#cb732-1"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb732-2"><a href="web-apps.html#cb732-2"></a></span>
-<span id="cb732-3"><a href="web-apps.html#cb732-3"></a><span class="co"># Define UI for application that draws a histogram</span></span>
-<span id="cb732-4"><a href="web-apps.html#cb732-4"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
-<span id="cb732-5"><a href="web-apps.html#cb732-5"></a></span>
-<span id="cb732-6"><a href="web-apps.html#cb732-6"></a>    <span class="kw">titlePanel</span>(<span class="st">&quot;Title&quot;</span>),</span>
-<span id="cb732-7"><a href="web-apps.html#cb732-7"></a></span>
-<span id="cb732-8"><a href="web-apps.html#cb732-8"></a>    <span class="kw">sidebarLayout</span>(</span>
-<span id="cb732-9"><a href="web-apps.html#cb732-9"></a>        <span class="kw">sidebarPanel</span>(</span>
-<span id="cb732-10"><a href="web-apps.html#cb732-10"></a>           <span class="co">## Input</span></span>
-<span id="cb732-11"><a href="web-apps.html#cb732-11"></a>        ),</span>
-<span id="cb732-12"><a href="web-apps.html#cb732-12"></a>        <span class="kw">mainPanel</span>(</span>
-<span id="cb732-13"><a href="web-apps.html#cb732-13"></a>           <span class="co">## Output</span></span>
-<span id="cb732-14"><a href="web-apps.html#cb732-14"></a>        )</span>
-<span id="cb732-15"><a href="web-apps.html#cb732-15"></a>    )</span>
-<span id="cb732-16"><a href="web-apps.html#cb732-16"></a>)</span>
-<span id="cb732-17"><a href="web-apps.html#cb732-17"></a></span>
-<span id="cb732-18"><a href="web-apps.html#cb732-18"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
-<span id="cb732-19"><a href="web-apps.html#cb732-19"></a>      <span class="co">## Actual R Script </span></span>
-<span id="cb732-20"><a href="web-apps.html#cb732-20"></a>}</span>
-<span id="cb732-21"><a href="web-apps.html#cb732-21"></a></span>
-<span id="cb732-22"><a href="web-apps.html#cb732-22"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
-<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="web-apps.html#cb733-1"></a><span class="co"># Shiny Example for the CSWR Course</span></span>
-<span id="cb733-2"><a href="web-apps.html#cb733-2"></a></span>
-<span id="cb733-3"><a href="web-apps.html#cb733-3"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb733-4"><a href="web-apps.html#cb733-4"></a></span>
-<span id="cb733-5"><a href="web-apps.html#cb733-5"></a><span class="co"># Define UI for application that draws a histogram</span></span>
-<span id="cb733-6"><a href="web-apps.html#cb733-6"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
-<span id="cb733-7"><a href="web-apps.html#cb733-7"></a></span>
-<span id="cb733-8"><a href="web-apps.html#cb733-8"></a>    <span class="co"># Application title</span></span>
-<span id="cb733-9"><a href="web-apps.html#cb733-9"></a>    <span class="kw">titlePanel</span>(<span class="st">&quot;Random Samples and their Mean&quot;</span>),</span>
-<span id="cb733-10"><a href="web-apps.html#cb733-10"></a></span>
-<span id="cb733-11"><a href="web-apps.html#cb733-11"></a>    <span class="co"># Sidebar with a slider input for number of bins </span></span>
-<span id="cb733-12"><a href="web-apps.html#cb733-12"></a>    <span class="kw">sidebarLayout</span>(</span>
-<span id="cb733-13"><a href="web-apps.html#cb733-13"></a>        <span class="kw">sidebarPanel</span>(</span>
-<span id="cb733-14"><a href="web-apps.html#cb733-14"></a>            <span class="kw">sliderInput</span>(<span class="st">&quot;N&quot;</span>,</span>
-<span id="cb733-15"><a href="web-apps.html#cb733-15"></a>                        <span class="st">&quot;Number of samples:&quot;</span>,</span>
-<span id="cb733-16"><a href="web-apps.html#cb733-16"></a>                        <span class="dt">min =</span> <span class="dv">10</span>,</span>
-<span id="cb733-17"><a href="web-apps.html#cb733-17"></a>                        <span class="dt">max =</span> <span class="dv">100</span>,</span>
-<span id="cb733-18"><a href="web-apps.html#cb733-18"></a>                        <span class="dt">value =</span> <span class="dv">50</span>),</span>
-<span id="cb733-19"><a href="web-apps.html#cb733-19"></a>            <span class="kw">sliderInput</span>(<span class="st">&quot;n&quot;</span>,</span>
-<span id="cb733-20"><a href="web-apps.html#cb733-20"></a>                        <span class="st">&quot;Number of draws per sample:&quot;</span>,</span>
-<span id="cb733-21"><a href="web-apps.html#cb733-21"></a>                        <span class="dt">min =</span> <span class="dv">1</span>,</span>
-<span id="cb733-22"><a href="web-apps.html#cb733-22"></a>                        <span class="dt">max =</span> <span class="dv">100</span>,</span>
-<span id="cb733-23"><a href="web-apps.html#cb733-23"></a>                        <span class="dt">value =</span> <span class="dv">1</span>),</span>
-<span id="cb733-24"><a href="web-apps.html#cb733-24"></a>            <span class="kw">checkboxInput</span>(<span class="st">&quot;showdensity&quot;</span>, </span>
-<span id="cb733-25"><a href="web-apps.html#cb733-25"></a>                          <span class="st">&quot;Show Density?&quot;</span>, </span>
-<span id="cb733-26"><a href="web-apps.html#cb733-26"></a>                          <span class="dt">value =</span> <span class="ot">FALSE</span>),</span>
-<span id="cb733-27"><a href="web-apps.html#cb733-27"></a>            <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Seed&quot;</span>, </span>
-<span id="cb733-28"><a href="web-apps.html#cb733-28"></a>                         <span class="dt">value=</span><span class="ot">NULL</span>, </span>
-<span id="cb733-29"><a href="web-apps.html#cb733-29"></a>                         <span class="dt">min =</span> <span class="dv">0</span>, </span>
-<span id="cb733-30"><a href="web-apps.html#cb733-30"></a>                         <span class="dt">max =</span> <span class="dv">10000</span>, </span>
-<span id="cb733-31"><a href="web-apps.html#cb733-31"></a>                         <span class="dt">step =</span> <span class="dv">1</span>)</span>
-<span id="cb733-32"><a href="web-apps.html#cb733-32"></a>        ),</span>
-<span id="cb733-33"><a href="web-apps.html#cb733-33"></a></span>
-<span id="cb733-34"><a href="web-apps.html#cb733-34"></a>        <span class="co"># Show a plot of the generated distribution</span></span>
-<span id="cb733-35"><a href="web-apps.html#cb733-35"></a>        <span class="kw">mainPanel</span>(</span>
-<span id="cb733-36"><a href="web-apps.html#cb733-36"></a>           <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
-<span id="cb733-37"><a href="web-apps.html#cb733-37"></a>        )</span>
-<span id="cb733-38"><a href="web-apps.html#cb733-38"></a>    )</span>
-<span id="cb733-39"><a href="web-apps.html#cb733-39"></a>)</span>
-<span id="cb733-40"><a href="web-apps.html#cb733-40"></a></span>
-<span id="cb733-41"><a href="web-apps.html#cb733-41"></a><span class="co"># Define server logic required to draw a histogram</span></span>
-<span id="cb733-42"><a href="web-apps.html#cb733-42"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
-<span id="cb733-43"><a href="web-apps.html#cb733-43"></a></span>
-<span id="cb733-44"><a href="web-apps.html#cb733-44"></a>    output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
-<span id="cb733-45"><a href="web-apps.html#cb733-45"></a>        </span>
-<span id="cb733-46"><a href="web-apps.html#cb733-46"></a>        <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.na</span>(input<span class="op">$</span>seed)) <span class="kw">set.seed</span>(input<span class="op">$</span>seed)</span>
-<span id="cb733-47"><a href="web-apps.html#cb733-47"></a>        rngmat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(input<span class="op">$</span>n<span class="op">*</span>input<span class="op">$</span>N), <span class="dt">nrow =</span> input<span class="op">$</span>n, <span class="dt">ncol=</span>input<span class="op">$</span>N)</span>
-<span id="cb733-48"><a href="web-apps.html#cb733-48"></a>        meanvec &lt;-<span class="st"> </span><span class="kw">apply</span>(rngmat, <span class="dv">2</span>, mean)</span>
-<span id="cb733-49"><a href="web-apps.html#cb733-49"></a>        </span>
-<span id="cb733-50"><a href="web-apps.html#cb733-50"></a>        xseq &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">length.out =</span> <span class="dv">1000</span>)</span>
-<span id="cb733-51"><a href="web-apps.html#cb733-51"></a>        y &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(rngmat),<span class="kw">sd</span>(rngmat))})</span>
-<span id="cb733-52"><a href="web-apps.html#cb733-52"></a>        ymean &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(meanvec),<span class="kw">sd</span>(meanvec))})</span>
-<span id="cb733-53"><a href="web-apps.html#cb733-53"></a>        </span>
-<span id="cb733-54"><a href="web-apps.html#cb733-54"></a>        ymax &lt;-<span class="st"> </span><span class="kw">ceiling</span>(<span class="kw">max</span>(<span class="kw">c</span>(y,ymean)))</span>
-<span id="cb733-55"><a href="web-apps.html#cb733-55"></a>        ymax &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">is.finite</span>(ymax),ymax, <span class="dv">1</span>)</span>
-<span id="cb733-56"><a href="web-apps.html#cb733-56"></a>        </span>
-<span id="cb733-57"><a href="web-apps.html#cb733-57"></a>        MASS<span class="op">::</span><span class="kw">truehist</span>(rngmat, <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">6</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,ymax),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb733-58"><a href="web-apps.html#cb733-58"></a>        <span class="cf">if</span>(input<span class="op">$</span>showdensity) <span class="kw">lines</span>(xseq,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb733-59"><a href="web-apps.html#cb733-59"></a>        <span class="kw">par</span>(<span class="dt">new=</span>T)</span>
-<span id="cb733-60"><a href="web-apps.html#cb733-60"></a>        MASS<span class="op">::</span><span class="kw">truehist</span>(meanvec,<span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,ymax),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb733-61"><a href="web-apps.html#cb733-61"></a>        <span class="cf">if</span>(input<span class="op">$</span>showdensity) <span class="kw">lines</span>(xseq,ymean,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb733-62"><a href="web-apps.html#cb733-62"></a>        </span>
-<span id="cb733-63"><a href="web-apps.html#cb733-63"></a></span>
-<span id="cb733-64"><a href="web-apps.html#cb733-64"></a>    })</span>
-<span id="cb733-65"><a href="web-apps.html#cb733-65"></a>}</span>
-<span id="cb733-66"><a href="web-apps.html#cb733-66"></a></span>
-<span id="cb733-67"><a href="web-apps.html#cb733-67"></a><span class="co"># Run the application </span></span>
-<span id="cb733-68"><a href="web-apps.html#cb733-68"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
+<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="web-apps.html#cb727-1"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb727-2"><a href="web-apps.html#cb727-2"></a></span>
+<span id="cb727-3"><a href="web-apps.html#cb727-3"></a><span class="co"># Define UI for application that draws a histogram</span></span>
+<span id="cb727-4"><a href="web-apps.html#cb727-4"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb727-5"><a href="web-apps.html#cb727-5"></a></span>
+<span id="cb727-6"><a href="web-apps.html#cb727-6"></a>    <span class="kw">titlePanel</span>(<span class="st">&quot;Title&quot;</span>),</span>
+<span id="cb727-7"><a href="web-apps.html#cb727-7"></a></span>
+<span id="cb727-8"><a href="web-apps.html#cb727-8"></a>    <span class="kw">sidebarLayout</span>(</span>
+<span id="cb727-9"><a href="web-apps.html#cb727-9"></a>        <span class="kw">sidebarPanel</span>(</span>
+<span id="cb727-10"><a href="web-apps.html#cb727-10"></a>           <span class="co">## Input</span></span>
+<span id="cb727-11"><a href="web-apps.html#cb727-11"></a>        ),</span>
+<span id="cb727-12"><a href="web-apps.html#cb727-12"></a>        <span class="kw">mainPanel</span>(</span>
+<span id="cb727-13"><a href="web-apps.html#cb727-13"></a>           <span class="co">## Output</span></span>
+<span id="cb727-14"><a href="web-apps.html#cb727-14"></a>        )</span>
+<span id="cb727-15"><a href="web-apps.html#cb727-15"></a>    )</span>
+<span id="cb727-16"><a href="web-apps.html#cb727-16"></a>)</span>
+<span id="cb727-17"><a href="web-apps.html#cb727-17"></a></span>
+<span id="cb727-18"><a href="web-apps.html#cb727-18"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb727-19"><a href="web-apps.html#cb727-19"></a>      <span class="co">## Actual R Script </span></span>
+<span id="cb727-20"><a href="web-apps.html#cb727-20"></a>}</span>
+<span id="cb727-21"><a href="web-apps.html#cb727-21"></a></span>
+<span id="cb727-22"><a href="web-apps.html#cb727-22"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
+<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb728-1"><a href="web-apps.html#cb728-1"></a><span class="co"># Shiny Example for the CSWR Course</span></span>
+<span id="cb728-2"><a href="web-apps.html#cb728-2"></a></span>
+<span id="cb728-3"><a href="web-apps.html#cb728-3"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb728-4"><a href="web-apps.html#cb728-4"></a></span>
+<span id="cb728-5"><a href="web-apps.html#cb728-5"></a><span class="co"># Define UI for application that draws a histogram</span></span>
+<span id="cb728-6"><a href="web-apps.html#cb728-6"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb728-7"><a href="web-apps.html#cb728-7"></a></span>
+<span id="cb728-8"><a href="web-apps.html#cb728-8"></a>    <span class="co"># Application title</span></span>
+<span id="cb728-9"><a href="web-apps.html#cb728-9"></a>    <span class="kw">titlePanel</span>(<span class="st">&quot;Random Samples and their Mean&quot;</span>),</span>
+<span id="cb728-10"><a href="web-apps.html#cb728-10"></a></span>
+<span id="cb728-11"><a href="web-apps.html#cb728-11"></a>    <span class="co"># Sidebar with a slider input for number of bins </span></span>
+<span id="cb728-12"><a href="web-apps.html#cb728-12"></a>    <span class="kw">sidebarLayout</span>(</span>
+<span id="cb728-13"><a href="web-apps.html#cb728-13"></a>        <span class="kw">sidebarPanel</span>(</span>
+<span id="cb728-14"><a href="web-apps.html#cb728-14"></a>            <span class="kw">sliderInput</span>(<span class="st">&quot;N&quot;</span>,</span>
+<span id="cb728-15"><a href="web-apps.html#cb728-15"></a>                        <span class="st">&quot;Number of samples:&quot;</span>,</span>
+<span id="cb728-16"><a href="web-apps.html#cb728-16"></a>                        <span class="dt">min =</span> <span class="dv">10</span>,</span>
+<span id="cb728-17"><a href="web-apps.html#cb728-17"></a>                        <span class="dt">max =</span> <span class="dv">100</span>,</span>
+<span id="cb728-18"><a href="web-apps.html#cb728-18"></a>                        <span class="dt">value =</span> <span class="dv">50</span>),</span>
+<span id="cb728-19"><a href="web-apps.html#cb728-19"></a>            <span class="kw">sliderInput</span>(<span class="st">&quot;n&quot;</span>,</span>
+<span id="cb728-20"><a href="web-apps.html#cb728-20"></a>                        <span class="st">&quot;Number of draws per sample:&quot;</span>,</span>
+<span id="cb728-21"><a href="web-apps.html#cb728-21"></a>                        <span class="dt">min =</span> <span class="dv">1</span>,</span>
+<span id="cb728-22"><a href="web-apps.html#cb728-22"></a>                        <span class="dt">max =</span> <span class="dv">100</span>,</span>
+<span id="cb728-23"><a href="web-apps.html#cb728-23"></a>                        <span class="dt">value =</span> <span class="dv">1</span>),</span>
+<span id="cb728-24"><a href="web-apps.html#cb728-24"></a>            <span class="kw">checkboxInput</span>(<span class="st">&quot;showdensity&quot;</span>, </span>
+<span id="cb728-25"><a href="web-apps.html#cb728-25"></a>                          <span class="st">&quot;Show Density?&quot;</span>, </span>
+<span id="cb728-26"><a href="web-apps.html#cb728-26"></a>                          <span class="dt">value =</span> <span class="ot">FALSE</span>),</span>
+<span id="cb728-27"><a href="web-apps.html#cb728-27"></a>            <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Seed&quot;</span>, </span>
+<span id="cb728-28"><a href="web-apps.html#cb728-28"></a>                         <span class="dt">value=</span><span class="ot">NULL</span>, </span>
+<span id="cb728-29"><a href="web-apps.html#cb728-29"></a>                         <span class="dt">min =</span> <span class="dv">0</span>, </span>
+<span id="cb728-30"><a href="web-apps.html#cb728-30"></a>                         <span class="dt">max =</span> <span class="dv">10000</span>, </span>
+<span id="cb728-31"><a href="web-apps.html#cb728-31"></a>                         <span class="dt">step =</span> <span class="dv">1</span>)</span>
+<span id="cb728-32"><a href="web-apps.html#cb728-32"></a>        ),</span>
+<span id="cb728-33"><a href="web-apps.html#cb728-33"></a></span>
+<span id="cb728-34"><a href="web-apps.html#cb728-34"></a>        <span class="co"># Show a plot of the generated distribution</span></span>
+<span id="cb728-35"><a href="web-apps.html#cb728-35"></a>        <span class="kw">mainPanel</span>(</span>
+<span id="cb728-36"><a href="web-apps.html#cb728-36"></a>           <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
+<span id="cb728-37"><a href="web-apps.html#cb728-37"></a>        )</span>
+<span id="cb728-38"><a href="web-apps.html#cb728-38"></a>    )</span>
+<span id="cb728-39"><a href="web-apps.html#cb728-39"></a>)</span>
+<span id="cb728-40"><a href="web-apps.html#cb728-40"></a></span>
+<span id="cb728-41"><a href="web-apps.html#cb728-41"></a><span class="co"># Define server logic required to draw a histogram</span></span>
+<span id="cb728-42"><a href="web-apps.html#cb728-42"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb728-43"><a href="web-apps.html#cb728-43"></a></span>
+<span id="cb728-44"><a href="web-apps.html#cb728-44"></a>    output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb728-45"><a href="web-apps.html#cb728-45"></a>        </span>
+<span id="cb728-46"><a href="web-apps.html#cb728-46"></a>        <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.na</span>(input<span class="op">$</span>seed)) <span class="kw">set.seed</span>(input<span class="op">$</span>seed)</span>
+<span id="cb728-47"><a href="web-apps.html#cb728-47"></a>        rngmat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(input<span class="op">$</span>n<span class="op">*</span>input<span class="op">$</span>N), <span class="dt">nrow =</span> input<span class="op">$</span>n, <span class="dt">ncol=</span>input<span class="op">$</span>N)</span>
+<span id="cb728-48"><a href="web-apps.html#cb728-48"></a>        meanvec &lt;-<span class="st"> </span><span class="kw">apply</span>(rngmat, <span class="dv">2</span>, mean)</span>
+<span id="cb728-49"><a href="web-apps.html#cb728-49"></a>        </span>
+<span id="cb728-50"><a href="web-apps.html#cb728-50"></a>        xseq &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">length.out =</span> <span class="dv">1000</span>)</span>
+<span id="cb728-51"><a href="web-apps.html#cb728-51"></a>        y &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(rngmat),<span class="kw">sd</span>(rngmat))})</span>
+<span id="cb728-52"><a href="web-apps.html#cb728-52"></a>        ymean &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(meanvec),<span class="kw">sd</span>(meanvec))})</span>
+<span id="cb728-53"><a href="web-apps.html#cb728-53"></a>        </span>
+<span id="cb728-54"><a href="web-apps.html#cb728-54"></a>        ymax &lt;-<span class="st"> </span><span class="kw">ceiling</span>(<span class="kw">max</span>(<span class="kw">c</span>(y,ymean)))</span>
+<span id="cb728-55"><a href="web-apps.html#cb728-55"></a>        ymax &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">is.finite</span>(ymax),ymax, <span class="dv">1</span>)</span>
+<span id="cb728-56"><a href="web-apps.html#cb728-56"></a>        </span>
+<span id="cb728-57"><a href="web-apps.html#cb728-57"></a>        MASS<span class="op">::</span><span class="kw">truehist</span>(rngmat, <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">6</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,ymax),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb728-58"><a href="web-apps.html#cb728-58"></a>        <span class="cf">if</span>(input<span class="op">$</span>showdensity) <span class="kw">lines</span>(xseq,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb728-59"><a href="web-apps.html#cb728-59"></a>        <span class="kw">par</span>(<span class="dt">new=</span>T)</span>
+<span id="cb728-60"><a href="web-apps.html#cb728-60"></a>        MASS<span class="op">::</span><span class="kw">truehist</span>(meanvec,<span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,ymax),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb728-61"><a href="web-apps.html#cb728-61"></a>        <span class="cf">if</span>(input<span class="op">$</span>showdensity) <span class="kw">lines</span>(xseq,ymean,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb728-62"><a href="web-apps.html#cb728-62"></a>        </span>
+<span id="cb728-63"><a href="web-apps.html#cb728-63"></a></span>
+<span id="cb728-64"><a href="web-apps.html#cb728-64"></a>    })</span>
+<span id="cb728-65"><a href="web-apps.html#cb728-65"></a>}</span>
+<span id="cb728-66"><a href="web-apps.html#cb728-66"></a></span>
+<span id="cb728-67"><a href="web-apps.html#cb728-67"></a><span class="co"># Run the application </span></span>
+<span id="cb728-68"><a href="web-apps.html#cb728-68"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
 </div>
             </section>
 
