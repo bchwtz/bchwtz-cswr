@@ -275,7 +275,7 @@ We are not going into detail concerning the Grammar of Graphics; there is an own
 
 As the `ggplot2` Cheatsheet [@ggplot2Cheatsheet] introduces only a data set, a coordinate system (grid), geoms (visual points representing data points) as well as aesthetics (i.e. variables of the data set have to be mapped to properties of the geom) are necessary to create a graph as we will see. The `ggplot2` Cheatsheet [@ggplot2Cheatsheet] as well as the manual pages of the functions of the `ggplot2` package [@ggplot2] are the basis for the creation of the following ggplots, their descriptions and further explanations.
 
-ggplots are divided in layers which will be concatenated by a "`+`" sign: The first layer, which **cannot be leaved out**, includes the data; this is realized by `ggplot()` (see code below). Its first argument is the data set (here: `df`) followed by defining which variables will be plotted inside the `aes()` function. By only calling `ggplot()` as described, no data in form of points, lines etc. will be visible since geoms have not been defined, so far.\newline
+ggplots are divided in layers which are concatenated by a "`+`" sign: The first layer, which **cannot be leaved out**, includes the data; this is realized by `ggplot()` (see code below). Its first argument is the data set (here: `df`) followed by the name of the variables that will be plotted (here: `mapping = aes(x = x, y = y)` . By only calling `ggplot()` as described, no data in form of points, lines etc. will be visible since geoms have not been defined, so far.\newline
 To overcome this, one of the `geom_*()` functions is called which specifies how the data will be visualized, for example by points (`geom_point()`), by a line (`geom_line()`), in form of a boxplot (`geom_boxplot()`), a histogram (`geom_histogram()`), etc.
 
 ```{r}
@@ -292,9 +292,9 @@ xlab("x")+ # labeling the x axis
 ylab("density") # labeling the y axis
 ```
 
-(ref:ggplot1-basic) Density function for a normal distribution as a simple ggplot. 
+(ref:ggplot1-basic) Density function for a normal distribution with $\mu = 0$ and $\sigma = 1$ as a simple ggplot. 
 
-Furthermore, a title for the plot as well as for the x- and y-axis have been added to the plots, figures \@ref(fig:first-ggplot) and \@ref(fig:first-ggplot-air), by the functions `ggtitle()`, `xlab()` and `ylab()`, respectively, and by using the "`x`"-sign.
+Furthermore, a title for the plot as well as for the x- and y-axis have been added to the plot by the functions `ggtitle()`, `xlab()` and `ylab()`, respectively, and by using the "`x`"-sign (see also \@ref(fig:first-ggplot-air)).
 
 ```{r first-ggplot-air, fig.cap="(ref:ggplot1-air)"}
 ggplot(data = airquality, aes(x = Temp, y = Wind))+ # initialization of a ggplot object
@@ -304,13 +304,13 @@ xlab("Temperature [°F]")+ # labeling the x axis
 ylab("Wind [mph]") # labeling the y axis
 ```
 
-(ref:ggplot1-air) Scatterplot of wind speed vs. temperature of the `airquality` data set [@R] as a `ggplot` [@ggplot2].
+(ref:ggplot1-air) Scatterplot of wind speed vs. temperature of the `airquality` data set [@R] as a ggplot.
 
-In the code of the plots (figures \@ref(fig:first-ggplot) and \@ref(fig:first-ggplot-air)), the aesthetics have been defined inside `ggplot()`. It is also possible to define the aesthetics inside the `*geom()`-function. Consequently, the following options exist:
+In the code of the plots (figures \@ref(fig:first-ggplot) and \@ref(fig:first-ggplot-air)), the aesthetics have been defined inside `ggplot()`. It is also possible to define the aesthetics inside the `geom_*()`-function. Consequently, the following options exist:
 
 ```{r, echo=TRUE, eval=FALSE}
 # option 1:
-ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+ # initialize a ggplot object
+ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+ # initializes a ggplot object
  geom_point()
  # option 2:
 ggplot(data = airquality)+
@@ -318,25 +318,30 @@ geom_point(mapping = aes(x = Temp, y = Wind))
 # option 3:
 ggplot(data = airquality, mapping = aes(x = Temp))+
 geom_point(mapping = aes(y = Wind))
+# option 4:
+ggplot(data = airquality, mapping = aes(y = Wind))+
+geom_point(mapping = aes(x = Temp))
 ```
 
 In this example, it does not matter whether the aesthetics are defined inside `ggplot()` and/or in `geom_point()` since the resulting plot does not change. In contrast to that, when we define another variable in the `geom()`-function (e.g. `y = Solar.R`) although we have already defined a y-variable in `ggplot()` (e.g. `y = Wind`), the variable `Wind` will be overwritten by the variable `Solar.R`. The y-axis is called `Wind` in figure \@ref(fig:ggplot-hierarchy), but that is not true any longer. So, we have to adjust the labeling (see figure \@ref(fig:ggplot-hierarchy-label)).
 
-```{r ggplot-hierarchy, fig.cap="(ref:ggplot-h-l)"}
+```{r ggplot-hierarchy, fig.cap="(ref:ggplot-h)", warning=FALSE}
 ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
  geom_point(aes(y = Solar.R))
 ```
 
-(ref:ggplot-h) Scatterplot of solar radiation vs. temperature although the y-axis is called `Wind` since the y-variable has been overwritten.
+(ref:ggplot-h) Scatterplot of solar radiation vs. temperature but with wrong y-axis-title.
 
-```{r ggplot-hierarchy-label, fig.cap="(ref:ggplot-h-l)"}
+
+```{r ggplot-hierarchy-label, fig.cap="(ref:ggplot-h-l)", warning=FALSE}
 ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
- geom_point(aes(y = Solar.R))
+ geom_point(aes(y = Solar.R))+
+  ylab("Solar radiation [lang]")
 ```
 
 (ref:ggplot-h-l) Figure \@ref(fig:ggplot-hierarchy) with labeling. 
 
-Dependent on the number of variables and their scale of measurement (discrete, continuous) the `ggplot2` Cheatsheet [@ggplot2Cheatsheet] shows which `geom()_*`-function(s) to use. The `stat_*()`-function(s) work similarily as the `geom()_*`-functions (`stat_*()`- and `geom_*()`-functions are equivalents), e.g.
+Dependent on the number of variables and their scale of measurement (discrete, continuous) the `ggplot2` cheatsheet [@ggplot2Cheatsheet] shows which `geom()_*`-function(s) to use. The `stat_*()`-function(s) work similarily as the `geom()_*`-functions (`stat_*()`- and `geom_*()`-functions are equivalents), e.g.
     
 ```{r, eval=FALSE}
 geom_bar(stat = "count") # is equal to
@@ -373,9 +378,7 @@ Here are some of the `stat_*()`- and `geom_*()`-function equivalents based on [@
 `geom_sf()` | `stat_sf()`
 
 
-Based on this introduction of ggplots, we can easily reconstruct the plots we created in base-R (see chapter \@ref(plotsbaseR)).
-
-Based on this introduction of ggplots, we can easily reconstruct the plots we created in base-R (see chapter \@ref(plotsbaseR)).
+Based on this introduction of ggplots, we can easily reconstruct the plots we created in base-R (see section \@ref(plotsbaseR)).
 Before we do that, it is recommended to save the variables in a data frame:
 ```{r}
 x <- seq(from = -8, to = 8, by = 0.1)
@@ -386,7 +389,7 @@ nd <- data.frame(x, y, y2, y3)
 head(nd)
 ```
 
-Then, the single curves are added to the ggplot by adding layers (for each curve one layer) to the plot. Here, `geom_line()` is used to visualize the curves in form of lines. Furthermore, the following code chunk shows that the lines are colored by defining the argument `color` **outside** `aes()`.
+Then, the single curves are added to the ggplot by adding layers (for each curve one layer) to the plot. Here, `geom_line()` is used to visualize the curves in form of lines. Furthermore, the following code chunk shows that the lines are colored by defining the argument `color` **outside** of `aes()`.
 
 ```{r ggplot-normal-distrib, fig.cap="(ref:ggplot-nv)"}
 ggplot(data = nd, mapping = aes(x = x))+
@@ -396,19 +399,23 @@ ggplot(data = nd, mapping = aes(x = x))+
   ggtitle("Normal distribution - density")
 ```
 
-(ref:ggplot-nv) Density functions for the normal distribution with $\mu_1 = 0$, $\mu_2 = -1$ and $\mu_3 = 2$.
+(ref:ggplot-nv) Density functions for the normal distribution with $\mu_1 = 0$, $\mu_2 = -1$ and $\mu_3 = 2$ and $\sigma_1 = \sigma_2 = \sigma_3 = 1$.
 
-Instead of adding each density function to the plot by calling `geom_line()` several times, it is possible to add all curves to the plot by calling `geom_line()` only one time.
+Instead of adding each density function to the plot by calling `geom_line()` again, it is possible to add all curves to the plot by calling `geom_line()` only one time.
 For this, we have to modify the data set. We just want to call the `x` variable (x values) and the `y` variable (the density values of each curve) and color the values by the name of the curve (`y`, `y2` and `y3`). This is achieved by *lengthens*  the data set:
 
 ```{r}
 nd2 <- data.frame(x = rep(x, times = 3), density=c(y, y2, y3),
-                  curve = c(rep("y", times = length(y)), rep("y2", times = length(y)),
+                  curve = c(rep("y", times = length(y)), 
+                            rep("y2", times = length(y)),
                             rep("y3", times = length(y))))
- head(nd2, n = 20)
+ head(nd2, n = 10)
+ nd2[162:172,]
+ nd2[323:333,]
+ 
 ```
 
-In the first column, the `x` values are repeated three times (for curve `y`, `y2` and `y3`). The second column consists of the density values of curve `y`, `y2` and `y3` and the last columns assigns the name of the curve to each value. Consequently, the data set `nd2` has three times more rows than `nd` has:
+In the first column, the `x` values are repeated three times (for curve `y`, `y2` and `y3`). The second column consists of the density values of curve `y`, `y2` and `y3` and the last columns assigns the name of the curve to each value. Consequently, the data set `nd2` has three times more rows than `nd`:
 
 ```{r}
 nrow(nd)
@@ -422,13 +429,13 @@ ggplot(data = nd2, mapping = aes(x = x, y = density, color = curve))+
   geom_line()
 ```
 
-(ref:ggplot-nv2) Density functions for the normal distribution with $\mu_1 = 0$, $\mu_2 = -1$ and $\mu_3 = 2$.
+(ref:ggplot-nv2) Density functions for the normal distribution with $\mu_1 = 0$, $\mu_2 = -1$ and $\mu_3 = 2$ and $\sigma_1 = \sigma_2 = \sigma_3 = 1$.
 
-Now, the three curves are not colored by defining `color` outside `aes()`. Instead, `color` is defined **inside** `aes()` since we have called a **variable** (named `curve`). So, we can conclude from that: 
+Now, the three curves are not colored by defining `color` outside of `aes()`. Instead, `color` is defined **inside** `aes()` since we have called a **variable** (named `curve`). So, we can conclude from that: 
 
-+ Single lines, points, etc. are colored by defining the aesthetics arguments **outside** `aes()`.
++ Single lines, points, etc. are colored by defining the aesthetics arguments **outside** of `aes()`.
 
-+ Coloring a variable's values by its categories (here: the curves' names (`y`, `y2` and `y3`)) is achieved by assigning the variable's name to the `color` argument **inside** `aes()`.
++ Coloring values of a variable by its categories (here: the curves' names (`y`, `y2` and `y3`) are forming three categories) is achieved by assigning the variable's name to the `color` argument **inside** `aes()`.
 
 It the latter case, a legend will be automatically added (see figure \@ref(fig:ggplot-normal-distrib2)).
 
@@ -436,21 +443,23 @@ A smart solution to *lengthens* the data set - instead of using `rep()` - is pro
 
 ```{r}
 nd2 <- nd %>% pivot_longer(cols = c(y, y2, y3)) # columns y, y2 and y3 are concatenated 
-# to form one column, the other columns have been adjusted automatically
+# to form one column, the other columns will be adjusted automatically
 head(nd2)
 colnames(nd2) <- c("x", "curve", "density")
 ```
 
 Based on the data set `nd2`, it is now easy to fill curves by calling `fill = curve` **inside** `aes()` (analogous to the argument `color`) and using `geom_polygon()` where `alpha` stands for the *degree* of opacity:
 
-```{r}
+```{r ggplot-nv-filled-curves, fig.cap="(ref:fill-curves)"}
 ggplot(data = nd2, mapping = aes(x = x, y = density, fill = curve))+
   geom_polygon(alpha = 0.4)+
-  scale_fill_discrete(name = "Density", labels= c(latex2exp::TeX("$\\mu=0, \\sigma=1$"), 
-  latex2exp::TeX("$\\mu= -1, \\sigma=1$"), latex2exp::TeX("$\\mu=2, \\sigma=1$")))
+  scale_fill_discrete(name = "Density", labels= c(latex2exp::TeX("$\\mu_1=0, \\sigma_1=1$"), 
+  latex2exp::TeX("$\\mu_2= -1, \\sigma_2=1$"), latex2exp::TeX("$\\mu_3=2, \\sigma_3=1$")))
 ```
 
-As we have already seen in chapter \@ref(baseRplot), the package `latex2exp` is used to customize the legend inside `scale_fill_discrete()` [@ggplot2Cheatsheet].
+(ref:fill-curves) Density functions of a normal distribution with $\mu_1 = 0$, $\mu_2 = 1$ and $\mu_3 = 2$ and $\sigma_1 = \sigma_2 = \sigma_3 = 1$ with filled curves. 
+
+As we have already seen in section \@ref(plotsbaseR), the package `latex2exp` [@latex2exp] is used to customize the legend.
 
 ### Histograms and boxplots
 
@@ -812,7 +821,7 @@ panel.grid = element_line(colour = "gainsboro")) # coloring grid lines
 
 As it was announced in the beginning of this chapter \@ref(plotsggplot2) `ggplot2` provides help in dealing with more than two variables. The simplest way is to use the arguments of `aes()` in order to color, group (see figure \@ref(fig:ggplot-month-categ)),... values, e.g.:
 
-```{r ggpot-more2var-1, fig.cap="(ref:more2var-1)"}
+```{r ggpot-more2var-1, fig.cap="(ref:more2var-1)", warning=FALSE}
 ggplot(airquality, mapping = aes(x = Temp, y = Wind, color = Solar.R))+
   geom_point()+
   ggtitle("Scatterplot of temperature and wind speed")+ 
@@ -829,7 +838,7 @@ airquality$Month_categ <- factor(airquality$Month, levels = c(5, 6, 7, 8, 9),
 
 We can simply define multiple arguments **inside** `aes()`, e.g. for each month different plotting symbols are used and the size of the symbols is dependent on the solar radion. So, multiple legends result.
 
-```{r ggpot-more2var-2, fig.cap="(ref:more2var-2)"}
+```{r ggpot-more2var-2, fig.cap="(ref:more2var-2)", warning=FALSE}
 ggplot(airquality, mapping = aes(x = Temp, y = Wind, size = Solar.R))+
   geom_point(aes(shape = Month_categ))+
   ggtitle("Scatterplot of temperature and wind speed")+ 
@@ -840,7 +849,7 @@ xlab("Temperature [°F]")+ ylab("Wind [mph]")
 
 Another option is to use `faceting`; a plot is divided into subplots. [@ggplot2Cheatsheet] Figure \@ref(fig:ggpot-more2var-2) can be transformed by *faceting* to figures \@ref(fig:ggpot-more2var-3) and \@ref(fig:ggpot-more2var-4):
 
-```{r ggpot-more2var-3, fig.cap="(ref:more2var-3)"}
+```{r ggpot-more2var-3, fig.cap="(ref:more2var-3)", warning=FALSE}
 ggplot(data = airquality, mapping = aes(x = Temp, y = Wind, color = Solar.R))+
   geom_point()+
   facet_wrap(~ Month_categ, nrow = 3, ncol = 2)+ # rectangular layout 
@@ -850,7 +859,7 @@ ggplot(data = airquality, mapping = aes(x = Temp, y = Wind, color = Solar.R))+
 
 (ref:more2var-3) Subplots of the scatterplots of wind speed vs. temperature by month; based on the `airquality` data set [@R] and `facet_wrap()`.
 
-```{r ggpot-more2var-4, fig.cap="(ref:more2var-4)"}
+```{r ggpot-more2var-4, fig.cap="(ref:more2var-4)", warning=FALSE}
 air_ggplot <- ggplot(airquality, mapping = aes(x = Temp, y = Wind, color = Solar.R))+
   geom_point()+
   facet_grid(rows = vars(Month_categ))+
