@@ -784,7 +784,7 @@ boxplot_Temp_Month
 
 (ref:boxp-leg0) Boxplots of temperature for each month based on the `airquality` data set [@R].
 
-Since the previous plot is saved as `boxplot_Temp_Month` some more specifications can be easily added to it without repeating every line of code (i.e. the single layers).
+Since the previous plot is saved as `boxplot_Temp_Month` some more specifications can be easily added to it without repeating every line of code.
 
 ```{r boxplot-legend1, fig.cap="(ref:boxp-leg1)"}
 boxplot_Temp_Month + guides(fill = guide_legend(title = "Month"))+ # title of legend
@@ -805,7 +805,7 @@ boxplot_Temp_Month +
 
 From figures \@ref(fig:boxplot-legend1) and \@ref(fig:boxplot-legend2) and their corresponding codes it is obvious that
 
-+ the legend's characteristics are accessed via `legend.*` inside `theme()`.
++ the legend's characteristics are accessed via `legend.*` inside `theme()` (see also http://www.cookbook-r.com/Graphs/Legends_(ggplot2)/ [accessed May 11, 2022]).
 
 + `theme()` controls non-data components of plots (arguments for the single components exist) (see `?theme`).
 
@@ -908,7 +908,7 @@ air_ggplot + # call the already defined ggplot
 
 ## Interactive plots with `plotly` [@plotly]
 
-When a ggplot has been created it can be converted to an interactive plot based on the R package `plolty` [@plotly], meaning that by clicking with the mouse on a plotting symbol its values are shown. In figure \@ref(fig:ggplotly-air-lm) the x- (`Temp`: 74) and y-value (`Wind`: 12.6) are displayed.
+When a ggplot has been created it can be converted to an interactive plot based on the R package `plolty` [@plotly], meaning that by clicking with the mouse on a plotting symbol its values are shown. In figure \@ref(fig:ggplotly-air-lm) the x- (`Temp`: 74) and y-value (`Wind`: 12.6) are displayed. For an introduction in `plotly` see @bookplotly.
 
 ```{r, echo=TRUE, eval=FALSE}
 air_lm_ggplot <- ggplot(data = airquality, mapping = aes(x = Temp, y = Wind))+
@@ -939,6 +939,79 @@ knitr::include_graphics("gfx/plot_ly_airquality.png")
 
 From figure \@ref(fig:plotly-airquality) we see that `plot_ly()` also opens a window in which the user can examine the created three-dimensional plot.
 
+
 # Excercises {-}
 
+## Task `mtcars` dataset {-}
 
+In your R environment the `mtcars` data set (R Core Team 2021) is
+available.
+
+1) Plot the cars’ weights vs. the miles per gallon, colored by horsepower
+dependent on the number of cylinders.
+
+```{r, echo=FALSE, eval=FALSE}
+# solution:
+mtcars %>% ggplot(mapping = aes(x = mpg, y = wt, color = hp))+
+  geom_point()+
+  facet_wrap(~ cyl)
+```
+
+
+2) Add to your plot from 1) a horizontal line that goes through the point (0, 2.5).
+
+```{r, echo=FALSE, eval=FALSE}
+# solution:
+mtcars %>% ggplot(mapping = aes(x = mpg, y = wt, color = hp))+
+  geom_point()+
+  facet_wrap(~ cyl)+
+  geom_hline(yintercept = 2.5)
+```
+
+3) Change the plot you have created so far (1)-2)) by coloring all data points that lie below the horizontal line in red, whereas all other data points are colored in green-blue.
+
+```{r, echo=FALSE, eval=FALSE}
+# solution:
+mtcars %>% ggplot(mapping = aes(x = mpg, y = wt, color = wt >= 2.5))+
+  geom_point()+
+  facet_wrap(~ cyl)+
+  geom_hline(yintercept = 2.5)
+```
+
+4) Change the plot you have created so far (1)-3)) by differentiating between those observations whose number of cylinders is equal to four and the rest.
+
+```{r, echo=FALSE, eval=FALSE}
+# solution:
+mtcars %>% ggplot(mapping = aes(x = mpg, y = wt, color = wt >= 2.5))+
+  geom_point()+
+  facet_wrap(~ cyl == 4)+
+  geom_hline(yintercept = 2.5)
+```
+
+5) Label the resulting panels by setting `labeller = (cyl = label_both)`
+and see what happens.
+
+```{r, echo=FALSE, eval=FALSE}
+# solution:
+mtcars %>% ggplot(mapping = aes(x = mpg, y = wt, color = wt >= 2.5))+
+  geom_point()+
+  facet_wrap(~ cyl == 4, labeller = (cyl = label_both))+
+  geom_hline(yintercept = 2.5)
+```
+
+6) Plot miles per gallon vs. weight and fit a linear regression model. Create a plot on the one hand with base R and on the other hand with `ggplot2`.
+
+```{r, echo=FALSE, eval=FALSE}
+# solution in base-R:
+plot(mtcars$wt, mtcars$mpg, xlab="Weight [1000 lbs]", ylab="Miles/(US) gallon")
+wt_mpg <- lm(mpg ~ 1 + wt, data = mtcars)
+abline(wt_mpg, col = "blue")
+```
+
+```{r, echo=FALSE, eval=FALSE}
+# solution in ggplot2:
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)+
+  xlab("Weight [1000 lbs]")+ylab("Miles/(US) gallon")
+```
