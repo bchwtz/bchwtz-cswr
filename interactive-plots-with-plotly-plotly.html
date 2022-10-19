@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-18" />
+<meta name="date" content="2022-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="plotsggplot2.html"/>
-<link rel="next" href="word-puzzle.html"/>
+<link rel="next" href="excercises.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -291,6 +291,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="excercises.html"><a href="excercises.html"><i class="fa fa-check"></i>Excercises</a><ul>
+<li class="chapter" data-level="" data-path="task-mtcars-dataset.html"><a href="task-mtcars-dataset.html"><i class="fa fa-check"></i>Task <code>mtcars</code> dataset</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
 <li class="chapter" data-level="8.2" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>8.2</b> Solution</a></li>
@@ -375,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="interactive-plots-with-plotly-plotly" class="section level2 hasAnchor">
 <h2><span class="header-section-number">7.3</span> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <a href="#ref-plotly" role="doc-biblioref">2020</a>)</span><a href="interactive-plots-with-plotly-plotly.html#interactive-plots-with-plotly-plotly" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When a ggplot has been created it can be converted to an interactive plot based on the R package <code>plolty</code> <span class="citation">(Sievert <a href="#ref-plotly" role="doc-biblioref">2020</a>)</span>, meaning that by clicking with the mouse on a plotting symbol its values are shown. In figure <a href="interactive-plots-with-plotly-plotly.html#fig:ggplotly-air-lm">7.47</a> the x- (<code>Temp</code>: 74) and y-value (<code>Wind</code>: 12.6) are displayed.</p>
+<p>When a ggplot has been created it can be converted to an interactive plot based on the R package <code>plolty</code> <span class="citation">(Sievert <a href="#ref-plotly" role="doc-biblioref">2020</a>)</span>, meaning that by clicking with the mouse on a plotting symbol its values are shown. In figure <a href="interactive-plots-with-plotly-plotly.html#fig:ggplotly-air-lm">7.47</a> the x- (<code>Temp</code>: 74) and y-value (<code>Wind</code>: 12.6) are displayed. For an introduction in <code>plotly</code> see <span class="citation">Sievert (<a href="#ref-bookplotly" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="interactive-plots-with-plotly-plotly.html#cb641-1"></a>air_lm_ggplot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Wind))<span class="op">+</span></span>
 <span id="cb641-2"><a href="interactive-plots-with-plotly-plotly.html#cb641-2"></a><span class="kw">geom_point</span>()<span class="op">+</span></span>
 <span id="cb641-3"><a href="interactive-plots-with-plotly-plotly.html#cb641-3"></a><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</span>
@@ -387,7 +390,8 @@ Figure 7.47: Two-dimensional plot (<code>plotly</code> object) based on <code>ai
 </p>
 </div>
 
-<p>Besides, <code>plotly</code> provides the function <code>plot_ly()</code> which allows generating three-dimensional plots like the following one:</p>
+<p>From figure <a href="interactive-plots-with-plotly-plotly.html#fig:ggplotly-air-lm">7.47</a> it becomes clear that <code>ggplotly()</code> opens a new window in which the generated three-dimensional plot can be zoomed in and out, can be shifted within the window and turned around, etc.
+Besides, <code>plotly</code> provides the function <code>plot_ly()</code> which allows generating three-dimensional plots like the following one:</p>
 <div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="interactive-plots-with-plotly-plotly.html#cb642-1"></a><span class="kw">plot_ly</span>(airquality, <span class="dt">x =</span> <span class="op">~</span>Temp, <span class="dt">y =</span> <span class="op">~</span>Wind, <span class="dt">z =</span> <span class="op">~</span>Solar.R) <span class="op">%&gt;%</span></span>
 <span id="cb642-2"><a href="interactive-plots-with-plotly-plotly.html#cb642-2"></a><span class="st">  </span><span class="kw">add_markers</span>(<span class="dt">color =</span> <span class="op">~</span>Month)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:plotly-airquality"></span>
@@ -397,14 +401,16 @@ Figure 7.48: Three-dimensional plot (<code>plotly</code> object) based on <code>
 </p>
 </div>
 
-<p>From figure <a href="interactive-plots-with-plotly-plotly.html#fig:plotly-airquality">7.48</a> it becomes clear that <code>plot_ly()</code> opens a new window in which the generated three-dimensional plot can be zoomed in and out, can be shifted within the window and turned around, etc.</p>
-
+<p>From figure <a href="interactive-plots-with-plotly-plotly.html#fig:plotly-airquality">7.48</a> we see that <code>plot_ly()</code> also opens a window in which the user can examine the created three-dimensional plot.</p>
 </div>
 <!-- </div> -->
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-R">
 <p>R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-bookplotly">
+<p>Sievert, Carson. 2019. <em>Interactive Web-Based Data Visualization with R, Plotly, and Shiny</em>. Chapman; Hall/CRC. <a href="https://plotly-r.com">https://plotly-r.com</a>.</p>
 </div>
 <div id="ref-plotly">
 <p>Sievert, Carson. 2020. <em>Interactive Web-Based Data Visualization with R, Plotly, and Shiny</em>. Chapman; Hall/CRC. <a href="https://plotly-r.com">https://plotly-r.com</a>.</p>
@@ -416,7 +422,7 @@ Figure 7.48: Three-dimensional plot (<code>plotly</code> object) based on <code>
         </div>
       </div>
 <a href="plotsggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="word-puzzle.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="excercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-18" />
+<meta name="date" content="2022-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -291,6 +291,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="excercises.html"><a href="excercises.html"><i class="fa fa-check"></i>Excercises</a><ul>
+<li class="chapter" data-level="" data-path="task-mtcars-dataset.html"><a href="task-mtcars-dataset.html"><i class="fa fa-check"></i>Task <code>mtcars</code> dataset</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
 <li class="chapter" data-level="8.2" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>8.2</b> Solution</a></li>
@@ -458,7 +461,7 @@ To find the folder to which these files were saved (if you have not specifically
 <span id="cb698-14"><a href="real-data.html#cb698-14"></a></span>
 <span id="cb698-15"><a href="real-data.html#cb698-15"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;T-Series&quot;</span>, <span class="st">&quot;Bibis Beauty Palace&quot;</span>),</span>
 <span id="cb698-16"><a href="real-data.html#cb698-16"></a>       <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">lty=</span><span class="dv">1</span>, <span class="dt">cex=</span><span class="fl">0.8</span>, <span class="dt">inset=</span>.<span class="dv">05</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-277-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-284-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>While both curves look fairly smooth the day-to-day changes for the last month show that the data fairly fluctuates over time with a roughly constant absolute growth.</p>
 <div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="real-data.html#cb699-1"></a>n &lt;-<span class="st"> </span><span class="dv">31</span></span>
 <span id="cb699-2"><a href="real-data.html#cb699-2"></a>t.diff &lt;-<span class="st"> </span><span class="kw">ts</span>(<span class="kw">diff</span>(<span class="kw">tail</span>(tseries.subs<span class="op">$</span>TotalSubscribers, n)))</span>
@@ -477,7 +480,7 @@ To find the folder to which these files were saved (if you have not specifically
 <span id="cb699-15"><a href="real-data.html#cb699-15"></a>     <span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Subscribers&quot;</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
 <span id="cb699-16"><a href="real-data.html#cb699-16"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">lty=</span><span class="st">&quot;dotted&quot;</span>,<span class="dt">col=</span><span class="st">&quot;grey&quot;</span>)</span>
 <span id="cb699-17"><a href="real-data.html#cb699-17"></a><span class="kw">mtext</span>(<span class="st">&quot;Bibis Beauty Palace&quot;</span>)</span></code></pre></div>
-<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-278-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-285-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

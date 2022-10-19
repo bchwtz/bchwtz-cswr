@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-18" />
+<meta name="date" content="2022-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -291,6 +291,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="excercises.html"><a href="excercises.html"><i class="fa fa-check"></i>Excercises</a><ul>
+<li class="chapter" data-level="" data-path="task-mtcars-dataset.html"><a href="task-mtcars-dataset.html"><i class="fa fa-check"></i>Task <code>mtcars</code> dataset</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
 <li class="chapter" data-level="8.2" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>8.2</b> Solution</a></li>
@@ -420,9 +423,9 @@ microbenchmark(fun.switch('case1'), fun.if('case1'), times=1e3)
 
 ```
 #R> Unit: nanoseconds
-#R>                 expr min    lq     mean median  uq     max neval
-#R>  fun.switch("case1") 327 340.0 2547.447    383 398 2151496  1000
-#R>      fun.if("case1") 459 477.5 5031.207    490 507 4500209  1000
+#R>                 expr min  lq     mean median  uq     max neval
+#R>  fun.switch("case1") 340 353 2401.823    394 406 2002780  1000
+#R>      fun.if("case1") 472 490 6855.602    500 512 6288452  1000
 ```
 
 ```r
@@ -432,8 +435,8 @@ microbenchmark(fun.switch('case3'), fun.if('case3'), times=1e3)
 ```
 #R> Unit: nanoseconds
 #R>                 expr min  lq    mean median    uq   max neval
-#R>  fun.switch("case3") 356 376 445.241    417 430.0 11966  1000
-#R>      fun.if("case3") 679 712 853.995    722 738.5 48459  1000
+#R>  fun.switch("case3") 368 383 516.660    429 444.0 18888  1000
+#R>      fun.if("case3") 704 731 992.374    743 812.5 44548  1000
 ```
 
 

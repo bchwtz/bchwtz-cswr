@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-18" />
+<meta name="date" content="2022-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -290,6 +290,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2.4" data-path="plotsggplot2.html"><a href="plotsggplot2.html#handling-2-variables-and-faceting"><i class="fa fa-check"></i><b>7.2.4</b> Handling &gt; 2 variables and faceting</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="excercises.html"><a href="excercises.html"><i class="fa fa-check"></i>Excercises</a><ul>
+<li class="chapter" data-level="" data-path="task-mtcars-dataset.html"><a href="task-mtcars-dataset.html"><i class="fa fa-check"></i>Task <code>mtcars</code> dataset</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
@@ -1023,7 +1026,7 @@ Figure 7.36: Boxplots of temperature for each month based on the <code>airqualit
 </p>
 </div>
 
-<p>Since the previous plot is saved as <code>boxplot_Temp_Month</code> some more specifications can be easily added to it without repeating every line of code (i.e. the single layers).</p>
+<p>Since the previous plot is saved as <code>boxplot_Temp_Month</code> some more specifications can be easily added to it without repeating every line of code.</p>
 <div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="plotsggplot2.html#cb630-1"></a>boxplot_Temp_Month <span class="op">+</span><span class="st"> </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">title =</span> <span class="st">&quot;Month&quot;</span>))<span class="op">+</span><span class="st"> </span><span class="co"># title of legend</span></span>
 <span id="cb630-2"><a href="plotsggplot2.html#cb630-2"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>), <span class="co"># make title bold</span></span>
 <span id="cb630-3"><a href="plotsggplot2.html#cb630-3"></a>        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;gray88&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>),</span>
@@ -1047,7 +1050,7 @@ Figure 7.38: Boxplots of temperature for each month based on the <code>airqualit
 
 <p>From figures <a href="plotsggplot2.html#fig:boxplot-legend1">7.37</a> and <a href="plotsggplot2.html#fig:boxplot-legend2">7.38</a> and their corresponding codes it is obvious that</p>
 <ul>
-<li><p>the legend’s characteristics are accessed via <code>legend.*</code> inside <code>theme()</code>.</p></li>
+<li><p>the legend’s characteristics are accessed via <code>legend.*</code> inside <code>theme()</code> (see also <a href="http://www.cookbook-r.com/Graphs/Legends_(ggplot2)/" class="uri">http://www.cookbook-r.com/Graphs/Legends_(ggplot2)/</a> [accessed May 11, 2022]).</p></li>
 <li><p><code>theme()</code> controls non-data components of plots (arguments for the single components exist) (see <code>?theme</code>).</p></li>
 <li><p><code>element_*()</code>-functions are used to modify the attributes of the components (for example the color of the legend title), e.g.:</p>
 <ul>

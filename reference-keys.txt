@@ -51,8 +51,8 @@ fig:ggpot-more2var-5
 fig:ggpot-more2var-6
 fig:ggplotly-air-lm
 fig:plotly-airquality
-fig:unnamed-chunk-246
-fig:unnamed-chunk-273
+fig:unnamed-chunk-253
+fig:unnamed-chunk-280
 intro
 r-and-the-r-project
 r-system-and-rstudio

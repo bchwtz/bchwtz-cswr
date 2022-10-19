@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-18" />
+<meta name="date" content="2022-10-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -291,6 +291,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="excercises.html"><a href="excercises.html"><i class="fa fa-check"></i>Excercises</a><ul>
+<li class="chapter" data-level="" data-path="task-mtcars-dataset.html"><a href="task-mtcars-dataset.html"><i class="fa fa-check"></i>Task <code>mtcars</code> dataset</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
 <li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
 <li class="chapter" data-level="8.2" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>8.2</b> Solution</a></li>
@@ -388,10 +391,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="parallelization-using-vectorized-functions.html#cb530-1"></a>modellist &lt;-<span class="st"> </span><span class="kw">apply</span>(regselector,<span class="dv">1</span>,<span class="cf">function</span>(x){<span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">&quot;mpg ~ 1&quot;</span>, regnames[x]), <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>))})</span></code></pre></div>
 <div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="parallelization-using-vectorized-functions.html#cb531-1"></a><span class="kw">system.time</span>(res.sequential &lt;-<span class="st"> </span><span class="kw">lapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)}))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   1.296   0.012   1.312</code></pre>
+#R&gt;   1.421   0.018   1.696</code></pre>
 <div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="parallelization-using-vectorized-functions.html#cb533-1"></a><span class="kw">system.time</span>(res.parallel &lt;-<span class="st"> </span><span class="kw">mclapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)},<span class="dt">mc.cores=</span>num.cores))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   1.207   0.302   0.914</code></pre>
+#R&gt;   1.349   0.363   2.111</code></pre>
 <div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="parallelization-using-vectorized-functions.html#cb535-1"></a>rsquared.sequential &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.sequential, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
 <span id="cb535-2"><a href="parallelization-using-vectorized-functions.html#cb535-2"></a>rsquared.parallel &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.parallel, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
 <span id="cb535-3"><a href="parallelization-using-vectorized-functions.html#cb535-3"></a><span class="kw">table</span>(rsquared.sequential <span class="op">==</span><span class="st"> </span>rsquared.parallel)</span></code></pre></div>
