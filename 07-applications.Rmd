@@ -940,9 +940,9 @@ knitr::include_graphics("gfx/plot_ly_airquality.png")
 From figure \@ref(fig:plotly-airquality) we see that `plot_ly()` also opens a window in which the user can examine the created three-dimensional plot.
 
 
-# Excercises {-}
+## Excercises {-}
 
-## Task `mtcars` dataset {-}
+### Task `mtcars` dataset {-}
 
 In your R environment the `mtcars` data set (R Core Team 2021) is
 available.
