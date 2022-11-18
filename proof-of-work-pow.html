@@ -429,11 +429,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For a practical example let us use the genesis block that we just created as the starting point for our own blockchain and feed it to the new <code>proofOfWork</code> function after setting the difficulty to a moderate value.</p>
 <div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="proof-of-work-pow.html#cb668-1"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   0.014   0.000   0.014</code></pre>
+#R&gt;   0.016   0.000   0.018</code></pre>
 <div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="proof-of-work-pow.html#cb670-1"></a>genesisBlock<span class="op">$</span>difficulty &lt;-<span class="st"> </span><span class="dv">3</span></span>
 <span id="cb670-2"><a href="proof-of-work-pow.html#cb670-2"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock)) <span class="co"># Execute again with increased difficulty</span></span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   1.100   0.029   1.158</code></pre>
+#R&gt;   0.246   0.009   0.258</code></pre>
 </div>
 <div id="exercises-7" class="section level3 unnumbered hasAnchor">
 <h3>Exercises<a href="proof-of-work-pow.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
