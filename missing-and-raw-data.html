@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.7 Missing and Raw Data | Computational Statistics</title>
   <meta name="description" content="2.7 Missing and Raw Data | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.7 Missing and Raw Data | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-20" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,6 +330,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
@@ -379,26 +382,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="missing-and-raw-data" class="section level2 hasAnchor">
 <h2><span class="header-section-number">2.7</span> Missing and Raw Data<a href="missing-and-raw-data.html#missing-and-raw-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Besides the atomic data types, R supports two more types. A missing or undefined value is indicated by <code>NA</code> which stands for non-available. This is in fact not a real data type, R considers this type a logical value. A lot of functions support handling data with <code>NA</code>s in the set and provide different options to use the respective dataset anyway. Watch out to not mistake <code>NA</code> for the reserved term <code>NaN</code>, which indicates erroneous calculations.</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="missing-and-raw-data.html#cb268-1"></a>num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> , <span class="dv">2</span> , <span class="ot">NA</span> , <span class="dv">4</span> , <span class="dv">5</span>)</span>
-<span id="cb268-2"><a href="missing-and-raw-data.html#cb268-2"></a>num <span class="op">+</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="missing-and-raw-data.html#cb269-1"></a>num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> , <span class="dv">2</span> , <span class="ot">NA</span> , <span class="dv">4</span> , <span class="dv">5</span>)</span>
+<span id="cb269-2"><a href="missing-and-raw-data.html#cb269-2"></a>num <span class="op">+</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
 <pre><code>#R&gt; [1]  4  5 NA  7  8</code></pre>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="missing-and-raw-data.html#cb270-1"></a><span class="kw">is.na</span>(num)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="missing-and-raw-data.html#cb271-1"></a><span class="kw">is.na</span>(num)</span></code></pre></div>
 <pre><code>#R&gt; [1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="missing-and-raw-data.html#cb272-1"></a><span class="kw">sum</span>(<span class="kw">is.na</span>(num))               <span class="co"># Number of NAs in dataset</span></span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="missing-and-raw-data.html#cb273-1"></a><span class="kw">sum</span>(<span class="kw">is.na</span>(num))               <span class="co"># Number of NAs in dataset</span></span></code></pre></div>
 <pre><code>#R&gt; [1] 1</code></pre>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="missing-and-raw-data.html#cb274-1"></a><span class="kw">which</span>(<span class="kw">is.na</span>(num))             <span class="co"># Location/Index of the NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="missing-and-raw-data.html#cb275-1"></a><span class="kw">which</span>(<span class="kw">is.na</span>(num))             <span class="co"># Location/Index of the NA</span></span></code></pre></div>
 <pre><code>#R&gt; [1] 3</code></pre>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="missing-and-raw-data.html#cb276-1"></a><span class="kw">mean</span>(num)                     <span class="co"># Mean of the data can not be calculated</span></span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="missing-and-raw-data.html#cb277-1"></a><span class="kw">mean</span>(num)                     <span class="co"># Mean of the data can not be calculated</span></span></code></pre></div>
 <pre><code>#R&gt; [1] NA</code></pre>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="missing-and-raw-data.html#cb278-1"></a><span class="kw">mean</span>(num , <span class="dt">na.rm=</span>T)           <span class="co"># Omitting the NA for caluclating mean</span></span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="missing-and-raw-data.html#cb279-1"></a><span class="kw">mean</span>(num , <span class="dt">na.rm=</span>T)           <span class="co"># Omitting the NA for caluclating mean</span></span></code></pre></div>
 <pre><code>#R&gt; [1] 3</code></pre>
 <p>R also supports RAW vectors meaning data stored in hexadecimal notation. The hexadecimal system is a companion from our well-known decimal system and the binary system we talked about at the beginning of this chapter. Hexadecimal numbers are numbers with base <span class="math inline">\(b = 16\)</span>. This may get handy when reading in files in binary formats. To find additional information about how to work with the type RAW see the corresponding help pages with <code>?raw</code>.</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="missing-and-raw-data.html#cb280-1"></a><span class="kw">raw</span>(<span class="dv">3</span>)                        <span class="co"># Create empty raw vector of length 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="missing-and-raw-data.html#cb281-1"></a><span class="kw">raw</span>(<span class="dv">3</span>)                        <span class="co"># Create empty raw vector of length 3</span></span></code></pre></div>
 <pre><code>#R&gt; [1] 00 00 00</code></pre>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="missing-and-raw-data.html#cb282-1"></a>x &lt;-<span class="st"> </span><span class="kw">as.raw</span>(<span class="dv">15</span>)               <span class="co"># Convert number to raw</span></span>
-<span id="cb282-2"><a href="missing-and-raw-data.html#cb282-2"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="missing-and-raw-data.html#cb283-1"></a>x &lt;-<span class="st"> </span><span class="kw">as.raw</span>(<span class="dv">15</span>)               <span class="co"># Convert number to raw</span></span>
+<span id="cb283-2"><a href="missing-and-raw-data.html#cb283-2"></a>x</span></code></pre></div>
 <pre><code>#R&gt; [1] 0f</code></pre>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="missing-and-raw-data.html#cb284-1"></a><span class="kw">typeof</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="missing-and-raw-data.html#cb285-1"></a><span class="kw">typeof</span>(x)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;raw&quot;</code></pre>
 </div>
             </section>

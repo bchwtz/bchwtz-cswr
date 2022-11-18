@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.1 Fixed and Floating Point Number Representation | Computational Statistics</title>
-  <meta name="description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
+  <title>11.1 Introduction | Computational Statistics</title>
+  <meta name="description" content="11.1 Introduction | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics" />
+  <meta property="og:title" content="11.1 Introduction | Computational Statistics" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="11.1 Introduction | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics" />
+  <meta name="twitter:title" content="11.1 Introduction | Computational Statistics" />
   
-  <meta name="twitter:description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="11.1 Introduction | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-types.html"/>
-<link rel="next" href="numeric.html"/>
+<link rel="prev" href="web-apps.html"/>
+<link rel="next" href="ui-user-interface.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -379,31 +379,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="fixed-and-floating-point-number-representation" class="section level2 hasAnchor">
-<h2><span class="header-section-number">2.1</span> Fixed and Floating Point Number Representation<a href="fixed-and-floating-point-number-representation.html#fixed-and-floating-point-number-representation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Before we look at the actual data types lets get a bit technical and explore how computers deal with numbers. The numbers we normally use are called decimal numbers, which are basically numbers with a base of <span class="math inline">\(b = 10\)</span>. Thus, we can deconstruct any real number <span class="math inline">\(x \in \mathbb{R}\)</span> into an (infinite) sum of powers to our base <span class="math inline">\(b\)</span>. Let’s look at an example:</p>
-<p><span class="math display">\[ 42.125 = x = 4 \cdot 10^{1} + 2 \cdot 10^{0} + 1 \cdot 10^{-1} + 2 \cdot 10^{-2} + 5 \cdot 10^{-3}\]</span></p>
-<p>While numbers in the decimal system can be conveniently processed by humans, computers work differently. In order to store them in memory, we have to perform a base switch with our chosen number <span class="math inline">\(x\)</span> and rewrite it in binary notation, where <span class="math inline">\(b = 2\)</span> and therefore only the digits 0 (absence of electrical current) and 1 (presence of electrical current) exist. We know that <span class="math inline">\(42.125 = 32 + 8 + 2 + 0.125\)</span>, which leads to the following:</p>
-<p><span class="math display">\[ 42.125 = x = 1 \cdot 2^{5} + 0 \cdot 2^{4} + 1 \cdot 2^{3} + 0 \cdot 2^{2} + 1 \cdot 2^{1} + 0 \cdot 2^{0} + 0 \cdot 2^{-1} + 0 \cdot 2^{-2} + 1 \cdot 2^{-3} \]</span></p>
-<p>When we write the digits down it becomes clear that <span class="math inline">\(42.125_{b = 10}\)</span> equals <span class="math inline">\(101010.001_{b =2}\)</span>. The representation we just discussed is called fixed point representation. Computers use a very similar version to handle real numbers called floating point representation. This is a combination of storing the algebraic sign, numbers in the binary system and moving the ‘decimal’ point while storing how many digits it has been moved and storing the algebraic sign. After this deconstruction our chosen number <span class="math inline">\(x\)</span> in the decimal system looks like this:</p>
-<p><span class="math display">\[ 42.125 = x = (-1)^{0} \cdot 4.2125 \cdot 10^{1}\]</span></p>
-<p>All we have to do now is convert everything in binary again. For compatibility purposes we also need to come up with a standard, meaning how many binary digits (bits) we want to use for the sign, the actual number, and the exponent. The usual convention is 32 bit for single precision numbers divided into 1 bit for the sign, 8 bits for the exponent and 23 bits for the actual number (called mantissa) the convention for double precision numbers 64 bit with 1 bit for the sign, 11 bits for the exponent and 52 bits for the mantissa.</p>
-<!--
-The floating point representation can also be used to store very small numbers, which requires a negative exponent while we can only model positive ones, we also need to come up with a convention to solve this issue. This is usually achieved by dividing the range of the exponent into two equal parts by subtracting half of the representable value domain. As in our case the maximum value for the exponent equals $2^{11} - 1 = 2047$ we simply subtract $1023$. If we consider all this, we end up with a standard called IEEE 754, which codes a decimal number in binary exactly like discussed. Formalized and with $b=2$ this looks like this:
-
-\[ x = (-1)^s \cdot (1+f) \cdot 2^{(e - 1023)} \]
-
-Whereby $e$ stands for the exponent, $s$ for the sign and $f$ for the floating point number. We now only have two special cases left for which we need a convention, this is the case when our number has the value $0$ or is greater than the biggest value we can model with this binary notation. When our number equals zero the exponent $e=1023$ so that a final exponent of $0$ results and when the number is bigger than what we can model with this standard the exponent is set to $e = 2047$ which stands for infinity. In combination with the sign bit, we are pretty much done and can store what we need for our calculations.
--->
-<p>By only having a fixed amount of bits to form a number it should be obvious that using such a coding comes at a cost. This cost is usually precision. The value domain covers only a specific area and quickly comes to its limits when it comes to irrational numbers. Having a basic idea of how a computer codes decimal numbers it should be clear that there is the need for different data types in R, which means we can now start to look at the elementary data types our software environment provides. If you want a deep dive on pitfalls when it comes to floating point arithmetic you should have a look at the article called <a href="http://www.itu.dk/~sestoft/bachelor/IEEE754_article.pdf">What every Computer Scientist should know about floating-point Arithmetic</a> which is freely available.</p>
+<div id="introduction" class="section level2 hasAnchor">
+<h2><span class="header-section-number">11.1</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When we want to create a Shiny Web App, we start in RStudio by clicking on: <code>File</code> <span class="math inline">\(\rightarrow\)</span> <code>New File</code> <span class="math inline">\(\rightarrow\)</span> <code>Shiny Web App...</code></p>
+<p>Then a window opens like in figure <a href="introduction.html#fig:start-shiny-web-app">11.1</a>. It shows a field in which we have to type in a name for the app and we have to choose whether a single file (app.R) or two separate files (ui.R and server.R) will be created (Of course, then we click on <code>Create</code>.). In both cases, a folder will be generated whose name is the one we typed in the field <em>Application name</em>. The name(s) of the file(s) does (do) not change.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:start-shiny-web-app"></span>
+<img src="gfx/start_Shiny_App.png" alt="Creating a new shiny web app." width="481" />
+<p class="caption">
+Figure 11.1: Creating a new shiny web app.
+</p>
+</div>
+<p>Independently of the number of files (app.R or ui.R and sever.R) we have chosen, when we click <code>Run App</code> (see figure <a href="introduction.html#fig:start-shiny-web-app2">11.2</a>), a new window opens which shows the user interface of an exemplary shiny web app dealing with the <code>faithful</code> data set <span class="citation">(R Core Team <a href="#ref-R" role="doc-biblioref">2021</a>)</span>. <strong>Try it out!</strong></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:start-shiny-web-app2"></span>
+<img src="gfx/start_Shiny_App2.PNG" alt="Running a shiny web app that is predefined when a new shiny web app is created in RStudio." width="651" />
+<p class="caption">
+Figure 11.2: Running a shiny web app that is predefined when a new shiny web app is created in RStudio.
+</p>
+</div>
+<p>Basically, it makes no great difference whether a shiny web app is implemented within one file or whether two files are used. Since we will create relatively <em>small</em> shiny web apps (not much code) we will implement the code in the <code>app.R</code>-file.</p>
+<p>In order to implement a user interface we will use predefined functions that are nested and are organized in a predefined layout (e.g. <code>fluidPage()</code>; see code below). <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span> The nested code of the UI (which is a HTML document) is saved as <code>ui</code>. <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span> In order to tell the server how the user interface has to be built and updated we create a function named <code>server()</code>. <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span></p>
+<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="introduction.html#cb731-1"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb731-2"><a href="introduction.html#cb731-2"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>()</span>
+<span id="cb731-3"><a href="introduction.html#cb731-3"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output){}</span></code></pre></div>
+<p>The UI (<code>ui</code>) and the server function (<code>server()</code>) are connected to each other by calling <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span>:</p>
+<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="introduction.html#cb732-1"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server) <span class="co"># see shiny Cheat sheet</span></span></code></pre></div>
+<p>In the following, we will see how <code>ui</code> and <code>server()</code> have to be defined in order to create the shiny app <em>Random samples and their Mean</em> from above.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R">
+<p>R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-shinyCheatsheet">
+<p>RStudio, Inc. 2015. <em>Interactive Web Apps with Shiny Cheat Sheet</em>. <a href="https://shiny.rstudio.com/images/shiny-cheatsheet.pdf">https://shiny.rstudio.com/images/shiny-cheatsheet.pdf</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="numeric.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="web-apps.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ui-user-interface.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -434,7 +451,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-datatypes.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/12-webapps.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.2 Matrices and Arrays | Computational Statistics</title>
   <meta name="description" content="3.2 Matrices and Arrays | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.2 Matrices and Arrays | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-20" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,6 +330,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
@@ -379,22 +382,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="matrices-and-arrays" class="section level2 hasAnchor">
 <h2><span class="header-section-number">3.2</span> Matrices and Arrays<a href="matrices-and-arrays.html#matrices-and-arrays" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Matrices support the same operations as vectors and of course, you can formulate ambitious filtering commands to extract or manipulate data.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="matrices-and-arrays.html#cb347-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>, <span class="dt">nrow =</span> <span class="dv">5</span>)</span>
-<span id="cb347-2"><a href="matrices-and-arrays.html#cb347-2"></a><span class="dv">10</span> <span class="op">%%</span><span class="st"> </span><span class="dv">3</span>                           <span class="co"># Modulo operation</span></span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="matrices-and-arrays.html#cb348-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>, <span class="dt">nrow =</span> <span class="dv">5</span>)</span>
+<span id="cb348-2"><a href="matrices-and-arrays.html#cb348-2"></a><span class="dv">10</span> <span class="op">%%</span><span class="st"> </span><span class="dv">3</span>                           <span class="co"># Modulo operation</span></span></code></pre></div>
 <pre><code>#R&gt; [1] 1</code></pre>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="matrices-and-arrays.html#cb349-1"></a>mat <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="matrices-and-arrays.html#cb350-1"></a>mat <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
 <pre><code>#R&gt;       [,1]  [,2]  [,3]  [,4]  [,5]
 #R&gt; [1,]  TRUE FALSE  TRUE FALSE  TRUE
 #R&gt; [2,] FALSE  TRUE FALSE  TRUE FALSE
 #R&gt; [3,]  TRUE FALSE  TRUE FALSE  TRUE
 #R&gt; [4,] FALSE  TRUE FALSE  TRUE FALSE
 #R&gt; [5,]  TRUE FALSE  TRUE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="matrices-and-arrays.html#cb351-1"></a>mat[<span class="kw">which</span>(mat <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="matrices-and-arrays.html#cb352-1"></a>mat[<span class="kw">which</span>(mat <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)]</span></code></pre></div>
 <pre><code>#R&gt;  [1]  1  3  5  7  9 11 13 15 17 19 21 23 25</code></pre>
 <p>Matrices as known from undergraduate mathematical courses usually have two dimensions. Sometimes there is the need for more dimensions and of course, R supports us with a construct that is similar to a more dimensional matrix - this structure is called an array. If you already played around with other programming languages you may insist, that an array does not need to have three or more dimensions, which is absolutely right. You can imagine <em>array</em> as a generic term for a (numeric) n-dimensional data-structure. A vector, therefore, can be called a one-dimensional array while matrices can also be called two-dimensional arrays. If you store data in a three-dimensional structure - the array is normally called a cube, but of course, we are not limited to three dimensions. Cubes of higher dimensions are usually called Hypercubes or just referred to as arrays. To printout, our n-dimensional structure on the two-dimensional command-line R gives back the array in slices. The command to create an array is <code>array()</code>.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="matrices-and-arrays.html#cb353-1"></a>A &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span> , <span class="dv">11</span><span class="op">:</span><span class="dv">19</span> , <span class="dv">21</span><span class="op">:</span><span class="dv">29</span>), <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">3</span> , <span class="dv">3</span> , <span class="dv">3</span>))</span>
-<span id="cb353-2"><a href="matrices-and-arrays.html#cb353-2"></a></span>
-<span id="cb353-3"><a href="matrices-and-arrays.html#cb353-3"></a>A                                <span class="co"># Display array</span></span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="matrices-and-arrays.html#cb354-1"></a>A &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span> , <span class="dv">11</span><span class="op">:</span><span class="dv">19</span> , <span class="dv">21</span><span class="op">:</span><span class="dv">29</span>), <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">3</span> , <span class="dv">3</span> , <span class="dv">3</span>))</span>
+<span id="cb354-2"><a href="matrices-and-arrays.html#cb354-2"></a></span>
+<span id="cb354-3"><a href="matrices-and-arrays.html#cb354-3"></a>A                                <span class="co"># Display array</span></span></code></pre></div>
 <pre><code>#R&gt; , , 1
 #R&gt; 
 #R&gt;      [,1] [,2] [,3]
@@ -415,7 +418,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #R&gt; [1,]   21   24   27
 #R&gt; [2,]   22   25   28
 #R&gt; [3,]   23   26   29</code></pre>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="matrices-and-arrays.html#cb355-1"></a><span class="kw">dim</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="matrices-and-arrays.html#cb356-1"></a><span class="kw">dim</span>(A)</span></code></pre></div>
 <pre><code>#R&gt; [1] 3 3 3</code></pre>
 <p>When entering higher dimensions the complexity level increases drastically and may get confusing. During our data science journey, we mostly use two-dimensional structures and therefore won’t explore the world of n-dimensional arrays here.</p>
 </div>

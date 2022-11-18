@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.1 Fixed and Floating Point Number Representation | Computational Statistics</title>
-  <meta name="description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
+  <title>11.3 server | Computational Statistics</title>
+  <meta name="description" content="11.3 server | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics" />
+  <meta property="og:title" content="11.3 server | Computational Statistics" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="11.3 server | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics" />
+  <meta name="twitter:title" content="11.3 server | Computational Statistics" />
   
-  <meta name="twitter:description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="11.3 server | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-types.html"/>
-<link rel="next" href="numeric.html"/>
+<link rel="prev" href="ui-user-interface.html"/>
+<link rel="next" href="exercises-9.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -379,31 +379,105 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="fixed-and-floating-point-number-representation" class="section level2 hasAnchor">
-<h2><span class="header-section-number">2.1</span> Fixed and Floating Point Number Representation<a href="fixed-and-floating-point-number-representation.html#fixed-and-floating-point-number-representation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Before we look at the actual data types lets get a bit technical and explore how computers deal with numbers. The numbers we normally use are called decimal numbers, which are basically numbers with a base of <span class="math inline">\(b = 10\)</span>. Thus, we can deconstruct any real number <span class="math inline">\(x \in \mathbb{R}\)</span> into an (infinite) sum of powers to our base <span class="math inline">\(b\)</span>. Let’s look at an example:</p>
-<p><span class="math display">\[ 42.125 = x = 4 \cdot 10^{1} + 2 \cdot 10^{0} + 1 \cdot 10^{-1} + 2 \cdot 10^{-2} + 5 \cdot 10^{-3}\]</span></p>
-<p>While numbers in the decimal system can be conveniently processed by humans, computers work differently. In order to store them in memory, we have to perform a base switch with our chosen number <span class="math inline">\(x\)</span> and rewrite it in binary notation, where <span class="math inline">\(b = 2\)</span> and therefore only the digits 0 (absence of electrical current) and 1 (presence of electrical current) exist. We know that <span class="math inline">\(42.125 = 32 + 8 + 2 + 0.125\)</span>, which leads to the following:</p>
-<p><span class="math display">\[ 42.125 = x = 1 \cdot 2^{5} + 0 \cdot 2^{4} + 1 \cdot 2^{3} + 0 \cdot 2^{2} + 1 \cdot 2^{1} + 0 \cdot 2^{0} + 0 \cdot 2^{-1} + 0 \cdot 2^{-2} + 1 \cdot 2^{-3} \]</span></p>
-<p>When we write the digits down it becomes clear that <span class="math inline">\(42.125_{b = 10}\)</span> equals <span class="math inline">\(101010.001_{b =2}\)</span>. The representation we just discussed is called fixed point representation. Computers use a very similar version to handle real numbers called floating point representation. This is a combination of storing the algebraic sign, numbers in the binary system and moving the ‘decimal’ point while storing how many digits it has been moved and storing the algebraic sign. After this deconstruction our chosen number <span class="math inline">\(x\)</span> in the decimal system looks like this:</p>
-<p><span class="math display">\[ 42.125 = x = (-1)^{0} \cdot 4.2125 \cdot 10^{1}\]</span></p>
-<p>All we have to do now is convert everything in binary again. For compatibility purposes we also need to come up with a standard, meaning how many binary digits (bits) we want to use for the sign, the actual number, and the exponent. The usual convention is 32 bit for single precision numbers divided into 1 bit for the sign, 8 bits for the exponent and 23 bits for the actual number (called mantissa) the convention for double precision numbers 64 bit with 1 bit for the sign, 11 bits for the exponent and 52 bits for the mantissa.</p>
-<!--
-The floating point representation can also be used to store very small numbers, which requires a negative exponent while we can only model positive ones, we also need to come up with a convention to solve this issue. This is usually achieved by dividing the range of the exponent into two equal parts by subtracting half of the representable value domain. As in our case the maximum value for the exponent equals $2^{11} - 1 = 2047$ we simply subtract $1023$. If we consider all this, we end up with a standard called IEEE 754, which codes a decimal number in binary exactly like discussed. Formalized and with $b=2$ this looks like this:
-
-\[ x = (-1)^s \cdot (1+f) \cdot 2^{(e - 1023)} \]
-
-Whereby $e$ stands for the exponent, $s$ for the sign and $f$ for the floating point number. We now only have two special cases left for which we need a convention, this is the case when our number has the value $0$ or is greater than the biggest value we can model with this binary notation. When our number equals zero the exponent $e=1023$ so that a final exponent of $0$ results and when the number is bigger than what we can model with this standard the exponent is set to $e = 2047$ which stands for infinity. In combination with the sign bit, we are pretty much done and can store what we need for our calculations.
--->
-<p>By only having a fixed amount of bits to form a number it should be obvious that using such a coding comes at a cost. This cost is usually precision. The value domain covers only a specific area and quickly comes to its limits when it comes to irrational numbers. Having a basic idea of how a computer codes decimal numbers it should be clear that there is the need for different data types in R, which means we can now start to look at the elementary data types our software environment provides. If you want a deep dive on pitfalls when it comes to floating point arithmetic you should have a look at the article called <a href="http://www.itu.dk/~sestoft/bachelor/IEEE754_article.pdf">What every Computer Scientist should know about floating-point Arithmetic</a> which is freely available.</p>
+<div id="server" class="section level2 hasAnchor">
+<h2><span class="header-section-number">11.3</span> server<a href="server.html#server" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To every element - we have defined as an Output on the ui - belongs an
+appropriate <code>render*()</code> function to generate the corresponding element (e.g. a plot) (see the <code>shiny</code> Cheat sheet). <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span>
+Defining the different types of outputs like plots, tables etc. works in general like this:</p>
+<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="server.html#cb737-1"></a>output<span class="op">$</span>Id_Output &lt;-<span class="st"> </span><span class="kw">renderFunction</span>({</span>
+<span id="cb737-2"><a href="server.html#cb737-2"></a>...</span>
+<span id="cb737-3"><a href="server.html#cb737-3"></a>}) <span class="co"># see shiny Cheatsheet</span></span></code></pre></div>
+<p>where <code>Id_Output</code> is the id of the output we defined in the UI, e.g. <code>distPlot</code> is the id of the plot we will create:</p>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="server.html#cb738-1"></a>output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb738-2"><a href="server.html#cb738-2"></a>  ...</span>
+<span id="cb738-3"><a href="server.html#cb738-3"></a>})</span></code></pre></div>
+<p>In the server function, we can also access values of one of the inputs on the ui by calling <code>input$Id_Input</code> where <code>Id_Input</code> is the id of the element we have defined as input, e.g. <code>seed</code> is the id the numeric Input where the user sets a number for a random seed <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>, 1)</span>:</p>
+<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="server.html#cb739-1"></a>output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb739-2"><a href="server.html#cb739-2"></a>  ...</span>
+<span id="cb739-3"><a href="server.html#cb739-3"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.na</span>(input<span class="op">$</span>seed)){ <span class="co"># if a number has been set to define a random seed then ...</span></span>
+<span id="cb739-4"><a href="server.html#cb739-4"></a>    <span class="kw">set.seed</span>(input<span class="op">$</span>seed)</span>
+<span id="cb739-5"><a href="server.html#cb739-5"></a>  }</span>
+<span id="cb739-6"><a href="server.html#cb739-6"></a>  ...</span>
+<span id="cb739-7"><a href="server.html#cb739-7"></a>  })</span></code></pre></div>
+<p>Here is an overview of more <em>pairs</em> of <code>render*()</code>- and <code>*Output()</code>-functions extracted from <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span>:</p>
+<table>
+<thead>
+<tr class="header">
+<th><code>render*()</code>-function</th>
+<th><code>*Output()</code>-function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>DT::renderDataTable()</code></td>
+<td><code>dataTableOutput()</code></td>
+</tr>
+<tr class="even">
+<td><code>renderImage()</code></td>
+<td><code>imageOutput()</code></td>
+</tr>
+<tr class="odd">
+<td><code>renderPlot()</code></td>
+<td><code>plotOutput()</code></td>
+</tr>
+<tr class="even">
+<td><code>renderPrint()</code></td>
+<td><code>verbatimTextOutput()</code></td>
+</tr>
+<tr class="odd">
+<td><code>renderTable()</code></td>
+<td><code>tableOutput()</code></td>
+</tr>
+<tr class="even">
+<td><code>renderText()</code></td>
+<td><code>textOutput()</code></td>
+</tr>
+<tr class="odd">
+<td><code>renderUI()</code></td>
+<td><code>uiOutput()</code> &amp; <code>htmlOutput()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Based on this knowledge the server function is defined:</p>
+<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="server.html#cb740-1"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</span>
+<span id="cb740-2"><a href="server.html#cb740-2"></a></span>
+<span id="cb740-3"><a href="server.html#cb740-3"></a>  output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
+<span id="cb740-4"><a href="server.html#cb740-4"></a></span>
+<span id="cb740-5"><a href="server.html#cb740-5"></a>    <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.na</span>(input<span class="op">$</span>seed)) <span class="kw">set.seed</span>(input<span class="op">$</span>seed)</span>
+<span id="cb740-6"><a href="server.html#cb740-6"></a>    rngmat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(input<span class="op">$</span>n<span class="op">*</span>input<span class="op">$</span>N), <span class="dt">nrow =</span> input<span class="op">$</span>n, <span class="dt">ncol=</span>input<span class="op">$</span>N)</span>
+<span id="cb740-7"><a href="server.html#cb740-7"></a>    meanvec &lt;-<span class="st"> </span><span class="kw">apply</span>(rngmat, <span class="dv">2</span>, mean)</span>
+<span id="cb740-8"><a href="server.html#cb740-8"></a></span>
+<span id="cb740-9"><a href="server.html#cb740-9"></a>    xseq &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">length.out =</span> <span class="dv">1000</span>)</span>
+<span id="cb740-10"><a href="server.html#cb740-10"></a>    y &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(rngmat),<span class="kw">sd</span>(rngmat))})</span>
+<span id="cb740-11"><a href="server.html#cb740-11"></a>    ymean &lt;-<span class="st"> </span><span class="kw">sapply</span>(xseq, <span class="cf">function</span>(x){<span class="kw">dnorm</span>(x, <span class="kw">mean</span>(meanvec),<span class="kw">sd</span>(meanvec))})</span>
+<span id="cb740-12"><a href="server.html#cb740-12"></a></span>
+<span id="cb740-13"><a href="server.html#cb740-13"></a>    ymax &lt;-<span class="st"> </span><span class="kw">ceiling</span>(<span class="kw">max</span>(<span class="kw">c</span>(y,ymean)))</span>
+<span id="cb740-14"><a href="server.html#cb740-14"></a>    ymax &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">is.finite</span>(ymax),ymax, <span class="dv">1</span>)</span>
+<span id="cb740-15"><a href="server.html#cb740-15"></a></span>
+<span id="cb740-16"><a href="server.html#cb740-16"></a>    MASS<span class="op">::</span><span class="kw">truehist</span>(rngmat, <span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">6</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,ymax),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb740-17"><a href="server.html#cb740-17"></a>    <span class="cf">if</span>(input<span class="op">$</span>showdensity) <span class="kw">lines</span>(xseq,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb740-18"><a href="server.html#cb740-18"></a>    <span class="kw">par</span>(<span class="dt">new=</span>T)</span>
+<span id="cb740-19"><a href="server.html#cb740-19"></a>    MASS<span class="op">::</span><span class="kw">truehist</span>(meanvec,<span class="dt">col=</span><span class="kw">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>),<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,ymax),<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb740-20"><a href="server.html#cb740-20"></a>    <span class="cf">if</span>(input<span class="op">$</span>showdensity) <span class="kw">lines</span>(xseq,ymean,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb740-21"><a href="server.html#cb740-21"></a></span>
+<span id="cb740-22"><a href="server.html#cb740-22"></a></span>
+<span id="cb740-23"><a href="server.html#cb740-23"></a>  })</span>
+<span id="cb740-24"><a href="server.html#cb740-24"></a>}</span></code></pre></div>
+<p>Finally, running the app leads to the result illustrated in the gif in the beginning of this chapter.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-shinyCheatsheet">
+<p>RStudio, Inc. 2015. <em>Interactive Web Apps with Shiny Cheat Sheet</em>. <a href="https://shiny.rstudio.com/images/shiny-cheatsheet.pdf">https://shiny.rstudio.com/images/shiny-cheatsheet.pdf</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="numeric.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ui-user-interface.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises-9.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -434,7 +508,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-datatypes.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/12-webapps.Rmd",
 "text": "Edit"
 },
 "history": {

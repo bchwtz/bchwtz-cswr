@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1.7 Getting Help | Computational Statistics</title>
   <meta name="description" content="1.7 Getting Help | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1.7 Getting Help | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-20" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,6 +330,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
@@ -381,14 +384,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="integrated-help-system" class="section level3 hasAnchor">
 <h3><span class="header-section-number">1.7.1</span> Integrated Help System<a href="getting-help.html#integrated-help-system" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The flexible package system has a lot of advantages and puts the mind power of world-leading data scientists directly to your fingertips. When installing a new package or adding a new function which has been developed either by the R Core Team or by another developer you need to use the documentation to get used to the new functions, what they are doing in detail, how the package is used and what overlaps and problems might occur. This is exactly the reason why R has a build in help system. You can get useful information about every function you have at hand. Just place the question mark in front of the function name and hit enter or use the more formal function <code>help()</code>.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="getting-help.html#cb183-1"></a><span class="co"># This is how to help yourself and find out how new or existing </span></span>
-<span id="cb183-2"><a href="getting-help.html#cb183-2"></a><span class="co"># functions work. Always read the help page before asking someone!</span></span>
-<span id="cb183-3"><a href="getting-help.html#cb183-3"></a></span>
-<span id="cb183-4"><a href="getting-help.html#cb183-4"></a><span class="kw">help</span>(sin)             <span class="co"># Load documentation for a function</span></span>
-<span id="cb183-5"><a href="getting-help.html#cb183-5"></a></span>
-<span id="cb183-6"><a href="getting-help.html#cb183-6"></a>?sin                  <span class="co"># Shortcut to help()</span></span>
-<span id="cb183-7"><a href="getting-help.html#cb183-7"></a></span>
-<span id="cb183-8"><a href="getting-help.html#cb183-8"></a><span class="kw">help</span>(<span class="dt">package=</span>ggplot2) <span class="co"># Information about whole package</span></span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="getting-help.html#cb184-1"></a><span class="co"># This is how to help yourself and find out how new or existing </span></span>
+<span id="cb184-2"><a href="getting-help.html#cb184-2"></a><span class="co"># functions work. Always read the help page before asking someone!</span></span>
+<span id="cb184-3"><a href="getting-help.html#cb184-3"></a></span>
+<span id="cb184-4"><a href="getting-help.html#cb184-4"></a><span class="kw">help</span>(sin)             <span class="co"># Load documentation for a function</span></span>
+<span id="cb184-5"><a href="getting-help.html#cb184-5"></a></span>
+<span id="cb184-6"><a href="getting-help.html#cb184-6"></a>?sin                  <span class="co"># Shortcut to help()</span></span>
+<span id="cb184-7"><a href="getting-help.html#cb184-7"></a></span>
+<span id="cb184-8"><a href="getting-help.html#cb184-8"></a><span class="kw">help</span>(<span class="dt">package=</span>ggplot2) <span class="co"># Information about whole package</span></span></code></pre></div>
 <p>A help page consists of different sections, each discussing a special aspect of the function. While the exact parts of a help page vary due to different purposes of different functions the following list is not exhaustive for all functions, but you can expect to see at least the following sections:</p>
 <ul>
 <li><p><strong>Description:</strong> Provides a brief overview of what the function actually does or what it was intended to do. This section allows you to quickly grasp if the function is useful for your intended case.</p></li>

@@ -53,6 +53,9 @@ fig:ggplotly-air-lm
 fig:plotly-airquality
 fig:unnamed-chunk-253
 fig:unnamed-chunk-280
+fig:start-shiny-web-app
+fig:start-shiny-web-app2
+fig:shiny-web-only-ui
 intro
 r-and-the-r-project
 r-system-and-rstudio
@@ -147,6 +150,9 @@ generating-forecasts
 practical-application
 forecast-evaluation
 web-apps
+introduction
+ui-user-interface
+server
 bug-bounty
 test-exam
 additional-exercises

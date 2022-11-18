@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>B.2 Exercise II | Computational Statistics</title>
   <meta name="description" content="B.2 Exercise II | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B.2 Exercise II | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-20" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,6 +330,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
@@ -379,61 +382,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exercise-ii" class="section level2 hasAnchor">
 <h2><span class="header-section-number">B.2</span> Exercise II<a href="exercise-ii.html#exercise-ii" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The following three code snippets were found in the file <code>misc.support.final.final2.R</code> as part of an old undocumented project. Therefore their purpose is unknown. Being a young and ambitious R developer you were asked to explain the mysterious content of the following three snippets.</p>
-<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="exercise-ii.html#cb732-1"></a><span class="co">### CODE SNIPPET 1</span></span>
-<span id="cb732-2"><a href="exercise-ii.html#cb732-2"></a>x &lt;-<span class="st"> </span><span class="dv">100</span></span>
-<span id="cb732-3"><a href="exercise-ii.html#cb732-3"></a>counter &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb732-4"><a href="exercise-ii.html#cb732-4"></a></span>
-<span id="cb732-5"><a href="exercise-ii.html#cb732-5"></a><span class="cf">while</span>( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>){</span>
-<span id="cb732-6"><a href="exercise-ii.html#cb732-6"></a> x &lt;-<span class="st"> </span>x<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb732-7"><a href="exercise-ii.html#cb732-7"></a> counter &lt;-<span class="st"> </span>counter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb732-8"><a href="exercise-ii.html#cb732-8"></a>}</span>
-<span id="cb732-9"><a href="exercise-ii.html#cb732-9"></a></span>
-<span id="cb732-10"><a href="exercise-ii.html#cb732-10"></a>counter</span></code></pre></div>
+<div class="sourceCode" id="cb744"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb744-1"><a href="exercise-ii.html#cb744-1"></a><span class="co">### CODE SNIPPET 1</span></span>
+<span id="cb744-2"><a href="exercise-ii.html#cb744-2"></a>x &lt;-<span class="st"> </span><span class="dv">100</span></span>
+<span id="cb744-3"><a href="exercise-ii.html#cb744-3"></a>counter &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb744-4"><a href="exercise-ii.html#cb744-4"></a></span>
+<span id="cb744-5"><a href="exercise-ii.html#cb744-5"></a><span class="cf">while</span>( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>){</span>
+<span id="cb744-6"><a href="exercise-ii.html#cb744-6"></a> x &lt;-<span class="st"> </span>x<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb744-7"><a href="exercise-ii.html#cb744-7"></a> counter &lt;-<span class="st"> </span>counter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb744-8"><a href="exercise-ii.html#cb744-8"></a>}</span>
+<span id="cb744-9"><a href="exercise-ii.html#cb744-9"></a></span>
+<span id="cb744-10"><a href="exercise-ii.html#cb744-10"></a>counter</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>Briefly describe what the code snippet above does (line-by-line).</li>
 <li>Please give your opinion on the provided code and comment on time of execution.</li>
 </ol>
-<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="exercise-ii.html#cb733-1"></a><span class="co">### CODE SNIPPET 2</span></span>
-<span id="cb733-2"><a href="exercise-ii.html#cb733-2"></a>res &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
-<span id="cb733-3"><a href="exercise-ii.html#cb733-3"></a></span>
-<span id="cb733-4"><a href="exercise-ii.html#cb733-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
-<span id="cb733-5"><a href="exercise-ii.html#cb733-5"></a>  res[[i]] &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">0</span>,<span class="dt">to=</span><span class="dv">1</span>,<span class="dt">by=</span><span class="fl">0.2</span>))</span>
-<span id="cb733-6"><a href="exercise-ii.html#cb733-6"></a>}</span>
-<span id="cb733-7"><a href="exercise-ii.html#cb733-7"></a></span>
-<span id="cb733-8"><a href="exercise-ii.html#cb733-8"></a><span class="kw">sum</span>(<span class="kw">sapply</span>(res,<span class="dt">FUN =</span> sum))</span>
-<span id="cb733-9"><a href="exercise-ii.html#cb733-9"></a><span class="kw">length</span>(res)</span>
-<span id="cb733-10"><a href="exercise-ii.html#cb733-10"></a><span class="kw">typeof</span>(res[[<span class="dv">1</span>]][<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="exercise-ii.html#cb745-1"></a><span class="co">### CODE SNIPPET 2</span></span>
+<span id="cb745-2"><a href="exercise-ii.html#cb745-2"></a>res &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb745-3"><a href="exercise-ii.html#cb745-3"></a></span>
+<span id="cb745-4"><a href="exercise-ii.html#cb745-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
+<span id="cb745-5"><a href="exercise-ii.html#cb745-5"></a>  res[[i]] &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">0</span>,<span class="dt">to=</span><span class="dv">1</span>,<span class="dt">by=</span><span class="fl">0.2</span>))</span>
+<span id="cb745-6"><a href="exercise-ii.html#cb745-6"></a>}</span>
+<span id="cb745-7"><a href="exercise-ii.html#cb745-7"></a></span>
+<span id="cb745-8"><a href="exercise-ii.html#cb745-8"></a><span class="kw">sum</span>(<span class="kw">sapply</span>(res,<span class="dt">FUN =</span> sum))</span>
+<span id="cb745-9"><a href="exercise-ii.html#cb745-9"></a><span class="kw">length</span>(res)</span>
+<span id="cb745-10"><a href="exercise-ii.html#cb745-10"></a><span class="kw">typeof</span>(res[[<span class="dv">1</span>]][<span class="dv">1</span>])</span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Please write down what the last three lines of code snippet 2 return when executing the code above.</li>
 </ol>
-<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="exercise-ii.html#cb734-1"></a><span class="co">### CODE SNIPPET 3</span></span>
-<span id="cb734-2"><a href="exercise-ii.html#cb734-2"></a>a &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">sort</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dv">4</span>)),<span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb734-3"><a href="exercise-ii.html#cb734-3"></a></span>
-<span id="cb734-4"><a href="exercise-ii.html#cb734-4"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(a)[<span class="dv">1</span>] ){</span>
-<span id="cb734-5"><a href="exercise-ii.html#cb734-5"></a>  <span class="cf">for</span> ( j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(a)[<span class="dv">2</span>] ){</span>
-<span id="cb734-6"><a href="exercise-ii.html#cb734-6"></a>    <span class="cf">for</span> ( k <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(a)[<span class="dv">3</span>] ){</span>
-<span id="cb734-7"><a href="exercise-ii.html#cb734-7"></a>      a[i,j,k]  &lt;-<span class="st"> </span><span class="kw">ifelse</span>(a[i,j,k] <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>, a[i,j,k], <span class="ot">NA</span>)</span>
-<span id="cb734-8"><a href="exercise-ii.html#cb734-8"></a>    }</span>
-<span id="cb734-9"><a href="exercise-ii.html#cb734-9"></a>  }</span>
-<span id="cb734-10"><a href="exercise-ii.html#cb734-10"></a>}</span>
-<span id="cb734-11"><a href="exercise-ii.html#cb734-11"></a></span>
-<span id="cb734-12"><a href="exercise-ii.html#cb734-12"></a>a</span></code></pre></div>
+<div class="sourceCode" id="cb746"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb746-1"><a href="exercise-ii.html#cb746-1"></a><span class="co">### CODE SNIPPET 3</span></span>
+<span id="cb746-2"><a href="exercise-ii.html#cb746-2"></a>a &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">sort</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dv">4</span>)),<span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb746-3"><a href="exercise-ii.html#cb746-3"></a></span>
+<span id="cb746-4"><a href="exercise-ii.html#cb746-4"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(a)[<span class="dv">1</span>] ){</span>
+<span id="cb746-5"><a href="exercise-ii.html#cb746-5"></a>  <span class="cf">for</span> ( j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(a)[<span class="dv">2</span>] ){</span>
+<span id="cb746-6"><a href="exercise-ii.html#cb746-6"></a>    <span class="cf">for</span> ( k <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">dim</span>(a)[<span class="dv">3</span>] ){</span>
+<span id="cb746-7"><a href="exercise-ii.html#cb746-7"></a>      a[i,j,k]  &lt;-<span class="st"> </span><span class="kw">ifelse</span>(a[i,j,k] <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>, a[i,j,k], <span class="ot">NA</span>)</span>
+<span id="cb746-8"><a href="exercise-ii.html#cb746-8"></a>    }</span>
+<span id="cb746-9"><a href="exercise-ii.html#cb746-9"></a>  }</span>
+<span id="cb746-10"><a href="exercise-ii.html#cb746-10"></a>}</span>
+<span id="cb746-11"><a href="exercise-ii.html#cb746-11"></a></span>
+<span id="cb746-12"><a href="exercise-ii.html#cb746-12"></a>a</span></code></pre></div>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Please write down the content of the variable <code>a</code> when snippet 3 is executed.</li>
 </ol>
 <div id="exercise-iii" class="section level3 hasAnchor">
 <h3><span class="header-section-number">B.2.1</span> Exercise III<a href="exercise-ii.html#exercise-iii" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The following function <code>genlist</code> was found in the file <code>list-maker.final.final2.R</code> as part of an old undocumented project. Therefore its purpose is not known. Being a young and ambitious R developer you were asked to answer the following questions.</p>
-<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="exercise-ii.html#cb735-1"></a>genlist &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">x=</span><span class="kw">sample</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">size=</span><span class="dv">5</span>)){</span>
-<span id="cb735-2"><a href="exercise-ii.html#cb735-2"></a>  n &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb735-3"><a href="exercise-ii.html#cb735-3"></a>  <span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(x))){</span>
-<span id="cb735-4"><a href="exercise-ii.html#cb735-4"></a>    <span class="cf">if</span> (x[i] % <span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){</span>
-<span id="cb735-5"><a href="exercise-ii.html#cb735-5"></a>      n &lt;-<span class="st"> </span>n <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb735-6"><a href="exercise-ii.html#cb735-6"></a>    }</span>
-<span id="cb735-7"><a href="exercise-ii.html#cb735-7"></a>  }</span>
-<span id="cb735-8"><a href="exercise-ii.html#cb735-8"></a>  res &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">n=</span>n, <span class="dt">x=</span>x, <span class="dt">y=</span><span class="kw">rev</span>(x), <span class="dt">z=</span><span class="kw">sort</span>(x))</span>
-<span id="cb735-9"><a href="exercise-ii.html#cb735-9"></a>  <span class="kw">return</span>(res)</span>
-<span id="cb735-10"><a href="exercise-ii.html#cb735-10"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="exercise-ii.html#cb747-1"></a>genlist &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">x=</span><span class="kw">sample</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">size=</span><span class="dv">5</span>)){</span>
+<span id="cb747-2"><a href="exercise-ii.html#cb747-2"></a>  n &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb747-3"><a href="exercise-ii.html#cb747-3"></a>  <span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(x))){</span>
+<span id="cb747-4"><a href="exercise-ii.html#cb747-4"></a>    <span class="cf">if</span> (x[i] % <span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){</span>
+<span id="cb747-5"><a href="exercise-ii.html#cb747-5"></a>      n &lt;-<span class="st"> </span>n <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb747-6"><a href="exercise-ii.html#cb747-6"></a>    }</span>
+<span id="cb747-7"><a href="exercise-ii.html#cb747-7"></a>  }</span>
+<span id="cb747-8"><a href="exercise-ii.html#cb747-8"></a>  res &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">n=</span>n, <span class="dt">x=</span>x, <span class="dt">y=</span><span class="kw">rev</span>(x), <span class="dt">z=</span><span class="kw">sort</span>(x))</span>
+<span id="cb747-9"><a href="exercise-ii.html#cb747-9"></a>  <span class="kw">return</span>(res)</span>
+<span id="cb747-10"><a href="exercise-ii.html#cb747-10"></a>}</span></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li><p>While executing and trying to load the function above the following message appears. Explain why the message is returned and correct the error in the provided source code.</p>
 <p><code>Error: unexpected input in:</code></p>
@@ -442,8 +445,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Briefly describe what the function <code>genlist</code> does (line-by-line) and returns. Ensure that your description is precise and allows the reader to gain a deep understanding of how the values in the returned list are generated.</p></li>
 <li><p>Provide the results to the following function call based on your corrected code.</p></li>
 </ol>
-<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="exercise-ii.html#cb736-1"></a><span class="kw">genlist</span>()</span>
-<span id="cb736-2"><a href="exercise-ii.html#cb736-2"></a><span class="kw">genlist</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb748-1"><a href="exercise-ii.html#cb748-1"></a><span class="kw">genlist</span>()</span>
+<span id="cb748-2"><a href="exercise-ii.html#cb748-2"></a><span class="kw">genlist</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>)</span></code></pre></div>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Please come up with a single line of code that returns the type of each list element. Name the respective datatypes and answer the question if these can be different from values returned by <code>class</code>.</li>
 </ol>
@@ -456,10 +459,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Auguie, Baptiste. 2017. <em>GridExtra: Miscellaneous Functions for "Grid" Graphics</em>. <a href="https://CRAN.R-project.org/package=gridExtra">https://CRAN.R-project.org/package=gridExtra</a>.</p>
 </div>
 <div>
+<p>Chang, Winston, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui Xie, Jeff Allen, Jonathan McPherson, Alan Dipert, and Barbara Borges. 2022. <em>Shiny: Web Application Framework for R</em>. <a href="https://CRAN.R-project.org/package=shiny">https://CRAN.R-project.org/package=shiny</a>.</p>
+</div>
+<div>
 <p>Meschiari, Stefano. 2022. <em>Latex2exp: Use Latex Expressions in Plots</em>. <a href="https://CRAN.R-project.org/package=latex2exp">https://CRAN.R-project.org/package=latex2exp</a>.</p>
 </div>
 <div>
 <p>R Core Team. 2021. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
+<div>
+<p>RStudio, Inc. 2015. <em>Interactive Web Apps with Shiny Cheat Sheet</em>. <a href="https://shiny.rstudio.com/images/shiny-cheatsheet.pdf">https://shiny.rstudio.com/images/shiny-cheatsheet.pdf</a>.</p>
+</div>
+<div>
+<p>———. 2020. <em>Gallery</em>. <a href="https://shiny.rstudio.com/gallery/">https://shiny.rstudio.com/gallery/</a>.</p>
 </div>
 <div>
 <p>RStudio, PBC. 2021. <em>Data Visualization with Ggplot2::CHEAT Sheet</em>. <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf</a>.</p>

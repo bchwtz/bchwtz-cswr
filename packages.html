@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1.6 Packages | Computational Statistics</title>
   <meta name="description" content="1.6 Packages | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1.6 Packages | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-20" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,6 +330,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
@@ -456,14 +459,15 @@ Load the dataset <code>wage1</code> into R and use the <code>lm()</code>-functio
 <pre><code>#R&gt;  [1] -1.539950042 -0.928567035 -0.294720447 -0.005767173  2.404653389
 #R&gt;  [6]  0.763593461 -0.799009249 -1.147657009 -0.289461574 -0.299215118</code></pre>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="packages.html#cb180-1"></a><span class="kw">qplot</span>(sample , <span class="dt">binwidth =</span> <span class="fl">.1</span>)   <span class="co"># Plot generated sample as histogram</span></span></code></pre></div>
+<pre><code>#R&gt; Warning: `qplot()` was deprecated in ggplot2 3.4.0.</code></pre>
 <p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-51-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>As you can see, it is very fast forward to generate nice histograms out of single vectors. The argument <code>binwidth = .1</code> defines the width of each cluster to aggregate the generated values into pillars. As you may have noticed I have not written <code>0.1</code>. Lazy programmers (and who isn’t?) can get rid of the leading zero and start floating point numbers with the dot. Please notice that your histogram may look a little different as <code>rnorm()</code> also relies on the internal random number generator and of course you can use the function <code>hist()</code> instead to produce a similar plot. We will dive deeper into random numbers and distributions in one of the following chapters. Let’s try out what happens if we give <code>qplot()</code> two vectors.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="packages.html#cb181-1"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dt">by =</span> <span class="fl">.1</span>)</span>
-<span id="cb181-2"><a href="packages.html#cb181-2"></a>y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb181-3"><a href="packages.html#cb181-3"></a></span>
-<span id="cb181-4"><a href="packages.html#cb181-4"></a><span class="kw">qplot</span>(x,y)                      <span class="co"># Plot using ggplot2-package</span></span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="packages.html#cb182-1"></a>x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dt">by =</span> <span class="fl">.1</span>)</span>
+<span id="cb182-2"><a href="packages.html#cb182-2"></a>y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb182-3"><a href="packages.html#cb182-3"></a></span>
+<span id="cb182-4"><a href="packages.html#cb182-4"></a><span class="kw">qplot</span>(x,y)                      <span class="co"># Plot using ggplot2-package</span></span></code></pre></div>
 <p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-52-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="packages.html#cb182-1"></a><span class="kw">plot</span>(x,y)                       <span class="co"># Plot using R&#39;s core function</span></span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="packages.html#cb183-1"></a><span class="kw">plot</span>(x,y)                       <span class="co"># Plot using R&#39;s core function</span></span></code></pre></div>
 <p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-52-2.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 </div>

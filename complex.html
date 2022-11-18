@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.3 Complex | Computational Statistics</title>
   <meta name="description" content="2.3 Complex | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.3 Complex | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-20" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,6 +330,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
@@ -379,17 +382,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="complex" class="section level2 hasAnchor">
 <h2><span class="header-section-number">2.3</span> Complex<a href="complex.html#complex" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>R can handle complex numbers. It is doubtful that you will come across them when doing simple data analysis, but likely if you are performing more advanced calculations for e.g. in time series analysis. You can simply create a complex vector by adding an imaginary term to a real number.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="complex.html#cb196-1"></a>num &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">as.complex</span>(<span class="op">-</span><span class="dv">64</span>))</span>
-<span id="cb196-2"><a href="complex.html#cb196-2"></a><span class="kw">typeof</span>(num)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="complex.html#cb197-1"></a>num &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">as.complex</span>(<span class="op">-</span><span class="dv">64</span>))</span>
+<span id="cb197-2"><a href="complex.html#cb197-2"></a><span class="kw">typeof</span>(num)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;complex&quot;</code></pre>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="complex.html#cb198-1"></a>num &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>2i</span>
-<span id="cb198-2"><a href="complex.html#cb198-2"></a><span class="kw">typeof</span>(num)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="complex.html#cb199-1"></a>num &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>2i</span>
+<span id="cb199-2"><a href="complex.html#cb199-2"></a><span class="kw">typeof</span>(num)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;complex&quot;</code></pre>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="complex.html#cb200-1"></a><span class="kw">is.complex</span>(num)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="complex.html#cb201-1"></a><span class="kw">is.complex</span>(num)</span></code></pre></div>
 <pre><code>#R&gt; [1] TRUE</code></pre>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="complex.html#cb202-1"></a><span class="kw">Re</span>(num)                 <span class="co"># Returns real part of a complex number</span></span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="complex.html#cb203-1"></a><span class="kw">Re</span>(num)                 <span class="co"># Returns real part of a complex number</span></span></code></pre></div>
 <pre><code>#R&gt; [1] 1</code></pre>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="complex.html#cb204-1"></a><span class="kw">Im</span>(num)                 <span class="co"># Returns imaginary part of a complex number</span></span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="complex.html#cb205-1"></a><span class="kw">Im</span>(num)                 <span class="co"># Returns imaginary part of a complex number</span></span></code></pre></div>
 <pre><code>#R&gt; [1] 2</code></pre>
 <p>To perform more calculations or obtain more information when dealing with complex numbers you can also use <code>Mod()</code> for the modulus and <code>Arg()</code> for the argument of a given complex number.</p>
 </div>

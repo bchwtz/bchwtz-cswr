@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.5 Strings | Computational Statistics</title>
   <meta name="description" content="3.5 Strings | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.5 Strings | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-20" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,6 +330,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
@@ -380,42 +383,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.5</span> Strings<a href="strings.html#strings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Strings are not only used to provide a description of your data. When dealing with more complex programs they become more and more useful. An often used case is creating variables while a program is running and using the created variables in the same instance to perform calculations without knowing the exact scheme of the variable names. This programming technique is called dynamic variable naming and we are going to explore this later in the course. But to be able to handle strings we need a couple of useful functions to deal with them.</p>
 <p>When creating functions that output calculations on the command line like the <code>lm()</code>-function does when calculating linear models, it is useful to manipulate the appearance in the output to create a better readable experience for the user.</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="strings.html#cb391-1"></a>string &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Statistics&quot;</span>,<span class="st">&quot;and&quot;</span>,<span class="st">&quot;calculus&quot;</span>,<span class="st">&quot;are&quot;</span>,<span class="st">&quot;wonderful!&quot;</span>)</span>
-<span id="cb391-2"><a href="strings.html#cb391-2"></a>string</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="strings.html#cb392-1"></a>string &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Statistics&quot;</span>,<span class="st">&quot;and&quot;</span>,<span class="st">&quot;calculus&quot;</span>,<span class="st">&quot;are&quot;</span>,<span class="st">&quot;wonderful!&quot;</span>)</span>
+<span id="cb392-2"><a href="strings.html#cb392-2"></a>string</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;Statistics&quot; &quot;and&quot;        &quot;calculus&quot;   &quot;are&quot;        &quot;wonderful!&quot;</code></pre>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="strings.html#cb393-1"></a><span class="kw">noquote</span>(string)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="strings.html#cb394-1"></a><span class="kw">noquote</span>(string)</span></code></pre></div>
 <pre><code>#R&gt; [1] Statistics and        calculus   are        wonderful!</code></pre>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="strings.html#cb395-1"></a><span class="kw">cat</span>(string)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="strings.html#cb396-1"></a><span class="kw">cat</span>(string)</span></code></pre></div>
 <pre><code>#R&gt; Statistics and calculus are wonderful!</code></pre>
 <p>Additional useful functions to manipulate the appearance of output are <code>print()</code>, <code>format()</code> and <code>sprintf()</code>. To concatenate strings into a single variable we commonly use the <code>c()</code>-function, if we really want to combine multiple strings into a single one we can use <code>paste()</code>.</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="strings.html#cb397-1"></a>letters                 <span class="co"># Reserved word for all 26 small letters</span></span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="strings.html#cb398-1"></a>letters                 <span class="co"># Reserved word for all 26 small letters</span></span></code></pre></div>
 <pre><code>#R&gt;  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot;
 #R&gt; [20] &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="strings.html#cb399-1"></a>LETTERS                 <span class="co"># Reserved word for all 26 capitalized letters</span></span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="strings.html#cb400-1"></a>LETTERS                 <span class="co"># Reserved word for all 26 capitalized letters</span></span></code></pre></div>
 <pre><code>#R&gt;  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot;
 #R&gt; [20] &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot; &quot;Y&quot; &quot;Z&quot;</code></pre>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="strings.html#cb401-1"></a><span class="kw">paste</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],<span class="dt">sep=</span><span class="st">&quot;+&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="strings.html#cb402-1"></a><span class="kw">paste</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],<span class="dt">sep=</span><span class="st">&quot;+&quot;</span>)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;a+A&quot; &quot;b+B&quot; &quot;c+C&quot; &quot;d+D&quot; &quot;e+E&quot;</code></pre>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="strings.html#cb403-1"></a><span class="kw">paste</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],<span class="dt">collapse=</span><span class="st">&quot;&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="strings.html#cb404-1"></a><span class="kw">paste</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],<span class="dt">collapse=</span><span class="st">&quot;&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;aAbBcCdDeE&quot;</code></pre>
 <p>If you want to create a bunch of variable or column names consisting of the same string, but different numbers you can simply pass that string and a vector of numbers to <code>paste()</code> and it will return the desired combinations, which then can be used to name the columns of a dataframe for example.</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="strings.html#cb405-1"></a><span class="kw">paste</span>(<span class="st">&quot;name&quot;</span> , <span class="dv">1</span><span class="op">:</span><span class="dv">3</span> , <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)       <span class="co"># Easy name or variable generation       </span></span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="strings.html#cb406-1"></a><span class="kw">paste</span>(<span class="st">&quot;name&quot;</span> , <span class="dv">1</span><span class="op">:</span><span class="dv">3</span> , <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)       <span class="co"># Easy name or variable generation       </span></span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;name1&quot; &quot;name2&quot; &quot;name3&quot;</code></pre>
 <p>To extract substrings or to split a string to a certain scheme R provides the functions <code>substring()</code> and <code>strsplit()</code>. If you want to search through a string you can use <code>grep()</code> to find the respective index of the searched string in a bigger string or vector of strings. To replace parts of a string R provides the commands <code>gsub()</code> to replace all occurrences and <code>sub()</code> to replace the first occurrence in the target string.</p>
 <p>If you are familiar with Linux or the world of Unix-based operating systems you may already be familiar with a lot of these string manipulating functions. In fact, most of these functions found in R can also be found in your favorite Linux shell as they originated from there.</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="strings.html#cb407-1"></a><span class="co"># To convert a String to upper or lower cases one can use the </span></span>
-<span id="cb407-2"><a href="strings.html#cb407-2"></a><span class="co"># functions toupper() and tolower().</span></span>
-<span id="cb407-3"><a href="strings.html#cb407-3"></a></span>
-<span id="cb407-4"><a href="strings.html#cb407-4"></a><span class="kw">identical</span>(<span class="kw">toupper</span>(letters),LETTERS)</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="strings.html#cb408-1"></a><span class="co"># To convert a String to upper or lower cases one can use the </span></span>
+<span id="cb408-2"><a href="strings.html#cb408-2"></a><span class="co"># functions toupper() and tolower().</span></span>
+<span id="cb408-3"><a href="strings.html#cb408-3"></a></span>
+<span id="cb408-4"><a href="strings.html#cb408-4"></a><span class="kw">identical</span>(<span class="kw">toupper</span>(letters),LETTERS)</span></code></pre></div>
 <pre><code>#R&gt; [1] TRUE</code></pre>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="strings.html#cb409-1"></a><span class="kw">grep</span>(<span class="st">&quot;K&quot;</span>, LETTERS)            <span class="co"># Returns index of searched string</span></span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="strings.html#cb410-1"></a><span class="kw">grep</span>(<span class="st">&quot;K&quot;</span>, LETTERS)            <span class="co"># Returns index of searched string</span></span></code></pre></div>
 <pre><code>#R&gt; [1] 11</code></pre>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="strings.html#cb411-1"></a>string &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="kw">rep</span>(letters,<span class="dv">2</span>),<span class="dt">collapse=</span><span class="st">&quot;&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb411-2"><a href="strings.html#cb411-2"></a>string</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="strings.html#cb412-1"></a>string &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="kw">rep</span>(letters,<span class="dv">2</span>),<span class="dt">collapse=</span><span class="st">&quot;&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb412-2"><a href="strings.html#cb412-2"></a>string</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz&quot;</code></pre>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="strings.html#cb413-1"></a><span class="kw">gsub</span>(<span class="st">&quot;o&quot;</span>,<span class="st">&quot;X&quot;</span>,string)</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="strings.html#cb414-1"></a><span class="kw">gsub</span>(<span class="st">&quot;o&quot;</span>,<span class="st">&quot;X&quot;</span>,string)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;abcdefghijklmnXpqrstuvwxyzabcdefghijklmnXpqrstuvwxyz&quot;</code></pre>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="strings.html#cb415-1"></a><span class="kw">sub</span>(<span class="st">&quot;o&quot;</span>,<span class="st">&quot;X&quot;</span>,string)</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="strings.html#cb416-1"></a><span class="kw">sub</span>(<span class="st">&quot;o&quot;</span>,<span class="st">&quot;X&quot;</span>,string)</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;abcdefghijklmnXpqrstuvwxyzabcdefghijklmnopqrstuvwxyz&quot;</code></pre>
 <p>If you have a more complex task like finding generic patterns in strings or simply want to find more than just simple predefined letters or words you may want to make yourself familiar with regular expressions. Regular expressions (regex) allow you to come up with a generic description of what should be searched and returned in textual data and they often come in handy when you want to extract specific parts of a textual dataset for further processing. As the syntax of regex is quite confusing when seen for the first time and textual data isn’t our main focus here we skip this part. Nevertheless, if you are interested in using them the built-in help system provides an excellent starting point when asked for <code>?regex</code>.</p>
 </div>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.3 Lists | Computational Statistics</title>
   <meta name="description" content="3.3 Lists | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.3 Lists | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-20" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,6 +330,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
@@ -379,18 +382,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="lists" class="section level2 hasAnchor">
 <h2><span class="header-section-number">3.3</span> Lists<a href="lists.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Lists are somewhat similar to arrays because a list can contain another list and so on. This makes lists slightly more complicated than matrices. If we access an element within a list with the <code>[]</code>-Operator we get another list as output. To access the value of a list (within a list) we must use the double bracket <code>[[]]</code>-operator. The single bracket element tells you which subelement of a list is displayed and the double bracketed indices give you the specific element.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="lists.html#cb357-1"></a>L &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">5</span><span class="op">:</span><span class="dv">10</span>,<span class="kw">c</span>(<span class="st">&quot;C++&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;Phyton&quot;</span>),<span class="kw">c</span>(<span class="ot">TRUE</span> , <span class="ot">FALSE</span>))</span>
-<span id="cb357-2"><a href="lists.html#cb357-2"></a></span>
-<span id="cb357-3"><a href="lists.html#cb357-3"></a>L[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="lists.html#cb358-1"></a>L &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">5</span><span class="op">:</span><span class="dv">10</span>,<span class="kw">c</span>(<span class="st">&quot;C++&quot;</span>,<span class="st">&quot;R&quot;</span>,<span class="st">&quot;Phyton&quot;</span>),<span class="kw">c</span>(<span class="ot">TRUE</span> , <span class="ot">FALSE</span>))</span>
+<span id="cb358-2"><a href="lists.html#cb358-2"></a></span>
+<span id="cb358-3"><a href="lists.html#cb358-3"></a>L[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>#R&gt; [[1]]
 #R&gt; [1]  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="lists.html#cb359-1"></a><span class="kw">typeof</span>(L[<span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="lists.html#cb360-1"></a><span class="kw">typeof</span>(L[<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="lists.html#cb361-1"></a><span class="kw">typeof</span>(L[[<span class="dv">1</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="lists.html#cb362-1"></a><span class="kw">typeof</span>(L[[<span class="dv">1</span>]])</span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="lists.html#cb363-1"></a>L[[<span class="dv">2</span>]][<span class="dv">2</span>]                        <span class="co"># Accessing a specific element</span></span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="lists.html#cb364-1"></a>L[[<span class="dv">2</span>]][<span class="dv">2</span>]                        <span class="co"># Accessing a specific element</span></span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;R&quot;</code></pre>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="lists.html#cb365-1"></a>L[<span class="dv">2</span>][<span class="dv">2</span>]                          <span class="co"># Works only with double brackets</span></span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="lists.html#cb366-1"></a>L[<span class="dv">2</span>][<span class="dv">2</span>]                          <span class="co"># Works only with double brackets</span></span></code></pre></div>
 <pre><code>#R&gt; [[1]]
 #R&gt; NULL</code></pre>
 </div>

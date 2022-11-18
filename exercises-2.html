@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Exercises | Computational Statistics</title>
   <meta name="description" content="Exercises | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Exercises | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-20" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,6 +330,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
@@ -406,9 +409,9 @@ What is the idea behind the additional three dot argument ´…´ (dotdotdot) th
 Please explain the following three lines of code (line by line):
 </div>
 
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="exercises-2.html#cb435-1"></a>x &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">x1 =</span> <span class="dv">3</span>, <span class="dt">x2 =</span> <span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>))</span>
-<span id="cb435-2"><a href="exercises-2.html#cb435-2"></a><span class="kw">dimnames</span>(x)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>]</span>
-<span id="cb435-3"><a href="exercises-2.html#cb435-3"></a><span class="kw">apply</span>(x, <span class="dv">2</span>, mean, <span class="dt">trim =</span> <span class="fl">.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="exercises-2.html#cb436-1"></a>x &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">x1 =</span> <span class="dv">3</span>, <span class="dt">x2 =</span> <span class="kw">c</span>(<span class="dv">4</span><span class="op">:</span><span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>))</span>
+<span id="cb436-2"><a href="exercises-2.html#cb436-2"></a><span class="kw">dimnames</span>(x)[[<span class="dv">1</span>]] &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>]</span>
+<span id="cb436-3"><a href="exercises-2.html#cb436-3"></a><span class="kw">apply</span>(x, <span class="dv">2</span>, mean, <span class="dt">trim =</span> <span class="fl">.2</span>)</span></code></pre></div>
 </div>
 <div id="ex-4-2" class="section level3 unnumbered hasAnchor">
 <h3>EX 4<a href="exercises-2.html#ex-4-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -417,8 +420,8 @@ Please explain the following three lines of code (line by line):
 Explain the difference between the two function calls without executing them.
 </div>
 
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="exercises-2.html#cb436-1"></a><span class="kw">paste</span>(<span class="st">&quot;variable&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb436-2"><a href="exercises-2.html#cb436-2"></a><span class="kw">paste</span>(<span class="st">&quot;variable&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">collapse=</span><span class="st">&quot;&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="exercises-2.html#cb437-1"></a><span class="kw">paste</span>(<span class="st">&quot;variable&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb437-2"><a href="exercises-2.html#cb437-2"></a><span class="kw">paste</span>(<span class="st">&quot;variable&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">collapse=</span><span class="st">&quot;&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 </div>
 <div id="ex-5-1" class="section level3 unnumbered hasAnchor">
 <h3>EX 5<a href="exercises-2.html#ex-5-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -427,9 +430,9 @@ Explain the difference between the two function calls without executing them.
 What does the following code produce? Please derive the output and explain what happens before executing the code.
 </div>
 
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="exercises-2.html#cb437-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow=</span><span class="dv">2</span>)</span>
-<span id="cb437-2"><a href="exercises-2.html#cb437-2"></a>mat2 &lt;-<span class="st"> </span>mat <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></span>
-<span id="cb437-3"><a href="exercises-2.html#cb437-3"></a><span class="kw">apply</span>(mat2, <span class="dv">2</span>, <span class="cf">function</span>(x){x[<span class="dv">1</span>]<span class="op">|</span>x[<span class="dv">2</span>]})</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="exercises-2.html#cb438-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb438-2"><a href="exercises-2.html#cb438-2"></a>mat2 &lt;-<span class="st"> </span>mat <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb438-3"><a href="exercises-2.html#cb438-3"></a><span class="kw">apply</span>(mat2, <span class="dv">2</span>, <span class="cf">function</span>(x){x[<span class="dv">1</span>]<span class="op">|</span>x[<span class="dv">2</span>]})</span></code></pre></div>
 </div>
 <div id="ex-6" class="section level3 unnumbered hasAnchor">
 <h3>EX 6<a href="exercises-2.html#ex-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -438,8 +441,8 @@ What does the following code produce? Please derive the output and explain what 
 Calculate the average value of each column in the following matrix ´m´ after removing lines 10, 24 and 30-37.
 </div>
 
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="exercises-2.html#cb438-1"></a><span class="kw">set.seed</span>(<span class="dv">5</span>)</span>
-<span id="cb438-2"><a href="exercises-2.html#cb438-2"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span><span class="op">^</span><span class="dv">7</span>), <span class="dt">ncol=</span><span class="dv">10</span>, <span class="dt">byrow=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="exercises-2.html#cb439-1"></a><span class="kw">set.seed</span>(<span class="dv">5</span>)</span>
+<span id="cb439-2"><a href="exercises-2.html#cb439-2"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span><span class="op">^</span><span class="dv">7</span>), <span class="dt">ncol=</span><span class="dv">10</span>, <span class="dt">byrow=</span>T)</span></code></pre></div>
 </div>
 <div id="ex-7" class="section level3 unnumbered hasAnchor">
 <h3>EX 7<a href="exercises-2.html#ex-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -448,7 +451,7 @@ Calculate the average value of each column in the following matrix ´m´ after r
 Try to come up with an explanation of what the following code does and why it works.
 </div>
 
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="exercises-2.html#cb439-1"></a><span class="st">&#39;[&#39;</span>(mat, <span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="exercises-2.html#cb440-1"></a><span class="st">&#39;[&#39;</span>(mat, <span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
 
 </div>
 </div>

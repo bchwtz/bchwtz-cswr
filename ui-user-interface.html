@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.1 Fixed and Floating Point Number Representation | Computational Statistics</title>
-  <meta name="description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
+  <title>11.2 ui (user interface) | Computational Statistics</title>
+  <meta name="description" content="11.2 ui (user interface) | Computational Statistics with R Course Notes" />
   <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics" />
+  <meta property="og:title" content="11.2 ui (user interface) | Computational Statistics" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
+  <meta property="og:description" content="11.2 ui (user interface) | Computational Statistics with R Course Notes" />
   <meta name="github-repo" content="bchwtz/bchwtz-cswr" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics" />
+  <meta name="twitter:title" content="11.2 ui (user interface) | Computational Statistics" />
   
-  <meta name="twitter:description" content="2.1 Fixed and Floating Point Number Representation | Computational Statistics with R Course Notes" />
+  <meta name="twitter:description" content="11.2 ui (user interface) | Computational Statistics with R Course Notes" />
   
 
 <meta name="author" content="Benjamin Buchwitz" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-types.html"/>
-<link rel="next" href="numeric.html"/>
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="server.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -379,31 +379,152 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="fixed-and-floating-point-number-representation" class="section level2 hasAnchor">
-<h2><span class="header-section-number">2.1</span> Fixed and Floating Point Number Representation<a href="fixed-and-floating-point-number-representation.html#fixed-and-floating-point-number-representation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Before we look at the actual data types lets get a bit technical and explore how computers deal with numbers. The numbers we normally use are called decimal numbers, which are basically numbers with a base of <span class="math inline">\(b = 10\)</span>. Thus, we can deconstruct any real number <span class="math inline">\(x \in \mathbb{R}\)</span> into an (infinite) sum of powers to our base <span class="math inline">\(b\)</span>. Let’s look at an example:</p>
-<p><span class="math display">\[ 42.125 = x = 4 \cdot 10^{1} + 2 \cdot 10^{0} + 1 \cdot 10^{-1} + 2 \cdot 10^{-2} + 5 \cdot 10^{-3}\]</span></p>
-<p>While numbers in the decimal system can be conveniently processed by humans, computers work differently. In order to store them in memory, we have to perform a base switch with our chosen number <span class="math inline">\(x\)</span> and rewrite it in binary notation, where <span class="math inline">\(b = 2\)</span> and therefore only the digits 0 (absence of electrical current) and 1 (presence of electrical current) exist. We know that <span class="math inline">\(42.125 = 32 + 8 + 2 + 0.125\)</span>, which leads to the following:</p>
-<p><span class="math display">\[ 42.125 = x = 1 \cdot 2^{5} + 0 \cdot 2^{4} + 1 \cdot 2^{3} + 0 \cdot 2^{2} + 1 \cdot 2^{1} + 0 \cdot 2^{0} + 0 \cdot 2^{-1} + 0 \cdot 2^{-2} + 1 \cdot 2^{-3} \]</span></p>
-<p>When we write the digits down it becomes clear that <span class="math inline">\(42.125_{b = 10}\)</span> equals <span class="math inline">\(101010.001_{b =2}\)</span>. The representation we just discussed is called fixed point representation. Computers use a very similar version to handle real numbers called floating point representation. This is a combination of storing the algebraic sign, numbers in the binary system and moving the ‘decimal’ point while storing how many digits it has been moved and storing the algebraic sign. After this deconstruction our chosen number <span class="math inline">\(x\)</span> in the decimal system looks like this:</p>
-<p><span class="math display">\[ 42.125 = x = (-1)^{0} \cdot 4.2125 \cdot 10^{1}\]</span></p>
-<p>All we have to do now is convert everything in binary again. For compatibility purposes we also need to come up with a standard, meaning how many binary digits (bits) we want to use for the sign, the actual number, and the exponent. The usual convention is 32 bit for single precision numbers divided into 1 bit for the sign, 8 bits for the exponent and 23 bits for the actual number (called mantissa) the convention for double precision numbers 64 bit with 1 bit for the sign, 11 bits for the exponent and 52 bits for the mantissa.</p>
-<!--
-The floating point representation can also be used to store very small numbers, which requires a negative exponent while we can only model positive ones, we also need to come up with a convention to solve this issue. This is usually achieved by dividing the range of the exponent into two equal parts by subtracting half of the representable value domain. As in our case the maximum value for the exponent equals $2^{11} - 1 = 2047$ we simply subtract $1023$. If we consider all this, we end up with a standard called IEEE 754, which codes a decimal number in binary exactly like discussed. Formalized and with $b=2$ this looks like this:
-
-\[ x = (-1)^s \cdot (1+f) \cdot 2^{(e - 1023)} \]
-
-Whereby $e$ stands for the exponent, $s$ for the sign and $f$ for the floating point number. We now only have two special cases left for which we need a convention, this is the case when our number has the value $0$ or is greater than the biggest value we can model with this binary notation. When our number equals zero the exponent $e=1023$ so that a final exponent of $0$ results and when the number is bigger than what we can model with this standard the exponent is set to $e = 2047$ which stands for infinity. In combination with the sign bit, we are pretty much done and can store what we need for our calculations.
--->
-<p>By only having a fixed amount of bits to form a number it should be obvious that using such a coding comes at a cost. This cost is usually precision. The value domain covers only a specific area and quickly comes to its limits when it comes to irrational numbers. Having a basic idea of how a computer codes decimal numbers it should be clear that there is the need for different data types in R, which means we can now start to look at the elementary data types our software environment provides. If you want a deep dive on pitfalls when it comes to floating point arithmetic you should have a look at the article called <a href="http://www.itu.dk/~sestoft/bachelor/IEEE754_article.pdf">What every Computer Scientist should know about floating-point Arithmetic</a> which is freely available.</p>
+<div id="ui-user-interface" class="section level2 hasAnchor">
+<h2><span class="header-section-number">11.2</span> ui (user interface)<a href="ui-user-interface.html#ui-user-interface" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The user interface of the Shiny app <em>Random samples and their Mean</em> (see above) consists of</p>
+<ol style="list-style-type: decimal">
+<li><p>the title “Random samples and their Mean”,</p></li>
+<li><p>a slider to control the number of samples,</p></li>
+<li><p>a slider to control the number of draws per sample,</p></li>
+<li><p>a box to tick whether the (empirical) density will be shown,</p></li>
+<li><p>a field in which to type in a number to set a random seed and</p></li>
+<li><p>a plot that is updated when the input (2.–5.) changes.</p></li>
+</ol>
+<p>The elements 2.–5. - the user interacts with - are organized in a sidebar (one element on top of the other) and the plot (6.) is on the right side of the sidebar.</p>
+<p>The <code>shiny</code> Cheat Sheet reveals how the listed elements can be implemented:
+For the creation of the elements 2.–5. we use the functions listed under <em>Inputs</em> (see <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>, 1)</span>):</p>
+<table>
+<colgroup>
+<col width="48%" />
+<col width="51%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>element of the UI</th>
+<th>implementation in <code>shiny</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>slider to control the number of samples (2.)</td>
+<td><code>sliderInput()</code></td>
+</tr>
+<tr class="even">
+<td>slider to control the number of draws per sample (3.)</td>
+<td><code>sliderInput()</code></td>
+</tr>
+<tr class="odd">
+<td>box to thick whether the (empirical) density shall be shown (4.)</td>
+<td><code>checkboxInput()</code></td>
+</tr>
+<tr class="even">
+<td>field in which to type in a number to set a random seed (5.)</td>
+<td><code>numericInput()</code></td>
+</tr>
+</tbody>
+</table>
+<p>We also have to specify the layout. For this, we take a look at the second page of the Shiny Cheat Sheet <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span> under <em>Layouts</em>:</p>
+<p>There, the function <code>sidebarLayout()</code> is listed. It consists of the functions <code>sidebarPanel()</code> and <code>mainPanel()</code> that realize a sidebar and a field next to it, respectively. In the <em>main panel</em> the plot of our shiny web app <strong>shall</strong> be shown but it will not happen as long as we have not defined an <em>appropriate</em> <code>output()</code> function that allows showing plots. For this, the function <code>plotOutput()</code> exists <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>, 1, <em>Outputs</em>)</span>.</p>
+<p>The title will be added in form of an extra panel based on the function <code>titlePanel()</code> <span class="citation">(Chang et al. <a href="#ref-shiny" role="doc-biblioref">2022</a>)</span>. Any element that is not specified within a layout function will be presented either above or underneath the defined layout as the title which is presented above the defined layout.</p>
+<p>The ideas listed so far result in the following code:</p>
+<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="ui-user-interface.html#cb733-1"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb733-2"><a href="ui-user-interface.html#cb733-2"></a></span>
+<span id="cb733-3"><a href="ui-user-interface.html#cb733-3"></a>  <span class="co"># Application title</span></span>
+<span id="cb733-4"><a href="ui-user-interface.html#cb733-4"></a>  <span class="kw">titlePanel</span>(<span class="st">&quot;Random Samples and their Mean&quot;</span>),</span>
+<span id="cb733-5"><a href="ui-user-interface.html#cb733-5"></a></span>
+<span id="cb733-6"><a href="ui-user-interface.html#cb733-6"></a>  <span class="co"># Sidebar with </span></span>
+<span id="cb733-7"><a href="ui-user-interface.html#cb733-7"></a>  <span class="kw">sidebarLayout</span>(</span>
+<span id="cb733-8"><a href="ui-user-interface.html#cb733-8"></a>    <span class="kw">sidebarPanel</span>(</span>
+<span id="cb733-9"><a href="ui-user-interface.html#cb733-9"></a>      <span class="kw">sliderInput</span>(), <span class="co"># a slider input for number of sample</span></span>
+<span id="cb733-10"><a href="ui-user-interface.html#cb733-10"></a>      <span class="kw">sliderInput</span>(), <span class="co"># a slider input for number of draws per sample</span></span>
+<span id="cb733-11"><a href="ui-user-interface.html#cb733-11"></a>      <span class="kw">checkboxInput</span>(), <span class="co"># box to tick whether the (empirical) density will be shown</span></span>
+<span id="cb733-12"><a href="ui-user-interface.html#cb733-12"></a>      <span class="kw">numericInput</span>() <span class="co"># a field in which to type in a number to set a random seed</span></span>
+<span id="cb733-13"><a href="ui-user-interface.html#cb733-13"></a>    ),</span>
+<span id="cb733-14"><a href="ui-user-interface.html#cb733-14"></a>    <span class="kw">mainPanel</span>(</span>
+<span id="cb733-15"><a href="ui-user-interface.html#cb733-15"></a>      <span class="kw">plotOutput</span>() <span class="co"># plot that is updated when the input(s) change(s)</span></span>
+<span id="cb733-16"><a href="ui-user-interface.html#cb733-16"></a>    )</span>
+<span id="cb733-17"><a href="ui-user-interface.html#cb733-17"></a>  )</span>
+<span id="cb733-18"><a href="ui-user-interface.html#cb733-18"></a>  </span>
+<span id="cb733-19"><a href="ui-user-interface.html#cb733-19"></a>)</span></code></pre></div>
+<p>The code presented does not work since several arguments of the single functions have not been defined so far (see the description of the single functions and <span class="citation">RStudio, Inc. (<a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span>). Each <em>Input</em>- and <em>Output</em>-function needs an <em>Id</em> to address the corresponding element (e.g. to access values). <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span></p>
+<p>Furthermore,</p>
+<ul>
+<li><p>we have to set the values of the single <em>Inputs</em> (e.g. from which range of values can the user choose one),</p></li>
+<li><p>we will define default values and</p></li>
+<li><p>we will label the elements</p></li>
+</ul>
+<p>which is shown in the following:</p>
+<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="ui-user-interface.html#cb734-1"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb734-2"><a href="ui-user-interface.html#cb734-2"></a></span>
+<span id="cb734-3"><a href="ui-user-interface.html#cb734-3"></a>  <span class="co"># Application title</span></span>
+<span id="cb734-4"><a href="ui-user-interface.html#cb734-4"></a>  <span class="kw">titlePanel</span>(<span class="st">&quot;Random Samples and their Mean&quot;</span>),</span>
+<span id="cb734-5"><a href="ui-user-interface.html#cb734-5"></a></span>
+<span id="cb734-6"><a href="ui-user-interface.html#cb734-6"></a>  <span class="co"># Sidebar with a slider input for number of bins</span></span>
+<span id="cb734-7"><a href="ui-user-interface.html#cb734-7"></a>  <span class="kw">sidebarLayout</span>(</span>
+<span id="cb734-8"><a href="ui-user-interface.html#cb734-8"></a>    <span class="kw">sidebarPanel</span>(</span>
+<span id="cb734-9"><a href="ui-user-interface.html#cb734-9"></a>      <span class="kw">sliderInput</span>(<span class="st">&quot;N&quot;</span>,</span>
+<span id="cb734-10"><a href="ui-user-interface.html#cb734-10"></a>                  <span class="st">&quot;Number of samples:&quot;</span>,</span>
+<span id="cb734-11"><a href="ui-user-interface.html#cb734-11"></a>                  <span class="dt">min =</span> <span class="dv">10</span>,</span>
+<span id="cb734-12"><a href="ui-user-interface.html#cb734-12"></a>                  <span class="dt">max =</span> <span class="dv">100</span>,</span>
+<span id="cb734-13"><a href="ui-user-interface.html#cb734-13"></a>                  <span class="dt">value =</span> <span class="dv">50</span>),</span>
+<span id="cb734-14"><a href="ui-user-interface.html#cb734-14"></a>      <span class="kw">sliderInput</span>(<span class="st">&quot;n&quot;</span>,</span>
+<span id="cb734-15"><a href="ui-user-interface.html#cb734-15"></a>                  <span class="st">&quot;Number of draws per sample:&quot;</span>,</span>
+<span id="cb734-16"><a href="ui-user-interface.html#cb734-16"></a>                  <span class="dt">min =</span> <span class="dv">1</span>,</span>
+<span id="cb734-17"><a href="ui-user-interface.html#cb734-17"></a>                  <span class="dt">max =</span> <span class="dv">100</span>,</span>
+<span id="cb734-18"><a href="ui-user-interface.html#cb734-18"></a>                  <span class="dt">value =</span> <span class="dv">1</span>),</span>
+<span id="cb734-19"><a href="ui-user-interface.html#cb734-19"></a>      <span class="kw">checkboxInput</span>(<span class="st">&quot;showdensity&quot;</span>,</span>
+<span id="cb734-20"><a href="ui-user-interface.html#cb734-20"></a>                    <span class="st">&quot;Show Density?&quot;</span>,</span>
+<span id="cb734-21"><a href="ui-user-interface.html#cb734-21"></a>                    <span class="dt">value =</span> <span class="ot">FALSE</span>),</span>
+<span id="cb734-22"><a href="ui-user-interface.html#cb734-22"></a>      <span class="kw">numericInput</span>(<span class="st">&quot;seed&quot;</span>, <span class="st">&quot;Seed&quot;</span>,</span>
+<span id="cb734-23"><a href="ui-user-interface.html#cb734-23"></a>                   <span class="dt">value =</span> <span class="ot">NULL</span>,</span>
+<span id="cb734-24"><a href="ui-user-interface.html#cb734-24"></a>                   <span class="dt">min =</span> <span class="dv">0</span>,</span>
+<span id="cb734-25"><a href="ui-user-interface.html#cb734-25"></a>                   <span class="dt">max =</span> <span class="dv">10000</span>,</span>
+<span id="cb734-26"><a href="ui-user-interface.html#cb734-26"></a>                   <span class="dt">step =</span> <span class="dv">1</span>)</span>
+<span id="cb734-27"><a href="ui-user-interface.html#cb734-27"></a>    ),</span>
+<span id="cb734-28"><a href="ui-user-interface.html#cb734-28"></a></span>
+<span id="cb734-29"><a href="ui-user-interface.html#cb734-29"></a>    <span class="co"># Show a plot of the generated distribution</span></span>
+<span id="cb734-30"><a href="ui-user-interface.html#cb734-30"></a>    <span class="kw">mainPanel</span>(</span>
+<span id="cb734-31"><a href="ui-user-interface.html#cb734-31"></a>      <span class="kw">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>))</span>
+<span id="cb734-32"><a href="ui-user-interface.html#cb734-32"></a>  )</span>
+<span id="cb734-33"><a href="ui-user-interface.html#cb734-33"></a>)</span></code></pre></div>
+<p>From this code we see that</p>
+<ul>
+<li><p>“N”, “n”, “showdensity” and “seed” (the first argument of the Input functions) are the single ids,</p></li>
+<li><p>the second argument represents the labeling (some text placed above or next to the elements in the UI),</p></li>
+<li><p>the argument <code>value</code> represents the default value and</p></li>
+<li><p>the arguments <code>min</code> and <code>max</code> are the minimum and maximum, respectively, of a range of values.</p></li>
+</ul>
+<p>Look at further <em>Input</em>-functions: There might be further arguments to specify.</p>
+<p>What happens when the ui is defined, the server looks like this</p>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="ui-user-interface.html#cb735-1"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {}</span></code></pre></div>
+<p>and the app is run by</p>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="ui-user-interface.html#cb736-1"></a><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</span></code></pre></div>
+<p>?</p>
+<p>The shiny web app looks like this:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:shiny-web-only-ui"></span>
+<img src="gfx/Shiny_App_only_UI_defined.PNG" alt="Running the shiny web app when only the UI is defined." width="896" />
+<p class="caption">
+Figure 11.3: Running the shiny web app when only the UI is defined.
+</p>
+</div>
+<p>So, the user can choose values and click on the checkbox, but nothing will happen. Consequently, we need to define the server function.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-shiny">
+<p>Chang, Winston, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui Xie, Jeff Allen, Jonathan McPherson, Alan Dipert, and Barbara Borges. 2022. <em>Shiny: Web Application Framework for R</em>. <a href="https://CRAN.R-project.org/package=shiny">https://CRAN.R-project.org/package=shiny</a>.</p>
+</div>
+<div id="ref-shinyCheatsheet">
+<p>RStudio, Inc. 2015. <em>Interactive Web Apps with Shiny Cheat Sheet</em>. <a href="https://shiny.rstudio.com/images/shiny-cheatsheet.pdf">https://shiny.rstudio.com/images/shiny-cheatsheet.pdf</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="numeric.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="server.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -434,7 +555,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-datatypes.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/12-webapps.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.3 Parallelization using vectorized functions | Computational Statistics</title>
   <meta name="description" content="6.3 Parallelization using vectorized functions | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.3 Parallelization using vectorized functions | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-20" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,6 +330,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
@@ -379,32 +382,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="parallelization-using-vectorized-functions" class="section level2 hasAnchor">
 <h2><span class="header-section-number">6.3</span> Parallelization using vectorized functions<a href="parallelization-using-vectorized-functions.html#parallelization-using-vectorized-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A very convenient method of parallelization is by utilizing the <code>parallel</code> package that provides parallelized versions of functions from the <code>*apply</code>-family. However as it uses a technique called <em>forking</em> the usage of these function is limited to operating systems that are based on Unix such as Linux or MacOS.</p>
-<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="parallelization-using-vectorized-functions.html#cb527-1"></a><span class="kw">library</span>(parallel)</span>
-<span id="cb527-2"><a href="parallelization-using-vectorized-functions.html#cb527-2"></a>num.cores &lt;-<span class="st"> </span><span class="kw">detectCores</span>()</span>
-<span id="cb527-3"><a href="parallelization-using-vectorized-functions.html#cb527-3"></a>num.cores</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="parallelization-using-vectorized-functions.html#cb528-1"></a><span class="kw">library</span>(parallel)</span>
+<span id="cb528-2"><a href="parallelization-using-vectorized-functions.html#cb528-2"></a>num.cores &lt;-<span class="st"> </span><span class="kw">detectCores</span>()</span>
+<span id="cb528-3"><a href="parallelization-using-vectorized-functions.html#cb528-3"></a>num.cores</span></code></pre></div>
 <pre><code>#R&gt; [1] 3</code></pre>
 <p>As you can see this document was generated on a computer with 3 computing cores. Depending on the specific processor these may either be real cores or logical cores. The number only differs if a real core can handle two tasks (threads) at once and thus behaves somewhat like two actual cores. In the case of my computer the CPU has 3 real cores.</p>
-<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="parallelization-using-vectorized-functions.html#cb529-1"></a>regnames &lt;-<span class="st"> </span><span class="kw">names</span>(mtcars[,<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb529-2"><a href="parallelization-using-vectorized-functions.html#cb529-2"></a>regoptions &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">list</span>(<span class="kw">c</span>(T,F)),<span class="kw">length</span>(regnames))</span>
-<span id="cb529-3"><a href="parallelization-using-vectorized-functions.html#cb529-3"></a>regselector &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">expand.grid</span>(regoptions))</span>
-<span id="cb529-4"><a href="parallelization-using-vectorized-functions.html#cb529-4"></a><span class="kw">colnames</span>(regselector) &lt;-<span class="st"> </span>regnames</span></code></pre></div>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="parallelization-using-vectorized-functions.html#cb530-1"></a>modellist &lt;-<span class="st"> </span><span class="kw">apply</span>(regselector,<span class="dv">1</span>,<span class="cf">function</span>(x){<span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">&quot;mpg ~ 1&quot;</span>, regnames[x]), <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>))})</span></code></pre></div>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="parallelization-using-vectorized-functions.html#cb531-1"></a><span class="kw">system.time</span>(res.sequential &lt;-<span class="st"> </span><span class="kw">lapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)}))</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="parallelization-using-vectorized-functions.html#cb530-1"></a>regnames &lt;-<span class="st"> </span><span class="kw">names</span>(mtcars[,<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb530-2"><a href="parallelization-using-vectorized-functions.html#cb530-2"></a>regoptions &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">list</span>(<span class="kw">c</span>(T,F)),<span class="kw">length</span>(regnames))</span>
+<span id="cb530-3"><a href="parallelization-using-vectorized-functions.html#cb530-3"></a>regselector &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(<span class="kw">expand.grid</span>(regoptions))</span>
+<span id="cb530-4"><a href="parallelization-using-vectorized-functions.html#cb530-4"></a><span class="kw">colnames</span>(regselector) &lt;-<span class="st"> </span>regnames</span></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="parallelization-using-vectorized-functions.html#cb531-1"></a>modellist &lt;-<span class="st"> </span><span class="kw">apply</span>(regselector,<span class="dv">1</span>,<span class="cf">function</span>(x){<span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="kw">c</span>(<span class="st">&quot;mpg ~ 1&quot;</span>, regnames[x]), <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>))})</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="parallelization-using-vectorized-functions.html#cb532-1"></a><span class="kw">system.time</span>(res.sequential &lt;-<span class="st"> </span><span class="kw">lapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)}))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   1.698   0.035   3.623</code></pre>
-<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="parallelization-using-vectorized-functions.html#cb533-1"></a><span class="kw">system.time</span>(res.parallel &lt;-<span class="st"> </span><span class="kw">mclapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)},<span class="dt">mc.cores=</span>num.cores))</span></code></pre></div>
+#R&gt;   1.436   0.030   1.469</code></pre>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="parallelization-using-vectorized-functions.html#cb534-1"></a><span class="kw">system.time</span>(res.parallel &lt;-<span class="st"> </span><span class="kw">mclapply</span>(modellist, <span class="cf">function</span>(f){<span class="kw">lm</span>(f,<span class="dt">data=</span>mtcars)},<span class="dt">mc.cores=</span>num.cores))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   1.441   0.400   2.435</code></pre>
-<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="parallelization-using-vectorized-functions.html#cb535-1"></a>rsquared.sequential &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.sequential, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
-<span id="cb535-2"><a href="parallelization-using-vectorized-functions.html#cb535-2"></a>rsquared.parallel &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.parallel, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
-<span id="cb535-3"><a href="parallelization-using-vectorized-functions.html#cb535-3"></a><span class="kw">table</span>(rsquared.sequential <span class="op">==</span><span class="st"> </span>rsquared.parallel)</span></code></pre></div>
+#R&gt;   0.704   0.215   0.935</code></pre>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="parallelization-using-vectorized-functions.html#cb536-1"></a>rsquared.sequential &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.sequential, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
+<span id="cb536-2"><a href="parallelization-using-vectorized-functions.html#cb536-2"></a>rsquared.parallel &lt;-<span class="st"> </span><span class="kw">sapply</span>(res.parallel, <span class="cf">function</span>(x){<span class="kw">summary</span>(x)<span class="op">$</span>r.squared})</span>
+<span id="cb536-3"><a href="parallelization-using-vectorized-functions.html#cb536-3"></a><span class="kw">table</span>(rsquared.sequential <span class="op">==</span><span class="st"> </span>rsquared.parallel)</span></code></pre></div>
 <pre><code>#R&gt; 
 #R&gt; TRUE 
 #R&gt; 1024</code></pre>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="parallelization-using-vectorized-functions.html#cb537-1"></a><span class="kw">summary</span>(rsquared.sequential)</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="parallelization-using-vectorized-functions.html#cb538-1"></a><span class="kw">summary</span>(rsquared.sequential)</span></code></pre></div>
 <pre><code>#R&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 #R&gt;  0.0000  0.7899  0.8325  0.8106  0.8499  0.8690</code></pre>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="parallelization-using-vectorized-functions.html#cb539-1"></a><span class="kw">summary</span>(rsquared.parallel)</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="parallelization-using-vectorized-functions.html#cb540-1"></a><span class="kw">summary</span>(rsquared.parallel)</span></code></pre></div>
 <pre><code>#R&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 #R&gt;  0.0000  0.7899  0.8325  0.8106  0.8499  0.8690</code></pre>
 <!-- ## Parallelization using foreach -->

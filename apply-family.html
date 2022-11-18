@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.1 *apply-Family | Computational Statistics</title>
   <meta name="description" content="6.1 *apply-Family | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.1 *apply-Family | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-10-20" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -330,6 +330,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
 <li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
@@ -391,8 +394,8 @@ base::eapply    Apply a Function Over Values in an Environment</code></pre>
 <div id="apply" class="section level3 unnumbered hasAnchor">
 <h3>apply<a href="apply-family.html#apply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We already introduced <code>apply</code> and used it to apply a function to the rows or columns of a matrix, in the same fashion as functions like <code>rowMeans</code> or <code>colMeans</code> calculate a specific values for either a row or a column of a matrix. Generally speaking apply operates on (two dimensional) arrays, a.k.a. matrices. To get started we create a sample data set consisting of a matrix with 20 cells partitioned into five rows and four columns.</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="apply-family.html#cb487-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">21</span><span class="op">:</span><span class="dv">30</span>), <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
-<span id="cb487-2"><a href="apply-family.html#cb487-2"></a>mat</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="apply-family.html#cb488-1"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">21</span><span class="op">:</span><span class="dv">30</span>), <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb488-2"><a href="apply-family.html#cb488-2"></a>mat</span></code></pre></div>
 <pre><code>#R&gt;      [,1] [,2] [,3] [,4]
 #R&gt; [1,]    1    6   21   26
 #R&gt; [2,]    2    7   22   27
@@ -400,7 +403,7 @@ base::eapply    Apply a Function Over Values in an Environment</code></pre>
 #R&gt; [4,]    4    9   24   29
 #R&gt; [5,]    5   10   25   30</code></pre>
 <p>To mimic the functionality of <code>rowSums</code>, we now can use the apply function to find the sum over all elements of each row as follows.</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="apply-family.html#cb489-1"></a><span class="kw">apply</span>(<span class="dt">X=</span>mat, <span class="dt">MARGIN=</span><span class="dv">1</span>, <span class="dt">FUN=</span>sum)</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="apply-family.html#cb490-1"></a><span class="kw">apply</span>(<span class="dt">X=</span>mat, <span class="dt">MARGIN=</span><span class="dv">1</span>, <span class="dt">FUN=</span>sum)</span></code></pre></div>
 <pre><code>#R&gt; [1] 54 58 62 66 70</code></pre>
 <p>Notice that the funciton call to <code>apply</code> takes three arguments, where <code>X</code> is the data, <code>MARGIN</code> corresponds eiter to the rows as they are the first dimension of the data or to the columns, which correspond to the second dimension. <code>FUN</code> is the funciton that should be applied on the specified margin of the data. Note that the function in the snippet below is passed without parantheses (<code>sum</code> instead of <code>sum()</code>).</p>
 <p>Remember that in R everything is a vector. Therefore, a matrix can be seen as a collection of line vectors when you cross the matrix from top to bottom (along <code>MARGIN=1</code>), or as a list of column vectors, spanning the matrix left to right (along <code>MARGIN=2</code>). The code in the above R chunk therefore translates directo to the instruction to: “apply the function sum to the matrix <code>mat</code> along the rows”. Ursuprisingly this leads to a vector containing the sums of the values of each row. Mathematically speaking we would expect a column vector here, while R outputs a line vector. As R does not differentiate here while outputting these on the console this makes no difference for this case. The following picture illustrates the process.</p>
@@ -409,8 +412,8 @@ base::eapply    Apply a Function Over Values in an Environment</code></pre>
 <h3>lapply<a href="apply-family.html#lapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>While matrices are an important and often used data structure they are not the only one. Quite often data comes as <code>list</code> and it may be a reasonable purpose to apply a function to every (sub-) element of a given list. As lists have no dimensions (see <code>dim</code>), the application of <code>apply</code> fails. Thefeore if you want to apply a specific function to every element of a list you have to use a list compatible version of apply, the <code>lapply</code>-function. The syntax is quite comparable to our usual <code>apply</code>, which can be seen when executing <code>?lapply</code>.</p>
 <p>Using our toy example with the previously introduced matrix, we construct a list by spliting <code>mat</code> by row. Applying the function <code>sum</code> to this list should now result in the same values as the previous application of <code>apply</code> on <code>mat</code>.</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="apply-family.html#cb491-1"></a>lst &lt;-<span class="st"> </span><span class="kw">split</span>(mat, <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mat))   <span class="co"># Split mat by row</span></span>
-<span id="cb491-2"><a href="apply-family.html#cb491-2"></a>lst</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="apply-family.html#cb492-1"></a>lst &lt;-<span class="st"> </span><span class="kw">split</span>(mat, <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mat))   <span class="co"># Split mat by row</span></span>
+<span id="cb492-2"><a href="apply-family.html#cb492-2"></a>lst</span></code></pre></div>
 <pre><code>#R&gt; $`1`
 #R&gt; [1]  1  6 21 26
 #R&gt; 
@@ -426,7 +429,7 @@ base::eapply    Apply a Function Over Values in an Environment</code></pre>
 #R&gt; $`5`
 #R&gt; [1]  5 10 25 30</code></pre>
 <p>Due to the flexibility and ubiquitousness of lists, <code>lapply</code> can be widely used and e.g. also works on dataframes in addition to lists. Additionally it is compatible with vectors, where the second most important part about <code>lapply</code>comes into place. Regardless if the data input <code>X</code> is a list, a dataframe or a vector, the returned data is always a <code>list</code>, which can be seen in the code below.</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="apply-family.html#cb493-1"></a><span class="kw">lapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="apply-family.html#cb494-1"></a><span class="kw">lapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span></code></pre></div>
 <pre><code>#R&gt; $`1`
 #R&gt; [1] 54
 #R&gt; 
@@ -446,34 +449,34 @@ base::eapply    Apply a Function Over Values in an Environment</code></pre>
 <div id="sapply" class="section level3 unnumbered hasAnchor">
 <h3>sapply<a href="apply-family.html#sapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The function <code>sapply</code> takes the same inputs and behaves in the exact same mannor as <code>lapply</code>, but tries to simplify the result so that it returns an appropriate data structure instead of always returning a list. Applied to our example from above <code>sapply</code> returns a numeric vector.</p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="apply-family.html#cb495-1"></a><span class="kw">sapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="apply-family.html#cb496-1"></a><span class="kw">sapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span></code></pre></div>
 <pre><code>#R&gt;  1  2  3  4  5 
 #R&gt; 54 58 62 66 70</code></pre>
 <p><code>sapply</code> can be fored to behave exactly like lapply and also return a list by setting the argument <code>simplify</code> to <code>FALSE</code>.</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="apply-family.html#cb497-1"></a>res1 &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span>
-<span id="cb497-2"><a href="apply-family.html#cb497-2"></a>res2 &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb497-3"><a href="apply-family.html#cb497-3"></a><span class="kw">identical</span>(res1, res2)</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="apply-family.html#cb498-1"></a>res1 &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span>
+<span id="cb498-2"><a href="apply-family.html#cb498-2"></a>res2 &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb498-3"><a href="apply-family.html#cb498-3"></a><span class="kw">identical</span>(res1, res2)</span></code></pre></div>
 <pre><code>#R&gt; [1] TRUE</code></pre>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="apply-family.html#cb499-1"></a><span class="kw">class</span>(res2)   <span class="co"># sapply also returns a list if forced to act like lapply</span></span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="apply-family.html#cb500-1"></a><span class="kw">class</span>(res2)   <span class="co"># sapply also returns a list if forced to act like lapply</span></span></code></pre></div>
 <pre><code>#R&gt; [1] &quot;list&quot;</code></pre>
 <p>The simplification performed by <code>sapply</code> can also be applied manually. R offers the commands <code>unlist</code> or <code>simplify2array</code>, that perform similar simplification operations. The code below shows that results obtained by <code>lapply</code> are identical to the ones generated by <code>sapply</code>, after passing them to the function <code>simplify2array</code>.</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="apply-family.html#cb501-1"></a>res3 &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span>
-<span id="cb501-2"><a href="apply-family.html#cb501-2"></a>res4 &lt;-<span class="st"> </span><span class="kw">simplify2array</span>(<span class="kw">lapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum))</span>
-<span id="cb501-3"><a href="apply-family.html#cb501-3"></a><span class="kw">identical</span>(res3, res4)</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="apply-family.html#cb502-1"></a>res3 &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum)</span>
+<span id="cb502-2"><a href="apply-family.html#cb502-2"></a>res4 &lt;-<span class="st"> </span><span class="kw">simplify2array</span>(<span class="kw">lapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum))</span>
+<span id="cb502-3"><a href="apply-family.html#cb502-3"></a><span class="kw">identical</span>(res3, res4)</span></code></pre></div>
 <pre><code>#R&gt; [1] TRUE</code></pre>
 <p>While the manual simplification is possible, it should be strictly avoided. Using the built in capabilities of the functions makes the code more readable and may be more robust. It may cover additional cases that may not be covered when own functions or manual processes are used and therefore does not fail surprisingly.</p>
 </div>
 <div id="vapply" class="section level3 unnumbered hasAnchor">
 <h3>vapply<a href="apply-family.html#vapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>vapply</code> is similar to <code>sapply</code> and therefore somehow identical to <code>lapply</code>, but it requires to specify what type of data is expected as return value. Therefore <code>vapply</code> supports the additional argument <code>FUN.VALUE</code>, that allows to specify the expected return value. For the example used above we expect <code>l/s/vapply</code> to return a single numeric value for each list value, therefore <code>FUN.VALUE = numeric(1)</code>.</p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="apply-family.html#cb503-1"></a><span class="kw">vapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">FUN.VALUE=</span><span class="kw">numeric</span>(<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="apply-family.html#cb504-1"></a><span class="kw">vapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">FUN.VALUE=</span><span class="kw">numeric</span>(<span class="dv">1</span>))</span></code></pre></div>
 <pre><code>#R&gt;  1  2  3  4  5 
 #R&gt; 54 58 62 66 70</code></pre>
 <p>If the value specified by <code>FUN.VALUE</code> and the actual value returned by <code>vapply</code> do not match an error is returned.</p>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="apply-family.html#cb505-1"></a><span class="kw">vapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">FUN.VALUE=</span><span class="kw">character</span>(<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="apply-family.html#cb506-1"></a><span class="kw">vapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">FUN.VALUE=</span><span class="kw">character</span>(<span class="dv">1</span>))</span></code></pre></div>
 <pre><code>#R&gt; Error in vapply(X = lst, FUN = sum, FUN.VALUE = character(1)): values must be type &#39;character&#39;,
 #R&gt;  but FUN(X[[1]]) result is type &#39;integer&#39;</code></pre>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="apply-family.html#cb507-1"></a><span class="kw">vapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">FUN.VALUE=</span><span class="kw">numeric</span>(<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="apply-family.html#cb508-1"></a><span class="kw">vapply</span>(<span class="dt">X=</span>lst, <span class="dt">FUN=</span>sum, <span class="dt">FUN.VALUE=</span><span class="kw">numeric</span>(<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>#R&gt; Error in vapply(X = lst, FUN = sum, FUN.VALUE = numeric(2)): values must be length 2,
 #R&gt;  but FUN(X[[1]]) result is length 1</code></pre>
 <p>Deciding which of these three functions <code>lapply</code>, <code>sapply</code> or <code>vapply</code> to use is obviously highly dependent on the context. While <code>lapply</code> always provides consistent results, the usage of <code>sapply</code> often helps to avoid annoiying transformations. When the input suffers from some inconsistencies <code>vapply</code> is the way to go, as it easily allows for checking special data types or even more complex data structures.</p>
@@ -482,23 +485,23 @@ base::eapply    Apply a Function Over Values in an Environment</code></pre>
 <h3>tapply<a href="apply-family.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>While every considered <code>*apply</code>-function up to now only supports one data input, <code>tapply</code> supports two of them, where the additional argument resembles an <code>INDEX</code> or grouping variable. <code>tapply</code> splits the provided data by the grouping values and applies the specified function to these created groups. The values for <code>INDEX</code> can be constructed based on factor levels, which means the provided values need to be a factor or must work when (automatically) coerced to a factor.</p>
 <p>The following code transforms our sample data <code>mat</code> from the other examples to a data frame with three columns. The first columns conatins the actual values that we previously found within <code>mat</code>, the second column indicates the column index where a specific <code>value</code> was placed in <code>mat</code> and the thrid coolumn inicates the row index, where the <code>value</code> was located.</p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="apply-family.html#cb509-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">value=</span><span class="kw">as.vector</span>(mat),    <span class="co"># Transform example mat into a data</span></span>
-<span id="cb509-2"><a href="apply-family.html#cb509-2"></a>                 <span class="dt">row=</span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">times=</span><span class="dv">4</span>),   <span class="co"># frame that contains row and column</span></span>
-<span id="cb509-3"><a href="apply-family.html#cb509-3"></a>                 <span class="dt">col=</span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">each=</span><span class="dv">4</span>))    <span class="co"># indices in addition to the value.</span></span>
-<span id="cb509-4"><a href="apply-family.html#cb509-4"></a></span>
-<span id="cb509-5"><a href="apply-family.html#cb509-5"></a><span class="kw">head</span>(df, <span class="dt">n=</span><span class="dv">3</span>) <span class="co"># First 3 rows of the data frame</span></span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="apply-family.html#cb510-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">value=</span><span class="kw">as.vector</span>(mat),    <span class="co"># Transform example mat into a data</span></span>
+<span id="cb510-2"><a href="apply-family.html#cb510-2"></a>                 <span class="dt">row=</span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">times=</span><span class="dv">4</span>),   <span class="co"># frame that contains row and column</span></span>
+<span id="cb510-3"><a href="apply-family.html#cb510-3"></a>                 <span class="dt">col=</span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">each=</span><span class="dv">4</span>))    <span class="co"># indices in addition to the value.</span></span>
+<span id="cb510-4"><a href="apply-family.html#cb510-4"></a></span>
+<span id="cb510-5"><a href="apply-family.html#cb510-5"></a><span class="kw">head</span>(df, <span class="dt">n=</span><span class="dv">3</span>) <span class="co"># First 3 rows of the data frame</span></span></code></pre></div>
 <pre><code>#R&gt;   value row col
 #R&gt; 1     1   1   1
 #R&gt; 2     2   2   1
 #R&gt; 3     3   3   1</code></pre>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="apply-family.html#cb511-1"></a><span class="kw">tail</span>(df, <span class="dt">n=</span><span class="dv">3</span>) <span class="co"># Last 3 rows of the data frame</span></span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="apply-family.html#cb512-1"></a><span class="kw">tail</span>(df, <span class="dt">n=</span><span class="dv">3</span>) <span class="co"># Last 3 rows of the data frame</span></span></code></pre></div>
 <pre><code>#R&gt;    value row col
 #R&gt; 18    28   3   5
 #R&gt; 19    29   4   5
 #R&gt; 20    30   5   5</code></pre>
 <p>The value in the top left corner (first row and first column) of <code>mat</code> is 1. Corresponding column indices are therefore <code>col=1</code> and <code>row=1</code>. This tupel forms the first row of the created dataframe <code>df</code>. All other values from <code>mat</code> are handled in the same way. As <code>mat</code> is a 5 by 4 matrix, we get a dataframe with 20 rows.</p>
 <p>We can now use <code>tapply</code>, the values from within <code>mat</code> and one of the column or row indices as grouping <code>INDEX</code> to calculate the <code>sum</code> of all values that belong to a specified group. Previously we calculated the sum of all values from a specified row. To obtain these exact same results, we can use the following function call.</p>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="apply-family.html#cb513-1"></a><span class="kw">tapply</span>(<span class="dt">X=</span>df<span class="op">$</span>value, <span class="dt">INDEX =</span> df<span class="op">$</span>row, <span class="dt">FUN =</span> sum)</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="apply-family.html#cb514-1"></a><span class="kw">tapply</span>(<span class="dt">X=</span>df<span class="op">$</span>value, <span class="dt">INDEX =</span> df<span class="op">$</span>row, <span class="dt">FUN =</span> sum)</span></code></pre></div>
 <pre><code>#R&gt;  1  2  3  4  5 
 #R&gt; 54 58 62 66 70</code></pre>
 <!-- The following figure illustrates the process of the previous function call. -->
@@ -509,14 +512,14 @@ base::eapply    Apply a Function Over Values in an Environment</code></pre>
 <div id="mapply" class="section level3 unnumbered hasAnchor">
 <h3>mapply<a href="apply-family.html#mapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>mapply</code> stands for ‘multivariate’ apply. Its purpose is to be able to vectorize arguments to a function that is not usually accepting vectors as arguments. <code>mapply</code> applies a function to multiple Input arguments. The Inputs can either be lists or vectors. For a small example we define the following three vectors.</p>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="apply-family.html#cb515-1"></a>n &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dt">x =</span> <span class="dv">15</span>, <span class="dt">n =</span> <span class="dv">10</span>)</span>
-<span id="cb515-2"><a href="apply-family.html#cb515-2"></a>m &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dt">x =</span>  <span class="dv">0</span>, <span class="dt">n =</span> <span class="dv">10</span>)</span>
-<span id="cb515-3"><a href="apply-family.html#cb515-3"></a>s &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">100</span>, <span class="dt">length.out =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="apply-family.html#cb516-1"></a>n &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dt">x =</span> <span class="dv">15</span>, <span class="dt">n =</span> <span class="dv">10</span>)</span>
+<span id="cb516-2"><a href="apply-family.html#cb516-2"></a>m &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dt">x =</span>  <span class="dv">0</span>, <span class="dt">n =</span> <span class="dv">10</span>)</span>
+<span id="cb516-3"><a href="apply-family.html#cb516-3"></a>s &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">100</span>, <span class="dt">length.out =</span> <span class="dv">10</span>)</span></code></pre></div>
 <p>The following example generates <span class="math inline">\(n = 15\)</span> (<code>n</code>) normally distributed random numbers with mean <span class="math inline">\(\mu = 0\)</span> (<code>m</code>) and varying standard deviation <span class="math inline">\(\sigma\)</span> (<code>s</code>).While the arguments for <code>n</code> are for all iterations equal to 15 and for <code>m</code> equal to 0 the values for <code>s</code> differ for each group of 15 numbers.</p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="apply-family.html#cb516-1"></a>y &lt;-<span class="st"> </span><span class="kw">mapply</span>(<span class="dt">FUN =</span> rnorm, <span class="dt">n =</span> n, <span class="dt">mean =</span> m, <span class="dt">sd =</span> s)</span>
-<span id="cb516-2"><a href="apply-family.html#cb516-2"></a><span class="kw">colnames</span>(<span class="kw">paste0</span>(<span class="st">&quot;s=&quot;</span>,s))</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="apply-family.html#cb517-1"></a>y &lt;-<span class="st"> </span><span class="kw">mapply</span>(<span class="dt">FUN =</span> rnorm, <span class="dt">n =</span> n, <span class="dt">mean =</span> m, <span class="dt">sd =</span> s)</span>
+<span id="cb517-2"><a href="apply-family.html#cb517-2"></a><span class="kw">colnames</span>(<span class="kw">paste0</span>(<span class="st">&quot;s=&quot;</span>,s))</span></code></pre></div>
 <pre><code>#R&gt; NULL</code></pre>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="apply-family.html#cb518-1"></a><span class="kw">round</span>(y, <span class="dt">digits =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="apply-family.html#cb519-1"></a><span class="kw">round</span>(y, <span class="dt">digits =</span> <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>#R&gt;          [,1]     [,2]     [,3]     [,4]     [,5]      [,6]     [,7]      [,8]
 #R&gt;  [1,] -0.3197  -1.3505 -39.5232 -40.4332  -2.2562  -15.3775 -33.4822    8.7811
 #R&gt;  [2,]  0.6714   4.8064 -24.6356 -59.4359 -47.6597   16.7118 107.1783   -9.6354
@@ -550,24 +553,24 @@ base::eapply    Apply a Function Over Values in an Environment</code></pre>
 #R&gt; [14,]  36.4904   32.3467
 #R&gt; [15,]   8.2663   97.7759</code></pre>
 <p>The outcome is illustated using the following plot.</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="apply-family.html#cb520-1"></a><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">ylim =</span> <span class="kw">range</span>(y), <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>), </span>
-<span id="cb520-2"><a href="apply-family.html#cb520-2"></a>     <span class="dt">ylab =</span> <span class="st">&quot;Random Number&quot;</span>, </span>
-<span id="cb520-3"><a href="apply-family.html#cb520-3"></a>     <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">xlab=</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb520-4"><a href="apply-family.html#cb520-4"></a>     <span class="dt">main =</span> <span class="st">&quot;Normally Distributed Random Numbers&quot;</span>)</span>
-<span id="cb520-5"><a href="apply-family.html#cb520-5"></a>     <span class="kw">mtext</span>(<span class="st">&quot;with varying Standard Deviation&quot;</span>)</span>
-<span id="cb520-6"><a href="apply-family.html#cb520-6"></a></span>
-<span id="cb520-7"><a href="apply-family.html#cb520-7"></a>z &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, </span>
-<span id="cb520-8"><a href="apply-family.html#cb520-8"></a>       <span class="cf">function</span>(x,y){<span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">rep</span>(x,<span class="kw">length</span>(y[,x])),</span>
-<span id="cb520-9"><a href="apply-family.html#cb520-9"></a>                            <span class="dt">y =</span> y[,x])}, </span>
-<span id="cb520-10"><a href="apply-family.html#cb520-10"></a>       <span class="dt">y =</span> y)</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="apply-family.html#cb521-1"></a><span class="kw">plot</span>(<span class="ot">NA</span>, <span class="dt">ylim =</span> <span class="kw">range</span>(y), <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">10</span>), </span>
+<span id="cb521-2"><a href="apply-family.html#cb521-2"></a>     <span class="dt">ylab =</span> <span class="st">&quot;Random Number&quot;</span>, </span>
+<span id="cb521-3"><a href="apply-family.html#cb521-3"></a>     <span class="dt">xaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">xlab=</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb521-4"><a href="apply-family.html#cb521-4"></a>     <span class="dt">main =</span> <span class="st">&quot;Normally Distributed Random Numbers&quot;</span>)</span>
+<span id="cb521-5"><a href="apply-family.html#cb521-5"></a>     <span class="kw">mtext</span>(<span class="st">&quot;with varying Standard Deviation&quot;</span>)</span>
+<span id="cb521-6"><a href="apply-family.html#cb521-6"></a></span>
+<span id="cb521-7"><a href="apply-family.html#cb521-7"></a>z &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, </span>
+<span id="cb521-8"><a href="apply-family.html#cb521-8"></a>       <span class="cf">function</span>(x,y){<span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">rep</span>(x,<span class="kw">length</span>(y[,x])),</span>
+<span id="cb521-9"><a href="apply-family.html#cb521-9"></a>                            <span class="dt">y =</span> y[,x])}, </span>
+<span id="cb521-10"><a href="apply-family.html#cb521-10"></a>       <span class="dt">y =</span> y)</span></code></pre></div>
 <p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-191-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><code>mapply</code>can be used to behave like nested <code>for</code> loops as the iterators can simply be anticipated and all iterator combinatinos can be generated in advance, e.g. with <code>expand.grid</code>. The following code shows how to iterate over all cells of a $5 10 $ matrix using <code>mapply</code>.</p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="apply-family.html#cb521-1"></a>nrow &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb521-2"><a href="apply-family.html#cb521-2"></a>ncol &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb521-3"><a href="apply-family.html#cb521-3"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span>(nrow<span class="op">*</span>ncol), <span class="dt">nrow =</span> nrow, <span class="dt">ncol =</span> ncol)</span>
-<span id="cb521-4"><a href="apply-family.html#cb521-4"></a>ic &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dv">1</span><span class="op">:</span>nrow, <span class="dv">1</span><span class="op">:</span>ncol)</span>
-<span id="cb521-5"><a href="apply-family.html#cb521-5"></a>afun &lt;-<span class="st"> </span><span class="cf">function</span>(r,c,m){m[r,c]<span class="op">^</span><span class="dv">2</span>}</span>
-<span id="cb521-6"><a href="apply-family.html#cb521-6"></a><span class="kw">mapply</span>(afun, <span class="dt">r =</span> ic[,<span class="dv">1</span>], <span class="dt">c =</span> ic[,<span class="dv">2</span>], <span class="dt">MoreArgs =</span> <span class="kw">list</span>(m))</span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="apply-family.html#cb522-1"></a>nrow &lt;-<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb522-2"><a href="apply-family.html#cb522-2"></a>ncol &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb522-3"><a href="apply-family.html#cb522-3"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span>(nrow<span class="op">*</span>ncol), <span class="dt">nrow =</span> nrow, <span class="dt">ncol =</span> ncol)</span>
+<span id="cb522-4"><a href="apply-family.html#cb522-4"></a>ic &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dv">1</span><span class="op">:</span>nrow, <span class="dv">1</span><span class="op">:</span>ncol)</span>
+<span id="cb522-5"><a href="apply-family.html#cb522-5"></a>afun &lt;-<span class="st"> </span><span class="cf">function</span>(r,c,m){m[r,c]<span class="op">^</span><span class="dv">2</span>}</span>
+<span id="cb522-6"><a href="apply-family.html#cb522-6"></a><span class="kw">mapply</span>(afun, <span class="dt">r =</span> ic[,<span class="dv">1</span>], <span class="dt">c =</span> ic[,<span class="dv">2</span>], <span class="dt">MoreArgs =</span> <span class="kw">list</span>(m))</span></code></pre></div>
 <pre><code>#R&gt;  [1]    1    4    9   16   25   36   49   64   81  100  121  144  169  196  225
 #R&gt; [16]  256  289  324  361  400  441  484  529  576  625  676  729  784  841  900
 #R&gt; [31]  961 1024 1089 1156 1225 1296 1369 1444 1521 1600 1681 1764 1849 1936 2025
@@ -576,22 +579,22 @@ base::eapply    Apply a Function Over Values in an Environment</code></pre>
 <div id="rapply" class="section level3 unnumbered hasAnchor">
 <h3>rapply<a href="apply-family.html#rapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>rapply</code> is recursive version of <code>lapply</code>, that applies a function recursively to every list element.</p>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="apply-family.html#cb523-1"></a>l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="kw">list</span>(<span class="dt">a1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span> , <span class="dt">a2 =</span> <span class="dv">20</span><span class="op">:</span><span class="dv">30</span>),</span>
-<span id="cb523-2"><a href="apply-family.html#cb523-2"></a>          <span class="dt">b =</span> <span class="kw">list</span>(<span class="dt">b1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">b2 =</span> <span class="dv">5</span>))</span>
-<span id="cb523-3"><a href="apply-family.html#cb523-3"></a></span>
-<span id="cb523-4"><a href="apply-family.html#cb523-4"></a><span class="kw">rapply</span>(<span class="dt">object =</span> l, <span class="dt">f =</span> sum)</span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="apply-family.html#cb524-1"></a>l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="kw">list</span>(<span class="dt">a1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span> , <span class="dt">a2 =</span> <span class="dv">20</span><span class="op">:</span><span class="dv">30</span>),</span>
+<span id="cb524-2"><a href="apply-family.html#cb524-2"></a>          <span class="dt">b =</span> <span class="kw">list</span>(<span class="dt">b1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">b2 =</span> <span class="dv">5</span>))</span>
+<span id="cb524-3"><a href="apply-family.html#cb524-3"></a></span>
+<span id="cb524-4"><a href="apply-family.html#cb524-4"></a><span class="kw">rapply</span>(<span class="dt">object =</span> l, <span class="dt">f =</span> sum)</span></code></pre></div>
 <pre><code>#R&gt; a.a1 a.a2 b.b1 b.b2 
 #R&gt;   55  275 5050    5</code></pre>
 </div>
 <div id="eapply" class="section level3 unnumbered hasAnchor">
 <h3>eapply<a href="apply-family.html#eapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>eapply</code> applies a function to every (visible = not hidden) element in an environment.</p>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="apply-family.html#cb525-1"></a>env &lt;-<span class="st"> </span><span class="kw">new.env</span>()</span>
-<span id="cb525-2"><a href="apply-family.html#cb525-2"></a>env<span class="op">$</span>a &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
-<span id="cb525-3"><a href="apply-family.html#cb525-3"></a>env<span class="op">$</span>b &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span><span class="dv">3</span><span class="op">:</span><span class="dv">3</span>)</span>
-<span id="cb525-4"><a href="apply-family.html#cb525-4"></a>env<span class="op">$</span>c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</span>
-<span id="cb525-5"><a href="apply-family.html#cb525-5"></a></span>
-<span id="cb525-6"><a href="apply-family.html#cb525-6"></a><span class="kw">eapply</span>(env, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="apply-family.html#cb526-1"></a>env &lt;-<span class="st"> </span><span class="kw">new.env</span>()</span>
+<span id="cb526-2"><a href="apply-family.html#cb526-2"></a>env<span class="op">$</span>a &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb526-3"><a href="apply-family.html#cb526-3"></a>env<span class="op">$</span>b &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span><span class="dv">3</span><span class="op">:</span><span class="dv">3</span>)</span>
+<span id="cb526-4"><a href="apply-family.html#cb526-4"></a>env<span class="op">$</span>c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</span>
+<span id="cb526-5"><a href="apply-family.html#cb526-5"></a></span>
+<span id="cb526-6"><a href="apply-family.html#cb526-6"></a><span class="kw">eapply</span>(env, mean)</span></code></pre></div>
 <pre><code>#R&gt; $a
 #R&gt; [1] 5.5
 #R&gt; 
