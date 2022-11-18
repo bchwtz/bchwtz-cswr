@@ -1,4 +1,4 @@
-# Web Apps
+# Web Apps{#chapwebapps}
 
 ```{r, echo=FALSE, fig.cap=NULL, out.width="80%"}
 if (knitr::is_html_output()){
@@ -181,7 +181,7 @@ server <- function(input, output){}
 The UI (`ui`) and the server function (`server()`) are connected to each other by calling [@shinyCheatsheet]:
 
 ```{r, eval=FALSE}
-shinyApp(ui = ui, server = server) # see shiny Cheat sheet
+shinyApp(ui = ui, server = server) # see shiny Cheat sheet (RStudio, Inc. 2015)
 ```
 
 
@@ -208,10 +208,10 @@ The elements 2.--5. - the user interacts with -  are organized in a sidebar (one
 
 
 The `shiny` Cheat Sheet reveals how the listed elements can be implemented:
-For the creation of the elements 2.--5. we use the functions listed under *Inputs* (see [@shinyCheatsheet, p. 1]):
+For the creation of the elements 2.--5. we use the functions listed on the `shiny` Cheat Sheet under *Inputs* [@shinyCheatsheet, p. 1]:
 
-element of the UI        | implementation in `shiny`
--------------------------|---------------------------
+element of the exemplary UI   | implementation in `shiny` [@shiny]
+------------------------------|---------------------------
 slider to control the number of samples (2.) | `sliderInput()`
 slider to control the number of draws per sample (3.) | `sliderInput()`
 box to thick whether the (empirical) density shall be shown (4.) | `checkboxInput()`
@@ -249,11 +249,11 @@ ui <- fluidPage(
 ```
 
 
-The code presented does not work since several arguments of the single functions have not been defined so far (see the description of the single functions and @shinyCheatsheet).  Each *Input*- and *Output*-function needs an *Id* to address the corresponding element (e.g. to access values). [@shinyCheatsheet]
+The code presented does not work since several arguments of the single functions have not been defined so far (see the description of the single functions and @shinyCheatsheet). One of these arguments is an *Id*; each *Input*- and *Output*-function needs an *Id* to address the corresponding element (e.g. to access values). [@shinyCheatsheet]
 
 Furthermore, 
 
-+ we have to set the values of the single *Inputs* (e.g. from which range of values can the user choose one),
++ we have to set the values of the single *Inputs* (e.g. a range of values from which the user can choose values),
 
 + we will define default values and
 
@@ -299,7 +299,7 @@ ui <- fluidPage(
 
 From this code we see that
 
-+ "N", "n", "showdensity" and "seed" (the first argument of the Input functions) are the single ids,
++ "N", "n", "showdensity" and "seed" (the first argument of the Input functions) are the corresponding *Id*s,
 
 + the second argument represents the labeling (some text placed above or next to the elements in the UI),
 
@@ -334,17 +334,17 @@ So, the user can choose values and click on the checkbox, but nothing will happe
 
 ## server
 
-To every element - we have defined as an Output on the ui - belongs an
+To every element - we have defined as an output on the ui - belongs an
 appropriate `render*()` function to generate the corresponding element (e.g. a plot) (see the `shiny` Cheat sheet). [@shinyCheatsheet]
-Defining the different types of outputs like plots, tables etc. works in general like this:
+Defining the different types of outputs like plots, tables etc. works *in general* like this:
 
 ```{r, eval=FALSE}
 output$Id_Output <- renderFunction({
 ...
-}) # see shiny Cheatsheet
+}) # see shiny Cheatsheet (RStudio, Inc. 2015) 
 ```
 
-where `Id_Output` is the id of the output we defined in the UI, e.g. `distPlot` is the id of the plot we will create:
+where `Id_Output` is the *Id* of the output we defined in the UI, e.g. `distPlot` is the id of the plot we will create:
 
 ```{r, eval=FALSE}
 output$distPlot <- renderPlot({
@@ -352,7 +352,7 @@ output$distPlot <- renderPlot({
 })
 ```
 
-In the server function, we can also access values of one of the inputs on the ui by calling `input$Id_Input` where `Id_Input` is the id of the element we have defined as input, e.g. `seed` is the id the numeric Input where the user sets a number for a random seed [@shinyCheatsheet, p. 1]:
+In the server function, we can also access values of the inputs on the ui by calling `input$Id_Input` where `Id_Input` is the *Id* of the element we have defined as input, e.g. `seed` is the *Id* of the numeric Input where the user sets a number for a random seed [@shinyCheatsheet, p. 1]:
 
 ```{r, eval=FALSE}
 output$distPlot <- renderPlot({
@@ -406,7 +406,7 @@ server <- function(input, output) {
 }
 ```
 
-Finally, running the app leads to the result illustrated in the gif in the beginning of this chapter.
+Finally, running the app leads to the result illustrated in the gif in the beginning of this chapter \@ref(chapwebapps).
 
 
 ## Exercises {-}
