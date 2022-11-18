@@ -406,7 +406,7 @@ server <- function(input, output) {
 }
 ```
 
-Finally, running the app leads to the result illustrated in the gif in the beginning of this chapter \@ref(chapwebapps).
+Finally, running the app leads to the result illustrated in the beginning of this chapter \@ref(chapwebapps).
 
 
 ## Exercises {-}
