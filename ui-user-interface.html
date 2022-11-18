@@ -329,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.6" data-path="practical-application.html"><a href="practical-application.html"><i class="fa fa-check"></i><b>10.6</b> Practical Application</a></li>
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11" data-path="chapwebapps.html"><a href="chapwebapps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
 <li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
 <li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
 <li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
@@ -392,16 +392,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>The elements 2.–5. - the user interacts with - are organized in a sidebar (one element on top of the other) and the plot (6.) is on the right side of the sidebar.</p>
 <p>The <code>shiny</code> Cheat Sheet reveals how the listed elements can be implemented:
-For the creation of the elements 2.–5. we use the functions listed under <em>Inputs</em> (see <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>, 1)</span>):</p>
+For the creation of the elements 2.–5. we use the functions listed on the <code>shiny</code> Cheat Sheet under <em>Inputs</em> <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>, 1)</span>:</p>
 <table>
 <colgroup>
-<col width="48%" />
-<col width="51%" />
+<col width="52%" />
+<col width="47%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th>element of the UI</th>
-<th>implementation in <code>shiny</code></th>
+<th>element of the exemplary UI</th>
+<th>implementation in <code>shiny</code> <span class="citation">(Chang et al. <a href="#ref-shiny" role="doc-biblioref">2022</a>)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -446,10 +446,10 @@ For the creation of the elements 2.–5. we use the functions listed under <em>I
 <span id="cb733-17"><a href="ui-user-interface.html#cb733-17"></a>  )</span>
 <span id="cb733-18"><a href="ui-user-interface.html#cb733-18"></a>  </span>
 <span id="cb733-19"><a href="ui-user-interface.html#cb733-19"></a>)</span></code></pre></div>
-<p>The code presented does not work since several arguments of the single functions have not been defined so far (see the description of the single functions and <span class="citation">RStudio, Inc. (<a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span>). Each <em>Input</em>- and <em>Output</em>-function needs an <em>Id</em> to address the corresponding element (e.g. to access values). <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span></p>
+<p>The code presented does not work since several arguments of the single functions have not been defined so far (see the description of the single functions and <span class="citation">RStudio, Inc. (<a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span>). One of these arguments is an <em>Id</em>; each <em>Input</em>- and <em>Output</em>-function needs an <em>Id</em> to address the corresponding element (e.g. to access values). <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span></p>
 <p>Furthermore,</p>
 <ul>
-<li><p>we have to set the values of the single <em>Inputs</em> (e.g. from which range of values can the user choose one),</p></li>
+<li><p>we have to set the values of the single <em>Inputs</em> (e.g. a range of values from which the user can choose values),</p></li>
 <li><p>we will define default values and</p></li>
 <li><p>we will label the elements</p></li>
 </ul>
@@ -489,7 +489,7 @@ For the creation of the elements 2.–5. we use the functions listed under <em>I
 <span id="cb734-33"><a href="ui-user-interface.html#cb734-33"></a>)</span></code></pre></div>
 <p>From this code we see that</p>
 <ul>
-<li><p>“N”, “n”, “showdensity” and “seed” (the first argument of the Input functions) are the single ids,</p></li>
+<li><p>“N”, “n”, “showdensity” and “seed” (the first argument of the Input functions) are the corresponding <em>Id</em>s,</p></li>
 <li><p>the second argument represents the labeling (some text placed above or next to the elements in the UI),</p></li>
 <li><p>the argument <code>value</code> represents the default value and</p></li>
 <li><p>the arguments <code>min</code> and <code>max</code> are the minimum and maximum, respectively, of a range of values.</p></li>

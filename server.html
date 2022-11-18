@@ -329,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.6" data-path="practical-application.html"><a href="practical-application.html"><i class="fa fa-check"></i><b>10.6</b> Practical Application</a></li>
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11" data-path="chapwebapps.html"><a href="chapwebapps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
 <li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
 <li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
 <li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
@@ -381,17 +381,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="server" class="section level2 hasAnchor">
 <h2><span class="header-section-number">11.3</span> server<a href="server.html#server" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To every element - we have defined as an Output on the ui - belongs an
+<p>To every element - we have defined as an output on the ui - belongs an
 appropriate <code>render*()</code> function to generate the corresponding element (e.g. a plot) (see the <code>shiny</code> Cheat sheet). <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>)</span>
-Defining the different types of outputs like plots, tables etc. works in general like this:</p>
+Defining the different types of outputs like plots, tables etc. works <em>in general</em> like this:</p>
 <div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="server.html#cb737-1"></a>output<span class="op">$</span>Id_Output &lt;-<span class="st"> </span><span class="kw">renderFunction</span>({</span>
 <span id="cb737-2"><a href="server.html#cb737-2"></a>...</span>
-<span id="cb737-3"><a href="server.html#cb737-3"></a>}) <span class="co"># see shiny Cheatsheet</span></span></code></pre></div>
-<p>where <code>Id_Output</code> is the id of the output we defined in the UI, e.g. <code>distPlot</code> is the id of the plot we will create:</p>
+<span id="cb737-3"><a href="server.html#cb737-3"></a>}) <span class="co"># see shiny Cheatsheet (RStudio, Inc. 2015) </span></span></code></pre></div>
+<p>where <code>Id_Output</code> is the <em>Id</em> of the output we defined in the UI, e.g. <code>distPlot</code> is the id of the plot we will create:</p>
 <div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="server.html#cb738-1"></a>output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
 <span id="cb738-2"><a href="server.html#cb738-2"></a>  ...</span>
 <span id="cb738-3"><a href="server.html#cb738-3"></a>})</span></code></pre></div>
-<p>In the server function, we can also access values of one of the inputs on the ui by calling <code>input$Id_Input</code> where <code>Id_Input</code> is the id of the element we have defined as input, e.g. <code>seed</code> is the id the numeric Input where the user sets a number for a random seed <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>, 1)</span>:</p>
+<p>In the server function, we can also access values of the inputs on the ui by calling <code>input$Id_Input</code> where <code>Id_Input</code> is the <em>Id</em> of the element we have defined as input, e.g. <code>seed</code> is the <em>Id</em> of the numeric Input where the user sets a number for a random seed <span class="citation">(RStudio, Inc. <a href="#ref-shinyCheatsheet" role="doc-biblioref">2015</a>, 1)</span>:</p>
 <div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="server.html#cb739-1"></a>output<span class="op">$</span>distPlot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({</span>
 <span id="cb739-2"><a href="server.html#cb739-2"></a>  ...</span>
 <span id="cb739-3"><a href="server.html#cb739-3"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.na</span>(input<span class="op">$</span>seed)){ <span class="co"># if a number has been set to define a random seed then ...</span></span>
@@ -463,7 +463,7 @@ Defining the different types of outputs like plots, tables etc. works in general
 <span id="cb740-22"><a href="server.html#cb740-22"></a></span>
 <span id="cb740-23"><a href="server.html#cb740-23"></a>  })</span>
 <span id="cb740-24"><a href="server.html#cb740-24"></a>}</span></code></pre></div>
-<p>Finally, running the app leads to the result illustrated in the gif in the beginning of this chapter.</p>
+<p>Finally, running the app leads to the result illustrated in the gif in the beginning of this chapter <a href="chapwebapps.html#chapwebapps">11</a>.</p>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">

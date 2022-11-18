@@ -329,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.6" data-path="practical-application.html"><a href="practical-application.html"><i class="fa fa-check"></i><b>10.6</b> Practical Application</a></li>
 <li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="web-apps.html"><a href="web-apps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
+<li class="chapter" data-level="11" data-path="chapwebapps.html"><a href="chapwebapps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
 <li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
 <li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
 <li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
@@ -429,11 +429,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For a practical example let us use the genesis block that we just created as the starting point for our own blockchain and feed it to the new <code>proofOfWork</code> function after setting the difficulty to a moderate value.</p>
 <div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="proof-of-work-pow.html#cb668-1"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock))</span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   0.014   0.000   0.015</code></pre>
+#R&gt;   0.014   0.000   0.014</code></pre>
 <div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="proof-of-work-pow.html#cb670-1"></a>genesisBlock<span class="op">$</span>difficulty &lt;-<span class="st"> </span><span class="dv">3</span></span>
 <span id="cb670-2"><a href="proof-of-work-pow.html#cb670-2"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock)) <span class="co"># Execute again with increased difficulty</span></span></code></pre></div>
 <pre><code>#R&gt;    user  system elapsed 
-#R&gt;   0.407   0.026   0.433</code></pre>
+#R&gt;   1.100   0.029   1.158</code></pre>
 </div>
 <div id="exercises-7" class="section level3 unnumbered hasAnchor">
 <h3>Exercises<a href="proof-of-work-pow.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
