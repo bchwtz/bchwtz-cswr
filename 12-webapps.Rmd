@@ -312,13 +312,13 @@ Look at further *Input*-functions: There might be further arguments to specify.
 
 What happens when the ui is defined, the server looks like this
 
-```{r}
+```{r, eval=FALSE}
 server <- function(input, output) {}
 ```
 
 and the app is run by
 
-```{r}
+```{r, eval=FALSE}
 shinyApp(ui = ui, server = server)
 ```
 
