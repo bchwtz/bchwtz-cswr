@@ -185,7 +185,7 @@ shinyApp(ui = ui, server = server) # see shiny Cheat sheet (RStudio, Inc. 2015)
 ```
 
 
-In the following, we will see how `ui` and `server()` have to be defined in order to create the shiny app *Random samples and their Mean* from above.
+In the following, we will see how `ui` and `server()` have to be defined in order to create the shiny app *Random samples and their Mean* from the beginning of this chapter \@ref(chapwebapps).
 
 ## ui (user interface)
 
