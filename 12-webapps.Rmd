@@ -187,6 +187,226 @@ shinyApp(ui = ui, server = server) # see shiny Cheat sheet
 
 In the following, we will see how `ui` and `server()` have to be defined in order to create the shiny app *Random samples and their Mean* from above.
 
+## ui (user interface)
+
+The user interface of the Shiny app *Random samples and their Mean* (see above) consists of
+
+1. the title "Random samples and their Mean",
+
+2. a slider to control the number of samples,
+
+3. a slider to control the number of draws per sample,
+
+4. a box to tick whether the (empirical) density will be shown,
+
+5. a field in which to type in a number to set a random seed and
+
+6. a plot that is updated when the input (2.--5.) changes. 
+
+
+The elements 2.--5. - the user interacts with -  are organized in a sidebar (one element on top of the other) and the plot (6.) is on the right side of the sidebar.
+
+
+The `shiny` Cheat Sheet reveals how the listed elements can be implemented:
+For the creation of the elements 2.--5. we use the functions listed under *Inputs* (see [@shinyCheatsheet, p. 1]):
+
+element of the UI        | implementation in `shiny`
+-------------------------|---------------------------
+slider to control the number of samples (2.) | `sliderInput()`
+slider to control the number of draws per sample (3.) | `sliderInput()`
+box to thick whether the (empirical) density shall be shown (4.) | `checkboxInput()`
+field in which to type in a number to set a random seed (5.) | `numericInput()`
+
+
+We also have to specify the layout. For this, we take a look at the second page of the Shiny Cheat Sheet [@shinyCheatsheet] under *Layouts*:
+
+There, the function `sidebarLayout()` is listed. It consists of the functions `sidebarPanel()` and `mainPanel()` that realize a sidebar and a field next to it, respectively. In the *main panel* the plot of our shiny web app **shall** be shown but it will not happen as long as we have not defined an *appropriate* `output()` function that allows showing plots. For this, the function `plotOutput()` exists [@shinyCheatsheet, p. 1, *Outputs*].
+
+The title will be added in form of an extra panel based on the function `titlePanel()` [@shiny]. Any element that is not specified within a layout function will be presented either above or underneath the defined layout as the title which is presented above the defined layout.
+
+The ideas listed so far result in the following code:
+
+```{r, eval=FALSE}
+ui <- fluidPage(
+
+  # Application title
+  titlePanel("Random Samples and their Mean"),
+
+  # Sidebar with 
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput(), # a slider input for number of sample
+      sliderInput(), # a slider input for number of draws per sample
+      checkboxInput(), # box to tick whether the (empirical) density will be shown
+      numericInput() # a field in which to type in a number to set a random seed
+    ),
+    mainPanel(
+      plotOutput() # plot that is updated when the input(s) change(s)
+    )
+  )
+  
+)
+```
+
+
+The code presented does not work since several arguments of the single functions have not been defined so far (see the description of the single functions and @shinyCheatsheet).  Each *Input*- and *Output*-function needs an *Id* to address the corresponding element (e.g. to access values). [@shinyCheatsheet]
+
+Furthermore, 
+
++ we have to set the values of the single *Inputs* (e.g. from which range of values can the user choose one),
+
++ we will define default values and
+
++ we will label the elements
+
+which is shown in the following:
+
+```{r, eval=FALSE}
+ui <- fluidPage(
+
+  # Application title
+  titlePanel("Random Samples and their Mean"),
+
+  # Sidebar with a slider input for number of bins
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("N",
+                  "Number of samples:",
+                  min = 10,
+                  max = 100,
+                  value = 50),
+      sliderInput("n",
+                  "Number of draws per sample:",
+                  min = 1,
+                  max = 100,
+                  value = 1),
+      checkboxInput("showdensity",
+                    "Show Density?",
+                    value = FALSE),
+      numericInput("seed", "Seed",
+                   value = NULL,
+                   min = 0,
+                   max = 10000,
+                   step = 1)
+    ),
+
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("distPlot"))
+  )
+)
+```
+
+From this code we see that
+
++ "N", "n", "showdensity" and "seed" (the first argument of the Input functions) are the single ids,
+
++ the second argument represents the labeling (some text placed above or next to the elements in the UI),
+
++ the argument `value` represents the default value and
+
++ the arguments `min` and `max` are the minimum and maximum, respectively, of a range of values.
+
+Look at further *Input*-functions: There might be further arguments to specify.
+
+
+What happens when the ui is defined, the server looks like this
+
+```{r}
+server <- function(input, output) {}
+```
+
+and the app is run by
+
+```{r}
+shinyApp(ui = ui, server = server)
+```
+
+?
+
+The shiny web app looks like this:
+
+```{r shiny-web-only-ui, fig.cap = "Running the shiny web app when only the UI is defined.", echo=FALSE}
+knitr::include_graphics("gfx/Shiny_App_only_UI_defined.PNG")
+```
+
+So, the user can choose values and click on the checkbox, but nothing will happen. Consequently, we need to define the server function.
+
+## server
+
+To every element - we have defined as an Output on the ui - belongs an
+appropriate `render*()` function to generate the corresponding element (e.g. a plot) (see the `shiny` Cheat sheet). [@shinyCheatsheet]
+Defining the different types of outputs like plots, tables etc. works in general like this:
+
+```{r, eval=FALSE}
+output$Id_Output <- renderFunction({
+...
+}) # see shiny Cheatsheet
+```
+
+where `Id_Output` is the id of the output we defined in the UI, e.g. `distPlot` is the id of the plot we will create:
+
+```{r, eval=FALSE}
+output$distPlot <- renderPlot({
+  ...
+})
+```
+
+In the server function, we can also access values of one of the inputs on the ui by calling `input$Id_Input` where `Id_Input` is the id of the element we have defined as input, e.g. `seed` is the id the numeric Input where the user sets a number for a random seed [@shinyCheatsheet, p. 1]:
+
+```{r, eval=FALSE}
+output$distPlot <- renderPlot({
+  ...
+  if(!is.na(input$seed)){ # if a number has been set to define a random seed then ...
+    set.seed(input$seed)
+  }
+  ...
+  })
+```
+
+Here is an overview of more *pairs* of `render*()`- and `*Output()`-functions extracted from [@shinyCheatsheet]:
+
+`render*()`-function | `*Output()`-function
+---------------------|---------------------
+`DT::renderDataTable()` | `dataTableOutput()`
+`renderImage()` | `imageOutput()`
+`renderPlot()` | `plotOutput()`
+`renderPrint()` | `verbatimTextOutput()`
+`renderTable()` | `tableOutput()`
+`renderText()` | `textOutput()`
+`renderUI()` | `uiOutput()` \& `htmlOutput()` 
+
+
+Based on this knowledge the server function is defined:
+
+```{r, eval=FALSE}
+server <- function(input, output) {
+
+  output$distPlot <- renderPlot({
+
+    if(!is.na(input$seed)) set.seed(input$seed)
+    rngmat <- matrix(rnorm(input$n*input$N), nrow = input$n, ncol=input$N)
+    meanvec <- apply(rngmat, 2, mean)
+
+    xseq <- seq(-5,5,length.out = 1000)
+    y <- sapply(xseq, function(x){dnorm(x, mean(rngmat),sd(rngmat))})
+    ymean <- sapply(xseq, function(x){dnorm(x, mean(meanvec),sd(meanvec))})
+
+    ymax <- ceiling(max(c(y,ymean)))
+    ymax <- ifelse(is.finite(ymax),ymax, 1)
+
+    MASS::truehist(rngmat, col=rgb(0,0,1,1/6),xlim=c(-5,5),ylim=c(0,ymax),xlab="")
+    if(input$showdensity) lines(xseq,y,type="l",col="blue",lwd=2)
+    par(new=T)
+    MASS::truehist(meanvec,col=rgb(1,0,0,1/4),xlim=c(-5,5),ylim=c(0,ymax),xlab="")
+    if(input$showdensity) lines(xseq,ymean,type="l",col="red",lwd=2)
+
+
+  })
+}
+```
+
+Finally, running the app leads to the result illustrated in the gif in the beginning of this chapter.
 
 
 ## Exercises {-}
