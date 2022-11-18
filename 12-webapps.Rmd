@@ -136,6 +136,59 @@ shinyApp(ui = ui, server = server)
 ```
 
 
+In the following we will take a closer look at
+
++ how we can generate a *new* shiny app in general (which R files we need, etc.). 
+
++ the elements the UI and the server of a shiny app consist of and how they are connected to each other.
+
+
+The main references for constructing *shiny web apps* are 
+
++ the functions' descriptions of `shiny` [@shiny],
+
++ the `shiny` Cheat Sheet [@shinyCheatsheet] and
+
++ the [Shiny Gallery](https://shiny.rstudio.com/gallery/) [@ShinyGallery].
+
+
+## Introduction
+
+When we want to create a Shiny Web App, we start in RStudio by clicking on: `File` $\rightarrow$ `New File` $\rightarrow$ `Shiny Web App...`
+
+Then a window opens like in figure \@ref(fig:start-shiny-web-app). It shows a field in which we have to type in a name for the app and we have to choose whether a single file (app.R) or two separate files (ui.R and server.R) will be created (Of course, then we click on `Create`.). In both cases, a folder will be generated whose name is the one we typed in the field *Application name*. The name(s) of the file(s) does (do) not change.
+
+```{r start-shiny-web-app, fig.cap = "Creating a new shiny web app.", echo=FALSE}
+knitr::include_graphics("gfx/start_Shiny_App.png")
+```
+
+Independently of the number of files (app.R or ui.R and sever.R) we have chosen, when we click `Run App` (see figure \@ref(fig:start-shiny-web-app2)), a new window opens which shows the user interface of an exemplary shiny web app dealing with the `faithful` data set [@R]. **Try it out!**
+
+```{r start-shiny-web-app2, fig.cap = "Running a shiny web app that is predefined when a new shiny web app is created in RStudio.", echo=FALSE}
+knitr::include_graphics("gfx/start_Shiny_App2.png")
+```
+
+Basically, it makes no great difference whether a shiny web app is implemented within one file or whether two files are used. Since we will create relatively *small* shiny web apps (not much code) we will implement the code in the `app.R`-file.
+
+In order to implement a user interface we will use predefined functions that are nested and are organized in a predefined layout (e.g. `fluidPage()`; see code below). [@shinyCheatsheet] The nested code of the UI (which is a HTML document) is saved as `ui`. [@shinyCheatsheet] In order to tell the server how the user interface has to be built and updated we create a function named `server()`. [@shinyCheatsheet] 
+
+```{r, eval=FALSE}
+library(shiny)
+ui <- fluidPage()
+server <- function(input, output){}
+```
+
+The UI (`ui`) and the server function (`server()`) are connected to each other by calling [@shinyCheatsheet]:
+
+```{r, eval=FALSE}
+shinyApp(ui = ui, server = server) # see shiny Cheat sheet
+```
+
+
+In the following, we will see how `ui` and `server()` have to be defined in order to create the shiny app *Random samples and their Mean* from above.
+
+
+
 ## Exercises {-}
 ```{r, echo=FALSE, fig.cap=NULL, out.width="100%"}
 knitr::include_graphics("gfx/CH00-ExercisesHeader.png")
