@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Blockchain | Computational Statistics</title>
   <meta name="description" content="Chapter 9 Blockchain | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Blockchain | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,15 +23,15 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-11-18" />
+<meta name="date" content="2023-01-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="solution.html"/>
-<link rel="next" href="hash-functions.html"/>
+<link rel="prev" href="word-puzzle.html"/>
+<link rel="next" href="forecasting.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -138,225 +138,225 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Hello World!</a><ul>
-<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i>Installation</a><ul>
-<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
-<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> The Basics</a><ul>
-<li class="chapter" data-level="1.1" data-path="r-and-the-r-project.html"><a href="r-and-the-r-project.html"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
-<li class="chapter" data-level="1.2" data-path="r-system-and-rstudio.html"><a href="r-system-and-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
-<li class="chapter" data-level="1.3" data-path="first-steps-r-as-calculator.html"><a href="first-steps-r-as-calculator.html"><i class="fa fa-check"></i><b>1.3</b> First Steps: R as Calculator</a></li>
-<li class="chapter" data-level="1.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html"><i class="fa fa-check"></i><b>1.4</b> Objects and Data Structures</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-vectors"><i class="fa fa-check"></i><b>1.4.1</b> Data Structure: Vectors</a></li>
-<li class="chapter" data-level="1.4.2" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-matrices"><i class="fa fa-check"></i><b>1.4.2</b> Data Structure: Matrices</a></li>
-<li class="chapter" data-level="1.4.3" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-strings"><i class="fa fa-check"></i><b>1.4.3</b> Data Structure: Strings</a></li>
-<li class="chapter" data-level="1.4.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-lists-and-data-frames"><i class="fa fa-check"></i><b>1.4.4</b> Data Structure: Lists and Data Frames</a></li>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#r-and-the-r-project"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#r-system-and-rstudio"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#first-steps-r-as-calculator"><i class="fa fa-check"></i><b>1.3</b> First Steps: R as Calculator</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#objects-and-data-structures"><i class="fa fa-check"></i><b>1.4</b> Objects and Data Structures</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#data-structure-vectors"><i class="fa fa-check"></i><b>1.4.1</b> Data Structure: Vectors</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#data-structure-matrices"><i class="fa fa-check"></i><b>1.4.2</b> Data Structure: Matrices</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#data-structure-strings"><i class="fa fa-check"></i><b>1.4.3</b> Data Structure: Strings</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#data-structure-lists-and-data-frames"><i class="fa fa-check"></i><b>1.4.4</b> Data Structure: Lists and Data Frames</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>1.5</b> Functions</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="functions.html"><a href="functions.html#using-functions"><i class="fa fa-check"></i><b>1.5.1</b> Using Functions</a></li>
-<li class="chapter" data-level="1.5.2" data-path="functions.html"><a href="functions.html#writing-functions"><i class="fa fa-check"></i><b>1.5.2</b> Writing Functions</a></li>
-<li class="chapter" data-level="1.5.3" data-path="functions.html"><a href="functions.html#solving-problems"><i class="fa fa-check"></i><b>1.5.3</b> Solving Problems</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#functions"><i class="fa fa-check"></i><b>1.5</b> Functions</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#using-functions"><i class="fa fa-check"></i><b>1.5.1</b> Using Functions</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#writing-functions"><i class="fa fa-check"></i><b>1.5.2</b> Writing Functions</a></li>
+<li class="chapter" data-level="1.5.3" data-path="intro.html"><a href="intro.html#solving-problems"><i class="fa fa-check"></i><b>1.5.3</b> Solving Problems</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>1.6</b> Packages</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="packages.html"><a href="packages.html#packages-with-data"><i class="fa fa-check"></i><b>1.6.1</b> Packages with Data</a></li>
-<li class="chapter" data-level="1.6.2" data-path="packages.html"><a href="packages.html#packages-with-functions"><i class="fa fa-check"></i><b>1.6.2</b> Packages with Functions</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#packages"><i class="fa fa-check"></i><b>1.6</b> Packages</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#packages-with-data"><i class="fa fa-check"></i><b>1.6.1</b> Packages with Data</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#packages-with-functions"><i class="fa fa-check"></i><b>1.6.2</b> Packages with Functions</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="getting-help.html"><a href="getting-help.html"><i class="fa fa-check"></i><b>1.7</b> Getting Help</a><ul>
-<li class="chapter" data-level="1.7.1" data-path="getting-help.html"><a href="getting-help.html#integrated-help-system"><i class="fa fa-check"></i><b>1.7.1</b> Integrated Help System</a></li>
-<li class="chapter" data-level="1.7.2" data-path="getting-help.html"><a href="getting-help.html#help-on-the-internet"><i class="fa fa-check"></i><b>1.7.2</b> Help on the Internet</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#getting-help"><i class="fa fa-check"></i><b>1.7</b> Getting Help</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="intro.html"><a href="intro.html#integrated-help-system"><i class="fa fa-check"></i><b>1.7.1</b> Integrated Help System</a></li>
+<li class="chapter" data-level="1.7.2" data-path="intro.html"><a href="intro.html#help-on-the-internet"><i class="fa fa-check"></i><b>1.7.2</b> Help on the Internet</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-1"><i class="fa fa-check"></i>EX 1</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-2"><i class="fa fa-check"></i>EX 2</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-3"><i class="fa fa-check"></i>EX 3</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-4"><i class="fa fa-check"></i>EX 4</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-5"><i class="fa fa-check"></i>EX 5</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#exercises"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-3"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-4"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-5"><i class="fa fa-check"></i>EX 5</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2</b> Data Types</a><ul>
-<li class="chapter" data-level="2.1" data-path="fixed-and-floating-point-number-representation.html"><a href="fixed-and-floating-point-number-representation.html"><i class="fa fa-check"></i><b>2.1</b> Fixed and Floating Point Number Representation</a></li>
-<li class="chapter" data-level="2.2" data-path="numeric.html"><a href="numeric.html"><i class="fa fa-check"></i><b>2.2</b> Numeric</a></li>
-<li class="chapter" data-level="2.3" data-path="complex.html"><a href="complex.html"><i class="fa fa-check"></i><b>2.3</b> Complex</a></li>
-<li class="chapter" data-level="2.4" data-path="logical.html"><a href="logical.html"><i class="fa fa-check"></i><b>2.4</b> Logical</a></li>
-<li class="chapter" data-level="2.5" data-path="character.html"><a href="character.html"><i class="fa fa-check"></i><b>2.5</b> Character</a></li>
-<li class="chapter" data-level="2.6" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>2.6</b> Factors</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="factors.html"><a href="factors.html#unordered-factors"><i class="fa fa-check"></i><b>2.6.1</b> Unordered Factors</a></li>
-<li class="chapter" data-level="2.6.2" data-path="factors.html"><a href="factors.html#ordered-factors"><i class="fa fa-check"></i><b>2.6.2</b> Ordered Factors</a></li>
+<li class="chapter" data-level="2.1" data-path="data-types.html"><a href="data-types.html#fixed-and-floating-point-number-representation"><i class="fa fa-check"></i><b>2.1</b> Fixed and Floating Point Number Representation</a></li>
+<li class="chapter" data-level="2.2" data-path="data-types.html"><a href="data-types.html#numeric"><i class="fa fa-check"></i><b>2.2</b> Numeric</a></li>
+<li class="chapter" data-level="2.3" data-path="data-types.html"><a href="data-types.html#complex"><i class="fa fa-check"></i><b>2.3</b> Complex</a></li>
+<li class="chapter" data-level="2.4" data-path="data-types.html"><a href="data-types.html#logical"><i class="fa fa-check"></i><b>2.4</b> Logical</a></li>
+<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html#character"><i class="fa fa-check"></i><b>2.5</b> Character</a></li>
+<li class="chapter" data-level="2.6" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>2.6</b> Factors</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="data-types.html"><a href="data-types.html#unordered-factors"><i class="fa fa-check"></i><b>2.6.1</b> Unordered Factors</a></li>
+<li class="chapter" data-level="2.6.2" data-path="data-types.html"><a href="data-types.html#ordered-factors"><i class="fa fa-check"></i><b>2.6.2</b> Ordered Factors</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="missing-and-raw-data.html"><a href="missing-and-raw-data.html"><i class="fa fa-check"></i><b>2.7</b> Missing and Raw Data</a></li>
-<li class="chapter" data-level="2.8" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html"><i class="fa fa-check"></i><b>2.8</b> Coercion, Attributes, and Class</a><ul>
-<li class="chapter" data-level="2.8.1" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#coercion"><i class="fa fa-check"></i><b>2.8.1</b> Coercion</a></li>
-<li class="chapter" data-level="2.8.2" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#attributes-and-names"><i class="fa fa-check"></i><b>2.8.2</b> Attributes and Names</a></li>
-<li class="chapter" data-level="2.8.3" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#class"><i class="fa fa-check"></i><b>2.8.3</b> Class</a></li>
+<li class="chapter" data-level="2.7" data-path="data-types.html"><a href="data-types.html#missing-and-raw-data"><i class="fa fa-check"></i><b>2.7</b> Missing and Raw Data</a></li>
+<li class="chapter" data-level="2.8" data-path="data-types.html"><a href="data-types.html#coercion-attributes-and-class"><i class="fa fa-check"></i><b>2.8</b> Coercion, Attributes, and Class</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="data-types.html"><a href="data-types.html#coercion"><i class="fa fa-check"></i><b>2.8.1</b> Coercion</a></li>
+<li class="chapter" data-level="2.8.2" data-path="data-types.html"><a href="data-types.html#attributes-and-names"><i class="fa fa-check"></i><b>2.8.2</b> Attributes and Names</a></li>
+<li class="chapter" data-level="2.8.3" data-path="data-types.html"><a href="data-types.html#class"><i class="fa fa-check"></i><b>2.8.3</b> Class</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#from-april-5-2022"><i class="fa fa-check"></i>From April 5, 2022</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-1-1"><i class="fa fa-check"></i>EX 1</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-2-1"><i class="fa fa-check"></i>EX 2</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-3-1"><i class="fa fa-check"></i>EX 3</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-4-1"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#exercises-1"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#from-april-5-2022"><i class="fa fa-check"></i>From April 5, 2022</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-1-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-2-1"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-3-1"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-4-1"><i class="fa fa-check"></i>EX 4</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation</a><ul>
-<li class="chapter" data-level="3.1" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
-<li class="chapter" data-level="3.2" data-path="matrices-and-arrays.html"><a href="matrices-and-arrays.html"><i class="fa fa-check"></i><b>3.2</b> Matrices and Arrays</a></li>
-<li class="chapter" data-level="3.3" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
-<li class="chapter" data-level="3.4" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a><ul>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#merging-rows-and-columns"><i class="fa fa-check"></i>Merging rows and columns</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#apply-functions-to-rows-and-columns"><i class="fa fa-check"></i>Apply functions to rows and columns</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#sweep-out-statistics-in-a-matrix"><i class="fa fa-check"></i>Sweep out Statistics in a Matrix</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#concatenate-all-values-from-a-dataframe"><i class="fa fa-check"></i>Concatenate all values from a dataframe</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#splitting-dataframes-while-applying-functions"><i class="fa fa-check"></i>Splitting dataframes while applying functions</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#transformations-without-recreating-dataframes"><i class="fa fa-check"></i>Transformations without recreating dataframes</a></li>
+<li class="chapter" data-level="3.1" data-path="data-manipulation.html"><a href="data-manipulation.html#vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="data-manipulation.html"><a href="data-manipulation.html#matrices-and-arrays"><i class="fa fa-check"></i><b>3.2</b> Matrices and Arrays</a></li>
+<li class="chapter" data-level="3.3" data-path="data-manipulation.html"><a href="data-manipulation.html#lists"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="data-manipulation.html"><a href="data-manipulation.html#dataframes"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a><ul>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#merging-rows-and-columns"><i class="fa fa-check"></i>Merging rows and columns</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#apply-functions-to-rows-and-columns"><i class="fa fa-check"></i>Apply functions to rows and columns</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#sweep-out-statistics-in-a-matrix"><i class="fa fa-check"></i>Sweep out Statistics in a Matrix</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#concatenate-all-values-from-a-dataframe"><i class="fa fa-check"></i>Concatenate all values from a dataframe</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#splitting-dataframes-while-applying-functions"><i class="fa fa-check"></i>Splitting dataframes while applying functions</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#transformations-without-recreating-dataframes"><i class="fa fa-check"></i>Transformations without recreating dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>3.5</b> Strings</a></li>
-<li class="chapter" data-level="3.6" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>3.6</b> Dates and Times</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#from-april-12-2022"><i class="fa fa-check"></i>From April 12, 2022</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-1-2"><i class="fa fa-check"></i>EX 1</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-2-2"><i class="fa fa-check"></i>EX 2</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-3-2"><i class="fa fa-check"></i>EX 3</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-4-2"><i class="fa fa-check"></i>EX 4</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-5-1"><i class="fa fa-check"></i>EX 5</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-6"><i class="fa fa-check"></i>EX 6</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-7"><i class="fa fa-check"></i>EX 7</a></li>
+<li class="chapter" data-level="3.5" data-path="data-manipulation.html"><a href="data-manipulation.html#strings"><i class="fa fa-check"></i><b>3.5</b> Strings</a></li>
+<li class="chapter" data-level="3.6" data-path="data-manipulation.html"><a href="data-manipulation.html#dates-and-times"><i class="fa fa-check"></i><b>3.6</b> Dates and Times</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#exercises-2"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#from-april-12-2022"><i class="fa fa-check"></i>From April 12, 2022</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-1-2"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-2-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-3-2"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-4-2"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-5-1"><i class="fa fa-check"></i>EX 5</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-6"><i class="fa fa-check"></i>EX 6</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-7"><i class="fa fa-check"></i>EX 7</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>4</b> Code Structure</a><ul>
-<li class="chapter" data-level="4.1" data-path="conditional-expressions.html"><a href="conditional-expressions.html"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a><ul>
-<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#if-and-else"><i class="fa fa-check"></i>If and Else</a></li>
-<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#switch"><i class="fa fa-check"></i>Switch</a></li>
+<li class="chapter" data-level="4.1" data-path="structure.html"><a href="structure.html#conditional-expressions"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a><ul>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#if-and-else"><i class="fa fa-check"></i>If and Else</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#switch"><i class="fa fa-check"></i>Switch</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>4.2</b> Loops</a><ul>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#for-loop"><i class="fa fa-check"></i>For-Loop</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#while-loop"><i class="fa fa-check"></i>While-Loop</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#repeat"><i class="fa fa-check"></i>Repeat</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#break-and-next"><i class="fa fa-check"></i>Break and Next</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#special-looping-over-non-numerical-data"><i class="fa fa-check"></i>Special: Looping over non-numerical data</a></li>
+<li class="chapter" data-level="4.2" data-path="structure.html"><a href="structure.html#loops"><i class="fa fa-check"></i><b>4.2</b> Loops</a><ul>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#for-loop"><i class="fa fa-check"></i>For-Loop</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#while-loop"><i class="fa fa-check"></i>While-Loop</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#repeat"><i class="fa fa-check"></i>Repeat</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#break-and-next"><i class="fa fa-check"></i>Break and Next</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#special-looping-over-non-numerical-data"><i class="fa fa-check"></i>Special: Looping over non-numerical data</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html#from-april-26-2022"><i class="fa fa-check"></i>From April 26, 2022</a></li>
-<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html#bottles-of-beer"><i class="fa fa-check"></i>99 Bottles of Beer</a></li>
-<li class="chapter" data-level="4.2.1" data-path="exercises-3.html"><a href="exercises-3.html#multiplication-table"><i class="fa fa-check"></i><b>4.2.1</b> Multiplication Table</a></li>
-<li class="chapter" data-level="4.2.2" data-path="exercises-3.html"><a href="exercises-3.html#diagonal-matrix"><i class="fa fa-check"></i><b>4.2.2</b> Diagonal Matrix</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#exercises-3"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#from-april-26-2022"><i class="fa fa-check"></i>From April 26, 2022</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#bottles-of-beer"><i class="fa fa-check"></i>99 Bottles of Beer</a></li>
+<li class="chapter" data-level="4.2.1" data-path="structure.html"><a href="structure.html#multiplication-table"><i class="fa fa-check"></i><b>4.2.1</b> Multiplication Table</a></li>
+<li class="chapter" data-level="4.2.2" data-path="structure.html"><a href="structure.html#diagonal-matrix"><i class="fa fa-check"></i><b>4.2.2</b> Diagonal Matrix</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="software-development.html"><a href="software-development.html"><i class="fa fa-check"></i><b>5</b> Software Development</a><ul>
-<li class="chapter" data-level="5.1" data-path="planning.html"><a href="planning.html"><i class="fa fa-check"></i><b>5.1</b> Planning</a></li>
-<li class="chapter" data-level="5.2" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>5.2</b> Coding</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="coding.html"><a href="coding.html#standard-program-structure"><i class="fa fa-check"></i><b>5.2.1</b> Standard Program Structure</a></li>
-<li class="chapter" data-level="5.2.2" data-path="coding.html"><a href="coding.html#standard-function-structure"><i class="fa fa-check"></i><b>5.2.2</b> Standard Function Structure</a></li>
-<li class="chapter" data-level="5.2.3" data-path="coding.html"><a href="coding.html#naming-convention"><i class="fa fa-check"></i><b>5.2.3</b> Naming Convention</a></li>
-<li class="chapter" data-level="5.2.4" data-path="coding.html"><a href="coding.html#rules-best-practices"><i class="fa fa-check"></i><b>5.2.4</b> Rules &amp; Best Practices</a></li>
+<li class="chapter" data-level="5.1" data-path="software-development.html"><a href="software-development.html#planning"><i class="fa fa-check"></i><b>5.1</b> Planning</a></li>
+<li class="chapter" data-level="5.2" data-path="software-development.html"><a href="software-development.html#coding"><i class="fa fa-check"></i><b>5.2</b> Coding</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="software-development.html"><a href="software-development.html#standard-program-structure"><i class="fa fa-check"></i><b>5.2.1</b> Standard Program Structure</a></li>
+<li class="chapter" data-level="5.2.2" data-path="software-development.html"><a href="software-development.html#standard-function-structure"><i class="fa fa-check"></i><b>5.2.2</b> Standard Function Structure</a></li>
+<li class="chapter" data-level="5.2.3" data-path="software-development.html"><a href="software-development.html#naming-convention"><i class="fa fa-check"></i><b>5.2.3</b> Naming Convention</a></li>
+<li class="chapter" data-level="5.2.4" data-path="software-development.html"><a href="software-development.html#rules-best-practices"><i class="fa fa-check"></i><b>5.2.4</b> Rules &amp; Best Practices</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="documenting.html"><a href="documenting.html"><i class="fa fa-check"></i><b>5.3</b> Documenting</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="documenting.html"><a href="documenting.html#code-documentation-short-form-documentation"><i class="fa fa-check"></i><b>5.3.1</b> Code Documentation (Short-form Documentation)</a></li>
-<li class="chapter" data-level="5.3.2" data-path="documenting.html"><a href="documenting.html#user-documentation-long-form-documentation"><i class="fa fa-check"></i><b>5.3.2</b> User documentation (Long-form Documentation)</a></li>
+<li class="chapter" data-level="5.3" data-path="software-development.html"><a href="software-development.html#documenting"><i class="fa fa-check"></i><b>5.3</b> Documenting</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="software-development.html"><a href="software-development.html#code-documentation-short-form-documentation"><i class="fa fa-check"></i><b>5.3.1</b> Code Documentation (Short-form Documentation)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="software-development.html"><a href="software-development.html#user-documentation-long-form-documentation"><i class="fa fa-check"></i><b>5.3.2</b> User documentation (Long-form Documentation)</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>5.4</b> Testing</a></li>
-<li class="chapter" data-level="5.5" data-path="maintaining.html"><a href="maintaining.html"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a></li>
-<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html#from-may-3-2022"><i class="fa fa-check"></i>From May 3, 2022</a></li>
+<li class="chapter" data-level="5.4" data-path="software-development.html"><a href="software-development.html#testing"><i class="fa fa-check"></i><b>5.4</b> Testing</a></li>
+<li class="chapter" data-level="5.5" data-path="software-development.html"><a href="software-development.html#maintaining"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a></li>
+<li class="chapter" data-level="" data-path="software-development.html"><a href="software-development.html#exercises-4"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="software-development.html"><a href="software-development.html#from-may-3-2022"><i class="fa fa-check"></i>From May 3, 2022</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="vectorization.html"><a href="vectorization.html"><i class="fa fa-check"></i><b>6</b> Vectorization</a><ul>
-<li class="chapter" data-level="6.1" data-path="apply-family.html"><a href="apply-family.html"><i class="fa fa-check"></i><b>6.1</b> *apply-Family</a><ul>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#apply"><i class="fa fa-check"></i>apply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#lapply"><i class="fa fa-check"></i>lapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#sapply"><i class="fa fa-check"></i>sapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#vapply"><i class="fa fa-check"></i>vapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#tapply"><i class="fa fa-check"></i>tapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#mapply"><i class="fa fa-check"></i>mapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#rapply"><i class="fa fa-check"></i>rapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#eapply"><i class="fa fa-check"></i>eapply</a></li>
+<li class="chapter" data-level="6.1" data-path="vectorization.html"><a href="vectorization.html#apply-family"><i class="fa fa-check"></i><b>6.1</b> *apply-Family</a><ul>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#apply"><i class="fa fa-check"></i>apply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#lapply"><i class="fa fa-check"></i>lapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#sapply"><i class="fa fa-check"></i>sapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#vapply"><i class="fa fa-check"></i>vapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#tapply"><i class="fa fa-check"></i>tapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#mapply"><i class="fa fa-check"></i>mapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#rapply"><i class="fa fa-check"></i>rapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#eapply"><i class="fa fa-check"></i>eapply</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.2</b> Technical Background</a></li>
-<li class="chapter" data-level="6.3" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.3</b> Parallelization using vectorized functions</a></li>
-<li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html#from-may-10-2022"><i class="fa fa-check"></i>From May 10, 2022</a></li>
+<li class="chapter" data-level="6.2" data-path="vectorization.html"><a href="vectorization.html#technical-background"><i class="fa fa-check"></i><b>6.2</b> Technical Background</a></li>
+<li class="chapter" data-level="6.3" data-path="vectorization.html"><a href="vectorization.html#parallelization-using-vectorized-functions"><i class="fa fa-check"></i><b>6.3</b> Parallelization using vectorized functions</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#exercises-5"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#from-may-10-2022"><i class="fa fa-check"></i>From May 10, 2022</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="applications---graphics.html"><a href="applications---graphics.html"><i class="fa fa-check"></i><b>7</b> Applications - Graphics</a><ul>
-<li class="chapter" data-level="7.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
-<li class="chapter" data-level="7.1.2" data-path="plotsbaseR.html"><a href="plotsbaseR.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.1.3" data-path="plotsbaseR.html"><a href="plotsbaseR.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
+<li class="chapter" data-level="7.1" data-path="applications---graphics.html"><a href="applications---graphics.html#plotsbaseR"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="applications---graphics.html"><a href="applications---graphics.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
+<li class="chapter" data-level="7.1.2" data-path="applications---graphics.html"><a href="applications---graphics.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.1.3" data-path="applications---graphics.html"><a href="applications---graphics.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a><ul>
-<li class="chapter" data-level="7.2.1" data-path="plotsggplot2.html"><a href="plotsggplot2.html#histograms-and-boxplots-1"><i class="fa fa-check"></i><b>7.2.1</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.2.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html#linear-regression"><i class="fa fa-check"></i><b>7.2.2</b> Linear regression</a></li>
-<li class="chapter" data-level="7.2.3" data-path="plotsggplot2.html"><a href="plotsggplot2.html#customizing-ggplots"><i class="fa fa-check"></i><b>7.2.3</b> Customizing ggplots</a></li>
-<li class="chapter" data-level="7.2.4" data-path="plotsggplot2.html"><a href="plotsggplot2.html#handling-2-variables-and-faceting"><i class="fa fa-check"></i><b>7.2.4</b> Handling &gt; 2 variables and faceting</a></li>
+<li class="chapter" data-level="7.2" data-path="applications---graphics.html"><a href="applications---graphics.html#plotsggplot2"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="applications---graphics.html"><a href="applications---graphics.html#histograms-and-boxplots-1"><i class="fa fa-check"></i><b>7.2.1</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.2.2" data-path="applications---graphics.html"><a href="applications---graphics.html#linear-regression"><i class="fa fa-check"></i><b>7.2.2</b> Linear regression</a></li>
+<li class="chapter" data-level="7.2.3" data-path="applications---graphics.html"><a href="applications---graphics.html#customizing-ggplots"><i class="fa fa-check"></i><b>7.2.3</b> Customizing ggplots</a></li>
+<li class="chapter" data-level="7.2.4" data-path="applications---graphics.html"><a href="applications---graphics.html#handling-2-variables-and-faceting"><i class="fa fa-check"></i><b>7.2.4</b> Handling &gt; 2 variables and faceting</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
-<li class="chapter" data-level="" data-path="excercises.html"><a href="excercises.html"><i class="fa fa-check"></i>Excercises</a><ul>
-<li class="chapter" data-level="" data-path="excercises.html"><a href="excercises.html#task-mtcars-dataset"><i class="fa fa-check"></i>Task <code>mtcars</code> dataset</a></li>
+<li class="chapter" data-level="7.3" data-path="applications---graphics.html"><a href="applications---graphics.html#interactive-plots-with-plotly-plotly"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
+<li class="chapter" data-level="" data-path="applications---graphics.html"><a href="applications---graphics.html#excercises"><i class="fa fa-check"></i>Excercises</a><ul>
+<li class="chapter" data-level="" data-path="applications---graphics.html"><a href="applications---graphics.html#task-mtcars-dataset"><i class="fa fa-check"></i>Task <code>mtcars</code> dataset</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
-<li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
-<li class="chapter" data-level="8.2" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>8.2</b> Solution</a></li>
+<li class="chapter" data-level="8.1" data-path="word-puzzle.html"><a href="word-puzzle.html#requirements"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
+<li class="chapter" data-level="8.2" data-path="word-puzzle.html"><a href="word-puzzle.html#solution"><i class="fa fa-check"></i><b>8.2</b> Solution</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="blockchain.html"><a href="blockchain.html"><i class="fa fa-check"></i><b>9</b> Blockchain</a><ul>
-<li class="chapter" data-level="9.1" data-path="hash-functions.html"><a href="hash-functions.html"><i class="fa fa-check"></i><b>9.1</b> Hash Functions</a><ul>
-<li class="chapter" data-level="" data-path="hash-functions.html"><a href="hash-functions.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="9.1" data-path="blockchain.html"><a href="blockchain.html#hash-functions"><i class="fa fa-check"></i><b>9.1</b> Hash Functions</a><ul>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>9.2</b> Blocks</a></li>
-<li class="chapter" data-level="9.3" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html"><i class="fa fa-check"></i><b>9.3</b> Proof of Work (PoW)</a><ul>
-<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#simple-pow-example"><i class="fa fa-check"></i>Simple PoW Example</a></li>
-<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#combining-pow-and-hashing"><i class="fa fa-check"></i>Combining PoW and Hashing</a></li>
-<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="9.2" data-path="blockchain.html"><a href="blockchain.html#blocks"><i class="fa fa-check"></i><b>9.2</b> Blocks</a></li>
+<li class="chapter" data-level="9.3" data-path="blockchain.html"><a href="blockchain.html#proof-of-work-pow"><i class="fa fa-check"></i><b>9.3</b> Proof of Work (PoW)</a><ul>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#simple-pow-example"><i class="fa fa-check"></i>Simple PoW Example</a></li>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#combining-pow-and-hashing"><i class="fa fa-check"></i>Combining PoW and Hashing</a></li>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="chaining-blocks.html"><a href="chaining-blocks.html"><i class="fa fa-check"></i><b>9.4</b> Chaining Blocks</a></li>
-<li class="chapter" data-level="9.5" data-path="security.html"><a href="security.html"><i class="fa fa-check"></i><b>9.5</b> Security</a><ul>
-<li class="chapter" data-level="" data-path="security.html"><a href="security.html#manipulation-1"><i class="fa fa-check"></i>Manipulation 1</a></li>
-<li class="chapter" data-level="" data-path="security.html"><a href="security.html#manipulation-2"><i class="fa fa-check"></i>Manipulation 2</a></li>
+<li class="chapter" data-level="9.4" data-path="blockchain.html"><a href="blockchain.html#chaining-blocks"><i class="fa fa-check"></i><b>9.4</b> Chaining Blocks</a></li>
+<li class="chapter" data-level="9.5" data-path="blockchain.html"><a href="blockchain.html#security"><i class="fa fa-check"></i><b>9.5</b> Security</a><ul>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#manipulation-1"><i class="fa fa-check"></i>Manipulation 1</a></li>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#manipulation-2"><i class="fa fa-check"></i>Manipulation 2</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="wrap-up.html"><a href="wrap-up.html"><i class="fa fa-check"></i><b>9.6</b> Wrap up</a></li>
+<li class="chapter" data-level="9.6" data-path="blockchain.html"><a href="blockchain.html#wrap-up"><i class="fa fa-check"></i><b>9.6</b> Wrap up</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="forecasting.html"><a href="forecasting.html"><i class="fa fa-check"></i><b>10</b> Forecasting</a><ul>
-<li class="chapter" data-level="10.1" data-path="time-series-data.html"><a href="time-series-data.html"><i class="fa fa-check"></i><b>10.1</b> Time Series Data</a></li>
-<li class="chapter" data-level="10.2" data-path="forecasting-process.html"><a href="forecasting-process.html"><i class="fa fa-check"></i><b>10.2</b> Forecasting Process</a></li>
-<li class="chapter" data-level="10.3" data-path="real-data.html"><a href="real-data.html"><i class="fa fa-check"></i><b>10.3</b> Real Data</a></li>
-<li class="chapter" data-level="10.4" data-path="judgemental-forecasting.html"><a href="judgemental-forecasting.html"><i class="fa fa-check"></i><b>10.4</b> Judgemental Forecasting</a></li>
-<li class="chapter" data-level="10.5" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html"><i class="fa fa-check"></i><b>10.5</b> Exponential Smoothing</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#implementing-hes"><i class="fa fa-check"></i><b>10.5.1</b> Implementing HES</a></li>
-<li class="chapter" data-level="10.5.2" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#finding-best-alpha-and-gamma-values"><i class="fa fa-check"></i><b>10.5.2</b> Finding best alpha and gamma values</a></li>
-<li class="chapter" data-level="10.5.3" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#generating-forecasts"><i class="fa fa-check"></i><b>10.5.3</b> Generating Forecasts</a></li>
+<li class="chapter" data-level="10.1" data-path="forecasting.html"><a href="forecasting.html#time-series-data"><i class="fa fa-check"></i><b>10.1</b> Time Series Data</a></li>
+<li class="chapter" data-level="10.2" data-path="forecasting.html"><a href="forecasting.html#forecasting-process"><i class="fa fa-check"></i><b>10.2</b> Forecasting Process</a></li>
+<li class="chapter" data-level="10.3" data-path="forecasting.html"><a href="forecasting.html#real-data"><i class="fa fa-check"></i><b>10.3</b> Real Data</a></li>
+<li class="chapter" data-level="10.4" data-path="forecasting.html"><a href="forecasting.html#judgemental-forecasting"><i class="fa fa-check"></i><b>10.4</b> Judgemental Forecasting</a></li>
+<li class="chapter" data-level="10.5" data-path="forecasting.html"><a href="forecasting.html#exponential-smoothing"><i class="fa fa-check"></i><b>10.5</b> Exponential Smoothing</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="forecasting.html"><a href="forecasting.html#implementing-hes"><i class="fa fa-check"></i><b>10.5.1</b> Implementing HES</a></li>
+<li class="chapter" data-level="10.5.2" data-path="forecasting.html"><a href="forecasting.html#finding-best-alpha-and-gamma-values"><i class="fa fa-check"></i><b>10.5.2</b> Finding best alpha and gamma values</a></li>
+<li class="chapter" data-level="10.5.3" data-path="forecasting.html"><a href="forecasting.html#generating-forecasts"><i class="fa fa-check"></i><b>10.5.3</b> Generating Forecasts</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i>Exercises</a></li>
-<li class="chapter" data-level="10.6" data-path="practical-application.html"><a href="practical-application.html"><i class="fa fa-check"></i><b>10.6</b> Practical Application</a></li>
-<li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
+<li class="chapter" data-level="" data-path="forecasting.html"><a href="forecasting.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="10.6" data-path="forecasting.html"><a href="forecasting.html#practical-application"><i class="fa fa-check"></i><b>10.6</b> Practical Application</a></li>
+<li class="chapter" data-level="10.7" data-path="forecasting.html"><a href="forecasting.html#forecast-evaluation"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="chapwebapps.html"><a href="chapwebapps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
-<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
-<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
-<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
-<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
+<li class="chapter" data-level="11.1" data-path="chapwebapps.html"><a href="chapwebapps.html#introduction"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="chapwebapps.html"><a href="chapwebapps.html#ui-user-interface"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="chapwebapps.html"><a href="chapwebapps.html#server"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
+<li class="chapter" data-level="" data-path="chapwebapps.html"><a href="chapwebapps.html#exercises-9"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="chapwebapps.html"><a href="chapwebapps.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
 <li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
 <li class="chapter" data-level="" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i>Literature</a></li>
 <li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html"><i class="fa fa-check"></i>Programming Project</a><ul>
-<li class="chapter" data-level="" data-path="topic-1-web-scraping.html"><a href="topic-1-web-scraping.html"><i class="fa fa-check"></i>Topic 1: Web Scraping</a></li>
-<li class="chapter" data-level="" data-path="topic-2-forecasting.html"><a href="topic-2-forecasting.html"><i class="fa fa-check"></i>Topic 2: Forecasting</a></li>
-<li class="chapter" data-level="" data-path="topic-3-algorithm-implementation-data-analysis.html"><a href="topic-3-algorithm-implementation-data-analysis.html"><i class="fa fa-check"></i>Topic 3: Algorithm Implementation &amp; Data Analysis</a></li>
-<li class="chapter" data-level="" data-path="topic-4-custom-topic.html"><a href="topic-4-custom-topic.html"><i class="fa fa-check"></i>Topic 4: Custom Topic</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-1-web-scraping"><i class="fa fa-check"></i>Topic 1: Web Scraping</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-2-forecasting"><i class="fa fa-check"></i>Topic 2: Forecasting</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-3-algorithm-implementation-data-analysis"><i class="fa fa-check"></i>Topic 3: Algorithm Implementation &amp; Data Analysis</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-4-custom-topic"><i class="fa fa-check"></i>Topic 4: Custom Topic</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="bug-bounty.html"><a href="bug-bounty.html"><i class="fa fa-check"></i><b>A</b> Bug Bounty</a><ul>
-<li class="chapter" data-level="" data-path="leaderboard.html"><a href="leaderboard.html"><i class="fa fa-check"></i>Leaderboard</a></li>
-<li class="chapter" data-level="" data-path="what-is-this.html"><a href="what-is-this.html"><i class="fa fa-check"></i>What is this?</a></li>
+<li class="chapter" data-level="" data-path="bug-bounty.html"><a href="bug-bounty.html#leaderboard"><i class="fa fa-check"></i>Leaderboard</a></li>
+<li class="chapter" data-level="" data-path="bug-bounty.html"><a href="bug-bounty.html#what-is-this"><i class="fa fa-check"></i>What is this?</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="test-exam.html"><a href="test-exam.html"><i class="fa fa-check"></i><b>B</b> Test Exam</a><ul>
-<li class="chapter" data-level="B.1" data-path="additional-exercises.html"><a href="additional-exercises.html"><i class="fa fa-check"></i><b>B.1</b> Additional Exercises</a><ul>
-<li class="chapter" data-level="B.1.1" data-path="additional-exercises.html"><a href="additional-exercises.html#exercise-i"><i class="fa fa-check"></i><b>B.1.1</b> Exercise I</a></li>
+<li class="chapter" data-level="B.1" data-path="test-exam.html"><a href="test-exam.html#additional-exercises"><i class="fa fa-check"></i><b>B.1</b> Additional Exercises</a><ul>
+<li class="chapter" data-level="B.1.1" data-path="test-exam.html"><a href="test-exam.html#exercise-i"><i class="fa fa-check"></i><b>B.1.1</b> Exercise I</a></li>
 </ul></li>
-<li class="chapter" data-level="B.2" data-path="exercise-ii.html"><a href="exercise-ii.html"><i class="fa fa-check"></i><b>B.2</b> Exercise II</a><ul>
-<li class="chapter" data-level="B.2.1" data-path="exercise-ii.html"><a href="exercise-ii.html#exercise-iii"><i class="fa fa-check"></i><b>B.2.1</b> Exercise III</a></li>
+<li class="chapter" data-level="B.2" data-path="test-exam.html"><a href="test-exam.html#exercise-ii"><i class="fa fa-check"></i><b>B.2</b> Exercise II</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="test-exam.html"><a href="test-exam.html#exercise-iii"><i class="fa fa-check"></i><b>B.2.1</b> Exercise III</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -384,14 +384,320 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="gfx/gif/bitcoincorewalletsync.gif" width="70%" style="display: block; margin: auto;" /></p>
 <p>Cryptocurrencies, as we know them today, were introduced to the world with a whitepaper entitled <a href="https://bitcoin.org/bitcoin.pdf">“Bitcoin: A Peer-to-Peer Electronic Cash System”</a> in 2008 by Satoshi Nakamoto. The paper promises nothing more than a decentralized, incorruptible database of monetary transactions that revolutionizes the concept of trust by eradicating third parties like banks, clearing agencies or lawyers. From there on the idea started to grow, spread widely and create enormous expectations so that the underlying technology - the blockchain - reached its peak of inflated expectations just before dropping hard with the bitcoin currency into the trough of disillusionment. While many papers have been written that discuss potential use cases and disruptive scenarios for the blockchain, very few actually understand the underlying working principles. While the basic idea is quite intuitive and easy to sell, the question of how blockchains actually work on a technical level is a bit harder to understand. Programming and developing a small demo blockchain is, however, the best way to understand the underlying technology and is a great programming exercise.</p>
 <p>The goal of any blockchain is to store data in a decentralized and secure (meaning not manipulatable) way. In the case of cryptocurrencies, this data is usually multiple financial transactions between two parties. Obviously, the general principle is not limited to this use-case. As the word <strong>block</strong>-<strong>chain</strong> suggests, the construction principle is a chain of (data) blocks. However to understand what chains these portions of data we need to explain the concept of hash functions first. In order to know why and how people are participating in the creation of blockchains and why a blockchain focusses on security, the concept of a proof-of-work (PoW) algorithm needs to be discussed.</p>
+<div id="hash-functions" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.1</span> Hash Functions<a href="blockchain.html#hash-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A hash function is any function that maps data of arbitrary size onto data of a fixed size. The values returned by a hash function are called hash values, hash codes, digests, or simply hashes. The most common application of hash functions is in cryptography. A cryptographic hash function allows verifying whether the input data maps onto a given hash value. However, when the input is unknown it is very difficult or (almost) impossible to reconstruct it from a given hash value. The following figure exemplarily illustrates the working principle of hash functions. The four inputs are mapped to one of the outputs. While the inputs show varying lengths (and can even be whole documents indicated by the word processor logo) the output is always a decimal number ranging from zero to eight (3-bit hash value).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-253"></span>
+<img src="gfx/CHAP-HashFun.png" alt="Hash Function" width="100%" />
+<p class="caption">
+Figure 9.1: Hash Function
+</p>
+</div>
+<p>A common example of hash functions besides blockchains is storing passwords. When a user creates a user account his password is not kept in clear text, but the hash values are the only piece of information about the password saved in the data basis. Even if an attacker or hacker gains access to the database and manages to steal a copy of the information he can not log into a user’s account, because the hash value is worthless to him and cannot be used to reconstruct the password. This is exemplified by the following R code, which uses the <code>SHA-256</code> algorithm to create hash values. Contrary to the simple example the hash value is not 3 but 256 bits long. The shown hash values are coded as hexadecimal values.</p>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="blockchain.html#cb653-1"></a><span class="kw">library</span>(digest) <span class="co"># Load package &#39;digest&#39; that implements hash functions</span></span>
+<span id="cb653-2"><a href="blockchain.html#cb653-2"></a></span>
+<span id="cb653-3"><a href="blockchain.html#cb653-3"></a>accessGranted &lt;-<span class="st"> </span><span class="cf">function</span>(passwd){</span>
+<span id="cb653-4"><a href="blockchain.html#cb653-4"></a>  hash &lt;-<span class="st"> </span><span class="kw">digest</span>(passwd, <span class="dt">algo =</span> <span class="st">&quot;sha256&quot;</span>)</span>
+<span id="cb653-5"><a href="blockchain.html#cb653-5"></a>  databasis &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;27f16d4aece13cf0443ebfd7deb7be198d0aa6adb637ca37b3c72f4fb2e01d7e&quot;</span>,</span>
+<span id="cb653-6"><a href="blockchain.html#cb653-6"></a>                 <span class="st">&quot;f92733254bac134a89313b489af49a20f8d0f76543824f503361ce3f92ca4d25&quot;</span>,</span>
+<span id="cb653-7"><a href="blockchain.html#cb653-7"></a>                 <span class="st">&quot;67f9a8c826a4e3d958d265b999030e85632cf2a2f65781cab08dfbe338f434f1&quot;</span>)</span>
+<span id="cb653-8"><a href="blockchain.html#cb653-8"></a>  access &lt;-<span class="st"> </span>hash <span class="op">%in%</span><span class="st"> </span>databasis</span>
+<span id="cb653-9"><a href="blockchain.html#cb653-9"></a>  <span class="kw">return</span>(access)</span>
+<span id="cb653-10"><a href="blockchain.html#cb653-10"></a>}</span>
+<span id="cb653-11"><a href="blockchain.html#cb653-11"></a></span>
+<span id="cb653-12"><a href="blockchain.html#cb653-12"></a><span class="kw">accessGranted</span>(<span class="dt">passwd =</span> <span class="st">&quot;uberpassword&quot;</span>)     <span class="co"># Guess No. 1</span></span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb655-1"><a href="blockchain.html#cb655-1"></a><span class="kw">accessGranted</span>(<span class="dt">passwd =</span> <span class="st">&quot;administrator&quot;</span>)    <span class="co"># Guess No. 2</span></span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb657-1"><a href="blockchain.html#cb657-1"></a><span class="co"># Not even using a &#39;stolen&#39; hash value as password helps</span></span>
+<span id="cb657-2"><a href="blockchain.html#cb657-2"></a><span class="kw">accessGranted</span>(<span class="dt">passwd =</span> <span class="st">&quot;27f16d4aece13cf0443ebfd7deb7be198d0aa6adb637ca37b3c72f4fb2e01d7e&quot;</span>)</span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<p>Obviously, the main feature of cryptographic hash functions is their irreversibility, which is strongly dependent on the actual algorithm used to create the hash value. Making and breaking hash functions is an active area of research which has revealed many vulnerabilities and lead to some hashing algorithms being insecure. The algorithm used in the examples above is called “SHA-256” and is considered secure as of today (14.01.2023). Other popular algorithms such as <code>MD5</code>or the algorithms used for storing Windows XP Passwords <code>LM-Hash</code> and <code>NTLM-Hash</code> are compromised and insecure, meaning that the hash value can be used to recover the password.</p>
+<div id="exercises-6" class="section level3 unnumbered hasAnchor">
+<h3>Exercises<a href="blockchain.html#exercises-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="gfx/CH00-ExercisesHeader.png" width="100%" style="display: block; margin: auto;" /></p>
+
+<div class="rmdexercise">
+Can you find a password that causes the function <code>accessGranted</code> to return <code>TRUE</code>?
+</div>
+
+
+<div class="rmdexercise">
+<p>The ten most widely used passwords are <em>123456</em>, <em>123456789</em>, <em>qwerty</em>, <em>password</em>, <em>111111</em>, <em>12345678</em>, <em>abc123</em> and <em>1234567</em>. Which of these password produces the following <code>SHA-256</code> hash:</p>
+<code>27f16d4aece13cf0443ebfd7deb7be198d0aa6adb637ca37b3c72f4fb2e01d7e</code>
+</div>
+
+</div>
+</div>
+<div id="blocks" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.2</span> Blocks<a href="blockchain.html#blocks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>After clarifying the basic concepts let us discuss the actual blockchain data. As mentioned earlier a block in the case of cryptocurrencies contains monetary transactions. However, as use cases vary so can the type of data stored into the blockchain. Using transactional data is only one example, it is, however, the most popular one. Additionally, to the transaction data a block needs to contain some additional information:</p>
+<ul>
+<li>Index: A number identifying the position of the block in the chain.</li>
+<li>Timestamp: The time at which the block was generated.</li>
+<li>Previous Hash: Hash value calculated over the last block.</li>
+<li>Hash: Hash value of the current block.</li>
+<li>Difficulty: Central parameter for the proof of work algorithm.</li>
+<li>Nonce: A number that can be randomly set; required for the proof of work algorithm.</li>
+</ul>
+<p>Let us create the first block of the chain. This is usually called the genesis block. As it cannot contain a hash over previous blocks, the value for <code>previousHash</code> is set to <code>NULL</code>.</p>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="blockchain.html#cb659-1"></a>genesisBlock &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(</span>
+<span id="cb659-2"><a href="blockchain.html#cb659-2"></a>  <span class="dt">index =</span> <span class="dv">1</span>,</span>
+<span id="cb659-3"><a href="blockchain.html#cb659-3"></a>  <span class="dt">timestamp =</span> <span class="kw">Sys.time</span>(),</span>
+<span id="cb659-4"><a href="blockchain.html#cb659-4"></a>  <span class="dt">data =</span> <span class="st">&quot;Genesis&quot;</span>,</span>
+<span id="cb659-5"><a href="blockchain.html#cb659-5"></a>  <span class="dt">previousHash =</span> <span class="ot">NULL</span>,</span>
+<span id="cb659-6"><a href="blockchain.html#cb659-6"></a>  <span class="dt">difficulty =</span> <span class="dv">0</span>,</span>
+<span id="cb659-7"><a href="blockchain.html#cb659-7"></a>  <span class="dt">nonce =</span> <span class="dv">1</span>,</span>
+<span id="cb659-8"><a href="blockchain.html#cb659-8"></a>  <span class="dt">hash =</span> <span class="ot">NULL</span>),<span class="dt">class=</span><span class="kw">c</span>(<span class="st">&quot;block&quot;</span>,<span class="st">&quot;list&quot;</span>))</span></code></pre></div>
+<p>For a nice printout on the console and a compact form of the following, we define the following printing function for our block. To keep the output compact even if long data objects are stored into the block, we suppress displaying the data by default.</p>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="blockchain.html#cb660-1"></a>print.block &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">showdata=</span>F){</span>
+<span id="cb660-2"><a href="blockchain.html#cb660-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;:::::::::: BLOCKCHAIN BLOCK&quot;</span>,x<span class="op">$</span>index,<span class="st">&quot;:::::::::: </span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb660-3"><a href="blockchain.html#cb660-3"></a>  <span class="kw">cat</span>(<span class="st">&quot;Timestamp:&quot;</span>, x<span class="op">$</span>timestamp,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb660-4"><a href="blockchain.html#cb660-4"></a>  <span class="kw">cat</span>(<span class="st">&quot;Previous Hash:&quot;</span>, x<span class="op">$</span>previousHash,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb660-5"><a href="blockchain.html#cb660-5"></a>  <span class="kw">cat</span>(<span class="st">&quot;Difficulty:&quot;</span>, x<span class="op">$</span>difficulty,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb660-6"><a href="blockchain.html#cb660-6"></a>  <span class="kw">cat</span>(<span class="st">&quot;Hash:&quot;</span>, x<span class="op">$</span>hash,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb660-7"><a href="blockchain.html#cb660-7"></a>  <span class="cf">if</span>(showdata){</span>
+<span id="cb660-8"><a href="blockchain.html#cb660-8"></a>    <span class="kw">cat</span>(<span class="st">&quot;Data:&quot;</span>,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb660-9"><a href="blockchain.html#cb660-9"></a>    <span class="kw">print</span>(x<span class="op">$</span>data)</span>
+<span id="cb660-10"><a href="blockchain.html#cb660-10"></a>  }</span>
+<span id="cb660-11"><a href="blockchain.html#cb660-11"></a>}</span></code></pre></div>
+<p>Using a simple function, that concatenates the information from the given block and calculates a hash value we can complete the information needed for the block.</p>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="blockchain.html#cb661-1"></a>hashBlock &lt;-<span class="st"> </span><span class="cf">function</span>(block){</span>
+<span id="cb661-2"><a href="blockchain.html#cb661-2"></a>  block<span class="op">$</span>hash &lt;-<span class="st"> </span><span class="kw">digest</span>(<span class="kw">c</span>(block<span class="op">$</span>index,</span>
+<span id="cb661-3"><a href="blockchain.html#cb661-3"></a>                         block<span class="op">$</span>timestamp,</span>
+<span id="cb661-4"><a href="blockchain.html#cb661-4"></a>                         block<span class="op">$</span>data,</span>
+<span id="cb661-5"><a href="blockchain.html#cb661-5"></a>                         block<span class="op">$</span>previousHash,</span>
+<span id="cb661-6"><a href="blockchain.html#cb661-6"></a>                         block<span class="op">$</span>difficulty,</span>
+<span id="cb661-7"><a href="blockchain.html#cb661-7"></a>                         block<span class="op">$</span>nonce), <span class="st">&quot;sha256&quot;</span>)</span>
+<span id="cb661-8"><a href="blockchain.html#cb661-8"></a>  <span class="kw">return</span>(block)</span>
+<span id="cb661-9"><a href="blockchain.html#cb661-9"></a>}</span>
+<span id="cb661-10"><a href="blockchain.html#cb661-10"></a></span>
+<span id="cb661-11"><a href="blockchain.html#cb661-11"></a>genesisBlockHashed &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(genesisBlock)</span>
+<span id="cb661-12"><a href="blockchain.html#cb661-12"></a>genesisBlockHashed</span></code></pre></div>
+<pre><code>#R&gt; :::::::::: BLOCKCHAIN BLOCK 1 :::::::::: 
+#R&gt; Timestamp: 1673695693 
+#R&gt; Previous Hash: 
+#R&gt; Difficulty: 0 
+#R&gt; Hash: 46a441efca4813a77a51e0fd65eeae0234f86a827cee18ad06ee621373e52004</code></pre>
+</div>
+<div id="proof-of-work-pow" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.3</span> Proof of Work (PoW)<a href="blockchain.html#proof-of-work-pow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A proof of work algorithm is an economic measure designed to prevent service abuses, by presenting a puzzle (computational challenge) to the service requester. Solving this puzzle is usually difficult and/or time-consuming but a particular service is only granted if the right solution to the puzzle is presented. Therefore, a proof of work mechanism is an effective way to avoid too many requests to a service. The mentioned puzzle can be for example based on a random process with low probability so that a lot of trial and error is required before a valid solution can be found. However, while there are many random processes with low probability a proof of work needs to have a valid and verifiable solution. The most widely used proof of work system is called Hashcash and implemented into the Bitcoin protocol.</p>
+<div id="simple-pow-example" class="section level3 unnumbered hasAnchor">
+<h3>Simple PoW Example<a href="blockchain.html#simple-pow-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For explanatory purposes, we start by using a simple proof of work system that is easy to understand and easily implementable. Remember that the work to obtain the proof must be feasible on the side of the service requester, but easy to check for the service provider. For our example, we require a service requester to find a number that is divisible by 99 and a given and previously known proof number, which can be done with the following two functions.</p>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="blockchain.html#cb663-1"></a><span class="co"># Calculate a new proof of work</span></span>
+<span id="cb663-2"><a href="blockchain.html#cb663-2"></a>proofOfWork &lt;-<span class="st"> </span><span class="cf">function</span>(lastProof){</span>
+<span id="cb663-3"><a href="blockchain.html#cb663-3"></a>  proof &lt;-<span class="st"> </span>lastProof <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb663-4"><a href="blockchain.html#cb663-4"></a>  <span class="cf">while</span> (<span class="op">!</span><span class="kw">isProofValid</span>(proof, lastProof)){</span>
+<span id="cb663-5"><a href="blockchain.html#cb663-5"></a>    proof &lt;-<span class="st"> </span>proof <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="co"># Increment proof by 1 until a valid solution is found.</span></span>
+<span id="cb663-6"><a href="blockchain.html#cb663-6"></a>  }</span>
+<span id="cb663-7"><a href="blockchain.html#cb663-7"></a>  <span class="kw">return</span>(proof)</span>
+<span id="cb663-8"><a href="blockchain.html#cb663-8"></a>}</span>
+<span id="cb663-9"><a href="blockchain.html#cb663-9"></a></span>
+<span id="cb663-10"><a href="blockchain.html#cb663-10"></a><span class="co"># Check if a proof of work is valid</span></span>
+<span id="cb663-11"><a href="blockchain.html#cb663-11"></a>isProofValid &lt;-<span class="st"> </span><span class="cf">function</span>(proof, lastProof){</span>
+<span id="cb663-12"><a href="blockchain.html#cb663-12"></a>  <span class="kw">return</span>(proof <span class="op">%%</span><span class="st"> </span><span class="dv">99</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;&amp;</span><span class="st"> </span>proof <span class="op">%%</span><span class="st"> </span>lastProof <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</span>
+<span id="cb663-13"><a href="blockchain.html#cb663-13"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="blockchain.html#cb664-1"></a>P1 &lt;-<span class="st"> </span><span class="dv">1</span>                             <span class="co"># Initial Proof</span></span>
+<span id="cb664-2"><a href="blockchain.html#cb664-2"></a>P2 &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(<span class="dt">lastProof =</span> P1)   <span class="co"># Second Proof</span></span>
+<span id="cb664-3"><a href="blockchain.html#cb664-3"></a>P3 &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(<span class="dt">lastProof =</span> P2)   <span class="co"># Third Proof</span></span>
+<span id="cb664-4"><a href="blockchain.html#cb664-4"></a>P4 &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(<span class="dt">lastProof =</span> P3)   <span class="co"># Fourth Proof</span></span>
+<span id="cb664-5"><a href="blockchain.html#cb664-5"></a><span class="kw">c</span>(P1, P2, P3, P4)</span></code></pre></div>
+<pre><code>#R&gt; [1]   1  99 198 396</code></pre>
+<p>While the example hopefully illustrates the principle, it must be kept in mind that this is not a proper proof of work algorithm. It can be easily seen that the sequence of proof numbers follows an identifiable pattern and thus can be calculated directly ( and not spending as much CPU time as desired for the solution).</p>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="blockchain.html#cb666-1"></a>pvec &lt;-<span class="st"> </span><span class="dv">1</span>                     <span class="co"># Initial Proof</span></span>
+<span id="cb666-2"><a href="blockchain.html#cb666-2"></a><span class="cf">for</span>(idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){</span>
+<span id="cb666-3"><a href="blockchain.html#cb666-3"></a>  pvec &lt;-<span class="st"> </span><span class="kw">append</span>(pvec,<span class="kw">proofOfWork</span>(pvec[idx]))</span>
+<span id="cb666-4"><a href="blockchain.html#cb666-4"></a>}</span>
+<span id="cb666-5"><a href="blockchain.html#cb666-5"></a><span class="kw">plot</span>(<span class="dt">x=</span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(pvec),<span class="dt">y=</span>pvec, </span>
+<span id="cb666-6"><a href="blockchain.html#cb666-6"></a>     <span class="dt">xlab=</span><span class="st">&quot;Steps of Proofs&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Proof Number&quot;</span>)</span></code></pre></div>
+<p><img src="bchwtz-cswr_files/figure-html/unnamed-chunk-264-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Additionally to the predictability of the proof numbers in the simple algorithm our example has numerous additional disadvantages that disqualify it for productive use. In the case of the Hashcash algorithm, the challenge is actually much more randomized and based on hash functions. The challenge is to generate hash values that contain a certain amount of leading zeros. Additionally, there needs to be a mechanism to account for growing computing power, so that new solutions to provided puzzles are found in approximately equal time slices. This in turns means that the difficulty of the puzzles needs to be adjustable.</p>
+</div>
+<div id="combining-pow-and-hashing" class="section level3 unnumbered hasAnchor">
+<h3>Combining PoW and Hashing<a href="blockchain.html#combining-pow-and-hashing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A good proof of work algorithm for cryptocurrencies should not only be adjustable in terms of its difficulty but should also be random, so that it is not possible to predict its outcome and save computing power. It is therefore comparable to a lottery. A more in-depth example for a proof of work algorithm is shown in the following code snippet.</p>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="blockchain.html#cb667-1"></a>proofOfWork &lt;-<span class="st"> </span><span class="cf">function</span>(block){</span>
+<span id="cb667-2"><a href="blockchain.html#cb667-2"></a>  hashedBlock &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(block)</span>
+<span id="cb667-3"><a href="blockchain.html#cb667-3"></a>  targetHashBeginning &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="kw">rep</span>(<span class="dv">0</span>, block<span class="op">$</span>difficulty),<span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb667-4"><a href="blockchain.html#cb667-4"></a>  <span class="cf">while</span>( <span class="op">!</span>(<span class="kw">substr</span>(hashedBlock<span class="op">$</span>hash,<span class="dv">1</span>,block<span class="op">$</span>difficulty) <span class="op">==</span><span class="st"> </span>targetHashBeginning) ){</span>
+<span id="cb667-5"><a href="blockchain.html#cb667-5"></a>    hashedBlock<span class="op">$</span>nonce &lt;-<span class="st"> </span>hashedBlock<span class="op">$</span>nonce <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb667-6"><a href="blockchain.html#cb667-6"></a>    hashedBlock &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(hashedBlock)</span>
+<span id="cb667-7"><a href="blockchain.html#cb667-7"></a>  }</span>
+<span id="cb667-8"><a href="blockchain.html#cb667-8"></a>  <span class="kw">return</span>(hashedBlock)</span>
+<span id="cb667-9"><a href="blockchain.html#cb667-9"></a>}</span></code></pre></div>
+<p>For a practical example let us use the genesis block that we just created as the starting point for our own blockchain and feed it to the new <code>proofOfWork</code> function after setting the difficulty to a moderate value.</p>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="blockchain.html#cb668-1"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock))</span></code></pre></div>
+<pre><code>#R&gt;    user  system elapsed 
+#R&gt;   0.013   0.000   0.013</code></pre>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="blockchain.html#cb670-1"></a>genesisBlock<span class="op">$</span>difficulty &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb670-2"><a href="blockchain.html#cb670-2"></a><span class="kw">system.time</span>(<span class="kw">proofOfWork</span>(genesisBlock)) <span class="co"># Execute again with increased difficulty</span></span></code></pre></div>
+<pre><code>#R&gt;    user  system elapsed 
+#R&gt;   0.059   0.000   0.059</code></pre>
+</div>
+<div id="exercises-7" class="section level3 unnumbered hasAnchor">
+<h3>Exercises<a href="blockchain.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="gfx/CH00-ExercisesHeader.png" width="100%" style="display: block; margin: auto;" /></p>
+
+<div class="rmdexercise">
+<p>Please explain the principle of the new and more complex <code>proofOfWork</code> function.</p>
+</div>
+
+</div>
+</div>
+<div id="chaining-blocks" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.4</span> Chaining Blocks<a href="blockchain.html#chaining-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Due to the fact that the hash for each block considers not only the core information like index, timestamp and the data but also the hash of the previous block, applying the discussed process repeatedly leads to a chain of blocks. This chain is built on all information from all previous blocks due to the hashing process, meaning that one can only calculate the valid hash if one knows the correct and very easily verifiable hash from the block before. This leads to an unbreakable chain that proves the integrity of all information, changing prior information requires to recalculate all hashes. Let us put together what we learned and build our first block chain starting with the already generated genesis block.</p>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="blockchain.html#cb672-1"></a>genesisBlockHashed</span></code></pre></div>
+<pre><code>#R&gt; :::::::::: BLOCKCHAIN BLOCK 1 :::::::::: 
+#R&gt; Timestamp: 1673695693 
+#R&gt; Previous Hash: 
+#R&gt; Difficulty: 0 
+#R&gt; Hash: 46a441efca4813a77a51e0fd65eeae0234f86a827cee18ad06ee621373e52004</code></pre>
+<p>Let us assume that we received a single transaction request that needs to be included in the second block of the blockchain. The following transaction mimics the first bitcoin transaction, where 10.000 bitcoins were used to buy two pizzas at a Papa Johns restaurant. The next transaction is just another example that we can include in the third block to extend our chain a little more.</p>
+<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="blockchain.html#cb674-1"></a>transaction.b2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sender=</span><span class="st">&quot;Papa&quot;</span>, <span class="dt">Receiver=</span><span class="st">&quot;John&quot;</span>, <span class="dt">Amount=</span><span class="dv">10000</span>)</span>
+<span id="cb674-2"><a href="blockchain.html#cb674-2"></a>transaction.b2</span></code></pre></div>
+<pre><code>#R&gt;   Sender Receiver Amount
+#R&gt; 1   Papa     John  10000</code></pre>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="blockchain.html#cb676-1"></a>transaction.b3 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sender=</span><span class="st">&quot;Larry&quot;</span>, <span class="dt">Receiver=</span><span class="st">&quot;Tim&quot;</span>, <span class="dt">Amount=</span><span class="dv">500</span>)</span>
+<span id="cb676-2"><a href="blockchain.html#cb676-2"></a>transaction.b3</span></code></pre></div>
+<pre><code>#R&gt;   Sender Receiver Amount
+#R&gt; 1  Larry      Tim    500</code></pre>
+<p>Using the function <code>addBlock</code> we can add the transaction to our blockchain.</p>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="blockchain.html#cb678-1"></a>addBlock &lt;-<span class="st"> </span><span class="cf">function</span>(chain, <span class="dt">newdata=</span><span class="ot">NULL</span>, <span class="dt">difficulty=</span><span class="ot">NULL</span>){</span>
+<span id="cb678-2"><a href="blockchain.html#cb678-2"></a>  </span>
+<span id="cb678-3"><a href="blockchain.html#cb678-3"></a>  <span class="co"># Get Information from the existing chain</span></span>
+<span id="cb678-4"><a href="blockchain.html#cb678-4"></a>  blkidx &lt;-<span class="st"> </span><span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>index)</span>
+<span id="cb678-5"><a href="blockchain.html#cb678-5"></a>  </span>
+<span id="cb678-6"><a href="blockchain.html#cb678-6"></a>  <span class="co"># Set difficulty conditional on user input</span></span>
+<span id="cb678-7"><a href="blockchain.html#cb678-7"></a>  <span class="cf">if</span>(<span class="kw">is.null</span>(difficulty)){</span>
+<span id="cb678-8"><a href="blockchain.html#cb678-8"></a>    dfc &lt;-<span class="st"> </span><span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>difficulty)</span>
+<span id="cb678-9"><a href="blockchain.html#cb678-9"></a>    dfc &lt;-<span class="st"> </span>dfc[<span class="kw">which.max</span>(blkidx)]</span>
+<span id="cb678-10"><a href="blockchain.html#cb678-10"></a>  } <span class="cf">else</span> {</span>
+<span id="cb678-11"><a href="blockchain.html#cb678-11"></a>    dfc &lt;-<span class="st"> </span>difficulty</span>
+<span id="cb678-12"><a href="blockchain.html#cb678-12"></a>  }</span>
+<span id="cb678-13"><a href="blockchain.html#cb678-13"></a>  </span>
+<span id="cb678-14"><a href="blockchain.html#cb678-14"></a>  <span class="co"># Generate new block</span></span>
+<span id="cb678-15"><a href="blockchain.html#cb678-15"></a>  newBlock &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(</span>
+<span id="cb678-16"><a href="blockchain.html#cb678-16"></a>    <span class="dt">index =</span> <span class="kw">max</span>(blkidx) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>,</span>
+<span id="cb678-17"><a href="blockchain.html#cb678-17"></a>    <span class="dt">timestamp =</span> <span class="kw">Sys.time</span>(),</span>
+<span id="cb678-18"><a href="blockchain.html#cb678-18"></a>    <span class="dt">data =</span> newdata,</span>
+<span id="cb678-19"><a href="blockchain.html#cb678-19"></a>    <span class="dt">previousHash =</span> chain[[<span class="kw">which.max</span>(blkidx)]]<span class="op">$</span>hash,</span>
+<span id="cb678-20"><a href="blockchain.html#cb678-20"></a>    <span class="dt">hash =</span> <span class="ot">NULL</span>,</span>
+<span id="cb678-21"><a href="blockchain.html#cb678-21"></a>    <span class="dt">difficulty =</span> dfc,</span>
+<span id="cb678-22"><a href="blockchain.html#cb678-22"></a>    <span class="dt">nonce =</span> <span class="dv">1</span>),<span class="dt">class=</span><span class="kw">c</span>(<span class="st">&quot;block&quot;</span>,<span class="st">&quot;list&quot;</span>))</span>
+<span id="cb678-23"><a href="blockchain.html#cb678-23"></a>  </span>
+<span id="cb678-24"><a href="blockchain.html#cb678-24"></a>  <span class="co"># Calculate Proof of Work and add block to the chain</span></span>
+<span id="cb678-25"><a href="blockchain.html#cb678-25"></a>  newBlockHashed &lt;-<span class="st"> </span><span class="kw">proofOfWork</span>(newBlock)</span>
+<span id="cb678-26"><a href="blockchain.html#cb678-26"></a>  chain &lt;-<span class="st"> </span><span class="kw">append</span>(chain, <span class="kw">list</span>(newBlockHashed))</span>
+<span id="cb678-27"><a href="blockchain.html#cb678-27"></a>  <span class="kw">return</span>(chain)</span>
+<span id="cb678-28"><a href="blockchain.html#cb678-28"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="blockchain.html#cb679-1"></a>chain &lt;-<span class="st"> </span><span class="kw">list</span>(genesisBlockHashed)                    <span class="co"># Intialize the Blockchain</span></span>
+<span id="cb679-2"><a href="blockchain.html#cb679-2"></a>chain &lt;-<span class="st"> </span><span class="kw">addBlock</span>(chain, <span class="dt">newdata =</span> transaction.b2)   <span class="co"># Add the transation data</span></span>
+<span id="cb679-3"><a href="blockchain.html#cb679-3"></a>chain &lt;-<span class="st"> </span><span class="kw">addBlock</span>(chain, <span class="dt">newdata =</span> transaction.b3)   <span class="co"># Add the transation data</span></span>
+<span id="cb679-4"><a href="blockchain.html#cb679-4"></a>chain                                                <span class="co"># Block Chain with 3 blocks</span></span></code></pre></div>
+<pre><code>#R&gt; [[1]]
+#R&gt; :::::::::: BLOCKCHAIN BLOCK 1 :::::::::: 
+#R&gt; Timestamp: 1673695693 
+#R&gt; Previous Hash: 
+#R&gt; Difficulty: 0 
+#R&gt; Hash: 46a441efca4813a77a51e0fd65eeae0234f86a827cee18ad06ee621373e52004 
+#R&gt; 
+#R&gt; [[2]]
+#R&gt; :::::::::: BLOCKCHAIN BLOCK 2 :::::::::: 
+#R&gt; Timestamp: 1673695694 
+#R&gt; Previous Hash: 46a441efca4813a77a51e0fd65eeae0234f86a827cee18ad06ee621373e52004 
+#R&gt; Difficulty: 0 
+#R&gt; Hash: 5eb8e2f3bda38ec91017a7ed0361d29931071e63a635bf2f4f363842270a3d18 
+#R&gt; 
+#R&gt; [[3]]
+#R&gt; :::::::::: BLOCKCHAIN BLOCK 3 :::::::::: 
+#R&gt; Timestamp: 1673695694 
+#R&gt; Previous Hash: 5eb8e2f3bda38ec91017a7ed0361d29931071e63a635bf2f4f363842270a3d18 
+#R&gt; Difficulty: 0 
+#R&gt; Hash: bed743b6ea2cb46e7d2c305b833aa7a2cab0e108c3a2538f92bf85ee343710ec</code></pre>
+</div>
+<div id="security" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.5</span> Security<a href="blockchain.html#security" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>While it should now be already pretty clear that the data in the blockchain is not manipulatable without recalculating all hashes in the chain, we can look at a few examples of what happens when we manipulate information. Considering the discussed principles, we consider two possible manipulation attacks. First one can manipulate the data stored in the blockchain directly. The second approach that we analyze is the case where someone just inserts a block in the chain. We utilize the following two functions that use the hashes to check the integrity of the information of a block and analyze the linkage of the chain.</p>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="blockchain.html#cb681-1"></a>verifyBlock &lt;-<span class="st"> </span><span class="cf">function</span>(block){</span>
+<span id="cb681-2"><a href="blockchain.html#cb681-2"></a>  rehashedBlock &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(block)</span>
+<span id="cb681-3"><a href="blockchain.html#cb681-3"></a>  validHash &lt;-<span class="st"> </span>rehashedBlock<span class="op">$</span>hash <span class="op">==</span><span class="st"> </span>block<span class="op">$</span>hash</span>
+<span id="cb681-4"><a href="blockchain.html#cb681-4"></a>  <span class="kw">return</span>(validHash)</span>
+<span id="cb681-5"><a href="blockchain.html#cb681-5"></a>}</span>
+<span id="cb681-6"><a href="blockchain.html#cb681-6"></a></span>
+<span id="cb681-7"><a href="blockchain.html#cb681-7"></a>verifyChain &lt;-<span class="st"> </span><span class="cf">function</span>(chain){</span>
+<span id="cb681-8"><a href="blockchain.html#cb681-8"></a>  actualHashes &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>hash))</span>
+<span id="cb681-9"><a href="blockchain.html#cb681-9"></a>  previousHashes &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">sapply</span>(chain, <span class="cf">function</span>(x)x<span class="op">$</span>previousHash))</span>
+<span id="cb681-10"><a href="blockchain.html#cb681-10"></a>  hashesLinked &lt;-<span class="st"> </span>previousHashes <span class="op">==</span><span class="st"> </span>actualHashes[<span class="op">-</span><span class="kw">length</span>(actualHashes)]</span>
+<span id="cb681-11"><a href="blockchain.html#cb681-11"></a>  <span class="cf">if</span>(<span class="op">!</span><span class="kw">all</span>(hashesLinked)){</span>
+<span id="cb681-12"><a href="blockchain.html#cb681-12"></a>    <span class="kw">message</span>(<span class="st">&quot;The provided chain is not linked at block index &quot;</span>, </span>
+<span id="cb681-13"><a href="blockchain.html#cb681-13"></a>            <span class="kw">which</span>(<span class="op">!</span>hashesLinked),<span class="st">&quot; (link manipulation)!&quot;</span>)</span>
+<span id="cb681-14"><a href="blockchain.html#cb681-14"></a>    <span class="kw">return</span>(<span class="kw">all</span>(hashesLinked))</span>
+<span id="cb681-15"><a href="blockchain.html#cb681-15"></a>  }</span>
+<span id="cb681-16"><a href="blockchain.html#cb681-16"></a>  blockVerification &lt;-<span class="st"> </span><span class="kw">sapply</span>(chain,verifyBlock)</span>
+<span id="cb681-17"><a href="blockchain.html#cb681-17"></a>  validChain &lt;-<span class="st"> </span><span class="kw">all</span>(blockVerification)</span>
+<span id="cb681-18"><a href="blockchain.html#cb681-18"></a>  <span class="cf">if</span> (<span class="kw">any</span>(<span class="op">!</span>blockVerification)){</span>
+<span id="cb681-19"><a href="blockchain.html#cb681-19"></a>    <span class="kw">message</span>(<span class="st">&quot;The chain broke at block index &quot;</span>, </span>
+<span id="cb681-20"><a href="blockchain.html#cb681-20"></a>            <span class="kw">which</span>(<span class="op">!</span>blockVerification),<span class="st">&quot; (block manipulation)!&quot;</span>)</span>
+<span id="cb681-21"><a href="blockchain.html#cb681-21"></a>  }</span>
+<span id="cb681-22"><a href="blockchain.html#cb681-22"></a>  <span class="kw">return</span>(validChain)</span>
+<span id="cb681-23"><a href="blockchain.html#cb681-23"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="blockchain.html#cb682-1"></a><span class="kw">verifyBlock</span>(chain[[<span class="dv">2</span>]])   <span class="co"># Check block 2 of the chain</span></span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="blockchain.html#cb684-1"></a><span class="kw">verifyChain</span>(chain)        <span class="co"># Check the entire chain</span></span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div id="manipulation-1" class="section level3 unnumbered hasAnchor">
+<h3>Manipulation 1<a href="blockchain.html#manipulation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As the entire information of the blockchain is freely available on the internet and everybody can download it, everybody can try to manipulate it as well.</p>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="blockchain.html#cb686-1"></a><span class="co"># Manipulate amount for first transaction in block 2</span></span>
+<span id="cb686-2"><a href="blockchain.html#cb686-2"></a>evilchain &lt;-<span class="st"> </span>chain</span>
+<span id="cb686-3"><a href="blockchain.html#cb686-3"></a>evilchain[[<span class="dv">2</span>]]<span class="op">$</span>data<span class="op">$</span>Amount[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">9999</span> </span>
+<span id="cb686-4"><a href="blockchain.html#cb686-4"></a></span>
+<span id="cb686-5"><a href="blockchain.html#cb686-5"></a><span class="kw">verifyBlock</span>(evilchain[[<span class="dv">2</span>]])</span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="blockchain.html#cb688-1"></a><span class="kw">verifyChain</span>(evilchain)</span></code></pre></div>
+<pre><code>#R&gt; The chain broke at block index 2 (block manipulation)!</code></pre>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+</div>
+<div id="manipulation-2" class="section level3 unnumbered hasAnchor">
+<h3>Manipulation 2<a href="blockchain.html#manipulation-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us now inject a block that contains transactional data to steal money.</p>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="blockchain.html#cb691-1"></a>evilBlock &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(</span>
+<span id="cb691-2"><a href="blockchain.html#cb691-2"></a>  <span class="dt">index =</span> <span class="dv">2</span>,</span>
+<span id="cb691-3"><a href="blockchain.html#cb691-3"></a>  <span class="dt">timestamp =</span> <span class="kw">Sys.time</span>(),</span>
+<span id="cb691-4"><a href="blockchain.html#cb691-4"></a>  <span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">Sender=</span><span class="st">&quot;Everyone&quot;</span>, <span class="dt">Receiver=</span><span class="st">&quot;Me!&quot;</span>, <span class="dt">Amount=</span><span class="dv">5</span>),</span>
+<span id="cb691-5"><a href="blockchain.html#cb691-5"></a>  <span class="dt">previousHash =</span> chain[[<span class="dv">1</span>]]<span class="op">$</span>hash,</span>
+<span id="cb691-6"><a href="blockchain.html#cb691-6"></a>  <span class="dt">difficulty =</span> <span class="dv">0</span>,</span>
+<span id="cb691-7"><a href="blockchain.html#cb691-7"></a>  <span class="dt">nonce =</span> <span class="dv">1</span>,</span>
+<span id="cb691-8"><a href="blockchain.html#cb691-8"></a>  <span class="dt">hash =</span> <span class="ot">NULL</span>),<span class="dt">class=</span><span class="kw">c</span>(<span class="st">&quot;block&quot;</span>,<span class="st">&quot;list&quot;</span>))</span>
+<span id="cb691-9"><a href="blockchain.html#cb691-9"></a></span>
+<span id="cb691-10"><a href="blockchain.html#cb691-10"></a>evilBlockHashed &lt;-<span class="st"> </span><span class="kw">hashBlock</span>(evilBlock)</span>
+<span id="cb691-11"><a href="blockchain.html#cb691-11"></a></span>
+<span id="cb691-12"><a href="blockchain.html#cb691-12"></a>evilchain &lt;-<span class="st"> </span><span class="kw">c</span>(chain[<span class="dv">1</span>],<span class="kw">list</span>(evilBlockHashed),chain[<span class="dv">3</span>]) <span class="co"># Substitute block 2</span></span>
+<span id="cb691-13"><a href="blockchain.html#cb691-13"></a></span>
+<span id="cb691-14"><a href="blockchain.html#cb691-14"></a><span class="kw">verifyBlock</span>(evilchain[[<span class="dv">2</span>]])</span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="blockchain.html#cb693-1"></a><span class="kw">verifyChain</span>(evilchain)</span></code></pre></div>
+<pre><code>#R&gt; The provided chain is not linked at block index 2 (link manipulation)!</code></pre>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<p>These examples hopefully help to clarify why the blockchain cannot be easily manipulated. Additionally to the already discussed measures, the blockchain is shared over a network. While it would be easy to manipulate a blockchain and recreate the linkage by re-hashing every block, this disregards the other participants in the system. When a new block is required, the necessary information is sent out to the network and every single participant. Everybody interested in participating can now try to solve the proof of work that is similar to the algorithm we implemented. The process of “finding” a new block by solving the computational puzzle is actually called mining and the goal in case of bitcoin is to generate one new block every 10 minutes (600 seconds). The participant who first solves the puzzle and submits a correct solution to the network is rewarded with bitcoins. Mining new blocks, therefore, creates new bitcoins. New blocks are sent out to all nodes in the network so that everyone has an up to date copy of the blockchain and can verify the results himself. This ensures that the power to create new blocks and bitcoins is and stays decentralized. While there are some more aspects regarding the security of the chain that deal with special properties of and attacks tailored to the network these techniques often exploit imbalances of the distribution of computing power in the network and are not discussed further.</p>
+</div>
+</div>
+<div id="wrap-up" class="section level2 hasAnchor">
+<h2><span class="header-section-number">9.6</span> Wrap up<a href="blockchain.html#wrap-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this session, we created a very small example of a (locally) functional blockchain. Obviously, all explanations are tailored to the goal of getting more in depth of the underlying technology and demystifying the whole thing. The programmed routines outline the basic principles that are also present in the real cryptocurrencies, however, to develop a fully functioning blockchain for production purposes one needs much more components like a client-server infrastructure, encryption of communication, wallets and much more.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="solution.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="hash-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="word-puzzle.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="forecasting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Software Development | Computational Statistics</title>
   <meta name="description" content="Chapter 5 Software Development | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Software Development | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,15 +23,15 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-11-18" />
+<meta name="date" content="2023-01-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="exercises-3.html"/>
-<link rel="next" href="planning.html"/>
+<link rel="prev" href="structure.html"/>
+<link rel="next" href="vectorization.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -138,225 +138,225 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Hello World!</a><ul>
-<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i>Installation</a><ul>
-<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
-<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> The Basics</a><ul>
-<li class="chapter" data-level="1.1" data-path="r-and-the-r-project.html"><a href="r-and-the-r-project.html"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
-<li class="chapter" data-level="1.2" data-path="r-system-and-rstudio.html"><a href="r-system-and-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
-<li class="chapter" data-level="1.3" data-path="first-steps-r-as-calculator.html"><a href="first-steps-r-as-calculator.html"><i class="fa fa-check"></i><b>1.3</b> First Steps: R as Calculator</a></li>
-<li class="chapter" data-level="1.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html"><i class="fa fa-check"></i><b>1.4</b> Objects and Data Structures</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-vectors"><i class="fa fa-check"></i><b>1.4.1</b> Data Structure: Vectors</a></li>
-<li class="chapter" data-level="1.4.2" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-matrices"><i class="fa fa-check"></i><b>1.4.2</b> Data Structure: Matrices</a></li>
-<li class="chapter" data-level="1.4.3" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-strings"><i class="fa fa-check"></i><b>1.4.3</b> Data Structure: Strings</a></li>
-<li class="chapter" data-level="1.4.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-lists-and-data-frames"><i class="fa fa-check"></i><b>1.4.4</b> Data Structure: Lists and Data Frames</a></li>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#r-and-the-r-project"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#r-system-and-rstudio"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#first-steps-r-as-calculator"><i class="fa fa-check"></i><b>1.3</b> First Steps: R as Calculator</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#objects-and-data-structures"><i class="fa fa-check"></i><b>1.4</b> Objects and Data Structures</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#data-structure-vectors"><i class="fa fa-check"></i><b>1.4.1</b> Data Structure: Vectors</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#data-structure-matrices"><i class="fa fa-check"></i><b>1.4.2</b> Data Structure: Matrices</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#data-structure-strings"><i class="fa fa-check"></i><b>1.4.3</b> Data Structure: Strings</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#data-structure-lists-and-data-frames"><i class="fa fa-check"></i><b>1.4.4</b> Data Structure: Lists and Data Frames</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>1.5</b> Functions</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="functions.html"><a href="functions.html#using-functions"><i class="fa fa-check"></i><b>1.5.1</b> Using Functions</a></li>
-<li class="chapter" data-level="1.5.2" data-path="functions.html"><a href="functions.html#writing-functions"><i class="fa fa-check"></i><b>1.5.2</b> Writing Functions</a></li>
-<li class="chapter" data-level="1.5.3" data-path="functions.html"><a href="functions.html#solving-problems"><i class="fa fa-check"></i><b>1.5.3</b> Solving Problems</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#functions"><i class="fa fa-check"></i><b>1.5</b> Functions</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#using-functions"><i class="fa fa-check"></i><b>1.5.1</b> Using Functions</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#writing-functions"><i class="fa fa-check"></i><b>1.5.2</b> Writing Functions</a></li>
+<li class="chapter" data-level="1.5.3" data-path="intro.html"><a href="intro.html#solving-problems"><i class="fa fa-check"></i><b>1.5.3</b> Solving Problems</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>1.6</b> Packages</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="packages.html"><a href="packages.html#packages-with-data"><i class="fa fa-check"></i><b>1.6.1</b> Packages with Data</a></li>
-<li class="chapter" data-level="1.6.2" data-path="packages.html"><a href="packages.html#packages-with-functions"><i class="fa fa-check"></i><b>1.6.2</b> Packages with Functions</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#packages"><i class="fa fa-check"></i><b>1.6</b> Packages</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#packages-with-data"><i class="fa fa-check"></i><b>1.6.1</b> Packages with Data</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#packages-with-functions"><i class="fa fa-check"></i><b>1.6.2</b> Packages with Functions</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="getting-help.html"><a href="getting-help.html"><i class="fa fa-check"></i><b>1.7</b> Getting Help</a><ul>
-<li class="chapter" data-level="1.7.1" data-path="getting-help.html"><a href="getting-help.html#integrated-help-system"><i class="fa fa-check"></i><b>1.7.1</b> Integrated Help System</a></li>
-<li class="chapter" data-level="1.7.2" data-path="getting-help.html"><a href="getting-help.html#help-on-the-internet"><i class="fa fa-check"></i><b>1.7.2</b> Help on the Internet</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#getting-help"><i class="fa fa-check"></i><b>1.7</b> Getting Help</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="intro.html"><a href="intro.html#integrated-help-system"><i class="fa fa-check"></i><b>1.7.1</b> Integrated Help System</a></li>
+<li class="chapter" data-level="1.7.2" data-path="intro.html"><a href="intro.html#help-on-the-internet"><i class="fa fa-check"></i><b>1.7.2</b> Help on the Internet</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-1"><i class="fa fa-check"></i>EX 1</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-2"><i class="fa fa-check"></i>EX 2</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-3"><i class="fa fa-check"></i>EX 3</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-4"><i class="fa fa-check"></i>EX 4</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-5"><i class="fa fa-check"></i>EX 5</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#exercises"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-3"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-4"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-5"><i class="fa fa-check"></i>EX 5</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2</b> Data Types</a><ul>
-<li class="chapter" data-level="2.1" data-path="fixed-and-floating-point-number-representation.html"><a href="fixed-and-floating-point-number-representation.html"><i class="fa fa-check"></i><b>2.1</b> Fixed and Floating Point Number Representation</a></li>
-<li class="chapter" data-level="2.2" data-path="numeric.html"><a href="numeric.html"><i class="fa fa-check"></i><b>2.2</b> Numeric</a></li>
-<li class="chapter" data-level="2.3" data-path="complex.html"><a href="complex.html"><i class="fa fa-check"></i><b>2.3</b> Complex</a></li>
-<li class="chapter" data-level="2.4" data-path="logical.html"><a href="logical.html"><i class="fa fa-check"></i><b>2.4</b> Logical</a></li>
-<li class="chapter" data-level="2.5" data-path="character.html"><a href="character.html"><i class="fa fa-check"></i><b>2.5</b> Character</a></li>
-<li class="chapter" data-level="2.6" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>2.6</b> Factors</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="factors.html"><a href="factors.html#unordered-factors"><i class="fa fa-check"></i><b>2.6.1</b> Unordered Factors</a></li>
-<li class="chapter" data-level="2.6.2" data-path="factors.html"><a href="factors.html#ordered-factors"><i class="fa fa-check"></i><b>2.6.2</b> Ordered Factors</a></li>
+<li class="chapter" data-level="2.1" data-path="data-types.html"><a href="data-types.html#fixed-and-floating-point-number-representation"><i class="fa fa-check"></i><b>2.1</b> Fixed and Floating Point Number Representation</a></li>
+<li class="chapter" data-level="2.2" data-path="data-types.html"><a href="data-types.html#numeric"><i class="fa fa-check"></i><b>2.2</b> Numeric</a></li>
+<li class="chapter" data-level="2.3" data-path="data-types.html"><a href="data-types.html#complex"><i class="fa fa-check"></i><b>2.3</b> Complex</a></li>
+<li class="chapter" data-level="2.4" data-path="data-types.html"><a href="data-types.html#logical"><i class="fa fa-check"></i><b>2.4</b> Logical</a></li>
+<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html#character"><i class="fa fa-check"></i><b>2.5</b> Character</a></li>
+<li class="chapter" data-level="2.6" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>2.6</b> Factors</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="data-types.html"><a href="data-types.html#unordered-factors"><i class="fa fa-check"></i><b>2.6.1</b> Unordered Factors</a></li>
+<li class="chapter" data-level="2.6.2" data-path="data-types.html"><a href="data-types.html#ordered-factors"><i class="fa fa-check"></i><b>2.6.2</b> Ordered Factors</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="missing-and-raw-data.html"><a href="missing-and-raw-data.html"><i class="fa fa-check"></i><b>2.7</b> Missing and Raw Data</a></li>
-<li class="chapter" data-level="2.8" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html"><i class="fa fa-check"></i><b>2.8</b> Coercion, Attributes, and Class</a><ul>
-<li class="chapter" data-level="2.8.1" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#coercion"><i class="fa fa-check"></i><b>2.8.1</b> Coercion</a></li>
-<li class="chapter" data-level="2.8.2" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#attributes-and-names"><i class="fa fa-check"></i><b>2.8.2</b> Attributes and Names</a></li>
-<li class="chapter" data-level="2.8.3" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#class"><i class="fa fa-check"></i><b>2.8.3</b> Class</a></li>
+<li class="chapter" data-level="2.7" data-path="data-types.html"><a href="data-types.html#missing-and-raw-data"><i class="fa fa-check"></i><b>2.7</b> Missing and Raw Data</a></li>
+<li class="chapter" data-level="2.8" data-path="data-types.html"><a href="data-types.html#coercion-attributes-and-class"><i class="fa fa-check"></i><b>2.8</b> Coercion, Attributes, and Class</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="data-types.html"><a href="data-types.html#coercion"><i class="fa fa-check"></i><b>2.8.1</b> Coercion</a></li>
+<li class="chapter" data-level="2.8.2" data-path="data-types.html"><a href="data-types.html#attributes-and-names"><i class="fa fa-check"></i><b>2.8.2</b> Attributes and Names</a></li>
+<li class="chapter" data-level="2.8.3" data-path="data-types.html"><a href="data-types.html#class"><i class="fa fa-check"></i><b>2.8.3</b> Class</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#from-april-5-2022"><i class="fa fa-check"></i>From April 5, 2022</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-1-1"><i class="fa fa-check"></i>EX 1</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-2-1"><i class="fa fa-check"></i>EX 2</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-3-1"><i class="fa fa-check"></i>EX 3</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-4-1"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#exercises-1"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#from-april-5-2022"><i class="fa fa-check"></i>From April 5, 2022</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-1-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-2-1"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-3-1"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-4-1"><i class="fa fa-check"></i>EX 4</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation</a><ul>
-<li class="chapter" data-level="3.1" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
-<li class="chapter" data-level="3.2" data-path="matrices-and-arrays.html"><a href="matrices-and-arrays.html"><i class="fa fa-check"></i><b>3.2</b> Matrices and Arrays</a></li>
-<li class="chapter" data-level="3.3" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
-<li class="chapter" data-level="3.4" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a><ul>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#merging-rows-and-columns"><i class="fa fa-check"></i>Merging rows and columns</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#apply-functions-to-rows-and-columns"><i class="fa fa-check"></i>Apply functions to rows and columns</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#sweep-out-statistics-in-a-matrix"><i class="fa fa-check"></i>Sweep out Statistics in a Matrix</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#concatenate-all-values-from-a-dataframe"><i class="fa fa-check"></i>Concatenate all values from a dataframe</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#splitting-dataframes-while-applying-functions"><i class="fa fa-check"></i>Splitting dataframes while applying functions</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#transformations-without-recreating-dataframes"><i class="fa fa-check"></i>Transformations without recreating dataframes</a></li>
+<li class="chapter" data-level="3.1" data-path="data-manipulation.html"><a href="data-manipulation.html#vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="data-manipulation.html"><a href="data-manipulation.html#matrices-and-arrays"><i class="fa fa-check"></i><b>3.2</b> Matrices and Arrays</a></li>
+<li class="chapter" data-level="3.3" data-path="data-manipulation.html"><a href="data-manipulation.html#lists"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="data-manipulation.html"><a href="data-manipulation.html#dataframes"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a><ul>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#merging-rows-and-columns"><i class="fa fa-check"></i>Merging rows and columns</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#apply-functions-to-rows-and-columns"><i class="fa fa-check"></i>Apply functions to rows and columns</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#sweep-out-statistics-in-a-matrix"><i class="fa fa-check"></i>Sweep out Statistics in a Matrix</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#concatenate-all-values-from-a-dataframe"><i class="fa fa-check"></i>Concatenate all values from a dataframe</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#splitting-dataframes-while-applying-functions"><i class="fa fa-check"></i>Splitting dataframes while applying functions</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#transformations-without-recreating-dataframes"><i class="fa fa-check"></i>Transformations without recreating dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>3.5</b> Strings</a></li>
-<li class="chapter" data-level="3.6" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>3.6</b> Dates and Times</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#from-april-12-2022"><i class="fa fa-check"></i>From April 12, 2022</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-1-2"><i class="fa fa-check"></i>EX 1</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-2-2"><i class="fa fa-check"></i>EX 2</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-3-2"><i class="fa fa-check"></i>EX 3</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-4-2"><i class="fa fa-check"></i>EX 4</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-5-1"><i class="fa fa-check"></i>EX 5</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-6"><i class="fa fa-check"></i>EX 6</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-7"><i class="fa fa-check"></i>EX 7</a></li>
+<li class="chapter" data-level="3.5" data-path="data-manipulation.html"><a href="data-manipulation.html#strings"><i class="fa fa-check"></i><b>3.5</b> Strings</a></li>
+<li class="chapter" data-level="3.6" data-path="data-manipulation.html"><a href="data-manipulation.html#dates-and-times"><i class="fa fa-check"></i><b>3.6</b> Dates and Times</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#exercises-2"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#from-april-12-2022"><i class="fa fa-check"></i>From April 12, 2022</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-1-2"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-2-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-3-2"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-4-2"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-5-1"><i class="fa fa-check"></i>EX 5</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-6"><i class="fa fa-check"></i>EX 6</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-7"><i class="fa fa-check"></i>EX 7</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>4</b> Code Structure</a><ul>
-<li class="chapter" data-level="4.1" data-path="conditional-expressions.html"><a href="conditional-expressions.html"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a><ul>
-<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#if-and-else"><i class="fa fa-check"></i>If and Else</a></li>
-<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#switch"><i class="fa fa-check"></i>Switch</a></li>
+<li class="chapter" data-level="4.1" data-path="structure.html"><a href="structure.html#conditional-expressions"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a><ul>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#if-and-else"><i class="fa fa-check"></i>If and Else</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#switch"><i class="fa fa-check"></i>Switch</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>4.2</b> Loops</a><ul>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#for-loop"><i class="fa fa-check"></i>For-Loop</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#while-loop"><i class="fa fa-check"></i>While-Loop</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#repeat"><i class="fa fa-check"></i>Repeat</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#break-and-next"><i class="fa fa-check"></i>Break and Next</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#special-looping-over-non-numerical-data"><i class="fa fa-check"></i>Special: Looping over non-numerical data</a></li>
+<li class="chapter" data-level="4.2" data-path="structure.html"><a href="structure.html#loops"><i class="fa fa-check"></i><b>4.2</b> Loops</a><ul>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#for-loop"><i class="fa fa-check"></i>For-Loop</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#while-loop"><i class="fa fa-check"></i>While-Loop</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#repeat"><i class="fa fa-check"></i>Repeat</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#break-and-next"><i class="fa fa-check"></i>Break and Next</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#special-looping-over-non-numerical-data"><i class="fa fa-check"></i>Special: Looping over non-numerical data</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html#from-april-26-2022"><i class="fa fa-check"></i>From April 26, 2022</a></li>
-<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html#bottles-of-beer"><i class="fa fa-check"></i>99 Bottles of Beer</a></li>
-<li class="chapter" data-level="4.2.1" data-path="exercises-3.html"><a href="exercises-3.html#multiplication-table"><i class="fa fa-check"></i><b>4.2.1</b> Multiplication Table</a></li>
-<li class="chapter" data-level="4.2.2" data-path="exercises-3.html"><a href="exercises-3.html#diagonal-matrix"><i class="fa fa-check"></i><b>4.2.2</b> Diagonal Matrix</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#exercises-3"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#from-april-26-2022"><i class="fa fa-check"></i>From April 26, 2022</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#bottles-of-beer"><i class="fa fa-check"></i>99 Bottles of Beer</a></li>
+<li class="chapter" data-level="4.2.1" data-path="structure.html"><a href="structure.html#multiplication-table"><i class="fa fa-check"></i><b>4.2.1</b> Multiplication Table</a></li>
+<li class="chapter" data-level="4.2.2" data-path="structure.html"><a href="structure.html#diagonal-matrix"><i class="fa fa-check"></i><b>4.2.2</b> Diagonal Matrix</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="software-development.html"><a href="software-development.html"><i class="fa fa-check"></i><b>5</b> Software Development</a><ul>
-<li class="chapter" data-level="5.1" data-path="planning.html"><a href="planning.html"><i class="fa fa-check"></i><b>5.1</b> Planning</a></li>
-<li class="chapter" data-level="5.2" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>5.2</b> Coding</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="coding.html"><a href="coding.html#standard-program-structure"><i class="fa fa-check"></i><b>5.2.1</b> Standard Program Structure</a></li>
-<li class="chapter" data-level="5.2.2" data-path="coding.html"><a href="coding.html#standard-function-structure"><i class="fa fa-check"></i><b>5.2.2</b> Standard Function Structure</a></li>
-<li class="chapter" data-level="5.2.3" data-path="coding.html"><a href="coding.html#naming-convention"><i class="fa fa-check"></i><b>5.2.3</b> Naming Convention</a></li>
-<li class="chapter" data-level="5.2.4" data-path="coding.html"><a href="coding.html#rules-best-practices"><i class="fa fa-check"></i><b>5.2.4</b> Rules &amp; Best Practices</a></li>
+<li class="chapter" data-level="5.1" data-path="software-development.html"><a href="software-development.html#planning"><i class="fa fa-check"></i><b>5.1</b> Planning</a></li>
+<li class="chapter" data-level="5.2" data-path="software-development.html"><a href="software-development.html#coding"><i class="fa fa-check"></i><b>5.2</b> Coding</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="software-development.html"><a href="software-development.html#standard-program-structure"><i class="fa fa-check"></i><b>5.2.1</b> Standard Program Structure</a></li>
+<li class="chapter" data-level="5.2.2" data-path="software-development.html"><a href="software-development.html#standard-function-structure"><i class="fa fa-check"></i><b>5.2.2</b> Standard Function Structure</a></li>
+<li class="chapter" data-level="5.2.3" data-path="software-development.html"><a href="software-development.html#naming-convention"><i class="fa fa-check"></i><b>5.2.3</b> Naming Convention</a></li>
+<li class="chapter" data-level="5.2.4" data-path="software-development.html"><a href="software-development.html#rules-best-practices"><i class="fa fa-check"></i><b>5.2.4</b> Rules &amp; Best Practices</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="documenting.html"><a href="documenting.html"><i class="fa fa-check"></i><b>5.3</b> Documenting</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="documenting.html"><a href="documenting.html#code-documentation-short-form-documentation"><i class="fa fa-check"></i><b>5.3.1</b> Code Documentation (Short-form Documentation)</a></li>
-<li class="chapter" data-level="5.3.2" data-path="documenting.html"><a href="documenting.html#user-documentation-long-form-documentation"><i class="fa fa-check"></i><b>5.3.2</b> User documentation (Long-form Documentation)</a></li>
+<li class="chapter" data-level="5.3" data-path="software-development.html"><a href="software-development.html#documenting"><i class="fa fa-check"></i><b>5.3</b> Documenting</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="software-development.html"><a href="software-development.html#code-documentation-short-form-documentation"><i class="fa fa-check"></i><b>5.3.1</b> Code Documentation (Short-form Documentation)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="software-development.html"><a href="software-development.html#user-documentation-long-form-documentation"><i class="fa fa-check"></i><b>5.3.2</b> User documentation (Long-form Documentation)</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>5.4</b> Testing</a></li>
-<li class="chapter" data-level="5.5" data-path="maintaining.html"><a href="maintaining.html"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a></li>
-<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html#from-may-3-2022"><i class="fa fa-check"></i>From May 3, 2022</a></li>
+<li class="chapter" data-level="5.4" data-path="software-development.html"><a href="software-development.html#testing"><i class="fa fa-check"></i><b>5.4</b> Testing</a></li>
+<li class="chapter" data-level="5.5" data-path="software-development.html"><a href="software-development.html#maintaining"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a></li>
+<li class="chapter" data-level="" data-path="software-development.html"><a href="software-development.html#exercises-4"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="software-development.html"><a href="software-development.html#from-may-3-2022"><i class="fa fa-check"></i>From May 3, 2022</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="vectorization.html"><a href="vectorization.html"><i class="fa fa-check"></i><b>6</b> Vectorization</a><ul>
-<li class="chapter" data-level="6.1" data-path="apply-family.html"><a href="apply-family.html"><i class="fa fa-check"></i><b>6.1</b> *apply-Family</a><ul>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#apply"><i class="fa fa-check"></i>apply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#lapply"><i class="fa fa-check"></i>lapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#sapply"><i class="fa fa-check"></i>sapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#vapply"><i class="fa fa-check"></i>vapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#tapply"><i class="fa fa-check"></i>tapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#mapply"><i class="fa fa-check"></i>mapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#rapply"><i class="fa fa-check"></i>rapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#eapply"><i class="fa fa-check"></i>eapply</a></li>
+<li class="chapter" data-level="6.1" data-path="vectorization.html"><a href="vectorization.html#apply-family"><i class="fa fa-check"></i><b>6.1</b> *apply-Family</a><ul>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#apply"><i class="fa fa-check"></i>apply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#lapply"><i class="fa fa-check"></i>lapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#sapply"><i class="fa fa-check"></i>sapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#vapply"><i class="fa fa-check"></i>vapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#tapply"><i class="fa fa-check"></i>tapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#mapply"><i class="fa fa-check"></i>mapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#rapply"><i class="fa fa-check"></i>rapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#eapply"><i class="fa fa-check"></i>eapply</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.2</b> Technical Background</a></li>
-<li class="chapter" data-level="6.3" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.3</b> Parallelization using vectorized functions</a></li>
-<li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html#from-may-10-2022"><i class="fa fa-check"></i>From May 10, 2022</a></li>
+<li class="chapter" data-level="6.2" data-path="vectorization.html"><a href="vectorization.html#technical-background"><i class="fa fa-check"></i><b>6.2</b> Technical Background</a></li>
+<li class="chapter" data-level="6.3" data-path="vectorization.html"><a href="vectorization.html#parallelization-using-vectorized-functions"><i class="fa fa-check"></i><b>6.3</b> Parallelization using vectorized functions</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#exercises-5"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#from-may-10-2022"><i class="fa fa-check"></i>From May 10, 2022</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="applications---graphics.html"><a href="applications---graphics.html"><i class="fa fa-check"></i><b>7</b> Applications - Graphics</a><ul>
-<li class="chapter" data-level="7.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
-<li class="chapter" data-level="7.1.2" data-path="plotsbaseR.html"><a href="plotsbaseR.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.1.3" data-path="plotsbaseR.html"><a href="plotsbaseR.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
+<li class="chapter" data-level="7.1" data-path="applications---graphics.html"><a href="applications---graphics.html#plotsbaseR"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="applications---graphics.html"><a href="applications---graphics.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
+<li class="chapter" data-level="7.1.2" data-path="applications---graphics.html"><a href="applications---graphics.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.1.3" data-path="applications---graphics.html"><a href="applications---graphics.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a><ul>
-<li class="chapter" data-level="7.2.1" data-path="plotsggplot2.html"><a href="plotsggplot2.html#histograms-and-boxplots-1"><i class="fa fa-check"></i><b>7.2.1</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.2.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html#linear-regression"><i class="fa fa-check"></i><b>7.2.2</b> Linear regression</a></li>
-<li class="chapter" data-level="7.2.3" data-path="plotsggplot2.html"><a href="plotsggplot2.html#customizing-ggplots"><i class="fa fa-check"></i><b>7.2.3</b> Customizing ggplots</a></li>
-<li class="chapter" data-level="7.2.4" data-path="plotsggplot2.html"><a href="plotsggplot2.html#handling-2-variables-and-faceting"><i class="fa fa-check"></i><b>7.2.4</b> Handling &gt; 2 variables and faceting</a></li>
+<li class="chapter" data-level="7.2" data-path="applications---graphics.html"><a href="applications---graphics.html#plotsggplot2"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="applications---graphics.html"><a href="applications---graphics.html#histograms-and-boxplots-1"><i class="fa fa-check"></i><b>7.2.1</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.2.2" data-path="applications---graphics.html"><a href="applications---graphics.html#linear-regression"><i class="fa fa-check"></i><b>7.2.2</b> Linear regression</a></li>
+<li class="chapter" data-level="7.2.3" data-path="applications---graphics.html"><a href="applications---graphics.html#customizing-ggplots"><i class="fa fa-check"></i><b>7.2.3</b> Customizing ggplots</a></li>
+<li class="chapter" data-level="7.2.4" data-path="applications---graphics.html"><a href="applications---graphics.html#handling-2-variables-and-faceting"><i class="fa fa-check"></i><b>7.2.4</b> Handling &gt; 2 variables and faceting</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
-<li class="chapter" data-level="" data-path="excercises.html"><a href="excercises.html"><i class="fa fa-check"></i>Excercises</a><ul>
-<li class="chapter" data-level="" data-path="excercises.html"><a href="excercises.html#task-mtcars-dataset"><i class="fa fa-check"></i>Task <code>mtcars</code> dataset</a></li>
+<li class="chapter" data-level="7.3" data-path="applications---graphics.html"><a href="applications---graphics.html#interactive-plots-with-plotly-plotly"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
+<li class="chapter" data-level="" data-path="applications---graphics.html"><a href="applications---graphics.html#excercises"><i class="fa fa-check"></i>Excercises</a><ul>
+<li class="chapter" data-level="" data-path="applications---graphics.html"><a href="applications---graphics.html#task-mtcars-dataset"><i class="fa fa-check"></i>Task <code>mtcars</code> dataset</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
-<li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
-<li class="chapter" data-level="8.2" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>8.2</b> Solution</a></li>
+<li class="chapter" data-level="8.1" data-path="word-puzzle.html"><a href="word-puzzle.html#requirements"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
+<li class="chapter" data-level="8.2" data-path="word-puzzle.html"><a href="word-puzzle.html#solution"><i class="fa fa-check"></i><b>8.2</b> Solution</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="blockchain.html"><a href="blockchain.html"><i class="fa fa-check"></i><b>9</b> Blockchain</a><ul>
-<li class="chapter" data-level="9.1" data-path="hash-functions.html"><a href="hash-functions.html"><i class="fa fa-check"></i><b>9.1</b> Hash Functions</a><ul>
-<li class="chapter" data-level="" data-path="hash-functions.html"><a href="hash-functions.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="9.1" data-path="blockchain.html"><a href="blockchain.html#hash-functions"><i class="fa fa-check"></i><b>9.1</b> Hash Functions</a><ul>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>9.2</b> Blocks</a></li>
-<li class="chapter" data-level="9.3" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html"><i class="fa fa-check"></i><b>9.3</b> Proof of Work (PoW)</a><ul>
-<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#simple-pow-example"><i class="fa fa-check"></i>Simple PoW Example</a></li>
-<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#combining-pow-and-hashing"><i class="fa fa-check"></i>Combining PoW and Hashing</a></li>
-<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="9.2" data-path="blockchain.html"><a href="blockchain.html#blocks"><i class="fa fa-check"></i><b>9.2</b> Blocks</a></li>
+<li class="chapter" data-level="9.3" data-path="blockchain.html"><a href="blockchain.html#proof-of-work-pow"><i class="fa fa-check"></i><b>9.3</b> Proof of Work (PoW)</a><ul>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#simple-pow-example"><i class="fa fa-check"></i>Simple PoW Example</a></li>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#combining-pow-and-hashing"><i class="fa fa-check"></i>Combining PoW and Hashing</a></li>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="chaining-blocks.html"><a href="chaining-blocks.html"><i class="fa fa-check"></i><b>9.4</b> Chaining Blocks</a></li>
-<li class="chapter" data-level="9.5" data-path="security.html"><a href="security.html"><i class="fa fa-check"></i><b>9.5</b> Security</a><ul>
-<li class="chapter" data-level="" data-path="security.html"><a href="security.html#manipulation-1"><i class="fa fa-check"></i>Manipulation 1</a></li>
-<li class="chapter" data-level="" data-path="security.html"><a href="security.html#manipulation-2"><i class="fa fa-check"></i>Manipulation 2</a></li>
+<li class="chapter" data-level="9.4" data-path="blockchain.html"><a href="blockchain.html#chaining-blocks"><i class="fa fa-check"></i><b>9.4</b> Chaining Blocks</a></li>
+<li class="chapter" data-level="9.5" data-path="blockchain.html"><a href="blockchain.html#security"><i class="fa fa-check"></i><b>9.5</b> Security</a><ul>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#manipulation-1"><i class="fa fa-check"></i>Manipulation 1</a></li>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#manipulation-2"><i class="fa fa-check"></i>Manipulation 2</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="wrap-up.html"><a href="wrap-up.html"><i class="fa fa-check"></i><b>9.6</b> Wrap up</a></li>
+<li class="chapter" data-level="9.6" data-path="blockchain.html"><a href="blockchain.html#wrap-up"><i class="fa fa-check"></i><b>9.6</b> Wrap up</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="forecasting.html"><a href="forecasting.html"><i class="fa fa-check"></i><b>10</b> Forecasting</a><ul>
-<li class="chapter" data-level="10.1" data-path="time-series-data.html"><a href="time-series-data.html"><i class="fa fa-check"></i><b>10.1</b> Time Series Data</a></li>
-<li class="chapter" data-level="10.2" data-path="forecasting-process.html"><a href="forecasting-process.html"><i class="fa fa-check"></i><b>10.2</b> Forecasting Process</a></li>
-<li class="chapter" data-level="10.3" data-path="real-data.html"><a href="real-data.html"><i class="fa fa-check"></i><b>10.3</b> Real Data</a></li>
-<li class="chapter" data-level="10.4" data-path="judgemental-forecasting.html"><a href="judgemental-forecasting.html"><i class="fa fa-check"></i><b>10.4</b> Judgemental Forecasting</a></li>
-<li class="chapter" data-level="10.5" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html"><i class="fa fa-check"></i><b>10.5</b> Exponential Smoothing</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#implementing-hes"><i class="fa fa-check"></i><b>10.5.1</b> Implementing HES</a></li>
-<li class="chapter" data-level="10.5.2" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#finding-best-alpha-and-gamma-values"><i class="fa fa-check"></i><b>10.5.2</b> Finding best alpha and gamma values</a></li>
-<li class="chapter" data-level="10.5.3" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#generating-forecasts"><i class="fa fa-check"></i><b>10.5.3</b> Generating Forecasts</a></li>
+<li class="chapter" data-level="10.1" data-path="forecasting.html"><a href="forecasting.html#time-series-data"><i class="fa fa-check"></i><b>10.1</b> Time Series Data</a></li>
+<li class="chapter" data-level="10.2" data-path="forecasting.html"><a href="forecasting.html#forecasting-process"><i class="fa fa-check"></i><b>10.2</b> Forecasting Process</a></li>
+<li class="chapter" data-level="10.3" data-path="forecasting.html"><a href="forecasting.html#real-data"><i class="fa fa-check"></i><b>10.3</b> Real Data</a></li>
+<li class="chapter" data-level="10.4" data-path="forecasting.html"><a href="forecasting.html#judgemental-forecasting"><i class="fa fa-check"></i><b>10.4</b> Judgemental Forecasting</a></li>
+<li class="chapter" data-level="10.5" data-path="forecasting.html"><a href="forecasting.html#exponential-smoothing"><i class="fa fa-check"></i><b>10.5</b> Exponential Smoothing</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="forecasting.html"><a href="forecasting.html#implementing-hes"><i class="fa fa-check"></i><b>10.5.1</b> Implementing HES</a></li>
+<li class="chapter" data-level="10.5.2" data-path="forecasting.html"><a href="forecasting.html#finding-best-alpha-and-gamma-values"><i class="fa fa-check"></i><b>10.5.2</b> Finding best alpha and gamma values</a></li>
+<li class="chapter" data-level="10.5.3" data-path="forecasting.html"><a href="forecasting.html#generating-forecasts"><i class="fa fa-check"></i><b>10.5.3</b> Generating Forecasts</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i>Exercises</a></li>
-<li class="chapter" data-level="10.6" data-path="practical-application.html"><a href="practical-application.html"><i class="fa fa-check"></i><b>10.6</b> Practical Application</a></li>
-<li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
+<li class="chapter" data-level="" data-path="forecasting.html"><a href="forecasting.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="10.6" data-path="forecasting.html"><a href="forecasting.html#practical-application"><i class="fa fa-check"></i><b>10.6</b> Practical Application</a></li>
+<li class="chapter" data-level="10.7" data-path="forecasting.html"><a href="forecasting.html#forecast-evaluation"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="chapwebapps.html"><a href="chapwebapps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
-<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
-<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
-<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
-<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
+<li class="chapter" data-level="11.1" data-path="chapwebapps.html"><a href="chapwebapps.html#introduction"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="chapwebapps.html"><a href="chapwebapps.html#ui-user-interface"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="chapwebapps.html"><a href="chapwebapps.html#server"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
+<li class="chapter" data-level="" data-path="chapwebapps.html"><a href="chapwebapps.html#exercises-9"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="chapwebapps.html"><a href="chapwebapps.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
 <li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
 <li class="chapter" data-level="" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i>Literature</a></li>
 <li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html"><i class="fa fa-check"></i>Programming Project</a><ul>
-<li class="chapter" data-level="" data-path="topic-1-web-scraping.html"><a href="topic-1-web-scraping.html"><i class="fa fa-check"></i>Topic 1: Web Scraping</a></li>
-<li class="chapter" data-level="" data-path="topic-2-forecasting.html"><a href="topic-2-forecasting.html"><i class="fa fa-check"></i>Topic 2: Forecasting</a></li>
-<li class="chapter" data-level="" data-path="topic-3-algorithm-implementation-data-analysis.html"><a href="topic-3-algorithm-implementation-data-analysis.html"><i class="fa fa-check"></i>Topic 3: Algorithm Implementation &amp; Data Analysis</a></li>
-<li class="chapter" data-level="" data-path="topic-4-custom-topic.html"><a href="topic-4-custom-topic.html"><i class="fa fa-check"></i>Topic 4: Custom Topic</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-1-web-scraping"><i class="fa fa-check"></i>Topic 1: Web Scraping</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-2-forecasting"><i class="fa fa-check"></i>Topic 2: Forecasting</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-3-algorithm-implementation-data-analysis"><i class="fa fa-check"></i>Topic 3: Algorithm Implementation &amp; Data Analysis</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-4-custom-topic"><i class="fa fa-check"></i>Topic 4: Custom Topic</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="bug-bounty.html"><a href="bug-bounty.html"><i class="fa fa-check"></i><b>A</b> Bug Bounty</a><ul>
-<li class="chapter" data-level="" data-path="leaderboard.html"><a href="leaderboard.html"><i class="fa fa-check"></i>Leaderboard</a></li>
-<li class="chapter" data-level="" data-path="what-is-this.html"><a href="what-is-this.html"><i class="fa fa-check"></i>What is this?</a></li>
+<li class="chapter" data-level="" data-path="bug-bounty.html"><a href="bug-bounty.html#leaderboard"><i class="fa fa-check"></i>Leaderboard</a></li>
+<li class="chapter" data-level="" data-path="bug-bounty.html"><a href="bug-bounty.html#what-is-this"><i class="fa fa-check"></i>What is this?</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="test-exam.html"><a href="test-exam.html"><i class="fa fa-check"></i><b>B</b> Test Exam</a><ul>
-<li class="chapter" data-level="B.1" data-path="additional-exercises.html"><a href="additional-exercises.html"><i class="fa fa-check"></i><b>B.1</b> Additional Exercises</a><ul>
-<li class="chapter" data-level="B.1.1" data-path="additional-exercises.html"><a href="additional-exercises.html#exercise-i"><i class="fa fa-check"></i><b>B.1.1</b> Exercise I</a></li>
+<li class="chapter" data-level="B.1" data-path="test-exam.html"><a href="test-exam.html#additional-exercises"><i class="fa fa-check"></i><b>B.1</b> Additional Exercises</a><ul>
+<li class="chapter" data-level="B.1.1" data-path="test-exam.html"><a href="test-exam.html#exercise-i"><i class="fa fa-check"></i><b>B.1.1</b> Exercise I</a></li>
 </ul></li>
-<li class="chapter" data-level="B.2" data-path="exercise-ii.html"><a href="exercise-ii.html"><i class="fa fa-check"></i><b>B.2</b> Exercise II</a><ul>
-<li class="chapter" data-level="B.2.1" data-path="exercise-ii.html"><a href="exercise-ii.html#exercise-iii"><i class="fa fa-check"></i><b>B.2.1</b> Exercise III</a></li>
+<li class="chapter" data-level="B.2" data-path="test-exam.html"><a href="test-exam.html#exercise-ii"><i class="fa fa-check"></i><b>B.2</b> Exercise II</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="test-exam.html"><a href="test-exam.html#exercise-iii"><i class="fa fa-check"></i><b>B.2.1</b> Exercise III</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -402,14 +402,390 @@ Figure 5.1: Waterfall Software Development Process
 </div>
 <p>The basic idea of the process is to divide the whole development project into sequential phases, where overlap and ‘splashbacks’ are tried to be avoided. As in traditional project management, the emphasis is on planning time schedules, target dates, and budgets, while the implementation of an entire system is done at once. The transition to the next phase usually requires the approval of a customer or user and written project documentation is an explicit deliverable of each phase.</p>
 <p>The sequential nature and the resulting “inflexibility” in a pure waterfall model have been a source of constant criticism. In practice, the waterfall model has been superseded by more flexible and dynamic approaches and when working in teams a more agile SDF, e.g. Scrum, should be chosen as these eradicate many pitfalls found in the waterfall SDF. However, all of the following stages are always present and must be considered when developing software, regardless of the specific management approach.</p>
+<div id="planning" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.1</span> Planning<a href="software-development.html#planning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Especially in scientific environments software usually fulfills a strict purpose and solves an (academic) problem. The planning phase, therefore, captures the user requirements and aligns them with the prospective software architecture. The output of this phase usually is a document with the requirements and a plan for the software architecture.</p>
+<!--
+Explanation requirement document
+Explaation software architecture
++ Examples
+-->
+<p>For good software, it is key to separate the actual coding from the planning phase. Usually, it is a good idea to <strong>start a new project with an empty sheet of paper</strong> and collect the theoretical and practical aspects to form a sketch of the possible solution. Do not think about technical details in this phase too much, but write down your ideas in <code>pseudo code</code> like <em>load data</em>, <em>transform (scale and logarithmize) input</em>, <em>calculate regression coefficients</em>, * analyze error terms*.</p>
+<p>Sub-problems that occur multiple times or code that needs to be executed more than once should be <strong>modularized</strong> and needs to be put into a function. This avoids inconsistencies and provides a single place to maintain functionalities and implement changes. Besides this, functions have additional advantages - they make the code more readable and facilitate testing and validation. When wrapping boring sections like data transformation in a function this can usually be done by a single line of code including easily visible arguments. Therefore, you can think of modules like building blocks to your solution, each block (function) should handle a single task and not more. In addition to solving one thing well, functions should be flexible and solve a <strong>sufficiently general</strong> problem. It is more advisable to make a function flexible and solve the n-dimensional case (and avoid hard-coding the 2-dimensional case), as your requirements may increase over time.</p>
+<p>The general steps and the building blocks of functions can be combined into an architecture that solves the specific problem. Proceeding this way, the problem is being divided into simpler steps and each sub-problem is solved individually (Principle: Divide and Conquer). It is always advisable to support the planning process with a <strong>graphical representation</strong> that allows to easily discover dependencies and the right sequence of commands. While computer and system sciences lead to a huge variety of “modeling languages” even simple graphical representations are often useful.</p>
+<!--
+The most basic diagrams to visually express code are Nassi-Schneiderman Diagrams, while processes and other sequences can easily be visualized using the Unified Modelling Language (UML). 
+
+Workflow: no data manipulation in spreadsheet programs
+-->
+<p>A lot of problems and requirements have already been solved and implemented by other programmers and quite often there is no need to reimplement every little step on your own. It is fair and good practice to reuse, modify and recycle existing packages, libraries, functions or code fragments. “Whenever possible, steal code” is one of the many bits of advice frequently given to new programmers. While this is usually good advice and shortens the implementation and coding requirements it still comes at the cost of understanding and integrating someone else’s code into your project. While code often can be freely found in the web, it still comes with some requirements and liabilities which are usually bundled in the respective license that is linked or distributed with the code. Regardless of the license under which the software is distributed the usage of someone else’s ideas or intellectual property - especially in scientific projects - needs to be cited. If you use R packages they conveniently provide a reference that can be cited and is accessible with the command <code>citation("packagename")</code>. If <code>citation()</code> is used without an argument it returns the reference for the R Base System.</p>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="software-development.html#cb480-1"></a><span class="kw">citation</span>()</span></code></pre></div>
+<pre><code>#R&gt; 
+#R&gt; To cite R in publications use:
+#R&gt; 
+#R&gt;   R Core Team (2022). R: A language and environment for statistical
+#R&gt;   computing. R Foundation for Statistical Computing, Vienna, Austria.
+#R&gt;   URL https://www.R-project.org/.
+#R&gt; 
+#R&gt; A BibTeX entry for LaTeX users is
+#R&gt; 
+#R&gt;   @Manual{,
+#R&gt;     title = {R: A Language and Environment for Statistical Computing},
+#R&gt;     author = {{R Core Team}},
+#R&gt;     organization = {R Foundation for Statistical Computing},
+#R&gt;     address = {Vienna, Austria},
+#R&gt;     year = {2022},
+#R&gt;     url = {https://www.R-project.org/},
+#R&gt;   }
+#R&gt; 
+#R&gt; We have invested a lot of time and effort in creating R, please cite it
+#R&gt; when using it for data analysis. See also &#39;citation(&quot;pkgname&quot;)&#39; for
+#R&gt; citing R packages.</code></pre>
+<p>Integrating other functions, packages or code fragments means to organize and handle how different functions hand over data, which means one has to <strong>think about the data format</strong> and use <strong>standard data formats</strong> wherever possible. Choosing or creating a data format is not to be mistaken by choosing a file extension like <code>.txt</code>,<code>.csv</code> or <code>.ppt</code> but defines the structure of your <code>list</code>, <code>data.frame</code> or comparable data-structure present in R. Choosing a standard, therefore, refers to choosing the type of object that captures, organizes and stores data, estimation results or other output. This is important for several reasons as bad designs of the data structures make the coding more difficult and the program less readable. Often one needs to consider that empirically derived results are almost never perfect or satisfactory after a first run and need to be recalculated on different subsets or transformations of the data. A designed data structure needs to combine all results including the envelope and meta information, like function arguments, etc. Last but not least a clever and compact design of the resulting data structure can affect the actual execution speed of a program significantly.</p>
+<p>Choosing a standard or convention is especially important. Imagine when using a matrix to store individual observations for e.g. multiple time series it makes sense to store the observations in rows and the variables/time series in columns. Additionally, one needs to think about missing values in the data (e.g. calendarial effects like holidays) and how to handle them.</p>
+<!--
+within R:
+ts
+zoo
+mts
+
+Some data exchange standards:
+JSON
+-->
+</div>
+<div id="coding" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.2</span> Coding<a href="software-development.html#coding" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Writing code that a computer can understand is actually quite easy - we have even written a simple function in the very first unit of this course. Good code, however, is written for humans to read and only incidentally for machines to execute. It, therefore, is good practice to write code with a reader in your mind (e.g. your supervisor for a thesis, a colleague or your grandparents).</p>
+<p>Most of the problems tackled in scientific projects can as well be solved with simple solutions. Advanced logic and aiming for short solutions (e.g. one-liner) may make code hard to read and even harder to understand. The objectives to head for when writing software are therefore clarity and brevity. Speed is important, but there is no necessity to tweak out every little bit of performance (in terms of speed and memory) and this should only be the chosen path if it is really necessary. To ensure readability you should adopt standard code layouts.</p>
+<p>While normal analyses and simple programming exercises usually can be pretty well organized with a few R files (.R), bigger projects normally rely on more advanced structures such as R Project files (.Rproj) and Packages. Being an introductory course we focus on simple organization schemes and refer to the appendix (for a very short introduction) and the literature.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-164"></span>
+<img src="gfx/CH05-ProjektSkeleton.png" alt="Exemplary simple Project Skeleton" width="70%" />
+<p class="caption">
+Figure 5.2: Exemplary simple Project Skeleton
+</p>
+</div>
+<p>Apart from simple analyses, most projects require some software development and own functions that are used to analyze a respective dataset. Custom functions should be separated from the pure analysis if they reach a critical mass (which is usually the case), so that it is good advice to separate the code base into two files, like in the figure above. The following chapters discuss the layout of these files before introducing and discussing some additional principles and things to consider when filling the files with actual code.</p>
+<div id="standard-program-structure" class="section level3 hasAnchor">
+<h3><span class="header-section-number">5.2.1</span> Standard Program Structure<a href="software-development.html#standard-program-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The standard program structure contains the actual analysis (contrary to own functions) and should contain the following elements:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Headline:</strong> The Name of the Program</li>
+<li><strong>Preamble:</strong> A short text explaining the purpose and basic principles of the program, what it does and how it is intended to be used; including a license statement if necessary.</li>
+<li><strong>Author:</strong> Name and contact information of the author(s), the (release) date and the version of the software. If multiple versions exist, the version information in the form of a changelog can be handed out.</li>
+<li><strong>Program:</strong> The actual program divided into parts or blocks.
+<ol style="list-style-type: lower-alpha">
+<li><strong>Dependencies:</strong> Here external dependencies like libraries or a custom function file should be loaded. If the function file would only contain a few short function definitions it makes obviously no sense to create an own file for them. <em>As long as the readability</em> of the function file is <em>not affected</em> the function definitions could also be included here.</li>
+<li><strong>Constants:</strong> Constant values that your program relies on and values that parameterize the methods used below should be user changeable, bundled and included in the second block, directly after loading external dependencies.</li>
+<li><strong>Problem Solving:</strong> Here the actual problem solving takes place. Of course, this part can be divided into multiple parts or blocks.</li>
+<li><strong>Output:</strong> The output generated by your analysis usually plots, tables or PDFs should be created and exported in the last block of the program.</li>
+</ol></li>
+</ol>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="software-development.html#cb482-1"></a><span class="co"># Example of Standard Program Structure </span></span>
+<span id="cb482-2"><a href="software-development.html#cb482-2"></a> </span>
+<span id="cb482-3"><a href="software-development.html#cb482-3"></a><span class="co"># This is an example skeleton of a Standard Program Structure that can be used</span></span>
+<span id="cb482-4"><a href="software-development.html#cb482-4"></a><span class="co"># to structure own programs and analyses. It was written purely for educational</span></span>
+<span id="cb482-5"><a href="software-development.html#cb482-5"></a><span class="co"># purposes and is part of the lecture notes for the course &#39;Computational</span></span>
+<span id="cb482-6"><a href="software-development.html#cb482-6"></a><span class="co"># Statistics using R&#39;.</span></span>
+<span id="cb482-7"><a href="software-development.html#cb482-7"></a></span>
+<span id="cb482-8"><a href="software-development.html#cb482-8"></a><span class="co"># Author: Benjamin Buchwitz (benjamin.buchwitz@ku.de)</span></span>
+<span id="cb482-9"><a href="software-development.html#cb482-9"></a><span class="co"># Date: 01.01.1970</span></span>
+<span id="cb482-10"><a href="software-development.html#cb482-10"></a><span class="co"># Version Changelog: </span></span>
+<span id="cb482-11"><a href="software-development.html#cb482-11"></a><span class="co">#   v0.1 - Initial Release</span></span>
+<span id="cb482-12"><a href="software-development.html#cb482-12"></a><span class="co">#   v0.2 - Major Improvements in Speed and Stability</span></span>
+<span id="cb482-13"><a href="software-development.html#cb482-13"></a></span>
+<span id="cb482-14"><a href="software-development.html#cb482-14"></a><span class="co">################################################################################</span></span>
+<span id="cb482-15"><a href="software-development.html#cb482-15"></a><span class="co">## PART I: Load Libraries and external Dependencies</span></span>
+<span id="cb482-16"><a href="software-development.html#cb482-16"></a><span class="co">################################################################################</span></span>
+<span id="cb482-17"><a href="software-development.html#cb482-17"></a></span>
+<span id="cb482-18"><a href="software-development.html#cb482-18"></a><span class="co"># Loading installed packages -------</span></span>
+<span id="cb482-19"><a href="software-development.html#cb482-19"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb482-20"><a href="software-development.html#cb482-20"></a><span class="kw">library</span>(forecast)</span>
+<span id="cb482-21"><a href="software-development.html#cb482-21"></a></span>
+<span id="cb482-22"><a href="software-development.html#cb482-22"></a><span class="co"># Loading own functions ------------</span></span>
+<span id="cb482-23"><a href="software-development.html#cb482-23"></a><span class="kw">setwd</span>(<span class="st">&quot;~/projectName&quot;</span>)                <span class="co"># Set working directory to project folder</span></span>
+<span id="cb482-24"><a href="software-development.html#cb482-24"></a><span class="kw">source</span>(<span class="st">&quot;projectName_functions.R&quot;</span>) </span>
+<span id="cb482-25"><a href="software-development.html#cb482-25"></a></span>
+<span id="cb482-26"><a href="software-development.html#cb482-26"></a><span class="co">################################################################################</span></span>
+<span id="cb482-27"><a href="software-development.html#cb482-27"></a><span class="co">## PART II: Define Constants</span></span>
+<span id="cb482-28"><a href="software-development.html#cb482-28"></a><span class="co">################################################################################</span></span>
+<span id="cb482-29"><a href="software-development.html#cb482-29"></a></span>
+<span id="cb482-30"><a href="software-development.html#cb482-30"></a>a &lt;-<span class="st"> </span><span class="fl">0.5</span>            <span class="co"># Initial calibration Parameter</span></span>
+<span id="cb482-31"><a href="software-development.html#cb482-31"></a>n &lt;-<span class="st"> </span><span class="dv">100</span>            <span class="co"># Length of simulated Data</span></span>
+<span id="cb482-32"><a href="software-development.html#cb482-32"></a>T.eff &lt;-<span class="st"> </span><span class="dv">80</span>         <span class="co"># Value used in the Model</span></span>
+<span id="cb482-33"><a href="software-development.html#cb482-33"></a></span>
+<span id="cb482-34"><a href="software-development.html#cb482-34"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)       <span class="co"># Data; standard normally distributed</span></span>
+<span id="cb482-35"><a href="software-development.html#cb482-35"></a>y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n) <span class="op">+</span><span class="st"> </span><span class="dv">5</span>   <span class="co"># Data; mean shifted to 5</span></span>
+<span id="cb482-36"><a href="software-development.html#cb482-36"></a></span>
+<span id="cb482-37"><a href="software-development.html#cb482-37"></a><span class="co">################################################################################</span></span>
+<span id="cb482-38"><a href="software-development.html#cb482-38"></a><span class="co">## PART III: Problem Solving</span></span>
+<span id="cb482-39"><a href="software-development.html#cb482-39"></a><span class="co">################################################################################</span></span>
+<span id="cb482-40"><a href="software-development.html#cb482-40"></a></span>
+<span id="cb482-41"><a href="software-development.html#cb482-41"></a>res &lt;-<span class="st"> </span><span class="kw">CalculateSampleCovariance</span>(x, y, <span class="dt">verbose=</span><span class="ot">FALSE</span>)</span>
+<span id="cb482-42"><a href="software-development.html#cb482-42"></a></span>
+<span id="cb482-43"><a href="software-development.html#cb482-43"></a>...</span>
+<span id="cb482-44"><a href="software-development.html#cb482-44"></a></span>
+<span id="cb482-45"><a href="software-development.html#cb482-45"></a><span class="co">################################################################################</span></span>
+<span id="cb482-46"><a href="software-development.html#cb482-46"></a><span class="co">## PART IV: Output Results</span></span>
+<span id="cb482-47"><a href="software-development.html#cb482-47"></a><span class="co">################################################################################</span></span>
+<span id="cb482-48"><a href="software-development.html#cb482-48"></a></span>
+<span id="cb482-49"><a href="software-development.html#cb482-49"></a><span class="co"># Save estimation results ----------</span></span>
+<span id="cb482-50"><a href="software-development.html#cb482-50"></a><span class="kw">saveRDS</span>(res, <span class="st">&quot;projectName_results.rds&quot;</span>)</span>
+<span id="cb482-51"><a href="software-development.html#cb482-51"></a></span>
+<span id="cb482-52"><a href="software-development.html#cb482-52"></a><span class="co"># Create publication ready plots ---</span></span>
+<span id="cb482-53"><a href="software-development.html#cb482-53"></a><span class="kw">pdf</span>(<span class="st">&quot;plotexample.pdf&quot;</span>)</span>
+<span id="cb482-54"><a href="software-development.html#cb482-54"></a><span class="kw">plot</span>(x, y, <span class="dt">main=</span><span class="st">&quot;An awesome Plot&quot;</span>)</span>
+<span id="cb482-55"><a href="software-development.html#cb482-55"></a><span class="kw">dev.off</span>()</span></code></pre></div>
+</div>
+<div id="standard-function-structure" class="section level3 hasAnchor">
+<h3><span class="header-section-number">5.2.2</span> Standard Function Structure<a href="software-development.html#standard-function-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The second file contains the functions and should have the following structure.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Headline:</strong> The Name of the Program that the functions belong to</li>
+<li><strong>Preamble:</strong> A short text explaining the purpose and basic principles of the functions, what they do and how they are intended to be used; including a license statement if necessary. This can be the same text as in the file described above.</li>
+<li><strong>Function Definitions:</strong> Actual definitions of the functions. Each function definition should retain the following structure:
+<ol style="list-style-type: lower-alpha">
+<li><strong>First Line:</strong> Function Constructor and Name of the function</li>
+<li><strong>Preamble:</strong> The preamble of a function fulfills similar purposes as the preamble of the file that contains the analysis or function itself. It contains a headline that very briefly describes what the functions do. If necessary an additional text describes the function and its extended purposes or way of implementation. After that <em>all</em> Arguments of the function are introduced and described. Finally, the output, including the corresponding data structure is described.</li>
+<li><strong>Body:</strong> The Code that actually solves the Problem.</li>
+</ol></li>
+</ol>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="software-development.html#cb483-1"></a><span class="co"># Example file with Standard Function Structure</span></span>
+<span id="cb483-2"><a href="software-development.html#cb483-2"></a></span>
+<span id="cb483-3"><a href="software-development.html#cb483-3"></a><span class="co"># This is an example skeleton that contains a Standard Function Structure. The</span></span>
+<span id="cb483-4"><a href="software-development.html#cb483-4"></a><span class="co"># functions defined here are needed to for the Standard Program Structure above.</span></span>
+<span id="cb483-5"><a href="software-development.html#cb483-5"></a><span class="co"># It was written purely for educational purposes and is part of the lecture </span></span>
+<span id="cb483-6"><a href="software-development.html#cb483-6"></a><span class="co"># notes for the course &#39;Computational Statistics using R&#39;.</span></span>
+<span id="cb483-7"><a href="software-development.html#cb483-7"></a></span>
+<span id="cb483-8"><a href="software-development.html#cb483-8"></a><span class="co"># Author: Benjamin Buchwitz (benjamin.buchwitz@ku.de)</span></span>
+<span id="cb483-9"><a href="software-development.html#cb483-9"></a><span class="co"># Date: 01.01.1970</span></span>
+<span id="cb483-10"><a href="software-development.html#cb483-10"></a><span class="co"># Version Changelog: </span></span>
+<span id="cb483-11"><a href="software-development.html#cb483-11"></a><span class="co">#   v0.1 - Initial Release</span></span>
+<span id="cb483-12"><a href="software-development.html#cb483-12"></a><span class="co">#   v0.2 - Major Improvements in Speed and Stability</span></span>
+<span id="cb483-13"><a href="software-development.html#cb483-13"></a></span>
+<span id="cb483-14"><a href="software-development.html#cb483-14"></a><span class="co">################################################################################</span></span>
+<span id="cb483-15"><a href="software-development.html#cb483-15"></a><span class="co">## Function Definitions</span></span>
+<span id="cb483-16"><a href="software-development.html#cb483-16"></a><span class="co">################################################################################</span></span>
+<span id="cb483-17"><a href="software-development.html#cb483-17"></a></span>
+<span id="cb483-18"><a href="software-development.html#cb483-18"></a><span class="co">#&#39; Computes the sample covariance between two vectors.</span></span>
+<span id="cb483-19"><a href="software-development.html#cb483-19"></a><span class="co">#&#39;</span></span>
+<span id="cb483-20"><a href="software-development.html#cb483-20"></a><span class="co">#&#39; This function calculates the ordinary sample covariance between two vectors,</span></span>
+<span id="cb483-21"><a href="software-development.html#cb483-21"></a><span class="co">#&#39; it is intended to be either used by a user directly and is also used in</span></span>
+<span id="cb483-22"><a href="software-development.html#cb483-22"></a><span class="co">#&#39; some other functions, e.g. when calculating the correlation coefficient.</span></span>
+<span id="cb483-23"><a href="software-development.html#cb483-23"></a><span class="co">#&#39;</span></span>
+<span id="cb483-24"><a href="software-development.html#cb483-24"></a><span class="co">#&#39; @param x One of two vectors whose sample covariance is to be calculated.</span></span>
+<span id="cb483-25"><a href="software-development.html#cb483-25"></a><span class="co">#&#39; @param y: The other vector. x and y must have the same length, greater than </span></span>
+<span id="cb483-26"><a href="software-development.html#cb483-26"></a><span class="co">#&#39;           one, with no missing values.</span></span>
+<span id="cb483-27"><a href="software-development.html#cb483-27"></a><span class="co">#&#39; @param verbose Logical. If TRUE, prints sample covariance; if not, output </span></span>
+<span id="cb483-28"><a href="software-development.html#cb483-28"></a><span class="co">#&#39;          is suppressed. Default is TRUE.</span></span>
+<span id="cb483-29"><a href="software-development.html#cb483-29"></a><span class="co">#&#39;           </span></span>
+<span id="cb483-30"><a href="software-development.html#cb483-30"></a><span class="co">#&#39; @return The sample covariance between x and y.</span></span>
+<span id="cb483-31"><a href="software-development.html#cb483-31"></a>CalculateSampleCovariance &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, <span class="dt">verbose =</span> <span class="ot">TRUE</span>) {</span>
+<span id="cb483-32"><a href="software-development.html#cb483-32"></a>  n &lt;-<span class="st"> </span><span class="kw">length</span>(x)</span>
+<span id="cb483-33"><a href="software-development.html#cb483-33"></a>  <span class="co"># Error handling</span></span>
+<span id="cb483-34"><a href="software-development.html#cb483-34"></a>  <span class="cf">if</span> (n <span class="op">&lt;=</span><span class="st"> </span><span class="dv">1</span> <span class="op">||</span><span class="st"> </span>n <span class="op">!=</span><span class="st"> </span><span class="kw">length</span>(y)) {</span>
+<span id="cb483-35"><a href="software-development.html#cb483-35"></a>    <span class="kw">stop</span>(<span class="st">&quot;Arguments x and y have different lengths: &quot;</span>,</span>
+<span id="cb483-36"><a href="software-development.html#cb483-36"></a>         <span class="kw">length</span>(x), <span class="st">&quot; and &quot;</span>, <span class="kw">length</span>(y), <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb483-37"><a href="software-development.html#cb483-37"></a>  }</span>
+<span id="cb483-38"><a href="software-development.html#cb483-38"></a>  <span class="cf">if</span> (<span class="ot">TRUE</span> <span class="op">%in%</span><span class="st"> </span><span class="kw">is.na</span>(x) <span class="op">||</span><span class="st"> </span><span class="ot">TRUE</span> <span class="op">%in%</span><span class="st"> </span><span class="kw">is.na</span>(y)) {</span>
+<span id="cb483-39"><a href="software-development.html#cb483-39"></a>    <span class="kw">stop</span>(<span class="st">&quot; Arguments x and y must not have missing values.&quot;</span>)</span>
+<span id="cb483-40"><a href="software-development.html#cb483-40"></a>  }</span>
+<span id="cb483-41"><a href="software-development.html#cb483-41"></a>  covariance &lt;-<span class="st"> </span><span class="kw">var</span>(x, y)</span>
+<span id="cb483-42"><a href="software-development.html#cb483-42"></a>  <span class="cf">if</span> (verbose)</span>
+<span id="cb483-43"><a href="software-development.html#cb483-43"></a>    <span class="kw">cat</span>(<span class="st">&quot;Covariance = &quot;</span>, <span class="kw">round</span>(covariance, <span class="dv">4</span>), <span class="st">&quot;.</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb483-44"><a href="software-development.html#cb483-44"></a>  <span class="kw">return</span>(covariance)</span>
+<span id="cb483-45"><a href="software-development.html#cb483-45"></a>}</span>
+<span id="cb483-46"><a href="software-development.html#cb483-46"></a></span>
+<span id="cb483-47"><a href="software-development.html#cb483-47"></a>...</span></code></pre></div>
+</div>
+<div id="naming-convention" class="section level3 hasAnchor">
+<h3><span class="header-section-number">5.2.3</span> Naming Convention<a href="software-development.html#naming-convention" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>While the aforementioned Standard Program Structure and the Standard Function Structure regulate what should be presented when developing code it is still unclear how functions, arguments, objects, classes or files should be named. Naming things is considered one of the more tricky parts in computer science. As it may be complicated to change e.g. a function name after it has been heavily used in other functions one needs to adopt a clear and vivid naming scheme. This also ensures that named functions, classes, etc. speak for themselves and is essential to produce readable and self-explaining code.</p>
+<p>The following list shows some popular naming conventions that all more or less frequently occur in several programming languages. Of course, not all developers that produce and distribute R software follow the same naming conventions. The function names given in the list below are R functions to illustrate how and where the respective naming scheme can be found within R. The shown list including some additional discussion can be found in the <a href="https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf">R Journal</a>.</p>
+<ul>
+<li><code>alllowercase</code>: All letters are lower case and no separator is used in names consisting of multiple words as in <code>searchpaths</code> or <code>srcfilecopy</code>. This naming convention is common in MATLAB. Note that a single lowercase name, such as <code>mean</code>, conforms to all conventions but UpperCamelCase.</li>
+<li><code>period.separated</code>: All letters are lower case and multiple words are separated by a period. This naming convention is unique to R and used in many core functions such as <code>as.numeric</code> or <code>read.table</code>.</li>
+<li><code>underscore_separated</code>: All letters are lower case and multiple words are separated by an underscore as in <code>seq_along</code> or <code>package_version</code>. This naming convention is used for function and variable names in many languages including C++, Perl, and Ruby.</li>
+<li><code>lowerCamelCase</code>: Single word names consist of lower case letters and in names consisting of more than one word all, except the first word, are capitalized as in <code>colMeans</code> or <code>suppressPackageStartupMessage</code>. This naming convention is used, for example, for method names in Java and JavaScript.</li>
+<li><code>UpperCamelCase</code>: All words are capitalized both when the name consists of a single word, as in <code>Vectorize</code>, or multiple words, as in <code>NextMethod</code>. This naming convention is used for class names in many languages including Java, Python, and JavaScript.</li>
+</ul>
+<p>When working in professional software development teams or joining existing projects one usually has to adapt to the defined naming convention. However, when developing alone one should still follow some rules. A good set of rules to follow are these ones:</p>
+
+<div class="rmdtip">
+<p><strong>A Personal Naming Convention</strong></p>
+<ol style="list-style-type: decimal">
+<li>This naming convention applies to variables, functions, and R files. Files that contain R code are always saved with the extension <code>.R</code>.</li>
+<li>All names are self-explaining English words, usually not abbreviated and at least 3 letters long. I use the singular even if numerous entries are expected. Example: price, duration, strike.</li>
+<li>Names for objects and functions use the <code>lowerCamelCase</code> naming scheme with the modifications listed below.</li>
+<li>Exceptions to (1) and (2) are widely used single-letter symbols and widely used acronyms. For both, I use only uppercase letters. Examples: X, Y in regression analysis or FFT, GDP.</li>
+<li>Uppercase letters concatenate words. The following rules apply to
+concatenated names:
+– Names of variables start with the most general term and end with the most specific (the latter usually denoting a certain method). Examples: optionPriceFFT, optionPriceAnalytic, optionStrike.
+– Names of functions start with the name of the project, followed by the object of the function, what it does and finally the specific method. Examples: wishartOptionPricingFFT, wishartOptionPricingCosfft, wishartOptionPlotting.</li>
+<li>To avoid confusion, I use the prefix “my”. This may be necessary if one variable is used locally to calculate a variant of a model or if the name conflicts with an existing R command. Example: myLinearModel, myDate.</li>
+<li><strong>Use common Sense and be CONSISTENT!</strong> When you reach a point, where the naming convention fails do not use it in this special case and check if it needs to be adapted and improved.</li>
+</ol>
+<em>Recommendations following: Gruber (2013) - Solving Economics and Finance Problems with MATLAB.</em>
+</div>
+
+</div>
+<div id="rules-best-practices" class="section level3 hasAnchor">
+<h3><span class="header-section-number">5.2.4</span> Rules &amp; Best Practices<a href="software-development.html#rules-best-practices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The following presents some rules and best practices that are widely adopted by programmers and have been proven useful:</p>
+<ul>
+<li><p>Comment your code. Each line of a comment should begin with the comment symbol <code>#</code> and a single space. Comments should explain the why, not the what. Check twice if the comment is clear and if it is really needed.</p></li>
+<li><p>Rely on commented lines of <code>######</code>, <code>#====</code> or <code>#----</code> to break up your file into easily readable chunks. While writing your code you can collapse these sections in RStudio so that you do not have to scroll over them every time.</p></li>
+</ul>
+<p><img src="gfx/gif/codeCollapse.gif" width="70%" style="display: block; margin: auto;" /></p>
+<ul>
+<li>If you want to implement a feature later or if you assign the responsibility to implement something to a team member choose a consistent style for TODOs throughout your code.</li>
+</ul>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="software-development.html#cb484-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">(username): Explicit description of action to be taken.</span></span></code></pre></div>
+<ul>
+<li><p>Use White Space and indentation to structure your code, but avoid the tabular key (RStudio helps you by translating every tab into 2 spaces automatically).</p></li>
+<li><p>Aim for a code width of 80 characters or less, so that your code can be printed if necessary and stays fully visible in text editor windows with moderate width (avoid the necessity to scroll vertically). RStudio provides support for this by displaying a thin grey line in the code editor, that can be enabled via the menu under Tools -&gt; Global Options Dialogue. Choose the Code pane and select the Display tab to checkmark the “show margin column” option.</p></li>
+</ul>
+<p><img src="gfx/gif/codeColumnWidth.gif" width="70%" style="display: block; margin: auto;" /></p>
+<p>It is pretty easy to find a case for which we have not discussed a rule yet. Due to the sheer complexity of the topic, we, therefore, rely on some popular examples to follow. Many professional developers have spent and effort to conceptualize complete style-guidelines, some with complete naming schemes and some without one. The following links will point to the most common style guides for R and you are encouraged to choose one (in addition to the things already discussed) when developing software. Note that none of these style guides is an official R standard and that there is (and possibly never will be) no such thing.</p>
+<ul>
+<li><a href="http://style.tidyverse.org/">The Tidyverse Style Guide</a></li>
+<li><a href="https://google.github.io/styleguide/Rguide.xml">Google’s R style guide</a></li>
+<li><a href="http://stat405.had.co.nz/r-style.html">Hadley Wickham’s Style Guide</a></li>
+<li><a href="https://bioconductor.org/developers/how-to/coding-style/">Bioconductor’s Coding Standards</a></li>
+<li><a href="http://csgillespie.wordpress.com/2010/11/23/r-style-guide/">Colin Gillespie’s R Style Guide</a></li>
+</ul>
+</div>
+</div>
+<div id="documenting" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.3</span> Documenting<a href="software-development.html#documenting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Software that is intended to be used needs to be documented. During the coding chapter, we actually covered a few important steps that already contain documentation of a program. Generally, the provided documentation for a program can be divided into code documentation and user documentation. Examples for the code documentation are the comments that explain the implemented steps directly in the code, while the user documentation usually consists of long term documentation such as a vignette or accompanying book to explain what the developed software does.</p>
+<div id="code-documentation-short-form-documentation" class="section level3 hasAnchor">
+<h3><span class="header-section-number">5.3.1</span> Code Documentation (Short-form Documentation)<a href="software-development.html#code-documentation-short-form-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Code documentation is sometimes also referred to as short-form documentation. As mentioned previously it supports readers of your code, mainly while using the code. It is intended to briefly explain arguments to functions and basic working principles. R in combination with various packages support you by documenting your code. The documentation style using the modified comment <code>#'</code> is implemented by the package <code>roxygen2</code>. It allows creating a help page directly from the function preamble, that is later accessible via the R help system <code>?</code>.</p>
+<p>This is useful and saves a lot of work as this part of the documentation can be written at the same moment as the software itself. However, to be available via the <code>?</code> operator, it is required that your code will be delivered to users as an R package. While we have not covered that yet, it is still beneficial to form a habit of documenting your code this way. The following table provides a short overview of some tags that you can (and should) use when documenting your code.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Tag</th>
+<th align="left">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>@param</code></td>
+<td align="left">Describe function parameter</td>
+</tr>
+<tr class="even">
+<td align="left"><code>@return</code></td>
+<td align="left">Indicate what the function returns</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>@examples</code></td>
+<td align="left">Possible usage example of the function</td>
+</tr>
+<tr class="even">
+<td align="left"><code>@seealso</code></td>
+<td align="left">Function that may be relevant to understand</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>@author</code></td>
+<td align="left">Author of the respective function</td>
+</tr>
+<tr class="even">
+<td align="left"><code>@keywords</code></td>
+<td align="left">Contextual topic of the function</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>@references</code></td>
+<td align="left">Web or academic reference to the function</td>
+</tr>
+</tbody>
+</table>
+<p>However, the <code>roxygen2</code> package is not limited to these tags but provides excessive options that are especially useful when developing R packages. A brief overview of capabilities and options for the roxygen engine is available in a <a href="https://www.rstudio.com/wp-content/uploads/2015/03/devtools-cheatsheet.pdf">Cheat Sheet</a>.</p>
+</div>
+<div id="user-documentation-long-form-documentation" class="section level3 hasAnchor">
+<h3><span class="header-section-number">5.3.2</span> User documentation (Long-form Documentation)<a href="software-development.html#user-documentation-long-form-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Long-form documentation describes the program, which can consist of a single or multiple functions, in more detail. It provides insights on what the program does and is the right place to elaborate on implementation details or explain the statistical or mathematical theory behind your routine. Long form documentation is usually called a <em>vignette</em> and can be anything from a short technical note over a journal article to a complete book. It can, therefore, serve as user documentation, allowing and explaining possible customization options and describe everything in more detail than the accompanying code documentation. Available documentation for an installed package can be viewed using the function <code>vignette()</code>.</p>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="software-development.html#cb485-1"></a><span class="kw">vignette</span>(<span class="dt">package=</span><span class="st">&quot;forecast&quot;</span>)</span></code></pre></div>
+<pre class="text"><code>Vignettes in package ‘forecast’:
+
+JSS2008            Automatic Time Series Forecasting: the forecast Package for R
+                   (Hyndman &amp; Khandakar, JSS 2008) (source, pdf)</code></pre>
+<p>For example, the vignette for the forecast package is a journal article that was published in the Journal of Statistical Software (JSS). It will be downloaded when installing the package or, as the JSS is an open access journal, is also available to be downloaded <a href="https://www.jstatsoft.org/article/view/v027i03">here</a>.</p>
+<p>A good way to write long-form documentation is using RMarkdown, which is a specialized version of Markdown - a plain text formatting system. R Markdown hast multiple advantages: it is strictly focussed on content, can intermingle text and results from code executions and is tightly integrated into RStudio. It is, therefore, the optimal solution for documenting programming challenges, solving assignments or writing theses that rely on R. The syntax employed by Markdown is simple and straightforward and it allows you to produce many kinds of output such as HTML, pdf or even Microsoft Word documents.</p>
+</div>
+</div>
+<div id="testing" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.4</span> Testing<a href="software-development.html#testing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Software testing is an investigation conducted to provide stakeholders with information about the quality of the tested code. Its goal is to generate an independent view of the software that allows understanding of how the developed product can affect its (business) environment. In professional environments, this allows finding bugs and verifies that the software product is fit for production purposes.</p>
+<p>Software testing involves the execution of a software component (e.g. a small function) or system component (e.g. a large function or a whole package) and evaluates at least one property of interest. This can, for example, be the requirements that have been noted when planning the program. Testing usually checks the behavior of the software under all kinds of inputs, evaluates the response time and efficiency and simulates conditions in practical uses.</p>
+<p>As the number of possible tests is almost infinite, professional developers employ test strategies that intend to find errors, unexpected results or general misbehavior. As all discussed steps in this chapter, testing is an iterative process. Fixing one error can lead to previously hidden deeper bugs or can even create new ones. As this is not a course on software engineering, we limit our testing framework to the following rules of thumb that can serve as a guideline after writing our first programs.</p>
+<ul>
+<li>Test in an organized and modular way, ideally by making a plan.</li>
+<li>Check every function separately.</li>
+<li>Test every scenario at least twice, especially when you have modified your function or fixed an error.</li>
+<li>Find and test boundary values.</li>
+<li>Test for different and deliberately false input.</li>
+<li>Do not only look for errors, often warnings reveal much more subtle problems, that need to be resolved.</li>
+<li>Document what you test.</li>
+</ul>
+<p>A more comprehensive way of testing in an automated fashion is provided by the <code>testthat</code> package, which is the most popular unit testing solution in R. However, as this is an introductory course we do not cover automated testing in more detail.</p>
+</div>
+<div id="maintaining" class="section level2 hasAnchor">
+<h2><span class="header-section-number">5.5</span> Maintaining<a href="software-development.html#maintaining" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Software systems evolve and need adaptation as well as fixes to continuously deliver results for their users. Maintenance allows preserving the value that the software provides over time. Generally, maintenance is any change to the software after it has been used for production purposes for the first time.</p>
+<p>The key software maintenance issues are both managerial and technical ones. Usually, maintenance tasks include error fixing, capabilities extensions, removing obsolete capabilities, and process or functionality optimizations. Productive software requires strict versioning to allow users as well as developers to keep track of the changes. While simple programs that are being written for simple analyses or software that implements research prototypes often only require a single “release”, this is obviously different for business and professional applications. Naturally, maintenance in a research context is not that intensively discussed, and as this is an introductory course we abstain from further explanations here. However, maintaining the value a software delivers has to be kept in mind for bigger and continuous projects.</p>
+</div>
+<div id="exercises-4" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="software-development.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="gfx/CH00-ExercisesHeader.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="from-may-3-2022" class="section level3 unnumbered hasAnchor">
+<h3>From May 3, 2022<a href="software-development.html#from-may-3-2022" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<embed src="exercises/cswr_programming_R_exercises_software_development.pdf" width="100%" style="display: block; margin: auto;" type="application/pdf" />
+<table>
+<thead>
+<tr class="header">
+<th align="center">Description</th>
+<th align="center">R script</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">main program</td>
+<td align="center"><a href="exercises/aus_tourism/main_program_aus_tourism.R">main_program_aus_tourism</a></td>
+</tr>
+<tr class="even">
+<td align="center">function <code>selectedData()</code></td>
+<td align="center"><a href="exercises/aus_tourism/selectedData.R">selectedData</a></td>
+</tr>
+<tr class="odd">
+<td align="center">function <code>plotTs()</code></td>
+<td align="center"><a href="exercises/aus_tourism/plotTs.R">plotTs</a></td>
+</tr>
+<tr class="even">
+<td align="center">function <code>summarizeRegion()</code></td>
+<td align="center"><a href="exercises/aus_tourism/summarizeRegion.R">summarizeRegion</a></td>
+</tr>
+</tbody>
+</table>
+<!-- 
+## Software Engineering
+## Licensing
+
+## exercises {-}
+<img src="gfx/CH00-ExercisesHeader.png" width="100%" style="display: block; margin: auto;" />
+
+-->
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="exercises-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="planning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="structure.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vectorization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Code Structure | Computational Statistics</title>
   <meta name="description" content="Chapter 4 Code Structure | Computational Statistics with R Course Notes" />
-  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Code Structure | Computational Statistics" />
   <meta property="og:type" content="book" />
@@ -23,15 +23,15 @@
 <meta name="author" content="Benjamin Buchwitz" />
 
 
-<meta name="date" content="2022-11-18" />
+<meta name="date" content="2023-01-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="exercises-2.html"/>
-<link rel="next" href="conditional-expressions.html"/>
+<link rel="prev" href="data-manipulation.html"/>
+<link rel="next" href="software-development.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -138,225 +138,225 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Hello World!</a><ul>
-<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i>Installation</a><ul>
-<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
-<li class="chapter" data-level="" data-path="installation.html"><a href="installation.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i>Installation</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-language-base-system"><i class="fa fa-check"></i>R Language (Base System)</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-studio-ide"><i class="fa fa-check"></i>R-Studio (IDE)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> The Basics</a><ul>
-<li class="chapter" data-level="1.1" data-path="r-and-the-r-project.html"><a href="r-and-the-r-project.html"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
-<li class="chapter" data-level="1.2" data-path="r-system-and-rstudio.html"><a href="r-system-and-rstudio.html"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
-<li class="chapter" data-level="1.3" data-path="first-steps-r-as-calculator.html"><a href="first-steps-r-as-calculator.html"><i class="fa fa-check"></i><b>1.3</b> First Steps: R as Calculator</a></li>
-<li class="chapter" data-level="1.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html"><i class="fa fa-check"></i><b>1.4</b> Objects and Data Structures</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-vectors"><i class="fa fa-check"></i><b>1.4.1</b> Data Structure: Vectors</a></li>
-<li class="chapter" data-level="1.4.2" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-matrices"><i class="fa fa-check"></i><b>1.4.2</b> Data Structure: Matrices</a></li>
-<li class="chapter" data-level="1.4.3" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-strings"><i class="fa fa-check"></i><b>1.4.3</b> Data Structure: Strings</a></li>
-<li class="chapter" data-level="1.4.4" data-path="objects-and-data-structures.html"><a href="objects-and-data-structures.html#data-structure-lists-and-data-frames"><i class="fa fa-check"></i><b>1.4.4</b> Data Structure: Lists and Data Frames</a></li>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#r-and-the-r-project"><i class="fa fa-check"></i><b>1.1</b> R and the R-Project</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#r-system-and-rstudio"><i class="fa fa-check"></i><b>1.2</b> R System and RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#first-steps-r-as-calculator"><i class="fa fa-check"></i><b>1.3</b> First Steps: R as Calculator</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#objects-and-data-structures"><i class="fa fa-check"></i><b>1.4</b> Objects and Data Structures</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#data-structure-vectors"><i class="fa fa-check"></i><b>1.4.1</b> Data Structure: Vectors</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#data-structure-matrices"><i class="fa fa-check"></i><b>1.4.2</b> Data Structure: Matrices</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#data-structure-strings"><i class="fa fa-check"></i><b>1.4.3</b> Data Structure: Strings</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#data-structure-lists-and-data-frames"><i class="fa fa-check"></i><b>1.4.4</b> Data Structure: Lists and Data Frames</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>1.5</b> Functions</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="functions.html"><a href="functions.html#using-functions"><i class="fa fa-check"></i><b>1.5.1</b> Using Functions</a></li>
-<li class="chapter" data-level="1.5.2" data-path="functions.html"><a href="functions.html#writing-functions"><i class="fa fa-check"></i><b>1.5.2</b> Writing Functions</a></li>
-<li class="chapter" data-level="1.5.3" data-path="functions.html"><a href="functions.html#solving-problems"><i class="fa fa-check"></i><b>1.5.3</b> Solving Problems</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#functions"><i class="fa fa-check"></i><b>1.5</b> Functions</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#using-functions"><i class="fa fa-check"></i><b>1.5.1</b> Using Functions</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#writing-functions"><i class="fa fa-check"></i><b>1.5.2</b> Writing Functions</a></li>
+<li class="chapter" data-level="1.5.3" data-path="intro.html"><a href="intro.html#solving-problems"><i class="fa fa-check"></i><b>1.5.3</b> Solving Problems</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>1.6</b> Packages</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="packages.html"><a href="packages.html#packages-with-data"><i class="fa fa-check"></i><b>1.6.1</b> Packages with Data</a></li>
-<li class="chapter" data-level="1.6.2" data-path="packages.html"><a href="packages.html#packages-with-functions"><i class="fa fa-check"></i><b>1.6.2</b> Packages with Functions</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#packages"><i class="fa fa-check"></i><b>1.6</b> Packages</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#packages-with-data"><i class="fa fa-check"></i><b>1.6.1</b> Packages with Data</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#packages-with-functions"><i class="fa fa-check"></i><b>1.6.2</b> Packages with Functions</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="getting-help.html"><a href="getting-help.html"><i class="fa fa-check"></i><b>1.7</b> Getting Help</a><ul>
-<li class="chapter" data-level="1.7.1" data-path="getting-help.html"><a href="getting-help.html#integrated-help-system"><i class="fa fa-check"></i><b>1.7.1</b> Integrated Help System</a></li>
-<li class="chapter" data-level="1.7.2" data-path="getting-help.html"><a href="getting-help.html#help-on-the-internet"><i class="fa fa-check"></i><b>1.7.2</b> Help on the Internet</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#getting-help"><i class="fa fa-check"></i><b>1.7</b> Getting Help</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="intro.html"><a href="intro.html#integrated-help-system"><i class="fa fa-check"></i><b>1.7.1</b> Integrated Help System</a></li>
+<li class="chapter" data-level="1.7.2" data-path="intro.html"><a href="intro.html#help-on-the-internet"><i class="fa fa-check"></i><b>1.7.2</b> Help on the Internet</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-1"><i class="fa fa-check"></i>EX 1</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-2"><i class="fa fa-check"></i>EX 2</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-3"><i class="fa fa-check"></i>EX 3</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-4"><i class="fa fa-check"></i>EX 4</a></li>
-<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#ex-5"><i class="fa fa-check"></i>EX 5</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#exercises"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-3"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-4"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="intro.html"><a href="intro.html#ex-5"><i class="fa fa-check"></i>EX 5</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>2</b> Data Types</a><ul>
-<li class="chapter" data-level="2.1" data-path="fixed-and-floating-point-number-representation.html"><a href="fixed-and-floating-point-number-representation.html"><i class="fa fa-check"></i><b>2.1</b> Fixed and Floating Point Number Representation</a></li>
-<li class="chapter" data-level="2.2" data-path="numeric.html"><a href="numeric.html"><i class="fa fa-check"></i><b>2.2</b> Numeric</a></li>
-<li class="chapter" data-level="2.3" data-path="complex.html"><a href="complex.html"><i class="fa fa-check"></i><b>2.3</b> Complex</a></li>
-<li class="chapter" data-level="2.4" data-path="logical.html"><a href="logical.html"><i class="fa fa-check"></i><b>2.4</b> Logical</a></li>
-<li class="chapter" data-level="2.5" data-path="character.html"><a href="character.html"><i class="fa fa-check"></i><b>2.5</b> Character</a></li>
-<li class="chapter" data-level="2.6" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>2.6</b> Factors</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="factors.html"><a href="factors.html#unordered-factors"><i class="fa fa-check"></i><b>2.6.1</b> Unordered Factors</a></li>
-<li class="chapter" data-level="2.6.2" data-path="factors.html"><a href="factors.html#ordered-factors"><i class="fa fa-check"></i><b>2.6.2</b> Ordered Factors</a></li>
+<li class="chapter" data-level="2.1" data-path="data-types.html"><a href="data-types.html#fixed-and-floating-point-number-representation"><i class="fa fa-check"></i><b>2.1</b> Fixed and Floating Point Number Representation</a></li>
+<li class="chapter" data-level="2.2" data-path="data-types.html"><a href="data-types.html#numeric"><i class="fa fa-check"></i><b>2.2</b> Numeric</a></li>
+<li class="chapter" data-level="2.3" data-path="data-types.html"><a href="data-types.html#complex"><i class="fa fa-check"></i><b>2.3</b> Complex</a></li>
+<li class="chapter" data-level="2.4" data-path="data-types.html"><a href="data-types.html#logical"><i class="fa fa-check"></i><b>2.4</b> Logical</a></li>
+<li class="chapter" data-level="2.5" data-path="data-types.html"><a href="data-types.html#character"><i class="fa fa-check"></i><b>2.5</b> Character</a></li>
+<li class="chapter" data-level="2.6" data-path="data-types.html"><a href="data-types.html#factors"><i class="fa fa-check"></i><b>2.6</b> Factors</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="data-types.html"><a href="data-types.html#unordered-factors"><i class="fa fa-check"></i><b>2.6.1</b> Unordered Factors</a></li>
+<li class="chapter" data-level="2.6.2" data-path="data-types.html"><a href="data-types.html#ordered-factors"><i class="fa fa-check"></i><b>2.6.2</b> Ordered Factors</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="missing-and-raw-data.html"><a href="missing-and-raw-data.html"><i class="fa fa-check"></i><b>2.7</b> Missing and Raw Data</a></li>
-<li class="chapter" data-level="2.8" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html"><i class="fa fa-check"></i><b>2.8</b> Coercion, Attributes, and Class</a><ul>
-<li class="chapter" data-level="2.8.1" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#coercion"><i class="fa fa-check"></i><b>2.8.1</b> Coercion</a></li>
-<li class="chapter" data-level="2.8.2" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#attributes-and-names"><i class="fa fa-check"></i><b>2.8.2</b> Attributes and Names</a></li>
-<li class="chapter" data-level="2.8.3" data-path="coercion-attributes-and-class.html"><a href="coercion-attributes-and-class.html#class"><i class="fa fa-check"></i><b>2.8.3</b> Class</a></li>
+<li class="chapter" data-level="2.7" data-path="data-types.html"><a href="data-types.html#missing-and-raw-data"><i class="fa fa-check"></i><b>2.7</b> Missing and Raw Data</a></li>
+<li class="chapter" data-level="2.8" data-path="data-types.html"><a href="data-types.html#coercion-attributes-and-class"><i class="fa fa-check"></i><b>2.8</b> Coercion, Attributes, and Class</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="data-types.html"><a href="data-types.html#coercion"><i class="fa fa-check"></i><b>2.8.1</b> Coercion</a></li>
+<li class="chapter" data-level="2.8.2" data-path="data-types.html"><a href="data-types.html#attributes-and-names"><i class="fa fa-check"></i><b>2.8.2</b> Attributes and Names</a></li>
+<li class="chapter" data-level="2.8.3" data-path="data-types.html"><a href="data-types.html#class"><i class="fa fa-check"></i><b>2.8.3</b> Class</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#from-april-5-2022"><i class="fa fa-check"></i>From April 5, 2022</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-1-1"><i class="fa fa-check"></i>EX 1</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-2-1"><i class="fa fa-check"></i>EX 2</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-3-1"><i class="fa fa-check"></i>EX 3</a></li>
-<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html#ex-4-1"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#exercises-1"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#from-april-5-2022"><i class="fa fa-check"></i>From April 5, 2022</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-1-1"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-2-1"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-3-1"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="data-types.html"><a href="data-types.html#ex-4-1"><i class="fa fa-check"></i>EX 4</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation</a><ul>
-<li class="chapter" data-level="3.1" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
-<li class="chapter" data-level="3.2" data-path="matrices-and-arrays.html"><a href="matrices-and-arrays.html"><i class="fa fa-check"></i><b>3.2</b> Matrices and Arrays</a></li>
-<li class="chapter" data-level="3.3" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
-<li class="chapter" data-level="3.4" data-path="dataframes.html"><a href="dataframes.html"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a><ul>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#merging-rows-and-columns"><i class="fa fa-check"></i>Merging rows and columns</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#apply-functions-to-rows-and-columns"><i class="fa fa-check"></i>Apply functions to rows and columns</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#sweep-out-statistics-in-a-matrix"><i class="fa fa-check"></i>Sweep out Statistics in a Matrix</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#concatenate-all-values-from-a-dataframe"><i class="fa fa-check"></i>Concatenate all values from a dataframe</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#splitting-dataframes-while-applying-functions"><i class="fa fa-check"></i>Splitting dataframes while applying functions</a></li>
-<li class="chapter" data-level="" data-path="dataframes.html"><a href="dataframes.html#transformations-without-recreating-dataframes"><i class="fa fa-check"></i>Transformations without recreating dataframes</a></li>
+<li class="chapter" data-level="3.1" data-path="data-manipulation.html"><a href="data-manipulation.html#vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="data-manipulation.html"><a href="data-manipulation.html#matrices-and-arrays"><i class="fa fa-check"></i><b>3.2</b> Matrices and Arrays</a></li>
+<li class="chapter" data-level="3.3" data-path="data-manipulation.html"><a href="data-manipulation.html#lists"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="data-manipulation.html"><a href="data-manipulation.html#dataframes"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a><ul>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#merging-rows-and-columns"><i class="fa fa-check"></i>Merging rows and columns</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#apply-functions-to-rows-and-columns"><i class="fa fa-check"></i>Apply functions to rows and columns</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#sweep-out-statistics-in-a-matrix"><i class="fa fa-check"></i>Sweep out Statistics in a Matrix</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#concatenate-all-values-from-a-dataframe"><i class="fa fa-check"></i>Concatenate all values from a dataframe</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#splitting-dataframes-while-applying-functions"><i class="fa fa-check"></i>Splitting dataframes while applying functions</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#transformations-without-recreating-dataframes"><i class="fa fa-check"></i>Transformations without recreating dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>3.5</b> Strings</a></li>
-<li class="chapter" data-level="3.6" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>3.6</b> Dates and Times</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#from-april-12-2022"><i class="fa fa-check"></i>From April 12, 2022</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-1-2"><i class="fa fa-check"></i>EX 1</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-2-2"><i class="fa fa-check"></i>EX 2</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-3-2"><i class="fa fa-check"></i>EX 3</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-4-2"><i class="fa fa-check"></i>EX 4</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-5-1"><i class="fa fa-check"></i>EX 5</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-6"><i class="fa fa-check"></i>EX 6</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#ex-7"><i class="fa fa-check"></i>EX 7</a></li>
+<li class="chapter" data-level="3.5" data-path="data-manipulation.html"><a href="data-manipulation.html#strings"><i class="fa fa-check"></i><b>3.5</b> Strings</a></li>
+<li class="chapter" data-level="3.6" data-path="data-manipulation.html"><a href="data-manipulation.html#dates-and-times"><i class="fa fa-check"></i><b>3.6</b> Dates and Times</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#exercises-2"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#from-april-12-2022"><i class="fa fa-check"></i>From April 12, 2022</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-1-2"><i class="fa fa-check"></i>EX 1</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-2-2"><i class="fa fa-check"></i>EX 2</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-3-2"><i class="fa fa-check"></i>EX 3</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-4-2"><i class="fa fa-check"></i>EX 4</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-5-1"><i class="fa fa-check"></i>EX 5</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-6"><i class="fa fa-check"></i>EX 6</a></li>
+<li class="chapter" data-level="" data-path="data-manipulation.html"><a href="data-manipulation.html#ex-7"><i class="fa fa-check"></i>EX 7</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>4</b> Code Structure</a><ul>
-<li class="chapter" data-level="4.1" data-path="conditional-expressions.html"><a href="conditional-expressions.html"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a><ul>
-<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#if-and-else"><i class="fa fa-check"></i>If and Else</a></li>
-<li class="chapter" data-level="" data-path="conditional-expressions.html"><a href="conditional-expressions.html#switch"><i class="fa fa-check"></i>Switch</a></li>
+<li class="chapter" data-level="4.1" data-path="structure.html"><a href="structure.html#conditional-expressions"><i class="fa fa-check"></i><b>4.1</b> Conditional Expressions</a><ul>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#if-and-else"><i class="fa fa-check"></i>If and Else</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#switch"><i class="fa fa-check"></i>Switch</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>4.2</b> Loops</a><ul>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#for-loop"><i class="fa fa-check"></i>For-Loop</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#while-loop"><i class="fa fa-check"></i>While-Loop</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#repeat"><i class="fa fa-check"></i>Repeat</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#break-and-next"><i class="fa fa-check"></i>Break and Next</a></li>
-<li class="chapter" data-level="" data-path="loops.html"><a href="loops.html#special-looping-over-non-numerical-data"><i class="fa fa-check"></i>Special: Looping over non-numerical data</a></li>
+<li class="chapter" data-level="4.2" data-path="structure.html"><a href="structure.html#loops"><i class="fa fa-check"></i><b>4.2</b> Loops</a><ul>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#for-loop"><i class="fa fa-check"></i>For-Loop</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#while-loop"><i class="fa fa-check"></i>While-Loop</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#repeat"><i class="fa fa-check"></i>Repeat</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#break-and-next"><i class="fa fa-check"></i>Break and Next</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#special-looping-over-non-numerical-data"><i class="fa fa-check"></i>Special: Looping over non-numerical data</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html#from-april-26-2022"><i class="fa fa-check"></i>From April 26, 2022</a></li>
-<li class="chapter" data-level="" data-path="exercises-3.html"><a href="exercises-3.html#bottles-of-beer"><i class="fa fa-check"></i>99 Bottles of Beer</a></li>
-<li class="chapter" data-level="4.2.1" data-path="exercises-3.html"><a href="exercises-3.html#multiplication-table"><i class="fa fa-check"></i><b>4.2.1</b> Multiplication Table</a></li>
-<li class="chapter" data-level="4.2.2" data-path="exercises-3.html"><a href="exercises-3.html#diagonal-matrix"><i class="fa fa-check"></i><b>4.2.2</b> Diagonal Matrix</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#exercises-3"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#from-april-26-2022"><i class="fa fa-check"></i>From April 26, 2022</a></li>
+<li class="chapter" data-level="" data-path="structure.html"><a href="structure.html#bottles-of-beer"><i class="fa fa-check"></i>99 Bottles of Beer</a></li>
+<li class="chapter" data-level="4.2.1" data-path="structure.html"><a href="structure.html#multiplication-table"><i class="fa fa-check"></i><b>4.2.1</b> Multiplication Table</a></li>
+<li class="chapter" data-level="4.2.2" data-path="structure.html"><a href="structure.html#diagonal-matrix"><i class="fa fa-check"></i><b>4.2.2</b> Diagonal Matrix</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="software-development.html"><a href="software-development.html"><i class="fa fa-check"></i><b>5</b> Software Development</a><ul>
-<li class="chapter" data-level="5.1" data-path="planning.html"><a href="planning.html"><i class="fa fa-check"></i><b>5.1</b> Planning</a></li>
-<li class="chapter" data-level="5.2" data-path="coding.html"><a href="coding.html"><i class="fa fa-check"></i><b>5.2</b> Coding</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="coding.html"><a href="coding.html#standard-program-structure"><i class="fa fa-check"></i><b>5.2.1</b> Standard Program Structure</a></li>
-<li class="chapter" data-level="5.2.2" data-path="coding.html"><a href="coding.html#standard-function-structure"><i class="fa fa-check"></i><b>5.2.2</b> Standard Function Structure</a></li>
-<li class="chapter" data-level="5.2.3" data-path="coding.html"><a href="coding.html#naming-convention"><i class="fa fa-check"></i><b>5.2.3</b> Naming Convention</a></li>
-<li class="chapter" data-level="5.2.4" data-path="coding.html"><a href="coding.html#rules-best-practices"><i class="fa fa-check"></i><b>5.2.4</b> Rules &amp; Best Practices</a></li>
+<li class="chapter" data-level="5.1" data-path="software-development.html"><a href="software-development.html#planning"><i class="fa fa-check"></i><b>5.1</b> Planning</a></li>
+<li class="chapter" data-level="5.2" data-path="software-development.html"><a href="software-development.html#coding"><i class="fa fa-check"></i><b>5.2</b> Coding</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="software-development.html"><a href="software-development.html#standard-program-structure"><i class="fa fa-check"></i><b>5.2.1</b> Standard Program Structure</a></li>
+<li class="chapter" data-level="5.2.2" data-path="software-development.html"><a href="software-development.html#standard-function-structure"><i class="fa fa-check"></i><b>5.2.2</b> Standard Function Structure</a></li>
+<li class="chapter" data-level="5.2.3" data-path="software-development.html"><a href="software-development.html#naming-convention"><i class="fa fa-check"></i><b>5.2.3</b> Naming Convention</a></li>
+<li class="chapter" data-level="5.2.4" data-path="software-development.html"><a href="software-development.html#rules-best-practices"><i class="fa fa-check"></i><b>5.2.4</b> Rules &amp; Best Practices</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="documenting.html"><a href="documenting.html"><i class="fa fa-check"></i><b>5.3</b> Documenting</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="documenting.html"><a href="documenting.html#code-documentation-short-form-documentation"><i class="fa fa-check"></i><b>5.3.1</b> Code Documentation (Short-form Documentation)</a></li>
-<li class="chapter" data-level="5.3.2" data-path="documenting.html"><a href="documenting.html#user-documentation-long-form-documentation"><i class="fa fa-check"></i><b>5.3.2</b> User documentation (Long-form Documentation)</a></li>
+<li class="chapter" data-level="5.3" data-path="software-development.html"><a href="software-development.html#documenting"><i class="fa fa-check"></i><b>5.3</b> Documenting</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="software-development.html"><a href="software-development.html#code-documentation-short-form-documentation"><i class="fa fa-check"></i><b>5.3.1</b> Code Documentation (Short-form Documentation)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="software-development.html"><a href="software-development.html#user-documentation-long-form-documentation"><i class="fa fa-check"></i><b>5.3.2</b> User documentation (Long-form Documentation)</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="testing.html"><a href="testing.html"><i class="fa fa-check"></i><b>5.4</b> Testing</a></li>
-<li class="chapter" data-level="5.5" data-path="maintaining.html"><a href="maintaining.html"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a></li>
-<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html#from-may-3-2022"><i class="fa fa-check"></i>From May 3, 2022</a></li>
+<li class="chapter" data-level="5.4" data-path="software-development.html"><a href="software-development.html#testing"><i class="fa fa-check"></i><b>5.4</b> Testing</a></li>
+<li class="chapter" data-level="5.5" data-path="software-development.html"><a href="software-development.html#maintaining"><i class="fa fa-check"></i><b>5.5</b> Maintaining</a></li>
+<li class="chapter" data-level="" data-path="software-development.html"><a href="software-development.html#exercises-4"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="software-development.html"><a href="software-development.html#from-may-3-2022"><i class="fa fa-check"></i>From May 3, 2022</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="vectorization.html"><a href="vectorization.html"><i class="fa fa-check"></i><b>6</b> Vectorization</a><ul>
-<li class="chapter" data-level="6.1" data-path="apply-family.html"><a href="apply-family.html"><i class="fa fa-check"></i><b>6.1</b> *apply-Family</a><ul>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#apply"><i class="fa fa-check"></i>apply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#lapply"><i class="fa fa-check"></i>lapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#sapply"><i class="fa fa-check"></i>sapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#vapply"><i class="fa fa-check"></i>vapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#tapply"><i class="fa fa-check"></i>tapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#mapply"><i class="fa fa-check"></i>mapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#rapply"><i class="fa fa-check"></i>rapply</a></li>
-<li class="chapter" data-level="" data-path="apply-family.html"><a href="apply-family.html#eapply"><i class="fa fa-check"></i>eapply</a></li>
+<li class="chapter" data-level="6.1" data-path="vectorization.html"><a href="vectorization.html#apply-family"><i class="fa fa-check"></i><b>6.1</b> *apply-Family</a><ul>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#apply"><i class="fa fa-check"></i>apply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#lapply"><i class="fa fa-check"></i>lapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#sapply"><i class="fa fa-check"></i>sapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#vapply"><i class="fa fa-check"></i>vapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#tapply"><i class="fa fa-check"></i>tapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#mapply"><i class="fa fa-check"></i>mapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#rapply"><i class="fa fa-check"></i>rapply</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#eapply"><i class="fa fa-check"></i>eapply</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="technical-background.html"><a href="technical-background.html"><i class="fa fa-check"></i><b>6.2</b> Technical Background</a></li>
-<li class="chapter" data-level="6.3" data-path="parallelization-using-vectorized-functions.html"><a href="parallelization-using-vectorized-functions.html"><i class="fa fa-check"></i><b>6.3</b> Parallelization using vectorized functions</a></li>
-<li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html#from-may-10-2022"><i class="fa fa-check"></i>From May 10, 2022</a></li>
+<li class="chapter" data-level="6.2" data-path="vectorization.html"><a href="vectorization.html#technical-background"><i class="fa fa-check"></i><b>6.2</b> Technical Background</a></li>
+<li class="chapter" data-level="6.3" data-path="vectorization.html"><a href="vectorization.html#parallelization-using-vectorized-functions"><i class="fa fa-check"></i><b>6.3</b> Parallelization using vectorized functions</a></li>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#exercises-5"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="vectorization.html"><a href="vectorization.html#from-may-10-2022"><i class="fa fa-check"></i>From May 10, 2022</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="applications---graphics.html"><a href="applications---graphics.html"><i class="fa fa-check"></i><b>7</b> Applications - Graphics</a><ul>
-<li class="chapter" data-level="7.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="plotsbaseR.html"><a href="plotsbaseR.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
-<li class="chapter" data-level="7.1.2" data-path="plotsbaseR.html"><a href="plotsbaseR.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.1.3" data-path="plotsbaseR.html"><a href="plotsbaseR.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
+<li class="chapter" data-level="7.1" data-path="applications---graphics.html"><a href="applications---graphics.html#plotsbaseR"><i class="fa fa-check"></i><b>7.1</b> Plots with base R</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="applications---graphics.html"><a href="applications---graphics.html#plot"><i class="fa fa-check"></i><b>7.1.1</b> <code>plot()</code></a></li>
+<li class="chapter" data-level="7.1.2" data-path="applications---graphics.html"><a href="applications---graphics.html#histograms-and-boxplots"><i class="fa fa-check"></i><b>7.1.2</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.1.3" data-path="applications---graphics.html"><a href="applications---graphics.html#scatterplots-and-linear-regression"><i class="fa fa-check"></i><b>7.1.3</b> Scatterplots and linear regression</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a><ul>
-<li class="chapter" data-level="7.2.1" data-path="plotsggplot2.html"><a href="plotsggplot2.html#histograms-and-boxplots-1"><i class="fa fa-check"></i><b>7.2.1</b> Histograms and boxplots</a></li>
-<li class="chapter" data-level="7.2.2" data-path="plotsggplot2.html"><a href="plotsggplot2.html#linear-regression"><i class="fa fa-check"></i><b>7.2.2</b> Linear regression</a></li>
-<li class="chapter" data-level="7.2.3" data-path="plotsggplot2.html"><a href="plotsggplot2.html#customizing-ggplots"><i class="fa fa-check"></i><b>7.2.3</b> Customizing ggplots</a></li>
-<li class="chapter" data-level="7.2.4" data-path="plotsggplot2.html"><a href="plotsggplot2.html#handling-2-variables-and-faceting"><i class="fa fa-check"></i><b>7.2.4</b> Handling &gt; 2 variables and faceting</a></li>
+<li class="chapter" data-level="7.2" data-path="applications---graphics.html"><a href="applications---graphics.html#plotsggplot2"><i class="fa fa-check"></i><b>7.2</b> Plots with <code>ggplot2</code> <span class="citation">(Wickham <span>2016</span>)</span></a><ul>
+<li class="chapter" data-level="7.2.1" data-path="applications---graphics.html"><a href="applications---graphics.html#histograms-and-boxplots-1"><i class="fa fa-check"></i><b>7.2.1</b> Histograms and boxplots</a></li>
+<li class="chapter" data-level="7.2.2" data-path="applications---graphics.html"><a href="applications---graphics.html#linear-regression"><i class="fa fa-check"></i><b>7.2.2</b> Linear regression</a></li>
+<li class="chapter" data-level="7.2.3" data-path="applications---graphics.html"><a href="applications---graphics.html#customizing-ggplots"><i class="fa fa-check"></i><b>7.2.3</b> Customizing ggplots</a></li>
+<li class="chapter" data-level="7.2.4" data-path="applications---graphics.html"><a href="applications---graphics.html#handling-2-variables-and-faceting"><i class="fa fa-check"></i><b>7.2.4</b> Handling &gt; 2 variables and faceting</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="interactive-plots-with-plotly-plotly.html"><a href="interactive-plots-with-plotly-plotly.html"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
-<li class="chapter" data-level="" data-path="excercises.html"><a href="excercises.html"><i class="fa fa-check"></i>Excercises</a><ul>
-<li class="chapter" data-level="" data-path="excercises.html"><a href="excercises.html#task-mtcars-dataset"><i class="fa fa-check"></i>Task <code>mtcars</code> dataset</a></li>
+<li class="chapter" data-level="7.3" data-path="applications---graphics.html"><a href="applications---graphics.html#interactive-plots-with-plotly-plotly"><i class="fa fa-check"></i><b>7.3</b> Interactive plots with <code>plotly</code> <span class="citation">(Sievert <span>2020</span>)</span></a></li>
+<li class="chapter" data-level="" data-path="applications---graphics.html"><a href="applications---graphics.html#excercises"><i class="fa fa-check"></i>Excercises</a><ul>
+<li class="chapter" data-level="" data-path="applications---graphics.html"><a href="applications---graphics.html#task-mtcars-dataset"><i class="fa fa-check"></i>Task <code>mtcars</code> dataset</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="word-puzzle.html"><a href="word-puzzle.html"><i class="fa fa-check"></i><b>8</b> Word Puzzle</a><ul>
-<li class="chapter" data-level="8.1" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
-<li class="chapter" data-level="8.2" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>8.2</b> Solution</a></li>
+<li class="chapter" data-level="8.1" data-path="word-puzzle.html"><a href="word-puzzle.html#requirements"><i class="fa fa-check"></i><b>8.1</b> Requirements</a></li>
+<li class="chapter" data-level="8.2" data-path="word-puzzle.html"><a href="word-puzzle.html#solution"><i class="fa fa-check"></i><b>8.2</b> Solution</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="blockchain.html"><a href="blockchain.html"><i class="fa fa-check"></i><b>9</b> Blockchain</a><ul>
-<li class="chapter" data-level="9.1" data-path="hash-functions.html"><a href="hash-functions.html"><i class="fa fa-check"></i><b>9.1</b> Hash Functions</a><ul>
-<li class="chapter" data-level="" data-path="hash-functions.html"><a href="hash-functions.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="9.1" data-path="blockchain.html"><a href="blockchain.html#hash-functions"><i class="fa fa-check"></i><b>9.1</b> Hash Functions</a><ul>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#exercises-6"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>9.2</b> Blocks</a></li>
-<li class="chapter" data-level="9.3" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html"><i class="fa fa-check"></i><b>9.3</b> Proof of Work (PoW)</a><ul>
-<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#simple-pow-example"><i class="fa fa-check"></i>Simple PoW Example</a></li>
-<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#combining-pow-and-hashing"><i class="fa fa-check"></i>Combining PoW and Hashing</a></li>
-<li class="chapter" data-level="" data-path="proof-of-work-pow.html"><a href="proof-of-work-pow.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="9.2" data-path="blockchain.html"><a href="blockchain.html#blocks"><i class="fa fa-check"></i><b>9.2</b> Blocks</a></li>
+<li class="chapter" data-level="9.3" data-path="blockchain.html"><a href="blockchain.html#proof-of-work-pow"><i class="fa fa-check"></i><b>9.3</b> Proof of Work (PoW)</a><ul>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#simple-pow-example"><i class="fa fa-check"></i>Simple PoW Example</a></li>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#combining-pow-and-hashing"><i class="fa fa-check"></i>Combining PoW and Hashing</a></li>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#exercises-7"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="chaining-blocks.html"><a href="chaining-blocks.html"><i class="fa fa-check"></i><b>9.4</b> Chaining Blocks</a></li>
-<li class="chapter" data-level="9.5" data-path="security.html"><a href="security.html"><i class="fa fa-check"></i><b>9.5</b> Security</a><ul>
-<li class="chapter" data-level="" data-path="security.html"><a href="security.html#manipulation-1"><i class="fa fa-check"></i>Manipulation 1</a></li>
-<li class="chapter" data-level="" data-path="security.html"><a href="security.html#manipulation-2"><i class="fa fa-check"></i>Manipulation 2</a></li>
+<li class="chapter" data-level="9.4" data-path="blockchain.html"><a href="blockchain.html#chaining-blocks"><i class="fa fa-check"></i><b>9.4</b> Chaining Blocks</a></li>
+<li class="chapter" data-level="9.5" data-path="blockchain.html"><a href="blockchain.html#security"><i class="fa fa-check"></i><b>9.5</b> Security</a><ul>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#manipulation-1"><i class="fa fa-check"></i>Manipulation 1</a></li>
+<li class="chapter" data-level="" data-path="blockchain.html"><a href="blockchain.html#manipulation-2"><i class="fa fa-check"></i>Manipulation 2</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="wrap-up.html"><a href="wrap-up.html"><i class="fa fa-check"></i><b>9.6</b> Wrap up</a></li>
+<li class="chapter" data-level="9.6" data-path="blockchain.html"><a href="blockchain.html#wrap-up"><i class="fa fa-check"></i><b>9.6</b> Wrap up</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="forecasting.html"><a href="forecasting.html"><i class="fa fa-check"></i><b>10</b> Forecasting</a><ul>
-<li class="chapter" data-level="10.1" data-path="time-series-data.html"><a href="time-series-data.html"><i class="fa fa-check"></i><b>10.1</b> Time Series Data</a></li>
-<li class="chapter" data-level="10.2" data-path="forecasting-process.html"><a href="forecasting-process.html"><i class="fa fa-check"></i><b>10.2</b> Forecasting Process</a></li>
-<li class="chapter" data-level="10.3" data-path="real-data.html"><a href="real-data.html"><i class="fa fa-check"></i><b>10.3</b> Real Data</a></li>
-<li class="chapter" data-level="10.4" data-path="judgemental-forecasting.html"><a href="judgemental-forecasting.html"><i class="fa fa-check"></i><b>10.4</b> Judgemental Forecasting</a></li>
-<li class="chapter" data-level="10.5" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html"><i class="fa fa-check"></i><b>10.5</b> Exponential Smoothing</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#implementing-hes"><i class="fa fa-check"></i><b>10.5.1</b> Implementing HES</a></li>
-<li class="chapter" data-level="10.5.2" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#finding-best-alpha-and-gamma-values"><i class="fa fa-check"></i><b>10.5.2</b> Finding best alpha and gamma values</a></li>
-<li class="chapter" data-level="10.5.3" data-path="exponential-smoothing.html"><a href="exponential-smoothing.html#generating-forecasts"><i class="fa fa-check"></i><b>10.5.3</b> Generating Forecasts</a></li>
+<li class="chapter" data-level="10.1" data-path="forecasting.html"><a href="forecasting.html#time-series-data"><i class="fa fa-check"></i><b>10.1</b> Time Series Data</a></li>
+<li class="chapter" data-level="10.2" data-path="forecasting.html"><a href="forecasting.html#forecasting-process"><i class="fa fa-check"></i><b>10.2</b> Forecasting Process</a></li>
+<li class="chapter" data-level="10.3" data-path="forecasting.html"><a href="forecasting.html#real-data"><i class="fa fa-check"></i><b>10.3</b> Real Data</a></li>
+<li class="chapter" data-level="10.4" data-path="forecasting.html"><a href="forecasting.html#judgemental-forecasting"><i class="fa fa-check"></i><b>10.4</b> Judgemental Forecasting</a></li>
+<li class="chapter" data-level="10.5" data-path="forecasting.html"><a href="forecasting.html#exponential-smoothing"><i class="fa fa-check"></i><b>10.5</b> Exponential Smoothing</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="forecasting.html"><a href="forecasting.html#implementing-hes"><i class="fa fa-check"></i><b>10.5.1</b> Implementing HES</a></li>
+<li class="chapter" data-level="10.5.2" data-path="forecasting.html"><a href="forecasting.html#finding-best-alpha-and-gamma-values"><i class="fa fa-check"></i><b>10.5.2</b> Finding best alpha and gamma values</a></li>
+<li class="chapter" data-level="10.5.3" data-path="forecasting.html"><a href="forecasting.html#generating-forecasts"><i class="fa fa-check"></i><b>10.5.3</b> Generating Forecasts</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises-8.html"><a href="exercises-8.html"><i class="fa fa-check"></i>Exercises</a></li>
-<li class="chapter" data-level="10.6" data-path="practical-application.html"><a href="practical-application.html"><i class="fa fa-check"></i><b>10.6</b> Practical Application</a></li>
-<li class="chapter" data-level="10.7" data-path="forecast-evaluation.html"><a href="forecast-evaluation.html"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
+<li class="chapter" data-level="" data-path="forecasting.html"><a href="forecasting.html#exercises-8"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="10.6" data-path="forecasting.html"><a href="forecasting.html#practical-application"><i class="fa fa-check"></i><b>10.6</b> Practical Application</a></li>
+<li class="chapter" data-level="10.7" data-path="forecasting.html"><a href="forecasting.html#forecast-evaluation"><i class="fa fa-check"></i><b>10.7</b> Forecast Evaluation</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="chapwebapps.html"><a href="chapwebapps.html"><i class="fa fa-check"></i><b>11</b> Web Apps</a><ul>
-<li class="chapter" data-level="11.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
-<li class="chapter" data-level="11.2" data-path="ui-user-interface.html"><a href="ui-user-interface.html"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
-<li class="chapter" data-level="11.3" data-path="server.html"><a href="server.html"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
-<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html"><i class="fa fa-check"></i>Exercises</a><ul>
-<li class="chapter" data-level="" data-path="exercises-9.html"><a href="exercises-9.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
+<li class="chapter" data-level="11.1" data-path="chapwebapps.html"><a href="chapwebapps.html#introduction"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="chapwebapps.html"><a href="chapwebapps.html#ui-user-interface"><i class="fa fa-check"></i><b>11.2</b> ui (user interface)</a></li>
+<li class="chapter" data-level="11.3" data-path="chapwebapps.html"><a href="chapwebapps.html#server"><i class="fa fa-check"></i><b>11.3</b> server</a></li>
+<li class="chapter" data-level="" data-path="chapwebapps.html"><a href="chapwebapps.html#exercises-9"><i class="fa fa-check"></i>Exercises</a><ul>
+<li class="chapter" data-level="" data-path="chapwebapps.html"><a href="chapwebapps.html#from-june-21-2022"><i class="fa fa-check"></i>From June 21, 2022</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>Accompanying Work</b></span></li>
 <li class="chapter" data-level="" data-path="homework-assignment.html"><a href="homework-assignment.html"><i class="fa fa-check"></i>Homework Assignment</a></li>
 <li class="chapter" data-level="" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i>Literature</a></li>
 <li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html"><i class="fa fa-check"></i>Programming Project</a><ul>
-<li class="chapter" data-level="" data-path="topic-1-web-scraping.html"><a href="topic-1-web-scraping.html"><i class="fa fa-check"></i>Topic 1: Web Scraping</a></li>
-<li class="chapter" data-level="" data-path="topic-2-forecasting.html"><a href="topic-2-forecasting.html"><i class="fa fa-check"></i>Topic 2: Forecasting</a></li>
-<li class="chapter" data-level="" data-path="topic-3-algorithm-implementation-data-analysis.html"><a href="topic-3-algorithm-implementation-data-analysis.html"><i class="fa fa-check"></i>Topic 3: Algorithm Implementation &amp; Data Analysis</a></li>
-<li class="chapter" data-level="" data-path="topic-4-custom-topic.html"><a href="topic-4-custom-topic.html"><i class="fa fa-check"></i>Topic 4: Custom Topic</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-1-web-scraping"><i class="fa fa-check"></i>Topic 1: Web Scraping</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-2-forecasting"><i class="fa fa-check"></i>Topic 2: Forecasting</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-3-algorithm-implementation-data-analysis"><i class="fa fa-check"></i>Topic 3: Algorithm Implementation &amp; Data Analysis</a></li>
+<li class="chapter" data-level="" data-path="programming-project.html"><a href="programming-project.html#topic-4-custom-topic"><i class="fa fa-check"></i>Topic 4: Custom Topic</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="bug-bounty.html"><a href="bug-bounty.html"><i class="fa fa-check"></i><b>A</b> Bug Bounty</a><ul>
-<li class="chapter" data-level="" data-path="leaderboard.html"><a href="leaderboard.html"><i class="fa fa-check"></i>Leaderboard</a></li>
-<li class="chapter" data-level="" data-path="what-is-this.html"><a href="what-is-this.html"><i class="fa fa-check"></i>What is this?</a></li>
+<li class="chapter" data-level="" data-path="bug-bounty.html"><a href="bug-bounty.html#leaderboard"><i class="fa fa-check"></i>Leaderboard</a></li>
+<li class="chapter" data-level="" data-path="bug-bounty.html"><a href="bug-bounty.html#what-is-this"><i class="fa fa-check"></i>What is this?</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="test-exam.html"><a href="test-exam.html"><i class="fa fa-check"></i><b>B</b> Test Exam</a><ul>
-<li class="chapter" data-level="B.1" data-path="additional-exercises.html"><a href="additional-exercises.html"><i class="fa fa-check"></i><b>B.1</b> Additional Exercises</a><ul>
-<li class="chapter" data-level="B.1.1" data-path="additional-exercises.html"><a href="additional-exercises.html#exercise-i"><i class="fa fa-check"></i><b>B.1.1</b> Exercise I</a></li>
+<li class="chapter" data-level="B.1" data-path="test-exam.html"><a href="test-exam.html#additional-exercises"><i class="fa fa-check"></i><b>B.1</b> Additional Exercises</a><ul>
+<li class="chapter" data-level="B.1.1" data-path="test-exam.html"><a href="test-exam.html#exercise-i"><i class="fa fa-check"></i><b>B.1.1</b> Exercise I</a></li>
 </ul></li>
-<li class="chapter" data-level="B.2" data-path="exercise-ii.html"><a href="exercise-ii.html"><i class="fa fa-check"></i><b>B.2</b> Exercise II</a><ul>
-<li class="chapter" data-level="B.2.1" data-path="exercise-ii.html"><a href="exercise-ii.html#exercise-iii"><i class="fa fa-check"></i><b>B.2.1</b> Exercise III</a></li>
+<li class="chapter" data-level="B.2" data-path="test-exam.html"><a href="test-exam.html#exercise-ii"><i class="fa fa-check"></i><b>B.2</b> Exercise II</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="test-exam.html"><a href="test-exam.html#exercise-iii"><i class="fa fa-check"></i><b>B.2.1</b> Exercise III</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -386,14 +386,332 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 – Lewis Carroll, Alice in Wonderland</p>
 </blockquote>
 <p>Like every other real programming language, R provides tools to structure your code based on conditional expressions meaning executing a part of the code dependent on a condition and loops to describe and perform similar tasks in a compact way. If you have no prior programming experience this may seem to be the hardest thing in the world, because you have to think of all the possible cases which occur in your situation to differentiate between them in your program. Additionally, you have to think in iterations, which means you have to find the common parts of your problems and put them into loops. But let us start at the beginning and look at conditional expressions.</p>
+<div id="conditional-expressions" class="section level2 hasAnchor">
+<h2><span class="header-section-number">4.1</span> Conditional Expressions<a href="structure.html#conditional-expressions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="if-and-else" class="section level3 unnumbered hasAnchor">
+<h3>If and Else<a href="structure.html#if-and-else" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The most basic conditional expression is an <code>if</code>-statement. It is used to make expressions contingent on a certain condition and in R it has the following syntax.</p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="structure.html#cb441-1"></a><span class="cf">if</span> ( condition ) {</span>
+<span id="cb441-2"><a href="structure.html#cb441-2"></a>  code  <span class="co"># Only executed if &#39;condition&#39; is TRUE</span></span>
+<span id="cb441-3"><a href="structure.html#cb441-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="structure.html#cb442-1"></a><span class="co"># A simple example</span></span>
+<span id="cb442-2"><a href="structure.html#cb442-2"></a>x &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb442-3"><a href="structure.html#cb442-3"></a><span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb442-4"><a href="structure.html#cb442-4"></a>  <span class="kw">cat</span>(<span class="st">&quot;Hello World!&quot;</span>)</span>
+<span id="cb442-5"><a href="structure.html#cb442-5"></a>}</span></code></pre></div>
+<pre><code>#R&gt; Hello World!</code></pre>
+<p>The condition is a set of commands that produce a single logical value namely <code>TRUE</code> or <code>FALSE</code> and the code in the body encapsulated by <code>{ }</code> is only executed if the condition is <code>TRUE</code>. If the first condition is not true it is possible to include an <code>else</code> statement which should be evaluated if the first condition cannot be fulfilled.</p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="structure.html#cb444-1"></a><span class="cf">if</span> ( condition ) {</span>
+<span id="cb444-2"><a href="structure.html#cb444-2"></a>  code                    <span class="co"># Only executed if &#39;condition&#39; is TRUE</span></span>
+<span id="cb444-3"><a href="structure.html#cb444-3"></a>} <span class="cf">else</span> {</span>
+<span id="cb444-4"><a href="structure.html#cb444-4"></a>  alternate code          <span class="co"># Evaluated if &#39;condition&#39; is FALSE</span></span>
+<span id="cb444-5"><a href="structure.html#cb444-5"></a>}</span></code></pre></div>
+<p>There may be cases where two logical values are not enough to implement what you want. In this case, you can combine as many <code>if</code> clauses as you want with the statement <code>else if</code> and catch the rest of the cases (if none of your conditions is fulfilled) with a single <code>else</code> clause.</p>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="structure.html#cb445-1"></a>x &lt;-<span class="st"> </span><span class="dv">314</span></span>
+<span id="cb445-2"><a href="structure.html#cb445-2"></a></span>
+<span id="cb445-3"><a href="structure.html#cb445-3"></a><span class="cf">if</span> ( x <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span> ) {</span>
+<span id="cb445-4"><a href="structure.html#cb445-4"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a small number!&quot;</span>)</span>
+<span id="cb445-5"><a href="structure.html#cb445-5"></a>} <span class="cf">else</span> <span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span> ) {</span>
+<span id="cb445-6"><a href="structure.html#cb445-6"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a big number!&quot;</span>)  </span>
+<span id="cb445-7"><a href="structure.html#cb445-7"></a>} <span class="cf">else</span> {</span>
+<span id="cb445-8"><a href="structure.html#cb445-8"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is neither a big nor a small number!&quot;</span>)  </span>
+<span id="cb445-9"><a href="structure.html#cb445-9"></a>}</span></code></pre></div>
+<pre><code>#R&gt; X is a big number!</code></pre>
+<p>When using logical operators it may be better to use double symbol notation <code>&amp;&amp;</code> rather than single symbol notation <code>&amp;</code> (same with logical OR). The reason for this is because the double symbol notation evaluates the condition step by step from left to right and aborts and returns a value if a <code>FALSE</code> is found. This makes the execution of the code much more efficient, faster and so the way to go. However one should carefully check the evaluated expressions in order to avoid errors which can easily sneak in here.</p>
+<p>There is a good reason that conditional expressions heavily rely on the usage of the word <code>else</code>. It seems that everything can be solved using <code>if</code>s only. While this is (sometimes) possible it is not advisable. Normally conditional expressions are mutually exclusive choices so that code can easily get confusing or erroneous. Let us consider the following example which would work perfectly fine and make much more sense with added <code>else</code>s.</p>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="structure.html#cb447-1"></a><span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span> ){</span>
+<span id="cb447-2"><a href="structure.html#cb447-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a big number!&quot;</span>)</span>
+<span id="cb447-3"><a href="structure.html#cb447-3"></a>}</span></code></pre></div>
+<pre><code>#R&gt; X is a big number!</code></pre>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="structure.html#cb449-1"></a><span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span> ){</span>
+<span id="cb449-2"><a href="structure.html#cb449-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a moderate number!&quot;</span>)</span>
+<span id="cb449-3"><a href="structure.html#cb449-3"></a>}</span></code></pre></div>
+<pre><code>#R&gt; X is a moderate number!</code></pre>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="structure.html#cb451-1"></a><span class="cf">if</span> ( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> ){</span>
+<span id="cb451-2"><a href="structure.html#cb451-2"></a>  <span class="kw">cat</span>(<span class="st">&quot;X is a small number&quot;</span>)</span>
+<span id="cb451-3"><a href="structure.html#cb451-3"></a>}</span></code></pre></div>
+<pre><code>#R&gt; X is a small number</code></pre>
+<p>Another point to discuss is accuracy. When comparing objects in a setting such as the one discussed here, it is often better to use the functions <code>isTRUE()</code> or <code>!isTRUE()</code> rather than the combination of a logical operator and a logical value like <code>T ==</code> and <code>T !=</code> to evaluate a condition. This is due to the fact that conditional expressions, as well as conditional clauses, only work if there is a single (!!!) logical value provided, which can be enforced using functions that always return only a single value. One of the pitfalls are problems related to the precision of the calculations. Precision problems as the following one can also be solved using the function <code>all.equal()</code> which allows to set a <code>tolerance</code> argument and evens out the small precision problems in floating point calculations.</p>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="structure.html#cb453-1"></a>num1 &lt;-<span class="st"> </span><span class="fl">0.2</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.1</span></span>
+<span id="cb453-2"><a href="structure.html#cb453-2"></a>num2 &lt;-<span class="st"> </span><span class="fl">0.3</span> <span class="op">-</span><span class="st"> </span><span class="fl">0.2</span></span>
+<span id="cb453-3"><a href="structure.html#cb453-3"></a></span>
+<span id="cb453-4"><a href="structure.html#cb453-4"></a>num1 <span class="op">==</span><span class="st"> </span>num2</span></code></pre></div>
+<pre><code>#R&gt; [1] FALSE</code></pre>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="structure.html#cb455-1"></a><span class="kw">all.equal</span>(num1 , num2 , <span class="dt">tolerance=</span><span class="dv">10</span><span class="op">^-</span><span class="dv">5</span>)</span></code></pre></div>
+<pre><code>#R&gt; [1] TRUE</code></pre>
+<p>As speed is one of the most important things about programming and vectorized commands are pretty fast, there is also a vectorized <code>if/else</code> version in R.</p>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="structure.html#cb457-1"></a><span class="kw">ifelse</span>( condition , ifTRUE , ifFALSE)        <span class="co"># This is really fast!</span></span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="structure.html#cb458-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
+<span id="cb458-2"><a href="structure.html#cb458-2"></a><span class="kw">ifelse</span>( x <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> , x<span class="op">^</span><span class="dv">2</span> , <span class="ot">FALSE</span>)</span></code></pre></div>
+<pre><code>#R&gt; [1] 0 4 9</code></pre>
+</div>
+<div id="switch" class="section level3 unnumbered hasAnchor">
+<h3>Switch<a href="structure.html#switch" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you are using a lot of <code>if/else</code> constructs in your code this may get a little bit crowded and probably messy. R provides also a statement called <code>switch()</code> to return values contingent on a certain expression. This is also faster than combining lots of <code>if</code>-statements in your code but usually not as fast as the vectorized <code>ifelse()</code>.</p>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="structure.html#cb460-1"></a><span class="cf">switch</span>( statement , case1 , case2 , ... )    <span class="co"># Basic syntax</span></span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="structure.html#cb461-1"></a><span class="co"># Example if &#39;statement&#39; is numeric</span></span>
+<span id="cb461-2"><a href="structure.html#cb461-2"></a>x &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb461-3"><a href="structure.html#cb461-3"></a><span class="cf">switch</span>(x,<span class="st">&quot;one&quot;</span>,<span class="st">&quot;two&quot;</span>,<span class="st">&quot;three&quot;</span>)</span></code></pre></div>
+<pre><code>#R&gt; [1] &quot;two&quot;</code></pre>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="structure.html#cb463-1"></a><span class="co"># Example if &#39;statement&#39; is a string</span></span>
+<span id="cb463-2"><a href="structure.html#cb463-2"></a>x &lt;-<span class="st"> &quot;mean&quot;</span></span>
+<span id="cb463-3"><a href="structure.html#cb463-3"></a>data &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> , <span class="dv">5</span> , <span class="fl">7.5</span>)</span>
+<span id="cb463-4"><a href="structure.html#cb463-4"></a><span class="cf">switch</span>(x,<span class="st">&quot;sd&quot;</span>=<span class="kw">sd</span>(data),<span class="st">&quot;median&quot;</span>=<span class="kw">median</span>(data),<span class="st">&quot;mean&quot;</span>=<span class="kw">mean</span>(data))</span></code></pre></div>
+<pre><code>#R&gt; [1] 4.5</code></pre>
+<p>If the provided <code>statement</code> is a number then R returns the <code>case</code> with the matching index. If the <code>statement</code> is of type string, then R tries to match the statements and executes the code listed there. Using strings as a statement and formatting your code in a structured way you can receive the same appearance and feeling like you would with <code>switch-case</code>-statements in other programming languages.</p>
+<p>The following code block shows alternative formatting (just some additional curly braces, spaces, and newlines) that create a look similar to other programming languages such as C or Java. However, one should be careful with switch as the behavior is not always totally intuitive as the following example shows.</p>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="structure.html#cb465-1"></a>usertype &lt;-<span class="st"> &quot;caseXX&quot;</span></span>
+<span id="cb465-2"><a href="structure.html#cb465-2"></a><span class="cf">switch</span>(usertype, </span>
+<span id="cb465-3"><a href="structure.html#cb465-3"></a>       <span class="dt">case1 =</span> { <span class="dv">1</span> }, </span>
+<span id="cb465-4"><a href="structure.html#cb465-4"></a>       <span class="dt">case2 =</span> , </span>
+<span id="cb465-5"><a href="structure.html#cb465-5"></a>       <span class="dt">case3 =</span> {<span class="fl">2.5</span>},</span>
+<span id="cb465-6"><a href="structure.html#cb465-6"></a>       <span class="dv">99</span>)</span></code></pre></div>
+<pre><code>#R&gt; [1] 99</code></pre>
+<p>This maps <code>case2</code> to the value defined in <code>case3</code> and additionally supplies and unnamed default value <code>99</code> for cases that are not defined or cannot be matched. If there is more than one match, the first matching element is used. For more information, try <code>?switch</code>. Despite being special in some cases <code>switch</code> is usually faster than a lot of <code>if</code> and <code>else</code> statements and keeps your code more organized.</p>
+</div>
+</div>
+<div id="loops" class="section level2 hasAnchor">
+<h2><span class="header-section-number">4.2</span> Loops<a href="structure.html#loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Loops are one of the most used and most important constructs while programming - they are somehow like the universal workhorse. Generally, a loop is a control structure which allows running specific lines of code over and over again until an exit condition is fulfilled or until a specified number of repetitions has been performed. While executing the same code several times the provided data can, of course, be alternated which makes loops very useful when performing a huge number of actions of the same type.</p>
+<div id="for-loop" class="section level3 unnumbered hasAnchor">
+<h3>For-Loop<a href="structure.html#for-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="gfx/gif/forLoop.gif" width="70%" style="display: block; margin: auto;" /></p>
+<p>A <code>for</code> loop runs specified code a fixed number of times. Therefore, you have to know in advance how often the code in the body of the loop should be executed. The <code>for</code> loop has the following general form.</p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="structure.html#cb467-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> vector){           <span class="co"># Basic syntax</span></span>
+<span id="cb467-2"><a href="structure.html#cb467-2"></a>  code</span>
+<span id="cb467-3"><a href="structure.html#cb467-3"></a>}</span></code></pre></div>
+<p>The typical iterator variable <code>i</code> that is commonly used in other programming languages should be avoided in R because it is already a reserved word for the imaginary unit when working with complex numbers. Common workarounds are using <code>it</code> (short for iterator), <code>ii</code> (just doubled to avoid using the reserved word) or <code>idx</code> (abbreviation for iteration index).</p>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="structure.html#cb468-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span></span>
+<span id="cb468-2"><a href="structure.html#cb468-2"></a><span class="cf">for</span> ( idx <span class="cf">in</span> x) {</span>
+<span id="cb468-3"><a href="structure.html#cb468-3"></a>  <span class="kw">print</span>(idx)</span>
+<span id="cb468-4"><a href="structure.html#cb468-4"></a>}</span></code></pre></div>
+</div>
+<div id="while-loop" class="section level3 unnumbered hasAnchor">
+<h3>While-Loop<a href="structure.html#while-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="gfx/gif/whileLoop.gif" width="70%" style="display: block; margin: auto;" /></p>
+<p>The <code>while</code> loop loops until the specified condition is false. It is often used when you do not know and can not calculate in advance how often the instructions will be executed. It has the following general form.</p>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="structure.html#cb469-1"></a><span class="cf">while</span> ( condition ){          <span class="co"># Basic syntax</span></span>
+<span id="cb469-2"><a href="structure.html#cb469-2"></a>  code</span>
+<span id="cb469-3"><a href="structure.html#cb469-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="structure.html#cb470-1"></a>idx &lt;-<span class="st"> </span><span class="dv">6</span></span>
+<span id="cb470-2"><a href="structure.html#cb470-2"></a><span class="cf">while</span> ( idx <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span> ){</span>
+<span id="cb470-3"><a href="structure.html#cb470-3"></a>  <span class="kw">print</span>(idx)</span>
+<span id="cb470-4"><a href="structure.html#cb470-4"></a>  idx &lt;-<span class="st"> </span>idx <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb470-5"><a href="structure.html#cb470-5"></a>}</span></code></pre></div>
+</div>
+<div id="repeat" class="section level3 unnumbered hasAnchor">
+<h3>Repeat<a href="structure.html#repeat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>repeat</code> loop is somehow similar to the while loop. The <code>while</code> loop starts a new run every time the condition is evaluated as <code>TRUE</code> while the <code>repeat</code> loop will always begin a new run and will only stop if it is told to do so with the <code>break</code> command. This means you can explicitly control which part of the loop should be executed and when the execution should be stopped.</p>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="structure.html#cb471-1"></a>counter &lt;-<span class="st"> </span><span class="dv">0</span>                  <span class="co"># Counter variable to count loops</span></span>
+<span id="cb471-2"><a href="structure.html#cb471-2"></a></span>
+<span id="cb471-3"><a href="structure.html#cb471-3"></a><span class="cf">repeat</span>{                       <span class="co"># Repeat does not need a condition</span></span>
+<span id="cb471-4"><a href="structure.html#cb471-4"></a>  x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb471-5"><a href="structure.html#cb471-5"></a>  counter &lt;-<span class="st"> </span>counter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb471-6"><a href="structure.html#cb471-6"></a>  <span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>) {</span>
+<span id="cb471-7"><a href="structure.html#cb471-7"></a>    <span class="kw">print</span>(counter)</span>
+<span id="cb471-8"><a href="structure.html#cb471-8"></a>    <span class="kw">print</span>(x)</span>
+<span id="cb471-9"><a href="structure.html#cb471-9"></a>    <span class="cf">break</span> </span>
+<span id="cb471-10"><a href="structure.html#cb471-10"></a>  }</span>
+<span id="cb471-11"><a href="structure.html#cb471-11"></a>}</span></code></pre></div>
+</div>
+<div id="break-and-next" class="section level3 unnumbered hasAnchor">
+<h3>Break and Next<a href="structure.html#break-and-next" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="gfx/gif/breakLoop.gif" width="70%" style="display: block; margin: auto;" /></p>
+<p>We have already seen that <code>break</code> is able to abort the <code>repeat</code>-loop, but it is much more powerful and can break any of the discussed loops directly. Even if you can use <code>break</code> to abort loops on certain conditions this is a bad habit. It is always better to know when and how a loop should end and do this via the condition or by predefining the number of loops using the <code>for</code> loop.</p>
+<p><img src="gfx/gif/nextLoop.gif" width="70%" style="display: block; margin: auto;" /></p>
+<p>The <code>next</code> command is used to skip the following statements and if used in a loop it will increment the loop variable (<code>idx</code> in the <code>for</code> loop example). Here is a simple example to illustrate how both are working.</p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="structure.html#cb472-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</span>
+<span id="cb472-2"><a href="structure.html#cb472-2"></a>  x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb472-3"><a href="structure.html#cb472-3"></a>  <span class="cf">if</span> (x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) <span class="cf">next</span></span>
+<span id="cb472-4"><a href="structure.html#cb472-4"></a>  <span class="kw">print</span>(x)</span>
+<span id="cb472-5"><a href="structure.html#cb472-5"></a>  <span class="cf">if</span> ( <span class="kw">abs</span>(x) <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>) <span class="cf">break</span>    <span class="co"># Break should normally be avoided</span></span>
+<span id="cb472-6"><a href="structure.html#cb472-6"></a>}</span></code></pre></div>
+<p>Generally one can say that loops in R are pretty slow and in most of the cases drastically slow down your code. Therefore, where possible <em>loops should be avoided</em>! In most of the cases it is much better (and faster!) to use vectorized functions like <code>apply()</code>, <code>sapply()</code> or <code>tapply()</code>.</p>
+</div>
+<div id="special-looping-over-non-numerical-data" class="section level3 unnumbered hasAnchor">
+<h3>Special: Looping over non-numerical data<a href="structure.html#special-looping-over-non-numerical-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R does not exactly support looping over non-numerical data, but it may be useful sometimes and of course, there are a few ways to accomplish this. The first one is using a function of R’s mighty <code>apply()</code>-family. In this case <code>lapply()</code> is the way to go if the performed and desired loops are independent of each other and it is allowed to process them in any order.</p>
+<p>Another option is using the function <code>get()</code>. In fact, the purpose is straight forward and sounds very simple. It takes a character string as an argument and returns the object of that name. Here is a short example of how to calculate the mean of three vectors.</p>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="structure.html#cb473-1"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb473-2"><a href="structure.html#cb473-2"></a>y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb473-3"><a href="structure.html#cb473-3"></a>z &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000000</span>)</span>
+<span id="cb473-4"><a href="structure.html#cb473-4"></a></span>
+<span id="cb473-5"><a href="structure.html#cb473-5"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>,<span class="st">&quot;z&quot;</span>)) {</span>
+<span id="cb473-6"><a href="structure.html#cb473-6"></a>  vec &lt;-<span class="st"> </span><span class="kw">get</span>(idx)</span>
+<span id="cb473-7"><a href="structure.html#cb473-7"></a>  <span class="kw">print</span>(<span class="kw">mean</span>(vec))</span>
+<span id="cb473-8"><a href="structure.html#cb473-8"></a>}</span></code></pre></div>
+<pre><code>#R&gt; [1] -0.452227
+#R&gt; [1] -0.02234161
+#R&gt; [1] -0.001333537</code></pre>
+<p>This simple example may give you an idea of how powerful the <code>get()</code>-function is. Try to imagine how flexible and powerful a routine written with the combination of <code>get()</code> and <code>paste()</code> can be. This does, however, not cover all possible cases, for example, if you want to loop over the elements of a list by name, the above example using <code>get()</code> won’t work.</p>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="structure.html#cb475-1"></a>list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x=</span>x,</span>
+<span id="cb475-2"><a href="structure.html#cb475-2"></a>             <span class="dt">y=</span>y,</span>
+<span id="cb475-3"><a href="structure.html#cb475-3"></a>             <span class="dt">z=</span>z)</span>
+<span id="cb475-4"><a href="structure.html#cb475-4"></a></span>
+<span id="cb475-5"><a href="structure.html#cb475-5"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">names</span>(list)){</span>
+<span id="cb475-6"><a href="structure.html#cb475-6"></a>  <span class="kw">print</span>(list<span class="op">$</span>idx)               </span>
+<span id="cb475-7"><a href="structure.html#cb475-7"></a>}</span></code></pre></div>
+<pre><code>#R&gt; NULL
+#R&gt; NULL
+#R&gt; NULL</code></pre>
+<p>Of course there is a way to force R looping over the names and fetch the data. To achieve this you have to construct a string and then make R evaluate this string using the command <code>eval()</code>.</p>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="structure.html#cb477-1"></a><span class="cf">for</span> ( idx <span class="cf">in</span> <span class="kw">names</span>(list)){</span>
+<span id="cb477-2"><a href="structure.html#cb477-2"></a>  string &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;list$&quot;</span>,idx,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)  <span class="co"># Constructing command</span></span>
+<span id="cb477-3"><a href="structure.html#cb477-3"></a>  data &lt;-<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text=</span>string))     <span class="co"># Evaluating command</span></span>
+<span id="cb477-4"><a href="structure.html#cb477-4"></a>  <span class="kw">print</span>(<span class="kw">mean</span>(data))                    <span class="co"># Working with fetched data</span></span>
+<span id="cb477-5"><a href="structure.html#cb477-5"></a>}</span></code></pre></div>
+<pre><code>#R&gt; [1] -0.452227
+#R&gt; [1] -0.02234161
+#R&gt; [1] -0.001333537</code></pre>
+<p>The shown example is, of course, arbitrary and the result could have been achieved easier using numeric values for <code>idx</code> and double brackets to address the i-th element in the <code>list</code>. Nevertheless, it shows Rs capabilities to loop over non-numeric content and gets really useful if you are dealing with more complex ways of addressing data. If you want to read R code from a file or are looking for another option to evaluate a concatenated string you can also use the <code>source()</code>-command.</p>
+</div>
+</div>
+<div id="exercises-3" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="structure.html#exercises-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="gfx/CH00-ExercisesHeader.png" width="100%" style="display: block; margin: auto;" /></p>
+<div id="from-april-26-2022" class="section level3 unnumbered hasAnchor">
+<h3>From April 26, 2022<a href="structure.html#from-april-26-2022" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<embed src="exercises/cswr_programming_R_exercises_code_structure.pdf" width="100%" style="display: block; margin: auto;" type="application/pdf" />
+<!--
+### Clever BMI Calculator {-}
+
+\BeginKnitrBlock{rmdexercise}<div class="rmdexercise">Expand your function `BMI()` in a way that it outputs an evaluation of the calculated BMI aside of the pure result. Make also sure that it outputs a useful warning if meaningless numbers are entered by a user.
+  </div>\EndKnitrBlock{rmdexercise}
+-->
+</div>
+<div id="bottles-of-beer" class="section level3 unnumbered hasAnchor">
+<h3>99 Bottles of Beer<a href="structure.html#bottles-of-beer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In early 1994, when the internet was only used by a fraction of the people that are using it today, someone posted the full lyrics of the song 99 Bottles of Beer to a humor mailing list, which was also heavily used by programmers. This was seen as an enormous waste of bandwidth because the lyrics could have been easily posted using six lines of BASIC code.</p>
+<p>This small event was the occasion for Tim Robinson to develop and post his version of the song in C++ which inspired other programmers to post their version of the song which since then has been ported to nearly every programming language available and is one of the many classic yet funny stories from the early ages of the internet. The song has the following lyrics:</p>
+<blockquote>
+<p>99 bottles of beer on the wall, 99 bottles of beer.<br />
+Take one down and pass it around, 98 bottles of beer on the wall.</p>
+<p><span class="math display">\[ \vdots \]</span></p>
+<p>2 bottles of beer on the wall, 2 bottles of beer.<br />
+Take one down and pass it around, 1 bottle of beer on the wall.</p>
+<p>1 bottle of beer on the wall, 1 bottle of beer.<br />
+Take one down and pass it around, no more bottles of beer on the wall.</p>
+<p>No more bottles of beer on the wall, no more bottles of beer.<br />
+Go to the store and buy some more, 99 bottles of beer on the wall.</p>
+<p>[END]</p>
+</blockquote>
+
+<div class="rmdexercise">
+Write a function called <code>bottlesong()</code> that outputs the famous and complete lyrics of the song 99 Bottles of Beer.
+</div>
+
+</div>
+<div id="multiplication-table" class="section level3 hasAnchor">
+<h3><span class="header-section-number">4.2.1</span> Multiplication Table<a href="structure.html#multiplication-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+<div class="rmdexercise">
+Write a function <code>mulitplicationtable()</code> that outputs the multiplication table including results from <span class="math inline">\(1 \cdot 1 = 1\)</span> up to <span class="math inline">\(10 \cdot 10 = 100\)</span> to the console. The function should rely on loops, results should be calculated at runtine and the time delay between the output of two consecutive lines to the command line should be user-definable.
+</div>
+
+<p>The following block shows an abbreviated example output.</p>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="structure.html#cb479-1"></a><span class="dv">1</span> x <span class="dv">1</span> =<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb479-2"><a href="structure.html#cb479-2"></a><span class="dv">1</span> x <span class="dv">2</span> =<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb479-3"><a href="structure.html#cb479-3"></a><span class="dv">1</span> x <span class="dv">3</span> =<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb479-4"><a href="structure.html#cb479-4"></a></span>
+<span id="cb479-5"><a href="structure.html#cb479-5"></a>...</span>
+<span id="cb479-6"><a href="structure.html#cb479-6"></a></span>
+<span id="cb479-7"><a href="structure.html#cb479-7"></a><span class="dv">10</span> x <span class="dv">9</span> =<span class="st"> </span><span class="dv">90</span></span>
+<span id="cb479-8"><a href="structure.html#cb479-8"></a><span class="dv">10</span> x <span class="dv">10</span> =<span class="st"> </span><span class="dv">100</span></span></code></pre></div>
+</div>
+<div id="diagonal-matrix" class="section level3 hasAnchor">
+<h3><span class="header-section-number">4.2.2</span> Diagonal Matrix<a href="structure.html#diagonal-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Write a function that creates a symmetric matrix with dimension <span class="math inline">\(n x n\)</span>, that contains a value x on every element, except for the elements on the main diagonal which should contain value y. Wrap your code in a function <code>diagmat()</code> and make all mentioned values user-definable.</p>
+<p>The following block contains an example output:</p>
+<!--
+
+### Solution 1
+
+
+```r
+#' 99 bottles of beer song lyrics
+#' Writes the complete "bottlesong" lyrics to the console.
+#' @param b equals the number of bought bottles = bb
+#' @param bb bought bottles with default = 99
+#' @return Outputs text to the console, returns nothing explicitly.
+bottlesong <- function(b = 99, bb = b){
+  if (bb <= 1){
+    cat("Come on, you have to buy at least two bottles of beer!!!")
+  } else {
+    while (b > 2){
+      cat(b,"bottles of beer on the wall,",b,"bottles of beer. \n",
+          "Take one down and pass it around,",b-1,"bottles of beer on the wall.\n\n")
+      b <- (b-1)
+      Sys.sleep(0.1)
+    } 
+    if (b == 2) {
+      cat(b,"bottles of beer on the wall,",b,"bottles of beer.\n",
+          "Take one down and pass it around,",b-1,"bottle of beer on the wall.\n\n")
+    }
+    cat(b-1,"bottle of beer on the wall,",b-1,"bottle of beer. \n",
+        "Take one down and pass it around, no more bottles of beer on the wall.\n\n",
+        "No more bottles of beer on the wall, no more bottles of beer. \n",
+        "Go to the store and buy some more,",bb,"bottles of beer on the wall.")
+  }
+}
+
+
+# Some Tests
+bottlesong()          # Default
+bottlesong(b=9)       # Only 9 bottles
+bottlesong(bb=25)     # Rebuy 25 bottles
+bottlesong(bb=1)      # Rebuy only 1 bottle
+```
+
+
+### Solution 2
+
+```r
+bottlesong<-function(nb=99){
+  for(b in nb:0){
+    b1 <- ifelse(b  >1,paste(b  ,"bottles"),ifelse(b  ==0,"No more bottles", paste(b  ,"bottle")))
+    b2 <- ifelse(b-1>1,paste(b-1,"bottles"),ifelse(b-1==0,"No more bottles", paste(b-1,"bottle")))
+    cat(b1, "of beer on the wall,", tolower(b1),"of beer.\n")
+    if( b<1){
+      cat("Go to the store and buy some more,", nb, "bottles of beer on the wall.")
+    } else {
+      cat("Take one down and pass it around,", tolower(b2), "of beer on the wall.\n\n")
+    }
+  }
+}
+
+#bottlesong()
+```
+
+
+### Solution 3
+
+```r
+bottlesong<-function(nbottles=99){
+  x<-nbottles:3
+  for(idx in x){
+    cat(paste(idx, "bottles of beer on the wall,", idx, "bottles of beer.\n",
+              "Take one down and pass it around,", idx-1, "bottles of beer on the wall.\n\n"))}
+  cat(paste("2 bottles of beer on the wall, 2 bottles of beer. \n",
+            "Take one down and pass it around, 1 bottle of beer on the wall.\n\n"))
+  cat(paste("No more bottles of beer on the wall, no more bottles of beer.\n",
+            "Go to the store and buy some more,", nbottles, "bottles of beer on the wall."))
+}
+
+#bottlesong()
+```
+
+-->
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="exercises-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="conditional-expressions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-manipulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="software-development.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
